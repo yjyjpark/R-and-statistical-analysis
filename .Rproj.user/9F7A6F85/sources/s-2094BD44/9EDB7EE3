@@ -3,7 +3,7 @@
     "path": "D:/Drpark/2) Course.Work/2022.1/R_program/R_and_Stat_Analysis/04-1-Ch4_dplyr.Rmd",
     "project_path": "04-1-Ch4_dplyr.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "2689186907",
     "contents": "",
     "dirty": false,
     "created": 1644565764730.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "694,0",
+        "cursorPosition": "704,0",
         "scrollLine": "664"
     },
     "folds": "",
-    "lastKnownWriteTime": 1644548089,
+    "lastKnownWriteTime": 1644578911,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1644548089,
+    "last_content_update": 1644578911139,
     "read_only": false,
     "read_only_alternatives": []
 }
