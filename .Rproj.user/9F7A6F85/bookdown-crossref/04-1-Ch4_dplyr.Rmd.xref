@@ -10,4 +10,5 @@ h3:열-이름-변경-rename과-rename_with 열 이름 변경: 과
 h3:열의-위치-변경-relocate 열의 위치 변경: 
 h3:새로운-열의-추가-mutate와-transmute 새로운 열의 추가: 와 
 h2:여러-행-자료의-요약-summarise 여러 행 자료의 요약: 
+h2:그룹-데이터-프레임 그룹 데이터 프레임
 

@@ -216,6 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.4" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#새로운-열의-추가-mutate와-transmute"><i class="fa fa-check"></i><b>4.2.4</b> 새로운 열의 추가: <code>mutate()</code>와 <code>transmute()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#여러-행-자료의-요약-summarise"><i class="fa fa-check"></i><b>4.3</b> 여러 행 자료의 요약: <code>summarise()</code></a></li>
+<li class="chapter" data-level="4.4" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#그룹-데이터-프레임"><i class="fa fa-check"></i><b>4.4</b> 그룹 데이터 프레임</a></li>
 </ul></li>
 </ul>
 
@@ -451,25 +452,25 @@ tibble로 전환하고 5번째 행부터 10번째 행까지 선택해 보자.</p
 <span id="cb179-3"><a href="dplyr에-의한-데이터-다듬기.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 3 x 5</span></span>
 <span id="cb179-4"><a href="dplyr에-의한-데이터-다듬기.html#cb179-4" aria-hidden="true" tabindex="-1"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species   </span>
 <span id="cb179-5"><a href="dplyr에-의한-데이터-다듬기.html#cb179-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>        <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>     </span>
-<span id="cb179-6"><a href="dplyr에-의한-데이터-다듬기.html#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="fl">4.9</span>         <span class="fl">2.4</span>          <span class="fl">3.3</span>         <span class="dv">1</span>   versicolor</span>
-<span id="cb179-7"><a href="dplyr에-의한-데이터-다듬기.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="fl">5.7</span>         <span class="fl">4.4</span>          <span class="fl">1.5</span>         <span class="fl">0.4</span> setosa    </span>
-<span id="cb179-8"><a href="dplyr에-의한-데이터-다듬기.html#cb179-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">6.4</span>         <span class="fl">3.1</span>          <span class="fl">5.5</span>         <span class="fl">1.8</span> virginica </span></code></pre></div>
+<span id="cb179-6"><a href="dplyr에-의한-데이터-다듬기.html#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="dv">5</span>           <span class="fl">3.5</span>          <span class="fl">1.3</span>         <span class="fl">0.3</span> setosa    </span>
+<span id="cb179-7"><a href="dplyr에-의한-데이터-다듬기.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="fl">5.6</span>         <span class="fl">2.9</span>          <span class="fl">3.6</span>         <span class="fl">1.3</span> versicolor</span>
+<span id="cb179-8"><a href="dplyr에-의한-데이터-다듬기.html#cb179-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">4.9</span>         <span class="fl">3.6</span>          <span class="fl">1.4</span>         <span class="fl">0.1</span> setosa    </span></code></pre></div>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="dplyr에-의한-데이터-다듬기.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iris_t <span class="sc">%&gt;%</span> </span>
 <span id="cb180-2"><a href="dplyr에-의한-데이터-다듬기.html#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.02</span>)</span>
 <span id="cb180-3"><a href="dplyr에-의한-데이터-다듬기.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 3 x 5</span></span>
-<span id="cb180-4"><a href="dplyr에-의한-데이터-다듬기.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
-<span id="cb180-5"><a href="dplyr에-의한-데이터-다듬기.html#cb180-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>        <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>  </span>
-<span id="cb180-6"><a href="dplyr에-의한-데이터-다듬기.html#cb180-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="fl">5.8</span>         <span class="dv">4</span>            <span class="fl">1.2</span>         <span class="fl">0.2</span> setosa </span>
-<span id="cb180-7"><a href="dplyr에-의한-데이터-다듬기.html#cb180-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="dv">5</span>           <span class="dv">3</span>            <span class="fl">1.6</span>         <span class="fl">0.2</span> setosa </span>
-<span id="cb180-8"><a href="dplyr에-의한-데이터-다듬기.html#cb180-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">5.1</span>         <span class="fl">3.8</span>          <span class="fl">1.5</span>         <span class="fl">0.3</span> setosa </span></code></pre></div>
+<span id="cb180-4"><a href="dplyr에-의한-데이터-다듬기.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species   </span>
+<span id="cb180-5"><a href="dplyr에-의한-데이터-다듬기.html#cb180-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>        <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>     </span>
+<span id="cb180-6"><a href="dplyr에-의한-데이터-다듬기.html#cb180-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="fl">6.8</span>         <span class="fl">2.8</span>          <span class="fl">4.8</span>         <span class="fl">1.4</span> versicolor</span>
+<span id="cb180-7"><a href="dplyr에-의한-데이터-다듬기.html#cb180-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="dv">5</span>           <span class="fl">3.4</span>          <span class="fl">1.5</span>         <span class="fl">0.2</span> setosa    </span>
+<span id="cb180-8"><a href="dplyr에-의한-데이터-다듬기.html#cb180-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">4.8</span>         <span class="fl">3.1</span>          <span class="fl">1.6</span>         <span class="fl">0.2</span> setosa    </span></code></pre></div>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="dplyr에-의한-데이터-다듬기.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iris_t <span class="sc">%&gt;%</span> </span>
 <span id="cb181-2"><a href="dplyr에-의한-데이터-다듬기.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.02</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb181-3"><a href="dplyr에-의한-데이터-다듬기.html#cb181-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 3 x 5</span></span>
-<span id="cb181-4"><a href="dplyr에-의한-데이터-다듬기.html#cb181-4" aria-hidden="true" tabindex="-1"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
-<span id="cb181-5"><a href="dplyr에-의한-데이터-다듬기.html#cb181-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>        <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>  </span>
-<span id="cb181-6"><a href="dplyr에-의한-데이터-다듬기.html#cb181-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="fl">4.8</span>         <span class="dv">3</span>            <span class="fl">1.4</span>         <span class="fl">0.3</span> setosa </span>
-<span id="cb181-7"><a href="dplyr에-의한-데이터-다듬기.html#cb181-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="fl">4.7</span>         <span class="fl">3.2</span>          <span class="fl">1.3</span>         <span class="fl">0.2</span> setosa </span>
-<span id="cb181-8"><a href="dplyr에-의한-데이터-다듬기.html#cb181-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">5.7</span>         <span class="fl">4.4</span>          <span class="fl">1.5</span>         <span class="fl">0.4</span> setosa </span></code></pre></div>
+<span id="cb181-4"><a href="dplyr에-의한-데이터-다듬기.html#cb181-4" aria-hidden="true" tabindex="-1"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species   </span>
+<span id="cb181-5"><a href="dplyr에-의한-데이터-다듬기.html#cb181-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>        <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>     </span>
+<span id="cb181-6"><a href="dplyr에-의한-데이터-다듬기.html#cb181-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="fl">5.1</span>         <span class="fl">2.5</span>          <span class="dv">3</span>           <span class="fl">1.1</span> versicolor</span>
+<span id="cb181-7"><a href="dplyr에-의한-데이터-다듬기.html#cb181-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="fl">6.5</span>         <span class="fl">2.8</span>          <span class="fl">4.6</span>         <span class="fl">1.5</span> versicolor</span>
+<span id="cb181-8"><a href="dplyr에-의한-데이터-다듬기.html#cb181-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">7.1</span>         <span class="dv">3</span>            <span class="fl">5.9</span>         <span class="fl">2.1</span> virginica </span></code></pre></div>
 <ul>
 <li>함수 <code>slice_max()</code>와 <code>slice_min()</code>에 의한 행 선택</li>
 </ul>
@@ -1236,6 +1237,30 @@ tibble로 전환하고 5번째 행부터 10번째 행까지 선택해 보자.</p
 <span id="cb227-4"><a href="dplyr에-의한-데이터-다듬기.html#cb227-4" aria-hidden="true" tabindex="-1"></a>      n n_hwy avg_hwy</span>
 <span id="cb227-5"><a href="dplyr에-의한-데이터-다듬기.html#cb227-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span>   <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
 <span id="cb227-6"><a href="dplyr에-의한-데이터-다듬기.html#cb227-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>   <span class="dv">234</span>     <span class="dv">0</span>    <span class="fl">23.4</span></span></code></pre></div>
+<p>dplyr 1.0.0 버전부터 길이가 2 이상이 되는 벡터를 결과로 출력하는 함수도 사용할 수
+있게 됐다. 이 경우, 길이가 1인 요약통계량의 값이 함께 있다면 반복이 되어서 길이를 맞춘다.</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="dplyr에-의한-데이터-다듬기.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb228-2"><a href="dplyr에-의한-데이터-다듬기.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">avg_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">rng_hwy =</span> <span class="fu">range</span>(hwy))</span>
+<span id="cb228-3"><a href="dplyr에-의한-데이터-다듬기.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 2 x 2</span></span>
+<span id="cb228-4"><a href="dplyr에-의한-데이터-다듬기.html#cb228-4" aria-hidden="true" tabindex="-1"></a>  avg_hwy rng_hwy</span>
+<span id="cb228-5"><a href="dplyr에-의한-데이터-다듬기.html#cb228-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>   <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb228-6"><a href="dplyr에-의한-데이터-다듬기.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    <span class="fl">23.4</span>      <span class="dv">12</span></span>
+<span id="cb228-7"><a href="dplyr에-의한-데이터-다듬기.html#cb228-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    <span class="fl">23.4</span>      <span class="dv">44</span></span></code></pre></div>
+<p>길이가 서로 다른 벡터로는 데이터 프레임을 구성할 수 없다. 다만 예외적으로 길이가
+1인 벡터에게만 반복을 허용하는 것이다. 따라서 평균값과 범위(최소, 최대), 그리고
+사분위수(0.25분위수, 0.5분위수, 0.75분위수)를 함께 나타내려는 다음 시도는 잘못된 것이다.</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="dplyr에-의한-데이터-다듬기.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb229-2"><a href="dplyr에-의한-데이터-다듬기.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">avg_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">rng_hwy =</span> <span class="fu">range</span>(hwy), </span>
+<span id="cb229-3"><a href="dplyr에-의한-데이터-다듬기.html#cb229-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>             <span class="at">q_hwy =</span> <span class="fu">quantile</span>(hwy, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>)))</span>
+<span id="cb229-4"><a href="dplyr에-의한-데이터-다듬기.html#cb229-4" aria-hidden="true" tabindex="-1"></a>Error<span class="sc">:</span> Problem with <span class="st">`</span><span class="at">summarise()</span><span class="st">`</span> column <span class="st">`</span><span class="at">q_hwy</span><span class="st">`</span>.</span>
+<span id="cb229-5"><a href="dplyr에-의한-데이터-다듬기.html#cb229-5" aria-hidden="true" tabindex="-1"></a>i <span class="st">`</span><span class="at">q_hwy = quantile(hwy, probs = c(0.25, 0.5, 0.75))</span><span class="st">`</span>.</span>
+<span id="cb229-6"><a href="dplyr에-의한-데이터-다듬기.html#cb229-6" aria-hidden="true" tabindex="-1"></a>x <span class="st">`</span><span class="at">q_hwy</span><span class="st">`</span> must be size <span class="dv">2</span> or <span class="dv">1</span>, not <span class="fl">3.</span></span>
+<span id="cb229-7"><a href="dplyr에-의한-데이터-다듬기.html#cb229-7" aria-hidden="true" tabindex="-1"></a>i An earlier column had size <span class="fl">2.</span></span></code></pre></div>
+<p>함수 <code>summarise()</code>는 사실 그 자체만으로는 그렇게 특별히 유용한 함수라고 하기 어렵다.
+그러나 전체 데이터를 몇 개의 그룹으로 구분하는 함수 <code>group_by()</code>와 함께 사용하면 매우 강력한 분석 도구가 된다.</p>
+</div>
+<div id="그룹-데이터-프레임" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> 그룹 데이터 프레임</h2>
 
 </div>
 </div>

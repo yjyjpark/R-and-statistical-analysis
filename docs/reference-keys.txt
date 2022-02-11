@@ -80,3 +80,4 @@ dplyr에-의한-데이터-다듬기
 열의-위치-변경-relocate
 새로운-열의-추가-mutate와-transmute
 여러-행-자료의-요약-summarise
+그룹-데이터-프레임
