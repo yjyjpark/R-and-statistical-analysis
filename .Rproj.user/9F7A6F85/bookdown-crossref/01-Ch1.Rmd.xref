@@ -1,0 +1,21 @@
+h1:r-시작하기 R 시작하기
+h2:r의-소개 R의 소개
+h2:r의-설치 R의 설치
+h2:rstudio의-설치-및-r의-실행 RStudio의 설치 및 R의 실행
+fig:RStudio-first RStudio의 초기화면
+tab:exdata 예제 데이터
+fig:exresult 예제 프로그램 실행 결과
+h2:작업공간 작업공간
+h2:스크립트-파일의-활용 스크립트 파일의 활용
+fig:ex-script 스크립트 창을 활용한 작업수행 예
+fig:ex1-content 파일 ex1.R의 내용
+fig:save-graphic 그래프의 복사 및 저장
+h2:section-batch 일괄처리
+fig:terminal-batch Terminal 창에서 일괄처리
+fig:path-adding R 실행 폴더를 path에 추가
+h2:section-package R의 확장: 패키지
+h3:패키지의-종류 패키지의 종류
+h3:패키지의-설치-및-사용 패키지의 설치 및 사용
+fig:install-package 패키지 설치 과정
+h3:패키지-tidyverse의-소개 패키지 tidyverse의 소개
+

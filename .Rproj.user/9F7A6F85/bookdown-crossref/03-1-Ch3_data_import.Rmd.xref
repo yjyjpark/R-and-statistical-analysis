@@ -1,0 +1,19 @@
+h1:데이터-입력 데이터 입력
+h2:텍스트-파일-불러오기-패키지-readr-함수의-활용 텍스트 파일 불러오기: 패키지  함수의 활용
+h3:함수-read_table로-데이터-파일-불러오기 함수 로 데이터 파일 불러오기
+fig:data2-1 data2_1.txt
+fig:data2-3 data2_3.txt
+fig:data2-4 data2_4.txt
+h3:함수-read_csv로-csv-데이터-파일-불러오기 함수 로 CSV 데이터 파일 불러오기
+fig:data3-1 data3_1.txt
+fig:data3-2 data3_2.txt
+h3:함수-read_fwf로-고정-포맷-구조를-갖는-데이터-파일-불러오기 함수 로 고정 포맷 구조를 갖는 데이터 파일 불러오기
+fig:data4 data4.txt
+h2:excel-파일-불러오기 Excel 파일 불러오기
+fig:data5 data5.xlsx
+h2:sas-데이터-파일-불러오기 SAS 데이터 파일 불러오기
+h2:html-테이블-불러오기 HTML 테이블 불러오기
+fig:wiki 예제 1에서 사용된 HTML 테이블
+fig:wiki2 예제 1의 HTML 테이블 XPath 복사
+fig:KBO 예제 2에서 사용된 HTML 테이블
+
