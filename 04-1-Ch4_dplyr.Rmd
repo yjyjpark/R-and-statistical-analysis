@@ -799,23 +799,402 @@ by_cyl %>%
 
 ### 그룹 데이터 프레임에서 기본 함수들의 작동 방식
 
+지금부터는 그룹 데이터 프레임에서 dplyr 기본 함수들의 작동 방식을 예제를 통해서 살펴보자.
+
+* 함수 `summarise()`
+
+그룹 데이터 프레임에 대해서는 각 그룹별 요약 통계량을 계산한다. 예제로 데이터 프레임
+`airquality`를 대상으로 다음의 문제를 해결해 보자.
+
+1. 월별로 변수 `Ozone`의 평균값
+
+2. 월별로 변수 `Ozone`의 결측값이 있는 날수와 실제 관측된 날수
+
+3. 월별로 첫날과 마지막 날의 변수 `Ozone`의 값
+
+4. 월별로 변수 `Ozone`의 가장 작은 값과 가장 큰 값
+
+5. 월별로 변수 `Ozone`의 개별 값이 전체 기간 동안의 평균값보다 작은 날수
+
+다섯 문제 모두 월별로 구분된 데이터 프레임이 필요하기 때문에 변수 `Month`로 그룹을
+구성한 데이터 프레임을 만들어야 한다.
+
+```{r}
+airs_M <- airquality %>% 
+  group_by(Month)
+```
+
+변수 `Ozone`에는 많은 수의 결측값이 있다. 따라서 함수 `mean()`에는 반드시 옵션
+`na.rm = TRUE`를 함께 입력해야 결측값을 제외한 평균값이 계산된다.
+
+```{r}
+# 1
+airs_M %>% 
+  summarise(avg_OZ = mean(Ozone, na.rm = TRUE))
+```
+
+결측값이 있는 날수는 함수 `is.na()`로 생성된 논리형 벡터를 함수 `sum()`에 입력하여
+`TRUE`의 개수를 세면 알 수 있다. 또한 실제 관측이 있던 날수는 결측값이 아닌 날수이므로
+함수 `is.na()`의 결과를 반대로 바꿔주고 함수 `sum()`에 입력하면 된다.
+
+```{r}
+# 2
+airs_M %>%
+  summarise(n_miss = sum(is.na(Ozone)), 
+            n_obs = sum(!is.na(Ozone)))
+```
+
+월별 첫날과 마지막날의 변수 `Ozone` 값을 출력하기 위해서는 함수 `first()`와 `last()`를 이용해야 한다. 
+벡터 `x`에 대해서 `first(x)`와 `last(x)`는 각각 `x[1]`과 `x[length(x)]`의 결과가
+출력된다. 유사한 기능을 가진 함수로 `nth()`가 있다. 벡터 `x`에 대해서 `nth(x, 2)`는 `x[2]`의 결과가 출력되며,
+`nth(x, -2)`는 끝에서 두 번째 자료인 `x[length(x)-1]`이 출력된다.
+
+```{r}
+# 3
+airs_M %>% 
+  summarise(first_Oz = first(Ozone), 
+            last_Oz = last(Ozone))
+```
+
+함수 `max()`와 `min()`도 옵션 `na.rm = TRUE`을 입력해야 결측값을 제외하고 가장 큰 값과
+가장 작은 값을 구한다.
+
+```{r}
+# 4
+airs_M %>% 
+  summarise(max_Oz = max(Ozone, na.rm = TRUE), 
+            min_Oz = min(Ozone, na.rm = TRUE))
+```
+
+월별로 변수 `Ozone`의 개별 값이 전체 기간 동안의 평균값보다 작은 날수를 세어보자.
+전체 기간 동안의 평균값은 따로 계산해서 사용하는 것이 더 편리하다.
+
+```{r}
+# 5
+m_Oz <- mean(airquality$Ozone, na.rm = TRUE)
+airs_M %>% 
+  summarise(low_Oz = sum(Ozone < m_Oz, na.rm = TRUE))
+```
 
 
+* 함수 `select()`
+
+그룹을 구성하고 있는 변수는 선택 대상이 아니어도 항상 포함된다.
+
+```{r}
+mpg %>% 
+  group_by(cyl) %>%  
+  select(hwy) %>% 
+  print(n=3)
+```
 
 
+* 함수 `arrange()`
+
+옵션 `.by_group=TRUE`를 추가하면, 그룹 변수가 첫 번째 정렬 변수로 사용된다. 그룹 변수
+`cyl`로 먼저 정렬을 하고 이어서 각 그룹 내에서 `hwy`에 의해 정렬을 해 보자.
+
+```{r}
+mpg %>% 
+  group_by(cyl) %>% 
+  arrange(hwy, .by_group = TRUE) %>% 
+  print(n=3)
+```
 
 
+* 함수 `mutate()`와 `transmute()`
+
+그룹 데이터 프레임에서 `mean()`과 같은 요약통계량 함수나 `min_rank()`와 같은 순위 계산
+함수는 각 그룹별로 그 결과를 계산하기 때문에 이러한 함수를 사용해서 새로운 열을 생성하는 
+경우에는 그룹이 구성되지 않은 데이터 프레임의 경우와 다른 결과를 생성하게 된다.
+
+```{r}
+mpg %>% 
+  select(cyl, hwy) %>% 
+  mutate(std_hwy = hwy - mean(hwy), rank = min_rank(hwy)) %>% 
+  print(n=3)
+```
+
+```{r}
+mpg %>% 
+  select(cyl, hwy) %>% 
+  group_by(cyl) %>% 
+  mutate(std_hwy = hwy - mean(hwy), rank = min_rank(hwy)) %>% 
+  print(n=3)
+```
 
 
+함수 `min_rank()`는 입력된 벡터의 순위를 계산하는 함수로서 오름차순으로 순위가 계산되며, 
+크기가 같은 자료들에 대해서는 해당되는 순위 중 가장 작은 순위가 모두에게 부여된다.
 
 
+* 함수 `filter()`
+
+요약통계량 함수를 사용해서 조건을 설정한다면 각 그룹별로 다른 조건에 의한 행 선택이
+이루어진다. 데이터 프레임 `mpg`에서 `cyl`의 그룹별로 `hwy`가 가장 큰 값을 갖는 행을 찾아보자.
+
+```{r}
+mpg %>% 
+  group_by(cyl) %>%  
+  select(1:2, hwy) %>% 
+  filter(hwy == max(hwy)) %>% 
+  arrange(hwy, .by_group = TRUE)
+```
 
 
+* 함수 `slice()`
+
+그룹별로 각각 행을 선택할 수 있게 된다. 데이터 프레임 `airquality`에서 변수 `Ozone`의 매달 첫날과 
+마지막날, 가장 큰 값과 가장 작은 값을 갖는 행을 다음과 같이 선택할 수 있다.
+
+```{r}
+airs_M <- airquality %>% 
+  group_by(Month) %>% 
+  select(1, 5, 6)
+airs_M %>% slice_head(n = 1)
+airs_M %>% slice_tail(n = 1)
+airs_M %>% slice_min(Ozone, n = 1)
+airs_M %>% slice_max(Ozone, n = 1)
+```
 
 
+## 다수의 열을 대상으로 하는 작업: `across()`
+
+함수 `summarise()` 등에서 여러 열을 대상으로 동일한 작업을 수행해야 하는 경우가 있다.
+예를 들어 모든 숫자형 변수의 평균값을 계산해야 하는 경우, 숫자형 변수를 하나하나
+`mean()`에 적용해서 평균값을 계산해야 한다면 무척 번거로운 일이 될 것이다. 
+이와 같이 여러 열을 대상으로 작업을 해야 하는 경우에는 함수 `across()`를 활용하는 것이 필수적이다.
+
+함수 `across()`는 `summarise()`나 `mutate()`와 같은 `dplyr` 기본 함수 안에서 사용하는
+것으로서 사용법은 `across(.cols = everything(), .fns = NULL, ..., .names = NULL)`이다. 
+첫 번째 입력 요소 `.cols`에는 `<tidy-select>` 방식으로 작업 대상이 되는 열을 지정한다. 
+아무것도 지정하지 않으면 모든 열이 선택되는 것이 디폴트이다. 두 번째 입력 요소
+`.fns`에는 선택된 각각의 열에 적용되는 함수를 지정한다. 
+적용될 함수는 다음과 같이 3 가지 방법으로 지정할 수 있다.
+
+∙ 하나의 함수: 예) `mean`
+
+∙ `purrr`에서 적용되는 방식의 함수: 예) `~ mean(.x, na.rm = TRUE)`
+
+∙ 여러 함수의 리스트: 예) `list(mean = mean, n_miss = ~ sum(is.na(.x)))`
+
+하나의 함수만을 다른 부가적인 입력 요소 없이 사용하는 경우에는 함수의 이름만 지정하면 된다. 
+패키지 `purrr`은 core tidyverse에 속한 패키지로서 효율적인 프로그래밍 기법을 제공하고 있다. 
+자세한 소개는 \@ref(chapter-programming)장에서 찾아볼 수 있다. 함수의 기본적인 형식은 항상
+물결표(~)로 시작을 하며 한 변수만 적용 대상인 경우에는 점(.) 또는 .x를 개별 열(변수)
+대신 사용하면 된다. 여러 함수를 적용해야 하는 경우에는 `list()` 안에 `name = fun`의 형식으로 나열해 주면 된다.
+
+마지막 입력 요소 `.names`는 결과물로 생성되는 열 이름의 작성에 관련된 것이다. 
+패키지 `glue`에서 제공하는 방식을 사용하게 되며, 선택된 열을 `{col}`로, 사용된 함수를 `{fn}`으로 각각 표시한다.
+디폴트는 하나의 함수만이 `.fns`에 지정되면 `{col}`, 여러 함수가 리스트로 지정되면 `{col}_{fn}`이 
+새로 생성된 열의 이름이 된다.
+
+* 함수 `summarise()`와 함께 사용
+
+예제를 통하여 함수 `across()`를 `summarise()`와 함께 사용하면 작업의 효율성을 얼마나
+높일 수 있는지 살펴보자. 우선 데이터 프레임 `iris`에서 모든 숫자형 변수들의 평균값을 구해보자.
+
+```{r}
+iris_t <- as_tibble(iris)
+```
+
+```{r}
+iris_t %>% 
+  summarise(across(where(is.numeric), mean))
+```
+
+숫자형 변수에 대해서는 평균을 계산하고 요인에 대해서는 수준의 개수를 구해보자.
+
+```{r}
+iris_t %>%   
+  summarise(across(where(is.numeric), mean), 
+            across(where(is.factor), nlevels)
+  )
+```
+
+전체 행의 개수와 숫자형 변수의 표준편차를 구해보자.
+
+```{r}
+iris_t %>% 
+  summarise(n=n(), across(where(is.numeric), sd))
+```
+
+전체 행 개수 `n`이 150이 아닌 NA가 된 이유는 `n`이 숫자이기 때문에 `across()`에 의하여
+다른 4개의 열과 더불어 표준편차를 계산하는 열로 선택된 것이고, 숫자 하나에 대해서는
+표준편차를 계산할 수 없기 때문이다. 이 문제는 `n`의 계산을 `across()` 다음으로 배치하면
+해결된다. 이와 같이 `across()`에서 `where(is.numeric)`으로 열을 선택하는 경우, 
+숫자 요약 과정에 대해서는 주의할 필요가 있다.
+
+```{r}
+iris_t %>% 
+  summarise(across(where(is.numeric), sd), n=n())
+```
+
+이름이 `Se`로 시작하는 변수의 평균과 표준편차를 구해보자.
+
+```{r}
+iris_t %>% 
+  summarise(across(starts_with("Se"), list(M = mean, SD = sd)))
+```
+
+결과로 생성되는 열의 이름을 다른 형식으로 바꿔보자.
+
+```{r}
+iris_t %>% 
+  summarise(across(starts_with("Se"), list(M = mean, SD = sd),
+                   .names="{fn}_{col}"))
+```
+
+각 숫자형 변수들의 결측값 개수를 구해보자.
+
+```{r}
+iris_t %>% 
+  summarise(across(where(is.numeric), ~ sum(is.na(.x))))
+```
+
+변수 `Species`별로 각 숫자형 변수의 자료에서 중복되지 않은 숫자의 개수를 구해보자.
+
+```{r}
+iris %>% 
+  group_by(Species) %>% 
+  summarise(across(where(is.numeric), ~ length(unique(.x))))
+```
+
+데이터 프레임 `airquality`에서 변수 `Ozone`과 `Solar.R`의 평균과 표준편차를 구해보자.
+
+```{r}
+mean_sd <- list(
+  mean = ~ mean(.x, na.rm=TRUE),
+  sd = ~ sd(.x, na.rm=TRUE)
+  )
+as_tibble(airquality) %>% 
+  summarise(across(c(Ozone, Solar.R), mean_sd))
+```
 
 
+* 다른 기본 함수와 함께 사용
+
+데이터 프레임 `iris`에서 요인을 문자형 변수로 전환해 보자. 마지막 변수 `Species`의 유형이 
+문자형으로 변환되었음을 확인할 수 있다.
+
+```{r}
+iris_t %>% 
+  mutate(across(where(is.factor), as.character)) %>% 
+  print(n=3)
+```
+
+이번에는 센티미터 단위로 측정된 자료를 인치 단위로 변환해 보자.
+
+```{r}
+iris_t %>% 
+  mutate(across(where(is.numeric), ~ .x/2.54)) %>% 
+  print(n=3)
+```
+
+이름에 `Len`이 있는 변수의 자료가 모두 6.5 이상이 되는 행을 선택해 보자.
+
+```{r}
+iris_t %>% 
+  filter(across(contains("Len"), ~ .x >= 6.5))
+```
+
+데이터 프레임 `airquality`에서 적어도 하나의 결측값이 있는 행은 모두 제거해 보자.
+모든 행을 대상으로 하는 것이므로 첫 번째 입력 요소인 `.cols`는 생략할 수 있다. 
+다만, 첫 번째 입력 요소가 없는 상태이기 때문에 두 번째 입력 요소에는 반드시 이름을 붙여야 한다.
+
+```{r}
+as_tibble(airquality) %>%
+  filter(across(.fns = ~ !is.na(.x))) %>% 
+  print(n = 3)
+```
+
+함수 `distinct()`와 `count()`도 `across()`와 함께 사용할 수 있는데, 이 두 함수의 경우에는 
+입력 요소 `.fns`를 지정할 필요가 없다. 데이터 프레임 `mpg`에서 처음 두 변수는
+`manufacturer`와 `model`이다. 두 변수의 자료가 중복되지 않는 행을 선택해 보자.
+
+```{r}
+mpg %>%
+  distinct(across(1:2), .keep_all = TRUE)
+```
+
+변수는 `manufacturer`와 `model`로 구성되는 각 그룹에 속한 행의 개수를 계산해서 내림차순으로 정렬해보자.
+이 문제는 함수 `count()`를 사용하면 되며, 내림차순으로 정렬하는 것은 옵션 `sort=TRUE`를 추가하면 된다.
+
+```{r}
+mpg %>%
+  count(across(1:2), sort = TRUE)
+```
+
+이 문제는 함수 `group_by()`와 `tally()`를 함께 사용해도 된다.
+
+```{r}
+mpg %>%
+  group_by(across(1:2)) %>%
+  tally(sort = TRUE)
+```
 
 
+## 행 단위 작업: `rowwise()`
 
+`dplyr`은 열 단위 작업에 특화되어 있다고 할 수 있다. 이것은 관찰값이 행, 변수가 열을
+구성하고 있는 데이터 프레임에서 주된 분석 대상이 되는 것은 행이 아닌 열이기 때문이다. 
+이러한 측면에서 R의 큰 장점 중에 하나인 벡터 연산이 주로 열 단위로 이루어지는 것은 당연한 현상이다.
+하지만 경우에 따라서는 행 단위의 연산을 해야 하는데, 이것은 매우 번거로울 수 있다. 
+예컨대, 각 행마다 여러 열 자료들의 합계 등의 요약 통계량을 구해야 한다면 루프 연산을 사용해야 한다.
 
+함수 `rowwise()`를 사용하면 행 단위 연산이 가능하게 되는데, 이것은 각각의 행이 개별
+그룹으로 취급을 받기 때문이다. 간단한 예를 가지고 작동 방식을 살펴보자.
+
+```{r}
+df1 <- tibble(x = 1:2, y = 3:4, z = 5:6)
+df1 %>% rowwise()
+```
+
+함수 `rowwise()`로 생성된 데이터 프레임은 입력된 데이터 프레임 df1과 차이가 없어 보인다. 
+다만 `rowwise_df`라는 class 속성이 추가되는 것인데, 이것으로 인하여 함수
+`summarise()`나 `mutate()`의 작동 방식이 달라진다. 함수 `rowwise()`로 구성된 행 단위의
+그룹은 `ungroup()`으로 해체할 수 있다.
+
+행 단위로 세 변수 x, y, z의 합을 나타내는 열을 생성해 보자.
+
+```{r}
+df1 %>%
+  rowwise() %>%
+  mutate(total = sum(c(x, y, z)))
+```
+
+함수 `rowwise()` 없이 `mutate(df1, total = sum(c(x, y, z)))`를 실행하면 모든 행을 대상으로 세 변수의 합을 계산하게 된다.
+
+행 단위 연산을 수행할 때에도 대부분의 경우에는 많은 열을 대상으로 작업을 하게 된다. 
+함수 `rowwise()`로 생성된 데이터 프레임을 대상으로 `summarise()`나 `mutate()`로 작업을 
+할 때, `<tidy-select>` 방식으로 열을 선택하기 위해서는 함수 `c_across()`를 함께 사용해야 한다. 
+사용법은 `c_across(cols = everything())`이며 `cols`에 `<tidy-select>` 방식으로 선택할 열을 지정하면 된다.
+
+```{r}
+df2 <- tibble(id = 1:3, w = 10:12, x = 20:22, y = 30:32, z = 40:42)
+df2 %>%
+  rowwise() %>%
+  summarise(total = sum(c_across(where(is.numeric))))
+```
+
+함수 `rowwise()` 안에서도 `<tidy-select>` 방식으로 열을 선택해서 지정할 수 있는데, 
+이렇게 지정된 열은 각 행의 ID 변수 역할을 하게 되어서 연산 과정에 포함되지 않는다.
+
+```{r}
+df2 %>%
+  rowwise(id) %>%
+  mutate(total = sum(c_across(where(is.numeric))))
+```
+
+행 단위 연산으로 생성된 데이터 프레임을 대상으로 아무런 문제없이 열 단위 연산을 수
+행할 수 있다. 데이터 프레임 `df2`의 각 열을 행 단위 합 `total`에 대한 비율로 변환해 보자.
+
+```{r}
+df2 %>%
+  rowwise(id) %>% 
+  mutate(total = sum(c_across(where(is.numeric)))) %>% 
+  ungroup() %>% 
+  mutate(across(w:z, ~ .x/total))
+```
+
+함수 `ungroup()`을 제외하고 실행해도 동일한 결과를 얻을 수 있지만, `rowwise_df` class 속성이 생성된 데이터 프레임에 남아있게 된다.

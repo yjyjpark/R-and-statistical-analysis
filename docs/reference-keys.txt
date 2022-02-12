@@ -15,6 +15,8 @@ tab:matrix-func
 fig:wiki
 fig:wiki2
 fig:KBO
+fig:barely
+fig:first-plot
 r-시작하기
 r의-소개
 r의-설치
@@ -75,3 +77,7 @@ dplyr에-의한-데이터-다듬기
 그룹-데이터-프레임
 그룹-데이터-프레임의-생성-group_by
 그룹-데이터-프레임에서-기본-함수들의-작동-방식
+다수의-열을-대상으로-하는-작업-across
+행-단위-작업-rowwise
+chapter-ggplot2
+ggplot2-시작하기

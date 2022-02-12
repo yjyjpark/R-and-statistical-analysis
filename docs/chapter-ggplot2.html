@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | R과 통계분석</title>
+  <title>Chapter 5 ggplot2에 의한 자료 시각화 | R과 통계분석</title>
   <meta name="description" content="null" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | R과 통계분석" />
+  <meta property="og:title" content="Chapter 5 ggplot2에 의한 자료 시각화 | R과 통계분석" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="yjyjpark/R-and-statistical-analysis" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | R과 통계분석" />
+  <meta name="twitter:title" content="Chapter 5 ggplot2에 의한 자료 시각화 | R과 통계분석" />
   
   <meta name="twitter:description" content="null" />
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="dplyr에-의한-데이터-다듬기.html"/>
 
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -245,18 +245,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="chapter-ggplot2" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> <code>ggplot2</code>에 의한 자료 시각화</h1>
+<p>자료의 시각화(Visualization)란 자료의 구조를 꿰뚫어 볼 수 있는 명쾌한 그래프를 이용하는 자료 분석방법을 의미한다.
+잘 그려진 그래프는 자료의 모습을 있는 그대로 보여 주는 유일한 분석방법이며,
+다른 어떠한 분석기법에 의한 결과보다도 더 많은 정보를 전달해 줄 수 있는 방법이기도 하다.
+Figure <a href="chapter-ggplot2.html#fig:barely">5.1</a>은 자료 시각화의 위력을 잘 보여주는 예로서 Cleveland(1993)에 의한 놀라운 발견이다.
+1930년대 초 미네소타 주의 농경학자들이 보리 종류에 따른 수확량의 차이를 알아보기 위한 경작 실험을 실시하였다.
+6군데 경작지에 10 종류 보리를 2년간 경작하였는데, Morris 지역만이 1932년의 수확량이 1931년의 수확량
+보다 많다는 것을 알 수 있다. 6개 경작지가 모두 근처에 있다는 점을 고려해 보면 유독
+Morris 지역에서만 다른 결과가 나왔다는 것이 상당히 의심스럽다고 할 수 있으며, 데이터
+가 바뀌었을 가능성을 생각해 볼 수 있는 상황이다.</p>
+<div class="figure"><span style="display:block;" id="fig:barely"></span>
+<img src="_main_files/figure-html/barely-1.png" alt="보리 자료에 대한 다중 패널 점그림" width="672" />
+<p class="caption">
+Figure 5.1: 보리 자료에 대한 다중 패널 점그림
+</p>
+</div>
+<p>자료 시각화에 특히 강점이 있는 R에는 몇 가지의 그래프 작성 시스템이 있다. 함수 <code>plot()</code> 등이 속해 있는
+<code>base graphics</code>도 그 중 하나인데, 이들 그래프 작성 시스템 중 가장 효과적이고 여러 면에서 우수한 시스템이 바로 <code>ggplot2</code>라고 할 수 있다.
+그래프 작성에 일관된 규칙이 있어서 복잡한 상황에서도 쉽게 확장이 가능하다는 것이 큰 장점 중 하나이다.</p>
+<p>패키지 <code>ggplot2</code>도 core tidyverse에 속해있기 때문에 <code>library(tidyverse)</code>를 먼저 실행해 주면 사용할 수 있다.</p>
+<div id="ggplot2-시작하기" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> <code>ggplot2</code> 시작하기</h2>
+<p>패키지 <code>ggplot2</code>에 있는 데이터 프레임 <code>mpg</code>의 변수 <code>displ</code>과 <code>hwy</code>의 관계를 산점도로 나타내보자.
+변수 <code>displ</code>은 리터 단위의 배기량이고, <code>hwy</code>는 고속도로 연비이다.</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="chapter-ggplot2.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb271-2"><a href="chapter-ggplot2.html#cb271-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:first-plot"></span>
+<img src="_main_files/figure-html/first-plot-1.png" alt="ggplot2의 산점도" width="672" />
+<p class="caption">
+Figure 5.2: ggplot2의 산점도
+</p>
+</div>
+<p>패키지 <code>ggplot2</code>에서 그래프 작성은 함수 <code>ggplot()</code>으로 시작한다.
+이 함수는 우선 그래프 작성에 사용되는 데이터를 입력 요소 <code>data</code>에서 지정하는데,
+데이터는 반드시 데이터 프레임이어야 한다. 또한 이 함수는 그래프가 작성될 좌표계(coordinate system)를 작성하고,
+이어서 작성될 그래프를 기다리는 역할을 한다. 따라서 함수 <code>ggplot()</code>만으로는 실질적인
+그래프가 작성되지 않는다.</p>
+<p>실질적인 그래프는 이어진 함수 <code>geom_point()</code>로 작성된다. 패키지 <code>ggplot2</code>에서는 하나
+또는 여러 개의 레이어(layer)들이 겹쳐져서 그래프가 완성되는데, Figure <a href="chapter-ggplot2.html#fig:first-plot">5.2</a>에는 점으로
+이루어진 하나의 레이어만이 사용되었다. 레이어를 추가하는 <code>geom</code> 함수에는 <code>geom_point()</code>
+외에도 다양한 함수들이 있으며, 앞으로 계속 소개될 것이다.</p>
+<p>또한 <code>geom</code> 함수에는 입력 요소 <code>mapping</code>이 있는데, 이것은 항상 함수 <code>aes()</code>와 함께 사용된다.
+매핑(mapping)은 데이터와 그래프의 시각적 요소(aesthetic)를 서로 연결시키는 것으로,
+함수 <code>aes()</code>의 입력 요소 x와 y는 X축과 Y축에 각각의 변수를 연결시키는 역할을 하고 있다.</p>
+<ul>
+<li><code>ggplot2</code>에서 그래프 작성의 최소 요소</li>
+</ul>
+<p>패키지 <code>ggplot2</code>에서 그래프를 작성하기 위해서는 반드시 따라야 할 법칙이 있다.
+이 법칙은 ’그래프의 문법’이라고 불리는 것으로서 모든 그래프 작성에서 일정하게 적용되기 때문에
+익숙해지기만 한다면 복잡한 형태의 그래프도 쉽게 작성할 수 있게 된다.
+패키지 <code>ggplot2</code>에서 그래프를 작성하기 위한 3가지 최소 요소는 <code>&lt;Data&gt;</code>, <code>&lt;Geom_Function&gt;</code>,
+그리고 <code>&lt;Mappings&gt;</code>로써 다음과 같은 형식을 취해야 한다.</p>
+<pre><code>ggplot(data = &lt;Data&gt;) +
+  &lt;Geom_FUnction&gt;(mapping = aes(&lt;Mappings&gt;))</code></pre>
+<p><code>&lt;Data&gt;</code>는 그래프 작성에 사용될 데이터 프레임을 지정하는 것이고,
+<code>&lt;Geom_Function&gt;</code>은 geom 함수 중 하나를 지정하는 것으로써 레이어를 작성한다.
+여러 개의 레이어를 겹치기 위해서는 필요한 여러 개의 geom 함수를 덧셈 기호로 연결하면 된다.
+<code>&lt;Mappings&gt;</code>는 다양한 시각적 요소(크기, 모양, 색깔 등)와 데이터를 연결하는 것이다.</p>
+<p>3가지의 필수 요소 외에도 다양한 그래프를 작성하기 위해서는 몇 가지 기본 요소가 더
+필요하다. 앞으로 하나하나 살펴보도록 하겠다.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="dplyr에-의한-데이터-다듬기.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
