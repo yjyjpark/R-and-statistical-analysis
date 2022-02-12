@@ -24,7 +24,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-02-11" />
+<meta name="date" content="2022-02-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -216,7 +216,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.4" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#새로운-열의-추가-mutate와-transmute"><i class="fa fa-check"></i><b>4.2.4</b> 새로운 열의 추가: <code>mutate()</code>와 <code>transmute()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#여러-행-자료의-요약-summarise"><i class="fa fa-check"></i><b>4.3</b> 여러 행 자료의 요약: <code>summarise()</code></a></li>
-<li class="chapter" data-level="4.4" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#그룹-데이터-프레임"><i class="fa fa-check"></i><b>4.4</b> 그룹 데이터 프레임</a></li>
+<li class="chapter" data-level="4.4" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#그룹-데이터-프레임"><i class="fa fa-check"></i><b>4.4</b> 그룹 데이터 프레임</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#그룹-데이터-프레임의-생성-group_by"><i class="fa fa-check"></i><b>4.4.1</b> 그룹 데이터 프레임의 생성: <code>group_by()</code></a></li>
+<li class="chapter" data-level="4.4.2" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#그룹-데이터-프레임에서-기본-함수들의-작동-방식"><i class="fa fa-check"></i><b>4.4.2</b> 그룹 데이터 프레임에서 기본 함수들의 작동 방식</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -274,11 +278,9 @@ read.csv()로도 할 수 있으나, 크기가 큰 텍스트 파일을 불러와�
 <p>예를 들어 <code>Data</code> 폴더에 있는 파일 <code>data2_1.txt</code>에 세 변수의 자료가
 다음과 같이 있다고 하자. 이런 경우에는 함수 <code>read_table()</code>에 파일의
 위치와 함께 파일의 이름만 입력하면 된다.</p>
-<div class="figure"><span style="display:block;" id="fig:data2-1"></span>
-<img src="Figure/data2_1.png" alt="data2_1.txt" width="180" height="150" />
-<p class="caption">
-Figure 3.1: data2_1.txt
-</p>
+<div class="figure">
+<img src="Figure/data2_1.png" title="data2_1.txt" id="data2-1" alt="" />
+<p class="caption">data2_1.txt</p>
 </div>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="데이터-입력.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="데이터-입력.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">read_table</span>(<span class="st">&quot;Data/data2_1.txt&quot;</span>)</span>
@@ -373,11 +375,9 @@ Figure 3.1: data2_1.txt
 수도 있다. 예를 들어 <code>Data</code> 폴더에 있는 파일 <code>data2_3.txt</code>의 처음 세
 줄이 다음과 같이 <code>#</code> 기호로 시작되는 주석이 입력되어 있다고 하자. 이
 파일을 두 가지 방법을 각각 사용하여 불러와 보자.</p>
-<div class="figure"><span style="display:block;" id="fig:data2-3"></span>
-<img src="Figure/data2_3.png" alt="data2_3.txt" width="210" height="180" />
-<p class="caption">
-Figure 3.2: data2_3.txt
-</p>
+<div class="figure">
+<img src="Figure/data2_3.png" title="data2_3.txt" id="data2-3" alt="" />
+<p class="caption">data2_3.txt</p>
 </div>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="데이터-입력.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">read_table</span>(<span class="st">&quot;Data/data2_3.txt&quot;</span>,</span>
 <span id="cb138-2"><a href="데이터-입력.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>            <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>)</span>
@@ -425,11 +425,9 @@ Figure 3.2: data2_3.txt
 모두 지정해야 한다. 예를 들어 <code>Data</code> 폴더에 있는 data2_4.txt에 다음과
 같이 <code>NA</code>와 점(.)이 모두 결측값을 나타내는 기호로 사용되어 있다고 하자.
 이 파일을 옵션 <code>na</code>를 사용해서 불러와 보자.</p>
-<div class="figure"><span style="display:block;" id="fig:data2-4"></span>
-<img src="Figure/data2_4.png" alt="data2_4.txt" width="200" height="150" />
-<p class="caption">
-Figure 3.3: data2_4.txt
-</p>
+<div class="figure">
+<img src="Figure/data2_4.png" title="data2_4.txt" id="data2-4" alt="" />
+<p class="caption">data2_4.txt</p>
 </div>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="데이터-입력.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">read_table</span>(<span class="st">&quot;Data/data2_4.txt&quot;</span>, </span>
 <span id="cb140-2"><a href="데이터-입력.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>            <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
@@ -485,11 +483,9 @@ Figure 3.3: data2_4.txt
 있고, 첫 줄에는 변수 이름이 입력되어 있다고 하자. 이 경우에는
 <code>read_csv()</code>에 파일의 위치를 포함한 이름을 입력하면 파일을 불러올 수
 있다.</p>
-<div class="figure"><span style="display:block;" id="fig:data3-1"></span>
-<img src="Figure/data3_1.png" alt="data3_1.txt" width="200" height="150" />
-<p class="caption">
-Figure 3.4: data3_1.txt
-</p>
+<div class="figure">
+<img src="Figure/data3_1.png" title="data3_1.txt" id="data3-1" alt="" />
+<p class="caption">data3_1.txt</p>
 </div>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="데이터-입력.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">read_csv</span>(<span class="st">&quot;Data/data3_1.txt&quot;</span>)</span>
 <span id="cb142-2"><a href="데이터-입력.html#cb142-2" aria-hidden="true" tabindex="-1"></a>Rows<span class="sc">:</span> <span class="dv">4</span> Columns<span class="sc">:</span> <span class="dv">3</span></span>
@@ -518,33 +514,30 @@ backtick(`) 기호로 감싸져 있다. 이것은 문자로 시작하지 않거�
 예를 들어 <code>Data</code> 폴더에 있는 data3_2.txt에 다음과 같이 자료가 입력되어
 있다고 하자. 첫 줄에 주석이 있고, 결측값이 기호 <code>NA</code>와 점(.)으로
 표시되어 있으며, 변수 이름은 입력되지 않았다.</p>
-<div class="figure"><span style="display:block;" id="fig:data3-2"></span>
-<img src="Figure/data3_2.png" alt="data3_2.txt" width="180" height="150" />
-<p class="caption">
-Figure 3.5: data3_2.txt
-</p>
+<div class="figure">
+<img src="Figure/data3_2.png" title="data3_2.txt" id="data3-2" alt="" />
+<p class="caption">data3_2.txt</p>
 </div>
 <p>이제 각 변수의 유형을 스스로 파악하게 해 보자.</p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="데이터-입력.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">read_csv</span>(<span class="st">&quot;Data/data3_2.txt&quot;</span>, </span>
 <span id="cb143-2"><a href="데이터-입력.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">col_names =</span> <span class="cn">FALSE</span>, </span>
 <span id="cb143-3"><a href="데이터-입력.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>, </span>
 <span id="cb143-4"><a href="데이터-입력.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
-<span id="cb143-5"><a href="데이터-입력.html#cb143-5" aria-hidden="true" tabindex="-1"></a>Warning<span class="sc">:</span> One or more parsing issues, see <span class="st">`</span><span class="at">problems()</span><span class="st">`</span> <span class="cf">for</span> details</span>
-<span id="cb143-6"><a href="데이터-입력.html#cb143-6" aria-hidden="true" tabindex="-1"></a>Rows<span class="sc">:</span> <span class="dv">4</span> Columns<span class="sc">:</span> <span class="dv">3</span></span>
-<span id="cb143-7"><a href="데이터-입력.html#cb143-7" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span> Column specification <span class="sc">--------------------------------------------------------</span></span>
-<span id="cb143-8"><a href="데이터-입력.html#cb143-8" aria-hidden="true" tabindex="-1"></a>Delimiter<span class="sc">:</span> <span class="st">&quot;,&quot;</span></span>
-<span id="cb143-9"><a href="데이터-입력.html#cb143-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbl</span> (<span class="dv">2</span>)<span class="sc">:</span> X1, X3</span>
-<span id="cb143-10"><a href="데이터-입력.html#cb143-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lgl</span> (<span class="dv">1</span>)<span class="sc">:</span> X2</span>
-<span id="cb143-11"><a href="데이터-입력.html#cb143-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-12"><a href="데이터-입력.html#cb143-12" aria-hidden="true" tabindex="-1"></a>i Use <span class="st">`</span><span class="at">spec()</span><span class="st">`</span> to retrieve the full column specification <span class="cf">for</span> this data.</span>
-<span id="cb143-13"><a href="데이터-입력.html#cb143-13" aria-hidden="true" tabindex="-1"></a>i Specify the column types or set <span class="st">`</span><span class="at">show_col_types = FALSE</span><span class="st">`</span> to quiet this message.</span>
-<span id="cb143-14"><a href="데이터-입력.html#cb143-14" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 4 x 3</span></span>
-<span id="cb143-15"><a href="데이터-입력.html#cb143-15" aria-hidden="true" tabindex="-1"></a>     X1 X2       X3</span>
-<span id="cb143-16"><a href="데이터-입력.html#cb143-16" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>lgl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb143-17"><a href="데이터-입력.html#cb143-17" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    <span class="dv">24</span> <span class="cn">NA</span>     <span class="dv">2000</span></span>
-<span id="cb143-18"><a href="데이터-입력.html#cb143-18" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    <span class="dv">35</span> <span class="cn">FALSE</span>  <span class="dv">3100</span></span>
-<span id="cb143-19"><a href="데이터-입력.html#cb143-19" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>    <span class="cn">NA</span> <span class="cn">FALSE</span>  <span class="dv">3800</span></span>
-<span id="cb143-20"><a href="데이터-입력.html#cb143-20" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="dv">21</span> <span class="cn">FALSE</span>    <span class="cn">NA</span></span></code></pre></div>
+<span id="cb143-5"><a href="데이터-입력.html#cb143-5" aria-hidden="true" tabindex="-1"></a>Rows<span class="sc">:</span> <span class="dv">4</span> Columns<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb143-6"><a href="데이터-입력.html#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span> Column specification <span class="sc">--------------------------------------------------------</span></span>
+<span id="cb143-7"><a href="데이터-입력.html#cb143-7" aria-hidden="true" tabindex="-1"></a>Delimiter<span class="sc">:</span> <span class="st">&quot;,&quot;</span></span>
+<span id="cb143-8"><a href="데이터-입력.html#cb143-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbl</span> (<span class="dv">2</span>)<span class="sc">:</span> X1, X3</span>
+<span id="cb143-9"><a href="데이터-입력.html#cb143-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lgl</span> (<span class="dv">1</span>)<span class="sc">:</span> X2</span>
+<span id="cb143-10"><a href="데이터-입력.html#cb143-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-11"><a href="데이터-입력.html#cb143-11" aria-hidden="true" tabindex="-1"></a>i Use <span class="st">`</span><span class="at">spec()</span><span class="st">`</span> to retrieve the full column specification <span class="cf">for</span> this data.</span>
+<span id="cb143-12"><a href="데이터-입력.html#cb143-12" aria-hidden="true" tabindex="-1"></a>i Specify the column types or set <span class="st">`</span><span class="at">show_col_types = FALSE</span><span class="st">`</span> to quiet this message.</span>
+<span id="cb143-13"><a href="데이터-입력.html#cb143-13" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 4 x 3</span></span>
+<span id="cb143-14"><a href="데이터-입력.html#cb143-14" aria-hidden="true" tabindex="-1"></a>     X1 X2       X3</span>
+<span id="cb143-15"><a href="데이터-입력.html#cb143-15" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>lgl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb143-16"><a href="데이터-입력.html#cb143-16" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    <span class="dv">24</span> <span class="cn">NA</span>     <span class="dv">2000</span></span>
+<span id="cb143-17"><a href="데이터-입력.html#cb143-17" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    <span class="dv">35</span> <span class="cn">FALSE</span>  <span class="dv">3100</span></span>
+<span id="cb143-18"><a href="데이터-입력.html#cb143-18" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>    <span class="cn">NA</span> <span class="cn">FALSE</span>  <span class="dv">3800</span></span>
+<span id="cb143-19"><a href="데이터-입력.html#cb143-19" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="dv">21</span> <span class="cn">FALSE</span>    <span class="cn">NA</span></span></code></pre></div>
 <p>위 실행결과에서 자세하게 살펴볼 두 가지 중요한 사항이 있다. 첫 번째
 사항은 CSV 파일에서는 자료를 입력하지 않고 빈칸으로 남겨두면 결측값으로
 자동 처리된다는 것이다. 이것은 빈칸으로 남겨져 있는 변수 X1의 세 번째
@@ -561,25 +554,22 @@ Figure 3.5: data3_2.txt
 <span id="cb144-3"><a href="데이터-입력.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">col_types =</span> <span class="st">&quot;dcd&quot;</span>, </span>
 <span id="cb144-4"><a href="데이터-입력.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>, </span>
 <span id="cb144-5"><a href="데이터-입력.html#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
-<span id="cb144-6"><a href="데이터-입력.html#cb144-6" aria-hidden="true" tabindex="-1"></a>Warning<span class="sc">:</span> One or more parsing issues, see <span class="st">`</span><span class="at">problems()</span><span class="st">`</span> <span class="cf">for</span> details</span>
-<span id="cb144-7"><a href="데이터-입력.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 4 x 3</span></span>
-<span id="cb144-8"><a href="데이터-입력.html#cb144-8" aria-hidden="true" tabindex="-1"></a>     X1 X2       X3</span>
-<span id="cb144-9"><a href="데이터-입력.html#cb144-9" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb144-10"><a href="데이터-입력.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    <span class="dv">24</span> <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   <span class="dv">2000</span></span>
-<span id="cb144-11"><a href="데이터-입력.html#cb144-11" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    <span class="dv">35</span> F      <span class="dv">3100</span></span>
-<span id="cb144-12"><a href="데이터-입력.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>    <span class="cn">NA</span> F      <span class="dv">3800</span></span>
-<span id="cb144-13"><a href="데이터-입력.html#cb144-13" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="dv">21</span> F        <span class="cn">NA</span></span></code></pre></div>
+<span id="cb144-6"><a href="데이터-입력.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 4 x 3</span></span>
+<span id="cb144-7"><a href="데이터-입력.html#cb144-7" aria-hidden="true" tabindex="-1"></a>     X1 X2       X3</span>
+<span id="cb144-8"><a href="데이터-입력.html#cb144-8" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb144-9"><a href="데이터-입력.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    <span class="dv">24</span> <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>   <span class="dv">2000</span></span>
+<span id="cb144-10"><a href="데이터-입력.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    <span class="dv">35</span> F      <span class="dv">3100</span></span>
+<span id="cb144-11"><a href="데이터-입력.html#cb144-11" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>    <span class="cn">NA</span> F      <span class="dv">3800</span></span>
+<span id="cb144-12"><a href="데이터-입력.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="dv">21</span> F        <span class="cn">NA</span></span></code></pre></div>
 </div>
 <div id="함수-read_fwf로-고정-포맷-구조를-갖는-데이터-파일-불러오기" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> 함수 <code>read_fwf()</code>로 고정 포맷 구조를 갖는 데이터 파일 불러오기</h3>
 <p>데이터 파일 중에는 각 자료의 입력 위치가 고정되어 있는 경우가 있다. 예를
 들어 <code>Data</code> 폴더에 있는 파일 data4.txt에 다음과 같은 형식으로 세 변수의
 데이터가 입력되어 있다고 하자.</p>
-<div class="figure"><span style="display:block;" id="fig:data4"></span>
-<img src="Figure/data4.png" alt="data4.txt" width="140" height="120" />
-<p class="caption">
-Figure 3.6: data4.txt
-</p>
+<div class="figure">
+<img src="Figure/data4.png" title="data4.txt" id="data4" alt="" />
+<p class="caption">data4.txt</p>
 </div>
 <p>변수 <code>age</code>는 1-2열, <code>gender</code>는 3열, <code>income</code>은 4-7열에 각각 입력되어
 있다. 이러한 경우 각 자료들이 빈칸이나 콤마 등으로 구분되어 있어야만
@@ -652,7 +642,21 @@ Repository</a>라는 사이트가
 데이터를 직접 불러보자.</p>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="데이터-입력.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iris.url <span class="ot">&lt;-</span> <span class="st">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&quot;</span></span>
 <span id="cb147-2"><a href="데이터-입력.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">read_csv</span>(iris.url,</span>
-<span id="cb147-3"><a href="데이터-입력.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">col_names=</span><span class="fu">c</span>(<span class="st">&quot;S.length&quot;</span>,<span class="st">&quot;S.width&quot;</span>,<span class="st">&quot;P.length&quot;</span>,<span class="st">&quot;P.width&quot;</span>,<span class="st">&quot;Species&quot;</span>))</span></code></pre></div>
+<span id="cb147-3"><a href="데이터-입력.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">col_names=</span><span class="fu">c</span>(<span class="st">&quot;S.length&quot;</span>,<span class="st">&quot;S.width&quot;</span>,<span class="st">&quot;P.length&quot;</span>,<span class="st">&quot;P.width&quot;</span>,<span class="st">&quot;Species&quot;</span>))</span>
+<span id="cb147-4"><a href="데이터-입력.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 150 x 5</span></span>
+<span id="cb147-5"><a href="데이터-입력.html#cb147-5" aria-hidden="true" tabindex="-1"></a>   S.length S.width P.length P.width Species    </span>
+<span id="cb147-6"><a href="데이터-입력.html#cb147-6" aria-hidden="true" tabindex="-1"></a>      <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>   <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>   <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>      </span>
+<span id="cb147-7"><a href="데이터-입력.html#cb147-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span>      <span class="fl">5.1</span>     <span class="fl">3.5</span>      <span class="fl">1.4</span>     <span class="fl">0.2</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-8"><a href="데이터-입력.html#cb147-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>      <span class="fl">4.9</span>     <span class="dv">3</span>        <span class="fl">1.4</span>     <span class="fl">0.2</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-9"><a href="데이터-입력.html#cb147-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span>      <span class="fl">4.7</span>     <span class="fl">3.2</span>      <span class="fl">1.3</span>     <span class="fl">0.2</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-10"><a href="데이터-입력.html#cb147-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span>      <span class="fl">4.6</span>     <span class="fl">3.1</span>      <span class="fl">1.5</span>     <span class="fl">0.2</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-11"><a href="데이터-입력.html#cb147-11" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span>      <span class="dv">5</span>       <span class="fl">3.6</span>      <span class="fl">1.4</span>     <span class="fl">0.2</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-12"><a href="데이터-입력.html#cb147-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span>      <span class="fl">5.4</span>     <span class="fl">3.9</span>      <span class="fl">1.7</span>     <span class="fl">0.4</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-13"><a href="데이터-입력.html#cb147-13" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span>      <span class="fl">4.6</span>     <span class="fl">3.4</span>      <span class="fl">1.4</span>     <span class="fl">0.3</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-14"><a href="데이터-입력.html#cb147-14" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span>      <span class="dv">5</span>       <span class="fl">3.4</span>      <span class="fl">1.5</span>     <span class="fl">0.2</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-15"><a href="데이터-입력.html#cb147-15" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span>      <span class="fl">4.4</span>     <span class="fl">2.9</span>      <span class="fl">1.4</span>     <span class="fl">0.2</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-16"><a href="데이터-입력.html#cb147-16" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>      <span class="fl">4.9</span>     <span class="fl">3.1</span>      <span class="fl">1.5</span>     <span class="fl">0.1</span> Iris<span class="sc">-</span>setosa</span>
+<span id="cb147-17"><a href="데이터-입력.html#cb147-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ... with 140 more rows</span></span></code></pre></div>
 <ul>
 <li>RStudio 메뉴에서 불러오기</li>
 </ul>
@@ -698,11 +702,9 @@ R의 함수들은 데이터 프레임의 행 이름을 텍스트 파일의 첫 �
 함수 <code>read_excel()</code>을 사용하여, Excel 파일을 R로 불러오는 방법에 대하여
 알아볼 것이다 예제 데이터로 <code>Data</code> 폴더에 있는 data5.xlsx에 다음과 같이
 자료가 입력되어 있다고 하자. 자료는 첫 번째 시트에 입력되어 있다.</p>
-<div class="figure"><span style="display:block;" id="fig:data5"></span>
-<img src="Figure/data5.png" alt="data5.xlsx" width="210" height="170" />
-<p class="caption">
-Figure 3.7: data5.xlsx
-</p>
+<div class="figure">
+<img src="Figure/data5.png" title="data5.xlsx" id="data5" alt="" />
+<p class="caption">data5.xlsx</p>
 </div>
 <ul>
 <li>패키지 <code>xlsx</code>의 함수 <code>read.xlsx()</code>로 Excel 파일 불러오기</li>
@@ -844,7 +846,7 @@ RUN;</code></pre>
 <ul>
 <li>예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기</li>
 </ul>
-<p>Figure <a href="데이터-입력.html#fig:wiki">3.8</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서
+<p>Figure <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서
 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely
 populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은
 2022년 2월 9일에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의
@@ -852,7 +854,7 @@ populated countries”라는 제목의 HTML 테이블을 보여주고 있다. �
 <div class="figure"><span style="display:block;" id="fig:wiki"></span>
 <img src="Figure/wiki_22_02_09_1.PNG" alt="예제 1에서 사용된 HTML 테이블" width="222" />
 <p class="caption">
-Figure 3.8: 예제 1에서 사용된 HTML 테이블
+Figure 3.1: 예제 1에서 사용된 HTML 테이블
 </p>
 </div>
 <p>원하는 웹 페이지의 URL을 함수 <code>read_html()</code>에 입력하여 얻은 결과에서
@@ -860,24 +862,19 @@ Figure 3.8: 예제 1에서 사용된 HTML 테이블
 결과를 리스트 형태로 출력한다. 모두 26개의 <code>table</code> 노드가 발견되었고, 그
 중 처음 6개의 내용을 출력해 보자.</p>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="데이터-입력.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(rvest)</span>
-<span id="cb157-2"><a href="데이터-입력.html#cb157-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-3"><a href="데이터-입력.html#cb157-3" aria-hidden="true" tabindex="-1"></a>다음의 패키지를 부착합니다<span class="sc">:</span> <span class="st">&#39;rvest&#39;</span></span>
-<span id="cb157-4"><a href="데이터-입력.html#cb157-4" aria-hidden="true" tabindex="-1"></a>The following object is masked from <span class="st">&#39;package:readr&#39;</span><span class="sc">:</span></span>
-<span id="cb157-5"><a href="데이터-입력.html#cb157-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-6"><a href="데이터-입력.html#cb157-6" aria-hidden="true" tabindex="-1"></a>    guess_encoding</span>
-<span id="cb157-7"><a href="데이터-입력.html#cb157-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> URL <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/World_population&quot;</span></span>
-<span id="cb157-8"><a href="데이터-입력.html#cb157-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> web <span class="ot">&lt;-</span> <span class="fu">read_html</span>(URL)</span>
-<span id="cb157-9"><a href="데이터-입력.html#cb157-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> tbl <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(web, <span class="st">&quot;table&quot;</span>)</span>
-<span id="cb157-10"><a href="데이터-입력.html#cb157-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">length</span>(tbl)</span>
-<span id="cb157-11"><a href="데이터-입력.html#cb157-11" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">26</span></span>
-<span id="cb157-12"><a href="데이터-입력.html#cb157-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(tbl)</span>
-<span id="cb157-13"><a href="데이터-입력.html#cb157-13" aria-hidden="true" tabindex="-1"></a>{<span class="fu">xml_nodeset</span> (<span class="dv">6</span>)}</span>
-<span id="cb157-14"><a href="데이터-입력.html#cb157-14" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">&lt;</span>table class<span class="ot">=</span><span class="st">&quot;infobox&quot;</span> style<span class="ot">=</span><span class="st">&quot;float: right; font-size:90%&quot;</span><span class="sc">&gt;</span><span class="er">&lt;</span>tbody<span class="sc">&gt;</span>\n<span class="sc">&lt;</span>tr<span class="sc">&gt;</span><span class="er">&lt;</span> ...</span>
-<span id="cb157-15"><a href="데이터-입력.html#cb157-15" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>] <span class="sc">&lt;</span>table class<span class="ot">=</span><span class="st">&quot;wikitable sortable&quot;</span><span class="sc">&gt;</span>\n<span class="sc">&lt;</span>caption<span class="sc">&gt;</span>Population by <span class="fu">region</span> (<span class="dv">2020</span> e ...</span>
-<span id="cb157-16"><a href="데이터-입력.html#cb157-16" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>] <span class="sc">&lt;</span>table <span class="at">class=</span><span class="st">&quot;wikitable&quot;</span> <span class="at">style=</span><span class="st">&quot;text-align:center; float:right; clear:rig ...</span></span>
-<span id="cb157-17"><a href="데이터-입력.html#cb157-17" aria-hidden="true" tabindex="-1"></a><span class="st">[4] &lt;table width=&quot;</span><span class="dv">100</span>%<span class="st">&quot;&gt;&lt;tbody&gt;&lt;tr&gt;</span><span class="sc">\n</span><span class="st">&lt;td valign=&quot;</span>top<span class="st">&quot;&gt; &lt;style data-mw-dedupli ...</span></span>
-<span id="cb157-18"><a href="데이터-입력.html#cb157-18" aria-hidden="true" tabindex="-1"></a><span class="st">[5] &lt;table class=&quot;</span>wikitable sortable plainrowheaders<span class="st">&quot; style=&quot;</span>text<span class="sc">-</span>align<span class="sc">:</span>right ...</span>
-<span id="cb157-19"><a href="데이터-입력.html#cb157-19" aria-hidden="true" tabindex="-1"></a>[<span class="dv">6</span>] <span class="sc">&lt;</span>table <span class="at">class=</span><span class="st">&quot;wikitable sortable&quot;</span> <span class="at">style=</span><span class="st">&quot;text-align:right&quot;</span><span class="sc">&gt;</span>\n<span class="sc">&lt;</span>caption<span class="sc">&gt;</span><span class="dv">10</span>  ...</span></code></pre></div>
+<span id="cb157-2"><a href="데이터-입력.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> URL <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/World_population&quot;</span></span>
+<span id="cb157-3"><a href="데이터-입력.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> web <span class="ot">&lt;-</span> <span class="fu">read_html</span>(URL)</span>
+<span id="cb157-4"><a href="데이터-입력.html#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> tbl <span class="ot">&lt;-</span> <span class="fu">html_nodes</span>(web, <span class="st">&quot;table&quot;</span>)</span>
+<span id="cb157-5"><a href="데이터-입력.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">length</span>(tbl)</span>
+<span id="cb157-6"><a href="데이터-입력.html#cb157-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">26</span></span>
+<span id="cb157-7"><a href="데이터-입력.html#cb157-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(tbl)</span>
+<span id="cb157-8"><a href="데이터-입력.html#cb157-8" aria-hidden="true" tabindex="-1"></a>{<span class="fu">xml_nodeset</span> (<span class="dv">6</span>)}</span>
+<span id="cb157-9"><a href="데이터-입력.html#cb157-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">&lt;</span>table class<span class="ot">=</span><span class="st">&quot;infobox&quot;</span> style<span class="ot">=</span><span class="st">&quot;float: right; font-size:90%&quot;</span><span class="sc">&gt;</span><span class="er">&lt;</span>tbody<span class="sc">&gt;</span>\n<span class="sc">&lt;</span>tr<span class="sc">&gt;</span><span class="er">&lt;</span> ...</span>
+<span id="cb157-10"><a href="데이터-입력.html#cb157-10" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>] <span class="sc">&lt;</span>table class<span class="ot">=</span><span class="st">&quot;wikitable sortable&quot;</span><span class="sc">&gt;</span>\n<span class="sc">&lt;</span>caption<span class="sc">&gt;</span>Population by <span class="fu">region</span> (<span class="dv">2020</span> e ...</span>
+<span id="cb157-11"><a href="데이터-입력.html#cb157-11" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>] <span class="sc">&lt;</span>table <span class="at">class=</span><span class="st">&quot;wikitable&quot;</span> <span class="at">style=</span><span class="st">&quot;text-align:center; float:right; clear:rig ...</span></span>
+<span id="cb157-12"><a href="데이터-입력.html#cb157-12" aria-hidden="true" tabindex="-1"></a><span class="st">[4] &lt;table width=&quot;</span><span class="dv">100</span>%<span class="st">&quot;&gt;&lt;tbody&gt;&lt;tr&gt;</span><span class="sc">\n</span><span class="st">&lt;td valign=&quot;</span>top<span class="st">&quot;&gt; &lt;style data-mw-dedupli ...</span></span>
+<span id="cb157-13"><a href="데이터-입력.html#cb157-13" aria-hidden="true" tabindex="-1"></a><span class="st">[5] &lt;table class=&quot;</span>wikitable sortable plainrowheaders<span class="st">&quot; style=&quot;</span>text<span class="sc">-</span>align<span class="sc">:</span>right ...</span>
+<span id="cb157-14"><a href="데이터-입력.html#cb157-14" aria-hidden="true" tabindex="-1"></a>[<span class="dv">6</span>] <span class="sc">&lt;</span>table <span class="at">class=</span><span class="st">&quot;wikitable sortable&quot;</span> <span class="at">style=</span><span class="st">&quot;text-align:right&quot;</span><span class="sc">&gt;</span>\n<span class="sc">&lt;</span>caption<span class="sc">&gt;</span><span class="dv">10</span>  ...</span></code></pre></div>
 <p>함수 <code>html_nodes()</code>의 결과로 생성된 리스트 객체인 tbl의 26개 구성요소 중
 우리가 원하는 HTML 테이블에 해당되는 노드를 찾아서 함수 <code>html_table()</code>에
 입력하면, 해당 테이블 데이터가 R로 입력된다. 문제는 몇 번째 노드가
@@ -891,7 +888,7 @@ HTML 테이블이 많은 웹 페이지에서는 다른 체계적인 방법이 �
 <span id="cb158-4"><a href="데이터-입력.html#cb158-4" aria-hidden="true" tabindex="-1"></a>    Rank Country     Population  <span class="st">`</span><span class="at">Area(km2)</span><span class="st">`</span> <span class="st">`</span><span class="at">Density(pop/km2)</span><span class="st">`</span></span>
 <span id="cb158-5"><a href="데이터-입력.html#cb158-5" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>chr<span class="sc">&gt;</span>             </span>
 <span id="cb158-6"><a href="데이터-입력.html#cb158-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span>     <span class="dv">1</span> Singapore   <span class="dv">5</span>,<span class="dv">704</span>,<span class="dv">000</span>   <span class="dv">710</span>         <span class="dv">8</span>,<span class="dv">033</span>             </span>
-<span id="cb158-7"><a href="데이터-입력.html#cb158-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>     <span class="dv">2</span> Bangladesh  <span class="dv">172</span>,<span class="dv">180</span>,<span class="dv">000</span> <span class="dv">143</span>,<span class="dv">998</span>     <span class="dv">1</span>,<span class="dv">196</span>             </span>
+<span id="cb158-7"><a href="데이터-입력.html#cb158-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>     <span class="dv">2</span> Bangladesh  <span class="dv">172</span>,<span class="dv">200</span>,<span class="dv">000</span> <span class="dv">143</span>,<span class="dv">998</span>     <span class="dv">1</span>,<span class="dv">196</span>             </span>
 <span id="cb158-8"><a href="데이터-입력.html#cb158-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span>     <span class="dv">3</span> Palestine   <span class="dv">5</span>,<span class="dv">266</span>,<span class="dv">785</span>   <span class="dv">6</span>,<span class="dv">020</span>       <span class="dv">847</span>               </span>
 <span id="cb158-9"><a href="데이터-입력.html#cb158-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span>     <span class="dv">4</span> Lebanon     <span class="dv">6</span>,<span class="dv">856</span>,<span class="dv">000</span>   <span class="dv">10</span>,<span class="dv">452</span>      <span class="dv">656</span>               </span>
 <span id="cb158-10"><a href="데이터-입력.html#cb158-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span>     <span class="dv">5</span> Taiwan      <span class="dv">23</span>,<span class="dv">604</span>,<span class="dv">000</span>  <span class="dv">36</span>,<span class="dv">193</span>      <span class="dv">652</span>               </span>
@@ -912,14 +909,14 @@ HTML 테이블이 많은 웹 페이지에서는 다른 체계적인 방법이 �
 도구 실행. 창이 분리되며 오른쪽 창에 html 코드가 나타남.</li>
 <li>Ctrl + F 키를 눌러서 나타난 찾기 창에 <code>&lt;table</code>을 입력하고 찾기 실행</li>
 <li>원하는 테이블에 해당되는 노드를 찾게 되면 Figure
-<a href="데이터-입력.html#fig:wiki2">3.9</a>에서와 같이 테이블이 하이라이트가 된다. 이어서
+<a href="데이터-입력.html#fig:wiki2">3.2</a>에서와 같이 테이블이 하이라이트가 된다. 이어서
 마우스 오른쪽 버튼을 클릭</li>
 <li>나타난 별도 메뉴에서 <code>Copy &gt; Copy XPath</code>를 클릭</li>
 </ol>
 <div class="figure"><span style="display:block;" id="fig:wiki2"></span>
 <img src="Figure/wiki_22_02_09_2.png" alt="예제 1의 HTML 테이블 XPath 복사" width="576" />
 <p class="caption">
-Figure 3.9: 예제 1의 HTML 테이블 XPath 복사
+Figure 3.2: 예제 1의 HTML 테이블 XPath 복사
 </p>
 </div>
 <p>원하는 HTML 테이블의 XPath의 값은
@@ -934,7 +931,7 @@ Figure 3.9: 예제 1의 HTML 테이블 XPath 복사
 <span id="cb159-7"><a href="데이터-입력.html#cb159-7" aria-hidden="true" tabindex="-1"></a>    Rank Country     Population  <span class="st">`</span><span class="at">Area(km2)</span><span class="st">`</span> <span class="st">`</span><span class="at">Density(pop/km2)</span><span class="st">`</span></span>
 <span id="cb159-8"><a href="데이터-입력.html#cb159-8" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>chr<span class="sc">&gt;</span>             </span>
 <span id="cb159-9"><a href="데이터-입력.html#cb159-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span>     <span class="dv">1</span> Singapore   <span class="dv">5</span>,<span class="dv">704</span>,<span class="dv">000</span>   <span class="dv">710</span>         <span class="dv">8</span>,<span class="dv">033</span>             </span>
-<span id="cb159-10"><a href="데이터-입력.html#cb159-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>     <span class="dv">2</span> Bangladesh  <span class="dv">172</span>,<span class="dv">180</span>,<span class="dv">000</span> <span class="dv">143</span>,<span class="dv">998</span>     <span class="dv">1</span>,<span class="dv">196</span>             </span>
+<span id="cb159-10"><a href="데이터-입력.html#cb159-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>     <span class="dv">2</span> Bangladesh  <span class="dv">172</span>,<span class="dv">200</span>,<span class="dv">000</span> <span class="dv">143</span>,<span class="dv">998</span>     <span class="dv">1</span>,<span class="dv">196</span>             </span>
 <span id="cb159-11"><a href="데이터-입력.html#cb159-11" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span>     <span class="dv">3</span> Palestine   <span class="dv">5</span>,<span class="dv">266</span>,<span class="dv">785</span>   <span class="dv">6</span>,<span class="dv">020</span>       <span class="dv">847</span>               </span>
 <span id="cb159-12"><a href="데이터-입력.html#cb159-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span>     <span class="dv">4</span> Lebanon     <span class="dv">6</span>,<span class="dv">856</span>,<span class="dv">000</span>   <span class="dv">10</span>,<span class="dv">452</span>      <span class="dv">656</span>               </span>
 <span id="cb159-13"><a href="데이터-입력.html#cb159-13" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span>     <span class="dv">5</span> Taiwan      <span class="dv">23</span>,<span class="dv">604</span>,<span class="dv">000</span>  <span class="dv">36</span>,<span class="dv">193</span>      <span class="dv">652</span>               </span>
@@ -952,7 +949,7 @@ Figure 3.9: 예제 1의 HTML 테이블 XPath 복사
 <span id="cb160-5"><a href="데이터-입력.html#cb160-5" aria-hidden="true" tabindex="-1"></a>    rank country     pop         area    density</span>
 <span id="cb160-6"><a href="데이터-입력.html#cb160-6" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>chr<span class="sc">&gt;</span>   <span class="er">&lt;</span>chr<span class="sc">&gt;</span>  </span>
 <span id="cb160-7"><a href="데이터-입력.html#cb160-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span>     <span class="dv">1</span> Singapore   <span class="dv">5</span>,<span class="dv">704</span>,<span class="dv">000</span>   <span class="dv">710</span>     <span class="dv">8</span>,<span class="dv">033</span>  </span>
-<span id="cb160-8"><a href="데이터-입력.html#cb160-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>     <span class="dv">2</span> Bangladesh  <span class="dv">172</span>,<span class="dv">180</span>,<span class="dv">000</span> <span class="dv">143</span>,<span class="dv">998</span> <span class="dv">1</span>,<span class="dv">196</span>  </span>
+<span id="cb160-8"><a href="데이터-입력.html#cb160-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>     <span class="dv">2</span> Bangladesh  <span class="dv">172</span>,<span class="dv">200</span>,<span class="dv">000</span> <span class="dv">143</span>,<span class="dv">998</span> <span class="dv">1</span>,<span class="dv">196</span>  </span>
 <span id="cb160-9"><a href="데이터-입력.html#cb160-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span>     <span class="dv">3</span> Palestine   <span class="dv">5</span>,<span class="dv">266</span>,<span class="dv">785</span>   <span class="dv">6</span>,<span class="dv">020</span>   <span class="dv">847</span>    </span>
 <span id="cb160-10"><a href="데이터-입력.html#cb160-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span>     <span class="dv">4</span> Lebanon     <span class="dv">6</span>,<span class="dv">856</span>,<span class="dv">000</span>   <span class="dv">10</span>,<span class="dv">452</span>  <span class="dv">656</span>    </span>
 <span id="cb160-11"><a href="데이터-입력.html#cb160-11" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span>     <span class="dv">5</span> Taiwan      <span class="dv">23</span>,<span class="dv">604</span>,<span class="dv">000</span>  <span class="dv">36</span>,<span class="dv">193</span>  <span class="dv">652</span>    </span>
@@ -969,22 +966,21 @@ Figure 3.9: 예제 1의 HTML 테이블 XPath 복사
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="데이터-입력.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> pop <span class="ot">&lt;-</span> top_pop<span class="sc">$</span>pop</span>
 <span id="cb161-2"><a href="데이터-입력.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> pop <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;&quot;</span>, pop)</span>
 <span id="cb161-3"><a href="데이터-입력.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mean</span>(<span class="fu">as.numeric</span>(pop))</span>
-<span id="cb161-4"><a href="데이터-입력.html#cb161-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">31650379</span></span></code></pre></div>
+<span id="cb161-4"><a href="데이터-입력.html#cb161-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">31652379</span></span></code></pre></div>
 <ul>
 <li>예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기</li>
 </ul>
-<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의
-기록실</a>에
+<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에
 있는 자료를 불러와 보자. 자료를 불러온 시점은 2022년 2월이며, 내용은
 2021년 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML
-테이블은 Figure <a href="데이터-입력.html#fig:KBO">3.10</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의
+테이블은 Figure <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의
 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 문제는
 한글이 포함된 HTML 테이블을 불러올 때 종종 오류가 발생할 수 있다는
 점이다. 이러한 오류를 어떻게 해결할 수 있는지 살펴보자.</p>
 <div class="figure"><span style="display:block;" id="fig:KBO"></span>
 <img src="Figure/KBO.PNG" alt="예제 2에서 사용된 HTML 테이블" width="566" />
 <p class="caption">
-Figure 3.10: 예제 2에서 사용된 HTML 테이블
+Figure 3.3: 예제 2에서 사용된 HTML 테이블
 </p>
 </div>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="데이터-입력.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> URL_2 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx&quot;</span></span>

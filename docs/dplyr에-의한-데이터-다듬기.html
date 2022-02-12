@@ -24,7 +24,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-02-11" />
+<meta name="date" content="2022-02-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -216,7 +216,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.4" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#새로운-열의-추가-mutate와-transmute"><i class="fa fa-check"></i><b>4.2.4</b> 새로운 열의 추가: <code>mutate()</code>와 <code>transmute()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#여러-행-자료의-요약-summarise"><i class="fa fa-check"></i><b>4.3</b> 여러 행 자료의 요약: <code>summarise()</code></a></li>
-<li class="chapter" data-level="4.4" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#그룹-데이터-프레임"><i class="fa fa-check"></i><b>4.4</b> 그룹 데이터 프레임</a></li>
+<li class="chapter" data-level="4.4" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#그룹-데이터-프레임"><i class="fa fa-check"></i><b>4.4</b> 그룹 데이터 프레임</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#그룹-데이터-프레임의-생성-group_by"><i class="fa fa-check"></i><b>4.4.1</b> 그룹 데이터 프레임의 생성: <code>group_by()</code></a></li>
+<li class="chapter" data-level="4.4.2" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#그룹-데이터-프레임에서-기본-함수들의-작동-방식"><i class="fa fa-check"></i><b>4.4.2</b> 그룹 데이터 프레임에서 기본 함수들의 작동 방식</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -452,25 +456,25 @@ tibble로 전환하고 5번째 행부터 10번째 행까지 선택해 보자.</p
 <span id="cb179-3"><a href="dplyr에-의한-데이터-다듬기.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 3 x 5</span></span>
 <span id="cb179-4"><a href="dplyr에-의한-데이터-다듬기.html#cb179-4" aria-hidden="true" tabindex="-1"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species   </span>
 <span id="cb179-5"><a href="dplyr에-의한-데이터-다듬기.html#cb179-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>        <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>     </span>
-<span id="cb179-6"><a href="dplyr에-의한-데이터-다듬기.html#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="dv">5</span>           <span class="fl">3.5</span>          <span class="fl">1.3</span>         <span class="fl">0.3</span> setosa    </span>
-<span id="cb179-7"><a href="dplyr에-의한-데이터-다듬기.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="fl">5.6</span>         <span class="fl">2.9</span>          <span class="fl">3.6</span>         <span class="fl">1.3</span> versicolor</span>
-<span id="cb179-8"><a href="dplyr에-의한-데이터-다듬기.html#cb179-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">4.9</span>         <span class="fl">3.6</span>          <span class="fl">1.4</span>         <span class="fl">0.1</span> setosa    </span></code></pre></div>
+<span id="cb179-6"><a href="dplyr에-의한-데이터-다듬기.html#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="dv">6</span>           <span class="fl">3.4</span>          <span class="fl">4.5</span>         <span class="fl">1.6</span> versicolor</span>
+<span id="cb179-7"><a href="dplyr에-의한-데이터-다듬기.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="fl">4.9</span>         <span class="fl">3.1</span>          <span class="fl">1.5</span>         <span class="fl">0.2</span> setosa    </span>
+<span id="cb179-8"><a href="dplyr에-의한-데이터-다듬기.html#cb179-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">6.3</span>         <span class="fl">2.9</span>          <span class="fl">5.6</span>         <span class="fl">1.8</span> virginica </span></code></pre></div>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="dplyr에-의한-데이터-다듬기.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iris_t <span class="sc">%&gt;%</span> </span>
 <span id="cb180-2"><a href="dplyr에-의한-데이터-다듬기.html#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.02</span>)</span>
 <span id="cb180-3"><a href="dplyr에-의한-데이터-다듬기.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 3 x 5</span></span>
 <span id="cb180-4"><a href="dplyr에-의한-데이터-다듬기.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species   </span>
 <span id="cb180-5"><a href="dplyr에-의한-데이터-다듬기.html#cb180-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>        <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>     </span>
-<span id="cb180-6"><a href="dplyr에-의한-데이터-다듬기.html#cb180-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="fl">6.8</span>         <span class="fl">2.8</span>          <span class="fl">4.8</span>         <span class="fl">1.4</span> versicolor</span>
-<span id="cb180-7"><a href="dplyr에-의한-데이터-다듬기.html#cb180-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="dv">5</span>           <span class="fl">3.4</span>          <span class="fl">1.5</span>         <span class="fl">0.2</span> setosa    </span>
-<span id="cb180-8"><a href="dplyr에-의한-데이터-다듬기.html#cb180-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">4.8</span>         <span class="fl">3.1</span>          <span class="fl">1.6</span>         <span class="fl">0.2</span> setosa    </span></code></pre></div>
+<span id="cb180-6"><a href="dplyr에-의한-데이터-다듬기.html#cb180-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="fl">5.5</span>         <span class="fl">2.4</span>          <span class="fl">3.8</span>         <span class="fl">1.1</span> versicolor</span>
+<span id="cb180-7"><a href="dplyr에-의한-데이터-다듬기.html#cb180-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="fl">6.2</span>         <span class="fl">2.9</span>          <span class="fl">4.3</span>         <span class="fl">1.3</span> versicolor</span>
+<span id="cb180-8"><a href="dplyr에-의한-데이터-다듬기.html#cb180-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">4.9</span>         <span class="fl">3.6</span>          <span class="fl">1.4</span>         <span class="fl">0.1</span> setosa    </span></code></pre></div>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="dplyr에-의한-데이터-다듬기.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iris_t <span class="sc">%&gt;%</span> </span>
 <span id="cb181-2"><a href="dplyr에-의한-데이터-다듬기.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.02</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb181-3"><a href="dplyr에-의한-데이터-다듬기.html#cb181-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 3 x 5</span></span>
-<span id="cb181-4"><a href="dplyr에-의한-데이터-다듬기.html#cb181-4" aria-hidden="true" tabindex="-1"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species   </span>
-<span id="cb181-5"><a href="dplyr에-의한-데이터-다듬기.html#cb181-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>        <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>     </span>
-<span id="cb181-6"><a href="dplyr에-의한-데이터-다듬기.html#cb181-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="fl">5.1</span>         <span class="fl">2.5</span>          <span class="dv">3</span>           <span class="fl">1.1</span> versicolor</span>
-<span id="cb181-7"><a href="dplyr에-의한-데이터-다듬기.html#cb181-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="fl">6.5</span>         <span class="fl">2.8</span>          <span class="fl">4.6</span>         <span class="fl">1.5</span> versicolor</span>
-<span id="cb181-8"><a href="dplyr에-의한-데이터-다듬기.html#cb181-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">7.1</span>         <span class="dv">3</span>            <span class="fl">5.9</span>         <span class="fl">2.1</span> virginica </span></code></pre></div>
+<span id="cb181-4"><a href="dplyr에-의한-데이터-다듬기.html#cb181-4" aria-hidden="true" tabindex="-1"></a>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species  </span>
+<span id="cb181-5"><a href="dplyr에-의한-데이터-다듬기.html#cb181-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>        <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>    </span>
+<span id="cb181-6"><a href="dplyr에-의한-데이터-다듬기.html#cb181-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>          <span class="fl">6.5</span>         <span class="dv">3</span>            <span class="fl">5.2</span>         <span class="dv">2</span>   virginica</span>
+<span id="cb181-7"><a href="dplyr에-의한-데이터-다듬기.html#cb181-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>          <span class="fl">4.8</span>         <span class="fl">3.4</span>          <span class="fl">1.9</span>         <span class="fl">0.2</span> setosa   </span>
+<span id="cb181-8"><a href="dplyr에-의한-데이터-다듬기.html#cb181-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>          <span class="fl">4.6</span>         <span class="fl">3.2</span>          <span class="fl">1.4</span>         <span class="fl">0.2</span> setosa   </span></code></pre></div>
 <ul>
 <li>함수 <code>slice_max()</code>와 <code>slice_min()</code>에 의한 행 선택</li>
 </ul>
@@ -1261,7 +1265,119 @@ tibble로 전환하고 5번째 행부터 10번째 행까지 선택해 보자.</p
 </div>
 <div id="그룹-데이터-프레임" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> 그룹 데이터 프레임</h2>
+<p><code>dplyr</code> 기본 함수들은 그룹으로 구분된 데이터 프레임을 대상으로 작업할 때 더욱 강력한
+위력을 발휘할 수 있다. 이 절에서는 함수 <code>group_by()</code>를 사용하여 그룹 데이터 프레임을
+생성하는 방법과 <code>dplyr</code> 기본 함수들이 그룹 데이터 프레임에서는 어떤 방식으로 작동되는지에 대해 살펴보도록 하자.</p>
+<div id="그룹-데이터-프레임의-생성-group_by" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> 그룹 데이터 프레임의 생성: <code>group_by()</code></h3>
+<p>함수 <code>group_by()</code>는 한 개 이상의 변수를 이용하여 전체 데이터를 그룹으로 구분하는 기능을 갖고 있다.
+첫 번째 입력요소는 데이터 프레임이고, 이어서 그룹을 구분하는 데 사용될 변수를 나열하면 된다.
+실행결과는 tibble이며, 실행 전의 tibble과 출력된 형태에서는 큰 차이를 볼 수 없으나 <code>grouped_df</code>라는 class 속성이 추가된 tibble이 된다.</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="dplyr에-의한-데이터-다듬기.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> by_cyl <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb230-2"><a href="dplyr에-의한-데이터-다듬기.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb230-3"><a href="dplyr에-의한-데이터-다듬기.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb230-4"><a href="dplyr에-의한-데이터-다듬기.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 234 x 11</span></span>
+<span id="cb230-5"><a href="dplyr에-의한-데이터-다듬기.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Groups:   cyl [4]</span></span>
+<span id="cb230-6"><a href="dplyr에-의한-데이터-다듬기.html#cb230-6" aria-hidden="true" tabindex="-1"></a>  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class </span>
+<span id="cb230-7"><a href="dplyr에-의한-데이터-다듬기.html#cb230-7" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>        <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>      <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span> </span>
+<span id="cb230-8"><a href="dplyr에-의한-데이터-다듬기.html#cb230-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> audi         a4      <span class="fl">1.8</span>  <span class="dv">1999</span>     <span class="dv">4</span> <span class="fu">auto</span>(l5)   f        <span class="dv">18</span>    <span class="dv">29</span> p     compa<span class="sc">~</span></span>
+<span id="cb230-9"><a href="dplyr에-의한-데이터-다듬기.html#cb230-9" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> audi         a4      <span class="fl">1.8</span>  <span class="dv">1999</span>     <span class="dv">4</span> <span class="fu">manual</span>(m5) f        <span class="dv">21</span>    <span class="dv">29</span> p     compa<span class="sc">~</span></span>
+<span id="cb230-10"><a href="dplyr에-의한-데이터-다듬기.html#cb230-10" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> audi         a4      <span class="dv">2</span>    <span class="dv">2008</span>     <span class="dv">4</span> <span class="fu">manual</span>(m6) f        <span class="dv">20</span>    <span class="dv">31</span> p     compa<span class="sc">~</span></span>
+<span id="cb230-11"><a href="dplyr에-의한-데이터-다듬기.html#cb230-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ... with 231 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="dplyr에-의한-데이터-다듬기.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> by_cyl_drv <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb231-2"><a href="dplyr에-의한-데이터-다듬기.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(cyl, drv) <span class="sc">%&gt;%</span> </span>
+<span id="cb231-3"><a href="dplyr에-의한-데이터-다듬기.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb231-4"><a href="dplyr에-의한-데이터-다듬기.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 234 x 11</span></span>
+<span id="cb231-5"><a href="dplyr에-의한-데이터-다듬기.html#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Groups:   cyl, drv [9]</span></span>
+<span id="cb231-6"><a href="dplyr에-의한-데이터-다듬기.html#cb231-6" aria-hidden="true" tabindex="-1"></a>  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class </span>
+<span id="cb231-7"><a href="dplyr에-의한-데이터-다듬기.html#cb231-7" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>        <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>      <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span> </span>
+<span id="cb231-8"><a href="dplyr에-의한-데이터-다듬기.html#cb231-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> audi         a4      <span class="fl">1.8</span>  <span class="dv">1999</span>     <span class="dv">4</span> <span class="fu">auto</span>(l5)   f        <span class="dv">18</span>    <span class="dv">29</span> p     compa<span class="sc">~</span></span>
+<span id="cb231-9"><a href="dplyr에-의한-데이터-다듬기.html#cb231-9" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> audi         a4      <span class="fl">1.8</span>  <span class="dv">1999</span>     <span class="dv">4</span> <span class="fu">manual</span>(m5) f        <span class="dv">21</span>    <span class="dv">29</span> p     compa<span class="sc">~</span></span>
+<span id="cb231-10"><a href="dplyr에-의한-데이터-다듬기.html#cb231-10" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> audi         a4      <span class="dv">2</span>    <span class="dv">2008</span>     <span class="dv">4</span> <span class="fu">manual</span>(m6) f        <span class="dv">20</span>    <span class="dv">31</span> p     compa<span class="sc">~</span></span>
+<span id="cb231-11"><a href="dplyr에-의한-데이터-다듬기.html#cb231-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ... with 231 more rows</span></span></code></pre></div>
+<p>그룹 데이터 프레임 <code>by_cyl</code>를 출력해 보면 <code>Groups: cyl [4]</code>라는 결과가 나타나는데,
+이것은 변수 <code>cyl</code>에 의해 4개 그룹이 구성되었다는 것을 의미한다.
+또한 <code>by_cyl_drv</code>의 경우에는 <code>cyl</code>과 <code>drv</code>의 조합으로 9개 그룹이 생성되었다는 것을 알 수 있다.</p>
+<ul>
+<li>그룹별 자료 개수 확인</li>
+</ul>
+<p>각 그룹에 속한 자료의 개수는 함수 <code>tally()</code> 또는 <code>count()</code>를 사용하면 알 수 있다.
+함수 <code>tally()</code>는 그룹 변수 지정 기능이 없는 함수이어서 그룹 데이터 프레임을 입력하면 각 그룹별 자료의 개수를 출력하지만, 일반 데이터 프레임을 입력하면 전체 자료 개수를 출력한다.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="dplyr에-의한-데이터-다듬기.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> by_cyl <span class="sc">%&gt;%</span> <span class="fu">tally</span>()</span>
+<span id="cb232-2"><a href="dplyr에-의한-데이터-다듬기.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 4 x 2</span></span>
+<span id="cb232-3"><a href="dplyr에-의한-데이터-다듬기.html#cb232-3" aria-hidden="true" tabindex="-1"></a>    cyl     n</span>
+<span id="cb232-4"><a href="dplyr에-의한-데이터-다듬기.html#cb232-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb232-5"><a href="dplyr에-의한-데이터-다듬기.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">4</span>    <span class="dv">81</span></span>
+<span id="cb232-6"><a href="dplyr에-의한-데이터-다듬기.html#cb232-6" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">5</span>     <span class="dv">4</span></span>
+<span id="cb232-7"><a href="dplyr에-의한-데이터-다듬기.html#cb232-7" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>     <span class="dv">6</span>    <span class="dv">79</span></span>
+<span id="cb232-8"><a href="dplyr에-의한-데이터-다듬기.html#cb232-8" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>     <span class="dv">8</span>    <span class="dv">70</span></span>
+<span id="cb232-9"><a href="dplyr에-의한-데이터-다듬기.html#cb232-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mpg <span class="sc">%&gt;%</span> <span class="fu">tally</span>()</span>
+<span id="cb232-10"><a href="dplyr에-의한-데이터-다듬기.html#cb232-10" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 1 x 1</span></span>
+<span id="cb232-11"><a href="dplyr에-의한-데이터-다듬기.html#cb232-11" aria-hidden="true" tabindex="-1"></a>      n</span>
+<span id="cb232-12"><a href="dplyr에-의한-데이터-다듬기.html#cb232-12" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb232-13"><a href="dplyr에-의한-데이터-다듬기.html#cb232-13" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>   <span class="dv">234</span></span></code></pre></div>
+<p>반면에 함수 <code>count()</code>는 그룹 변수를 지정해서, 각 그룹별 자료의 개수를 계산할 수 있다.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="dplyr에-의한-데이터-다듬기.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> by_cyl <span class="sc">%&gt;%</span> <span class="fu">count</span>()</span>
+<span id="cb233-2"><a href="dplyr에-의한-데이터-다듬기.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 4 x 2</span></span>
+<span id="cb233-3"><a href="dplyr에-의한-데이터-다듬기.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Groups:   cyl [4]</span></span>
+<span id="cb233-4"><a href="dplyr에-의한-데이터-다듬기.html#cb233-4" aria-hidden="true" tabindex="-1"></a>    cyl     n</span>
+<span id="cb233-5"><a href="dplyr에-의한-데이터-다듬기.html#cb233-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb233-6"><a href="dplyr에-의한-데이터-다듬기.html#cb233-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">4</span>    <span class="dv">81</span></span>
+<span id="cb233-7"><a href="dplyr에-의한-데이터-다듬기.html#cb233-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">5</span>     <span class="dv">4</span></span>
+<span id="cb233-8"><a href="dplyr에-의한-데이터-다듬기.html#cb233-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>     <span class="dv">6</span>    <span class="dv">79</span></span>
+<span id="cb233-9"><a href="dplyr에-의한-데이터-다듬기.html#cb233-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>     <span class="dv">8</span>    <span class="dv">70</span></span>
+<span id="cb233-10"><a href="dplyr에-의한-데이터-다듬기.html#cb233-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mpg <span class="sc">%&gt;%</span> <span class="fu">count</span>(cyl)</span>
+<span id="cb233-11"><a href="dplyr에-의한-데이터-다듬기.html#cb233-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 4 x 2</span></span>
+<span id="cb233-12"><a href="dplyr에-의한-데이터-다듬기.html#cb233-12" aria-hidden="true" tabindex="-1"></a>    cyl     n</span>
+<span id="cb233-13"><a href="dplyr에-의한-데이터-다듬기.html#cb233-13" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb233-14"><a href="dplyr에-의한-데이터-다듬기.html#cb233-14" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">4</span>    <span class="dv">81</span></span>
+<span id="cb233-15"><a href="dplyr에-의한-데이터-다듬기.html#cb233-15" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">5</span>     <span class="dv">4</span></span>
+<span id="cb233-16"><a href="dplyr에-의한-데이터-다듬기.html#cb233-16" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>     <span class="dv">6</span>    <span class="dv">79</span></span>
+<span id="cb233-17"><a href="dplyr에-의한-데이터-다듬기.html#cb233-17" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>     <span class="dv">8</span>    <span class="dv">70</span></span></code></pre></div>
+<ul>
+<li>그룹 변수의 변경</li>
+</ul>
+<p>기존의 그룹 데이터 프레임에 그룹을 구성하는 변수를 추가해서 더 세분화된 그룹을 구성할 수 있다.
+변수 <code>cyl</code>로 구성된 그룹 데이터 프레임에 <code>drv</code>로 생성되는 그룹을 추가하기 위해서는 옵션 <code>.add=TRUE</code>를 지정해야 한다.</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="dplyr에-의한-데이터-다듬기.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> by_cyl <span class="sc">%&gt;%</span> </span>
+<span id="cb234-2"><a href="dplyr에-의한-데이터-다듬기.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(drv, <span class="at">.add =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb234-3"><a href="dplyr에-의한-데이터-다듬기.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">tally</span>()</span>
+<span id="cb234-4"><a href="dplyr에-의한-데이터-다듬기.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 9 x 3</span></span>
+<span id="cb234-5"><a href="dplyr에-의한-데이터-다듬기.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Groups:   cyl [4]</span></span>
+<span id="cb234-6"><a href="dplyr에-의한-데이터-다듬기.html#cb234-6" aria-hidden="true" tabindex="-1"></a>    cyl drv       n</span>
+<span id="cb234-7"><a href="dplyr에-의한-데이터-다듬기.html#cb234-7" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb234-8"><a href="dplyr에-의한-데이터-다듬기.html#cb234-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">4</span> <span class="dv">4</span>        <span class="dv">23</span></span>
+<span id="cb234-9"><a href="dplyr에-의한-데이터-다듬기.html#cb234-9" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">4</span> f        <span class="dv">58</span></span>
+<span id="cb234-10"><a href="dplyr에-의한-데이터-다듬기.html#cb234-10" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>     <span class="dv">5</span> f         <span class="dv">4</span></span>
+<span id="cb234-11"><a href="dplyr에-의한-데이터-다듬기.html#cb234-11" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>     <span class="dv">6</span> <span class="dv">4</span>        <span class="dv">32</span></span>
+<span id="cb234-12"><a href="dplyr에-의한-데이터-다듬기.html#cb234-12" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>     <span class="dv">6</span> f        <span class="dv">43</span></span>
+<span id="cb234-13"><a href="dplyr에-의한-데이터-다듬기.html#cb234-13" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>     <span class="dv">6</span> r         <span class="dv">4</span></span>
+<span id="cb234-14"><a href="dplyr에-의한-데이터-다듬기.html#cb234-14" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>     <span class="dv">8</span> <span class="dv">4</span>        <span class="dv">48</span></span>
+<span id="cb234-15"><a href="dplyr에-의한-데이터-다듬기.html#cb234-15" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>     <span class="dv">8</span> f         <span class="dv">1</span></span>
+<span id="cb234-16"><a href="dplyr에-의한-데이터-다듬기.html#cb234-16" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>     <span class="dv">8</span> r        <span class="dv">21</span></span></code></pre></div>
+<p>옵션 <code>.add=TRUE</code>를 추가하지 않으면 기존의 그룹 변수가 새로운 그룹 변수로 대체된다.</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="dplyr에-의한-데이터-다듬기.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> by_cyl <span class="sc">%&gt;%</span> </span>
+<span id="cb235-2"><a href="dplyr에-의한-데이터-다듬기.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(drv) <span class="sc">%&gt;%</span> </span>
+<span id="cb235-3"><a href="dplyr에-의한-데이터-다듬기.html#cb235-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">tally</span>()</span>
+<span id="cb235-4"><a href="dplyr에-의한-데이터-다듬기.html#cb235-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 3 x 2</span></span>
+<span id="cb235-5"><a href="dplyr에-의한-데이터-다듬기.html#cb235-5" aria-hidden="true" tabindex="-1"></a>  drv       n</span>
+<span id="cb235-6"><a href="dplyr에-의한-데이터-다듬기.html#cb235-6" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb235-7"><a href="dplyr에-의한-데이터-다듬기.html#cb235-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">4</span>       <span class="dv">103</span></span>
+<span id="cb235-8"><a href="dplyr에-의한-데이터-다듬기.html#cb235-8" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> f       <span class="dv">106</span></span>
+<span id="cb235-9"><a href="dplyr에-의한-데이터-다듬기.html#cb235-9" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> r        <span class="dv">25</span></span></code></pre></div>
+<p>함수 <code>group_by()</code>로 구성된 그룹은 함수 <code>ungroup()</code>으로 해체할 수 있다.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="dplyr에-의한-데이터-다듬기.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> by_cyl <span class="sc">%&gt;%</span> </span>
+<span id="cb236-2"><a href="dplyr에-의한-데이터-다듬기.html#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb236-3"><a href="dplyr에-의한-데이터-다듬기.html#cb236-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">tally</span>()</span>
+<span id="cb236-4"><a href="dplyr에-의한-데이터-다듬기.html#cb236-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 1 x 1</span></span>
+<span id="cb236-5"><a href="dplyr에-의한-데이터-다듬기.html#cb236-5" aria-hidden="true" tabindex="-1"></a>      n</span>
+<span id="cb236-6"><a href="dplyr에-의한-데이터-다듬기.html#cb236-6" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb236-7"><a href="dplyr에-의한-데이터-다듬기.html#cb236-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>   <span class="dv">234</span></span></code></pre></div>
+</div>
+<div id="그룹-데이터-프레임에서-기본-함수들의-작동-방식" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> 그룹 데이터 프레임에서 기본 함수들의 작동 방식</h3>
 
+</div>
 </div>
 </div>
             </section>

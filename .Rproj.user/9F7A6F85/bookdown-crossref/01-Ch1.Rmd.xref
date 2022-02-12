@@ -7,7 +7,7 @@ tab:exdata 예제 데이터
 fig:exresult 예제 프로그램 실행 결과
 h2:작업공간 작업공간
 h2:스크립트-파일의-활용 스크립트 파일의 활용
-fig:ex-script 스크립트 창을 활용한 작업수행 예
+fig:ex-script 스크립트창을 활용한 작업수행 예
 fig:ex1-content 파일 ex1.R의 내용
 fig:save-graphic 그래프의 복사 및 저장
 h2:section-batch 일괄처리

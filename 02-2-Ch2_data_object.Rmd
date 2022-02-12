@@ -166,8 +166,7 @@ cat.x <- cut(x, breaks=c(0,80,90,100), include.lowest=TRUE,
 cat.x
 ```
 
-옵션 `include.lowest`를 따로 지정하지 않고 디폴트 값을 그대로 사용하고자
-한다면 옵션 `break`에 최솟값은 `-Inf`로, 최댓값은 `Inf`로 지정하면 된다.
+옵션 `break`에 최솟값은 `-Inf`로, 최댓값은 `Inf`로 지정하면, 옵션 `include.lowest`에 지정된 값에 관계 없이 자료의 모든 값을 변환 시킬 수 있다. 
 
 ```{r}
 cut(x, breaks=c(-Inf,80,90,Inf),

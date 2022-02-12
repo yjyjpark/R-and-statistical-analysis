@@ -7,19 +7,11 @@ fig:save-graphic
 fig:terminal-batch
 fig:path-adding
 fig:install-package
-fig:unnamed-chunk-17
 tab:char-func
 tab:math-func
 tab:stat-func
-tab:unnamed-chunk-58
+tab:unnamed-chunk-57
 tab:matrix-func
-fig:data2-1
-fig:data2-3
-fig:data2-4
-fig:data3-1
-fig:data3-2
-fig:data4
-fig:data5
 fig:wiki
 fig:wiki2
 fig:KBO
@@ -81,3 +73,5 @@ dplyr에-의한-데이터-다듬기
 새로운-열의-추가-mutate와-transmute
 여러-행-자료의-요약-summarise
 그룹-데이터-프레임
+그룹-데이터-프레임의-생성-group_by
+그룹-데이터-프레임에서-기본-함수들의-작동-방식

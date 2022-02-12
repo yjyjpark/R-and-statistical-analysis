@@ -48,9 +48,7 @@ read.csv()로도 할 수 있으나, 크기가 큰 텍스트 파일을 불러와�
 다음과 같이 있다고 하자. 이런 경우에는 함수 `read_table()`에 파일의
 위치와 함께 파일의 이름만 입력하면 된다.
 
-```{r data2-1, fig.cap='data2_1.txt', echo=FALSE, out.height=150, out.width=180}
-knitr::include_graphics("Figure/data2_1.png")
-```
+![data2_1.txt](Figure/data2_1.png "data2_1.txt"){#data2-1}
 
 ```{r, message=FALSE}
 library(tidyverse)
@@ -112,9 +110,7 @@ read_table("Data/data2_2.txt",
 줄이 다음과 같이 `#` 기호로 시작되는 주석이 입력되어 있다고 하자. 이
 파일을 두 가지 방법을 각각 사용하여 불러와 보자.
 
-```{r data2-3, fig.cap='data2_3.txt', echo=FALSE, out.height=180, out.width=210}
-knitr::include_graphics("Figure/data2_3.png")
-```
+![data2_3.txt](Figure/data2_3.png "data2_3.txt"){#data2-3}
 
 ```{r}
 read_table("Data/data2_3.txt",
@@ -140,9 +136,7 @@ read_table("Data/data2_3.txt",
 같이 `NA`와 점(.)이 모두 결측값을 나타내는 기호로 사용되어 있다고 하자.
 이 파일을 옵션 `na`를 사용해서 불러와 보자.
 
-```{r data2-4, fig.cap='data2_4.txt', echo=FALSE, out.height=150, out.width=200}
-knitr::include_graphics("Figure/data2_4.png")
-```
+![data2_4.txt](Figure/data2_4.png "data2_4.txt"){#data2-4}
 
 ```{r}
 read_table("Data/data2_4.txt", 
@@ -176,9 +170,7 @@ CSV(Comma Separated Values) 파일이란 각 자료들이 콤마로 구분된 �
 `read_csv()`에 파일의 위치를 포함한 이름을 입력하면 파일을 불러올 수
 있다.
 
-```{r data3-1, fig.cap='data3_1.txt', echo=FALSE, out.height=150, out.width=200}
-knitr::include_graphics("Figure/data3_1.png")
-```
+![data3_1.txt](Figure/data3_1.png "data3_1.txt"){#data3-1}
 
 ```{r}
 read_csv("Data/data3_1.txt")
@@ -197,13 +189,11 @@ backtick(\`) 기호로 감싸져 있다. 이것은 문자로 시작하지 않거
 있다고 하자. 첫 줄에 주석이 있고, 결측값이 기호 `NA`와 점(.)으로
 표시되어 있으며, 변수 이름은 입력되지 않았다.
 
-```{r data3-2, fig.cap='data3_2.txt', echo=FALSE, out.height=150, out.width=180}
-knitr::include_graphics("Figure/data3_2.png")
-```
+![data3_2.txt](Figure/data3_2.png "data3_2.txt"){#data3-2}
 
 이제 각 변수의 유형을 스스로 파악하게 해 보자.
 
-```{r}
+```{r, warning=FALSE}
 read_csv("Data/data3_2.txt", 
          col_names = FALSE, 
          comment = "#", 
@@ -223,7 +213,7 @@ read_csv("Data/data3_2.txt",
 `F`로만 이루어져 있어서 `F`를 `FALSE`로 인식했기 때문이다. 이런 경우에는
 변수 유형을 사용자가 직접 지정해야 한다.
 
-```{r}
+```{r, warning=FALSE}
 read_csv("Data/data3_2.txt", 
          col_names = FALSE, 
          col_types = "dcd", 
@@ -237,9 +227,7 @@ read_csv("Data/data3_2.txt",
 들어 `Data` 폴더에 있는 파일 data4.txt에 다음과 같은 형식으로 세 변수의
 데이터가 입력되어 있다고 하자.
 
-```{r data4, fig.cap='data4.txt', echo=FALSE, out.height=120, out.width=140}
-knitr::include_graphics("Figure/data4.png")
-```
+![data4.txt](Figure/data4.png "data4.txt"){#data4}
 
 변수 `age`는 1-2열, `gender`는 3열, `income`은 4-7열에 각각 입력되어
 있다. 이러한 경우 각 자료들이 빈칸이나 콤마 등으로 구분되어 있어야만
@@ -289,7 +277,7 @@ Repository](https://archive.ics.uci.edu/ml/index.php)라는 사이트가
 있지 않은 상태이다. 이제 파악된 URL을 함수 `read_csv()`에 입력하여 웹
 데이터를 직접 불러보자.
 
-```{r, eval=FALSE}
+```{r, message=FALSE}
 iris.url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
 read_csv(iris.url,
          col_names=c("S.length","S.width","P.length","P.width","Species"))
@@ -343,9 +331,7 @@ Excel에서 데이터를 만들고 가공하는 경우가 많기 때문에 Excel
 알아볼 것이다 예제 데이터로 `Data` 폴더에 있는 data5.xlsx에 다음과 같이
 자료가 입력되어 있다고 하자. 자료는 첫 번째 시트에 입력되어 있다.
 
-```{r data5, fig.cap='data5.xlsx', echo=FALSE, out.height=170, out.width=210}
-knitr::include_graphics("Figure/data5.png")
-```
+![data5.xlsx](Figure/data5.png "data5.xlsx"){#data5}
 
 -   패키지 `xlsx`의 함수 `read.xlsx()`로 Excel 파일 불러오기
 
@@ -497,7 +483,7 @@ knitr::include_graphics("Figure/wiki_22_02_09_1.png")
 결과를 리스트 형태로 출력한다. 모두 26개의 `table` 노드가 발견되었고, 그
 중 처음 6개의 내용을 출력해 보자.
 
-```{r}
+```{r, message=FALSE}
 library(rvest)
 URL <- "https://en.wikipedia.org/wiki/World_population"
 web <- read_html(URL)
@@ -573,8 +559,7 @@ mean(as.numeric(pop))
 
 -   예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기
 
-[KBO 홈페이지의
-기록실](https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx)에
+[KBO 홈페이지의 기록실](https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx)에
 있는 자료를 불러와 보자. 자료를 불러온 시점은 2022년 2월이며, 내용은
 2021년 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML
 테이블은 Figure \@ref(fig:KBO)에서 볼 수 있다. 해당 웹 페이지에는 하나의
