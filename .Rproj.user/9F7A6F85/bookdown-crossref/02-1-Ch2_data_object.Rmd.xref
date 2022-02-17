@@ -9,7 +9,7 @@ tab:char-func 문자 함수
 h3:벡터의-연산 벡터의 연산
 tab:math-func 수학 계산과 관련된 함수
 tab:stat-func 통계 관련 함수
-h3:벡터의-비교 벡터의 비교
+h3:vector-compare 벡터의 비교
 tab:echo 비교/논리 연산자
 h3:벡터의-인덱싱 벡터의 인덱싱
 

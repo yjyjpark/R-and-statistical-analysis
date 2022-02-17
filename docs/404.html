@@ -24,7 +24,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-02-12" />
+<meta name="date" content="2022-02-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="r-시작하기.html"><a href="r-시작하기.html#패키지의-종류"><i class="fa fa-check"></i><b>1.7.1</b> 패키지의 종류</a></li>
 <li class="chapter" data-level="1.7.2" data-path="r-시작하기.html"><a href="r-시작하기.html#패키지의-설치-및-사용"><i class="fa fa-check"></i><b>1.7.2</b> 패키지의 설치 및 사용</a></li>
-<li class="chapter" data-level="1.7.3" data-path="r-시작하기.html"><a href="r-시작하기.html#패키지-tidyverse의-소개"><i class="fa fa-check"></i><b>1.7.3</b> 패키지 tidyverse의 소개</a></li>
+<li class="chapter" data-level="1.7.3" data-path="r-시작하기.html"><a href="r-시작하기.html#패키지-tidyverse의-소개"><i class="fa fa-check"></i><b>1.7.3</b> 패키지 <code>tidyverse</code>의 소개</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-structure.html"><a href="data-structure.html"><i class="fa fa-check"></i><b>2</b> R 데이터 구조</a>
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.2" data-path="data-structure.html"><a href="data-structure.html#다양한-형태를-갖는-벡터의-생성"><i class="fa fa-check"></i><b>2.1.2</b> 다양한 형태를 갖는 벡터의 생성</a></li>
 <li class="chapter" data-level="2.1.3" data-path="data-structure.html"><a href="data-structure.html#문자열을-위한-함수"><i class="fa fa-check"></i><b>2.1.3</b> 문자열을 위한 함수</a></li>
 <li class="chapter" data-level="2.1.4" data-path="data-structure.html"><a href="data-structure.html#벡터의-연산"><i class="fa fa-check"></i><b>2.1.4</b> 벡터의 연산</a></li>
-<li class="chapter" data-level="2.1.5" data-path="data-structure.html"><a href="data-structure.html#벡터의-비교"><i class="fa fa-check"></i><b>2.1.5</b> 벡터의 비교</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data-structure.html"><a href="data-structure.html#vector-compare"><i class="fa fa-check"></i><b>2.1.5</b> 벡터의 비교</a></li>
 <li class="chapter" data-level="2.1.6" data-path="data-structure.html"><a href="data-structure.html#벡터의-인덱싱"><i class="fa fa-check"></i><b>2.1.6</b> 벡터의 인덱싱</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="data-structure.html"><a href="data-structure.html#요인"><i class="fa fa-check"></i><b>2.2</b> 요인</a>
@@ -227,6 +227,144 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot2</code>에 의한 자료 시각화</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#ggplot2-시작하기"><i class="fa fa-check"></i><b>5.1</b> <code>ggplot2</code> 시작하기</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#시각적-요소와의-연결-mapping"><i class="fa fa-check"></i><b>5.2</b> 시각적 요소와의 연결: Mapping</a></li>
+<li class="chapter" data-level="5.3" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#그룹별-그래프-작성-facet"><i class="fa fa-check"></i><b>5.3</b> 그룹별 그래프 작성: Facet</a></li>
+<li class="chapter" data-level="5.4" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#기하-객체-geometric-object"><i class="fa fa-check"></i><b>5.4</b> 기하 객체: Geometric object</a></li>
+<li class="chapter" data-level="5.5" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#통계적-변환-statistical-transformation"><i class="fa fa-check"></i><b>5.5</b> 통계적 변환: Statistical transformation</a></li>
+<li class="chapter" data-level="5.6" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#위치-조정-position-adjustments"><i class="fa fa-check"></i><b>5.6</b> 위치 조정: Position adjustments</a></li>
+<li class="chapter" data-level="5.7" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#좌표계-coordinate-system"><i class="fa fa-check"></i><b>5.7</b> 좌표계: Coordinate system</a></li>
+<li class="chapter" data-level="5.8" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#연습문제-1"><i class="fa fa-check"></i><b>5.8</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Tidyverse를 활용한 데이터 다루기</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6.html"><a href="ch6.html#tidyr로-tidy-데이터-만들기"><i class="fa fa-check"></i><b>6.1</b> <code>tidyr</code>로 tidy 데이터 만들기</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6.html"><a href="ch6.html#데이터-피벗-pivot_longer와-pivot_wider"><i class="fa fa-check"></i><b>6.1.1</b> 데이터 피벗: <code>pivot_longer()</code>와 <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6.html"><a href="ch6.html#문자형-열의-결합과-분리-separate와-unite"><i class="fa fa-check"></i><b>6.1.2</b> 문자형 열의 결합과 분리: <code>separate()</code>와 <code>unite()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6.html"><a href="ch6.html#dplyr에-의한-데이터-결합"><i class="fa fa-check"></i><b>6.2</b> <code>dplyr</code>에 의한 데이터 결합</a></li>
+<li class="chapter" data-level="6.3" data-path="ch6.html"><a href="ch6.html#stringr에-의한-문자-다루기"><i class="fa fa-check"></i><b>6.3</b> <code>stringr</code>에 의한 문자 다루기</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter-programming.html"><a href="chapter-programming.html"><i class="fa fa-check"></i><b>7</b> R에서의 프로그래밍</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter-programming.html"><a href="chapter-programming.html#사용자-정의-함수"><i class="fa fa-check"></i><b>7.1</b> 사용자 정의 함수</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="chapter-programming.html"><a href="chapter-programming.html#함수의-정의"><i class="fa fa-check"></i><b>7.1.1</b> 함수의 정의</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chapter-programming.html"><a href="chapter-programming.html#변수"><i class="fa fa-check"></i><b>7.1.2</b> 변수</a></li>
+<li class="chapter" data-level="7.1.3" data-path="chapter-programming.html"><a href="chapter-programming.html#변수-지정"><i class="fa fa-check"></i><b>7.1.3</b> 변수 지정</a></li>
+<li class="chapter" data-level="7.1.4" data-path="chapter-programming.html"><a href="chapter-programming.html#결과의-출력"><i class="fa fa-check"></i><b>7.1.4</b> 결과의 출력</a></li>
+<li class="chapter" data-level="7.1.5" data-path="chapter-programming.html"><a href="chapter-programming.html#유효-범위"><i class="fa fa-check"></i><b>7.1.5</b> 유효 범위</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chapter-programming.html"><a href="chapter-programming.html#조건-연산"><i class="fa fa-check"></i><b>7.2</b> 조건 연산</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="chapter-programming.html"><a href="chapter-programming.html#함수-if에-의한-조건-연산"><i class="fa fa-check"></i><b>7.2.1</b> 함수 <code>if()</code>에 의한 조건 연산</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chapter-programming.html"><a href="chapter-programming.html#함수-ifelse에-의한-조건-연산"><i class="fa fa-check"></i><b>7.2.2</b> 함수 <code>ifelse()</code>에 의한 조건 연산</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chapter-programming.html"><a href="chapter-programming.html#함수-switch에-의한-조건-연산"><i class="fa fa-check"></i><b>7.2.3</b> 함수 <code>switch()</code>에 의한 조건 연산</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chapter-programming.html"><a href="chapter-programming.html#루프-연산"><i class="fa fa-check"></i><b>7.3</b> 루프 연산</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="chapter-programming.html"><a href="chapter-programming.html#for-루프"><i class="fa fa-check"></i><b>7.3.1</b> for 루프</a></li>
+<li class="chapter" data-level="7.3.2" data-path="chapter-programming.html"><a href="chapter-programming.html#while-루프"><i class="fa fa-check"></i><b>7.3.2</b> while 루프</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="chapter-programming.html"><a href="chapter-programming.html#함수형-프로그래밍"><i class="fa fa-check"></i><b>7.4</b> 함수형 프로그래밍</a></li>
+<li class="chapter" data-level="7.5" data-path="chapter-programming.html"><a href="chapter-programming.html#함수형-프로그래밍으로-행렬과-데이터-프레임-다루기"><i class="fa fa-check"></i><b>7.5</b> 함수형 프로그래밍으로 행렬과 데이터 프레임 다루기</a></li>
+<li class="chapter" data-level="7.6" data-path="chapter-programming.html"><a href="chapter-programming.html#purrr에-의한-프로그래밍"><i class="fa fa-check"></i><b>7.6</b> <code>purrr</code>에 의한 프로그래밍</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter-distribution.html"><a href="chapter-distribution.html"><i class="fa fa-check"></i><b>8</b> 확률분포</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter-distribution.html"><a href="chapter-distribution.html#r에서의-확률분포-이름"><i class="fa fa-check"></i><b>8.1</b> R에서의 확률분포 이름</a></li>
+<li class="chapter" data-level="8.2" data-path="chapter-distribution.html"><a href="chapter-distribution.html#연속형-확률분포"><i class="fa fa-check"></i><b>8.2</b> 연속형 확률분포</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chapter-distribution.html"><a href="chapter-distribution.html#정규분포"><i class="fa fa-check"></i><b>8.2.1</b> 정규분포</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chapter-distribution.html"><a href="chapter-distribution.html#지수분포"><i class="fa fa-check"></i><b>8.2.2</b> 지수분포</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chapter-distribution.html"><a href="chapter-distribution.html#균등분포"><i class="fa fa-check"></i><b>8.2.3</b> 균등분포</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chapter-distribution.html"><a href="chapter-distribution.html#t-분포"><i class="fa fa-check"></i><b>8.2.4</b> t-분포</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chapter-distribution.html"><a href="chapter-distribution.html#이산형-분포"><i class="fa fa-check"></i><b>8.3</b> 이산형 분포</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="chapter-distribution.html"><a href="chapter-distribution.html#베르누이-분포와-이항분포"><i class="fa fa-check"></i><b>8.3.1</b> 베르누이 분포와 이항분포</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chapter-distribution.html"><a href="chapter-distribution.html#포아송-분포"><i class="fa fa-check"></i><b>8.3.2</b> 포아송 분포</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chapter-distribution.html"><a href="chapter-distribution.html#초기하분포"><i class="fa fa-check"></i><b>8.3.3</b> 초기하분포</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="chapter-distribution.html"><a href="chapter-distribution.html#모의실험"><i class="fa fa-check"></i><b>8.4</b> 모의실험</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter-EDA.html"><a href="chapter-EDA.html"><i class="fa fa-check"></i><b>9</b> 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#일변량-범주형-자료-탐색"><i class="fa fa-check"></i><b>9.1</b> 일변량 범주형 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#막대-그래프"><i class="fa fa-check"></i><b>9.1.1</b> 막대 그래프</a></li>
+<li class="chapter" data-level="9.1.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#파이-그래프"><i class="fa fa-check"></i><b>9.1.2</b> 파이 그래프</a></li>
+<li class="chapter" data-level="9.1.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#cleveland의-점-그래프"><i class="fa fa-check"></i><b>9.1.3</b> Cleveland의 점 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#이변량-및-다변량-범주형-자료-탐색"><i class="fa fa-check"></i><b>9.2</b> 이변량 및 다변량 범주형 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#분할표-작성"><i class="fa fa-check"></i><b>9.2.1</b> 분할표 작성</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#이변량-및-다변량-범주형-자료를-위한-그래프"><i class="fa fa-check"></i><b>9.2.2</b> 이변량 및 다변량 범주형 자료를 위한 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#일변량-연속형-자료-탐색"><i class="fa fa-check"></i><b>9.3</b> 일변량 연속형 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#줄기-잎-그림"><i class="fa fa-check"></i><b>9.3.1</b> 줄기-잎 그림</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#상지그림"><i class="fa fa-check"></i><b>9.3.2</b> 상지그림</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#히스토그램"><i class="fa fa-check"></i><b>9.3.3</b> 히스토그램</a></li>
+<li class="chapter" data-level="9.3.4" data-path="chapter-EDA.html"><a href="chapter-EDA.html#확률밀도함수-그래프"><i class="fa fa-check"></i><b>9.3.4</b> 확률밀도함수 그래프</a></li>
+<li class="chapter" data-level="9.3.5" data-path="chapter-EDA.html"><a href="chapter-EDA.html#기타-유용한-그래프"><i class="fa fa-check"></i><b>9.3.5</b> 기타 유용한 그래프</a></li>
+<li class="chapter" data-level="9.3.6" data-path="chapter-EDA.html"><a href="chapter-EDA.html#일변량-연속형-자료의-요약통계"><i class="fa fa-check"></i><b>9.3.6</b> 일변량 연속형 자료의 요약통계</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chapter-EDA.html"><a href="chapter-EDA.html#이변량-연속형-자료-탐색"><i class="fa fa-check"></i><b>9.4</b> 이변량 연속형 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연속형-변수의-분포를-비교하기-위한-그래프"><i class="fa fa-check"></i><b>9.4.1</b> 연속형 변수의 분포를 비교하기 위한 그래프</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연속형-변수의-관계-탐색을-위한-그래프"><i class="fa fa-check"></i><b>9.4.2</b> 연속형 변수의 관계 탐색을 위한 그래프</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter-inference.html"><a href="chapter-inference.html"><i class="fa fa-check"></i><b>10</b> 통계적 추론</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chapter-inference.html"><a href="chapter-inference.html#단일-모집단의-모평균에-대한-검정-및-신뢰구간-추정"><i class="fa fa-check"></i><b>10.1</b> 단일 모집단의 모평균에 대한 검정 및 신뢰구간 추정</a></li>
+<li class="chapter" data-level="10.2" data-path="chapter-inference.html"><a href="chapter-inference.html#두-모집단의-모평균-차이에-대한-검정-및-신뢰구간-추정"><i class="fa fa-check"></i><b>10.2</b> 두 모집단의 모평균 차이에 대한 검정 및 신뢰구간 추정</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="chapter-inference.html"><a href="chapter-inference.html#독립된-두-표본에-대한-추론"><i class="fa fa-check"></i><b>10.2.1</b> 독립된 두 표본에 대한 추론</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chapter-inference.html"><a href="chapter-inference.html#짝을-이룬-표본에-대한-추론"><i class="fa fa-check"></i><b>10.2.2</b> 짝을 이룬 표본에 대한 추론</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chapter-inference.html"><a href="chapter-inference.html#단일-모집단의-모비율에-대한-검정-및-신뢰구간-추정"><i class="fa fa-check"></i><b>10.3</b> 단일 모집단의 모비율에 대한 검정 및 신뢰구간 추정</a></li>
+<li class="chapter" data-level="10.4" data-path="chapter-inference.html"><a href="chapter-inference.html#두-모집단의-모비율-차이에-대한-검정-및-신뢰구간-추정"><i class="fa fa-check"></i><b>10.4</b> 두 모집단의 모비율 차이에 대한 검정 및 신뢰구간 추정</a></li>
+<li class="chapter" data-level="10.5" data-path="chapter-inference.html"><a href="chapter-inference.html#두-범주형-변수의-독립성-검정"><i class="fa fa-check"></i><b>10.5</b> 두 범주형 변수의 독립성 검정</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="chapter-inference.html"><a href="chapter-inference.html#카이제곱-독립성-검정"><i class="fa fa-check"></i><b>10.5.1</b> 카이제곱 독립성 검정</a></li>
+<li class="chapter" data-level="10.5.2" data-path="chapter-inference.html"><a href="chapter-inference.html#fisher의-정확검정"><i class="fa fa-check"></i><b>10.5.2</b> Fisher의 정확검정</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="chapter-inference.html"><a href="chapter-inference.html#정규겅-검정"><i class="fa fa-check"></i><b>10.6</b> 정규겅 검정</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="chapter-inference.html"><a href="chapter-inference.html#검정에-의한-정규성-확인"><i class="fa fa-check"></i><b>10.6.1</b> 검정에 의한 정규성 확인</a></li>
+<li class="chapter" data-level="10.6.2" data-path="chapter-inference.html"><a href="chapter-inference.html#그래프에-의한-정규성-확인"><i class="fa fa-check"></i><b>10.6.2</b> 그래프에 의한 정규성 확인</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="chapter-inference.html"><a href="chapter-inference.html#단일-모집단의-분포-중심에-대한-비모수-검정"><i class="fa fa-check"></i><b>10.7</b> 단일 모집단의 분포 중심에 대한 비모수 검정</a></li>
+<li class="chapter" data-level="10.8" data-path="chapter-inference.html"><a href="chapter-inference.html#두-모집단의-분포-중심-차이에-대한-비모수-검정"><i class="fa fa-check"></i><b>10.8</b> 두 모집단의 분포 중심 차이에 대한 비모수 검정</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chapter-regression.html"><a href="chapter-regression.html"><i class="fa fa-check"></i><b>11</b> 선형회귀모형</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chapter-regression.html"><a href="chapter-regression.html#회귀모형의-적합"><i class="fa fa-check"></i><b>11.1</b> 회귀모형의 적합</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter-regression.html"><a href="chapter-regression.html#회귀모형의-추론"><i class="fa fa-check"></i><b>11.2</b> 회귀모형의 추론</a></li>
+<li class="chapter" data-level="11.3" data-path="chapter-regression.html"><a href="chapter-regression.html#변수선택"><i class="fa fa-check"></i><b>11.3</b> 변수선택</a></li>
+<li class="chapter" data-level="11.4" data-path="chapter-regression.html"><a href="chapter-regression.html#회귀진단"><i class="fa fa-check"></i><b>11.4</b> 회귀진단</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="chapter-regression.html"><a href="chapter-regression.html#회귀모형의-가정-만족-여뷰-확인"><i class="fa fa-check"></i><b>11.4.1</b> 회귀모형의 가정 만족 여뷰 확인</a></li>
+<li class="chapter" data-level="11.4.2" data-path="chapter-regression.html"><a href="chapter-regression.html#특이한-관찰값-탐지"><i class="fa fa-check"></i><b>11.4.2</b> 특이한 관찰값 탐지</a></li>
+<li class="chapter" data-level="11.4.3" data-path="chapter-regression.html"><a href="chapter-regression.html#대안-탐색"><i class="fa fa-check"></i><b>11.4.3</b> 대안 탐색</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="chapter-regression.html"><a href="chapter-regression.html#예측"><i class="fa fa-check"></i><b>11.5</b> 예측</a></li>
+<li class="chapter" data-level="11.6" data-path="chapter-regression.html"><a href="chapter-regression.html#broom의-활용"><i class="fa fa-check"></i><b>11.6</b> <code>broom</code>의 활용</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapter-logistic.html"><a href="chapter-logistic.html"><i class="fa fa-check"></i><b>12</b> 로지스틱 회귀모형</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="chapter-logistic.html"><a href="chapter-logistic.html#이항반응변수에-대한-선형회귀모형의-한계"><i class="fa fa-check"></i><b>12.1</b> 이항반응변수에 대한 선형회귀모형의 한계</a></li>
+<li class="chapter" data-level="12.2" data-path="chapter-logistic.html"><a href="chapter-logistic.html#로지스틱-회귀모형의-적합"><i class="fa fa-check"></i><b>12.2</b> 로지스틱 회귀모형의 적합</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="chapter-logistic.html"><a href="chapter-logistic.html#모형-적합"><i class="fa fa-check"></i><b>12.2.1</b> 모형 적합</a></li>
+<li class="chapter" data-level="12.2.2" data-path="chapter-logistic.html"><a href="chapter-logistic.html#확률-예측"><i class="fa fa-check"></i><b>12.2.2</b> 확률 예측</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="chapter-logistic.html"><a href="chapter-logistic.html#변수선택-1"><i class="fa fa-check"></i><b>12.3</b> 변수선택</a></li>
+<li class="chapter" data-level="12.4" data-path="chapter-logistic.html"><a href="chapter-logistic.html#회귀진단-1"><i class="fa fa-check"></i><b>12.4</b> 회귀진단</a></li>
+<li class="chapter" data-level="12.5" data-path="chapter-logistic.html"><a href="chapter-logistic.html#분류성능-평가"><i class="fa fa-check"></i><b>12.5</b> 분류성능 평가</a></li>
+<li class="chapter" data-level="12.6" data-path="chapter-logistic.html"><a href="chapter-logistic.html#희귀사건-분류"><i class="fa fa-check"></i><b>12.6</b> 희귀사건 분류</a></li>
 </ul></li>
 </ul>
 
