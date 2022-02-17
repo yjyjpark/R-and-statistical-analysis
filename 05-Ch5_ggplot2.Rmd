@@ -18,7 +18,7 @@ data(barley, package="lattice")
 barley %>%
   ggplot(mapping=aes(x=yield, y=variety, color=year, shape=year)) +
   geom_point() +
-  facet_wrap(~site)
+  facet_wrap(vars(site))
 ```
 
 자료 시각화에 특히 강점이 있는 R에는 몇 가지의 그래프 작성 시스템이 있다. 함수 `plot()` 등이 속해 있는 
