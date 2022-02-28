@@ -50,7 +50,7 @@ library(tidyverse)
 ```
 
 ```{r}
-read_table("Data/data2_1.txt")
+read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_1.txt")
 ```
 
 패키지 `readr`에 속한 함수들은 각 변수의 유형을 스스로 파악한다. 각
@@ -66,7 +66,7 @@ read_table("Data/data2_1.txt")
 다음과 같이 자료의 유형을 선언하여 자료를 불러올 수 있다.
 
 ```{r}
-read_table("Data/data2_1.txt", 
+read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_1.txt", 
            col_types = "dcd")
 ```
 
@@ -85,12 +85,12 @@ read_table("Data/data2_1.txt",
 된다.
 
 ```{r}
-read_table("Data/data2_2.txt", 
+read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_2.txt", 
            col_names = FALSE)
 ```
 
 ```{r}
-read_table("Data/data2_2.txt", 
+read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_2.txt", 
            col_names = c("age", "gender", "income"))
 ```
 
@@ -108,12 +108,12 @@ read_table("Data/data2_2.txt",
 ![data2_3.txt](Figure/data2_3.png "data2_3.txt"){#data2-3}
 
 ```{r}
-read_table("Data/data2_3.txt",
+read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_3.txt",
            comment = "#")
 ```
 
 ```{r}
-read_table("Data/data2_3.txt", 
+read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_3.txt", 
            skip = 3)
 ```
 
@@ -134,12 +134,12 @@ read_table("Data/data2_3.txt",
 ![data2_4.txt](Figure/data2_4.png "data2_4.txt"){#data2-4}
 
 ```{r}
-read_table("Data/data2_4.txt", 
+read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_4.txt", 
            na = ".")
 ```
 
 ```{r}
-read_table("Data/data2_4.txt", 
+read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_4.txt", 
            na = c(".", "NA"))
 ```
 
@@ -168,7 +168,7 @@ CSV(Comma Separated Values) 파일이란 각 자료들이 콤마로 구분된 �
 ![data3_1.txt](Figure/data3_1.png "data3_1.txt"){#data3-1}
 
 ```{r}
-read_csv("Data/data3_1.txt")
+read_csv("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_1.txt")
 ```
 
 함수 `read_csv()`로 생성된 `tibble`의 변수 이름이 backtick(\`) 기호로 감싸져 있는 것을 볼 수 있다.
@@ -188,7 +188,7 @@ read_csv("Data/data3_1.txt")
 이제 각 변수의 유형을 스스로 파악하게 해 보자.
 
 ```{r, warning=FALSE}
-read_csv("Data/data3_2.txt", 
+read_csv("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_2.txt", 
          col_names = FALSE, 
          comment = "#", 
          na = c(".", "NA"))
@@ -208,7 +208,7 @@ read_csv("Data/data3_2.txt",
 변수 유형을 사용자가 직접 지정해야 한다.
 
 ```{r, warning=FALSE}
-read_csv("Data/data3_2.txt", 
+read_csv("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_2.txt", 
          col_names = FALSE, 
          col_types = "dcd", 
          comment = "#", 
@@ -240,7 +240,7 @@ read_csv("Data/data3_2.txt",
 마지막 변수 `income`은 네 개의 열을 차지하고 있다는 것이다.
 
 ```{r}
-read_fwf("Data/data4.txt", 
+read_fwf("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data4.txt", 
          col_positions = fwf_widths(widths = c(2, 1, 4), 
                                     col_names = c("age", "gender", "income")))
 ```
@@ -250,7 +250,7 @@ read_fwf("Data/data4.txt",
 `income`은 4\~7열에 입력되어 있다는 것을 나타낸다.
 
 ```{r}
-read_fwf("Data/data4.txt", 
+read_fwf("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data4.txt", 
          col_positions = fwf_positions(start = c(1, 3, 4),
                                        end = c(2, 3, 7),
                                        col_names = c("age", "gender", "income")))
