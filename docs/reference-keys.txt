@@ -11,7 +11,7 @@ fig:install-package
 tab:char-func
 tab:math-func
 tab:stat-func
-tab:unnamed-chunk-59
+tab:unnamed-chunk-62
 tab:matrix-func
 fig:wiki
 fig:wiki2
