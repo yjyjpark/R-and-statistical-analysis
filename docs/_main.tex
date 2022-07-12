@@ -4,10 +4,6 @@
 %
 \documentclass[
 ]{book}
-\title{R과 통계분석}
-\author{박동련}
-\date{2022-02-12}
-
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{iftex}
@@ -45,46 +41,6 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -118,6 +74,10 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
+
+\title{R과 통계분석}
+\author{박동련}
+\date{2022-07-06}
 
 \begin{document}
 \maketitle
@@ -165,7 +125,7 @@ Placeholder
 \subsection{패키지의 설치 및 사용}\label{uxd328uxd0a4uxc9c0uxc758-uxc124uxce58-uxbc0f-uxc0acuxc6a9}}
 
 \hypertarget{uxd328uxd0a4uxc9c0-tidyverseuxc758-uxc18cuxac1c}{%
-\subsection{패키지 tidyverse의 소개}\label{uxd328uxd0a4uxc9c0-tidyverseuxc758-uxc18cuxac1c}}
+\subsection{\texorpdfstring{패키지 \texttt{tidyverse}의 소개}{패키지 tidyverse의 소개}}\label{uxd328uxd0a4uxc9c0-tidyverseuxc758-uxc18cuxac1c}}
 
 \hypertarget{data-structure}{%
 \chapter{R 데이터 구조}\label{data-structure}}
@@ -193,8 +153,8 @@ Placeholder
 \hypertarget{uxbca1uxd130uxc758-uxc5f0uxc0b0}{%
 \subsection{벡터의 연산}\label{uxbca1uxd130uxc758-uxc5f0uxc0b0}}
 
-\hypertarget{uxbca1uxd130uxc758-uxbe44uxad50}{%
-\subsection{벡터의 비교}\label{uxbca1uxd130uxc758-uxbe44uxad50}}
+\hypertarget{vector-compare}{%
+\subsection{벡터의 비교}\label{vector-compare}}
 
 \hypertarget{uxbca1uxd130uxc758-uxc778uxb371uxc2f1}{%
 \subsection{벡터의 인덱싱}\label{uxbca1uxd130uxc758-uxc778uxb371uxc2f1}}
@@ -247,53 +207,6 @@ Placeholder
 \hypertarget{uxc5f0uxc2b5uxbb38uxc81c}{%
 \section{연습문제}\label{uxc5f0uxc2b5uxbb38uxc81c}}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  데이터 프레임 \texttt{iris}는 세 가지 종류 붓꽃 \texttt{setosa} , \texttt{versicolor} , \texttt{virginica}의 꽃잎과 꽃받침의 길이와 폭을 측정한 자료이다. 각 종류별로 50송이를 측정하여 처음 50개 행에는 \texttt{setosa}, 51부터 100번째 행에는 \texttt{versicolor}, 마지막 50개 행에는 \texttt{viginica}의 측정값이 입력되어 있다.
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{iris}의 1\textasciitilde3 행 51\textasciitilde53 행 101\textasciitilde103 행을 다음과 같이 출력해 보자.
-\end{itemize}
-
-\includegraphics[width=5.20833in,height=\textheight]{Figure/ch2_ex_21_1.png}
-
-\begin{itemize}
-\item
-  \texttt{iris}의 변수 \texttt{Sepal.Length}, \texttt{Sepal.Width}, \texttt{Petal.Length}, \texttt{Petal.Width}에는 꽃잎과 꽃받침의 길이와 폭을 측정한 결과가 입력되어 있다. 세 가지 붓꽃 종류별로 네 변수의 평균값을 각각 계산해 보자
-\item
-  150송이 중 \texttt{Petal.Width}의 값이 1 이하이고 \texttt{Petal.Length}가 4 이하인 붓꽃이 모두 몇 송이가 있는지 알아보자. 또한 세 종류의 붓꽃별로는 각각 몇 송이가 있는지 알아보자.
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  데이터 프레임 \texttt{mtcars}는 1974년에 발행된 어떤 잡지에 소개된 32대 자동차의 연비와 관련된 자료이다.
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  숫자형 변수 \texttt{mpg}에 대한 다음의 조건으로 요인 \texttt{grade}를 생성해 보자. 단, \(\bar{x}\) 와 \(sd\) 는 변수 \texttt{mpg}의 평균 및 표준편차이다.
-\end{itemize}
-
-\includegraphics[width=3.125in,height=\textheight]{Figure/ch2_ex_21_2.PNG}
-
-\begin{itemize}
-\item
-  \texttt{mtcars}의 행 이름을 데이터 프레임에 변수 이름 \texttt{model}로 추가해 보자
-\item
-  요인 \texttt{grade}가 \texttt{Excellent}인 자동차의 변수 \texttt{model}과 \texttt{mpg}의 값을 출력해 보자.
-\item
-  요인 \texttt{grade}가 \texttt{Bad}인 자동차들의 평균 \texttt{mpg} 값을 계산해 보자.
-\end{itemize}
-
 \hypertarget{uxb370uxc774uxd130-uxc785uxb825}{%
 \chapter{데이터 입력}\label{uxb370uxc774uxd130-uxc785uxb825}}
 
@@ -319,6 +232,9 @@ Placeholder
 
 \hypertarget{html-uxd14cuxc774uxbe14-uxbd88uxb7ecuxc624uxae30}{%
 \section{HTML 테이블 불러오기}\label{html-uxd14cuxc774uxbe14-uxbd88uxb7ecuxc624uxae30}}
+
+\hypertarget{uxc5f0uxc2b5uxbb38uxc81c-1}{%
+\section{연습문제}\label{uxc5f0uxc2b5uxbb38uxc81c-1}}
 
 \hypertarget{dplyruxc5d0-uxc758uxd55c-uxb370uxc774uxd130-uxb2e4uxb4ecuxae30}{%
 \chapter{\texorpdfstring{\texttt{dplyr}에 의한 데이터 다듬기}{dplyr에 의한 데이터 다듬기}}\label{dplyruxc5d0-uxc758uxd55c-uxb370uxc774uxd130-uxb2e4uxb4ecuxae30}}
@@ -373,101 +289,220 @@ Placeholder
 \hypertarget{uxd589-uxb2e8uxc704-uxc791uxc5c5-rowwise}{%
 \section{\texorpdfstring{행 단위 작업: \texttt{rowwise()}}{행 단위 작업: rowwise()}}\label{uxd589-uxb2e8uxc704-uxc791uxc5c5-rowwise}}
 
+\hypertarget{uxc5f0uxc2b5uxbb38uxc81c-2}{%
+\section{연습문제}\label{uxc5f0uxc2b5uxbb38uxc81c-2}}
+
 \hypertarget{chapter-ggplot2}{%
 \chapter{\texorpdfstring{\texttt{ggplot2}에 의한 자료 시각화}{ggplot2에 의한 자료 시각화}}\label{chapter-ggplot2}}
 
-자료의 시각화(Visualization)란 자료의 구조를 꿰뚫어 볼 수 있는 명쾌한 그래프를 이용하는 자료 분석방법을 의미한다.
-잘 그려진 그래프는 자료의 모습을 있는 그대로 보여 주는 유일한 분석방법이며,
-다른 어떠한 분석기법에 의한 결과보다도 더 많은 정보를 전달해 줄 수 있는 방법이기도 하다.
-Figure \ref{fig:barely}은 자료 시각화의 위력을 잘 보여주는 예로서 Cleveland(1993)에 의한 놀라운 발견이다.
-1930년대 초 미네소타 주의 농경학자들이 보리 종류에 따른 수확량의 차이를 알아보기 위한 경작 실험을 실시하였다.
-6군데 경작지에 10 종류 보리를 2년간 경작하였는데, Morris 지역만이 1932년의 수확량이 1931년의 수확량
-보다 많다는 것을 알 수 있다. 6개 경작지가 모두 근처에 있다는 점을 고려해 보면 유독
-Morris 지역에서만 다른 결과가 나왔다는 것이 상당히 의심스럽다고 할 수 있으며, 데이터
-가 바뀌었을 가능성을 생각해 볼 수 있는 상황이다.
-
-\begin{verbatim}
--- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-v ggplot2 3.3.5     v purrr   0.3.4
-v tibble  3.1.6     v dplyr   1.0.7
-v tidyr   1.1.4     v stringr 1.4.0
-v readr   2.1.1     v forcats 0.5.1
--- Conflicts ------------------------------------------ tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
-\end{verbatim}
-
-\begin{figure}
-\centering
-\includegraphics{_main_files/figure-latex/barely-1.pdf}
-\caption{\label{fig:barely}보리 자료에 대한 다중 패널 점그림}
-\end{figure}
-
-자료 시각화에 특히 강점이 있는 R에는 몇 가지의 그래프 작성 시스템이 있다. 함수 \texttt{plot()} 등이 속해 있는
-\texttt{base\ graphics}도 그 중 하나인데, 이들 그래프 작성 시스템 중 가장 효과적이고 여러 면에서 우수한 시스템이 바로 \texttt{ggplot2}라고 할 수 있다.
-그래프 작성에 일관된 규칙이 있어서 복잡한 상황에서도 쉽게 확장이 가능하다는 것이 큰 장점 중 하나이다.
-
-패키지 \texttt{ggplot2}도 core tidyverse에 속해있기 때문에 \texttt{library(tidyverse)}를 먼저 실행해 주면 사용할 수 있다.
+Placeholder
 
 \hypertarget{ggplot2-uxc2dcuxc791uxd558uxae30}{%
 \section{\texorpdfstring{\texttt{ggplot2} 시작하기}{ggplot2 시작하기}}\label{ggplot2-uxc2dcuxc791uxd558uxae30}}
 
-패키지 \texttt{ggplot2}에 있는 데이터 프레임 \texttt{mpg}의 변수 \texttt{displ}과 \texttt{hwy}의 관계를 산점도로 나타내보자.
-변수 \texttt{displ}은 리터 단위의 배기량이고, \texttt{hwy}는 고속도로 연비이다.
+\hypertarget{uxc2dcuxac01uxc801-uxc694uxc18cuxc640uxc758-uxc5f0uxacb0-mapping}{%
+\section{시각적 요소와의 연결: Mapping}\label{uxc2dcuxac01uxc801-uxc694uxc18cuxc640uxc758-uxc5f0uxacb0-mapping}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\SpecialCharTok{\textgreater{}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg) }\SpecialCharTok{+}
-\SpecialCharTok{+}   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ displ, }\AttributeTok{y =}\NormalTok{ hwy))}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{uxadf8uxb8f9uxbcc4-uxadf8uxb798uxd504-uxc791uxc131-facet}{%
+\section{그룹별 그래프 작성: Facet}\label{uxadf8uxb8f9uxbcc4-uxadf8uxb798uxd504-uxc791uxc131-facet}}
 
-\begin{figure}
-\centering
-\includegraphics{_main_files/figure-latex/first-plot-1.pdf}
-\caption{\label{fig:first-plot}ggplot2의 산점도}
-\end{figure}
+\hypertarget{uxae30uxd558-uxac1duxccb4-geometric-object}{%
+\section{기하 객체: Geometric object}\label{uxae30uxd558-uxac1duxccb4-geometric-object}}
 
-패키지 \texttt{ggplot2}에서 그래프 작성은 함수 \texttt{ggplot()}으로 시작한다.
-이 함수는 우선 그래프 작성에 사용되는 데이터를 입력 요소 \texttt{data}에서 지정하는데,
-데이터는 반드시 데이터 프레임이어야 한다. 또한 이 함수는 그래프가 작성될 좌표계(coordinate system)를 작성하고,
-이어서 작성될 그래프를 기다리는 역할을 한다. 따라서 함수 \texttt{ggplot()}만으로는 실질적인
-그래프가 작성되지 않는다.
+\hypertarget{uxd1b5uxacc4uxc801-uxbcc0uxd658-statistical-transformation}{%
+\section{통계적 변환: Statistical transformation}\label{uxd1b5uxacc4uxc801-uxbcc0uxd658-statistical-transformation}}
 
-실질적인 그래프는 이어진 함수 \texttt{geom\_point()}로 작성된다. 패키지 \texttt{ggplot2}에서는 하나
-또는 여러 개의 레이어(layer)들이 겹쳐져서 그래프가 완성되는데, Figure \ref{fig:first-plot}에는 점으로
-이루어진 하나의 레이어만이 사용되었다. 레이어를 추가하는 \texttt{geom} 함수에는 \texttt{geom\_point()}
-외에도 다양한 함수들이 있으며, 앞으로 계속 소개될 것이다.
+\hypertarget{uxc704uxce58-uxc870uxc815-position-adjustments}{%
+\section{위치 조정: Position adjustments}\label{uxc704uxce58-uxc870uxc815-position-adjustments}}
 
-또한 \texttt{geom} 함수에는 입력 요소 \texttt{mapping}이 있는데, 이것은 항상 함수 \texttt{aes()}와 함께 사용된다.
-매핑(mapping)은 데이터와 그래프의 시각적 요소(aesthetic)를 서로 연결시키는 것으로,
-함수 \texttt{aes()}의 입력 요소 x와 y는 X축과 Y축에 각각의 변수를 연결시키는 역할을 하고 있다.
+\hypertarget{uxc88cuxd45cuxacc4-coordinate-system}{%
+\section{좌표계: Coordinate system}\label{uxc88cuxd45cuxacc4-coordinate-system}}
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{ggplot2}에서 그래프 작성의 최소 요소
-\end{itemize}
+\hypertarget{uxc5f0uxc2b5uxbb38uxc81c-3}{%
+\section{연습문제}\label{uxc5f0uxc2b5uxbb38uxc81c-3}}
 
-패키지 \texttt{ggplot2}에서 그래프를 작성하기 위해서는 반드시 따라야 할 법칙이 있다.
-이 법칙은 '그래프의 문법'이라고 불리는 것으로서 모든 그래프 작성에서 일정하게 적용되기 때문에
-익숙해지기만 한다면 복잡한 형태의 그래프도 쉽게 작성할 수 있게 된다.
-패키지 \texttt{ggplot2}에서 그래프를 작성하기 위한 3가지 최소 요소는 \texttt{\textless{}Data\textgreater{}}, \texttt{\textless{}Geom\_Function\textgreater{}},
-그리고 \texttt{\textless{}Mappings\textgreater{}}로써 다음과 같은 형식을 취해야 한다.
+\hypertarget{ch6}{%
+\chapter{Tidyverse를 활용한 데이터 다루기}\label{ch6}}
 
-\begin{verbatim}
-> ggplot(data = <Data>) +
-+   <Geom_FUnction>(mapping = aes(<Mappings>))
-\end{verbatim}
+Placeholder
 
-\texttt{\textless{}Data\textgreater{}}는 그래프 작성에 사용될 데이터 프레임을 지정하는 것이고,
-\texttt{\textless{}Geom\_Function\textgreater{}}은 geom 함수 중 하나를 지정하는 것으로써 레이어를 작성한다.
-여러 개의 레이어를 겹치기 위해서는 필요한 여러 개의 geom 함수를 덧셈 기호로 연결하면 된다.
-\texttt{\textless{}Mappings\textgreater{}}는 다양한 시각적 요소(크기, 모양, 색깔 등)와 데이터를 연결하는 것이다.
+\hypertarget{tidyruxb85c-tidy-uxb370uxc774uxd130-uxb9ccuxb4e4uxae30}{%
+\section{\texorpdfstring{\texttt{tidyr}로 tidy 데이터 만들기}{tidyr로 tidy 데이터 만들기}}\label{tidyruxb85c-tidy-uxb370uxc774uxd130-uxb9ccuxb4e4uxae30}}
 
-3가지의 필수 요소 외에도 다양한 그래프를 작성하기 위해서는 몇 가지 기본 요소가 더
-필요하다. 앞으로 하나하나 살펴보도록 하겠다.
+\hypertarget{uxb370uxc774uxd130-uxd53cuxbc97-pivot_longeruxc640-pivot_wider}{%
+\subsection{\texorpdfstring{데이터 피벗: \texttt{pivot\_longer()}와 \texttt{pivot\_wider()}}{데이터 피벗: pivot\_longer()와 pivot\_wider()}}\label{uxb370uxc774uxd130-uxd53cuxbc97-pivot_longeruxc640-pivot_wider}}
 
-  \bibliography{book.bib,packages.bib}
+\hypertarget{uxbb38uxc790uxd615-uxc5f4uxc758-uxacb0uxd569uxacfc-uxbd84uxb9ac-separateuxc640-unite}{%
+\subsection{\texorpdfstring{문자형 열의 결합과 분리: \texttt{separate()}와 \texttt{unite()}}{문자형 열의 결합과 분리: separate()와 unite()}}\label{uxbb38uxc790uxd615-uxc5f4uxc758-uxacb0uxd569uxacfc-uxbd84uxb9ac-separateuxc640-unite}}
+
+\hypertarget{dplyruxc5d0-uxc758uxd55c-uxb370uxc774uxd130-uxacb0uxd569}{%
+\section{\texorpdfstring{\texttt{dplyr}에 의한 데이터 결합}{dplyr에 의한 데이터 결합}}\label{dplyruxc5d0-uxc758uxd55c-uxb370uxc774uxd130-uxacb0uxd569}}
+
+\hypertarget{stringruxc5d0-uxc758uxd55c-uxbb38uxc790-uxb2e4uxb8e8uxae30}{%
+\section{\texorpdfstring{\texttt{stringr}에 의한 문자 다루기}{stringr에 의한 문자 다루기}}\label{stringruxc5d0-uxc758uxd55c-uxbb38uxc790-uxb2e4uxb8e8uxae30}}
+
+\hypertarget{stringruxc758-uxd568uxc218}{%
+\subsection{\texorpdfstring{\texttt{stringr}의 함수}{stringr의 함수}}\label{stringruxc758-uxd568uxc218}}
+
+\hypertarget{uxc815uxaddc-uxd45cuxd604uxc2dduxacfc-stringruxc758-uxd568uxc218}{%
+\subsection{\texorpdfstring{정규 표현식과 \texttt{stringr}의 함수}{정규 표현식과 stringr의 함수}}\label{uxc815uxaddc-uxd45cuxd604uxc2dduxacfc-stringruxc758-uxd568uxc218}}
+
+\hypertarget{chapter-programming}{%
+\chapter{R에서의 프로그래밍}\label{chapter-programming}}
+
+Placeholder
+
+\hypertarget{uxc0acuxc6a9uxc790-uxc815uxc758-uxd568uxc218}{%
+\section{사용자 정의 함수}\label{uxc0acuxc6a9uxc790-uxc815uxc758-uxd568uxc218}}
+
+\hypertarget{uxd568uxc218uxc758-uxc815uxc758}{%
+\subsection{함수의 정의}\label{uxd568uxc218uxc758-uxc815uxc758}}
+
+\hypertarget{uxbcc0uxc218}{%
+\subsection{변수}\label{uxbcc0uxc218}}
+
+\hypertarget{uxbcc0uxc218-uxc9c0uxc815}{%
+\subsection{변수 지정}\label{uxbcc0uxc218-uxc9c0uxc815}}
+
+\hypertarget{uxacb0uxacfcuxc758-uxcd9cuxb825}{%
+\subsection{결과의 출력}\label{uxacb0uxacfcuxc758-uxcd9cuxb825}}
+
+\hypertarget{uxc720uxd6a8-uxbc94uxc704}{%
+\subsection{유효 범위}\label{uxc720uxd6a8-uxbc94uxc704}}
+
+\hypertarget{uxc870uxac74-uxc5f0uxc0b0}{%
+\section{조건 연산}\label{uxc870uxac74-uxc5f0uxc0b0}}
+
+\hypertarget{uxd568uxc218-ifuxc5d0-uxc758uxd55c-uxc870uxac74-uxc5f0uxc0b0}{%
+\subsection{\texorpdfstring{함수 \texttt{if()}에 의한 조건 연산}{함수 if()에 의한 조건 연산}}\label{uxd568uxc218-ifuxc5d0-uxc758uxd55c-uxc870uxac74-uxc5f0uxc0b0}}
+
+\hypertarget{uxd568uxc218-ifelseuxc5d0-uxc758uxd55c-uxc870uxac74-uxc5f0uxc0b0}{%
+\subsection{\texorpdfstring{함수 \texttt{ifelse()}에 의한 조건 연산}{함수 ifelse()에 의한 조건 연산}}\label{uxd568uxc218-ifelseuxc5d0-uxc758uxd55c-uxc870uxac74-uxc5f0uxc0b0}}
+
+\hypertarget{uxd568uxc218-switchuxc5d0-uxc758uxd55c-uxc870uxac74-uxc5f0uxc0b0}{%
+\subsection{\texorpdfstring{함수 \texttt{switch()}에 의한 조건 연산}{함수 switch()에 의한 조건 연산}}\label{uxd568uxc218-switchuxc5d0-uxc758uxd55c-uxc870uxac74-uxc5f0uxc0b0}}
+
+\hypertarget{uxb8e8uxd504-uxc5f0uxc0b0}{%
+\section{루프 연산}\label{uxb8e8uxd504-uxc5f0uxc0b0}}
+
+\hypertarget{for-uxb8e8uxd504}{%
+\subsection{for 루프}\label{for-uxb8e8uxd504}}
+
+\hypertarget{while-uxb8e8uxd504}{%
+\subsection{while 루프}\label{while-uxb8e8uxd504}}
+
+\hypertarget{uxd568uxc218uxd615-uxd504uxb85cuxadf8uxb798uxbc0d}{%
+\section{함수형 프로그래밍}\label{uxd568uxc218uxd615-uxd504uxb85cuxadf8uxb798uxbc0d}}
+
+\hypertarget{uxd568uxc218uxd615-uxd504uxb85cuxadf8uxb798uxbc0duxc73cuxb85c-uxd589uxb82cuxacfc-uxb370uxc774uxd130-uxd504uxb808uxc784-uxb2e4uxb8e8uxae30}{%
+\section{함수형 프로그래밍으로 행렬과 데이터 프레임 다루기}\label{uxd568uxc218uxd615-uxd504uxb85cuxadf8uxb798uxbc0duxc73cuxb85c-uxd589uxb82cuxacfc-uxb370uxc774uxd130-uxd504uxb808uxc784-uxb2e4uxb8e8uxae30}}
+
+\hypertarget{uxd589uxb82cuxc5d0-uxd568uxc218uxd615-uxd504uxb85cuxadf8uxb798uxbc0d-uxc801uxc6a9uxd558uxae30}{%
+\subsection{행렬에 함수형 프로그래밍 적용하기}\label{uxd589uxb82cuxc5d0-uxd568uxc218uxd615-uxd504uxb85cuxadf8uxb798uxbc0d-uxc801uxc6a9uxd558uxae30}}
+
+\hypertarget{uxb370uxc774uxd130-uxd504uxb808uxc784uxc5d0-uxd568uxc218uxd615-uxd504uxb85cuxadf8uxb798uxbc0d-uxc801uxc6a9uxd558uxae30}{%
+\subsection{데이터 프레임에 함수형 프로그래밍 적용하기}\label{uxb370uxc774uxd130-uxd504uxb808uxc784uxc5d0-uxd568uxc218uxd615-uxd504uxb85cuxadf8uxb798uxbc0d-uxc801uxc6a9uxd558uxae30}}
+
+\hypertarget{purrruxc5d0-uxc758uxd55c-uxd504uxb85cuxadf8uxb798uxbc0d}{%
+\section{\texorpdfstring{\texttt{purrr}에 의한 프로그래밍}{purrr에 의한 프로그래밍}}\label{purrruxc5d0-uxc758uxd55c-uxd504uxb85cuxadf8uxb798uxbc0d}}
+
+\hypertarget{uxc5f0uxc2b5uxbb38uxc81c-4}{%
+\section{연습문제}\label{uxc5f0uxc2b5uxbb38uxc81c-4}}
+
+\hypertarget{chapter-distribution}{%
+\chapter{확률분포}\label{chapter-distribution}}
+
+Placeholder
+
+\hypertarget{ruxc5d0uxc11cuxc758-uxd655uxb960uxbd84uxd3ec-uxc774uxb984}{%
+\section{R에서의 확률분포 이름}\label{ruxc5d0uxc11cuxc758-uxd655uxb960uxbd84uxd3ec-uxc774uxb984}}
+
+\hypertarget{uxc5f0uxc18duxd615-uxd655uxb960uxbd84uxd3ec}{%
+\section{연속형 확률분포}\label{uxc5f0uxc18duxd615-uxd655uxb960uxbd84uxd3ec}}
+
+\hypertarget{uxc815uxaddcuxbd84uxd3ec}{%
+\subsection{정규분포}\label{uxc815uxaddcuxbd84uxd3ec}}
+
+\hypertarget{uxc9c0uxc218uxbd84uxd3ec}{%
+\subsection{지수분포}\label{uxc9c0uxc218uxbd84uxd3ec}}
+
+\hypertarget{uxade0uxb4f1uxbd84uxd3ec}{%
+\subsection{균등분포}\label{uxade0uxb4f1uxbd84uxd3ec}}
+
+\hypertarget{t-uxbd84uxd3ec}{%
+\subsection{t-분포}\label{t-uxbd84uxd3ec}}
+
+\hypertarget{uxc774uxc0b0uxd615-uxbd84uxd3ec}{%
+\section{이산형 분포}\label{uxc774uxc0b0uxd615-uxbd84uxd3ec}}
+
+\hypertarget{uxbca0uxb974uxb204uxc774-uxbd84uxd3ecuxc640-uxc774uxd56duxbd84uxd3ec}{%
+\subsection{베르누이 분포와 이항분포}\label{uxbca0uxb974uxb204uxc774-uxbd84uxd3ecuxc640-uxc774uxd56duxbd84uxd3ec}}
+
+\hypertarget{uxd3ecuxc544uxc1a1-uxbd84uxd3ec}{%
+\subsection{포아송 분포}\label{uxd3ecuxc544uxc1a1-uxbd84uxd3ec}}
+
+\hypertarget{uxcd08uxae30uxd558uxbd84uxd3ec}{%
+\subsection{초기하분포}\label{uxcd08uxae30uxd558uxbd84uxd3ec}}
+
+\hypertarget{uxbaa8uxc758uxc2e4uxd5d8}{%
+\section{모의실험}\label{uxbaa8uxc758uxc2e4uxd5d8}}
+
+\hypertarget{chapter-EDA}{%
+\chapter{자료 탐색}\label{chapter-EDA}}
+
+Placeholder
+
+\hypertarget{uxc77cuxbcc0uxb7c9-uxbc94uxc8fcuxd615-uxc790uxb8cc-uxd0d0uxc0c9}{%
+\section{일변량 범주형 자료 탐색}\label{uxc77cuxbcc0uxb7c9-uxbc94uxc8fcuxd615-uxc790uxb8cc-uxd0d0uxc0c9}}
+
+\hypertarget{uxb9c9uxb300uxadf8uxb798uxd504}{%
+\subsection{막대그래프}\label{uxb9c9uxb300uxadf8uxb798uxd504}}
+
+\hypertarget{uxd30cuxc774uxadf8uxb798uxd504}{%
+\subsection{파이그래프}\label{uxd30cuxc774uxadf8uxb798uxd504}}
+
+\hypertarget{clevelanduxc758-uxc810uxadf8uxb798uxd504}{%
+\subsection{Cleveland의 점그래프}\label{clevelanduxc758-uxc810uxadf8uxb798uxd504}}
+
+\hypertarget{uxc774uxbcc0uxb7c9-uxbc0f-uxb2e4uxbcc0uxb7c9-uxbc94uxc8fcuxd615-uxc790uxb8cc-uxd0d0uxc0c9}{%
+\section{이변량 및 다변량 범주형 자료 탐색}\label{uxc774uxbcc0uxb7c9-uxbc0f-uxb2e4uxbcc0uxb7c9-uxbc94uxc8fcuxd615-uxc790uxb8cc-uxd0d0uxc0c9}}
+
+\hypertarget{uxbd84uxd560uxd45c-uxc791uxc131}{%
+\subsection{분할표 작성}\label{uxbd84uxd560uxd45c-uxc791uxc131}}
+
+\hypertarget{uxc774uxbcc0uxb7c9-uxbc0f-uxb2e4uxbcc0uxb7c9-uxbc94uxc8fcuxd615-uxc790uxb8ccuxb97c-uxc704uxd55c-uxadf8uxb798uxd504}{%
+\subsection{이변량 및 다변량 범주형 자료를 위한 그래프}\label{uxc774uxbcc0uxb7c9-uxbc0f-uxb2e4uxbcc0uxb7c9-uxbc94uxc8fcuxd615-uxc790uxb8ccuxb97c-uxc704uxd55c-uxadf8uxb798uxd504}}
+
+\hypertarget{uxc77cuxbcc0uxb7c9-uxc5f0uxc18duxd615-uxc790uxb8cc-uxd0d0uxc0c9}{%
+\section{일변량 연속형 자료 탐색}\label{uxc77cuxbcc0uxb7c9-uxc5f0uxc18duxd615-uxc790uxb8cc-uxd0d0uxc0c9}}
+
+\hypertarget{uxc904uxae30-uxc78e-uxadf8uxb9bc}{%
+\subsection{줄기-잎 그림}\label{uxc904uxae30-uxc78e-uxadf8uxb9bc}}
+
+\hypertarget{uxc0c1uxc790uxadf8uxb9bc}{%
+\subsection{상자그림}\label{uxc0c1uxc790uxadf8uxb9bc}}
+
+\hypertarget{uxd788uxc2a4uxd1a0uxadf8uxb7a8}{%
+\subsection{히스토그램}\label{uxd788uxc2a4uxd1a0uxadf8uxb7a8}}
+
+\hypertarget{section-prob-density}{%
+\subsection{확률밀도함수 그래프}\label{section-prob-density}}
+
+\hypertarget{uxae30uxd0c0-uxc720uxc6a9uxd55c-uxadf8uxb798uxd504}{%
+\subsection{기타 유용한 그래프}\label{uxae30uxd0c0-uxc720uxc6a9uxd55c-uxadf8uxb798uxd504}}
+
+\hypertarget{uxc77cuxbcc0uxb7c9-uxc5f0uxc18duxd615-uxc790uxb8ccuxc758-uxc694uxc57duxd1b5uxacc4}{%
+\subsection{일변량 연속형 자료의 요약통계}\label{uxc77cuxbcc0uxb7c9-uxc5f0uxc18duxd615-uxc790uxb8ccuxc758-uxc694uxc57duxd1b5uxacc4}}
+
+\hypertarget{uxc774uxbcc0uxb7c9-uxc5f0uxc18duxd615-uxc790uxb8cc-uxd0d0uxc0c9}{%
+\section{이변량 연속형 자료 탐색}\label{uxc774uxbcc0uxb7c9-uxc5f0uxc18duxd615-uxc790uxb8cc-uxd0d0uxc0c9}}
+
+\hypertarget{uxc5f0uxc18duxd615-uxbcc0uxc218uxc758-uxbd84uxd3ecuxb97c-uxbe44uxad50uxd558uxae30-uxc704uxd55c-uxadf8uxb798uxd504}{%
+\subsection{연속형 변수의 분포를 비교하기 위한 그래프}\label{uxc5f0uxc18duxd615-uxbcc0uxc218uxc758-uxbd84uxd3ecuxb97c-uxbe44uxad50uxd558uxae30-uxc704uxd55c-uxadf8uxb798uxd504}}
+
+\hypertarget{uxc5f0uxc18duxd615-uxbcc0uxc218uxc758-uxad00uxacc4-uxd0d0uxc0c9uxc744-uxc704uxd55c-uxadf8uxb798uxd504}{%
+\subsection{연속형 변수의 관계 탐색을 위한 그래프}\label{uxc5f0uxc18duxd615-uxbcc0uxc218uxc758-uxad00uxacc4-uxd0d0uxc0c9uxc744-uxc704uxd55c-uxadf8uxb798uxd504}}
+
+  \bibliography{book.bib}
 
 \end{document}

@@ -6,14 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 확률분포 | R과 통계분석</title>
   <meta name="description" content="Chapter 8 확률분포 | R과 통계분석" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 확률분포 | R과 통계분석" />
   <meta property="og:type" content="book" />
   
   
   
-  <meta name="github-repo" content="yjyjpark/R-and-statistical-analysis" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 8 확률분포 | R과 통계분석" />
@@ -24,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-02-24" />
+<meta name="date" content="2022-07-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="chapter-programming.html"/>
 <link rel="next" href="chapter-EDA.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,10 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -122,6 +119,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 </head>
 
@@ -198,6 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="데이터-입력.html"><a href="데이터-입력.html#excel-파일-불러오기"><i class="fa fa-check"></i><b>3.2</b> Excel 파일 불러오기</a></li>
 <li class="chapter" data-level="3.3" data-path="데이터-입력.html"><a href="데이터-입력.html#sas-데이터-파일-불러오기"><i class="fa fa-check"></i><b>3.3</b> SAS 데이터 파일 불러오기</a></li>
 <li class="chapter" data-level="3.4" data-path="데이터-입력.html"><a href="데이터-입력.html#html-테이블-불러오기"><i class="fa fa-check"></i><b>3.4</b> HTML 테이블 불러오기</a></li>
+<li class="chapter" data-level="3.5" data-path="데이터-입력.html"><a href="데이터-입력.html#연습문제-1"><i class="fa fa-check"></i><b>3.5</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html"><i class="fa fa-check"></i><b>4</b> <code>dplyr</code>에 의한 데이터 다듬기</a>
 <ul>
@@ -223,6 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#다수의-열을-대상으로-하는-작업-across"><i class="fa fa-check"></i><b>4.5</b> 다수의 열을 대상으로 하는 작업: <code>across()</code></a></li>
 <li class="chapter" data-level="4.6" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#행-단위-작업-rowwise"><i class="fa fa-check"></i><b>4.6</b> 행 단위 작업: <code>rowwise()</code></a></li>
+<li class="chapter" data-level="4.7" data-path="dplyr에-의한-데이터-다듬기.html"><a href="dplyr에-의한-데이터-다듬기.html#연습문제-2"><i class="fa fa-check"></i><b>4.7</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot2</code>에 의한 자료 시각화</a>
 <ul>
@@ -233,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#통계적-변환-statistical-transformation"><i class="fa fa-check"></i><b>5.5</b> 통계적 변환: Statistical transformation</a></li>
 <li class="chapter" data-level="5.6" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#위치-조정-position-adjustments"><i class="fa fa-check"></i><b>5.6</b> 위치 조정: Position adjustments</a></li>
 <li class="chapter" data-level="5.7" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#좌표계-coordinate-system"><i class="fa fa-check"></i><b>5.7</b> 좌표계: Coordinate system</a></li>
-<li class="chapter" data-level="5.8" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#연습문제-1"><i class="fa fa-check"></i><b>5.8</b> 연습문제</a></li>
+<li class="chapter" data-level="5.8" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#연습문제-3"><i class="fa fa-check"></i><b>5.8</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Tidyverse를 활용한 데이터 다루기</a>
 <ul>
@@ -243,7 +264,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.2" data-path="ch6.html"><a href="ch6.html#문자형-열의-결합과-분리-separate와-unite"><i class="fa fa-check"></i><b>6.1.2</b> 문자형 열의 결합과 분리: <code>separate()</code>와 <code>unite()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="ch6.html"><a href="ch6.html#dplyr에-의한-데이터-결합"><i class="fa fa-check"></i><b>6.2</b> <code>dplyr</code>에 의한 데이터 결합</a></li>
-<li class="chapter" data-level="6.3" data-path="ch6.html"><a href="ch6.html#stringr에-의한-문자-다루기"><i class="fa fa-check"></i><b>6.3</b> <code>stringr</code>에 의한 문자 다루기</a></li>
+<li class="chapter" data-level="6.3" data-path="ch6.html"><a href="ch6.html#stringr에-의한-문자-다루기"><i class="fa fa-check"></i><b>6.3</b> <code>stringr</code>에 의한 문자 다루기</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6.html"><a href="ch6.html#stringr의-함수"><i class="fa fa-check"></i><b>6.3.1</b> <code>stringr</code>의 함수</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6.html"><a href="ch6.html#정규-표현식과-stringr의-함수"><i class="fa fa-check"></i><b>6.3.2</b> 정규 표현식과 <code>stringr</code>의 함수</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="chapter-programming.html"><a href="chapter-programming.html"><i class="fa fa-check"></i><b>7</b> R에서의 프로그래밍</a>
 <ul>
@@ -267,8 +292,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.2" data-path="chapter-programming.html"><a href="chapter-programming.html#while-루프"><i class="fa fa-check"></i><b>7.3.2</b> while 루프</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="chapter-programming.html"><a href="chapter-programming.html#함수형-프로그래밍"><i class="fa fa-check"></i><b>7.4</b> 함수형 프로그래밍</a></li>
-<li class="chapter" data-level="7.5" data-path="chapter-programming.html"><a href="chapter-programming.html#함수형-프로그래밍으로-행렬과-데이터-프레임-다루기"><i class="fa fa-check"></i><b>7.5</b> 함수형 프로그래밍으로 행렬과 데이터 프레임 다루기</a></li>
+<li class="chapter" data-level="7.5" data-path="chapter-programming.html"><a href="chapter-programming.html#함수형-프로그래밍으로-행렬과-데이터-프레임-다루기"><i class="fa fa-check"></i><b>7.5</b> 함수형 프로그래밍으로 행렬과 데이터 프레임 다루기</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="chapter-programming.html"><a href="chapter-programming.html#행렬에-함수형-프로그래밍-적용하기"><i class="fa fa-check"></i><b>7.5.1</b> 행렬에 함수형 프로그래밍 적용하기</a></li>
+<li class="chapter" data-level="7.5.2" data-path="chapter-programming.html"><a href="chapter-programming.html#데이터-프레임에-함수형-프로그래밍-적용하기"><i class="fa fa-check"></i><b>7.5.2</b> 데이터 프레임에 함수형 프로그래밍 적용하기</a></li>
+</ul></li>
 <li class="chapter" data-level="7.6" data-path="chapter-programming.html"><a href="chapter-programming.html#purrr에-의한-프로그래밍"><i class="fa fa-check"></i><b>7.6</b> <code>purrr</code>에 의한 프로그래밍</a></li>
+<li class="chapter" data-level="7.7" data-path="chapter-programming.html"><a href="chapter-programming.html#연습문제-4"><i class="fa fa-check"></i><b>7.7</b> 연습문제</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="chapter-distribution.html"><a href="chapter-distribution.html"><i class="fa fa-check"></i><b>8</b> 확률분포</a>
 <ul>
@@ -292,9 +322,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#일변량-범주형-자료-탐색"><i class="fa fa-check"></i><b>9.1</b> 일변량 범주형 자료 탐색</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#막대-그래프"><i class="fa fa-check"></i><b>9.1.1</b> 막대 그래프</a></li>
-<li class="chapter" data-level="9.1.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#파이-그래프"><i class="fa fa-check"></i><b>9.1.2</b> 파이 그래프</a></li>
-<li class="chapter" data-level="9.1.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#cleveland의-점-그래프"><i class="fa fa-check"></i><b>9.1.3</b> Cleveland의 점 그래프</a></li>
+<li class="chapter" data-level="9.1.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#막대그래프"><i class="fa fa-check"></i><b>9.1.1</b> 막대그래프</a></li>
+<li class="chapter" data-level="9.1.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#파이그래프"><i class="fa fa-check"></i><b>9.1.2</b> 파이그래프</a></li>
+<li class="chapter" data-level="9.1.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#cleveland의-점그래프"><i class="fa fa-check"></i><b>9.1.3</b> Cleveland의 점그래프</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#이변량-및-다변량-범주형-자료-탐색"><i class="fa fa-check"></i><b>9.2</b> 이변량 및 다변량 범주형 자료 탐색</a>
 <ul>
@@ -304,9 +334,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#일변량-연속형-자료-탐색"><i class="fa fa-check"></i><b>9.3</b> 일변량 연속형 자료 탐색</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#줄기-잎-그림"><i class="fa fa-check"></i><b>9.3.1</b> 줄기-잎 그림</a></li>
-<li class="chapter" data-level="9.3.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#상지그림"><i class="fa fa-check"></i><b>9.3.2</b> 상지그림</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#section-boxplot"><i class="fa fa-check"></i><b>9.3.2</b> 상자그림</a></li>
 <li class="chapter" data-level="9.3.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#히스토그램"><i class="fa fa-check"></i><b>9.3.3</b> 히스토그램</a></li>
-<li class="chapter" data-level="9.3.4" data-path="chapter-EDA.html"><a href="chapter-EDA.html#확률밀도함수-그래프"><i class="fa fa-check"></i><b>9.3.4</b> 확률밀도함수 그래프</a></li>
+<li class="chapter" data-level="9.3.4" data-path="chapter-EDA.html"><a href="chapter-EDA.html#section-prob-density"><i class="fa fa-check"></i><b>9.3.4</b> 확률밀도함수 그래프</a></li>
 <li class="chapter" data-level="9.3.5" data-path="chapter-EDA.html"><a href="chapter-EDA.html#기타-유용한-그래프"><i class="fa fa-check"></i><b>9.3.5</b> 기타 유용한 그래프</a></li>
 <li class="chapter" data-level="9.3.6" data-path="chapter-EDA.html"><a href="chapter-EDA.html#일변량-연속형-자료의-요약통계"><i class="fa fa-check"></i><b>9.3.6</b> 일변량 연속형 자료의 요약통계</a></li>
 </ul></li>
@@ -315,57 +345,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연속형-변수의-분포를-비교하기-위한-그래프"><i class="fa fa-check"></i><b>9.4.1</b> 연속형 변수의 분포를 비교하기 위한 그래프</a></li>
 <li class="chapter" data-level="9.4.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연속형-변수의-관계-탐색을-위한-그래프"><i class="fa fa-check"></i><b>9.4.2</b> 연속형 변수의 관계 탐색을 위한 그래프</a></li>
 </ul></li>
+<li class="chapter" data-level="9.5" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연습문제-5"><i class="fa fa-check"></i><b>9.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="chapter-inference.html"><a href="chapter-inference.html"><i class="fa fa-check"></i><b>10</b> 통계적 추론</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="chapter-inference.html"><a href="chapter-inference.html#단일-모집단의-모평균에-대한-검정-및-신뢰구간-추정"><i class="fa fa-check"></i><b>10.1</b> 단일 모집단의 모평균에 대한 검정 및 신뢰구간 추정</a></li>
-<li class="chapter" data-level="10.2" data-path="chapter-inference.html"><a href="chapter-inference.html#두-모집단의-모평균-차이에-대한-검정-및-신뢰구간-추정"><i class="fa fa-check"></i><b>10.2</b> 두 모집단의 모평균 차이에 대한 검정 및 신뢰구간 추정</a>
-<ul>
-<li class="chapter" data-level="10.2.1" data-path="chapter-inference.html"><a href="chapter-inference.html#독립된-두-표본에-대한-추론"><i class="fa fa-check"></i><b>10.2.1</b> 독립된 두 표본에 대한 추론</a></li>
-<li class="chapter" data-level="10.2.2" data-path="chapter-inference.html"><a href="chapter-inference.html#짝을-이룬-표본에-대한-추론"><i class="fa fa-check"></i><b>10.2.2</b> 짝을 이룬 표본에 대한 추론</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="chapter-inference.html"><a href="chapter-inference.html#단일-모집단의-모비율에-대한-검정-및-신뢰구간-추정"><i class="fa fa-check"></i><b>10.3</b> 단일 모집단의 모비율에 대한 검정 및 신뢰구간 추정</a></li>
-<li class="chapter" data-level="10.4" data-path="chapter-inference.html"><a href="chapter-inference.html#두-모집단의-모비율-차이에-대한-검정-및-신뢰구간-추정"><i class="fa fa-check"></i><b>10.4</b> 두 모집단의 모비율 차이에 대한 검정 및 신뢰구간 추정</a></li>
-<li class="chapter" data-level="10.5" data-path="chapter-inference.html"><a href="chapter-inference.html#두-범주형-변수의-독립성-검정"><i class="fa fa-check"></i><b>10.5</b> 두 범주형 변수의 독립성 검정</a>
-<ul>
-<li class="chapter" data-level="10.5.1" data-path="chapter-inference.html"><a href="chapter-inference.html#카이제곱-독립성-검정"><i class="fa fa-check"></i><b>10.5.1</b> 카이제곱 독립성 검정</a></li>
-<li class="chapter" data-level="10.5.2" data-path="chapter-inference.html"><a href="chapter-inference.html#fisher의-정확검정"><i class="fa fa-check"></i><b>10.5.2</b> Fisher의 정확검정</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="chapter-inference.html"><a href="chapter-inference.html#정규겅-검정"><i class="fa fa-check"></i><b>10.6</b> 정규겅 검정</a>
-<ul>
-<li class="chapter" data-level="10.6.1" data-path="chapter-inference.html"><a href="chapter-inference.html#검정에-의한-정규성-확인"><i class="fa fa-check"></i><b>10.6.1</b> 검정에 의한 정규성 확인</a></li>
-<li class="chapter" data-level="10.6.2" data-path="chapter-inference.html"><a href="chapter-inference.html#그래프에-의한-정규성-확인"><i class="fa fa-check"></i><b>10.6.2</b> 그래프에 의한 정규성 확인</a></li>
-</ul></li>
-<li class="chapter" data-level="10.7" data-path="chapter-inference.html"><a href="chapter-inference.html#단일-모집단의-분포-중심에-대한-비모수-검정"><i class="fa fa-check"></i><b>10.7</b> 단일 모집단의 분포 중심에 대한 비모수 검정</a></li>
-<li class="chapter" data-level="10.8" data-path="chapter-inference.html"><a href="chapter-inference.html#두-모집단의-분포-중심-차이에-대한-비모수-검정"><i class="fa fa-check"></i><b>10.8</b> 두 모집단의 분포 중심 차이에 대한 비모수 검정</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="chapter-regression.html"><a href="chapter-regression.html"><i class="fa fa-check"></i><b>11</b> 선형회귀모형</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="chapter-regression.html"><a href="chapter-regression.html#회귀모형의-적합"><i class="fa fa-check"></i><b>11.1</b> 회귀모형의 적합</a></li>
-<li class="chapter" data-level="11.2" data-path="chapter-regression.html"><a href="chapter-regression.html#회귀모형의-추론"><i class="fa fa-check"></i><b>11.2</b> 회귀모형의 추론</a></li>
-<li class="chapter" data-level="11.3" data-path="chapter-regression.html"><a href="chapter-regression.html#변수선택"><i class="fa fa-check"></i><b>11.3</b> 변수선택</a></li>
-<li class="chapter" data-level="11.4" data-path="chapter-regression.html"><a href="chapter-regression.html#회귀진단"><i class="fa fa-check"></i><b>11.4</b> 회귀진단</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="chapter-regression.html"><a href="chapter-regression.html#회귀모형의-가정-만족-여뷰-확인"><i class="fa fa-check"></i><b>11.4.1</b> 회귀모형의 가정 만족 여뷰 확인</a></li>
-<li class="chapter" data-level="11.4.2" data-path="chapter-regression.html"><a href="chapter-regression.html#특이한-관찰값-탐지"><i class="fa fa-check"></i><b>11.4.2</b> 특이한 관찰값 탐지</a></li>
-<li class="chapter" data-level="11.4.3" data-path="chapter-regression.html"><a href="chapter-regression.html#대안-탐색"><i class="fa fa-check"></i><b>11.4.3</b> 대안 탐색</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="chapter-regression.html"><a href="chapter-regression.html#예측"><i class="fa fa-check"></i><b>11.5</b> 예측</a></li>
-<li class="chapter" data-level="11.6" data-path="chapter-regression.html"><a href="chapter-regression.html#broom의-활용"><i class="fa fa-check"></i><b>11.6</b> <code>broom</code>의 활용</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="chapter-logistic.html"><a href="chapter-logistic.html"><i class="fa fa-check"></i><b>12</b> 로지스틱 회귀모형</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="chapter-logistic.html"><a href="chapter-logistic.html#이항반응변수에-대한-선형회귀모형의-한계"><i class="fa fa-check"></i><b>12.1</b> 이항반응변수에 대한 선형회귀모형의 한계</a></li>
-<li class="chapter" data-level="12.2" data-path="chapter-logistic.html"><a href="chapter-logistic.html#로지스틱-회귀모형의-적합"><i class="fa fa-check"></i><b>12.2</b> 로지스틱 회귀모형의 적합</a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="chapter-logistic.html"><a href="chapter-logistic.html#모형-적합"><i class="fa fa-check"></i><b>12.2.1</b> 모형 적합</a></li>
-<li class="chapter" data-level="12.2.2" data-path="chapter-logistic.html"><a href="chapter-logistic.html#확률-예측"><i class="fa fa-check"></i><b>12.2.2</b> 확률 예측</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="chapter-logistic.html"><a href="chapter-logistic.html#변수선택-1"><i class="fa fa-check"></i><b>12.3</b> 변수선택</a></li>
-<li class="chapter" data-level="12.4" data-path="chapter-logistic.html"><a href="chapter-logistic.html#회귀진단-1"><i class="fa fa-check"></i><b>12.4</b> 회귀진단</a></li>
-<li class="chapter" data-level="12.5" data-path="chapter-logistic.html"><a href="chapter-logistic.html#분류성능-평가"><i class="fa fa-check"></i><b>12.5</b> 분류성능 평가</a></li>
-<li class="chapter" data-level="12.6" data-path="chapter-logistic.html"><a href="chapter-logistic.html#희귀사건-분류"><i class="fa fa-check"></i><b>12.6</b> 희귀사건 분류</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="참고-문헌.html"><a href="참고-문헌.html"><i class="fa fa-check"></i>참고 문헌</a></li>
 </ul>
 
       </nav>
@@ -383,40 +365,870 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter-distribution" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> 확률분포</h1>
-<div id="r에서의-확률분포-이름" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> R에서의 확률분포 이름</h2>
+<div id="chapter-distribution" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 확률분포<a href="chapter-distribution.html#chapter-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>확률분포와 관련된 이론들은 통계학의 기본이라고 할 수 있다. R에는 확률과 연관된 많은 함수들이 있다. 이러한 함수들을 이용하면 다양한 확률분포들을 대상으로 특정 사건이 발생할 확률을 계산할 수도 있고, 특정 분포의 분위수를 구할 수도 있으며, 특정 모집단에서 난수를 발생시킬 수도 있다.</p>
+<div id="r에서의-확률분포-이름" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> R에서의 확률분포 이름<a href="chapter-distribution.html#r에서의-확률분포-이름" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R에는 각각의 확률분포를 지칭하는 이름이 있다. 예를 들어 정규분포는 “norm”이라는 이름으로 불리는데, 이 이름을 근간으로 하여 그 앞자리에 d, p, q, r을 하나씩 붙이는 방식으로 아래와 같이 분포와 관련된 네 종류의 함수가 정의된다.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">함수</th>
+<th align="center">기능</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>dnorm</code></td>
+<td align="center">확률밀도함수</td>
+</tr>
+<tr class="even">
+<td align="center"><code>pnorm</code></td>
+<td align="center">누적분포함수</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>qnorm</code></td>
+<td align="center">분위수함수</td>
+</tr>
+<tr class="even">
+<td align="center"><code>rnorm</code></td>
+<td align="center">난수발생함수</td>
+</tr>
+</tbody>
+</table>
+<p>일반적으로 많이 사용되는 연속형 확률분포와 이산형 확률분포의 R 이름 및 그 이름을 근간으로 정의되는 분포와 관련된 네 종류의 함수에서 중요한 역할을 하는 모수들이 아래의 두 표에 정리되어 있다.</p>
+<table>
+<caption>연속형 확률분포의 R 이름</caption>
+<colgroup>
+<col width="23%" />
+<col width="15%" />
+<col width="60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">연속형 확률분포</th>
+<th align="center">R 이름</th>
+<th align="left">관련된 모수</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">베타분포</td>
+<td align="center"><code>beta</code></td>
+<td align="left"><code>shape1</code> , <code>shape2</code> : 베터분포의 두 모수</td>
+</tr>
+<tr class="even">
+<td align="center">코쉬분포</td>
+<td align="center"><code>cauchy</code></td>
+<td align="left"><code>location</code> : 위치모수, <code>scale</code> : 척도모수</td>
+</tr>
+<tr class="odd">
+<td align="center">카이제곱분포</td>
+<td align="center"><code>chisq</code></td>
+<td align="left"><code>df</code> : 자유도</td>
+</tr>
+<tr class="even">
+<td align="center">지수분포</td>
+<td align="center"><code>exp</code></td>
+<td align="left"><code>rate</code> : 비율 (평균의 역수)</td>
+</tr>
+<tr class="odd">
+<td align="center">F-분포</td>
+<td align="center"><code>f</code></td>
+<td align="left"><code>df1</code> <code>df2</code> : 자유도</td>
+</tr>
+<tr class="even">
+<td align="center">감마분포</td>
+<td align="center"><code>gamma</code></td>
+<td align="left"><code>shape</code> : 형태모수, <code>scale</code> : 척도모수</td>
+</tr>
+<tr class="odd">
+<td align="center">로지스틱분포</td>
+<td align="center"><code>logis</code></td>
+<td align="left"><code>location</code> : 위치모수, <code>scale</code> : 척도모수</td>
+</tr>
+<tr class="even">
+<td align="center">정규분포</td>
+<td align="center"><code>norm</code></td>
+<td align="left"><code>mean</code> : 평균, <code>sd</code> : 표준편차</td>
+</tr>
+<tr class="odd">
+<td align="center">t-분포</td>
+<td align="center"><code>t</code></td>
+<td align="left"><code>df</code> : 자유도</td>
+</tr>
+<tr class="even">
+<td align="center">균등분포</td>
+<td align="center"><code>unif</code></td>
+<td align="left"><code>min</code> : 하한, <code>max</code> : 상한</td>
+</tr>
+<tr class="odd">
+<td align="center">와이블분포</td>
+<td align="center"><code>weibull</code></td>
+<td align="left"><code>shape</code> : 형태모수, <code>scale</code> : 척도모수</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>이산형 확률분포의 R 이름</caption>
+<colgroup>
+<col width="23%" />
+<col width="23%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">이산형 확률분포</th>
+<th align="center">R 이름</th>
+<th align="left">관련된 모수</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">이항분포</td>
+<td align="center"><code>binorm</code></td>
+<td align="left"><code>size</code> : 실행횟수, <code>prob</code> : 성공 확률</td>
+</tr>
+<tr class="even">
+<td align="center">기하분포</td>
+<td align="center"><code>geom</code></td>
+<td align="left"><code>prob</code> : 성공확률</td>
+</tr>
+<tr class="odd">
+<td align="center">초기하분포</td>
+<td align="center"><code>hyper</code></td>
+<td align="left"><code>m</code> : 바구니 속 흰 공 개수, <code>n</code> : 바구니 속 검은 공 개수, <code>k</code> : 바구니에서 추출된 공의 개수</td>
+</tr>
+<tr class="even">
+<td align="center">음이항분포</td>
+<td align="center"><code>nbinom</code></td>
+<td align="left"><code>size</code> : 성공 실행 횟수의 목푝값, <code>prob</code> : 성공확률</td>
+</tr>
+<tr class="odd">
+<td align="center">포아송분포</td>
+<td align="center"><code>pois</code></td>
+<td align="left"><code>lambda</code> : 평균</td>
+</tr>
+</tbody>
+</table>
+<p>위의 두 표에 정리되어 있는 분포들은 모두 R의 base 시스템에 설치되어 있는데, 이외에도 다양한 분야에서 사용되는 많은 분포들이 여러 패키지에 설치되어 있다.</p>
+<p>확률분포와 관련된 패키지의 소개는 <a href="https://cran.r-project.org/web/views/Distributions.html">CRAN Task View: Probability Distributions</a> 을 참고하기 바란다.</p>
 </div>
-<div id="연속형-확률분포" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> 연속형 확률분포</h2>
-<div id="정규분포" class="section level3" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> 정규분포</h3>
+<div id="연속형-확률분포" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> 연속형 확률분포<a href="chapter-distribution.html#연속형-확률분포" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>일반적으로 가장 빈번하게 사용되는 정규분포, 지수분포, 균등분포 그리고 t-분포와 관련된 R 함수들의 사용법을 자세하게 살펴보자.</p>
+<div id="정규분포" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> 정규분포<a href="chapter-distribution.html#정규분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>정규분포와 관련된 네 종류 함수들의 일반적인 사용법은 다음과 같다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>함수</th>
+<th>사용법</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>확률밀도함수</td>
+<td><code>dnorm(x, mean = 0, sd =1)</code></td>
+</tr>
+<tr class="even">
+<td>누적분포함수</td>
+<td><code>pnorm(q, mean = 0, sd = 1, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="odd">
+<td>분위수함수</td>
+<td><code>qnorm(p, mean = 0, sd = 1, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="even">
+<td>난수발생함수</td>
+<td><code>rnorm(n, mean = 0, sd = 1)</code></td>
+</tr>
+</tbody>
+</table>
+<p>단, <code>x</code>는 확률변수가 취하는 값, <code>q</code>는 분위수, <code>p</code>는 확률, <code>n</code>은 표본 크기를 각각 나타낸다.</p>
+<p>정규분포와 관련된 함수들에서 공통적으로 사용된 <code>mean</code>과 <code>sd</code>는 모집단의 평균과 표준편차를 나타내는 것으로 각각 0과 1을 디폴트 값으로 하고 있다. 따라서 표준정규분포를 대상으로 하는 경우에는 <code>mean</code>과 <code>sd</code>를 생략할 수 있으나, 일반적인 정규분포를 대상으로 하는 경우에는 반드시 평균과 표준편차를 따로 지정해야 한다.</p>
+<p>함수 <code>dnorm()</code>은 정규분포의 확률밀도함수 값을 계산하는 함수이다. 이 함수를 이용하여 정규분포 확률밀도함수의 그래프를 그려 보자. 예를 들어 표준정규분포의 확률밀도함수와 평균이 1, 표준편차가 0.5인 정규분포의 확률밀도함수를 -3에서 3의 구간에서 그려보자.</p>
+<p><code>ggplot2</code>에서 특정 함수의 그래프 작성은 <code>stat_function()</code>으로 할 수 있다. 이 경우 입력되는 데이터 프레임은 X축의 범위를 지정하는 두 숫자로만 구성하면 된다.</p>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="chapter-distribution.html#cb600-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb600-2"><a href="chapter-distribution.html#cb600-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb600-3"><a href="chapter-distribution.html#cb600-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm) <span class="sc">+</span></span>
+<span id="cb600-4"><a href="chapter-distribution.html#cb600-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Standard Normal Distribution&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-1-a"></span>
+<img src="_main_files/figure-html/8-1-a-1.png" alt="표준정규분포 확률밀도함수 그래프" width="576" />
+<p class="caption">
+Figure 8.1: 표준정규분포 확률밀도함수 그래프
+</p>
 </div>
-<div id="지수분포" class="section level3" number="8.2.2">
-<h3><span class="header-section-number">8.2.2</span> 지수분포</h3>
+<p>표준정규분포는 함수 <code>dnorm()</code>의 디폴트 상태이므로 추가로 입력해야 할 것이 없었으나, 평균이 1이고 표준편차가 0.5인 정규분포의 경우에는 <code>dnorm()</code>의 <code>mean</code>과 <code>sd</code> 값을 수정해야 한다. 이러한 경우에는 함수 <code>stat_function()</code>의 변수 <code>args</code>에 수정된 값을 리스트 형태로 입력해야 한다. 또한 제목에 수학 기호 등을 포함시킬 수 있는데, 수학 기호에 대한 R 표현식을 함수 <code>expression()</code>에 입력하여 함수 <code>labs()</code>의 <code>title</code>에 지정하면 된다.</p>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="chapter-distribution.html#cb601-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb601-2"><a href="chapter-distribution.html#cb601-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb601-3"><a href="chapter-distribution.html#cb601-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">expression</span>(<span class="fu">list</span>(mu<span class="sc">==</span><span class="dv">1</span>,sigma<span class="sc">==</span><span class="fl">0.5</span>)), <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-1-b"></span>
+<img src="_main_files/figure-html/8-1-b-1.png" alt="정규분포 확률밀도함수 그래프" width="576" />
+<p class="caption">
+Figure 8.2: 정규분포 확률밀도함수 그래프
+</p>
 </div>
-<div id="균등분포" class="section level3" number="8.2.3">
-<h3><span class="header-section-number">8.2.3</span> 균등분포</h3>
+<p>함수 <code>pnorm()</code>은 정규분포의 누적분포함수의 값을 계산하는 함수이다. 따라서 <span class="math inline">\(X \sim N(m, s^{2})\)</span> 경우 <span class="math inline">\(P(X \leq q)\)</span> 계산은 <code>pnorm(q, mean = m, sd = s)</code>으로 할 수 있으며, <span class="math inline">\(P(X &gt; q)\)</span> 값을 계산하고자 한다면 <code>pnorm(q, mean = m, sd = s, lower.tail = FALSE)</code>를 실행시켜야 한다.</p>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="chapter-distribution.html#cb602-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(<span class="dv">0</span>)</span>
+<span id="cb602-2"><a href="chapter-distribution.html#cb602-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.5</span></span>
+<span id="cb602-3"><a href="chapter-distribution.html#cb602-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.96</span>)</span>
+<span id="cb602-4"><a href="chapter-distribution.html#cb602-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.0249979</span></span>
+<span id="cb602-5"><a href="chapter-distribution.html#cb602-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(<span class="fl">1.96</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb602-6"><a href="chapter-distribution.html#cb602-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.0249979</span></span></code></pre></div>
+<p>연속형 확률변수 <span class="math inline">\(X\)</span> 의 누적분포함수 <span class="math inline">\(F(x)\)</span> 와 확률밀도함수 <span class="math inline">\(f(x)\)</span> 의 관계는 다음과 같다.</p>
+<p><span class="math display">\[
+F(x) = \int_{-\infty}^{x}f(t)dt
+\]</span></p>
+<p>위 관계를 함수 <code>pnorm()</code>과 <code>dnorm()</code>을 이용하여 확인해 보자. 예를 들어 <code>pnorm(1.645)</code>은 표준정규분포의 확률변수가 1.645 이하의 값을 가질 확률이며, 이 값은 함수 <code>dnorm()</code>을 음의 무한대에서 1.645까지 적분한 결과와 같아야 한다. R에서 1차원 함수의 수치적분은 함수 <code>integrate()</code>로 할 수 있으며 일반적인 사용법은 <code>integrate(FUN, lower, upper)</code>이다. 수치적분의 오차가 무시할만한 수준이며, 계산된 두 확률이 동일함을 알 수 있다.</p>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="chapter-distribution.html#cb603-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(<span class="fl">1.645</span>)</span>
+<span id="cb603-2"><a href="chapter-distribution.html#cb603-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.9500151</span></span>
+<span id="cb603-3"><a href="chapter-distribution.html#cb603-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">integrate</span>(dnorm, <span class="sc">-</span><span class="cn">Inf</span>, <span class="fl">1.645</span>)</span>
+<span id="cb603-4"><a href="chapter-distribution.html#cb603-4" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9500151</span> with absolute error <span class="sc">&lt;</span> <span class="fl">8.7e-08</span></span></code></pre></div>
+<p>표준정규분포와 평균이 1, 표준편차가 0.5인 정규분포의 누적분포함수 그래프를 작성해 보자. 함수 <code>stat_function()</code>에 <code>pnorm()</code>을 입력하는 것 외에는 정규분포의 확률밀도함수 그래프 작성과 동일함을 알 수 있다.</p>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="chapter-distribution.html#cb604-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb604-2"><a href="chapter-distribution.html#cb604-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="at">fun =</span> pnorm) <span class="sc">+</span></span>
+<span id="cb604-3"><a href="chapter-distribution.html#cb604-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Cumulative Standard Normal Distribution&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-2-a"></span>
+<img src="_main_files/figure-html/8-2-a-1.png" alt="표준정규분포 누적분포함수 그래프" width="576" />
+<p class="caption">
+Figure 8.3: 표준정규분포 누적분포함수 그래프
+</p>
 </div>
-<div id="t-분포" class="section level3" number="8.2.4">
-<h3><span class="header-section-number">8.2.4</span> t-분포</h3>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="chapter-distribution.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb605-2"><a href="chapter-distribution.html#cb605-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="at">fun =</span> pnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb605-3"><a href="chapter-distribution.html#cb605-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Cumulative Distribution of&quot;</span>,<span class="sc">~</span><span class="fu">N</span>(<span class="dv">1</span>,<span class="fl">0.5</span><span class="sc">^</span><span class="dv">2</span>))),</span>
+<span id="cb605-4"><a href="chapter-distribution.html#cb605-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-2-b"></span>
+<img src="_main_files/figure-html/8-2-b-1.png" alt="정규분포 누적분포함수 그래프" width="576" />
+<p class="caption">
+Figure 8.4: 정규분포 누적분포함수 그래프
+</p>
+</div>
+<p>분위수함수는 누적분포함수의 역함수라고 할 수 있다. 즉, <code>qnorm(p)</code>는 <span class="math inline">\(p = P(X \leq q)\)</span> 되는 <code>q</code>를 찾아 주며, <code>qnorm(p, lower.tail=FALSE)</code>는 <span class="math inline">\(p = P(X &gt; q)\)</span> 가 되는 <code>q</code>를 찾아준다.</p>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="chapter-distribution.html#cb606-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">qnorm</span>(<span class="fl">0.5</span>)                     </span>
+<span id="cb606-2"><a href="chapter-distribution.html#cb606-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span></span>
+<span id="cb606-3"><a href="chapter-distribution.html#cb606-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">qnorm</span>(<span class="fu">pnorm</span>(<span class="dv">1</span>))               </span>
+<span id="cb606-4"><a href="chapter-distribution.html#cb606-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb606-5"><a href="chapter-distribution.html#cb606-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">c</span>(<span class="fu">qnorm</span>(.<span class="dv">025</span>), <span class="fu">qnorm</span>(.<span class="dv">975</span>))    </span>
+<span id="cb606-6"><a href="chapter-distribution.html#cb606-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="sc">-</span><span class="fl">1.959964</span>  <span class="fl">1.959964</span></span></code></pre></div>
+<p>기초 통계학 수준의 서적에서 흔히 볼 수 있는 표준정규분포의 확률표는 함수 <code>pnorm()</code>과 <code>qnorm()</code>을 적절하게 사용하면 더 이상 참조할 필요가 없을 것이다.</p>
+<p>함수 <code>rnorm()</code>은 정규분포에서 난수를 발생시키는 기능을 갖고 있다. 특정 분포에서 난수를 발생시키는 작업은 계산통계분야에서 가장 중요한 기본이 되는데, 검정과 모의실험 등 여러 방면에서 매우 필요한 작업이 된다.</p>
+<p>표준정규분포 모집단에서 1000개의 자료를 추출하여 히스토그램을 작성해 보자. 작성된 히스토그램에 표준정규분포의 확률밀도함수 그래프도 덧붙여 그려보자.</p>
+<p>히스토그램을 확률밀도함수의 그래프와 덧붙여 그리기 위해서는 히스토그램 막대의 높이를 함수 <code>geom_histogram()</code>에서 계산된 변수 <code>after_stat(density)</code>로 설정해야 한다. 또한 히스토그램의 구간 설정은 구간의 폭을 지정하는 <code>binwidth</code> 또는 구간의 개수를 지정하는 <code>bins</code>으로 할 수 있으며, 디폴트는 <code>bins = 30</code>이다.</p>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="chapter-distribution.html#cb607-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb607-2"><a href="chapter-distribution.html#cb607-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>))) <span class="sc">+</span></span>
+<span id="cb607-3"><a href="chapter-distribution.html#cb607-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb607-4"><a href="chapter-distribution.html#cb607-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb607-5"><a href="chapter-distribution.html#cb607-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-3"></span>
+<img src="_main_files/figure-html/8-3-1.png" alt="표준정규분포에서 발생된 1000개 난수의 히스토그램" width="576" />
+<p class="caption">
+Figure 8.5: 표준정규분포에서 발생된 1000개 난수의 히스토그램
+</p>
 </div>
 </div>
-<div id="이산형-분포" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> 이산형 분포</h2>
-<div id="베르누이-분포와-이항분포" class="section level3" number="8.3.1">
-<h3><span class="header-section-number">8.3.1</span> 베르누이 분포와 이항분포</h3>
+<div id="지수분포" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> 지수분포<a href="chapter-distribution.html#지수분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>지수분포는 어떤 특정 사건이 일어날 때까지 걸리는 시간을 나타내는 분포로 빈번하게 사용되고 있다. 예를 들어 어떤 도로의 특정 지점에 다음 차가 지나갈 때까지 걸리는 시간, 전화가 올 때까지 걸리는 시간 등의 분포로 지수분포가 사용된다.</p>
+<p>지수분포의 확률밀도함수는 다음과 같다.</p>
+<p><span class="math display">\[
+f(x)= \lambda~ e^{-\lambda ~x}
+\]</span> 단, <span class="math inline">\(x \geq 0\)</span>, <span class="math inline">\(\lambda &gt; 0\)</span> . 평균과 분산은 각각 <span class="math inline">\(E(X) = 1/\lambda\)</span>, <span class="math inline">\(Var(X) = 1/\lambda^{2}\)</span> 이다.</p>
+<p>지수분포와 관련된 R 함수들의 일반적인 사용법은 다음과 같다. 단, 모수 <code>rate</code>는 <span class="math inline">\(\lambda\)</span> 를 의미한다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>함수</th>
+<th>사용법</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>확률밀도함수</td>
+<td><code>dexp(x, rate = 1)</code></td>
+</tr>
+<tr class="even">
+<td>누적분포함수</td>
+<td><code>pexp(q, rate = 1, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="odd">
+<td>분위수함수</td>
+<td><code>qexp(p, rate = 1, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="even">
+<td>난수발생함수</td>
+<td><code>rexp(n, rate = 1)</code></td>
+</tr>
+</tbody>
+</table>
+<p>모수 <span class="math inline">\(\lambda = 1, 2, 3\)</span> 인 지수분포의 확률밀도함수를 하나의 그래프에 나타내 보자. 함수 <code>stat_function()</code>을 세 번 사용하여, 각 <span class="math inline">\(\lambda\)</span> 값에 대한 그래프를 작성하면서 시각적 요소 <code>color</code>에 각 곡선의 라벨을 함수 <code>aes()</code> 안에서 매핑함으로써 범례가 추가되도록 하였다.</p>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="chapter-distribution.html#cb608-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb608-2"><a href="chapter-distribution.html#cb608-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;rate = 1&quot;</span>),</span>
+<span id="cb608-3"><a href="chapter-distribution.html#cb608-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                 <span class="at">fun =</span> dexp, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb608-4"><a href="chapter-distribution.html#cb608-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;rate = 2&quot;</span>),</span>
+<span id="cb608-5"><a href="chapter-distribution.html#cb608-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                 <span class="at">fun =</span> dexp, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">rate =</span> <span class="dv">2</span>), <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb608-6"><a href="chapter-distribution.html#cb608-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;rate = 3&quot;</span>),</span>
+<span id="cb608-7"><a href="chapter-distribution.html#cb608-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                 <span class="at">fun=</span> dexp, <span class="at">args=</span> <span class="fu">list</span>(<span class="at">rate =</span> <span class="dv">3</span>), <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb608-8"><a href="chapter-distribution.html#cb608-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Exponential </span><span class="sc">\n</span><span class="st"> Distribution&quot;</span>, <span class="at">color =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-4"></span>
+<img src="_main_files/figure-html/8-4-1.png" alt="지수분포 확률밀도함수 그래프" width="576" />
+<p class="caption">
+Figure 8.6: 지수분포 확률밀도함수 그래프
+</p>
 </div>
-<div id="포아송-분포" class="section level3" number="8.3.2">
-<h3><span class="header-section-number">8.3.2</span> 포아송 분포</h3>
+<p>지수분포를 이용해서 해결해야 하는 확률 문제들이 많이 있는데, 함수 <code>pexp()</code>를 이용하면 쉽게 해결할 수 있다. 예를 들어 다음의 문제를 풀어보자.</p>
+<ul>
+<li>어떤 은행의 창구대기 시간이 오후 1시쯤에는 평균 5분이 된다고 한다. 오후 1시에 은행에 도착한 사람이 대기 번호표를 뽑고 기다리는 시간이 5분 이상이 될 확률과 5분에서 10분 사이가 될 확률을 구해 보자. 대기시간의 평균이 5분이므로 함수 <code>pexp()</code>에 사용될 모수 <code>rate</code>의 값은 1/5이 되며, 문제의 답은 다음과 같다.</li>
+</ul>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="chapter-distribution.html#cb609-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pexp</span>(<span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)      <span class="co"># 5분 이상</span></span>
+<span id="cb609-2"><a href="chapter-distribution.html#cb609-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.3678794</span></span>
+<span id="cb609-3"><a href="chapter-distribution.html#cb609-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pexp</span>(<span class="dv">10</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">-</span> <span class="fu">pexp</span>(<span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)   <span class="co"># 5분에서 10분 사이</span></span>
+<span id="cb609-4"><a href="chapter-distribution.html#cb609-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.2325442</span></span></code></pre></div>
+<p>함수 <code>qexp()</code>와 <code>rexp()</code>의 사용법 및 의미 등에 대한 설명은 생략하겠다.</p>
 </div>
-<div id="초기하분포" class="section level3" number="8.3.3">
-<h3><span class="header-section-number">8.3.3</span> 초기하분포</h3>
+<div id="균등분포" class="section level3 hasAnchor" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> 균등분포<a href="chapter-distribution.html#균등분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>구간 <span class="math inline">\([\alpha, \beta]\)</span> 에서 정의된 균등분포는 그 구간에 걸쳐서 값이 균등하게 퍼져 있는 모집단을 묘사할 때 유용하게 사용되는 분포이다. 확률변수 <span class="math inline">\(X \sim Unif(\alpha, \beta)\)</span> 의 확률밀도함수는 다음과 같은 상수가 된다.</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{\beta - \alpha}, ~~\alpha \leq x \leq \beta
+\]</span></p>
+<p>균등분포와 관련된 R 함수의 일반적인 사용법은 다음과 같다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>함수</th>
+<th>사용법</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>확률밀도함수</td>
+<td><code>dunif(x, min = 0, max = 1)</code></td>
+</tr>
+<tr class="even">
+<td>누적분포함수</td>
+<td><code>punif(q, min = 0, max = 1, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="odd">
+<td>분위수함수</td>
+<td><code>qunif(p, min = 0, max = 1, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="even">
+<td>난수발생함수</td>
+<td><code>runif(n, min = 0, max = 1)</code></td>
+</tr>
+</tbody>
+</table>
+<p>균등분포의 확률밀도함수와 누적분포함수의 그래프는 앞 절에서 설명된 방법을 거의 그대로 적용시키면 쉽게 작성할 수 있을 것이며, 균등분포와 관련된 확률 문제도 앞 절에서 설명된 방법을 함수 <code>punif()</code>에 적용하면 어렵지 않게 해결할 수 있을 것이다.</p>
+<p>10,000개의 표본을 <span class="math inline">\(Unif(0, 1)\)</span> 에서 임의로 추출하고, 그 분포를 히스토그램으로 나타내 보자.</p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="chapter-distribution.html#cb610-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">134</span>)</span>
+<span id="cb610-2"><a href="chapter-distribution.html#cb610-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">10000</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb610-3"><a href="chapter-distribution.html#cb610-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
+<span id="cb610-4"><a href="chapter-distribution.html#cb610-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">500</span>) <span class="sc">+</span></span>
+<span id="cb610-5"><a href="chapter-distribution.html#cb610-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-5"></span>
+<img src="_main_files/figure-html/8-5-1.png" alt="균등분포에서 추출된 표본의 히스토그램" width="576" />
+<p class="caption">
+Figure 8.7: 균등분포에서 추출된 표본의 히스토그램
+</p>
 </div>
 </div>
-<div id="모의실험" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> 모의실험</h2>
+<div id="t-분포" class="section level3 hasAnchor" number="8.2.4">
+<h3><span class="header-section-number">8.2.4</span> t-분포<a href="chapter-distribution.html#t-분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>통계량의 표본분포로 자주 사용되는 분포는 t-분포와 F-분포, 그리고 카이제곱분포이다. 표본크기와 관련된 자유도를 모수로 갖고 있는 분포이며, 각 분포의 R 이름은 각각 <code>t</code>, <code>f</code>, <code>chisq</code>이다. 이들 중 t-분포와 관련된 R 함수들의 일반적인 사용법은 다음과 같다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>함수</th>
+<th>사용법</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>확률밀도함수</td>
+<td><code>dt(x, df)</code></td>
+</tr>
+<tr class="even">
+<td>누적분포함수</td>
+<td><code>pt(q, df, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="odd">
+<td>분위수함수</td>
+<td><code>qt(p, df, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="even">
+<td>난수발생함수</td>
+<td><code>rt(n, df)</code></td>
+</tr>
+</tbody>
+</table>
+<p>자유도를 나타내는 <code>df</code>에는 디폴트로 지정된 값이 없음을 알 수 있다. t-분포는 표준정규분포와 동일하게 0을 중심으로 좌우 대칭이지만 분포의 꼬리가 정규분포보다 두껍다는 특징이 있다. 이것을 그래프로 나타내보자.</p>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="chapter-distribution.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">7</span>, <span class="dv">7</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb611-2"><a href="chapter-distribution.html#cb611-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;N(0,1)&quot;</span>), <span class="at">fun =</span> dnorm, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb611-3"><a href="chapter-distribution.html#cb611-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;t(1)&quot;</span>), <span class="at">fun =</span> dt, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df =</span> <span class="dv">1</span>), <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb611-4"><a href="chapter-distribution.html#cb611-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;t(2)&quot;</span>), <span class="at">fun =</span> dt, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df =</span> <span class="dv">2</span>), <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb611-5"><a href="chapter-distribution.html#cb611-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Normal Distribution </span><span class="sc">\n</span><span class="st"> and t-Distribution&quot;</span>, <span class="at">color =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-6"></span>
+<img src="_main_files/figure-html/8-6-1.png" alt="정규분포와 t-분포의 확률밀도함수 그래프" width="576" />
+<p class="caption">
+Figure 8.8: 정규분포와 t-분포의 확률밀도함수 그래프
+</p>
+</div>
+</div>
+</div>
+<div id="이산형-분포" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> 이산형 분포<a href="chapter-distribution.html#이산형-분포" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>이산형 확률분포 중 빈번하게 사용되는 분포들과 관련된 R 함수들의 사용법을 살펴보자.</p>
+<div id="베르누이-분포와-이항분포" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> 베르누이 분포와 이항분포<a href="chapter-distribution.html#베르누이-분포와-이항분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>확률변수 <span class="math inline">\(X\)</span> 가 베르누이 분포를 따른다고 하면 <span class="math inline">\(X\)</span> 가 가질 수 있는 값은 0 혹은 1이 되어야 하며, 분포는 다음과 같아야 한다.</p>
+<p><span class="math display">\[
+P(X=x)=p^{x}(1-p)^{1-x},~~x=0,1
+\]</span></p>
+<p><span class="math inline">\(X=1\)</span> 이 되는 사건을 우리는 종종 ‘성공’이라고 부르고, <span class="math inline">\(X=0\)</span> 이 되는 사건을 ’실패’라고 부른다. 베르누이 시행이란 연속된 통계적 실험으로서, 실험의 결과가 ’성공’ 또는 ‘실패’ 중 하나로 나타나며 ’성공’의 확률은 고정되어 있고 각각의 실험이 서로 독립인 경우를 말한다.</p>
+<p>베르누이 시행을 R에서 실시하고자 한다면 함수 <code>sample()</code>을 이용하면 된다. 예를 들어 동전을 10번 던지는 실험에 대응되는 모의실험은 다음과 같다.</p>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="chapter-distribution.html#cb612-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">134</span>)</span>
+<span id="cb612-2"><a href="chapter-distribution.html#cb612-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;T&quot;</span>), <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb612-3"><a href="chapter-distribution.html#cb612-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;H&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;H&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;H&quot;</span></span></code></pre></div>
+<p>위의 예는 <span class="math inline">\(P(H)=P(T)=0.5\)</span> 가 되는 경우이다. 만일 ’성공’의 확률을 0.2로 하는 베르누이 시행을 실시하고자 한다면 변수 <code>prob</code>를 추가하면 된다.</p>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="chapter-distribution.html#cb613-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">134</span>)</span>
+<span id="cb613-2"><a href="chapter-distribution.html#cb613-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;T&quot;</span>), <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.8</span>))</span>
+<span id="cb613-3"><a href="chapter-distribution.html#cb613-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;H&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;T&quot;</span> <span class="st">&quot;H&quot;</span></span></code></pre></div>
+<p>확률변수 <span class="math inline">\(X\)</span> 가 <span class="math inline">\(n\)</span> 번의 베르누이 시행에서의 성공 횟수를 나타내는 것이라면 <span class="math inline">\(X\)</span> 의 분포는 이항분포가 된다. 만일 베르누이 시행의 성공확률이 <span class="math inline">\(p\)</span> 라고 하면 <span class="math inline">\(X \sim B(n, p)\)</span> 로 표시하며, 확률분포함수는 다음과 같다.</p>
+<p><span class="math display">\[
+P(X=x)= \binom{n}{k} p^{x} (1-p)^{n-x}, ~~~x=0,1,\ldots,n
+\]</span> 이항분포와 관련된 R 함수의 일반적인 사용법은 다음과 같다. 변수 <code>size</code>는 베르누이 시행 횟수를 나타내며 <code>prob</code>는 성공확률을 의미한다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>함수</th>
+<th>사용법</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>확률분포함수</td>
+<td><code>dbinom(x, size, prob)</code></td>
+</tr>
+<tr class="even">
+<td>누적분포함수</td>
+<td><code>pbinom(q, size, prob, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="odd">
+<td>분위수함수</td>
+<td><code>qbinom(p, size, prob, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="even">
+<td>난수발생함수</td>
+<td><code>rbinom(n, size, prob)</code></td>
+</tr>
+</tbody>
+</table>
+<p>함수 <code>dbinom()</code>을 사용하여 <span class="math inline">\(X \sim B(10, 0.5)\)</span> 의 확률분포함수 그래프를 작성해 보자. 입력된 자료 그대로를 사용하여 막대 그래프를 작성하도록 함수 <code>geom_col()</code>을 사용하였고, 막대 폭을 좁게 하여 이산형 확률분포함수를 표현하기 위해 옵션 <code>width = 0.3</code>을 사용하였다. X축의 눈금을 직접 입력하기 위해 함수 <code>scale_x_continuous()</code>에 <code>breaks</code>를 사용하여, 막대마다 해당되는 확률변수의 값을 눈금으로 지정하였다.</p>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="chapter-distribution.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb614-2"><a href="chapter-distribution.html#cb614-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb614-3"><a href="chapter-distribution.html#cb614-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb614-4"><a href="chapter-distribution.html#cb614-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb614-5"><a href="chapter-distribution.html#cb614-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;B(10,0.5)&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-7"></span>
+<img src="_main_files/figure-html/8-7-1.png" alt="이항분포의 확률분포함수 그래프" width="576" />
+<p class="caption">
+Figure 8.9: 이항분포의 확률분포함수 그래프
+</p>
+</div>
+<p>이항분포와 관련된 확률 문제를 함수 <code>dbinom()</code>과 <code>pbinom()</code>을 이용하여 해결해 보자. 예를 들어 <span class="math inline">\(X \sim B(10, 0.5)\)</span> 의 경우에 다음 사건에 대한 확률을 계산해 보자.</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(P(X=5)\)</span></p></li>
+<li><p><span class="math inline">\(P(X \leq 6)\)</span></p></li>
+<li><p><span class="math inline">\(P(X \geq 7)\)</span></p></li>
+</ol>
+<p>각 사건에 대한 확률을 다음과 같이 구할 수 있다.</p>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="chapter-distribution.html#cb615-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># 1)</span></span>
+<span id="cb615-2"><a href="chapter-distribution.html#cb615-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">dbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)                     </span>
+<span id="cb615-3"><a href="chapter-distribution.html#cb615-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.2460938</span></span></code></pre></div>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="chapter-distribution.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># 2)</span></span>
+<span id="cb616-2"><a href="chapter-distribution.html#cb616-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>))              </span>
+<span id="cb616-3"><a href="chapter-distribution.html#cb616-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.828125</span></span>
+<span id="cb616-4"><a href="chapter-distribution.html#cb616-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)                     </span>
+<span id="cb616-5"><a href="chapter-distribution.html#cb616-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.828125</span></span></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="chapter-distribution.html#cb617-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># 3)</span></span>
+<span id="cb617-2"><a href="chapter-distribution.html#cb617-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>))             </span>
+<span id="cb617-3"><a href="chapter-distribution.html#cb617-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.171875</span></span>
+<span id="cb617-4"><a href="chapter-distribution.html#cb617-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)                   </span>
+<span id="cb617-5"><a href="chapter-distribution.html#cb617-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.171875</span></span>
+<span id="cb617-6"><a href="chapter-distribution.html#cb617-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb617-7"><a href="chapter-distribution.html#cb617-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.171875</span></span></code></pre></div>
+<p>함수 <code>pbinom()</code>에 옵션 <code>lower.tail = FALSE</code>가 사용되면 계산되는 확률은 <span class="math inline">\(P(X&gt;k)\)</span> 이 된다. 따라서 <span class="math inline">\(P(X \geq 7)\)</span> 을 계산하고자 한다면 함수 <code>pbinom()</code>에 7이 아닌 6을 입력해야 한다.</p>
+<p>함수 <code>sample()</code>을 이용하여 R에서 베르누이 시행에 대한 모의실험을 실시하는 방법은 이미 살펴보았다. 함수 <code>rbinom()</code>을 이용해도 동일한 실험을 실시할 수 있다. 1은 성공, 0은 실패를 나타내는 것이고 <code>prob = 0.2</code>는 성공확률, 즉 <span class="math inline">\(P(x=1)=0.2\)</span> 를 의미하는 것이다.</p>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="chapter-distribution.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb618-2"><a href="chapter-distribution.html#cb618-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rbinom</span>(<span class="dv">10</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.2</span>)</span>
+<span id="cb618-3"><a href="chapter-distribution.html#cb618-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">0</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span></span></code></pre></div>
+<p><span class="math inline">\(X \sim B(n, p)\)</span> 의 경우, <span class="math inline">\(n\)</span> 이 커지게 되면 확률분포함수가 정규분포 <span class="math inline">\(N(np, np(1-p))\)</span> 로 접근해 간다. 이것을 R에서 나타내 보자. 우선 특정 사건이 발생할 확률을 이항분포에서 구한 값이 <span class="math inline">\(n\)</span> 이 커짐에 따라 정규분포에서 구한 값에 수렴해 가는 현상을 살펴보자</p>
+<p>예를 들어 확률변수 <span class="math inline">\(X\)</span> 를 주사위를 <span class="math inline">\(n\)</span> 번 던져 1의 눈이 나온 횟수라고 할 때, 다음의 확률을 이항분포와 정규분포에서 각각 계산해 보자.</p>
+<ol style="list-style-type: decimal">
+<li><p>10번 주사위를 던져 1의 눈이 1번 이하로 나올 확률</p></li>
+<li><p>100번 던져 1의 눈이 10번 이하로 나올 확률</p></li>
+</ol>
+<p>이산형 분포인 이항분포의 확률을 연속형 분포인 정규분포를 이용해서 계산하는 것이므로 함수 <code>pnorm()</code>에는 수정 계수 0.5를 포함하여 확률을 계산하였다. <span class="math inline">\(n\)</span> 이 커짐에 따라 이항분포에서 구한 확률과 정규분포에서 구한 확률의 차이가 줄어들고 있음을 알 수 있다.</p>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="chapter-distribution.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># 1)</span></span>
+<span id="cb619-2"><a href="chapter-distribution.html#cb619-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">pbinom</span>(<span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)                           </span>
+<span id="cb619-3"><a href="chapter-distribution.html#cb619-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.4845167</span></span>
+<span id="cb619-4"><a href="chapter-distribution.html#cb619-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(<span class="fl">1.5</span>, <span class="at">mean =</span> <span class="dv">10</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>), <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">10</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)<span class="sc">*</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">6</span>)))</span>
+<span id="cb619-5"><a href="chapter-distribution.html#cb619-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.4437685</span></span></code></pre></div>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="chapter-distribution.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># 2)</span></span>
+<span id="cb620-2"><a href="chapter-distribution.html#cb620-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">pbinom</span>(<span class="dv">10</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)                         </span>
+<span id="cb620-3"><a href="chapter-distribution.html#cb620-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.04269568</span></span>
+<span id="cb620-4"><a href="chapter-distribution.html#cb620-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">pnorm</span>(<span class="fl">10.5</span>, <span class="at">mean =</span> <span class="dv">100</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>), <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">100</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)<span class="sc">*</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">6</span>)))</span>
+<span id="cb620-5"><a href="chapter-distribution.html#cb620-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.04899367</span></span></code></pre></div>
+<p>이번에는 이항분포의 확률분포함수의 형태가 정규분포의 확률밀도함수의 형태로 수렴해 가는 과정을 그래프로 표현해 보자. <span class="math inline">\(X \sim B(n, p)\)</span> 에서 <span class="math inline">\(p=0.2, 0.5, 0.8\)</span> 경우에 <span class="math inline">\(n=10,100\)</span> 에 대한 확률분포함수의 그래프를 하나의 그래픽 창에 함께 나타나도록 배치해 보자.</p>
+<p><code>ggplot2</code>에서 여러 개의 그래프를 하나의 그래픽창에 배치하기 위해서는 패키지 <code>patchwork</code>를 사용하면 된다. 그래픽 객체를 먼저 생성하고, 이어서 <code>+</code>와 <code>/</code> 기호를 사용해서 적절하게 배치할 수 있다. 자세한 사용법은 <a href="https://patchwork.data-imaginist.com/index.html">patchwork</a> 에서 찾아볼 수 있다.</p>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="chapter-distribution.html#cb621-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb621-2"><a href="chapter-distribution.html#cb621-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="fl">0.8</span>)</span>
+<span id="cb621-3"><a href="chapter-distribution.html#cb621-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p_b <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&quot;list&quot;</span>, <span class="at">length =</span> <span class="fu">length</span>(n)<span class="sc">*</span><span class="fu">length</span>(p))</span>
+<span id="cb621-4"><a href="chapter-distribution.html#cb621-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> k <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb621-5"><a href="chapter-distribution.html#cb621-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(n)){</span>
+<span id="cb621-6"><a href="chapter-distribution.html#cb621-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">for</span>(j <span class="cf">in</span> <span class="fu">seq_along</span>(p)){</span>
+<span id="cb621-7"><a href="chapter-distribution.html#cb621-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     p_b[[k]] <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span>n[i], <span class="at">y =</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> n[i], <span class="at">prob =</span> p[j])) <span class="sc">%&gt;%</span> </span>
+<span id="cb621-8"><a href="chapter-distribution.html#cb621-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb621-9"><a href="chapter-distribution.html#cb621-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb621-10"><a href="chapter-distribution.html#cb621-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>       <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;X ~ B(&quot;</span>, n[i], <span class="st">&quot;, &quot;</span>, p[j], <span class="st">&quot;)&quot;</span>), <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span>
+<span id="cb621-11"><a href="chapter-distribution.html#cb621-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     k <span class="ot">&lt;-</span> k<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb621-12"><a href="chapter-distribution.html#cb621-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb621-13"><a href="chapter-distribution.html#cb621-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb621-14"><a href="chapter-distribution.html#cb621-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb621-15"><a href="chapter-distribution.html#cb621-15" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(patchwork)</span>
+<span id="cb621-16"><a href="chapter-distribution.html#cb621-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (p_b[[<span class="dv">1</span>]] <span class="sc">+</span> p_b[[<span class="dv">2</span>]] <span class="sc">+</span> p_b[[<span class="dv">3</span>]])<span class="sc">/</span>(p_b[[<span class="dv">4</span>]] <span class="sc">+</span> p_b[[<span class="dv">5</span>]] <span class="sc">+</span> p_b[[<span class="dv">6</span>]])</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-8"></span>
+<img src="_main_files/figure-html/8-8-1.png" alt="n의 크기에 따른 이항분포 밀도함수 그래프의 변화" width="864" />
+<p class="caption">
+Figure 8.10: n의 크기에 따른 이항분포 밀도함수 그래프의 변화
+</p>
+</div>
+<p><span class="math inline">\(n\)</span> 이 커짐에 따라 이항분포의 확률분포함수의 형태가 정규분포의 확률밀도함수의 형태와 비슷해짐을 알 수 있다.</p>
+</div>
+<div id="포아송-분포" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> 포아송 분포<a href="chapter-distribution.html#포아송-분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>연속형 확률분포인 지수분포는 어떤 특정 사건의 발생 간격에 대한 분포이다. 이에 반하여 포아송 분포는 정해진 기간 내에 어떤 특정 사건이 발생한 횟수에 대한 분포이다. 예를 들어 하루 동안 잘못 걸려온 전화통화 수, 1시간 동안 은행을 방문한 고객의 수, 어느 도로에서 하루 동안 발생한 교통사고 건수, 책 한 페이지당 오타 수 등등이 포아송 분포로 설명될 수 있는 예가 된다.</p>
+<p>포아송 분포의 확률분포함수는 다음과 같다.</p>
+<p><span class="math display">\[
+P(X=x)=e^{- \lambda} \frac{\lambda^{x}}{x!}~, ~~~x=0,1,\ldots
+\]</span></p>
+<p>포아송 분포와 관련된 R 함수의 일반적인 사용법은 다음과 같다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>함수</th>
+<th>사용법</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>획률분포함수</td>
+<td><code>dpois(x, lambda)</code></td>
+</tr>
+<tr class="even">
+<td>누적분포함수</td>
+<td><code>ppois(q, lambda, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="odd">
+<td>분위수함수</td>
+<td><code>qpois(p, lambda, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="even">
+<td>난수발생함수</td>
+<td><code>rpois(n, lambda)</code></td>
+</tr>
+</tbody>
+</table>
+<p>함수 <code>dpois()</code>를 사용하여 <span class="math inline">\(\lambda=3\)</span> 인 포아송 분포의 확률분포함수 그래프를 작성해 보자.</p>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="chapter-distribution.html#cb622-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">y =</span> <span class="fu">dpois</span>(x, <span class="at">lambda =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb622-2"><a href="chapter-distribution.html#cb622-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb622-3"><a href="chapter-distribution.html#cb622-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb622-4"><a href="chapter-distribution.html#cb622-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb622-5"><a href="chapter-distribution.html#cb622-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Poisson&quot;</span>,<span class="st">&quot;(&quot;</span>,lambda<span class="sc">==</span><span class="dv">3</span>,<span class="st">&quot;)&quot;</span>)),</span>
+<span id="cb622-6"><a href="chapter-distribution.html#cb622-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">x =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-9"></span>
+<img src="_main_files/figure-html/8-9-1.png" alt="포아송분포의 확률분포함수 그래프" width="576" />
+<p class="caption">
+Figure 8.11: 포아송분포의 확률분포함수 그래프
+</p>
+</div>
+<p>포아송 분포와 관련된 확률 문제를 R 함수를 이용하여 풀어보자.
+예를 들어 어떤 책의 한 페이지당 오타의 개수가 <span class="math inline">\(\lambda = 1/2\)</span> 인 포아송 분포를 한다고 했을 때 특정 페이지에서 적어도 한 개의 오타가 나올 확률을 구해 보자.
+구하는 확률은 <span class="math inline">\(P(X \geq 1)\)</span> 이 되는데, 이것은 <span class="math inline">\(1-P(X=0)\)</span> 과 같기 때문에, 두 가지 방법으로 계산해 보자.</p>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="chapter-distribution.html#cb623-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">dpois</span>(<span class="dv">0</span>, <span class="at">lambda =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb623-2"><a href="chapter-distribution.html#cb623-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.3934693</span></span></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="chapter-distribution.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ppois</span>(<span class="dv">0</span>, <span class="at">lambda =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb624-2"><a href="chapter-distribution.html#cb624-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.3934693</span></span></code></pre></div>
+<p>포아송 분포가 많이 사용되는 이유 중 하나는 <span class="math inline">\(n\)</span> 이 크고 <span class="math inline">\(p\)</span> 가 작은 경우의 이항분포와 매우 비슷한 분포형태가 된다는 것이다.
+이 경우 포아송 분포의 모수는 <span class="math inline">\(\lambda = np\)</span> 가 된다.
+이 현상을 R을 이용하여 살펴보도록 하자.
+확률변수 X의 분포가 <span class="math inline">\(X \sim B(n, p)\)</span> 일 때 <span class="math inline">\(P(X=2)\)</span> 의 값을 <span class="math inline">\(n=10,~p=0.1\)</span> 인 경우와 <span class="math inline">\(n=100,~p=0.01\)</span> 인 경우에 이항분포와 포아송 분포를 이용하여 각각 구해 보자.</p>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="chapter-distribution.html#cb625-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb625-2"><a href="chapter-distribution.html#cb625-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb625-3"><a href="chapter-distribution.html#cb625-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dbinom</span>(<span class="dv">2</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
+<span id="cb625-4"><a href="chapter-distribution.html#cb625-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.1937102</span></span>
+<span id="cb625-5"><a href="chapter-distribution.html#cb625-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dpois</span>(<span class="dv">2</span>, <span class="at">lambda =</span> n<span class="sc">*</span>p)</span>
+<span id="cb625-6"><a href="chapter-distribution.html#cb625-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.1839397</span></span></code></pre></div>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="chapter-distribution.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb626-2"><a href="chapter-distribution.html#cb626-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
+<span id="cb626-3"><a href="chapter-distribution.html#cb626-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dbinom</span>(<span class="dv">2</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
+<span id="cb626-4"><a href="chapter-distribution.html#cb626-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.1848648</span></span>
+<span id="cb626-5"><a href="chapter-distribution.html#cb626-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dpois</span>(<span class="dv">2</span>, <span class="at">lambda =</span> n<span class="sc">*</span>p)</span>
+<span id="cb626-6"><a href="chapter-distribution.html#cb626-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.1839397</span></span></code></pre></div>
+<p>포아송 분포의 모수 <span class="math inline">\(\lambda\)</span> 값은 두 경우 모두 1이 되는데,
+<span class="math inline">\(n=100\)</span> 인 두 번째 경우에 포아송분포에서 구한 확률이 이항분포에서 구한 확률에 훨씬 더 근접한 값이 됨을 알 수 있다.</p>
+</div>
+<div id="초기하분포" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> 초기하분포<a href="chapter-distribution.html#초기하분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>어떤 바구니에 <span class="math inline">\(m\)</span> 개의 흰 공과 <span class="math inline">\(n\)</span> 개의 검은 공이 들어있다고 하자.
+이 바구니에서 <span class="math inline">\(k\)</span> 개의 공을 비복원추출 방식으로 임의로 추출했을 때 선택된 흰 공의 개수를 <span class="math inline">\(X\)</span> 라고 하면, 확률변수 <span class="math inline">\(X\)</span> 는 초기하분포를 따르게 된다.</p>
+<p>초기하분포의 확률밀도함수는 다음과 같다.</p>
+<p><span class="math display">\[
+P(X=x)=\frac{\binom{m}{x} \binom{n}{k-x}}{\binom{m+n}{k}}~,~~~x=0,1,2,\ldots,k
+\]</span></p>
+<p>초기하분포와 관련된 R 함수의 일반적인 사용법은 다음과 같다.</p>
+<table>
+<thead>
+<tr class="header">
+<th>함수</th>
+<th>사용법</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>획률분포함수</td>
+<td><code>dhyper(x, m, n, k)</code></td>
+</tr>
+<tr class="even">
+<td>누적분포함수</td>
+<td><code>phyper(q, m, n, k, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="odd">
+<td>분위수함수</td>
+<td><code>qhyper(p, m, n, k, lower.tail = TRUE)</code></td>
+</tr>
+<tr class="even">
+<td>난수발생함수</td>
+<td><code>rhyper(n, m, n, k)</code></td>
+</tr>
+</tbody>
+</table>
+<p>초기하분포와 이항분포는 모집단을 구성하고 있는 개체가 두 가지 특성만을 지니고 있다는 점에서 공통점을 갖고 있으나,
+표본추출방식에서 초기하분포는 비복원추출에, 이항분포는 복원추출에 각각 해당된다는 점에서 차이가 있다.</p>
+<p>그러나 <span class="math inline">\(m\)</span> 과 <span class="math inline">\(n\)</span> 의 값이 <span class="math inline">\(k\)</span> 에 비하여 큰 값인 경우에는 복원과 비복원의 차이가 무시될 수 있는 수준이 되어 두 분포 사이에는 큰 차이가 없게 된다.
+이 사실을 R을 이용하여 확인해 보자.
+모집단의 구성이 <span class="math inline">\(m=5\)</span>, <span class="math inline">\(n=10\)</span> 의 경우와 <span class="math inline">\(n=1000\)</span>, <span class="math inline">\(m=2000\)</span> 의 경우에 <span class="math inline">\(k=5\)</span> 의 크기로 표본을 추출했을 때
+<span class="math inline">\(P(X=1)\)</span> 의 값을 초기하분포와 이항분포에 각각 구해 보자.
+이항분포에서는 두 경우 모두 <span class="math inline">\(p=m/(m+n)=1/3\)</span> 이 된다.</p>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="chapter-distribution.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> m <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb627-2"><a href="chapter-distribution.html#cb627-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb627-3"><a href="chapter-distribution.html#cb627-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> k <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb627-4"><a href="chapter-distribution.html#cb627-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="ot">&lt;-</span> m<span class="sc">/</span>(n<span class="sc">+</span>m)</span>
+<span id="cb627-5"><a href="chapter-distribution.html#cb627-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dbinom</span>(<span class="dv">1</span>, <span class="at">size =</span> k, <span class="at">prob =</span> p)</span>
+<span id="cb627-6"><a href="chapter-distribution.html#cb627-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.3292181</span></span>
+<span id="cb627-7"><a href="chapter-distribution.html#cb627-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="at">m =</span> m, <span class="at">n =</span> n, <span class="at">k =</span> k)</span>
+<span id="cb627-8"><a href="chapter-distribution.html#cb627-8" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.3496503</span></span></code></pre></div>
+<p><span class="math inline">\(n=1000\)</span>, <span class="math inline">\(m=2000\)</span> 의 경우 두 분포에서 각각 구한 확률이 거의 동일함을 알 수 있다.</p>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="chapter-distribution.html#cb628-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> m <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb628-2"><a href="chapter-distribution.html#cb628-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb628-3"><a href="chapter-distribution.html#cb628-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> k <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb628-4"><a href="chapter-distribution.html#cb628-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="ot">&lt;-</span> m<span class="sc">/</span>(n<span class="sc">+</span>m)</span>
+<span id="cb628-5"><a href="chapter-distribution.html#cb628-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dbinom</span>(<span class="dv">1</span>, <span class="at">size =</span> k, <span class="at">prob =</span> p)</span>
+<span id="cb628-6"><a href="chapter-distribution.html#cb628-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.3292181</span></span>
+<span id="cb628-7"><a href="chapter-distribution.html#cb628-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dhyper</span>(<span class="dv">1</span>,<span class="at">m =</span> m, <span class="at">n =</span> n, <span class="at">k =</span> k)</span>
+<span id="cb628-8"><a href="chapter-distribution.html#cb628-8" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.3293278</span></span></code></pre></div>
+<p>초기하분포는 여러 분야에서 응용되는 분포로서 모집단의 개체 수를 추정할 때도 사용할 수 있는 분포이다.
+예를 들어 어떤 호수에 살고 있는 물고기의 개체 수를 추정한다고하자.
+이러한 경우 다음의 절차에 따라 물고기의 개체 수를 추정할 수 있다.</p>
+<ol style="list-style-type: decimal">
+<li><p>호수에서 <span class="math inline">\(m\)</span> 마리의 물고기를 잡아 꼬리표를 부착시키고 풀어준다.
+그러면 호수에는꼬리표가 부착된 <span class="math inline">\(m\)</span> 마리의 물고기와 꼬리표가 없는 <span class="math inline">\(n\)</span> 마리의 물고기가 있게 되어 물고기의 개체 수는 모두 <span class="math inline">\((m+n)\)</span> 마리가 된다.</p></li>
+<li><p>다시 <span class="math inline">\(k\)</span> 마리의 물고기를 잡아서 그 중 꼬리표가 있는 물고기의 마리 수를 <span class="math inline">\(x\)</span> 라고 둔다.
+이때 가정해야 하는 사항은 호수 전체에 꼬리표가 부착된 물고기의 비율인 <span class="math inline">\(m/(m+n)\)</span>이 잡힌 <span class="math inline">\(k\)</span> 마리의 물고기에서도 그대로 유지된다는 것이다.</p></li>
+</ol>
+<p>위 실험에서 두 번째 잡힌 <span class="math inline">\(k\)</span> 마리의 물고기 중 꼬리표가 있는 물고기의 마리 수를 확률변수 <span class="math inline">\(X\)</span> 라고 두면 <span class="math inline">\(X\)</span> 는 초기하분포를 따르게 되는데, 위 실험결과 확률변수 <span class="math inline">\(X\)</span> 의 값은 <span class="math inline">\(x\)</span> 가 됐다.
+이제 <span class="math inline">\(P(X=x)\)</span> 의 값을 계산해 보면, <span class="math inline">\(n\)</span> 이 미지수로 남아있기 때문에 확률 값은 <span class="math inline">\(n\)</span> 의 함수가 됨을 알 수 있으며, <span class="math inline">\(P(X=x)\)</span> 를 최대화시키는 <span class="math inline">\(n\)</span> 의 값을 꼬리표가 없는 물고기 개체 수로 추정하는 것이 현실적인 방안이라고 할 수 있다</p>
+<p>이제 <span class="math inline">\(m=50\)</span>, <span class="math inline">\(k=40\)</span>, <span class="math inline">\(x=3\)</span> 의 경우에 <span class="math inline">\(n\)</span> 의 값을 추정하여 물고기의 총 개체 수를 추정해 보자.
+추정절차는 여러 개의 <span class="math inline">\(n\)</span> 값을 입력하여 확률을 계산하고 그 중 확률이 최대가 되는 <span class="math inline">\(n\)</span> 값을 선택하는 방식으로 이루어졌다.
+확률이 최대가 되는 <span class="math inline">\(n\)</span> 값을 찾는 데 사용된 함수 <span class="math inline">\(which.max()\)</span>는 주어진 숫자형 벡터 최댓값의 인덱스, 즉 최댓값의 위치를 찾는 기능을 갖고 있다.</p>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="chapter-distribution.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> m <span class="ot">&lt;-</span> <span class="dv">50</span> </span>
+<span id="cb629-2"><a href="chapter-distribution.html#cb629-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> k <span class="ot">&lt;-</span> <span class="dv">40</span></span>
+<span id="cb629-3"><a href="chapter-distribution.html#cb629-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb629-4"><a href="chapter-distribution.html#cb629-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">200</span><span class="sc">:</span><span class="dv">700</span></span>
+<span id="cb629-5"><a href="chapter-distribution.html#cb629-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p.n <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="at">length =</span> <span class="fu">length</span>(n))</span>
+<span id="cb629-6"><a href="chapter-distribution.html#cb629-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(n)){</span>
+<span id="cb629-7"><a href="chapter-distribution.html#cb629-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   p.n[i] <span class="ot">&lt;-</span> <span class="fu">dhyper</span>(x, <span class="at">m =</span> m, <span class="at">n =</span> n[i], <span class="at">k =</span> k)</span>
+<span id="cb629-8"><a href="chapter-distribution.html#cb629-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb629-9"><a href="chapter-distribution.html#cb629-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> max.n <span class="ot">&lt;-</span> n[<span class="fu">which.max</span>(p.n)]</span>
+<span id="cb629-10"><a href="chapter-distribution.html#cb629-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tibble</span>(n, p.n) <span class="sc">%&gt;%</span> </span>
+<span id="cb629-11"><a href="chapter-distribution.html#cb629-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> p.n)) <span class="sc">+</span></span>
+<span id="cb629-12"><a href="chapter-distribution.html#cb629-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb629-13"><a href="chapter-distribution.html#cb629-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> max.n, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb629-14"><a href="chapter-distribution.html#cb629-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;Total number of fish is estimated by &quot;</span>, m <span class="sc">+</span> max.n,</span>
+<span id="cb629-15"><a href="chapter-distribution.html#cb629-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                    <span class="st">&quot;</span><span class="sc">\n</span><span class="st">(&quot;</span>, m, <span class="st">&quot; tagged and &quot;</span>, max.n, <span class="st">&quot; untagged)&quot;</span>),</span>
+<span id="cb629-16"><a href="chapter-distribution.html#cb629-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="at">x =</span> <span class="st">&quot;untagged fish&quot;</span>, <span class="at">y =</span> <span class="st">&quot;probability&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-10"></span>
+<img src="_main_files/figure-html/8-10-1.png" alt="물고기 개체 수 추정 결과" width="576" />
+<p class="caption">
+Figure 8.12: 물고기 개체 수 추정 결과
+</p>
+</div>
+<p>여러 개의 <span class="math inline">\(n\)</span> 값에 대해 계산된 확률값은 <code>geom_line()</code>으로 그렸으며,
+최댓값의 위치를 나타내는 수직선은 <code>geom_vline()</code>으로 작성했다.
+또한 개체 수 추정 결과가 그래프의 제목에 바로 나타나도록 추정 결과가 할당된 객체를 함수 <code>labs()</code>의 변수 <code>title</code>에 연결하였다.</p>
+</div>
+</div>
+<div id="모의실험" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> 모의실험<a href="chapter-distribution.html#모의실험" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R에는 매우 효과적인 난수발생함수가 있어서, 다양한 분포에서 손쉽게 난수를 발생시킬 수 있다.
+특정 분포에서 난수를 발생시킬 수 있다는 것은 곧 그 특정 분포를 모집단분포로 가정하는 상황에서 표본을 반복해서 추출할 수 있다는 것을 의미하는 것이며,
+따라서 어떤 특정 통계적 실험을 반복해서 실행할 수 있다는 것을 의미한다.</p>
+<p>이 절에서는 R에 장착된 다양한 분포의 난수발생함수를 이용하여 몇 가지 모의실험 예제를 다뤄보고자 한다.
+R에서 다루고 있지 않은 분포에서의 난수발생 기법 등을 포함한 모의실험 전체에 대한 체계적인 소개는 <span class="citation">Jones and Robinson (2009)</span> 를 참조하기 바란다.</p>
+<p><strong><span class="math inline">\(\bullet\)</span> 모의실험 예제 1 : 상대도수 개념에 의한 확률</strong></p>
+<p>특정 사건 A가 발생할 확률을 상대도수의 개념으로 다음과 같이 정의할 수 있다.</p>
+<p><span class="math display">\[
+P(A)=\lim_{n \rightarrow \infty} \frac{n(A)}{n}
+\]</span></p>
+<p>단, <span class="math inline">\(n\)</span> 은 실험의 시행횟수, <span class="math inline">\(n(A)\)</span> 는 <span class="math inline">\(n\)</span> 번의 실험에서 사건 <span class="math inline">\(A\)</span> 가 발생한 횟수를 각각 의미한다.
+이제 상대도수의 개념을 이용하여 주사위를 던져 1의 눈이 나올 확률이 1/6임을 나타내보자.
+구체적인 방법은 주사위를 던지는 모의실험을 20,000번 실시하여, 시행마다 1이 눈이 나온 상대도수를 계산하고, 그 변화를 그래프로 나타내는 것이다.</p>
+<p>많은 경우 모의실험은 for 루프를 사용하게 되는데, 나름의 장점을 가지고 있는 방법이다.
+그러나 경우에 따라서는 for 루프를 사용하지 않고 모의실험을 실시하는 것이 더 효율적일 수 있으므로, 두 방법을 각각 사용하여 모의실험을 실시해 보자.</p>
+<p>우선 for 루프를 사용하여 상대도수를 계산해 보자.
+주사위를 한 번 던지는 실험은 <code>sample(1:6, 1)</code>로 실시할 수 있고, 그 값이 1과 같게 되면 <code>num</code>의 값을 하나씩 증가시키며, 실행마다 상대도수를 계산하여 객체 <code>prob</code>에 할당하는 방법이다.</p>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="chapter-distribution.html#cb630-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb630-2"><a href="chapter-distribution.html#cb630-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> rep <span class="ot">&lt;-</span> <span class="dv">20000</span></span>
+<span id="cb630-3"><a href="chapter-distribution.html#cb630-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> num <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb630-4"><a href="chapter-distribution.html#cb630-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prob <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, rep)</span>
+<span id="cb630-5"><a href="chapter-distribution.html#cb630-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(prob)){</span>
+<span id="cb630-6"><a href="chapter-distribution.html#cb630-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb630-7"><a href="chapter-distribution.html#cb630-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="cf">if</span>(x <span class="sc">==</span> <span class="dv">1</span>) num <span class="ot">&lt;-</span> num <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb630-8"><a href="chapter-distribution.html#cb630-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   prob[i] <span class="ot">&lt;-</span> num<span class="sc">/</span>i</span>
+<span id="cb630-9"><a href="chapter-distribution.html#cb630-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>For 루프를 사용하지 않는다면 20,000개의 난수를 한 번에 모두 발생시켜 벡터에 할당하고,
+이어서 함수 <code>cumsum()</code>을 사용하여 상대도수를 계산하면 된다.
+이 경우에는 더 효율적인 방식으로 보인다.</p>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="chapter-distribution.html#cb631-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb631-2"><a href="chapter-distribution.html#cb631-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> rep <span class="ot">&lt;-</span> <span class="dv">20000</span></span>
+<span id="cb631-3"><a href="chapter-distribution.html#cb631-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, rep, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb631-4"><a href="chapter-distribution.html#cb631-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> prob <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(x <span class="sc">==</span> <span class="dv">1</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">:</span>rep)</span></code></pre></div>
+<p>이어서 계산된 상대도수를 그래프로 나타내 보자.
+객체 <code>prob</code>에 저장된 상대도수 값은 함수 <code>geom_line()</code>으로 나타냈고, 확률 1/6을 표시
+하는 수평선은 함수 <code>geom_hline()</code>으로 추가하였다.
+1의 눈이 나온 상대도수가 1/6로 수렴하는 것을 확인할 수 있다.</p>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="chapter-distribution.html#cb632-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span>rep, <span class="at">y =</span> prob) <span class="sc">%&gt;%</span> </span>
+<span id="cb632-2"><a href="chapter-distribution.html#cb632-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb632-3"><a href="chapter-distribution.html#cb632-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb632-4"><a href="chapter-distribution.html#cb632-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb632-5"><a href="chapter-distribution.html#cb632-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relative frequency and Probability&quot;</span>,</span>
+<span id="cb632-6"><a href="chapter-distribution.html#cb632-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="at">x =</span> <span class="st">&quot;Number of Trials&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-11"></span>
+<img src="_main_files/figure-html/8-11-1.png" alt="상대도수와 확률" width="576" />
+<p class="caption">
+Figure 8.13: 상대도수와 확률
+</p>
+</div>
+<p><strong><span class="math inline">\(\bullet\)</span> 모의실험 예제 2 : 표본분포</strong></p>
+<p><span class="math inline">\(X_{1}, \ldots, X_{n}\)</span> 을 <span class="math inline">\(N(\mu, \sigma^{2})\)</span> 에서의 확률포본이라고 하자.
+그러면 확률변수 <span class="math inline">\(T=\frac{\bar{X}-\mu}{S/\sqrt{n}}\)</span> 의 분포는 <span class="math inline">\(t(n-1)\)</span> 을 따르게 된다는 정리를 모의실험을 통하여 확인해 보자.</p>
+<p>구체적인 모의실험 절차는 다음과 같다.</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(X_{1}, \ldots, X_{n}\)</span> 을 <span class="math inline">\(N(\mu, \sigma^{2})\)</span> 에서 추출한다.</p></li>
+<li><p>추출된 표본에서 <span class="math inline">\(T=\frac{\bar{X}-\mu}{S/\sqrt{n}}\)</span> 의 값을 계산한다.</p></li>
+<li><p>위 두 단계를 <span class="math inline">\(N\)</span> 번 반복하여 구한 <span class="math inline">\(T\)</span> 값의 분포를 <span class="math inline">\(t(n-1)\)</span> 과 비교한다.</p></li>
+</ol>
+<p>표준정규분포를 대상으로 표본크기를 <span class="math inline">\(n=5\)</span> 로 하고 반복 횟수를 <span class="math inline">\(N=10000\)</span> 번으로 하여 <span class="math inline">\(T\)</span> 통계량 값을 계산하고, 그 결과를 히스토그램으로 작성한 후 <span class="math inline">\(t(4)\)</span> 의 확률밀도함수 그래프를 겹쳐서 그려보자.</p>
+<p>먼저 for 루프를 사용하여 모의실험을 실시해 보자.</p>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="chapter-distribution.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">124</span>)</span>
+<span id="cb633-2"><a href="chapter-distribution.html#cb633-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb633-3"><a href="chapter-distribution.html#cb633-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb633-4"><a href="chapter-distribution.html#cb633-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Tsample <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="at">length =</span> N)</span>
+<span id="cb633-5"><a href="chapter-distribution.html#cb633-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(Tsample)) {</span>
+<span id="cb633-6"><a href="chapter-distribution.html#cb633-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   Xsample <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb633-7"><a href="chapter-distribution.html#cb633-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   Tsample[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Xsample)<span class="sc">/</span>(<span class="fu">sd</span>(Xsample)<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb633-8"><a href="chapter-distribution.html#cb633-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>For 루프를 사용하지 않는다면 정규분포에서 필요한 난수를 한 번에 모두 발생시키고,
+그 결과를 행렬에 할당해야 한다.
+이어서 난수 행렬을 대상으로 필요한 통계량을 함수 <code>apply()</code>로 계산하면 된다.</p>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="chapter-distribution.html#cb634-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">124</span>)</span>
+<span id="cb634-2"><a href="chapter-distribution.html#cb634-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb634-3"><a href="chapter-distribution.html#cb634-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> N <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb634-4"><a href="chapter-distribution.html#cb634-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> xsample <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n<span class="sc">*</span>N)</span>
+<span id="cb634-5"><a href="chapter-distribution.html#cb634-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dim</span>(xsample) <span class="ot">&lt;-</span> <span class="fu">c</span>(n,N)</span>
+<span id="cb634-6"><a href="chapter-distribution.html#cb634-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> m.x <span class="ot">&lt;-</span> <span class="fu">apply</span>(xsample, <span class="dv">2</span>, mean)</span>
+<span id="cb634-7"><a href="chapter-distribution.html#cb634-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> sd.x <span class="ot">&lt;-</span> <span class="fu">apply</span>(xsample, <span class="dv">2</span>, sd)</span>
+<span id="cb634-8"><a href="chapter-distribution.html#cb634-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Tsample <span class="ot">&lt;-</span> m.x<span class="sc">/</span>(sd.x<span class="sc">/</span><span class="fu">sqrt</span>(n))</span></code></pre></div>
+<p>이어서 객체 <code>Tsample</code>의 값에 대한 히스토그램으로 작성하고, <span class="math inline">\(t(4)\)</span> 의 확률밀도함수를 겹쳐서 나타내 보자.</p>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="chapter-distribution.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tibble</span>(<span class="at">x =</span> Tsample) <span class="sc">%&gt;%</span> </span>
+<span id="cb635-2"><a href="chapter-distribution.html#cb635-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb635-3"><a href="chapter-distribution.html#cb635-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">100</span>) <span class="sc">+</span> </span>
+<span id="cb635-4"><a href="chapter-distribution.html#cb635-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_function</span>(<span class="at">fun =</span> dt, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb635-5"><a href="chapter-distribution.html#cb635-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">title =</span> <span class="st">&quot;Sampling Distribution of sample mean&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-12"></span>
+<img src="_main_files/figure-html/8-12-1.png" alt="표본평균의 표본분포 그래프" width="576" />
+<p class="caption">
+Figure 8.14: 표본평균의 표본분포 그래프
+</p>
+</div>
+<p><strong><span class="math inline">\(\bullet\)</span> 모의실험 예제 3 : 신뢰구간에서 신뢰계수의 의미</strong></p>
+<p><span class="math inline">\(N(\mu, \sigma^{2})\)</span> 의 분포에서 모평균 <span class="math inline">\(\mu\)</span> 에 대한 95% 신뢰구간은 다음과 같다.</p>
+<p><span class="math display">\[
+P(\bar{X}-1.96 \frac{S}{\sqrt{n}}\leq\mu\leq \bar{X}+1.96\frac{S}{\sqrt{n}})=0.95
+\]</span></p>
+<p>여기에서 신뢰계수 0.95의 의미는 <span class="math inline">\(n\)</span> 개의 확률표본을 추출하여 신뢰구간을 구하는 작업을 <span class="math inline">\(N\)</span> 번 반복하여 얻은 <span class="math inline">\(N\)</span> 개의 신뢰구간 중 95%에는 미지의 모수 <span class="math inline">\(\mu\)</span> 가 포함되어 있지만,
+나머지 5%의 신뢰구간에는 모수 <span class="math inline">\(\mu\)</span> 가 포함되어 있지 않다는 것이다.</p>
+<p>이것을 <span class="math inline">\(n=20\)</span> 과 <span class="math inline">\(N=100\)</span> 의 경우에 대한 모의실험을 통해 나타내 보자.
+먼저 100개의 신뢰구간을 계산하고, 각 신뢰구간에 모평균 포함 여부를 확인해야 한다.</p>
+<p>먼저 for 루프에 의한 방법이다.</p>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="chapter-distribution.html#cb636-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb636-2"><a href="chapter-distribution.html#cb636-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">20</span>; N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb636-3"><a href="chapter-distribution.html#cb636-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mu <span class="ot">&lt;-</span> <span class="dv">10</span>; sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb636-4"><a href="chapter-distribution.html#cb636-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb636-5"><a href="chapter-distribution.html#cb636-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> upper <span class="ot">&lt;-</span> lower <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="at">length =</span> N)</span>
+<span id="cb636-6"><a href="chapter-distribution.html#cb636-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> ok <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;logical&quot;</span>, <span class="at">length =</span> N)</span>
+<span id="cb636-7"><a href="chapter-distribution.html#cb636-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(upper)) {</span>
+<span id="cb636-8"><a href="chapter-distribution.html#cb636-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb636-9"><a href="chapter-distribution.html#cb636-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   upper[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb636-10"><a href="chapter-distribution.html#cb636-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   lower[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb636-11"><a href="chapter-distribution.html#cb636-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   ok[i] <span class="ot">&lt;-</span> mu <span class="sc">&lt;=</span> upper[i] <span class="sc">&amp;</span> mu <span class="sc">&gt;=</span> lower[i]</span>
+<span id="cb636-12"><a href="chapter-distribution.html#cb636-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
+<p>for 루프를 사용하지 않는 방법이다.</p>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="chapter-distribution.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb637-2"><a href="chapter-distribution.html#cb637-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="dv">20</span>; N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb637-3"><a href="chapter-distribution.html#cb637-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mu <span class="ot">&lt;-</span> <span class="dv">10</span>; sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb637-4"><a href="chapter-distribution.html#cb637-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb637-5"><a href="chapter-distribution.html#cb637-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> n<span class="sc">*</span>N, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb637-6"><a href="chapter-distribution.html#cb637-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(n, N)</span>
+<span id="cb637-7"><a href="chapter-distribution.html#cb637-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x_bar <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">2</span>, mean)</span>
+<span id="cb637-8"><a href="chapter-distribution.html#cb637-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x_sd <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">2</span>, sd)</span>
+<span id="cb637-9"><a href="chapter-distribution.html#cb637-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> lower <span class="ot">&lt;-</span> x_bar <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span>x_sd<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb637-10"><a href="chapter-distribution.html#cb637-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> upper <span class="ot">&lt;-</span>x_bar <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span>x_sd<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb637-11"><a href="chapter-distribution.html#cb637-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> ok <span class="ot">&lt;-</span> mu <span class="sc">&gt;=</span> lower <span class="sc">&amp;</span> mu <span class="sc">&lt;=</span> upper</span></code></pre></div>
+<p>계산된 신뢰구간을 선분으로 표시하기 위해서는 함수 <code>geom_segment()</code>를 사용해야 한다.
+이 함수의 필수 매핑 대상으로는 선분의 시작점을 나타내는 시각적 요소 <code>x</code>, <code>y</code>와 끝점을 나타내는 <code>xend</code>, <code>yend</code>가 있다.
+신뢰구간 선분을 수직으로 표시할 것이라면, Y축에는 신뢰구간의 상한과 하한을 표시하고 X축은 신뢰구간의 일련번호를 표시해야 할 것이다.
+따라서 <code>y</code>에는 객체 <code>lower</code>를 연결하고, <code>yend</code>에는 객체 <code>upper</code>를 연결하며, <code>x</code>와 <code>xend</code> 모두에는
+<code>1:N</code>을 동일하게 연결한다.
+또한 모평균의 포함 여부를 색으로 표시하기 위해 객체 <code>ok</code>를 <code>color</code>에 매핑하는 것도 필요하다.</p>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="chapter-distribution.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tibble</span>(lower, upper, ok) <span class="sc">%&gt;%</span> </span>
+<span id="cb638-2"><a href="chapter-distribution.html#cb638-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb638-3"><a href="chapter-distribution.html#cb638-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">y =</span> lower, <span class="at">yend =</span> upper, <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span>N, <span class="at">xend =</span> <span class="dv">1</span><span class="sc">:</span>N, <span class="at">color =</span> ok),</span>
+<span id="cb638-4"><a href="chapter-distribution.html#cb638-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb638-5"><a href="chapter-distribution.html#cb638-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;모평균이 포함된 신뢰구간 비율:&quot;</span>, <span class="fu">mean</span>(ok)),</span>
+<span id="cb638-6"><a href="chapter-distribution.html#cb638-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>        <span class="at">color =</span> <span class="st">&quot;모평균 포함&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb638-7"><a href="chapter-distribution.html#cb638-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">20</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:8-13"></span>
+<img src="_main_files/figure-html/8-13-1.png" alt="신뢰계수의 의미" width="864" />
+<p class="caption">
+Figure 8.15: 신뢰계수의 의미
+</p>
+</div>
+
 </div>
 </div>
             </section>
