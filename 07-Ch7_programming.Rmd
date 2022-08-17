@@ -177,7 +177,7 @@ my_plot <- function(x, y, ...){
 ```
 
 예제로 함수 `my_plot()`을 사용하여 데이터 프레임 `cars`의 두 변수 `speed`와 `dist`를 표준화 시킨 후 산점도를 작성해 보자. 기호는 빨간 원으로 하자. 
-작성된 그래프는 Figure \@ref(fig:7-1) 에서 볼 수 있다.
+작성된 그래프는 그림 \@ref(fig:7-1) 에서 볼 수 있다.
 
 ```{r 7-1, fig.cap='생략부호를 활용한 그래프'}
 library(tidyverse)

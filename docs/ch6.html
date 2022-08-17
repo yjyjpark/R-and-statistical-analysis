@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Tidyverse를 활용한 데이터 다루기 | R과 통계분석</title>
-  <meta name="description" content="Chapter 6 Tidyverse를 활용한 데이터 다루기 | R과 통계분석" />
+  <title>6 장 Tidyverse를 활용한 데이터 다루기 | R과 통계분석</title>
+  <meta name="description" content="6 장 Tidyverse를 활용한 데이터 다루기 | R과 통계분석" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Tidyverse를 활용한 데이터 다루기 | R과 통계분석" />
+  <meta property="og:title" content="6 장 Tidyverse를 활용한 데이터 다루기 | R과 통계분석" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Tidyverse를 활용한 데이터 다루기 | R과 통계분석" />
+  <meta name="twitter:title" content="6 장 Tidyverse를 활용한 데이터 다루기 | R과 통계분석" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -366,7 +366,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="ch6" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Tidyverse를 활용한 데이터 다루기<a href="ch6.html#ch6" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">6 장</span> Tidyverse를 활용한 데이터 다루기<a href="ch6.html#ch6" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>R의 모습은 tidyverse 이전과 이후로 완전히 구분된다고 할 수 있다. 데이터 다루기와 그래프 성능이 비교할 수 없을 만큼 향상되었고, 복잡한 분석 과정이 대폭 단순화되어 매우 효율적인 분석이 가능해졌다. 이러한 발전으로 인하여 Data science를 위한 최적의 프로그램으로 자리매김을 확고하게 했다고 할 수 있다. 이 장에서는 core tidyverse에 속한 패키지 중 자료의 형태를 통계분석이 가능하도록 다듬는 작업에 사용되는 <code>tidyr</code>, 문자 다루기에 유용한 <code>stringr</code>, 그리고 자료 결합에 유용한 <code>dplyr</code>에 속한 몇몇 함수들의 사용법을 살펴보겠다.</p>
 <div id="tidyr로-tidy-데이터-만들기" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> <code>tidyr</code>로 tidy 데이터 만들기<a href="ch6.html#tidyr로-tidy-데이터-만들기" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -449,20 +449,21 @@ div.csl-indent {
 <div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="ch6.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> billboard <span class="sc">%&gt;%</span> </span>
 <span id="cb417-2"><a href="ch6.html#cb417-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">5</span>)</span>
 <span id="cb417-3"><a href="ch6.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 317 × 79</span></span>
-<span id="cb417-4"><a href="ch6.html#cb417-4" aria-hidden="true" tabindex="-1"></a>  artist      track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8</span>
-<span id="cb417-5"><a href="ch6.html#cb417-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>       <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>date<span class="sc">&gt;</span>       <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb417-6"><a href="ch6.html#cb417-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">2</span> Pac       Baby… <span class="dv">2000-02-26</span>      <span class="dv">87</span>    <span class="dv">82</span>    <span class="dv">72</span>    <span class="dv">77</span>    <span class="dv">87</span>    <span class="dv">94</span>    <span class="dv">99</span>    <span class="cn">NA</span></span>
-<span id="cb417-7"><a href="ch6.html#cb417-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> 2Ge<span class="sc">+</span>her     The … <span class="dv">2000-09-02</span>      <span class="dv">91</span>    <span class="dv">87</span>    <span class="dv">92</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span></span>
-<span id="cb417-8"><a href="ch6.html#cb417-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="dv">3</span> Doors Do… Kryp… <span class="dv">2000-04-08</span>      <span class="dv">81</span>    <span class="dv">70</span>    <span class="dv">68</span>    <span class="dv">67</span>    <span class="dv">66</span>    <span class="dv">57</span>    <span class="dv">54</span>    <span class="dv">53</span></span>
-<span id="cb417-9"><a href="ch6.html#cb417-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="dv">3</span> Doors Do… Loser <span class="dv">2000-10-21</span>      <span class="dv">76</span>    <span class="dv">76</span>    <span class="dv">72</span>    <span class="dv">69</span>    <span class="dv">67</span>    <span class="dv">65</span>    <span class="dv">55</span>    <span class="dv">59</span></span>
-<span id="cb417-10"><a href="ch6.html#cb417-10" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="dv">504</span> Boyz    Wobb… <span class="dv">2000-04-15</span>      <span class="dv">57</span>    <span class="dv">34</span>    <span class="dv">25</span>    <span class="dv">17</span>    <span class="dv">17</span>    <span class="dv">31</span>    <span class="dv">36</span>    <span class="dv">49</span></span>
-<span id="cb417-11"><a href="ch6.html#cb417-11" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 312 more rows, and 68 more variables: wk9 &lt;dbl&gt;, wk10 &lt;dbl&gt;,</span></span>
-<span id="cb417-12"><a href="ch6.html#cb417-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;, wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;,</span></span>
-<span id="cb417-13"><a href="ch6.html#cb417-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;, wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;,</span></span>
-<span id="cb417-14"><a href="ch6.html#cb417-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk23 &lt;dbl&gt;, wk24 &lt;dbl&gt;, wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;,</span></span>
-<span id="cb417-15"><a href="ch6.html#cb417-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;, wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;,</span></span>
-<span id="cb417-16"><a href="ch6.html#cb417-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;, wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;,</span></span>
-<span id="cb417-17"><a href="ch6.html#cb417-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;, wk43 &lt;dbl&gt;, wk44 &lt;dbl&gt;, wk45 &lt;dbl&gt;, wk46 &lt;dbl&gt;, …</span></span></code></pre></div>
+<span id="cb417-4"><a href="ch6.html#cb417-4" aria-hidden="true" tabindex="-1"></a>  artist  track date.ent…¹   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9</span>
+<span id="cb417-5"><a href="ch6.html#cb417-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>   <span class="er">&lt;</span>chr<span class="sc">&gt;</span> <span class="er">&lt;</span>date<span class="sc">&gt;</span>     <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb417-6"><a href="ch6.html#cb417-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="dv">2</span> Pac   Baby… <span class="dv">2000-02-26</span>    <span class="dv">87</span>    <span class="dv">82</span>    <span class="dv">72</span>    <span class="dv">77</span>    <span class="dv">87</span>    <span class="dv">94</span>    <span class="dv">99</span>    <span class="cn">NA</span>    <span class="cn">NA</span></span>
+<span id="cb417-7"><a href="ch6.html#cb417-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> 2Ge<span class="sc">+</span>her The … <span class="dv">2000-09-02</span>    <span class="dv">91</span>    <span class="dv">87</span>    <span class="dv">92</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span></span>
+<span id="cb417-8"><a href="ch6.html#cb417-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="dv">3</span> Door… Kryp… <span class="dv">2000-04-08</span>    <span class="dv">81</span>    <span class="dv">70</span>    <span class="dv">68</span>    <span class="dv">67</span>    <span class="dv">66</span>    <span class="dv">57</span>    <span class="dv">54</span>    <span class="dv">53</span>    <span class="dv">51</span></span>
+<span id="cb417-9"><a href="ch6.html#cb417-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="dv">3</span> Door… Loser <span class="dv">2000-10-21</span>    <span class="dv">76</span>    <span class="dv">76</span>    <span class="dv">72</span>    <span class="dv">69</span>    <span class="dv">67</span>    <span class="dv">65</span>    <span class="dv">55</span>    <span class="dv">59</span>    <span class="dv">62</span></span>
+<span id="cb417-10"><a href="ch6.html#cb417-10" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="dv">504</span> Bo… Wobb… <span class="dv">2000-04-15</span>    <span class="dv">57</span>    <span class="dv">34</span>    <span class="dv">25</span>    <span class="dv">17</span>    <span class="dv">17</span>    <span class="dv">31</span>    <span class="dv">36</span>    <span class="dv">49</span>    <span class="dv">53</span></span>
+<span id="cb417-11"><a href="ch6.html#cb417-11" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 312 more rows, 67 more variables: wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;,</span></span>
+<span id="cb417-12"><a href="ch6.html#cb417-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;,</span></span>
+<span id="cb417-13"><a href="ch6.html#cb417-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;, wk24 &lt;dbl&gt;,</span></span>
+<span id="cb417-14"><a href="ch6.html#cb417-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;, wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;,</span></span>
+<span id="cb417-15"><a href="ch6.html#cb417-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;,</span></span>
+<span id="cb417-16"><a href="ch6.html#cb417-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;,</span></span>
+<span id="cb417-17"><a href="ch6.html#cb417-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   wk43 &lt;dbl&gt;, wk44 &lt;dbl&gt;, wk45 &lt;dbl&gt;, wk46 &lt;dbl&gt;, wk47 &lt;dbl&gt;, wk48 &lt;dbl&gt;, …</span></span>
+<span id="cb417-18"><a href="ch6.html#cb417-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span></code></pre></div>
 <p>이런 구조의 데이터는 매우 흔하게 볼 수 있는 것이며, tidy 데이터 구조로 오해하기도 한다. 그러나 변수 <code>wk1</code>부터 <code>wk76</code>은 모두 노래의 ’순위’이기 때문에 하나의 열에 입력이 되어야 적절한 통계분석이 가능하게 된다.<br />
 따라서 열 <code>wk1</code>부터 <code>wk76</code>까지에 입력된 자료는 <code>rank</code>라는 이름의 열로 모으고, 열의 이름은 <code>week</code>라는 이름의 열에 입력해 보자. 이 변환 작업은 <code>cols</code>에 <code>wk1:wk76</code> 또는 <code>starts_with("wk")</code>를, <code>names_to</code>에 <code>"week"</code>를, 그리고 <code>values_to</code>에 <code>"rank"</code>를 각각 지정하면 된다.</p>
 <div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="ch6.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> billboard <span class="sc">%&gt;%</span> </span>
@@ -480,7 +481,8 @@ div.csl-indent {
 <span id="cb418-13"><a href="ch6.html#cb418-13" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="dv">2</span> Pac  Baby Don<span class="st">&#39;t Cry (Keep... 2000-02-26   wk3      72</span></span>
 <span id="cb418-14"><a href="ch6.html#cb418-14" aria-hidden="true" tabindex="-1"></a><span class="st">4 2 Pac  Baby Don&#39;</span>t <span class="fu">Cry</span> (Keep... <span class="dv">2000-02-26</span>   wk4      <span class="dv">77</span></span>
 <span id="cb418-15"><a href="ch6.html#cb418-15" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="dv">2</span> Pac  Baby Don<span class="st">&#39;t Cry (Keep... 2000-02-26   wk5      87</span></span>
-<span id="cb418-16"><a href="ch6.html#cb418-16" aria-hidden="true" tabindex="-1"></a><span class="st"># … with 24,087 more rows</span></span></code></pre></div>
+<span id="cb418-16"><a href="ch6.html#cb418-16" aria-hidden="true" tabindex="-1"></a><span class="st"># … with 24,087 more rows</span></span>
+<span id="cb418-17"><a href="ch6.html#cb418-17" aria-hidden="true" tabindex="-1"></a><span class="st"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>변수 <code>week</code>에는 문자형 자료가 입력되어 있는데, 정수형으로 전환되면 더 효과적인 분석이 가능할 것이다. 정수형으로 전환하기 위해서는 문자열 “wk”를 제거하고, 변수의 유형을 정수형으로 바꾸면 된다. 이 작업은 함수 <code>mutate()</code>와 <code>gsub()</code>, <code>as.integer()</code>를 이용해도 가능하지만, 함수 <code>pivot_longer()</code>에서 <code>names_prefix</code>와 <code>names_transform</code>를 사용해도 전환할 수 있다. <code>names_prefix</code>에는 <code>names_to</code>에 입력된 열 이름에서 제거하려는 문자열을 정규표현식으로 지정하면 되는데, 첫 문자부터 제거하는 경우에만 적용이 된다. 이 경우에는 그냥 <code>"wk"</code>를 지정하면 된다. <code>names_transform</code>은 열의 유형을 변경할 때 사용하는 것으로 <code>열이름 = 유형 변환 함수</code>가 입력된 리스트를 지정하면 된다.</p>
 <div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="ch6.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> top_100 <span class="ot">&lt;-</span> billboard <span class="sc">%&gt;%</span> </span>
 <span id="cb419-2"><a href="ch6.html#cb419-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">pivot_longer</span>(</span>
@@ -501,7 +503,8 @@ div.csl-indent {
 <span id="cb419-17"><a href="ch6.html#cb419-17" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="dv">2</span> Pac  Baby Don<span class="st">&#39;t Cry (Keep... 2000-02-26       3    72</span></span>
 <span id="cb419-18"><a href="ch6.html#cb419-18" aria-hidden="true" tabindex="-1"></a><span class="st">4 2 Pac  Baby Don&#39;</span>t <span class="fu">Cry</span> (Keep... <span class="dv">2000-02-26</span>       <span class="dv">4</span>    <span class="dv">77</span></span>
 <span id="cb419-19"><a href="ch6.html#cb419-19" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="dv">2</span> Pac  Baby Don<span class="st">&#39;t Cry (Keep... 2000-02-26       5    87</span></span>
-<span id="cb419-20"><a href="ch6.html#cb419-20" aria-hidden="true" tabindex="-1"></a><span class="st"># … with 5,302 more rows</span></span></code></pre></div>
+<span id="cb419-20"><a href="ch6.html#cb419-20" aria-hidden="true" tabindex="-1"></a><span class="st"># … with 5,302 more rows</span></span>
+<span id="cb419-21"><a href="ch6.html#cb419-21" aria-hidden="true" tabindex="-1"></a><span class="st"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>옵션 <code>values_drop_na</code>에 <code>TRUE</code>를 지정하면 <code>values_to</code>로 지정된 열에 <code>NA</code>가 입력되는 행은 자동으로 제거된다. 자료의 특성으로 <code>NA</code>가 많을 수밖에 없는 경우에는 필요한 옵션이 된다.</p>
 <p>이제 데이터 프레임 <code>top_100</code>을 대상으로 원하는 분석을 할 수 있게 되었다. 매주 연속해서 top 100에 올라있던 노래만을 대상으로 리스트에 머물러 있던 최장 기간과 그 기간 중 최고 순위는 다음과 같이 알아볼 수 있다.</p>
 <div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="ch6.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> top_100 <span class="sc">%&gt;%</span> </span>
@@ -519,7 +522,8 @@ div.csl-indent {
 <span id="cb420-13"><a href="ch6.html#cb420-13" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> Creed            With Arms Wide Open     <span class="dv">47</span>        <span class="dv">1</span></span>
 <span id="cb420-14"><a href="ch6.html#cb420-14" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> Joe              I Wanna Know            <span class="dv">44</span>        <span class="dv">4</span></span>
 <span id="cb420-15"><a href="ch6.html#cb420-15" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> Vertical Horizon Everything You Want     <span class="dv">41</span>        <span class="dv">1</span></span>
-<span id="cb420-16"><a href="ch6.html#cb420-16" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 297 more rows</span></span></code></pre></div>
+<span id="cb420-16"><a href="ch6.html#cb420-16" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 297 more rows</span></span>
+<span id="cb420-17"><a href="ch6.html#cb420-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p><strong>2. 함수 <code>pivot_wider()</code></strong></p>
 <p>패키지 <code>tidyr</code>에 있는 데이터 프레임 <code>table2</code>를 살펴보자.</p>
 <div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="ch6.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> table2</span>
@@ -587,7 +591,8 @@ div.csl-indent {
 <span id="cb425-8"><a href="ch6.html#cb425-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="dv">4842</span>  Lisbon      <span class="dv">1</span></span>
 <span id="cb425-9"><a href="ch6.html#cb425-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="dv">4842</span>  Rstr        <span class="dv">1</span></span>
 <span id="cb425-10"><a href="ch6.html#cb425-10" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="dv">4842</span>  Base_TD     <span class="dv">1</span></span>
-<span id="cb425-11"><a href="ch6.html#cb425-11" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 109 more rows</span></span></code></pre></div>
+<span id="cb425-11"><a href="ch6.html#cb425-11" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 109 more rows</span></span>
+<span id="cb425-12"><a href="ch6.html#cb425-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>물고기의 움직임이 관측되지 않은 지점에 대한 자료도 중요한 정보를 담고 있다고 할 수 있는데, 지금의 구조에서는 그 정보를 얻을 수 없게 되어 있다. 물고기마다 모든 지점에서의 움직임 관측 여부를 표현하기 위해서는 변수 <code>station</code>에 입력된 각 지점이 변수로 전환되어야 한다.</p>
 <div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="ch6.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> fish_encounters <span class="sc">%&gt;%</span> </span>
 <span id="cb426-2"><a href="ch6.html#cb426-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, </span>
@@ -602,7 +607,8 @@ div.csl-indent {
 <span id="cb426-11"><a href="ch6.html#cb426-11" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="dv">4844</span>        <span class="dv">1</span>     <span class="dv">1</span>      <span class="dv">1</span>     <span class="dv">1</span>       <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span></span>
 <span id="cb426-12"><a href="ch6.html#cb426-12" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="dv">4845</span>        <span class="dv">1</span>     <span class="dv">1</span>      <span class="dv">1</span>     <span class="dv">1</span>       <span class="dv">1</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span></span>
 <span id="cb426-13"><a href="ch6.html#cb426-13" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="dv">4847</span>        <span class="dv">1</span>     <span class="dv">1</span>      <span class="dv">1</span>    <span class="cn">NA</span>      <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span>    <span class="cn">NA</span></span>
-<span id="cb426-14"><a href="ch6.html#cb426-14" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 14 more rows</span></span></code></pre></div>
+<span id="cb426-14"><a href="ch6.html#cb426-14" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 14 more rows</span></span>
+<span id="cb426-15"><a href="ch6.html#cb426-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>움직임이 관측되지 않은 지점에 대해서는 입력된 자료가 없기 때문에 해당 위치에 <code>NA</code>가 표시되었다. 하지만 관측이 안된 것은 변수 <code>seen</code>의 값이 <code>0</code>이 되는 것이므로 <code>NA</code>를 <code>0</code>으로 바꾸는 것이 더 좋을 것이다. 이렇게 열을 확장하는 과정에서 발생할 수 있는 <code>NA</code> 대신 다른 값을 입력해야 할 때에는 옵션 <code>values_fill</code>에 대신 입력하려는 값을 지정하면 된다.</p>
 <div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="ch6.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> fish_encounters <span class="sc">%&gt;%</span> </span>
 <span id="cb427-2"><a href="ch6.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, </span>
@@ -618,7 +624,8 @@ div.csl-indent {
 <span id="cb427-12"><a href="ch6.html#cb427-12" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="dv">4844</span>        <span class="dv">1</span>     <span class="dv">1</span>      <span class="dv">1</span>     <span class="dv">1</span>       <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">1</span></span>
 <span id="cb427-13"><a href="ch6.html#cb427-13" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="dv">4845</span>        <span class="dv">1</span>     <span class="dv">1</span>      <span class="dv">1</span>     <span class="dv">1</span>       <span class="dv">1</span>     <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">0</span></span>
 <span id="cb427-14"><a href="ch6.html#cb427-14" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="dv">4847</span>        <span class="dv">1</span>     <span class="dv">1</span>      <span class="dv">1</span>     <span class="dv">0</span>       <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">0</span></span>
-<span id="cb427-15"><a href="ch6.html#cb427-15" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 14 more rows</span></span></code></pre></div>
+<span id="cb427-15"><a href="ch6.html#cb427-15" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 14 more rows</span></span>
+<span id="cb427-16"><a href="ch6.html#cb427-16" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 </div>
 <div id="문자형-열의-결합과-분리-separate와-unite" class="section level3 hasAnchor" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> 문자형 열의 결합과 분리: <code>separate()</code>와 <code>unite()</code><a href="ch6.html#문자형-열의-결합과-분리-separate와-unite" class="anchor-section" aria-label="Anchor link to header"></a></h3>

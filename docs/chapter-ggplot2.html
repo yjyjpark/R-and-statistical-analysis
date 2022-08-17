@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 ggplot2에 의한 자료 시각화 | R과 통계분석</title>
-  <meta name="description" content="Chapter 5 ggplot2에 의한 자료 시각화 | R과 통계분석" />
+  <title>5 장 ggplot2에 의한 자료 시각화 | R과 통계분석</title>
+  <meta name="description" content="5 장 ggplot2에 의한 자료 시각화 | R과 통계분석" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 ggplot2에 의한 자료 시각화 | R과 통계분석" />
+  <meta property="og:title" content="5 장 ggplot2에 의한 자료 시각화 | R과 통계분석" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 ggplot2에 의한 자료 시각화 | R과 통계분석" />
+  <meta name="twitter:title" content="5 장 ggplot2에 의한 자료 시각화 | R과 통계분석" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -366,11 +366,11 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="chapter-ggplot2" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> <code>ggplot2</code>에 의한 자료 시각화<a href="chapter-ggplot2.html#chapter-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">5 장</span> <code>ggplot2</code>에 의한 자료 시각화<a href="chapter-ggplot2.html#chapter-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>자료의 시각화(Visualization)란 자료의 구조를 꿰뚫어 볼 수 있는 명쾌한 그래프를 이용하는 자료 분석방법을 의미한다.
 잘 그려진 그래프는 자료의 모습을 있는 그대로 보여 주는 유일한 분석방법이며,
 다른 어떠한 분석기법에 의한 결과보다도 더 많은 정보를 전달해 줄 수 있는 방법이기도 하다.
-Figure <a href="chapter-ggplot2.html#fig:barely">5.1</a>은 자료 시각화의 위력을 잘 보여주는 예로서 <span class="citation">Cleveland (1993)</span> 에 의한 놀라운 발견이다.
+그림 <a href="chapter-ggplot2.html#fig:barely">5.1</a>은 자료 시각화의 위력을 잘 보여주는 예로서 <span class="citation">Cleveland (1993)</span> 에 의한 놀라운 발견이다.
 1930년대 초 미네소타 주의 농경학자들이 보리 종류에 따른 수확량의 차이를 알아보기 위한 경작 실험을 실시하였다.
 6군데 경작지에 10종류 보리를 2년간 경작하였는데, Morris 지역만이 1932년의 수확량이 1931년의 수확량
 보다 많다는 것을 알 수 있다. 6개 경작지가 모두 근처에 있다는 점을 고려해 보면 유독
@@ -379,7 +379,7 @@ Morris 지역에서만 다른 결과가 나왔다는 것이 상당히 의심스�
 <div class="figure"><span style="display:block;" id="fig:barely"></span>
 <img src="_main_files/figure-html/barely-1.png" alt="보리 자료에 대한 다중 패널 점그림" width="672" />
 <p class="caption">
-Figure 5.1: 보리 자료에 대한 다중 패널 점그림
+그림 5.1: 보리 자료에 대한 다중 패널 점그림
 </p>
 </div>
 <p>자료 시각화에 특히 강점이 있는 R에는 몇 가지의 그래프 작성 시스템이 있다. 함수 <code>plot()</code> 등이 속해 있는
@@ -396,7 +396,7 @@ Figure 5.1: 보리 자료에 대한 다중 패널 점그림
 <div class="figure"><span style="display:block;" id="fig:first-plot"></span>
 <img src="_main_files/figure-html/first-plot-1.png" alt="ggplot2의 산점도" width="576" />
 <p class="caption">
-Figure 5.2: ggplot2의 산점도
+그림 5.2: ggplot2의 산점도
 </p>
 </div>
 <p>패키지 <code>ggplot2</code>에서 그래프 작성은 함수 <code>ggplot()</code>으로 시작한다.
@@ -405,7 +405,7 @@ Figure 5.2: ggplot2의 산점도
 이어서 작성될 그래프를 기다리는 역할을 한다. 따라서 함수 <code>ggplot()</code>만으로는 실질적인
 그래프가 작성되지 않는다.</p>
 <p>실질적인 그래프는 이어진 함수 <code>geom_point()</code>로 작성된다. 패키지 <code>ggplot2</code>에서는 하나
-또는 여러 개의 레이어(layer)들이 겹쳐져서 그래프가 완성되는데, Figure <a href="chapter-ggplot2.html#fig:first-plot">5.2</a>에는 점으로
+또는 여러 개의 레이어(layer)들이 겹쳐져서 그래프가 완성되는데, 그림 <a href="chapter-ggplot2.html#fig:first-plot">5.2</a>에는 점으로
 이루어진 하나의 레이어만이 사용되었다. 레이어를 추가하는 <code>geom</code> 함수에는 <code>geom_point()</code>
 외에도 다양한 함수들이 있으며, 앞으로 계속 소개될 것이다.</p>
 <p>또한 <code>geom</code> 함수에는 입력 요소 <code>mapping</code>이 있는데, 이것은 항상 함수 <code>aes()</code>와 함께 사용된다.
@@ -430,11 +430,11 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </div>
 <div id="시각적-요소와의-연결-mapping" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> 시각적 요소와의 연결: Mapping<a href="chapter-ggplot2.html#시각적-요소와의-연결-mapping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Figure <a href="chapter-ggplot2.html#fig:first-plot">5.2</a>와 같은 산점도를 작성하기 위해서는 점들의 위치와 더불어 점의 크기, 모양 및
+<p>그림 <a href="chapter-ggplot2.html#fig:first-plot">5.2</a>와 같은 산점도를 작성하기 위해서는 점들의 위치와 더불어 점의 크기, 모양 및
 색깔 등을 결정해야 하는데, 이러한 특성들은 우리가 그래프를 시각적으로 인식할 때 필요한 시각적 요소(aesthetic)라고 할 수 있다.
 시각적 요소들은 데이터와 연동되어 결정되기도 하지만, 어떤 경우에는 데이터와 관계 없이 일정한 값을 가지기도 한다.
 시각적 요소들을 데이터와 연동하여 결정하는 것을 매핑(mapping)이라고 하는데,
-Figure <a href="chapter-ggplot2.html#fig:first-plot">5.2</a>에서는 점의 위치만 매핑이 되었다.</p>
+그림 <a href="chapter-ggplot2.html#fig:first-plot">5.2</a>에서는 점의 위치만 매핑이 되었다.</p>
 <p>점의 크기, 모양 또는 색깔과 같은 시각적 요소들을 변수와 연결하여 표현을 한다면, 기존의 그래프에 다른 변수의 정보를
 추가할 수 있다. 예를 들어 데이터 프레임 <code>mpg</code>에 있는 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 변수 <code>class</code>의 정보를 색깔로
 추가해 보자. 색깔은 함수 <code>aes()</code>의 입력 요소 <code>color</code>에 의하여 변수와 연결된다.</p>
@@ -443,24 +443,24 @@ Figure <a href="chapter-ggplot2.html#fig:first-plot">5.2</a>에서는 점의 위
 <div class="figure"><span style="display:block;" id="fig:color-mapping"></span>
 <img src="_main_files/figure-html/color-mapping-1.png" alt="시각적 요소 `color`의 매핑" width="576" />
 <p class="caption">
-Figure 5.3: 시각적 요소 <code>color</code>의 매핑
+그림 5.3: 시각적 요소 <code>color</code>의 매핑
 </p>
 </div>
-<p>시각적 요소인 <code>color</code>를 데이터와 연결한 Figure <a href="chapter-ggplot2.html#fig:color-mapping">5.3</a>에는 변수 <code>class</code>의 값에 따라
+<p>시각적 요소인 <code>color</code>를 데이터와 연결한 그림 <a href="chapter-ggplot2.html#fig:color-mapping">5.3</a>에는 변수 <code>class</code>의 값에 따라
 다른 색이 사용되었고, 따라서 각 점이 어떤 <code>class</code>에 속하는지 바로 알 수 있게 되었다. 그러나
 <code>class</code>의 범주 개수가 지나치게 많아서 정보 파악이 어려운 그래프가 작성되었다. 시각적
 요소 <code>color</code>에 범주형 변수를 매핑할 때에는 범주의 개수가 많지 않아야 효과적인 그래프가 작성된다.
 사용된 색깔에 대한 범례는 자동으로 추가된다.</p>
 <p>이번에는 점의 모양을 변수 <code>drv</code>와 연결하여 표현해 보자. 점의 모양은 함수 <code>aes()</code>의 입력 요소 <code>shape</code>에 의하여
-변수와 연결된다. 시각적 요소 <code>shape</code>와 매핑되는 변수는 <code>drv</code>와 같이 이산형이어야 한다. Figure <a href="chapter-ggplot2.html#fig:5-4-a">5.4</a>에는
+변수와 연결된다. 시각적 요소 <code>shape</code>와 매핑되는 변수는 <code>drv</code>와 같이 이산형이어야 한다. 그림 <a href="chapter-ggplot2.html#fig:5-4-a">5.4</a>에는
 세 가지 모양의 점이 사용되었으나, 모양 차이가 쉽게 느껴지지 않고 있다.
-이런 경우에는 다른 시각적 요소를 <code>drv</code>에 함께 매핑하여 작성한 Figure <a href="chapter-ggplot2.html#fig:5-4-b">5.5</a>가 좋은 대안이 될 수 있다.</p>
+이런 경우에는 다른 시각적 요소를 <code>drv</code>에 함께 매핑하여 작성한 그림 <a href="chapter-ggplot2.html#fig:5-4-b">5.5</a>가 좋은 대안이 될 수 있다.</p>
 <div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="chapter-ggplot2.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
 <span id="cb327-2"><a href="chapter-ggplot2.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> drv))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-4-a"></span>
 <img src="_main_files/figure-html/5-4-a-1.png" alt="시각적 요소 `shape`의 매핑" width="576" />
 <p class="caption">
-Figure 5.4: 시각적 요소 <code>shape</code>의 매핑
+그림 5.4: 시각적 요소 <code>shape</code>의 매핑
 </p>
 </div>
 <div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="chapter-ggplot2.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
@@ -468,7 +468,7 @@ Figure 5.4: 시각적 요소 <code>shape</code>의 매핑
 <div class="figure"><span style="display:block;" id="fig:5-4-b"></span>
 <img src="_main_files/figure-html/5-4-b-1.png" alt="시각적 요소 `shape`의 매핑" width="576" />
 <p class="caption">
-Figure 5.5: 시각적 요소 <code>shape</code>의 매핑
+그림 5.5: 시각적 요소 <code>shape</code>의 매핑
 </p>
 </div>
 <p>또 다른 시각적 요소인 점의 크기를 변수 <code>cyl</code>과 연결해 보자. 점의 크기는 함수 <code>aes()</code>의 입력 요소 <code>size</code>에 의하여
@@ -480,20 +480,20 @@ Figure 5.5: 시각적 요소 <code>shape</code>의 매핑
 <div class="figure"><span style="display:block;" id="fig:5-5"></span>
 <img src="_main_files/figure-html/5-5-1.png" alt="시각적 요소 `size`의 매핑" width="576" />
 <p class="caption">
-Figure 5.6: 시각적 요소 <code>size</code>의 매핑
+그림 5.6: 시각적 요소 <code>size</code>의 매핑
 </p>
 </div>
 <p>여러 시각적 요소를 동시에 사용해야 하는 경우가 많이 있다. 이런 경우에, 여러 시각적
 요소들을 모두 변수들과 매핑을 하게 되면 그래프에 너무 많은 정보를 표현하게 될 가능성
 이 있으며, 오히려 그래프의 의미가 모호해질 수 있다는 점에 유의해야 할 것이다.
-Figure <a href="chapter-ggplot2.html#fig:5-8">5.7</a>은 세 가지 시각적 요소를 모두 다른 변수와 연결하여 작성한 것이다.
+그림 <a href="chapter-ggplot2.html#fig:5-8">5.7</a>은 세 가지 시각적 요소를 모두 다른 변수와 연결하여 작성한 것이다.
 좋지 않은 그래프의 작성 예가 된다.</p>
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="chapter-ggplot2.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
 <span id="cb330-2"><a href="chapter-ggplot2.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class, <span class="at">shape =</span> drv, <span class="at">size =</span> cyl))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-8"></span>
 <img src="_main_files/figure-html/5-8-1.png" alt="여러 시각적 요소를 동시에 매핑을 실시한 그래프" width="672" />
 <p class="caption">
-Figure 5.7: 여러 시각적 요소를 동시에 매핑을 실시한 그래프
+그림 5.7: 여러 시각적 요소를 동시에 매핑을 실시한 그래프
 </p>
 </div>
 <p>시각적 요소를 데이터와 연결하여 결정하지 않고 사용자가 값을 직접 지정하는 것도 가능하다.
@@ -503,7 +503,7 @@ Figure 5.7: 여러 시각적 요소를 동시에 매핑을 실시한 그래프
 <div class="figure"><span style="display:block;" id="fig:5-6"></span>
 <img src="_main_files/figure-html/5-6-1.png" alt="시각적 요소 `color`의 사용자 지정" width="576" />
 <p class="caption">
-Figure 5.8: 시각적 요소 <code>color</code>의 사용자 지정
+그림 5.8: 시각적 요소 <code>color</code>의 사용자 지정
 </p>
 </div>
 <p>시각적 요소의 값을 사용자가 지정하기 위해서는 <code>color</code>, <code>shape</code>, <code>size</code> 등을 함수 <code>aes()</code>의 밖으로 빼내서
@@ -512,18 +512,18 @@ Figure 5.8: 시각적 요소 <code>color</code>의 사용자 지정
 <li><p><code>color</code>: 색깔을 나타내는 문자열 지정</p></li>
 <li><p><code>size</code>: 점 크기를 mm 단위로 지정</p></li>
 <li><p><code>shape</code>: 점의 형태를 나타내는 0~25 사이의 숫자. 각 숫자에 대응되는 점의 형태는
-Figure <a href="chapter-ggplot2.html#fig:shape">5.9</a>에서 볼 수 있다. 숫자 0~14로 지정되는 속이 비어 있는 도형의 선 색깔과
+그림 <a href="chapter-ggplot2.html#fig:shape">5.9</a>에서 볼 수 있다. 숫자 0~14로 지정되는 속이 비어 있는 도형의 선 색깔과
 숫자 15~20으로 지정되는 도형의 색깔은 <code>color</code>로 지정하고, 숫자 21~25로 표현되는
 도형의 테두리 선 색깔은 <code>color</code>로, 내부를 채우는 색깔은 <code>fill</code>로 각각 지정한다.</p></li>
 </ol>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:shape"></span>
 <img src="Figure/shape.png" alt="시각적 요소 shape의 지정에 사용 가능한 숫자와 대응되는 점 형태" width="348" />
 <p class="caption">
-Figure 5.9: 시각적 요소 shape의 지정에 사용 가능한 숫자와 대응되는 점 형태
+그림 5.9: 시각적 요소 shape의 지정에 사용 가능한 숫자와 대응되는 점 형태
 </p>
 </div>
 <p>여러 시각적 요소의 값을 사용자가 동시에 지정하여 사용해야 하는 경우도 많이 있다.
-Figure <a href="chapter-ggplot2.html#fig:5-9">5.10</a>는 점의 크기와 모양, 색깔을 모두 사용자가 지정한 그래프이다.
+그림 <a href="chapter-ggplot2.html#fig:5-9">5.10</a>는 점의 크기와 모양, 색깔을 모두 사용자가 지정한 그래프이다.
 입력 요소 <code>stroke</code>는 <code>shape</code>가 21~25의 값으로 표현되는 점들의 테두리 선 두께를 조절하는 요소이다.</p>
 <div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="chapter-ggplot2.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
 <span id="cb332-2"><a href="chapter-ggplot2.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>, </span>
@@ -531,12 +531,12 @@ Figure <a href="chapter-ggplot2.html#fig:5-9">5.10</a>는 점의 크기와 모�
 <div class="figure"><span style="display:block;" id="fig:5-9"></span>
 <img src="_main_files/figure-html/5-9-1.png" alt="여러 시각적 요소를 동시에 지정한 그래프" width="576" />
 <p class="caption">
-Figure 5.10: 여러 시각적 요소를 동시에 지정한 그래프
+그림 5.10: 여러 시각적 요소를 동시에 지정한 그래프
 </p>
 </div>
 <p>지금까지 살펴본 바에 의하면 시각적 요소를 변수와 매핑을 하고자 한다면 함수 <code>aes()</code> 안에서 변수와 연결해야 하고,
 사용자가 값을 직접 지정하고자 한다면 함수 <code>aes()</code> 밖에서 원하는 값을 지정해야 한다. 그런데 만일 함수 <code>aes()</code> 안에서 시각적 요소의 특정 값을 사용자가 직접 지정하면 어떤 결과가 나올 것인가?
-Figure <a href="chapter-ggplot2.html#fig:5-10">5.11</a>은 함수 <code>aes()</code> 안에서 시각적 요소 <code>color</code>에 <code>"blue"</code>를 지정했을 때의 결과이다.
+그림 <a href="chapter-ggplot2.html#fig:5-10">5.11</a>은 함수 <code>aes()</code> 안에서 시각적 요소 <code>color</code>에 <code>"blue"</code>를 지정했을 때의 결과이다.
 함수 <code>aes()</code> 안에 <code>color</code>가 입력되면 그것은 매핑으로 인식되는데,
 매핑은 변수와 연결되는 것이므로 특정 하나의 값과는 매핑이 성립되지 않는다.
 따라서 <code>"blue"</code>라는 하나의 값만을 갖고 있는 새로운 변수를 스스로 만들고, 그 변수와 <code>color</code>를 매핑하게 된다.
@@ -546,7 +546,7 @@ Figure <a href="chapter-ggplot2.html#fig:5-10">5.11</a>은 함수 <code>aes()</c
 <div class="figure"><span style="display:block;" id="fig:5-10"></span>
 <img src="_main_files/figure-html/5-10-1.png" alt="함수 `aes()` 안에서 `color`를 사용자가 지정한 경우의 그래프" width="576" />
 <p class="caption">
-Figure 5.11: 함수 <code>aes()</code> 안에서 <code>color</code>를 사용자가 지정한 경우의 그래프
+그림 5.11: 함수 <code>aes()</code> 안에서 <code>color</code>를 사용자가 지정한 경우의 그래프
 </p>
 </div>
 </div>
@@ -568,10 +568,10 @@ Figure 5.11: 함수 <code>aes()</code> 안에서 <code>color</code>를 사용자
 <div class="figure"><span style="display:block;" id="fig:5-11"></span>
 <img src="_main_files/figure-html/5-11-1.png" alt="함수 `facet_wrap()`으로 작성된 그래프" width="576" />
 <p class="caption">
-Figure 5.12: 함수 <code>facet_wrap()</code>으로 작성된 그래프
+그림 5.12: 함수 <code>facet_wrap()</code>으로 작성된 그래프
 </p>
 </div>
-<p>Figure <a href="chapter-ggplot2.html#fig:5-11">5.12</a>을 구성하는 7개의 패널 중 <code>2seater</code>라는 제목의 패널에는 적은 개수의 데이터만
+<p>그림 <a href="chapter-ggplot2.html#fig:5-11">5.12</a>을 구성하는 7개의 패널 중 <code>2seater</code>라는 제목의 패널에는 적은 개수의 데이터만
 해당되는 것을 알 수 있다. 변수 <code>class</code>가 <code>‘2seater’</code>인 케이스를 제거한 후 패널을 2열로 배치하여 작성해 보자.</p>
 <div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="chapter-ggplot2.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mpg <span class="sc">%&gt;%</span> </span>
 <span id="cb335-2"><a href="chapter-ggplot2.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(class <span class="sc">!=</span> <span class="st">&quot;2seater&quot;</span>) <span class="sc">%&gt;%</span> </span>
@@ -581,7 +581,7 @@ Figure 5.12: 함수 <code>facet_wrap()</code>으로 작성된 그래프
 <div class="figure"><span style="display:block;" id="fig:5-12"></span>
 <img src="_main_files/figure-html/5-12-1.png" alt="`ncol`로 패널 배치 조절" width="576" />
 <p class="caption">
-Figure 5.13: <code>ncol</code>로 패널 배치 조절
+그림 5.13: <code>ncol</code>로 패널 배치 조절
 </p>
 </div>
 <p><code>dir</code>의 값 변경해서 패널의 그래프 배치 순서를 다르게 해 보자.</p>
@@ -593,7 +593,7 @@ Figure 5.13: <code>ncol</code>로 패널 배치 조절
 <div class="figure"><span style="display:block;" id="fig:5-13"></span>
 <img src="_main_files/figure-html/5-13-1.png" alt="`ncol`과 `dir`로 패널 배치 조절" width="576" />
 <p class="caption">
-Figure 5.14: <code>ncol</code>과 <code>dir</code>로 패널 배치 조절
+그림 5.14: <code>ncol</code>과 <code>dir</code>로 패널 배치 조절
 </p>
 </div>
 <ul>
@@ -620,7 +620,7 @@ Figure 5.14: <code>ncol</code>과 <code>dir</code>로 패널 배치 조절
 <div class="figure"><span style="display:block;" id="fig:5-14-1"></span>
 <img src="_main_files/figure-html/5-14-1-1.png" alt="함수 `facet_grid()`에 의한 한 변수의 faceting" width="576" />
 <p class="caption">
-Figure 5.15: 함수 <code>facet_grid()</code>에 의한 한 변수의 faceting
+그림 5.15: 함수 <code>facet_grid()</code>에 의한 한 변수의 faceting
 </p>
 </div>
 <div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="chapter-ggplot2.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_plot <span class="sc">+</span> </span>
@@ -628,7 +628,7 @@ Figure 5.15: 함수 <code>facet_grid()</code>에 의한 한 변수의 faceting
 <div class="figure"><span style="display:block;" id="fig:5-14-2"></span>
 <img src="_main_files/figure-html/5-14-2-1.png" alt="함수 `facet_grid()`에 의한 한 변수의 faceting" width="576" />
 <p class="caption">
-Figure 5.16: 함수 <code>facet_grid()</code>에 의한 한 변수의 faceting
+그림 5.16: 함수 <code>facet_grid()</code>에 의한 한 변수의 faceting
 </p>
 </div>
 <p>이제는 두 개 변수를 동시에 사용하여 데이터를 구분하고 그래프를 작성해 보자.</p>
@@ -638,11 +638,11 @@ Figure 5.16: 함수 <code>facet_grid()</code>에 의한 한 변수의 faceting
 <div class="figure"><span style="display:block;" id="fig:5-15-1"></span>
 <img src="_main_files/figure-html/5-15-1-1.png" alt="함수 `facet_grid()`에 의한 두 변수의 faceting" width="576" />
 <p class="caption">
-Figure 5.17: 함수 <code>facet_grid()</code>에 의한 두 변수의 faceting
+그림 5.17: 함수 <code>facet_grid()</code>에 의한 두 변수의 faceting
 </p>
 </div>
 <p>변수 <code>drv</code>의 두 범주와 <code>cyl</code>의 세 범주의 조합으로 구성되는 6개 그룹으로 데이터를 구분하여 각각 작성된 산점도가
-Figure <a href="chapter-ggplot2.html#fig:5-15-1">5.17</a>이다. 변수 <code>drv</code>가 행을 구성하고 있고, 변수 <code>cyl</code>이 열을 구성하고 있다.
+그림 <a href="chapter-ggplot2.html#fig:5-15-1">5.17</a>이다. 변수 <code>drv</code>가 행을 구성하고 있고, 변수 <code>cyl</code>이 열을 구성하고 있다.
 예를 들어 왼쪽 위 패널은 변수 <code>drv</code>가 <code>“4”</code>이고, 변수 <code>cyl</code>이 <code>4</code>인 자동차들의 <code>displ</code>과 <code>hwy</code>의 산점도이다.</p>
 <p>옵션 <code>scales</code>의 값을 변경해서 패널의 XY축 범위를 다르게 설정해 보자.</p>
 <div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="chapter-ggplot2.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_plot <span class="sc">+</span> </span>
@@ -652,7 +652,7 @@ Figure <a href="chapter-ggplot2.html#fig:5-15-1">5.17</a>이다. 변수 <code>dr
 <div class="figure"><span style="display:block;" id="fig:5-15-2"></span>
 <img src="_main_files/figure-html/5-15-2-1.png" alt="함수 `facet_grid()`에 의한 두 변수의 faceting" width="576" />
 <p class="caption">
-Figure 5.18: 함수 <code>facet_grid()</code>에 의한 두 변수의 faceting
+그림 5.18: 함수 <code>facet_grid()</code>에 의한 두 변수의 faceting
 </p>
 </div>
 <p>두 변수에 의한 faceting은 함수 <code>facet_wrap()</code>으로도 작성할 수 있다.</p>
@@ -662,7 +662,7 @@ Figure 5.18: 함수 <code>facet_grid()</code>에 의한 두 변수의 faceting
 <div class="figure"><span style="display:block;" id="fig:5-15-3"></span>
 <img src="_main_files/figure-html/5-15-3-1.png" alt="함수 `facet_wrap()`에 의한 두 변수의 faceting" width="576" />
 <p class="caption">
-Figure 5.19: 함수 <code>facet_wrap()</code>에 의한 두 변수의 faceting
+그림 5.19: 함수 <code>facet_wrap()</code>에 의한 두 변수의 faceting
 </p>
 </div>
 <ul>
@@ -687,13 +687,13 @@ Figure 5.19: 함수 <code>facet_wrap()</code>에 의한 두 변수의 faceting
 <div class="figure"><span style="display:block;" id="fig:5-16"></span>
 <img src="_main_files/figure-html/5-16-1.png" alt="연속형 변수의 faceting" width="576" />
 <p class="caption">
-Figure 5.20: 연속형 변수의 faceting
+그림 5.20: 연속형 변수의 faceting
 </p>
 </div>
 <p>Faceting은 기존의 그래프에 다른 변수의 정보를 추가하고자 할 때 매우 유용하게 사용되는 기법인데,
 이러한 기능은 색깔 또는 점의 크기 등을 변수와 연결하는 매핑도 갖고 있는 기능이다.
 두 기법은 서로 약간 다른 장단점이 있는데, faceting은 점들이 많이 겹쳐지는 경우에 더 명확하게 다른 변수의 정보를 확인할 수 있지만, 각 패널마다 작성된 그래프에 미세한 차이가 있는 경우에는 확인이 어려울 수 있다는 문제가 있다.</p>
-<p>Figure <a href="chapter-ggplot2.html#fig:5-16">5.20</a>을 작성한 상황에서 변수 <code>Wind_d</code>를 색깔과 점의 크기와 연결시켜 나머지 두 변수의 산점도를 작성해 보자.</p>
+<p>그림 <a href="chapter-ggplot2.html#fig:5-16">5.20</a>을 작성한 상황에서 변수 <code>Wind_d</code>를 색깔과 점의 크기와 연결시켜 나머지 두 변수의 산점도를 작성해 보자.</p>
 <div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="chapter-ggplot2.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> air_1 <span class="sc">%&gt;%</span></span>
 <span id="cb345-2"><a href="chapter-ggplot2.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb345-3"><a href="chapter-ggplot2.html#cb345-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>Solar.R, <span class="at">y=</span>Ozone, </span>
@@ -702,10 +702,10 @@ Figure 5.20: 연속형 변수의 faceting
 <div class="figure"><span style="display:block;" id="fig:5-17"></span>
 <img src="_main_files/figure-html/5-17-1.png" alt="매핑과 faceting의 비교" width="480" />
 <p class="caption">
-Figure 5.21: 매핑과 faceting의 비교
+그림 5.21: 매핑과 faceting의 비교
 </p>
 </div>
-<p>Figure <a href="chapter-ggplot2.html#fig:5-17">5.21</a>은 너무 많은 점들이 서로 겹쳐 있어서 관계를 확인하는 데 약간의 어려움이 있으며, 따라서 좋지 않은 그래프라고 하겠다.</p>
+<p>그림 <a href="chapter-ggplot2.html#fig:5-17">5.21</a>은 너무 많은 점들이 서로 겹쳐 있어서 관계를 확인하는 데 약간의 어려움이 있으며, 따라서 좋지 않은 그래프라고 하겠다.</p>
 </div>
 <div id="기하-객체-geometric-object" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> 기하 객체: Geometric object<a href="chapter-ggplot2.html#기하-객체-geometric-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -717,14 +717,14 @@ Figure 5.21: 매핑과 faceting의 비교
 각 <code>geom</code> 함수가 실행되면 해당 유형의 그래프가 작성된 레이어(layer)가 생성되는데,
 첫 번째 <code>geom</code> 함수로 생성된 레이어가 가장 밑에 놓이고,
 다음 <code>geom</code> 함수의 레이어가 그 위에 차례로 겹쳐짐으로써 최종적으로 원하는 그래프를 얻게 된다.</p>
-<p>Figure <a href="chapter-ggplot2.html#fig:5-18-1">5.22</a>과 Figure <a href="chapter-ggplot2.html#fig:5-18-2">5.23</a>는 데이터 프레임 <code>mpg</code>의 변수 <code>displ</code>과 <code>hwy</code>를 대상으로 <code>geom_point()</code>와 <code>geom_smooth()</code>를 각각 적용한 결과를 보여주고 있다.
+<p>그림 <a href="chapter-ggplot2.html#fig:5-18-1">5.22</a>과 그림 <a href="chapter-ggplot2.html#fig:5-18-2">5.23</a>는 데이터 프레임 <code>mpg</code>의 변수 <code>displ</code>과 <code>hwy</code>를 대상으로 <code>geom_point()</code>와 <code>geom_smooth()</code>를 각각 적용한 결과를 보여주고 있다.
 동일한 자료를 사용하더라도 다른 <code>geom</code> 함수를 사용하면 다른 그래프가 작성되는 것을 알 수 있다.</p>
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="chapter-ggplot2.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
 <span id="cb346-2"><a href="chapter-ggplot2.html#cb346-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-18-1"></span>
 <img src="_main_files/figure-html/5-18-1-1.png" alt="함수 `geom_point()`에 의한 그래프" width="576" />
 <p class="caption">
-Figure 5.22: 함수 <code>geom_point()</code>에 의한 그래프
+그림 5.22: 함수 <code>geom_point()</code>에 의한 그래프
 </p>
 </div>
 <div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="chapter-ggplot2.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
@@ -732,7 +732,7 @@ Figure 5.22: 함수 <code>geom_point()</code>에 의한 그래프
 <div class="figure"><span style="display:block;" id="fig:5-18-2"></span>
 <img src="_main_files/figure-html/5-18-2-1.png" alt="함수 `geom_smooth()`에 의한 그래프" width="576" />
 <p class="caption">
-Figure 5.23: 함수 <code>geom_smooth()</code>에 의한 그래프
+그림 5.23: 함수 <code>geom_smooth()</code>에 의한 그래프
 </p>
 </div>
 <p>현재 <code>ggplot2</code>에는 대략 30개 이상의 <code>geom</code> 함수가 있다.
@@ -759,7 +759,7 @@ Figure 5.23: 함수 <code>geom_smooth()</code>에 의한 그래프
 <div class="figure"><span style="display:block;" id="fig:5-19"></span>
 <img src="_main_files/figure-html/5-19-1.png" alt="글로벌 매핑을 적용해서 작성한 그래프" width="576" />
 <p class="caption">
-Figure 5.24: 글로벌 매핑을 적용해서 작성한 그래프
+그림 5.24: 글로벌 매핑을 적용해서 작성한 그래프
 </p>
 </div>
 <p>함수 <code>ggplot()</code>에 있는 매핑 기능은 해당 그래프 작성에 참여한 모든 <code>geom</code> 함수에 공통적으로 적용되는 일종의 글로벌 매핑이다.
@@ -772,14 +772,14 @@ Figure 5.24: 글로벌 매핑을 적용해서 작성한 그래프
 산점도를 추가하되 변수 <code>drv</code>의 값에 따라 점의 색을 다르게 표시해 보자.
 이와 같이 두 개 이상의 <code>geom</code> 함수를 사용해야 하는 경우, 글로벌 매핑과 로컬 매핑을 명확하게 구분해서
 지정해야 한다. 여기에서 사용되는 매핑은 변수 <code>displ</code>과 <code>hwy</code>를 <code>x</code>와 <code>y</code>에 연결하는 것과 변수 <code>drv</code>에 <code>color</code>를 연결하는 세 가지가 있다.
-세 가지를 모두 글로벌 매핑으로 지정한 그래프가 Figure <a href="chapter-ggplot2.html#fig:5-20-1">5.25</a>에 있고, 색깔은 함수 <code>geom_point()</code>에서 로컬 매핑으로 지정한 그래프가 Figure <a href="chapter-ggplot2.html#fig:5-20-2">5.26</a>에 있다.</p>
+세 가지를 모두 글로벌 매핑으로 지정한 그래프가 그림 <a href="chapter-ggplot2.html#fig:5-20-1">5.25</a>에 있고, 색깔은 함수 <code>geom_point()</code>에서 로컬 매핑으로 지정한 그래프가 그림 <a href="chapter-ggplot2.html#fig:5-20-2">5.26</a>에 있다.</p>
 <div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="chapter-ggplot2.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
 <span id="cb350-2"><a href="chapter-ggplot2.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb350-3"><a href="chapter-ggplot2.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-20-1"></span>
 <img src="_main_files/figure-html/5-20-1-1.png" alt="글로벌 매핑만 작용한 그래프" width="576" />
 <p class="caption">
-Figure 5.25: 글로벌 매핑만 작용한 그래프
+그림 5.25: 글로벌 매핑만 작용한 그래프
 </p>
 </div>
 <div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="chapter-ggplot2.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
@@ -788,7 +788,7 @@ Figure 5.25: 글로벌 매핑만 작용한 그래프
 <div class="figure"><span style="display:block;" id="fig:5-20-2"></span>
 <img src="_main_files/figure-html/5-20-2-1.png" alt="color는 로컬 매핑을 적용한 그래프" width="576" />
 <p class="caption">
-Figure 5.26: color는 로컬 매핑을 적용한 그래프
+그림 5.26: color는 로컬 매핑을 적용한 그래프
 </p>
 </div>
 <p>세 가지 매핑이 모두 글로벌로 지정된 경우에는 비모수 회귀곡선의 추정도 변수 <code>drv</code>로
@@ -805,7 +805,7 @@ Figure 5.26: color는 로컬 매핑을 적용한 그래프
 <div class="figure"><span style="display:block;" id="fig:5-21"></span>
 <img src="_main_files/figure-html/5-21-1.png" alt="두 `geom` 함수에서 `color`와 `linetype`을 각각 로컬 매핑한 그래프" width="576" />
 <p class="caption">
-Figure 5.27: 두 <code>geom</code> 함수에서 <code>color</code>와 <code>linetype</code>을 각각 로컬 매핑한 그래프
+그림 5.27: 두 <code>geom</code> 함수에서 <code>color</code>와 <code>linetype</code>을 각각 로컬 매핑한 그래프
 </p>
 </div>
 <ul>
@@ -829,7 +829,7 @@ Figure 5.27: 두 <code>geom</code> 함수에서 <code>color</code>와 <code>line
 <div class="figure"><span style="display:block;" id="fig:5-22"></span>
 <img src="_main_files/figure-html/5-22-1.png" alt="로컬 데이터를 사용하여 작성한 레이어" width="576" />
 <p class="caption">
-Figure 5.28: 로컬 데이터를 사용하여 작성한 레이어
+그림 5.28: 로컬 데이터를 사용하여 작성한 레이어
 </p>
 </div>
 <p>함수 <code>geom_text()</code>는 그래프에 문자 라벨을 추가할 때 사용되는 <code>geom</code> 함수인데, 로컬 데이터를 사용해야 하는 중요한 경우가 된다.
@@ -841,7 +841,7 @@ Figure 5.28: 로컬 데이터를 사용하여 작성한 레이어
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-1"></span>
 <img src="_main_files/figure-html/5-geom-text-1-1.png" alt="변수 `displ`과 `cty`의 산점도" width="576" />
 <p class="caption">
-Figure 5.29: 변수 <code>displ</code>과 <code>cty</code>의 산점도
+그림 5.29: 변수 <code>displ</code>과 <code>cty</code>의 산점도
 </p>
 </div>
 <p>변수 <code>displ</code>이 증가하면 <code>cty</code>가 감소하는 관계를 보여주는 산점도가 작성되었는데, 변수 <code>cty</code>의 값이 유독 큰 두 점을 볼 수 있다. 두 점이 어떤 자동차에 해당되는 자료인지 확인해 보자.</p>
@@ -853,7 +853,7 @@ Figure 5.29: 변수 <code>displ</code>과 <code>cty</code>의 산점도
 <span id="cb355-6"><a href="chapter-ggplot2.html#cb355-6" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>        <span class="er">&lt;</span>chr<span class="sc">&gt;</span>      <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
 <span id="cb355-7"><a href="chapter-ggplot2.html#cb355-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> volkswagen   new beetle    <span class="dv">35</span></span>
 <span id="cb355-8"><a href="chapter-ggplot2.html#cb355-8" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> volkswagen   jetta         <span class="dv">33</span></span></code></pre></div>
-<p>Figure <a href="chapter-ggplot2.html#fig:5-geom-text-1">5.29</a>의 산점도에 변수 <code>cty</code>의 값이 큰 두 점 주변에 라벨을 추가해 보자.
+<p>그림 <a href="chapter-ggplot2.html#fig:5-geom-text-1">5.29</a>의 산점도에 변수 <code>cty</code>의 값이 큰 두 점 주변에 라벨을 추가해 보자.
 함수 <code>geom_text()</code>에서 라벨의 위치는 시각적 요소 <code>x</code>와 <code>y</code>에, 라벨 내용은 <code>label</code>에 매핑을 한다.
 변수 <code>manufacturer</code>와 <code>model</code>의 값을 서로 붙여 라벨로 표시해 보자.</p>
 <div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="chapter-ggplot2.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p1 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, cty, <span class="at">n =</span> <span class="dv">2</span>), </span>
@@ -861,7 +861,7 @@ Figure 5.29: 변수 <code>displ</code>과 <code>cty</code>의 산점도
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-2"></span>
 <img src="_main_files/figure-html/5-geom-text-2-1.png" alt="변수 `displ`과 `cty`의 산점도에 라벨 추가" width="576" />
 <p class="caption">
-Figure 5.30: 변수 <code>displ</code>과 <code>cty</code>의 산점도에 라벨 추가
+그림 5.30: 변수 <code>displ</code>과 <code>cty</code>의 산점도에 라벨 추가
 </p>
 </div>
 <p>라벨 내용이 점과 겹쳐졌고, 왼쪽 부분이 잘려서 보이지 않게 되었다.
@@ -872,7 +872,7 @@ Figure 5.30: 변수 <code>displ</code>과 <code>cty</code>의 산점도에 라�
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-3"></span>
 <img src="_main_files/figure-html/5-geom-text-3-1.png" alt="변수 `displ`과 `cty`의 산점도에 추가된 라벨의 위치 조정" width="576" />
 <p class="caption">
-Figure 5.31: 변수 <code>displ</code>과 <code>cty</code>의 산점도에 추가된 라벨의 위치 조정
+그림 5.31: 변수 <code>displ</code>과 <code>cty</code>의 산점도에 추가된 라벨의 위치 조정
 </p>
 </div>
 <p><code>nudge_x</code>에 양의 값을 지정하면 우측으로 이동하고, 음의 값을 지정하면 죄측으로 이동한다.
@@ -884,11 +884,11 @@ Figure 5.31: 변수 <code>displ</code>과 <code>cty</code>의 산점도에 추�
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-4"></span>
 <img src="_main_files/figure-html/5-geom-text-4-1.png" alt="변수 `displ`과 `cty`의 산점도에 추가된 라벨의 위치 조정" width="576" />
 <p class="caption">
-Figure 5.32: 변수 <code>displ</code>과 <code>cty</code>의 산점도에 추가된 라벨의 위치 조정
+그림 5.32: 변수 <code>displ</code>과 <code>cty</code>의 산점도에 추가된 라벨의 위치 조정
 </p>
 </div>
 <p><code>hjust</code>에는 <code>"left"</code>, <code>"middle"</code>, <code>"right"</code> 중 하나를 지정하고, <code>vjust</code>에는 <code>"bottom"</code>, <code>"center"</code>, <code>"top"</code> 중 하나를 지정하면 된다.
-Figure <a href="chapter-ggplot2.html#fig:5-geom-text-4">5.32</a>의 경우에는 <code>hjust = "left"</code>와 <code>vjust = "top"</code>을 지정한 것인데,
+그림 <a href="chapter-ggplot2.html#fig:5-geom-text-4">5.32</a>의 경우에는 <code>hjust = "left"</code>와 <code>vjust = "top"</code>을 지정한 것인데,
 <code>hjust = "left"</code>로써 점이 라벨의 왼쪽에, <code>vjust = "top"</code>로써 점이 라벨의 위쪽에 있도록 조정한 것이다.</p>
 <p>라벨을 추가하려는 점의 위치가 너무 가까우면 라벨이 서로 겹쳐져서 내용을 알 수 없게 될 수 있다.
 이런 경우에는 서로 겹치는 라벨 중 자료의 순서에 따라 먼저 작성되는 것만 표시하는 것이 좋은 방법이 될 수 있다.</p>
@@ -899,7 +899,7 @@ Figure <a href="chapter-ggplot2.html#fig:5-geom-text-4">5.32</a>의 경우에는
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-5"></span>
 <img src="_main_files/figure-html/5-geom-text-5-1.png" alt="변수 `displ`과 `hwy`의 산점도" width="576" />
 <p class="caption">
-Figure 5.33: 변수 <code>displ</code>과 <code>hwy</code>의 산점도
+그림 5.33: 변수 <code>displ</code>과 <code>hwy</code>의 산점도
 </p>
 </div>
 <p>변수 <code>hwy</code>의 값이 40이 넘는 자동차의 <code>manufacturer</code>와 <code>model</code>의 값을 출력해 보자.</p>
@@ -912,7 +912,7 @@ Figure 5.33: 변수 <code>displ</code>과 <code>hwy</code>의 산점도
 <span id="cb360-7"><a href="chapter-ggplot2.html#cb360-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> volkswagen   jetta         <span class="dv">44</span></span>
 <span id="cb360-8"><a href="chapter-ggplot2.html#cb360-8" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> volkswagen   new beetle    <span class="dv">44</span></span>
 <span id="cb360-9"><a href="chapter-ggplot2.html#cb360-9" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> volkswagen   new beetle    <span class="dv">41</span></span></code></pre></div>
-<p>변수 <code>hwy</code>의 값이 40이 넘는 자료가 Figure <a href="chapter-ggplot2.html#fig:5-geom-text-5">5.33</a>에는 2개로 표시되었지만, 사실은 3개의 자료가 있는 것을 알 수 있다.
+<p>변수 <code>hwy</code>의 값이 40이 넘는 자료가 그림 <a href="chapter-ggplot2.html#fig:5-geom-text-5">5.33</a>에는 2개로 표시되었지만, 사실은 3개의 자료가 있는 것을 알 수 있다.
 이제 이 자료에 라벨을 추가하면, 당연히 두 개의 라벨이 겹쳐서 나타나게 된다.</p>
 <div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="chapter-ggplot2.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p2 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, hwy, <span class="at">n =</span> <span class="dv">3</span>),</span>
 <span id="cb361-2"><a href="chapter-ggplot2.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)),</span>
@@ -920,7 +920,7 @@ Figure 5.33: 변수 <code>displ</code>과 <code>hwy</code>의 산점도
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-6"></span>
 <img src="_main_files/figure-html/5-geom-text-6-1.png" alt="변수 `displ`과 `hwy`의 산점도에 라벨 추가" width="576" />
 <p class="caption">
-Figure 5.34: 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 라벨 추가
+그림 5.34: 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 라벨 추가
 </p>
 </div>
 <p>이런 경우에는 함수 <code>geom_text()</code>에 옵션 <code>check_overlap</code>에 <code>TRUE</code>를 지정하면, 겹치는 라벨 중 자료의 순서에 따라 먼저 작성되는 것만 표시하게 된다.</p>
@@ -931,7 +931,7 @@ Figure 5.34: 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 라�
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-7"></span>
 <img src="_main_files/figure-html/5-geom-text-7-1.png" alt="변수 `displ`과 `hwy`의 산점도에 겹치지 않는 라벨만 추가" width="576" />
 <p class="caption">
-Figure 5.35: 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 겹치지 않는 라벨만 추가
+그림 5.35: 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 겹치지 않는 라벨만 추가
 </p>
 </div>
 <ul>
@@ -958,7 +958,7 @@ Figure 5.35: 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 겹�
 <div class="figure"><span style="display:block;" id="fig:5-geom-legend"></span>
 <img src="_main_files/figure-html/5-geom-legend-1.png" alt="그래프에 범례 추가" width="576" />
 <p class="caption">
-Figure 5.36: 그래프에 범례 추가
+그림 5.36: 그래프에 범례 추가
 </p>
 </div>
 </div>
@@ -993,7 +993,7 @@ Figure 5.36: 그래프에 범례 추가
 <div class="figure"><span style="display:block;" id="fig:5-23"></span>
 <img src="_main_files/figure-html/5-23-1.png" alt="변수 `trans`의 막대 그래프" width="576" />
 <p class="caption">
-Figure 5.37: 변수 <code>trans</code>의 막대 그래프
+그림 5.37: 변수 <code>trans</code>의 막대 그래프
 </p>
 </div>
 <p>그래프를 <code>geom</code> 함수를 사용하여 작성할 것인지 혹은 <code>stat</code> 함수를 사용하여 작성할 것인지는 사용자가 더 편한 방법을 선택하면 된다고 본다.
@@ -1014,7 +1014,7 @@ Figure 5.37: 변수 <code>trans</code>의 막대 그래프
 <div class="figure"><span style="display:block;" id="fig:5-24-1"></span>
 <img src="_main_files/figure-html/5-24-1-1.png" alt="디폴트 `group`에 의해 잘못 작성된 막대 그래프" width="576" />
 <p class="caption">
-Figure 5.38: 디폴트 <code>group</code>에 의해 잘못 작성된 막대 그래프
+그림 5.38: 디폴트 <code>group</code>에 의해 잘못 작성된 막대 그래프
 </p>
 </div>
 <p>그 이유는 변수 <code>after_stat(prop)</code>가 그룹별 비율을 나타내고 있는데, 변수 <code>trans</code>의 각 범주가 개별 그룹으로
@@ -1029,7 +1029,7 @@ Figure 5.38: 디폴트 <code>group</code>에 의해 잘못 작성된 막대 그�
 <div class="figure"><span style="display:block;" id="fig:5-24-2"></span>
 <img src="_main_files/figure-html/5-24-2-1.png" alt="`group`에 하나의 값을 지정하여 제대로 작성된 막대 그래프" width="576" />
 <p class="caption">
-Figure 5.39: <code>group</code>에 하나의 값을 지정하여 제대로 작성된 막대 그래프
+그림 5.39: <code>group</code>에 하나의 값을 지정하여 제대로 작성된 막대 그래프
 </p>
 </div>
 <p>대부분의 경우, <code>geom</code> 함수에 어떤 <code>stat</code>을 지정해야 하는지 걱정할 필요 없이 디폴트 값을 그대로 사용하면 원하는 그래프를 작성할 수 있다.
@@ -1054,7 +1054,7 @@ Figure 5.39: <code>group</code>에 하나의 값을 지정하여 제대로 작�
 <div class="figure"><span style="display:block;" id="fig:5-25"></span>
 <img src="_main_files/figure-html/5-25-1.png" alt="함수 `geom_bar()`에 `stat=&quot;identity&quot;`를 지정해야 하는 경우" width="576" />
 <p class="caption">
-Figure 5.40: 함수 <code>geom_bar()</code>에 <code>stat="identity"</code>를 지정해야 하는 경우
+그림 5.40: 함수 <code>geom_bar()</code>에 <code>stat="identity"</code>를 지정해야 하는 경우
 </p>
 </div>
 </div>
@@ -1067,10 +1067,10 @@ Figure 5.40: 함수 <code>geom_bar()</code>에 <code>stat="identity"</code>를 �
 <div class="figure"><span style="display:block;" id="fig:5-26-1"></span>
 <img src="_main_files/figure-html/5-26-1-1.png" alt="점들이 서로 겹쳐진 산점도" width="576" />
 <p class="caption">
-Figure 5.41: 점들이 서로 겹쳐진 산점도
+그림 5.41: 점들이 서로 겹쳐진 산점도
 </p>
 </div>
-<p>Figure <a href="chapter-ggplot2.html#fig:5-26-1">5.41</a>에 나타난 점의 개수는 데이터의 전체 개수인 234개에 훨씬 못 미쳐 보인다.
+<p>그림 <a href="chapter-ggplot2.html#fig:5-26-1">5.41</a>에 나타난 점의 개수는 데이터의 전체 개수인 234개에 훨씬 못 미쳐 보인다.
 이것은 시내 연비와 고속도로 연비인 두 변수의 값이 모두 반올림 처리가 되어 자연수로 입력되었기
 때문에 값이 같은 자료가 많아져서 발생한 현상이다.
 이와 같이 산점도의 점들이 서로 겹치게 되면 자료가 갖고 있는 정보를 정확하게 파악하기 어렵게 되는데,
@@ -1078,13 +1078,13 @@ Figure 5.41: 점들이 서로 겹쳐진 산점도
 <p>산점도의 점이 겹치는 문제의 해결 방안은 경우에 따라 달라질 수밖에 없는데,
 변수 <code>cty</code>와 <code>hwy</code>의 산점도 경우에는 각 자료에 약간의 난수(random noise)를 더해주어 점의 위치를 수정해 주는 방법을 사용하면 문제를 해결할 수 있다.
 이와 같이 산점도의 점에 약간의 난수를 더해 점의 위치를 조정하기 위해서는 함수 <code>geom_point()</code>에
-<code>position="jitter"</code>를 추가하면 되는데, 그 결과는 Figure <a href="chapter-ggplot2.html#fig:5-26-2">5.42</a>와 같다.</p>
+<code>position="jitter"</code>를 추가하면 되는데, 그 결과는 그림 <a href="chapter-ggplot2.html#fig:5-26-2">5.42</a>와 같다.</p>
 <div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="chapter-ggplot2.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
 <span id="cb371-2"><a href="chapter-ggplot2.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-26-2"></span>
 <img src="_main_files/figure-html/5-26-2-1.png" alt="옵션 `position='jitter'`의 효과" width="576" />
 <p class="caption">
-Figure 5.42: 옵션 <code>position='jitter'</code>의 효과
+그림 5.42: 옵션 <code>position='jitter'</code>의 효과
 </p>
 </div>
 <p>함수 <code>geom_jitter()</code>는 함수 <code>geom_point(position="jitter")</code>와 같은 기능을 갖고 있으며,
@@ -1094,7 +1094,7 @@ Figure 5.42: 옵션 <code>position='jitter'</code>의 효과
 <div class="figure"><span style="display:block;" id="fig:5-27-1"></span>
 <img src="_main_files/figure-html/5-27-1-1.png" alt="함수 `geom_jitter()`에 옵션 `width`와 `height`를 사용한 그래프" width="576" />
 <p class="caption">
-Figure 5.43: 함수 <code>geom_jitter()</code>에 옵션 <code>width</code>와 <code>height</code>를 사용한 그래프
+그림 5.43: 함수 <code>geom_jitter()</code>에 옵션 <code>width</code>와 <code>height</code>를 사용한 그래프
 </p>
 </div>
 <div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="chapter-ggplot2.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(mpg,  <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy))<span class="sc">+</span></span>
@@ -1102,7 +1102,7 @@ Figure 5.43: 함수 <code>geom_jitter()</code>에 옵션 <code>width</code>와 <
 <div class="figure"><span style="display:block;" id="fig:5-27-2"></span>
 <img src="_main_files/figure-html/5-27-2-1.png" alt="함수 `geom_jitter()`에 옵션 `width`와 `height`를 사용한 그래프" width="576" />
 <p class="caption">
-Figure 5.44: 함수 <code>geom_jitter()</code>에 옵션 <code>width</code>와 <code>height</code>를 사용한 그래프
+그림 5.44: 함수 <code>geom_jitter()</code>에 옵션 <code>width</code>와 <code>height</code>를 사용한 그래프
 </p>
 </div>
 <p>연속형 변수의 특성상 원래의 자료가 서로 겹치는 경우는 거의 없다고 할 수 있다.
@@ -1124,7 +1124,7 @@ Figure 5.44: 함수 <code>geom_jitter()</code>에 옵션 <code>width</code>와 <
 <div class="figure"><span style="display:block;" id="fig:5-28-1"></span>
 <img src="_main_files/figure-html/5-28-1-1.png" alt="쌓아 올린 이변량 막대 그래프" width="576" />
 <p class="caption">
-Figure 5.45: 쌓아 올린 이변량 막대 그래프
+그림 5.45: 쌓아 올린 이변량 막대 그래프
 </p>
 </div>
 <p>옆으로 붙여 놓은 막대 그래프는 옵션 <code>position</code>에 <code>"dodge"</code> 또는 <code>"dodge2"</code>를 지정하면 작성된다.</p>
@@ -1132,14 +1132,14 @@ Figure 5.45: 쌓아 올린 이변량 막대 그래프
 <div class="figure"><span style="display:block;" id="fig:5-28-2"></span>
 <img src="_main_files/figure-html/5-28-2-1.png" alt="옆으로 붙여 놓은 이변량 막대 그래프" width="576" />
 <p class="caption">
-Figure 5.46: 옆으로 붙여 놓은 이변량 막대 그래프
+그림 5.46: 옆으로 붙여 놓은 이변량 막대 그래프
 </p>
 </div>
 <div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="chapter-ggplot2.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p_1 <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge2&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-28-3"></span>
 <img src="_main_files/figure-html/5-28-3-1.png" alt="옆으로 붙여 놓은 이변량 막대 그래프" width="576" />
 <p class="caption">
-Figure 5.47: 옆으로 붙여 놓은 이변량 막대 그래프
+그림 5.47: 옆으로 붙여 놓은 이변량 막대 그래프
 </p>
 </div>
 <p>옵션 <code>position</code>에 <code>"fill"</code>을 지정하면, 시각적 요소 <code>x</code>에 매핑된 변수를 조건으로 하는 조건부 확률에 의한
@@ -1148,7 +1148,7 @@ Figure 5.47: 옆으로 붙여 놓은 이변량 막대 그래프
 <div class="figure"><span style="display:block;" id="fig:5-28-4"></span>
 <img src="_main_files/figure-html/5-28-4-1.png" alt="조건부 확률에 의한 쌓아 올린 이변량 막대 그래프" width="576" />
 <p class="caption">
-Figure 5.48: 조건부 확률에 의한 쌓아 올린 이변량 막대 그래프
+그림 5.48: 조건부 확률에 의한 쌓아 올린 이변량 막대 그래프
 </p>
 </div>
 <p>연속형 변수의 분포를 그룹별로 비교하고자 하는 경우 유용하게 사용되는 그래프가 ‘나란히 서 있는’ 상자그림이다.
@@ -1163,7 +1163,7 @@ Figure 5.48: 조건부 확률에 의한 쌓아 올린 이변량 막대 그래프
 <div class="figure"><span style="display:block;" id="fig:5-29-1"></span>
 <img src="_main_files/figure-html/5-29-1-1.png" alt="그룹 변수가 하나인 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
-Figure 5.49: 그룹 변수가 하나인 나란히 서 있는 상자그림
+그림 5.49: 그룹 변수가 하나인 나란히 서 있는 상자그림
 </p>
 </div>
 <p>일반적으로 볼 수 있는 나란히 서 있는 상자그림은 하나의 그룹 변수를 대상으로 작성되는데,
@@ -1177,7 +1177,7 @@ Figure 5.49: 그룹 변수가 하나인 나란히 서 있는 상자그림
 <div class="figure"><span style="display:block;" id="fig:5-29-2"></span>
 <img src="_main_files/figure-html/5-29-2-1.png" alt="그룹 변수가 두 개인 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
-Figure 5.50: 그룹 변수가 두 개인 나란히 서 있는 상자그림
+그림 5.50: 그룹 변수가 두 개인 나란히 서 있는 상자그림
 </p>
 </div>
 <p>다른 방법으로 faceting을 사용한 그래프를 작성할 수 있다.</p>
@@ -1188,7 +1188,7 @@ Figure 5.50: 그룹 변수가 두 개인 나란히 서 있는 상자그림
 <div class="figure"><span style="display:block;" id="fig:5-29-3"></span>
 <img src="_main_files/figure-html/5-29-3-1.png" alt="그룹 변수가 두 개인 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
-Figure 5.51: 그룹 변수가 두 개인 나란히 서 있는 상자그림
+그림 5.51: 그룹 변수가 두 개인 나란히 서 있는 상자그림
 </p>
 </div>
 </div>
@@ -1221,13 +1221,13 @@ Figure 5.51: 그룹 변수가 두 개인 나란히 서 있는 상자그림
 <div class="figure"><span style="display:block;" id="fig:5-30-1"></span>
 <img src="_main_files/figure-html/5-30-1-1.png" alt="'scale'로 X축 범위 축소" width="576" />
 <p class="caption">
-Figure 5.52: ’scale’로 X축 범위 축소
+그림 5.52: ’scale’로 X축 범위 축소
 </p>
 </div>
 <p>이러한 XY축의 범위 조정은 상당히 흔한 작업이기 때문에 간편하게 <code>scale</code>의 디폴트 값을 수정할 수 있도록
 함수 <code>xlim()</code>과 <code>ylim()</code>이 만들어졌다. 즉 위의 예제는 <code>p + xlim(3,6)</code>을 실행해도 동일한 그래프를 작성할 수 있다.</p>
 <p>Scale 함수를 사용하여 XY축 범위를 축소한 경우, 조심해야 할 점은 범위를 벗어난 자료들이 모두 <code>NA</code>로 바뀐다는 것이다.
-따라서 Figure <a href="chapter-ggplot2.html#fig:5-30-1">5.52</a>는 범위를 벗어난 105개 자료가 삭제된 상태에서 작성된 그래프이다.
+따라서 그림 <a href="chapter-ggplot2.html#fig:5-30-1">5.52</a>는 범위를 벗어난 105개 자료가 삭제된 상태에서 작성된 그래프이다.
 이에 반하여 XY축 범위를 함수 <code>coord_cartesian()</code>으로 축소하면, 전체 그래프 중 축소된 범위에 해당되는 부분만 확대해서 보여주는 것으로써 범위를 벗어난 자료를 삭제하지는 않는다.</p>
 <div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="chapter-ggplot2.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="sc">+</span> </span>
 <span id="cb385-2"><a href="chapter-ggplot2.html#cb385-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">coord_cartesian</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>)) <span class="sc">+</span></span>
@@ -1235,10 +1235,10 @@ Figure 5.52: ’scale’로 X축 범위 축소
 <div class="figure"><span style="display:block;" id="fig:5-30-2"></span>
 <img src="_main_files/figure-html/5-30-2-1.png" alt="함수 `coord_cartesian()`으로 X축 범위 축소" width="576" />
 <p class="caption">
-Figure 5.53: 함수 <code>coord_cartesian()</code>으로 X축 범위 축소
+그림 5.53: 함수 <code>coord_cartesian()</code>으로 X축 범위 축소
 </p>
 </div>
-<p>Figure <a href="chapter-ggplot2.html#fig:5-30-2">5.53</a>는 X축 라벨의 디폴트 값이 수정되었는데, 축의 라벨 수정도 상당히 흔한
+<p>그림 <a href="chapter-ggplot2.html#fig:5-30-2">5.53</a>는 X축 라벨의 디폴트 값이 수정되었는데, 축의 라벨 수정도 상당히 흔한
 작업이기 때문에 함수 <code>scale_x_continuous(name = "Engine Displacement")</code>을 실행시키는 대신 함수 <code>xlab()</code>으로 간편하게 수정할 수 있다. 또한 함수 <code>labs()</code>을 사용하면 X축, Y축 라벨 수정 및 그래프 제목, 범례의 제목 등도 수정할 수 있다.</p>
 <ul>
 <li><code>coord_flip()</code>의 활용: XY축 좌표 90<sup>°</sup> 회전</li>
@@ -1258,20 +1258,20 @@ Figure 5.53: 함수 <code>coord_cartesian()</code>으로 X축 범위 축소
 <div class="figure"><span style="display:block;" id="fig:5-31-1"></span>
 <img src="_main_files/figure-html/5-31-1-1.png" alt="수직방향의 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
-Figure 5.54: 수직방향의 나란히 서 있는 상자그림
+그림 5.54: 수직방향의 나란히 서 있는 상자그림
 </p>
 </div>
 <div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="chapter-ggplot2.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p1 <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-31-2"></span>
 <img src="_main_files/figure-html/5-31-2-1.png" alt="수평방향의 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
-Figure 5.55: 수평방향의 나란히 서 있는 상자그림
+그림 5.55: 수평방향의 나란히 서 있는 상자그림
 </p>
 </div>
-<p>Figure <a href="chapter-ggplot2.html#fig:5-31-2">5.55</a>는 다음과 같이 조건 변수 <code>class</code>를 <code>y</code> 변수로 사용해서 작성할 수 있다.</p>
+<p>그림 <a href="chapter-ggplot2.html#fig:5-31-2">5.55</a>는 다음과 같이 조건 변수 <code>class</code>를 <code>y</code> 변수로 사용해서 작성할 수 있다.</p>
 <div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="chapter-ggplot2.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy, <span class="at">y =</span> class)) <span class="sc">+</span></span>
 <span id="cb388-2"><a href="chapter-ggplot2.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p>또한 Figure <a href="chapter-ggplot2.html#fig:5-31-1">5.54</a>는 <code>class</code>를 <code>y</code> 변수로 지정하고 함수 <code>coord_flip()</code>을 다음과 같이 사용해서 작성할 수 있다.</p>
+<p>또한 그림 <a href="chapter-ggplot2.html#fig:5-31-1">5.54</a>는 <code>class</code>를 <code>y</code> 변수로 지정하고 함수 <code>coord_flip()</code>을 다음과 같이 사용해서 작성할 수 있다.</p>
 <div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="chapter-ggplot2.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy, <span class="at">y =</span> class)) <span class="sc">+</span></span>
 <span id="cb389-2"><a href="chapter-ggplot2.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb389-3"><a href="chapter-ggplot2.html#cb389-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">coord_flip</span>()</span></code></pre></div>
@@ -1284,7 +1284,7 @@ Figure 5.55: 수평방향의 나란히 서 있는 상자그림
 <div class="figure"><span style="display:block;" id="fig:5-32-1"></span>
 <img src="_main_files/figure-html/5-32-1-1.png" alt="수직방향 상자그림" width="576" />
 <p class="caption">
-Figure 5.56: 수직방향 상자그림
+그림 5.56: 수직방향 상자그림
 </p>
 </div>
 <p>수평방향 상자그림은 <code>x</code>에는 연속형 변수, <code>y</code>에는 임의의 문자열을 매핑하면 된다.</p>
@@ -1294,7 +1294,7 @@ Figure 5.56: 수직방향 상자그림
 <div class="figure"><span style="display:block;" id="fig:5-32-2"></span>
 <img src="_main_files/figure-html/5-32-2-1.png" alt="수평방향 상자그림" width="576" />
 <p class="caption">
-Figure 5.57: 수평방향 상자그림
+그림 5.57: 수평방향 상자그림
 </p>
 </div>
 <ul>
@@ -1313,7 +1313,7 @@ Figure 5.57: 수평방향 상자그림
 <div class="figure"><span style="display:block;" id="fig:5-33-1"></span>
 <img src="_main_files/figure-html/5-33-1-1.png" alt="Coxcomb 그래프 작성을 위한 막대 그래프" width="576" />
 <p class="caption">
-Figure 5.58: Coxcomb 그래프 작성을 위한 막대 그래프
+그림 5.58: Coxcomb 그래프 작성을 위한 막대 그래프
 </p>
 </div>
 <p>함수 <code>geom_bar()</code>에 사용된 옵션 <code>show.legend = FALSE</code>는 범례를 제거하기 위한 것이며,
@@ -1324,7 +1324,7 @@ Figure 5.58: Coxcomb 그래프 작성을 위한 막대 그래프
 <div class="figure"><span style="display:block;" id="fig:5-33-2"></span>
 <img src="_main_files/figure-html/5-33-2-1.png" alt="극좌표를 이용하여 막대 그래프를 Coxcomb 그래프로 변환" width="576" />
 <p class="caption">
-Figure 5.59: 극좌표를 이용하여 막대 그래프를 Coxcomb 그래프로 변환
+그림 5.59: 극좌표를 이용하여 막대 그래프를 Coxcomb 그래프로 변환
 </p>
 </div>
 <p>각도 <code>theta</code>에 디폴트인 <code>x</code>가 적용됐다. 따라서 동일한 막대 폭이 각도로 변환되어서 각 조각이 같은 크기의 각도를 유지하고 있고, 서로 다른 막대의 높이가 각 조각의 반지름으로 변환된 Coxcomb 그래프가 작성되었다.</p>
@@ -1340,7 +1340,7 @@ Figure 5.59: 극좌표를 이용하여 막대 그래프를 Coxcomb 그래프로 
 <div class="figure"><span style="display:block;" id="fig:5-34-1"></span>
 <img src="_main_files/figure-html/5-34-1-1.png" alt="파이 그래프 작성을 위한 막대 그래프" width="576" />
 <p class="caption">
-Figure 5.60: 파이 그래프 작성을 위한 막대 그래프
+그림 5.60: 파이 그래프 작성을 위한 막대 그래프
 </p>
 </div>
 <p>작성된 막대 그래프에 극좌표를 적용하면서 각도 <code>theta</code>에 디폴트인 <code>"x"</code>가 지정되면 전체 구간에 해당되는 360°가
@@ -1349,7 +1349,7 @@ Figure 5.60: 파이 그래프 작성을 위한 막대 그래프
 <div class="figure"><span style="display:block;" id="fig:5-34-2"></span>
 <img src="_main_files/figure-html/5-34-2-1.png" alt="극좌표를 이용하여 막대 그래프를 Bullseye 그래프로 변환" width="576" />
 <p class="caption">
-Figure 5.61: 극좌표를 이용하여 막대 그래프를 Bullseye 그래프로 변환
+그림 5.61: 극좌표를 이용하여 막대 그래프를 Bullseye 그래프로 변환
 </p>
 </div>
 <p>반면에 <code>theta</code>에 <code>"y"</code>를 지정하면 각 그룹의 상대도수에 비례하여 각도가 정해져서 파이 그래프가 작성된다.</p>
@@ -1357,7 +1357,7 @@ Figure 5.61: 극좌표를 이용하여 막대 그래프를 Bullseye 그래프로
 <div class="figure"><span style="display:block;" id="fig:5-34-3"></span>
 <img src="_main_files/figure-html/5-34-3-1.png" alt="극좌표를 이용하여 막대 그래프를 파이 그래프로 변환" width="576" />
 <p class="caption">
-Figure 5.62: 극좌표를 이용하여 막대 그래프를 파이 그래프로 변환
+그림 5.62: 극좌표를 이용하여 막대 그래프를 파이 그래프로 변환
 </p>
 </div>
 <p>XY축을 제거하면 조금 더 깔끔한 파이 그래프를 작성할 수 있다.</p>
@@ -1367,7 +1367,7 @@ Figure 5.62: 극좌표를 이용하여 막대 그래프를 파이 그래프로 �
 <div class="figure"><span style="display:block;" id="fig:5-34-4"></span>
 <img src="_main_files/figure-html/5-34-4-1.png" alt="극좌표를 이용하여 막대 그래프를 파이 그래프로 변환" width="576" />
 <p class="caption">
-Figure 5.63: 극좌표를 이용하여 막대 그래프를 파이 그래프로 변환
+그림 5.63: 극좌표를 이용하여 막대 그래프를 파이 그래프로 변환
 </p>
 </div>
 <p>함수 <code>coord_polar()</code>를 활용하여 파이 그래프의 작성방법을 살펴보았으나,
@@ -1417,7 +1417,8 @@ Figure 5.63: 극좌표를 이용하여 막대 그래프를 파이 그래프로 �
 1 audi         a4    auto(l5)   f     p     compact
 2 audi         a4    manual(m5) f     p     compact
 3 audi         a4    manual(m6) f     p     compact
-# … with 231 more rows</code></pre>
+# … with 231 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ul>
 <li>문자형 변수 중 manufacturer, model을 제외한 나머지 변수를 모두 요인으로 변경시켜서 다음과 같이 출력해 보자.</li>
 </ul>
@@ -1427,7 +1428,8 @@ Figure 5.63: 극좌표를 이용하여 막대 그래프를 파이 그래프로 �
 1 audi         a4    auto(l5)   f     p     compact
 2 audi         a4    manual(m5) f     p     compact
 3 audi         a4    manual(m6) f     p     compact
-# … with 231 more rows</code></pre>
+# … with 231 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ul>
 <li>요인으로 변경된 변수 <code>trans</code>의 범주별 빈도를 다음과 같이 출력해 보자.</li>
 </ul>
@@ -1525,7 +1527,8 @@ Figure 5.63: 극좌표를 이용하여 막대 그래프를 파이 그래프로 �
 1    68          37           26.5           11   2705 non-USA Acura Integra
 2    71          38           30             15   3560 non-USA Acura Legend 
 3    67          37           28             14   3375 non-USA Audi 90      
-# … with 90 more rows</code></pre>
+# … with 90 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ul>
 <li>변수 중 요인만 선택해서 다음과 같이 출력해 보자.</li>
 </ul>
@@ -1540,7 +1543,8 @@ Figure 5.63: 극좌표를 이용하여 막대 그래프를 파이 그래프로 �
 1 Yes             non-USA Acura Integra
 2 Yes             non-USA Acura Legend 
 3 Yes             non-USA Audi 90      
-# … with 90 more rows</code></pre>
+# … with 90 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ul>
 <li><p>변수 Manufacturer, Model 은 자동차 제조 회사의 이름과 자동차 모델 이름이 각각 입력되어 있다.
 93대 자동차의 제조 회사 중 빈도가 가장 높은 상위 5개 회사를 구해보자.

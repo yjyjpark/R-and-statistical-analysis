@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 자료 탐색 | R과 통계분석</title>
-  <meta name="description" content="Chapter 9 자료 탐색 | R과 통계분석" />
+  <title>9 장 자료 탐색 | R과 통계분석</title>
+  <meta name="description" content="9 장 자료 탐색 | R과 통계분석" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 자료 탐색 | R과 통계분석" />
+  <meta property="og:title" content="9 장 자료 탐색 | R과 통계분석" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 자료 탐색 | R과 통계분석" />
+  <meta name="twitter:title" content="9 장 자료 탐색 | R과 통계분석" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -366,7 +366,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="chapter-EDA" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">Chapter 9</span> 자료 탐색<a href="chapter-EDA.html#chapter-EDA" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">9 장</span> 자료 탐색<a href="chapter-EDA.html#chapter-EDA" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>수많은 변수들로 이루어져 있는 통계 자료가 주어지면 개별 변수들이 갖고 있는 정보를 탐색하는 것이 통계분석의 첫 단계가 된다. 개별 변수들의 정보를 따로따로 탐색하는 것은 결국 하나의 변수로 이루어진 일변량 자료를 탐색하는 것이라 할 수 있으며, 일변량 자료가 갖고 있는 정보 중 우리가 가장 관심을 두는 사항은 자료의 분포 형태가 될 것이다. 자료의 분포 형태를 그래프로 잘 표현하려면, 자료의 속성에 가장 적합한 그래프를 선택해야 한다.</p>
 <p>한 변수를 대상으로 하는 일변량 자료의 탐색 과정이 끝나면, 두 변수를 동시에 고려하는 이변량 자료의 탐색을 시작해야 한다. 일변량 자료에 대해서는 자료의 분포에 대한 정보만이 필요했지만, 이변량 자료에 대해서는 각 자료의 분포에 대한 정보뿐 아니라, 두 변수의 분포를 비교하는 것과 두 변수 간의 관계가 중요한 정보가 된다.</p>
 <p>이 장에서는 범주형 자료와 연속형 자료로 구분하여 각각의 경우에 자료 탐색에 사용할 수 있는 그래프의 작성방법을 살펴볼 것이다.</p>
@@ -391,7 +391,7 @@ div.csl-indent {
 <div class="figure"><span style="display:block;" id="fig:9-1-a"></span>
 <img src="_main_files/figure-html/9-1-a-1.png" alt="요인 `state.region`의 막대그래프" width="576" />
 <p class="caption">
-Figure 9.1: 요인 <code>state.region</code>의 막대그래프
+그림 9.1: 요인 <code>state.region</code>의 막대그래프
 </p>
 </div>
 <p>옆으로 누운 형태의 막대그래프도 작성해 보자.</p>
@@ -402,7 +402,7 @@ Figure 9.1: 요인 <code>state.region</code>의 막대그래프
 <div class="figure"><span style="display:block;" id="fig:9-1-b"></span>
 <img src="_main_files/figure-html/9-1-b-1.png" alt="요인 `state.region`의 옆으로 누운 형태의 막대그래프" width="576" />
 <p class="caption">
-Figure 9.2: 요인 <code>state.region</code>의 옆으로 누운 형태의 막대그래프
+그림 9.2: 요인 <code>state.region</code>의 옆으로 누운 형태의 막대그래프
 </p>
 </div>
 <p>도수분포표가 자료로 주어진 경우에 막대그래프의 작성 방법을 살펴보자. 요인이 아닌 도수분포표를 자료로 사용하는 경우에는 함수 <code>geom_bar()</code>에 <code>stat=“identity”</code>를 추가하거나 <code>geom_col()</code>을 사용해야 한다.</p>
@@ -427,7 +427,7 @@ Figure 9.2: 요인 <code>state.region</code>의 옆으로 누운 형태의 막�
 <div class="figure"><span style="display:block;" id="fig:9-1-c"></span>
 <img src="_main_files/figure-html/9-1-c-1.png" alt="도수분포표가 자료로 주어진 경우의 막대그래프 작성" width="864" />
 <p class="caption">
-Figure 9.3: 도수분포표가 자료로 주어진 경우의 막대그래프 작성
+그림 9.3: 도수분포표가 자료로 주어진 경우의 막대그래프 작성
 </p>
 </div>
 <p>많은 경우에 막대그래프는 각 범주의 빈도를 이용하여 작성되지만, 경우에 따라서는 각 범주의 상대도수를 이용하여 작성해야 할 때도 있다. 이런 경우에는 함수 <code>geom_bar()</code>에서 생성된 변수 <code>after_stat(prop)</code>를 매핑하면서, 시각적 요소 <code>group</code>에 하나의 값을 지정해 주면 된다.</p>
@@ -439,7 +439,7 @@ Figure 9.3: 도수분포표가 자료로 주어진 경우의 막대그래프 작
 <div class="figure"><span style="display:block;" id="fig:9-2"></span>
 <img src="_main_files/figure-html/9-2-1.png" alt="상대도수에 의한 막대그래프" width="576" />
 <p class="caption">
-Figure 9.4: 상대도수에 의한 막대그래프
+그림 9.4: 상대도수에 의한 막대그래프
 </p>
 </div>
 </div>
@@ -455,7 +455,7 @@ Figure 9.4: 상대도수에 의한 막대그래프
 <div class="figure"><span style="display:block;" id="fig:9-3"></span>
 <img src="_main_files/figure-html/9-3-1.png" alt="요인 `state.region`의 파이그래프" width="576" />
 <p class="caption">
-Figure 9.5: 요인 <code>state.region</code>의 파이그래프
+그림 9.5: 요인 <code>state.region</code>의 파이그래프
 </p>
 </div>
 <p>각 파이 조각의 비교를 돕기 위한 하나의 방안으로 백분율을 각 조각의 라벨로 추가해 보자. 이 경우에 라벨로 사용할 각 조각의 백분율을 데이터 프레임에 변수로 포함시키는 것이 필요하다. 숫자를 ‘%’ 기호가 포함된 백분율로 변환할 때 편하게 사용할 수 있는 함수가 패키지 <code>scales</code>에 있는 <code>percent()</code>이다.</p>
@@ -473,7 +473,7 @@ Figure 9.5: 요인 <code>state.region</code>의 파이그래프
 <span id="cb646-11"><a href="chapter-EDA.html#cb646-11" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> South            <span class="dv">16</span> <span class="dv">32</span>%  </span>
 <span id="cb646-12"><a href="chapter-EDA.html#cb646-12" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> North Central    <span class="dv">12</span> <span class="dv">24</span>%  </span>
 <span id="cb646-13"><a href="chapter-EDA.html#cb646-13" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> West             <span class="dv">13</span> <span class="dv">26</span>%  </span></code></pre></div>
-<p>이제 파이그래프를 작성하기 바로 전 단계인 쌓아 올린 막대그래프를 작성해 보자. Figure <a href="chapter-EDA.html#fig:9-4">9.6</a>에서 볼 수 있듯이 쌓아 올려지는 조각의 순서는 데이터 프레임 <code>df_2</code>의 첫 번째 행 이 제일 위에 위치하고 두 번째 행이 그 밑으로 배치되는 위에서 아래 방향이 된다.</p>
+<p>이제 파이그래프를 작성하기 바로 전 단계인 쌓아 올린 막대그래프를 작성해 보자. 그림 <a href="chapter-EDA.html#fig:9-4">9.6</a>에서 볼 수 있듯이 쌓아 올려지는 조각의 순서는 데이터 프레임 <code>df_2</code>의 첫 번째 행 이 제일 위에 위치하고 두 번째 행이 그 밑으로 배치되는 위에서 아래 방향이 된다.</p>
 <p>그래프에 라벨 추가는 함수 <code>geom_text()</code>로 할 수 있다. 데이터 프레임 <code>df_2</code>의 변수 <code>pct</code>를 시각적 요소 <code>label</code>에 매핑하고, 라벨의 위치를 <code>position</code>에 지정하면 되는데, 쌓아 올려진 각 조각의 중간 부분이 적절할 것으로 보여서 함수 <code>position_stack()</code>에서 변수 <code>vjust</code>에 0.5를 지정했다.</p>
 <div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="chapter-EDA.html#cb647-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> df_2 <span class="sc">%&gt;%</span> </span>
 <span id="cb647-2"><a href="chapter-EDA.html#cb647-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> n, <span class="at">fill =</span> state.region)) <span class="sc">+</span> </span>
@@ -484,7 +484,7 @@ Figure 9.5: 요인 <code>state.region</code>의 파이그래프
 <div class="figure"><span style="display:block;" id="fig:9-4"></span>
 <img src="_main_files/figure-html/9-4-1.png" alt="쌓아올린 막대그래프에 백분율 라벨 추가하기" width="576" />
 <p class="caption">
-Figure 9.6: 쌓아올린 막대그래프에 백분율 라벨 추가하기
+그림 9.6: 쌓아올린 막대그래프에 백분율 라벨 추가하기
 </p>
 </div>
 <p>쌓아올린 막대그래프에 함수 <code>coord_polar()</code>를 적용시켜 파이그래프를 작성해 보자.</p>
@@ -499,7 +499,7 @@ Figure 9.6: 쌓아올린 막대그래프에 백분율 라벨 추가하기
 <div class="figure"><span style="display:block;" id="fig:9-5"></span>
 <img src="_main_files/figure-html/9-5-1.png" alt="각 조각에 벡분율을 라벨로 추가한 파이그래프" width="576" />
 <p class="caption">
-Figure 9.7: 각 조각에 벡분율을 라벨로 추가한 파이그래프
+그림 9.7: 각 조각에 벡분율을 라벨로 추가한 파이그래프
 </p>
 </div>
 <p>신문이나 잡지 등에 작성된 파이그래프 중에는 3차원 효과를 준 파이그래프도 종종 발견된다. 3D 파이그래프는 패키지 <code>plotrix</code>의 함수 <code>pie3D()</code>로 작성할 수 있다. 3차원 파이그래프도 파이그래프가 갖고 있는 근본적인 문제에서 자유로울 수는 없으며, 따라서 비록 시각적으로는 화려한 그래프이지만 정보의 효과적인 전달이라는 측면에서는 문제가 많은 그래프라고 할 수 있다.</p>
@@ -510,15 +510,15 @@ Figure 9.7: 각 조각에 벡분율을 라벨로 추가한 파이그래프
 <div class="figure"><span style="display:block;" id="fig:9-6"></span>
 <img src="_main_files/figure-html/9-6-1.png" alt="패키지 `plotrix`의 3차원 파이그래프" width="672" />
 <p class="caption">
-Figure 9.8: 패키지 <code>plotrix</code>의 3차원 파이그래프
+그림 9.8: 패키지 <code>plotrix</code>의 3차원 파이그래프
 </p>
 </div>
-<p>파이그래프의 가장 큰 문제는 파이조각들의 면적을 서로 비교하는 것이 매우 힘들다는 점이다. 이러한 문제를 해결하는 방안으로 제시된 그래프가 fan plot이다. R에서는 패키지 <code>plotrix</code>에 함수 <code>fan.plot()</code>으로 작성할 수 있다. Fan plot에서는 조각들이 크기순으로 서로 겹치도록 재배치되는데, 조각의 반지름을 조절하여 모든 조각을 볼 수 있도록 하였다. Figure <a href="chapter-EDA.html#fig:9-7">9.9</a>에서 우리는 조각의 크기가 South &gt; West &gt; North Central &gt; Northeast의 순서로 되어 있음을 쉽게 알 수 있다. 많이 사용되고 있지는 않지만 파이그래프보다는 훨씬 효과적인 그래프라고 할 수 있다.</p>
+<p>파이그래프의 가장 큰 문제는 파이조각들의 면적을 서로 비교하는 것이 매우 힘들다는 점이다. 이러한 문제를 해결하는 방안으로 제시된 그래프가 fan plot이다. R에서는 패키지 <code>plotrix</code>에 함수 <code>fan.plot()</code>으로 작성할 수 있다. Fan plot에서는 조각들이 크기순으로 서로 겹치도록 재배치되는데, 조각의 반지름을 조절하여 모든 조각을 볼 수 있도록 하였다. 그림 <a href="chapter-EDA.html#fig:9-7">9.9</a>에서 우리는 조각의 크기가 South &gt; West &gt; North Central &gt; Northeast의 순서로 되어 있음을 쉽게 알 수 있다. 많이 사용되고 있지는 않지만 파이그래프보다는 훨씬 효과적인 그래프라고 할 수 있다.</p>
 <div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="chapter-EDA.html#cb650-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fan.plot</span>(pie_val, <span class="at">labels =</span> pie_lab)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:9-7"></span>
 <img src="_main_files/figure-html/9-7-1.png" alt="패키지 `plotrix`의 Fan plot" width="576" />
 <p class="caption">
-Figure 9.9: 패키지 <code>plotrix</code>의 Fan plot
+그림 9.9: 패키지 <code>plotrix</code>의 Fan plot
 </p>
 </div>
 </div>
@@ -534,7 +534,7 @@ Figure 9.9: 패키지 <code>plotrix</code>의 Fan plot
 <div class="figure"><span style="display:block;" id="fig:9-8"></span>
 <img src="_main_files/figure-html/9-8-1.png" alt="요인 `state.region`의 점그래프" width="576" />
 <p class="caption">
-Figure 9.10: 요인 <code>state.region</code>의 점그래프
+그림 9.10: 요인 <code>state.region</code>의 점그래프
 </p>
 </div>
 </div>
@@ -831,7 +831,7 @@ Figure 9.10: 요인 <code>state.region</code>의 점그래프
 <div class="figure"><span style="display:block;" id="fig:9-9-1"></span>
 <img src="_main_files/figure-html/9-9-1-1.png" alt="쌓아 올린 막대그래프" width="576" />
 <p class="caption">
-Figure 9.11: 쌓아 올린 막대그래프
+그림 9.11: 쌓아 올린 막대그래프
 </p>
 </div>
 <p>두 변수의 분할표를 데이터로 사용하여 쌓아 올린 막대 그래프를 작성해야 하는 경우에는 분할표를 데이터 프레임으로 변환시키고, 설명변수인 <code>Treatment</code>를 <code>x</code>에, 빈도수인 <code>n</code>를 <code>y</code>에, 반응변수인 <code>Improved</code>를 <code>fill</code>에 매핑하고, 함수 <code>geom_col()</code> 또는 <code>geom_bar(stat = ”identity”)</code>를 사용하면 된다.</p>
@@ -843,7 +843,7 @@ Figure 9.11: 쌓아 올린 막대그래프
 <div class="figure"><span style="display:block;" id="fig:9-9-2"></span>
 <img src="_main_files/figure-html/9-9-2-1.png" alt="쌓아 올린 막대그래프" width="576" />
 <p class="caption">
-Figure 9.12: 쌓아 올린 막대그래프
+그림 9.12: 쌓아 올린 막대그래프
 </p>
 </div>
 <p><span class="math inline">\(\bullet\)</span> 옆으로 붙여 놓은 막대그래프</p>
@@ -854,7 +854,7 @@ Figure 9.12: 쌓아 올린 막대그래프
 <div class="figure"><span style="display:block;" id="fig:9-10-a"></span>
 <img src="_main_files/figure-html/9-10-a-1.png" alt="옆으로 붙여 놓은 막대그래프" width="576" />
 <p class="caption">
-Figure 9.13: 옆으로 붙여 놓은 막대그래프
+그림 9.13: 옆으로 붙여 놓은 막대그래프
 </p>
 </div>
 <div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="chapter-EDA.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(Arthritis, <span class="fu">aes</span>(<span class="at">x =</span> Treatment, <span class="at">fill =</span> Improved)) <span class="sc">+</span></span>
@@ -863,7 +863,7 @@ Figure 9.13: 옆으로 붙여 놓은 막대그래프
 <div class="figure"><span style="display:block;" id="fig:9-10-b"></span>
 <img src="_main_files/figure-html/9-10-b-1.png" alt="옆으로 붙여 놓은 막대그래프" width="576" />
 <p class="caption">
-Figure 9.14: 옆으로 붙여 놓은 막대그래프
+그림 9.14: 옆으로 붙여 놓은 막대그래프
 </p>
 </div>
 <p>상대도수를 사용하여 옆으로 붙여 놓은 막대 그래프를 작성해 보자.
@@ -875,7 +875,7 @@ Figure 9.14: 옆으로 붙여 놓은 막대그래프
 <div class="figure"><span style="display:block;" id="fig:9-11-a"></span>
 <img src="_main_files/figure-html/9-11-a-1.png" alt="상대도수에 의한 옆으로 붙여 놓은 막대 그래프" width="576" />
 <p class="caption">
-Figure 9.15: 상대도수에 의한 옆으로 붙여 놓은 막대 그래프
+그림 9.15: 상대도수에 의한 옆으로 붙여 놓은 막대 그래프
 </p>
 </div>
 <p>상대도수를 사용자가 직접 계산해서 함수 <code>geom_col()</code>을 사용한 방법이다.</p>
@@ -887,7 +887,7 @@ Figure 9.15: 상대도수에 의한 옆으로 붙여 놓은 막대 그래프
 <div class="figure"><span style="display:block;" id="fig:9-11-b"></span>
 <img src="_main_files/figure-html/9-11-b-1.png" alt="상대도수에 의한 옆으로 붙여 놓은 막대 그래프" width="576" />
 <p class="caption">
-Figure 9.16: 상대도수에 의한 옆으로 붙여 놓은 막대 그래프
+그림 9.16: 상대도수에 의한 옆으로 붙여 놓은 막대 그래프
 </p>
 </div>
 <p>함수 <code>geom_bar()</code>로 두 변수의 막대그래프를 작성하는 경우, 시각적 요소 <code>x</code>와 <code>fill</code>에 각각 동일한 변수를 매핑하여도 <code>position</code>에 어떤 값을 지정하는가에 따라 다른 형태의 막대그래프가 작성된다. 디폴트는 <code>“stack”</code>으로 쌓아 올린 형태가 되고, <code>“dodge”</code>는 옆으로 붙여 놓은 형태가 됨을 알 수 있었다. 또 다른 가능한 다른 값으로 <code>“fill”</code>이 있는데, 이 경우에는 <code>x</code> 변수에 대한 <code>fill</code> 변수의 조건부 확률로 막대그래프가 각각 작성된다. 따라서 각 막대의 높이는 1이 된다.</p>
@@ -897,10 +897,10 @@ Figure 9.16: 상대도수에 의한 옆으로 붙여 놓은 막대 그래프
 <div class="figure"><span style="display:block;" id="fig:9-12"></span>
 <img src="_main_files/figure-html/9-12-1.png" alt="조건부 확률을 표현한 쌓아 올린 막대그래프" width="576" />
 <p class="caption">
-Figure 9.17: 조건부 확률을 표현한 쌓아 올린 막대그래프
+그림 9.17: 조건부 확률을 표현한 쌓아 올린 막대그래프
 </p>
 </div>
-<p>Figure <a href="chapter-EDA.html#fig:9-12">9.17</a> 에서 각 조각의 면적은 행 변수인 <code>Treatment</code>를 조건으로 하는 열 변수 <code>Improved</code>의 조건부 확률에 의하여 결정됨을 다음의 분할표와 비교해 보면 알 수 있다. 설명변수와 반응변수 사이의 관계를 파악하는 데 더 적합하다고 할 수 있다.</p>
+<p>그림 <a href="chapter-EDA.html#fig:9-12">9.17</a> 에서 각 조각의 면적은 행 변수인 <code>Treatment</code>를 조건으로 하는 열 변수 <code>Improved</code>의 조건부 확률에 의하여 결정됨을 다음의 분할표와 비교해 보면 알 수 있다. 설명변수와 반응변수 사이의 관계를 파악하는 데 더 적합하다고 할 수 있다.</p>
 <div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="chapter-EDA.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">prop.table</span>(my_table, <span class="dv">1</span>)</span>
 <span id="cb681-2"><a href="chapter-EDA.html#cb681-2" aria-hidden="true" tabindex="-1"></a>         Improved</span>
 <span id="cb681-3"><a href="chapter-EDA.html#cb681-3" aria-hidden="true" tabindex="-1"></a>Treatment None Some Marked</span>
@@ -914,7 +914,7 @@ Figure 9.17: 조건부 확률을 표현한 쌓아 올린 막대그래프
 <div class="figure"><span style="display:block;" id="fig:9-13-a"></span>
 <img src="_main_files/figure-html/9-13-a-1.png" alt="Mosaic plot" width="576" />
 <p class="caption">
-Figure 9.18: Mosaic plot
+그림 9.18: Mosaic plot
 </p>
 </div>
 <p>작성방법은 두 변수의 분할표 행 변수(<code>Treatment</code>)의 상대도수(Placebo 0.512, Treated 0.488)의 비율에 따라 정사각형을 수직(<code>direction = “v”</code>)으로 분리한다. 이어서 수직으로 분리된 두 조각을 행 변수 <code>Treatment</code>를 조건으로 하는 열 변수 <code>Improved</code>의 조건부 확률에 비례하여 수평방향으로 각각 분리하여 작성한다. 옵션 <code>direction = “v”</code>가 생략되면 첫번째 분할은 수평방향(<code>direction = “h”</code>)으로 이루어지고, 따라서 두 번째 분할은 수직으로 이루어진다.</p>
@@ -923,7 +923,7 @@ Figure 9.18: Mosaic plot
 <div class="figure"><span style="display:block;" id="fig:9-13-b"></span>
 <img src="_main_files/figure-html/9-13-b-1.png" alt="Mosaic plot" width="576" />
 <p class="caption">
-Figure 9.19: Mosaic plot
+그림 9.19: Mosaic plot
 </p>
 </div>
 <p>이번에는 반응변수 <code>Improved</code>와 설명변수 <code>Treatment</code>, <code>Sex</code>의 관계를 mosaic plot으로 나타내 보자.</p>
@@ -931,7 +931,7 @@ Figure 9.19: Mosaic plot
 <div class="figure"><span style="display:block;" id="fig:9-14-a"></span>
 <img src="_main_files/figure-html/9-14-a-1.png" alt="세 변수의 mosaic plot" width="768" />
 <p class="caption">
-Figure 9.20: 세 변수의 mosaic plot
+그림 9.20: 세 변수의 mosaic plot
 </p>
 </div>
 <p>함수 <code>mosaic()</code>에서 선의 종류나 색 등의 그래픽 모수는 패키지 <code>grid</code>를 통해 조절이 된다. 패키지 <code>grid</code>에서 그래픽 모수의 기본적인 설정은 <code>gp = gpar(...)</code>이 되며, 다각형도형을 색으로 채우는 옵션은 <code>fill</code>이 된다.</p>
@@ -940,10 +940,10 @@ Figure 9.20: 세 변수의 mosaic plot
 <div class="figure"><span style="display:block;" id="fig:9-14-b"></span>
 <img src="_main_files/figure-html/9-14-b-1.png" alt="세 변수의 mosaic plot" width="768" />
 <p class="caption">
-Figure 9.21: 세 변수의 mosaic plot
+그림 9.21: 세 변수의 mosaic plot
 </p>
 </div>
-<p>Figure <a href="chapter-EDA.html#fig:9-14-a">9.20</a> 에서 확인할 수 있는 또 다른 사항은 <code>Treatment</code>가 <code>Placebo</code>이고, <code>Sex</code>가 <code>Male</code>인 그룹에서 <code>Improved</code>가 <code>Some</code>에 해당하는 부분에 점이 찍혀있는 것이다. 그것은 이 그룹에 해당되는 자료가 없기 때문인데, 이때 사용되는 점의 크기는 옵션 <code>zero_size</code>로 조절할 수 있다.</p>
+<p>그림 <a href="chapter-EDA.html#fig:9-14-a">9.20</a> 에서 확인할 수 있는 또 다른 사항은 <code>Treatment</code>가 <code>Placebo</code>이고, <code>Sex</code>가 <code>Male</code>인 그룹에서 <code>Improved</code>가 <code>Some</code>에 해당하는 부분에 점이 찍혀있는 것이다. 그것은 이 그룹에 해당되는 자료가 없기 때문인데, 이때 사용되는 점의 크기는 옵션 <code>zero_size</code>로 조절할 수 있다.</p>
 <p>Mosaic plot을 포함한 범주형 자료의 시각화와 관련된 다양한 방법에 대해서는 <a href="http://datavis.ca">Michael Friendly의 홈페이지</a> 를 참조하기 바란다.</p>
 </div>
 </div>
@@ -1009,7 +1009,7 @@ Figure 9.21: 세 변수의 mosaic plot
 <div class="figure"><span style="display:block;" id="fig:9-15-a"></span>
 <img src="_main_files/figure-html/9-15-a-1.png" alt="변수 `Gross`의 수직방향 상자그림" width="576" />
 <p class="caption">
-Figure 9.22: 변수 <code>Gross</code>의 수직방향 상자그림
+그림 9.22: 변수 <code>Gross</code>의 수직방향 상자그림
 </p>
 </div>
 <div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="chapter-EDA.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
@@ -1019,10 +1019,10 @@ Figure 9.22: 변수 <code>Gross</code>의 수직방향 상자그림
 <div class="figure"><span style="display:block;" id="fig:9-15-b"></span>
 <img src="_main_files/figure-html/9-15-b-1.png" alt="변수 `Gross`의 수평방향 상자그림" width="576" />
 <p class="caption">
-Figure 9.23: 변수 <code>Gross</code>의 수평방향 상자그림
+그림 9.23: 변수 <code>Gross</code>의 수평방향 상자그림
 </p>
 </div>
-<p>함수 <code>geom_boxplot()</code>으로 작성된 Figure <a href="chapter-EDA.html#fig:9-15-b">9.23</a> 의 상자그림에 표시된 이상값이 어떤 케이 스에 해당되는 것인지 확인해 보는 것은 중요한 작업이 될 수 있다. 이러한 작업에 필요한 함수는 <code>ggplot_build()</code>이다. 이 함수에 ggplot 객체를 입력하면 그래프 작성에 사용된 모든 내용을 보여준다. 생성된 결과는 리스트로서 각 레이어(layer) 작성에 필요한 통계량이 데이터 프레임 형태로 입력되어 있다. 이제 Figure <a href="chapter-EDA.html#fig:9-15-b">9.23</a>를 작성한 ggplot 객체를 함수 <code>ggplot_build()</code>에 입력하고 생성된 리스트의 첫 번째 요소인 데이터 프레임의 내용을 살펴보자.</p>
+<p>함수 <code>geom_boxplot()</code>으로 작성된 그림 <a href="chapter-EDA.html#fig:9-15-b">9.23</a> 의 상자그림에 표시된 이상값이 어떤 케이 스에 해당되는 것인지 확인해 보는 것은 중요한 작업이 될 수 있다. 이러한 작업에 필요한 함수는 <code>ggplot_build()</code>이다. 이 함수에 ggplot 객체를 입력하면 그래프 작성에 사용된 모든 내용을 보여준다. 생성된 결과는 리스트로서 각 레이어(layer) 작성에 필요한 통계량이 데이터 프레임 형태로 입력되어 있다. 이제 그림 <a href="chapter-EDA.html#fig:9-15-b">9.23</a>를 작성한 ggplot 객체를 함수 <code>ggplot_build()</code>에 입력하고 생성된 리스트의 첫 번째 요소인 데이터 프레임의 내용을 살펴보자.</p>
 <div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="chapter-EDA.html#cb693-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> bp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(alltime.movies, <span class="fu">aes</span>(<span class="at">y =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> Gross)) <span class="sc">+</span> </span>
 <span id="cb693-2"><a href="chapter-EDA.html#cb693-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="chapter-EDA.html#cb694-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot_build</span>(bp)[[<span class="dv">1</span>]][[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> </span>
@@ -1070,7 +1070,8 @@ Figure 9.23: 변수 <code>Gross</code>의 수평방향 상자그림
 <span id="cb696-8"><a href="chapter-EDA.html#cb696-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="st">&quot;Titanic                                &quot;</span>   <span class="dv">601</span>         <span class="dv">1997</span></span>
 <span id="cb696-9"><a href="chapter-EDA.html#cb696-9" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="st">&quot;Star Wars                              &quot;</span>   <span class="dv">461</span>         <span class="dv">1977</span></span>
 <span id="cb696-10"><a href="chapter-EDA.html#cb696-10" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="st">&quot;E.T.                                   &quot;</span>   <span class="dv">435</span>         <span class="dv">1982</span></span>
-<span id="cb696-11"><a href="chapter-EDA.html#cb696-11" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 76 more rows</span></span></code></pre></div>
+<span id="cb696-11"><a href="chapter-EDA.html#cb696-11" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 76 more rows</span></span>
+<span id="cb696-12"><a href="chapter-EDA.html#cb696-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>이제 데이터 프레임 <code>alltime</code>에서 변수 <code>Gross</code>의 값이 <code>bp_out</code>의 값과 같은 케이스를 패키지 <code>dplyr</code>의 함수 <code>filter()</code>에 연산자 <code>%in%</code>을 사용하여 선택해 보자.</p>
 <div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="chapter-EDA.html#cb697-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> alltime <span class="sc">%&gt;%</span></span>
 <span id="cb697-2"><a href="chapter-EDA.html#cb697-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(Gross <span class="sc">%in%</span> bp_out)</span>
@@ -1090,7 +1091,7 @@ Figure 9.23: 변수 <code>Gross</code>의 수평방향 상자그림
 <div class="figure"><span style="display:block;" id="fig:9-16-a"></span>
 <img src="_main_files/figure-html/9-16-a-1.png" alt="상자그림에 자료의 위치 추가" width="576" />
 <p class="caption">
-Figure 9.24: 상자그림에 자료의 위치 추가
+그림 9.24: 상자그림에 자료의 위치 추가
 </p>
 </div>
 <p>상자그림의 상자 안에 많은 점들이 서로 겹쳐져 있는 것을 볼 수 있다. 이런 경우에 점들의 위치에 약간 난수를 더해 조정해 주면 점들이 서로 겹쳐지는 문제를 어느 정도 해결 할 수 있는데, 함수 <code>geom_jitter()</code>로 할 수 있는 작업이다.</p>
@@ -1101,7 +1102,7 @@ Figure 9.24: 상자그림에 자료의 위치 추가
 <div class="figure"><span style="display:block;" id="fig:9-16-b"></span>
 <img src="_main_files/figure-html/9-16-b-1.png" alt="상자그림에 자료의 위치 추가" width="576" />
 <p class="caption">
-Figure 9.25: 상자그림에 자료의 위치 추가
+그림 9.25: 상자그림에 자료의 위치 추가
 </p>
 </div>
 <p>상자그림은 자료의 분위수를 기반으로 작성된 그래프이다. 따라서 중앙값의 위치는 표시가 되지만 평균값의 위치는 나타나지 않는 것이 일반적인 모습이다. 하지만 평균값의 위치를 추가적으로 표시하는 것이 자료의 분포를 이해하는 데 도움이 될 수도 있을 것이다.</p>
@@ -1115,7 +1116,7 @@ Figure 9.25: 상자그림에 자료의 위치 추가
 <div class="figure"><span style="display:block;" id="fig:9-17"></span>
 <img src="_main_files/figure-html/9-17-1.png" alt="상자그림에 평균값 표시 추가" width="576" />
 <p class="caption">
-Figure 9.26: 상자그림에 평균값 표시 추가
+그림 9.26: 상자그림에 평균값 표시 추가
 </p>
 </div>
 <p><span class="math inline">\(\bullet\)</span> Violin plot</p>
@@ -1125,17 +1126,17 @@ Figure 9.26: 상자그림에 평균값 표시 추가
 <div class="figure"><span style="display:block;" id="fig:9-18-a"></span>
 <img src="_main_files/figure-html/9-18-a-1.png" alt="패키지 vioplot의 Violin plot: 수직방향" width="576" />
 <p class="caption">
-Figure 9.27: 패키지 vioplot의 Violin plot: 수직방향
+그림 9.27: 패키지 vioplot의 Violin plot: 수직방향
 </p>
 </div>
 <div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="chapter-EDA.html#cb702-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">vioplot</span>(alltime.movies<span class="sc">$</span>Gross, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:9-18-b"></span>
 <img src="_main_files/figure-html/9-18-b-1.png" alt="패키지 vioplot의 Violin plot: 수평방향" width="576" />
 <p class="caption">
-Figure 9.28: 패키지 vioplot의 Violin plot: 수평방향
+그림 9.28: 패키지 vioplot의 Violin plot: 수평방향
 </p>
 </div>
-<p>Figure <a href="chapter-EDA.html#fig:9-18-a">9.27</a>와 Figure <a href="chapter-EDA.html#fig:9-18-b">9.28</a> 에서 볼 수 있듯이 violin plot은 상자그림을 중심으로 확률밀도함수 그래프를 대칭으로 그려놓은 그래프이다. 하얀 점은 중앙값을 나타내고 있으며, 검은 상자는 0.25분위수에서 0.75분위수까지 그려져 있고, whisker는 검은색 실선으로 그려져 있다. 상자그림 외부의 그림은 확률밀도함수 그래프가 그려져 있어서 시각적으로 조금 더 분명하게 분포형태에 대한 정보를 제공해주고 있다. 많이 사용되고 있지는 않지만 상당히 효과적으로 사용할 수 있는 그래프라고 할 것이다.</p>
+<p>그림 <a href="chapter-EDA.html#fig:9-18-a">9.27</a>와 그림 <a href="chapter-EDA.html#fig:9-18-b">9.28</a> 에서 볼 수 있듯이 violin plot은 상자그림을 중심으로 확률밀도함수 그래프를 대칭으로 그려놓은 그래프이다. 하얀 점은 중앙값을 나타내고 있으며, 검은 상자는 0.25분위수에서 0.75분위수까지 그려져 있고, whisker는 검은색 실선으로 그려져 있다. 상자그림 외부의 그림은 확률밀도함수 그래프가 그려져 있어서 시각적으로 조금 더 분명하게 분포형태에 대한 정보를 제공해주고 있다. 많이 사용되고 있지는 않지만 상당히 효과적으로 사용할 수 있는 그래프라고 할 것이다.</p>
 <p>패키지 <code>ggplot2</code>에서 violin plot의 작성은 함수 <code>geom_violin()</code>으로 할 수 있다. 이 함수는 상자그림없이 확률밀도함수 그래프만을 대칭으로 작성한다.</p>
 <div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="chapter-EDA.html#cb703-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> vio <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(alltime.movies, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> Gross)) <span class="sc">+</span></span>
 <span id="cb703-2"><a href="chapter-EDA.html#cb703-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">xlab</span>(<span class="cn">NULL</span>)</span>
@@ -1143,7 +1144,7 @@ Figure 9.28: 패키지 vioplot의 Violin plot: 수평방향
 <div class="figure"><span style="display:block;" id="fig:9-19-a"></span>
 <img src="_main_files/figure-html/9-19-a-1.png" alt="패키지 ggplot2의 violin plot" width="576" />
 <p class="caption">
-Figure 9.29: 패키지 ggplot2의 violin plot
+그림 9.29: 패키지 ggplot2의 violin plot
 </p>
 </div>
 <p>분위수를 함께 표시하고자 한다면 변수 <code>draw_quantiles</code>에 표시를 원하는 분위수를 지정해야 한다.</p>
@@ -1151,7 +1152,7 @@ Figure 9.29: 패키지 ggplot2의 violin plot
 <div class="figure"><span style="display:block;" id="fig:9-19-b"></span>
 <img src="_main_files/figure-html/9-19-b-1.png" alt="패키지 ggplot2의 violin plot: 분위수 함께 표시" width="576" />
 <p class="caption">
-Figure 9.30: 패키지 ggplot2의 violin plot: 분위수 함께 표시
+그림 9.30: 패키지 ggplot2의 violin plot: 분위수 함께 표시
 </p>
 </div>
 <p>상자그림과 함께 violin plot을 작성하고자 한다면 함수 <code>geom_boxplot()</code>을 함께 사용하면 된다. 변수 <code>width</code>는 상자그림의 폭을 조절하기 위해 추가했다.</p>
@@ -1160,7 +1161,7 @@ Figure 9.30: 패키지 ggplot2의 violin plot: 분위수 함께 표시
 <div class="figure"><span style="display:block;" id="fig:9-20-a"></span>
 <img src="_main_files/figure-html/9-20-a-1.png" alt="패키지 ggplot2의 violin plot: 상자그림 추가" width="576" />
 <p class="caption">
-Figure 9.31: 패키지 ggplot2의 violin plot: 상자그림 추가
+그림 9.31: 패키지 ggplot2의 violin plot: 상자그림 추가
 </p>
 </div>
 <p>함수 <code>geom_violin()</code>을 함수 <code>geom_boxplot()</code>의 뒤에 추가한다면 투명도를 조절하는 시각적 요소인 <code>alpha</code>의 값을 낮게 지정하여 투명도를 높여야 상자그림이 보이게 된다.</p>
@@ -1169,7 +1170,7 @@ Figure 9.31: 패키지 ggplot2의 violin plot: 상자그림 추가
 <div class="figure"><span style="display:block;" id="fig:9-20-b"></span>
 <img src="_main_files/figure-html/9-20-b-1.png" alt="패키지 ggplot2의 violin plot: 상자그림 추가" width="576" />
 <p class="caption">
-Figure 9.32: 패키지 ggplot2의 violin plot: 상자그림 추가
+그림 9.32: 패키지 ggplot2의 violin plot: 상자그림 추가
 </p>
 </div>
 </div>
@@ -1186,10 +1187,10 @@ Figure 9.32: 패키지 ggplot2의 violin plot: 상자그림 추가
 <div class="figure"><span style="display:block;" id="fig:9-21"></span>
 <img src="_main_files/figure-html/9-21-1.png" alt="함수 `geom_histogram()`으로 작성한 히스토그램" width="864" />
 <p class="caption">
-Figure 9.33: 함수 <code>geom_histogram()</code>으로 작성한 히스토그램
+그림 9.33: 함수 <code>geom_histogram()</code>으로 작성한 히스토그램
 </p>
 </div>
-<p>Figure <a href="chapter-EDA.html#fig:9-21">9.33</a>에서 볼 수 있듯이 구간을 어떻게 설정하는가에 따라 히스토그램의 모습이 크게 변하게 된다. 디폴트 구간으로 작성된 히스토그램이 만족스러운 결과를 보여주는 경우도 있겠지만 전적으로 의존하기에는 아쉬운 점이 많다. 이렇듯 구간설정 문제는 히스토그램의 중요한 문제라 할 수 있으나, 적절한 구간설정에 관한 이론적 접근에 대해서는 생략한다.</p>
+<p>그림 <a href="chapter-EDA.html#fig:9-21">9.33</a>에서 볼 수 있듯이 구간을 어떻게 설정하는가에 따라 히스토그램의 모습이 크게 변하게 된다. 디폴트 구간으로 작성된 히스토그램이 만족스러운 결과를 보여주는 경우도 있겠지만 전적으로 의존하기에는 아쉬운 점이 많다. 이렇듯 구간설정 문제는 히스토그램의 중요한 문제라 할 수 있으나, 적절한 구간설정에 관한 이론적 접근에 대해서는 생략한다.</p>
 <p>히스토그램의 또 한 가지 문제는 연속형 데이터의 분포를 계단 형태로 표현함으로써 생기는 어색함이라고 할 수 있다. 이것은 히스토그램의 태생적인 한계라고 할 수 있는데, 이 문제는 <a href="chapter-EDA.html#section-prob-density">9.3.4</a>절에서 살펴볼 확률밀도함수 그래프를 히스토그램에 겹쳐서 나타내거나, 도수분포다각형을 작성하는 것으로 어느 정도 완화할 수 있다.</p>
 </div>
 <div id="section-prob-density" class="section level3 hasAnchor" number="9.3.4">
@@ -1205,7 +1206,7 @@ Figure 9.33: 함수 <code>geom_histogram()</code>으로 작성한 히스토그�
 <div class="figure"><span style="display:block;" id="fig:9-22"></span>
 <img src="_main_files/figure-html/9-22-1.png" alt="함수 `geom_density()`로 작성한 확률밀도함수 그래프" width="864" />
 <p class="caption">
-Figure 9.34: 함수 <code>geom_density()</code>로 작성한 확률밀도함수 그래프
+그림 9.34: 함수 <code>geom_density()</code>로 작성한 확률밀도함수 그래프
 </p>
 </div>
 <p>확률밀도함수 그래프는 단독으로 작성되는 경우도 많이 있지만, 히스토그램과 겹쳐서 작성하는 것도 의미 있는 작업이 된다. 히스토그램과 확률밀도함수 그래프를 겹치게 작성하기 위해서는 함수 <code>geom_histogram()</code>에서 시각적 요소 <code>y</code>에 변수 <code>after_stat(density)</code>를 매핑해야 히스토그램이 확률밀도로 표현된다. 이어서 함수 <code>geom_density()</code>로 확률밀도함수 그래프를 추가하면 된다.</p>
@@ -1217,7 +1218,7 @@ Figure 9.34: 함수 <code>geom_density()</code>로 작성한 확률밀도함수 
 <div class="figure"><span style="display:block;" id="fig:9-23-a"></span>
 <img src="_main_files/figure-html/9-23-a-1.png" alt="히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성" width="576" />
 <p class="caption">
-Figure 9.35: 히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성
+그림 9.35: 히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성
 </p>
 </div>
 <p>만일 <code>geom_density()</code>를 먼저 작성하고 <code>geom_histogram()</code>을 그 다음에 작성한다면 히스토그램을 투명하게 만드는 것이 필요하다.</p>
@@ -1229,7 +1230,7 @@ Figure 9.35: 히스토그램과 확률밀도함수 그래프를 겹쳐지게 작
 <div class="figure"><span style="display:block;" id="fig:9-23-b"></span>
 <img src="_main_files/figure-html/9-23-b-1.png" alt="히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성" width="576" />
 <p class="caption">
-Figure 9.36: 히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성
+그림 9.36: 히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성
 </p>
 </div>
 </div>
@@ -1246,7 +1247,7 @@ Figure 9.36: 히스토그램과 확률밀도함수 그래프를 겹쳐지게 작
 <div class="figure"><span style="display:block;" id="fig:9-24"></span>
 <img src="_main_files/figure-html/9-24-1.png" alt="함수 `geom_freqpoly()`로 작성된 도수분포다각형" width="768" />
 <p class="caption">
-Figure 9.37: 함수 <code>geom_freqpoly()</code>로 작성된 도수분포다각형
+그림 9.37: 함수 <code>geom_freqpoly()</code>로 작성된 도수분포다각형
 </p>
 </div>
 <p>도수분포다각형은 범주형 변수에 의해 구분되는 그룹별로 연속형 변수의 분포를 비교하 는 경우에 히스토그램보다 더 유용하게 사용될 수 있는 그래프이다.</p>
@@ -1258,17 +1259,17 @@ Figure 9.37: 함수 <code>geom_freqpoly()</code>로 작성된 도수분포다각
 <div class="figure"><span style="display:block;" id="fig:9-25-a"></span>
 <img src="_main_files/figure-html/9-25-a-1.png" alt="함수 `geom_dotplot()`으로 작성된 점 그래프" width="576" />
 <p class="caption">
-Figure 9.38: 함수 <code>geom_dotplot()</code>으로 작성된 점 그래프
+그림 9.38: 함수 <code>geom_dotplot()</code>으로 작성된 점 그래프
 </p>
 </div>
-<p>히스토그램과 유사한 특징을 보이는 그래프라는 것을 알 수 있다. 다만 Figure <a href="chapter-EDA.html#fig:9-25-a">9.38</a>의 Y축 scale이 잘못되어 있는데, 이것을 <code>scale</code> 함수로 제거하자.</p>
+<p>히스토그램과 유사한 특징을 보이는 그래프라는 것을 알 수 있다. 다만 그림 <a href="chapter-EDA.html#fig:9-25-a">9.38</a>의 Y축 scale이 잘못되어 있는데, 이것을 <code>scale</code> 함수로 제거하자.</p>
 <div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="chapter-EDA.html#cb713-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(waiting)) <span class="sc">+</span> </span>
 <span id="cb713-2"><a href="chapter-EDA.html#cb713-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
 <span id="cb713-3"><a href="chapter-EDA.html#cb713-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:9-25-b"></span>
 <img src="_main_files/figure-html/9-25-b-1.png" alt="함수 `geom_dotplot()`으로 작성된 점 그래프" width="576" />
 <p class="caption">
-Figure 9.39: 함수 <code>geom_dotplot()</code>으로 작성된 점 그래프
+그림 9.39: 함수 <code>geom_dotplot()</code>으로 작성된 점 그래프
 </p>
 </div>
 <p><span class="math inline">\(\bullet\)</span> 경험적 누적분포함수 그래프</p>
@@ -1279,7 +1280,7 @@ Figure 9.39: 함수 <code>geom_dotplot()</code>으로 작성된 점 그래프
 <div class="figure"><span style="display:block;" id="fig:9-26"></span>
 <img src="_main_files/figure-html/9-26-1.png" alt="함수 `stat_ecdf()`로 작성된 경험적 누적분포함수 그래프" width="576" />
 <p class="caption">
-Figure 9.40: 함수 <code>stat_ecdf()</code>로 작성된 경험적 누적분포함수 그래프
+그림 9.40: 함수 <code>stat_ecdf()</code>로 작성된 경험적 누적분포함수 그래프
 </p>
 </div>
 </div>
@@ -1308,7 +1309,7 @@ Figure 9.40: 함수 <code>stat_ecdf()</code>로 작성된 경험적 누적분포
 <div class="figure"><span style="display:block;" id="fig:9-27"></span>
 <img src="_main_files/figure-html/9-27-1.png" alt="변수 `INCOME`의 히스토그램" width="576" />
 <p class="caption">
-Figure 9.41: 변수 <code>INCOME</code>의 히스토그램
+그림 9.41: 변수 <code>INCOME</code>의 히스토그램
 </p>
 </div>
 <p>심하게 치우친 분포에 대해서는 대부분 변수변환을 통해 좌우대칭에 가까운 분포로 형태를 바꿔주게 된다. 변수 <code>INCOME</code>의 분포는 우측으로 심하게 치우친 분포이므로 로그 혹은 제곱근 변환을 통해 좌우대칭 분포로 변환시킬 수 있는데, 여기에서는 로그변환을 실시해보자.</p>
@@ -1332,10 +1333,10 @@ Figure 9.41: 변수 <code>INCOME</code>의 히스토그램
 <div class="figure"><span style="display:block;" id="fig:9-28"></span>
 <img src="_main_files/figure-html/9-28-1.png" alt="로그 변환된 변수 `INCOME`의 히스토그램" width="576" />
 <p class="caption">
-Figure 9.42: 로그 변환된 변수 <code>INCOME</code>의 히스토그램
+그림 9.42: 로그 변환된 변수 <code>INCOME</code>의 히스토그램
 </p>
 </div>
-<p>우측으로 심하게 치우친 모습을 보인 분포가 로그변환으로 좌우대칭의 모습을 보이는 분포로 바뀐 것을 알 수 있다. Figure <a href="chapter-EDA.html#fig:9-28">9.42</a>의 좌측 끝부분에 있는 극단값은 변수 <code>INCOME</code>의 값이 0인 4개의 케이스에 해당되는 것이다.</p>
+<p>우측으로 심하게 치우친 모습을 보인 분포가 로그변환으로 좌우대칭의 모습을 보이는 분포로 바뀐 것을 알 수 있다. 그림 <a href="chapter-EDA.html#fig:9-28">9.42</a>의 좌측 끝부분에 있는 극단값은 변수 <code>INCOME</code>의 값이 0인 4개의 케이스에 해당되는 것이다.</p>
 <p><span class="math inline">\(\bullet\)</span> 자료의 퍼짐정도에 대한 요약통계</p>
 <p>자료의 중심에 대한 요약통계만으로는 자료의 분포에 대한 정확한 묘사가 불가능하다고 할 수 있는데, 다음에 주어진 시험점수 모의 자료를 살펴보자.</p>
 <table>
@@ -1419,11 +1420,11 @@ Figure 9.42: 로그 변환된 변수 <code>INCOME</code>의 히스토그램
 <span id="cb729-13"><a href="chapter-EDA.html#cb729-13" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(,<span class="st">&quot;scaled:scale&quot;</span>)</span>
 <span id="cb729-14"><a href="chapter-EDA.html#cb729-14" aria-hidden="true" tabindex="-1"></a>    test1     test2 </span>
 <span id="cb729-15"><a href="chapter-EDA.html#cb729-15" aria-hidden="true" tabindex="-1"></a> <span class="fl">4.966555</span> <span class="fl">19.431197</span> </span></code></pre></div>
-<p>시험점수자료의 변환 전 분포와 변환 후 분포를 나타낸 그래프가 Figure <a href="chapter-EDA.html#fig:9-29">9.43</a>에 있다.</p>
+<p>시험점수자료의 변환 전 분포와 변환 후 분포를 나타낸 그래프가 그림 <a href="chapter-EDA.html#fig:9-29">9.43</a>에 있다.</p>
 <div class="figure"><span style="display:block;" id="fig:9-29"></span>
 <img src="_main_files/figure-html/9-29-1.png" alt="표준화 전후의 자료 분포" width="768" />
 <p class="caption">
-Figure 9.43: 표준화 전후의 자료 분포
+그림 9.43: 표준화 전후의 자료 분포
 </p>
 </div>
 </div>
@@ -1466,7 +1467,7 @@ Figure 9.43: 표준화 전후의 자료 분포
 <div class="figure"><span style="display:block;" id="fig:9-30-a"></span>
 <img src="_main_files/figure-html/9-30-a-1.png" alt="그룹 자료의 분포 비교를 위한 히스토그램" width="576" />
 <p class="caption">
-Figure 9.44: 그룹 자료의 분포 비교를 위한 히스토그램
+그림 9.44: 그룹 자료의 분포 비교를 위한 히스토그램
 </p>
 </div>
 <p>그룹별 히스토그램을 작성해서 하나의 그래프에 겹치게 나타내보자.
@@ -1480,7 +1481,7 @@ Figure 9.44: 그룹 자료의 분포 비교를 위한 히스토그램
 <div class="figure"><span style="display:block;" id="fig:9-30-b"></span>
 <img src="_main_files/figure-html/9-30-b-1.png" alt="그룹 자료의 분포 비교를 위한 히스토그램" width="576" />
 <p class="caption">
-Figure 9.45: 그룹 자료의 분포 비교를 위한 히스토그램
+그림 9.45: 그룹 자료의 분포 비교를 위한 히스토그램
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 도수분포다각형에 의한 그룹 자료의 분포 비교</strong></p>
@@ -1501,7 +1502,7 @@ Figure 9.45: 그룹 자료의 분포 비교를 위한 히스토그램
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-640"></span>
 <img src="_main_files/figure-html/unnamed-chunk-640-1.png" alt="변수 `cyl`에 따른 `hwy`의 도수분포다각형" width="768" />
 <p class="caption">
-Figure 9.46: 변수 <code>cyl</code>에 따른 <code>hwy</code>의 도수분포다각형
+그림 9.46: 변수 <code>cyl</code>에 따른 <code>hwy</code>의 도수분포다각형
 </p>
 </div>
 <p>히스토그램과 도수분포다각형은 작성 과정에서 많은 부분을 공유하고 있는 그래프이며, 일변량 자료의 분포를 나타낼 때에는 모두 유용하게 사용되고 있다.</p>
@@ -1525,7 +1526,7 @@ Figure 9.46: 변수 <code>cyl</code>에 따른 <code>hwy</code>의 도수분포�
 <div class="figure"><span style="display:block;" id="fig:9-32"></span>
 <img src="_main_files/figure-html/9-32-1.png" alt="나란히 서 있는 상자그림" width="768" />
 <p class="caption">
-Figure 9.47: 나란히 서 있는 상자그림
+그림 9.47: 나란히 서 있는 상자그림
 </p>
 </div>
 <p>두 번째 경우로 하나의 연속형 변수가 하나 또는 그 이상의 요인에 의하여 몇 개의 그룹으로 구분되는 경우를 살펴보자.
@@ -1539,7 +1540,7 @@ Figure 9.47: 나란히 서 있는 상자그림
 <div class="figure"><span style="display:block;" id="fig:9-33-a"></span>
 <img src="_main_files/figure-html/9-33-a-1.png" alt="수직방향의 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
-Figure 9.48: 수직방향의 나란히 서 있는 상자그림
+그림 9.48: 수직방향의 나란히 서 있는 상자그림
 </p>
 </div>
 <div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="chapter-EDA.html#cb738-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(mpg_1, <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">factor</span>(cyl), <span class="at">x =</span> hwy)) <span class="sc">+</span> </span>
@@ -1548,10 +1549,10 @@ Figure 9.48: 수직방향의 나란히 서 있는 상자그림
 <div class="figure"><span style="display:block;" id="fig:9-33-b"></span>
 <img src="_main_files/figure-html/9-33-b-1.png" alt="수평방향의 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
-Figure 9.49: 수평방향의 나란히 서 있는 상자그림
+그림 9.49: 수평방향의 나란히 서 있는 상자그림
 </p>
 </div>
-<p>Figure <a href="chapter-EDA.html#fig:9-33-a">9.48</a>의 상자그림에 점으로 표시된 이상값에 해당되는 자동차를 알아보자.
+<p>그림 <a href="chapter-EDA.html#fig:9-33-a">9.48</a>의 상자그림에 점으로 표시된 이상값에 해당되는 자동차를 알아보자.
 <a href="chapter-EDA.html#section-boxplot">9.3.2</a>절에서 살펴본 방법을 그대로 적용해 보자.</p>
 <div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="chapter-EDA.html#cb739-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> pp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg_1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> hwy)) <span class="sc">+</span> </span>
 <span id="cb739-2"><a href="chapter-EDA.html#cb739-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_boxplot</span>() </span>
@@ -1591,7 +1592,7 @@ Figure 9.49: 수평방향의 나란히 서 있는 상자그림
 <div class="figure"><span style="display:block;" id="fig:9-34-a"></span>
 <img src="_main_files/figure-html/9-34-a-1.png" alt="상자그림의 배치 순서" width="576" />
 <p class="caption">
-Figure 9.50: 상자그림의 배치 순서
+그림 9.50: 상자그림의 배치 순서
 </p>
 </div>
 <p>상자그림이 변수 <code>class</code>의 알파벳 순서로 배치되어 있다.
@@ -1605,7 +1606,7 @@ Figure 9.50: 상자그림의 배치 순서
 <div class="figure"><span style="display:block;" id="fig:9-34-b"></span>
 <img src="_main_files/figure-html/9-34-b-1.png" alt="상자그림의 배치 순서 조정" width="576" />
 <p class="caption">
-Figure 9.51: 상자그림의 배치 순서 조정
+그림 9.51: 상자그림의 배치 순서 조정
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 나란히 서 있는 violin plot에 의한 그룹 자료의 분포 비교</strong></p>
@@ -1618,7 +1619,7 @@ Figure 9.51: 상자그림의 배치 순서 조정
 <div class="figure"><span style="display:block;" id="fig:9-34-c"></span>
 <img src="_main_files/figure-html/9-34-c-1.png" alt="violin plot에 의한 분포 비교" width="576" />
 <p class="caption">
-Figure 9.52: violin plot에 의한 분포 비교
+그림 9.52: violin plot에 의한 분포 비교
 </p>
 </div>
 <p><code>ggplot2</code>의 함수 <code>geom_violin()</code>을 사용해서 작성한 결과는 다음과 같다.</p>
@@ -1628,7 +1629,7 @@ Figure 9.52: violin plot에 의한 분포 비교
 <div class="figure"><span style="display:block;" id="fig:9-34-d"></span>
 <img src="_main_files/figure-html/9-34-d-1.png" alt="violin plot에 의한 분포 비교" width="576" />
 <p class="caption">
-Figure 9.53: violin plot에 의한 분포 비교
+그림 9.53: violin plot에 의한 분포 비교
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 다중 점그래프에 의한 그룹 자료의 분포 비교</strong></p>
@@ -1642,7 +1643,7 @@ Figure 9.53: violin plot에 의한 분포 비교
 <div class="figure"><span style="display:block;" id="fig:9-35-a"></span>
 <img src="_main_files/figure-html/9-35-a-1.png" alt="다중 점그래프" width="576" />
 <p class="caption">
-Figure 9.54: 다중 점그래프
+그림 9.54: 다중 점그래프
 </p>
 </div>
 <p>수직방향으로 점그래프를 작성하는 것이므로 구간 설정은 Y축 변수를 대상으로 이루어져야 한다.
@@ -1660,7 +1661,7 @@ Figure 9.54: 다중 점그래프
 <div class="figure"><span style="display:block;" id="fig:9-35-b"></span>
 <img src="_main_files/figure-html/9-35-b-1.png" alt="다중 점그래프" width="576" />
 <p class="caption">
-Figure 9.55: 다중 점그래프
+그림 9.55: 다중 점그래프
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 확률밀도함수 그래프에 의한 그룹 자료의 분포 비교</strong></p>
@@ -1675,7 +1676,7 @@ Facet을 이용하여 그룹별밀도함수를 비교하는 것도 의미가 있
 <div class="figure"><span style="display:block;" id="fig:9-36"></span>
 <img src="_main_files/figure-html/9-36-1.png" alt="Facet에 의한 그룹별 확률밀도함수의 비교" width="576" />
 <p class="caption">
-Figure 9.56: Facet에 의한 그룹별 확률밀도함수의 비교
+그림 9.56: Facet에 의한 그룹별 확률밀도함수의 비교
 </p>
 </div>
 <p>하나의 그래프에 겹치게 작성하는 방법으로써 시각적 요소 <code>fill</code>을 사용하는 것과 시각적 요소 <code>color</code>를 사용하는 것을 생각해 볼 수 있다.
@@ -1686,7 +1687,7 @@ Figure 9.56: Facet에 의한 그룹별 확률밀도함수의 비교
 <div class="figure"><span style="display:block;" id="fig:9-37-a"></span>
 <img src="_main_files/figure-html/9-37-a-1.png" alt="겹쳐 그린 확률밀도함수 그래프" width="576" />
 <p class="caption">
-Figure 9.57: 겹쳐 그린 확률밀도함수 그래프
+그림 9.57: 겹쳐 그린 확률밀도함수 그래프
 </p>
 </div>
 <p>시각적 요소 <code>fill</code> 대신 <code>color</code>를 사용하면 서로 다른 색의 선으로만 밀도함수가 그려지는 그래프가 작성된다.</p>
@@ -1696,7 +1697,7 @@ Figure 9.57: 겹쳐 그린 확률밀도함수 그래프
 <div class="figure"><span style="display:block;" id="fig:9-37-b"></span>
 <img src="_main_files/figure-html/9-37-b-1.png" alt="겹쳐 그린 확률밀도함수 그래프" width="576" />
 <p class="caption">
-Figure 9.58: 겹쳐 그린 확률밀도함수 그래프
+그림 9.58: 겹쳐 그린 확률밀도함수 그래프
 </p>
 </div>
 <p>그룹별로 작성되는 여러 개의 확률밀도함수를 하나의 그래프에 나타내는 또 다른 방법으로서 추정된 여러 개의 확률밀도함수를 위로 쌓아 올린 그래프와 <code>x</code> 변수의 주어진 값에 대한 각 그룹의 조건부 확률밀도함수를 작성한 그래프가 있다.
@@ -1709,7 +1710,7 @@ Figure 9.58: 겹쳐 그린 확률밀도함수 그래프
 <div class="figure"><span style="display:block;" id="fig:9-38-a"></span>
 <img src="_main_files/figure-html/9-38-a-1.png" alt="쌓아 올린 확률밀도함수 그래프" width="576" />
 <p class="caption">
-Figure 9.59: 쌓아 올린 확률밀도함수 그래프
+그림 9.59: 쌓아 올린 확률밀도함수 그래프
 </p>
 </div>
 <p>쌓아 올린 확률밀도함수 그래프와는 조금 다른 시각에서 분포를 비교할 수 있는 그래프로서 조건부 확률밀도함수 그래프를 작성해 보자. 이 그래프는 <code>position</code>에 <code>"fill"</code>을 지정하면 작성된다.</p>
@@ -1719,7 +1720,7 @@ Figure 9.59: 쌓아 올린 확률밀도함수 그래프
 <div class="figure"><span style="display:block;" id="fig:9-38-b"></span>
 <img src="_main_files/figure-html/9-38-b-1.png" alt="조건부 확률밀도함수 그래프" width="576" />
 <p class="caption">
-Figure 9.60: 조건부 확률밀도함수 그래프
+그림 9.60: 조건부 확률밀도함수 그래프
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 평균 막대그래프와 error bar에 의한 그룹 자료의 분포 비교</strong></p>
@@ -1757,7 +1758,7 @@ Error bar는 함수 <code>geom_errorbar()</code>에는 변수 <code>y</code>, <c
 <div class="figure"><span style="display:block;" id="fig:9-39-a"></span>
 <img src="_main_files/figure-html/9-39-a-1.png" alt="평균 막대 그래프와 error bar" width="576" />
 <p class="caption">
-Figure 9.61: 평균 막대 그래프와 error bar
+그림 9.61: 평균 막대 그래프와 error bar
 </p>
 </div>
 <p>이번에는 함수 <code>stat_summary()</code>를 사용해서 작성해 보자.
@@ -1774,7 +1775,7 @@ error bar는 <code>fun.data</code>에 <code>"mean_cl_normal"</code>을, <code>ge
 <div class="figure"><span style="display:block;" id="fig:9-39-b"></span>
 <img src="_main_files/figure-html/9-39-b-1.png" alt="평균 막대 그래프와 error bar" width="576" />
 <p class="caption">
-Figure 9.62: 평균 막대 그래프와 error bar
+그림 9.62: 평균 막대 그래프와 error bar
 </p>
 </div>
 </div>
@@ -1796,7 +1797,7 @@ Figure 9.62: 평균 막대 그래프와 error bar
 <div class="figure"><span style="display:block;" id="fig:9-40-a"></span>
 <img src="_main_files/figure-html/9-40-a-1.png" alt="기본적인 형태의 산점도" width="576" />
 <p class="caption">
-Figure 9.63: 기본적인 형태의 산점도
+그림 9.63: 기본적인 형태의 산점도
 </p>
 </div>
 <p>가장 기본적인 형태의 산점도에 어렵지 않게 변화를 줄 수 있다.
@@ -1810,7 +1811,7 @@ Figure 9.63: 기본적인 형태의 산점도
 <div class="figure"><span style="display:block;" id="fig:9-40-b"></span>
 <img src="_main_files/figure-html/9-40-b-1.png" alt="기본적인 형태의 산점도" width="576" />
 <p class="caption">
-Figure 9.64: 기본적인 형태의 산점도
+그림 9.64: 기본적인 형태의 산점도
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 시각적 요소에 세 번째 변수 매핑</strong></p>
@@ -1831,7 +1832,7 @@ Figure 9.64: 기본적인 형태의 산점도
 <div class="figure"><span style="display:block;" id="fig:9-41-a"></span>
 <img src="_main_files/figure-html/9-41-a-1.png" alt="`color`에 요인과 숫자형 변수를 각각 매핑한 산점도" width="768" />
 <p class="caption">
-Figure 9.65: <code>color</code>에 요인과 숫자형 변수를 각각 매핑한 산점도
+그림 9.65: <code>color</code>에 요인과 숫자형 변수를 각각 매핑한 산점도
 </p>
 </div>
 <p>이번에는 시각적 요소 <code>shape</code>에 요인과 숫자형 변수를 매핑해 보자.</p>
@@ -1840,7 +1841,7 @@ Figure 9.65: <code>color</code>에 요인과 숫자형 변수를 각각 매핑�
 <div class="figure"><span style="display:block;" id="fig:9-41-b"></span>
 <img src="_main_files/figure-html/9-41-b-1.png" alt="`shape`에 요인을 매핑한 산점도" width="576" />
 <p class="caption">
-Figure 9.66: <code>shape</code>에 요인을 매핑한 산점도
+그림 9.66: <code>shape</code>에 요인을 매핑한 산점도
 </p>
 </div>
 <p><code>shape</code>에는 숫자형 변수를 매핑할 수 없다는 것을 알 수 있다.</p>
@@ -1860,7 +1861,7 @@ Figure 9.66: <code>shape</code>에 요인을 매핑한 산점도
 <div class="figure"><span style="display:block;" id="fig:9-42"></span>
 <img src="_main_files/figure-html/9-42-1.png" alt="`size`에 요인요인과 숫자형 변수를 각각 매핑한 산점도" width="768" />
 <p class="caption">
-Figure 9.67: <code>size</code>에 요인요인과 숫자형 변수를 각각 매핑한 산점도
+그림 9.67: <code>size</code>에 요인요인과 숫자형 변수를 각각 매핑한 산점도
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 산점도에 회귀직선 추가</strong></p>
@@ -1874,7 +1875,7 @@ Figure 9.67: <code>size</code>에 요인요인과 숫자형 변수를 각각 매
 <div class="figure"><span style="display:block;" id="fig:9-43"></span>
 <img src="_main_files/figure-html/9-43-1.png" alt="회귀직선을 산점도에 함께 표시" width="768" />
 <p class="caption">
-Figure 9.68: 회귀직선을 산점도에 함께 표시
+그림 9.68: 회귀직선을 산점도에 함께 표시
 </p>
 </div>
 <p>두 변수의 관계를 나타내는 회귀모형으로 가장 많이 사용되는 것이 loess(local regression)이라고 불리는 국소다항회귀모형이다.
@@ -1886,7 +1887,7 @@ Figure 9.68: 회귀직선을 산점도에 함께 표시
 <div class="figure"><span style="display:block;" id="fig:9-44"></span>
 <img src="_main_files/figure-html/9-44-1.png" alt="국소회귀곡선을 산점도에 함께 표시" width="768" />
 <p class="caption">
-Figure 9.69: 국소회귀곡선을 산점도에 함께 표시
+그림 9.69: 국소회귀곡선을 산점도에 함께 표시
 </p>
 </div>
 <p>선형회귀모형은 두 변수 <span class="math inline">\(X\)</span> 와 <span class="math inline">\(Y\)</span> 의 관계를 <span class="math inline">\(Y=\beta_{0}+\beta_{1}X+\epsilon\)</span> 같이 미리 설정하고,
@@ -1906,7 +1907,7 @@ Figure 9.69: 국소회귀곡선을 산점도에 함께 표시
 <div class="figure"><span style="display:block;" id="fig:9-45"></span>
 <img src="_main_files/figure-html/9-45-1.png" alt="선형회귀직선과 국소회귀곡선을 산점도에 함께 표시" width="576" />
 <p class="caption">
-Figure 9.70: 선형회귀직선과 국소회귀곡선을 산점도에 함께 표시
+그림 9.70: 선형회귀직선과 국소회귀곡선을 산점도에 함께 표시
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 산점도에 수평선, 수직선 추가</strong></p>
@@ -1921,7 +1922,7 @@ Figure 9.70: 선형회귀직선과 국소회귀곡선을 산점도에 함께 표
 <div class="figure"><span style="display:block;" id="fig:9-46"></span>
 <img src="_main_files/figure-html/9-46-1.png" alt="산점도에 수직선과 수평선 추가" width="576" />
 <p class="caption">
-Figure 9.71: 산점도에 수직선과 수평선 추가
+그림 9.71: 산점도에 수직선과 수평선 추가
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 산점도에 그룹별 회귀직선 추가</strong></p>
@@ -1932,7 +1933,7 @@ Figure 9.71: 산점도에 수직선과 수평선 추가
 <div class="figure"><span style="display:block;" id="fig:9-47"></span>
 <img src="_main_files/figure-html/9-47-1.png" alt="그룹별 회귀직선의 추가" width="576" />
 <p class="caption">
-Figure 9.72: 그룹별 회귀직선의 추가
+그림 9.72: 그룹별 회귀직선의 추가
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 산점도의 점에 라벨 추가</strong></p>
@@ -1947,7 +1948,7 @@ Figure 9.72: 그룹별 회귀직선의 추가
 <div class="figure"><span style="display:block;" id="fig:9-48-a"></span>
 <img src="_main_files/figure-html/9-48-a-1.png" alt="산점도의 점에 라벨 추가" width="576" />
 <p class="caption">
-Figure 9.73: 산점도의 점에 라벨 추가
+그림 9.73: 산점도의 점에 라벨 추가
 </p>
 </div>
 <p>추가한 라벨이 점과 겹쳐 있으며, 가장 위에 있는 점의 라벨은 첫 글자가 가려져 있는 것을 볼 수 있다.
@@ -1959,7 +1960,7 @@ Figure 9.73: 산점도의 점에 라벨 추가
 <div class="figure"><span style="display:block;" id="fig:9-48-b"></span>
 <img src="_main_files/figure-html/9-48-b-1.png" alt="산점도의 점에 라벨 추가 및 위치 조정" width="576" />
 <p class="caption">
-Figure 9.74: 산점도의 점에 라벨 추가 및 위치 조정
+그림 9.74: 산점도의 점에 라벨 추가 및 위치 조정
 </p>
 </div>
 <p>위의 예제는 <code>geom</code> 함수마다 서로 다른 데이터 프레임을 사용할 수 있음을 보여주고 있다.
@@ -1983,7 +1984,7 @@ Figure 9.74: 산점도의 점에 라벨 추가 및 위치 조정
 <div class="figure"><span style="display:block;" id="fig:9-49"></span>
 <img src="_main_files/figure-html/9-49-1.png" alt="산점도에 수학기호 주석 추가" width="576" />
 <p class="caption">
-Figure 9.75: 산점도에 수학기호 주석 추가
+그림 9.75: 산점도에 수학기호 주석 추가
 </p>
 </div>
 <p><strong>2) 산점도에서 점이 겹쳐지는 문제</strong></p>
@@ -1998,7 +1999,7 @@ Figure 9.75: 산점도에 수학기호 주석 추가
 <div class="figure"><span style="display:block;" id="fig:9-50"></span>
 <img src="_main_files/figure-html/9-50-1.png" alt="산점도의 점 겹치는 문제" width="576" />
 <p class="caption">
-Figure 9.76: 산점도의 점 겹치는 문제
+그림 9.76: 산점도의 점 겹치는 문제
 </p>
 </div>
 <p>변수 <code>Time</code>은 12개의 값만을 갖고 있는 변수이기 때문에 많은 점들이 겹치게 될 수밖에 없다.
@@ -2015,7 +2016,7 @@ Figure 9.76: 산점도의 점 겹치는 문제
 <div class="figure"><span style="display:block;" id="fig:9-51"></span>
 <img src="_main_files/figure-html/9-51-1.png" alt="산점도 점 겹치는 문제 해결 방안: 점 흩트리기" width="768" />
 <p class="caption">
-Figure 9.77: 산점도 점 겹치는 문제 해결 방안: 점 흩트리기
+그림 9.77: 산점도 점 겹치는 문제 해결 방안: 점 흩트리기
 </p>
 </div>
 <p>이번에는 대규모 자료를 대상으로 작성된 산점도에서 발생하는 점이 겹쳐지는 현상을 살펴보자.
@@ -2026,7 +2027,7 @@ Figure 9.77: 산점도 점 겹치는 문제 해결 방안: 점 흩트리기
 <div class="figure"><span style="display:block;" id="fig:9-52-a"></span>
 <img src="_main_files/figure-html/9-52-a-1.png" alt="대규모 자료의 산점도에서 점 겹치는 문제" width="576" />
 <p class="caption">
-Figure 9.78: 대규모 자료의 산점도에서 점 겹치는 문제
+그림 9.78: 대규모 자료의 산점도에서 점 겹치는 문제
 </p>
 </div>
 <p>점들이 너무 심하게 겹쳐져서 자료의 분포를 알아보기 어려운 상황이다.
@@ -2037,7 +2038,7 @@ Figure 9.78: 대규모 자료의 산점도에서 점 겹치는 문제
 <div class="figure"><span style="display:block;" id="fig:9-52-b"></span>
 <img src="_main_files/figure-html/9-52-b-1.png" alt="대규모 자료의 산점도에서 점 겹치는 문제" width="576" />
 <p class="caption">
-Figure 9.79: 대규모 자료의 산점도에서 점 겹치는 문제
+그림 9.79: 대규모 자료의 산점도에서 점 겹치는 문제
 </p>
 </div>
 <p>대규모 자료를 대상으로 작성된 산점도에서 흔히 발생할 수 있는 문제라고 할 수 있다.
@@ -2047,7 +2048,7 @@ Figure 9.79: 대규모 자료의 산점도에서 점 겹치는 문제
 <div class="figure"><span style="display:block;" id="fig:9-52-c"></span>
 <img src="_main_files/figure-html/9-52-c-1.png" alt="대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 점의 크기 줄이고 투명도 높이기" width="576" />
 <p class="caption">
-Figure 9.80: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 점의 크기 줄이고 투명도 높이기
+그림 9.80: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 점의 크기 줄이고 투명도 높이기
 </p>
 </div>
 <p>점의 크기를 줄이고 투명도를 높이는 것으로는 문제가 해결되지 않는 것으로 보인다.
@@ -2062,7 +2063,7 @@ X축과 Y축을 30개의 구간으로 나누어 전체 공간을 900개의 직�
 <div class="figure"><span style="display:block;" id="fig:9-53-a"></span>
 <img src="_main_files/figure-html/9-53-a-1.png" alt="대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 2차원 히스토그램" width="576" />
 <p class="caption">
-Figure 9.81: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 2차원 히스토그램
+그림 9.81: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 2차원 히스토그램
 </p>
 </div>
 <p>빈도수를 나타내는 색깔에 큰 변화가 없어서 구분이 잘 안 되고 있고, 구간의 개수를 더 늘릴 필요가 있는 것으로 보인다.
@@ -2074,7 +2075,7 @@ Figure 9.81: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방
 <div class="figure"><span style="display:block;" id="fig:9-53-b"></span>
 <img src="_main_files/figure-html/9-53-b-1.png" alt="대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 2차원 히스토그램" width="576" />
 <p class="caption">
-Figure 9.82: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 2차원 히스토그램
+그림 9.82: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 2차원 히스토그램
 </p>
 </div>
 <p>세 번째 방법은 X축 변수인 <code>carat</code>이 이산형 변수가 아니지만, 이것을 구간으로 구분하여 나란히 서 있는 상자그림을 작성하는 것이다.
@@ -2091,7 +2092,7 @@ Figure 9.82: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방
 <div class="figure"><span style="display:block;" id="fig:9-54"></span>
 <img src="_main_files/figure-html/9-54-1.png" alt="대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 그룹별 상자그림" width="768" />
 <p class="caption">
-Figure 9.83: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 그룹별 상자그림
+그림 9.83: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방안: 그룹별 상자그림
 </p>
 </div>
 <p><strong>3) 이차원 결합확률밀도 그래프</strong></p>
@@ -2104,7 +2105,7 @@ Figure 9.83: 대규모 자료의 산점도에서 점 겹치는 문제 해결 방
 <div class="figure"><span style="display:block;" id="fig:9-55-a"></span>
 <img src="_main_files/figure-html/9-55-a-1.png" alt="결합확률밀도 등고선 그래프" width="576" />
 <p class="caption">
-Figure 9.84: 결합확률밀도 등고선 그래프
+그림 9.84: 결합확률밀도 등고선 그래프
 </p>
 </div>
 <p>등고선 그래프는 3차원 자료를 2차원 공간에 표시한 것으로 확률밀도가 같은 영역을 선으로 연결하여 그린 그래프다.
@@ -2120,7 +2121,7 @@ Figure 9.84: 결합확률밀도 등고선 그래프
 <div class="figure"><span style="display:block;" id="fig:9-55-b"></span>
 <img src="_main_files/figure-html/9-55-b-1.png" alt="결합확률밀도 등고선 그래프" width="768" />
 <p class="caption">
-Figure 9.85: 결합확률밀도 등고선 그래프
+그림 9.85: 결합확률밀도 등고선 그래프
 </p>
 </div>
 <p>등고선만을 색으로 구분하는 것보다는 높이가 같은 영역을 구분된 색으로 채우는 것이 더 효율적인 그래프가 될 것이다.
@@ -2129,7 +2130,7 @@ Figure 9.85: 결합확률밀도 등고선 그래프
 <div class="figure"><span style="display:block;" id="fig:9-56-a"></span>
 <img src="_main_files/figure-html/9-56-a-1.png" alt="색을 이용한 결합확률밀도 그래프" width="576" />
 <p class="caption">
-Figure 9.86: 색을 이용한 결합확률밀도 그래프
+그림 9.86: 색을 이용한 결합확률밀도 그래프
 </p>
 </div>
 <p>등고선내부 영역만을 색으로 채우기보다 그래프 전체 영역을 타일로 구분하고, 확률밀도의 높이에 따라 타일의 색을 다르게 하는 것이 훨씬 안정적인 느낌의 그래프를 작성하는 방법이 된다.
@@ -2144,7 +2145,7 @@ Figure 9.86: 색을 이용한 결합확률밀도 그래프
 <div class="figure"><span style="display:block;" id="fig:9-56-b"></span>
 <img src="_main_files/figure-html/9-56-b-1.png" alt="색을 이용한 결합확률밀도 그래프" width="576" />
 <p class="caption">
-Figure 9.87: 색을 이용한 결합확률밀도 그래프
+그림 9.87: 색을 이용한 결합확률밀도 그래프
 </p>
 </div>
 <p>패키지 <code>ggplot2</code>에는 데이터 프레임 <code>faithful</code>의 두 변수인 <code>eruptions</code>와 <code>waiting</code>의 결합확률밀도 추정 결과가 변수(<code>density</code>)로 포함된 데이터 프레임 <code>faithfuld</code>가 있다.
@@ -2157,7 +2158,7 @@ Figure 9.87: 색을 이용한 결합확률밀도 그래프
 <div class="figure"><span style="display:block;" id="fig:9-57"></span>
 <img src="_main_files/figure-html/9-57-1.png" alt="결합확률밀도 그래프" width="576" />
 <p class="caption">
-Figure 9.88: 결합확률밀도 그래프
+그림 9.88: 결합확률밀도 그래프
 </p>
 </div>
 <p><strong>4) 산점도행렬(scatter plot matrix)</strong></p>
@@ -2174,7 +2175,7 @@ Figure 9.88: 결합확률밀도 그래프
 <div class="figure"><span style="display:block;" id="fig:9-58"></span>
 <img src="_main_files/figure-html/9-58-1.png" alt="숫자형 변수에 대한 함수 ggpairs()의 산점도행렬" width="576" />
 <p class="caption">
-Figure 9.89: 숫자형 변수에 대한 함수 ggpairs()의 산점도행렬
+그림 9.89: 숫자형 변수에 대한 함수 ggpairs()의 산점도행렬
 </p>
 </div>
 <p>데이터 프레임 mtcars의 모든 변수는 숫자형 변수로 선언되어 있다.
@@ -2185,7 +2186,7 @@ Figure 9.89: 숫자형 변수에 대한 함수 ggpairs()의 산점도행렬
 <div class="figure"><span style="display:block;" id="fig:9-59"></span>
 <img src="_main_files/figure-html/9-59-1.png" alt="숫자형 변수와 요인이 있는 자료에 대한 함수 ggpairs()의 산점도행렬" width="768" />
 <p class="caption">
-Figure 9.90: 숫자형 변수와 요인이 있는 자료에 대한 함수 ggpairs()의 산점도행렬
+그림 9.90: 숫자형 변수와 요인이 있는 자료에 대한 함수 ggpairs()의 산점도행렬
 </p>
 </div>
 <p>함수 <code>ggpairs()</code>로 작성된 산점도행렬은 단순히 두 변수의 산점도만을 작성하는 것이 아니라 변수의 유형에 따라 적절한 형태의 그래프를 각 패널에 작성한다.
@@ -2220,7 +2221,7 @@ Figure 9.90: 숫자형 변수와 요인이 있는 자료에 대한 함수 ggpair
 <div class="figure"><span style="display:block;" id="fig:9-60"></span>
 <img src="_main_files/figure-html/9-60-1.png" alt="숫자형 변수와 요인이 있는 자료에 대한 함수 ggpairs()의 산점도행렬" width="768" />
 <p class="caption">
-Figure 9.91: 숫자형 변수와 요인이 있는 자료에 대한 함수 ggpairs()의 산점도행렬
+그림 9.91: 숫자형 변수와 요인이 있는 자료에 대한 함수 ggpairs()의 산점도행렬
 </p>
 </div>
 </div>

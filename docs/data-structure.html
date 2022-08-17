@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 R 데이터 구조 | R과 통계분석</title>
-  <meta name="description" content="Chapter 2 R 데이터 구조 | R과 통계분석" />
+  <title>2 장 R 데이터 구조 | R과 통계분석</title>
+  <meta name="description" content="2 장 R 데이터 구조 | R과 통계분석" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 R 데이터 구조 | R과 통계분석" />
+  <meta property="og:title" content="2 장 R 데이터 구조 | R과 통계분석" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 R 데이터 구조 | R과 통계분석" />
+  <meta name="twitter:title" content="2 장 R 데이터 구조 | R과 통계분석" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -366,7 +366,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="data-structure" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> R 데이터 구조<a href="data-structure.html#data-structure" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">2 장</span> R 데이터 구조<a href="data-structure.html#data-structure" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>통계학에서 데이터는 양적 데이터와 질적 데이터로 구분된다. 양적 데이터는 숫자형 데이터를 의미하는 것으로서 연속형과 이산형 데이터로 구분할 수 있다. 질적 데이터는 범주형 데이터라고도 하며, 다시 명목형과 순서형으로 구분된다. 또한 통계 데이터 세트란 데이터들이 행과 열의 2차원 형태로 배열된 상태를 의미한다. 열은 변수를 나타내며 하나의 열에는 같은 유형의 데이터만이 올 수 있고, 행은 동일 대상에 대한 여러 변수들의 관찰값을 나타낸다.</p>
 <p>이렇듯 분석 대상이 되는 통계 데이터는 다양한 유형과 구조를 가지고 있다. 데이터의 다양한 구조를 표현하기 위해 R에서는 벡터, 요인, 행렬, 배열, 데이터 프레임 그리고 리스트라는 이름의 데이터 객체가 있다. 벡터는 하나의 변수를 나타내기 위한 1차원 구조이고, 요인은 범주형 자료를 나타내기 위한 구조이며, 행렬과 데이터 프레임은 2차원 구조, 배열은 2차원 이상의 구조를 가진 데이터 형태이다. 리스트는 가장 포괄적인 형태의 구조로서 여러 유형, 여러 형태의 데이터를 한데 묶은 형태를 취하고 있다. 이 장에서는 다양한 데이터 객체를 생성하는 방법 및 각 객체들의 중요한 특성들을 살펴보고자 한다.</p>
 <div id="벡터" class="section level2 hasAnchor" number="2.1">
@@ -536,9 +536,9 @@ div.csl-indent {
 </div>
 <div id="문자열을-위한-함수" class="section level3 hasAnchor" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> 문자열을 위한 함수<a href="data-structure.html#문자열을-위한-함수" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>R에는 문자열을 다루기 위한 매우 유용한 함수들이 있다. 우리는 종종 문자형 벡터에서 특 정 정보를 얻거나 문자형 벡터의 내용을 수정해야 할 때가 있는데 이런 경우 유용하게 사 용할 수 있는 함수들이 Table <a href="data-structure.html#tab:char-func">2.1</a>에 있다.</p>
+<p>R에는 문자열을 다루기 위한 매우 유용한 함수들이 있다. 우리는 종종 문자형 벡터에서 특 정 정보를 얻거나 문자형 벡터의 내용을 수정해야 할 때가 있는데 이런 경우 유용하게 사 용할 수 있는 함수들이 표 <a href="data-structure.html#tab:char-func">2.1</a>에 있다.</p>
 <table>
-<caption><span id="tab:char-func">Table 2.1: </span>문자 함수</caption>
+<caption><span id="tab:char-func">표 2.1: </span>문자 함수</caption>
 <thead>
 <tr class="header">
 <th align="left">함수</th>
@@ -790,9 +790,9 @@ div.csl-indent {
 <ul>
 <li>수학 계산 관련 함수</li>
 </ul>
-<p>R에는 숫자형 벡터를 위한 다양한 함수가 있다. 먼저 기본적인 수학계산과 관련된 함수들 을 살펴보자. Table <a href="data-structure.html#tab:math-func">2.2</a>에 있는 함수들의 사용 예는 다음과 같다.</p>
+<p>R에는 숫자형 벡터를 위한 다양한 함수가 있다. 먼저 기본적인 수학계산과 관련된 함수들 을 살펴보자. 표 <a href="data-structure.html#tab:math-func">2.2</a>에 있는 함수들의 사용 예는 다음과 같다.</p>
 <table>
-<caption><span id="tab:math-func">Table 2.2: </span>수학 계산과 관련된 함수</caption>
+<caption><span id="tab:math-func">표 2.2: </span>수학 계산과 관련된 함수</caption>
 <thead>
 <tr class="header">
 <th align="left">함수</th>
@@ -879,9 +879,9 @@ div.csl-indent {
 <ul>
 <li>기초 통계 관련 함수</li>
 </ul>
-<p>많이 사용되는 기초적인 통계 계산과 관련된 함수를 살펴보자. Table <a href="data-structure.html#tab:stat-func">2.3</a>에 있는 함수들의 사용 예는 다음과 같다.</p>
+<p>많이 사용되는 기초적인 통계 계산과 관련된 함수를 살펴보자. 표 <a href="data-structure.html#tab:stat-func">2.3</a>에 있는 함수들의 사용 예는 다음과 같다.</p>
 <table>
-<caption><span id="tab:stat-func">Table 2.3: </span>통계 관련 함수</caption>
+<caption><span id="tab:stat-func">표 2.3: </span>통계 관련 함수</caption>
 <thead>
 <tr class="header">
 <th align="left">함수</th>
@@ -969,7 +969,7 @@ div.csl-indent {
 <h3><span class="header-section-number">2.1.5</span> 벡터의 비교<a href="data-structure.html#vector-compare" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>두 벡터의 구성요소끼리 크기를 비교하거나, 혹은 벡터와 스칼라를 비교하는 작업 등은 그 자체로도 의미가 있지만 벡터의 인덱싱이나 벡터의 변환 등에서 필수적인 요소가 된다. 어느 경우든 적절한 비교를 위해서는 비교 연산자와 논리 연산자가 필요하다.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-65">Table 2.4: </span>비교/논리 연산자</caption>
+<caption><span id="tab:unnamed-chunk-65">표 2.4: </span>비교/논리 연산자</caption>
 <thead>
 <tr class="header">
 <th align="left">연산자</th>
@@ -1432,9 +1432,9 @@ div.csl-indent {
 </div>
 <div id="행렬의-연산" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> 행렬의 연산<a href="data-structure.html#행렬의-연산" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>행렬의 연산은 선형대수 문제뿐만이 아니라 다양한 통계분석을 진행하는 과정에서 종종 사용된다. Table <a href="data-structure.html#tab:matrix-func">2.5</a>에는 행렬의 연산에서 중요하게 사용되는 함수 및 연산자들이 정리되어있다. 표에서 <code>A</code>와 <code>B</code>는 행렬을, <code>x</code>와 <code>b</code>는 벡터를, 그리고 <code>k</code>는 스칼라를 의미한다.</p>
+<p>행렬의 연산은 선형대수 문제뿐만이 아니라 다양한 통계분석을 진행하는 과정에서 종종 사용된다. 표 <a href="data-structure.html#tab:matrix-func">2.5</a>에는 행렬의 연산에서 중요하게 사용되는 함수 및 연산자들이 정리되어있다. 표에서 <code>A</code>와 <code>B</code>는 행렬을, <code>x</code>와 <code>b</code>는 벡터를, 그리고 <code>k</code>는 스칼라를 의미한다.</p>
 <table>
-<caption><span id="tab:matrix-func">Table 2.5: </span>행렬의 연산에 유용하게 사용되는 함수 및 연산자</caption>
+<caption><span id="tab:matrix-func">표 2.5: </span>행렬의 연산에 유용하게 사용되는 함수 및 연산자</caption>
 <thead>
 <tr class="header">
 <th align="left">연산자 및 함수</th>
@@ -1684,7 +1684,8 @@ x + 2y &amp;=&amp; 5 \\
 <span id="cb130-12"><a href="data-structure.html#cb130-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span>    <span class="dv">10</span>    <span class="dv">26</span></span>
 <span id="cb130-13"><a href="data-structure.html#cb130-13" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span>    <span class="dv">10</span>    <span class="dv">34</span></span>
 <span id="cb130-14"><a href="data-structure.html#cb130-14" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>    <span class="dv">11</span>    <span class="dv">17</span></span>
-<span id="cb130-15"><a href="data-structure.html#cb130-15" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 40 more rows</span></span></code></pre></div>
+<span id="cb130-15"><a href="data-structure.html#cb130-15" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 40 more rows</span></span>
+<span id="cb130-16"><a href="data-structure.html#cb130-16" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>앞 절에서 살펴보았던 전통적인 데이터 프레임의 출력 형태와는 많이 다른 모습을 보이고있다.</p>
 <p>개별 벡터를 이용한 <code>tibble</code>의 생성은 함수 <code>tibble()</code>로 할 수 있다. 길이가 1인 스칼라는 순환법칙이 적용되며, 함께 입력된 변수를 이용하여 다른 변수를 만들 수 있다.</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="data-structure.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> x <span class="sc">+</span> <span class="dv">1</span>, <span class="at">z =</span> <span class="dv">1</span>)</span>
@@ -1720,24 +1721,25 @@ x + 2y &amp;=&amp; 5 \\
 <p>먼저 출력 방식에서 보면 전통적인 데이터 프레임은 대규모 데이터를 대상으로 하는 경우에 불편한 측면이 있다. 전통적 데이터 프레임은 가능한 모든 자료를 화면에 출력하게 되어 있는데, 이런 출력 방식은 대규모 자료의 경우 내용을 확인하기 매우 어려운 측면이 있다. 이에 반하여 <code>tibble</code>은 처음 10개 케이스만을 출력하며, 변수도 화면의 크기에 따라 출력되 는 개수를 조절하여, 한 화면에서 자료의 특성을 비교적 편하게 확인할 수 있다.</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-structure.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">as_tibble</span>(MASS<span class="sc">::</span>Cars93)</span>
 <span id="cb134-2"><a href="data-structure.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 93 × 27</span></span>
-<span id="cb134-3"><a href="data-structure.html#cb134-3" aria-hidden="true" tabindex="-1"></a>   Manufacturer Model      Type   Min.Price Price Max.Price MPG.city MPG.highway</span>
-<span id="cb134-4"><a href="data-structure.html#cb134-4" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>fct<span class="sc">&gt;</span>        <span class="er">&lt;</span>fct<span class="sc">&gt;</span>      <span class="er">&lt;</span>fct<span class="sc">&gt;</span>      <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>     <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>int<span class="sc">&gt;</span>       <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
-<span id="cb134-5"><a href="data-structure.html#cb134-5" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span> Acura        Integra    Small       <span class="fl">12.9</span>  <span class="fl">15.9</span>      <span class="fl">18.8</span>       <span class="dv">25</span>          <span class="dv">31</span></span>
-<span id="cb134-6"><a href="data-structure.html#cb134-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span> Acura        Legend     Midsi…      <span class="fl">29.2</span>  <span class="fl">33.9</span>      <span class="fl">38.7</span>       <span class="dv">18</span>          <span class="dv">25</span></span>
-<span id="cb134-7"><a href="data-structure.html#cb134-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span> Audi         <span class="dv">90</span>         Compa…      <span class="fl">25.9</span>  <span class="fl">29.1</span>      <span class="fl">32.3</span>       <span class="dv">20</span>          <span class="dv">26</span></span>
-<span id="cb134-8"><a href="data-structure.html#cb134-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span> Audi         <span class="dv">100</span>        Midsi…      <span class="fl">30.8</span>  <span class="fl">37.7</span>      <span class="fl">44.6</span>       <span class="dv">19</span>          <span class="dv">26</span></span>
-<span id="cb134-9"><a href="data-structure.html#cb134-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span> BMW          535i       Midsi…      <span class="fl">23.7</span>  <span class="dv">30</span>        <span class="fl">36.2</span>       <span class="dv">22</span>          <span class="dv">30</span></span>
-<span id="cb134-10"><a href="data-structure.html#cb134-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span> Buick        Century    Midsi…      <span class="fl">14.2</span>  <span class="fl">15.7</span>      <span class="fl">17.3</span>       <span class="dv">22</span>          <span class="dv">31</span></span>
-<span id="cb134-11"><a href="data-structure.html#cb134-11" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span> Buick        LeSabre    Large       <span class="fl">19.9</span>  <span class="fl">20.8</span>      <span class="fl">21.7</span>       <span class="dv">19</span>          <span class="dv">28</span></span>
-<span id="cb134-12"><a href="data-structure.html#cb134-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span> Buick        Roadmaster Large       <span class="fl">22.6</span>  <span class="fl">23.7</span>      <span class="fl">24.9</span>       <span class="dv">16</span>          <span class="dv">25</span></span>
-<span id="cb134-13"><a href="data-structure.html#cb134-13" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span> Buick        Riviera    Midsi…      <span class="fl">26.3</span>  <span class="fl">26.3</span>      <span class="fl">26.3</span>       <span class="dv">19</span>          <span class="dv">27</span></span>
-<span id="cb134-14"><a href="data-structure.html#cb134-14" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> Cadillac     DeVille    Large       <span class="dv">33</span>    <span class="fl">34.7</span>      <span class="fl">36.3</span>       <span class="dv">16</span>          <span class="dv">25</span></span>
-<span id="cb134-15"><a href="data-structure.html#cb134-15" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 83 more rows, and 19 more variables: AirBags &lt;fct&gt;, DriveTrain &lt;fct&gt;,</span></span>
-<span id="cb134-16"><a href="data-structure.html#cb134-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   Cylinders &lt;fct&gt;, EngineSize &lt;dbl&gt;, Horsepower &lt;int&gt;, RPM &lt;int&gt;,</span></span>
-<span id="cb134-17"><a href="data-structure.html#cb134-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   Rev.per.mile &lt;int&gt;, Man.trans.avail &lt;fct&gt;, Fuel.tank.capacity &lt;dbl&gt;,</span></span>
-<span id="cb134-18"><a href="data-structure.html#cb134-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   Passengers &lt;int&gt;, Length &lt;int&gt;, Wheelbase &lt;int&gt;, Width &lt;int&gt;,</span></span>
-<span id="cb134-19"><a href="data-structure.html#cb134-19" aria-hidden="true" tabindex="-1"></a><span class="co">#   Turn.circle &lt;int&gt;, Rear.seat.room &lt;dbl&gt;, Luggage.room &lt;int&gt;, Weight &lt;int&gt;,</span></span>
-<span id="cb134-20"><a href="data-structure.html#cb134-20" aria-hidden="true" tabindex="-1"></a><span class="co">#   Origin &lt;fct&gt;, Make &lt;fct&gt;</span></span></code></pre></div>
+<span id="cb134-3"><a href="data-structure.html#cb134-3" aria-hidden="true" tabindex="-1"></a>   Manufactu…¹ Model Type  Min.P…² Price Max.P…³ MPG.c…⁴ MPG.h…⁵ AirBags Drive…⁶</span>
+<span id="cb134-4"><a href="data-structure.html#cb134-4" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>fct<span class="sc">&gt;</span>       <span class="er">&lt;</span>fct<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>   <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>   <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>   <span class="er">&lt;</span>int<span class="sc">&gt;</span>   <span class="er">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>   <span class="er">&lt;</span>fct<span class="sc">&gt;</span>  </span>
+<span id="cb134-5"><a href="data-structure.html#cb134-5" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span> Acura       Inte… Small    <span class="fl">12.9</span>  <span class="fl">15.9</span>    <span class="fl">18.8</span>      <span class="dv">25</span>      <span class="dv">31</span> None    Front  </span>
+<span id="cb134-6"><a href="data-structure.html#cb134-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span> Acura       Lege… Mids…    <span class="fl">29.2</span>  <span class="fl">33.9</span>    <span class="fl">38.7</span>      <span class="dv">18</span>      <span class="dv">25</span> Driver… Front  </span>
+<span id="cb134-7"><a href="data-structure.html#cb134-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span> Audi        <span class="dv">90</span>    Comp…    <span class="fl">25.9</span>  <span class="fl">29.1</span>    <span class="fl">32.3</span>      <span class="dv">20</span>      <span class="dv">26</span> Driver… Front  </span>
+<span id="cb134-8"><a href="data-structure.html#cb134-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span> Audi        <span class="dv">100</span>   Mids…    <span class="fl">30.8</span>  <span class="fl">37.7</span>    <span class="fl">44.6</span>      <span class="dv">19</span>      <span class="dv">26</span> Driver… Front  </span>
+<span id="cb134-9"><a href="data-structure.html#cb134-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span> BMW         535i  Mids…    <span class="fl">23.7</span>  <span class="dv">30</span>      <span class="fl">36.2</span>      <span class="dv">22</span>      <span class="dv">30</span> Driver… Rear   </span>
+<span id="cb134-10"><a href="data-structure.html#cb134-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span> Buick       Cent… Mids…    <span class="fl">14.2</span>  <span class="fl">15.7</span>    <span class="fl">17.3</span>      <span class="dv">22</span>      <span class="dv">31</span> Driver… Front  </span>
+<span id="cb134-11"><a href="data-structure.html#cb134-11" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span> Buick       LeSa… Large    <span class="fl">19.9</span>  <span class="fl">20.8</span>    <span class="fl">21.7</span>      <span class="dv">19</span>      <span class="dv">28</span> Driver… Front  </span>
+<span id="cb134-12"><a href="data-structure.html#cb134-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span> Buick       Road… Large    <span class="fl">22.6</span>  <span class="fl">23.7</span>    <span class="fl">24.9</span>      <span class="dv">16</span>      <span class="dv">25</span> Driver… Rear   </span>
+<span id="cb134-13"><a href="data-structure.html#cb134-13" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span> Buick       Rivi… Mids…    <span class="fl">26.3</span>  <span class="fl">26.3</span>    <span class="fl">26.3</span>      <span class="dv">19</span>      <span class="dv">27</span> Driver… Front  </span>
+<span id="cb134-14"><a href="data-structure.html#cb134-14" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> Cadillac    DeVi… Large    <span class="dv">33</span>    <span class="fl">34.7</span>    <span class="fl">36.3</span>      <span class="dv">16</span>      <span class="dv">25</span> Driver… Front  </span>
+<span id="cb134-15"><a href="data-structure.html#cb134-15" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 83 more rows, 17 more variables: Cylinders &lt;fct&gt;, EngineSize &lt;dbl&gt;,</span></span>
+<span id="cb134-16"><a href="data-structure.html#cb134-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   Horsepower &lt;int&gt;, RPM &lt;int&gt;, Rev.per.mile &lt;int&gt;, Man.trans.avail &lt;fct&gt;,</span></span>
+<span id="cb134-17"><a href="data-structure.html#cb134-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   Fuel.tank.capacity &lt;dbl&gt;, Passengers &lt;int&gt;, Length &lt;int&gt;, Wheelbase &lt;int&gt;,</span></span>
+<span id="cb134-18"><a href="data-structure.html#cb134-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   Width &lt;int&gt;, Turn.circle &lt;int&gt;, Rear.seat.room &lt;dbl&gt;, Luggage.room &lt;int&gt;,</span></span>
+<span id="cb134-19"><a href="data-structure.html#cb134-19" aria-hidden="true" tabindex="-1"></a><span class="co">#   Weight &lt;int&gt;, Origin &lt;fct&gt;, Make &lt;fct&gt;, and abbreviated variable names</span></span>
+<span id="cb134-20"><a href="data-structure.html#cb134-20" aria-hidden="true" tabindex="-1"></a><span class="co">#   ¹​Manufacturer, ²​Min.Price, ³​Max.Price, ⁴​MPG.city, ⁵​MPG.highway, ⁶​DriveTrain</span></span>
+<span id="cb134-21"><a href="data-structure.html#cb134-21" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span></code></pre></div>
 <p>변수 이름과 더불어 변수의 유형을 바로 밑 줄에 표시하고 있으며, 화면 크기 때문에 자료가 출력되지 않은 변수는 이름과 유형을 가장 밑에 나열해 두었다. 만일 조금 더 많은 자료를 확인하고자 한다면 함수 <code>print()</code>를 옵션과 함께 사용하면 된다. 예를 들어 처음 20개 케이스와 모든 변수를 다 출력하고자 한다면 다음과 같이 옵션 <code>n = 20</code>과 <code>width = Inf</code>를 사용한다.</p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="data-structure.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(<span class="fu">as_tibble</span>(MASS<span class="sc">::</span>Cars93), <span class="at">n =</span> <span class="dv">20</span>, <span class="at">width =</span> <span class="cn">Inf</span>)</span></code></pre></div>
 <ul>
@@ -1763,7 +1765,8 @@ x + 2y &amp;=&amp; 5 \\
 <span id="cb137-9"><a href="data-structure.html#cb137-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  <span class="fl">21.4</span>     <span class="dv">6</span>   <span class="dv">258</span>   <span class="dv">110</span>  <span class="fl">3.08</span>  <span class="fl">3.22</span>  <span class="fl">19.4</span>     <span class="dv">1</span>     <span class="dv">0</span>     <span class="dv">3</span>     <span class="dv">1</span></span>
 <span id="cb137-10"><a href="data-structure.html#cb137-10" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  <span class="fl">18.7</span>     <span class="dv">8</span>   <span class="dv">360</span>   <span class="dv">175</span>  <span class="fl">3.15</span>  <span class="fl">3.44</span>  <span class="fl">17.0</span>     <span class="dv">0</span>     <span class="dv">0</span>     <span class="dv">3</span>     <span class="dv">2</span></span>
 <span id="cb137-11"><a href="data-structure.html#cb137-11" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>  <span class="fl">18.1</span>     <span class="dv">6</span>   <span class="dv">225</span>   <span class="dv">105</span>  <span class="fl">2.76</span>  <span class="fl">3.46</span>  <span class="fl">20.2</span>     <span class="dv">1</span>     <span class="dv">0</span>     <span class="dv">3</span>     <span class="dv">1</span></span>
-<span id="cb137-12"><a href="data-structure.html#cb137-12" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 26 more rows</span></span></code></pre></div>
+<span id="cb137-12"><a href="data-structure.html#cb137-12" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 26 more rows</span></span>
+<span id="cb137-13"><a href="data-structure.html#cb137-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>생략된 행 이름은 함수 <code>rownames_to_column()</code>을 사용하면 변수로 전환할 수 있다. 원하는 변수 이름은 <code>var=</code>에 지정하면 된다.</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-structure.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mtcars_d <span class="ot">&lt;-</span> <span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>)</span>
 <span id="cb138-2"><a href="data-structure.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mtcars_t <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mtcars_d)</span>
@@ -1781,7 +1784,8 @@ x + 2y &amp;=&amp; 5 \\
 <span id="cb138-14"><a href="data-structure.html#cb138-14" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span> Merc 240D    <span class="fl">24.4</span>     <span class="dv">4</span>  <span class="fl">147.</span>    <span class="dv">62</span>  <span class="fl">3.69</span>  <span class="fl">3.19</span>  <span class="dv">20</span>       <span class="dv">1</span>     <span class="dv">0</span>     <span class="dv">4</span>     <span class="dv">2</span></span>
 <span id="cb138-15"><a href="data-structure.html#cb138-15" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span> Merc <span class="dv">230</span>     <span class="fl">22.8</span>     <span class="dv">4</span>  <span class="fl">141.</span>    <span class="dv">95</span>  <span class="fl">3.92</span>  <span class="fl">3.15</span>  <span class="fl">22.9</span>     <span class="dv">1</span>     <span class="dv">0</span>     <span class="dv">4</span>     <span class="dv">2</span></span>
 <span id="cb138-16"><a href="data-structure.html#cb138-16" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> Merc <span class="dv">280</span>     <span class="fl">19.2</span>     <span class="dv">6</span>  <span class="fl">168.</span>   <span class="dv">123</span>  <span class="fl">3.92</span>  <span class="fl">3.44</span>  <span class="fl">18.3</span>     <span class="dv">1</span>     <span class="dv">0</span>     <span class="dv">4</span>     <span class="dv">4</span></span>
-<span id="cb138-17"><a href="data-structure.html#cb138-17" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 22 more rows</span></span></code></pre></div>
+<span id="cb138-17"><a href="data-structure.html#cb138-17" aria-hidden="true" tabindex="-1"></a><span class="co"># … with 22 more rows</span></span>
+<span id="cb138-18"><a href="data-structure.html#cb138-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <ul>
 <li>인덱싱 방법의 차이</li>
 </ul>

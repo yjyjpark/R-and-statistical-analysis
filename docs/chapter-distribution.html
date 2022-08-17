@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 확률분포 | R과 통계분석</title>
-  <meta name="description" content="Chapter 8 확률분포 | R과 통계분석" />
+  <title>8 장 확률분포 | R과 통계분석</title>
+  <meta name="description" content="8 장 확률분포 | R과 통계분석" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 확률분포 | R과 통계분석" />
+  <meta property="og:title" content="8 장 확률분포 | R과 통계분석" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 확률분포 | R과 통계분석" />
+  <meta name="twitter:title" content="8 장 확률분포 | R과 통계분석" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -366,7 +366,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="chapter-distribution" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Chapter 8</span> 확률분포<a href="chapter-distribution.html#chapter-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">8 장</span> 확률분포<a href="chapter-distribution.html#chapter-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>확률분포와 관련된 이론들은 통계학의 기본이라고 할 수 있다. R에는 확률과 연관된 많은 함수들이 있다. 이러한 함수들을 이용하면 다양한 확률분포들을 대상으로 특정 사건이 발생할 확률을 계산할 수도 있고, 특정 분포의 분위수를 구할 수도 있으며, 특정 모집단에서 난수를 발생시킬 수도 있다.</p>
 <div id="r에서의-확률분포-이름" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> R에서의 확률분포 이름<a href="chapter-distribution.html#r에서의-확률분포-이름" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -558,7 +558,7 @@ div.csl-indent {
 <div class="figure"><span style="display:block;" id="fig:8-1-a"></span>
 <img src="_main_files/figure-html/8-1-a-1.png" alt="표준정규분포 확률밀도함수 그래프" width="576" />
 <p class="caption">
-Figure 8.1: 표준정규분포 확률밀도함수 그래프
+그림 8.1: 표준정규분포 확률밀도함수 그래프
 </p>
 </div>
 <p>표준정규분포는 함수 <code>dnorm()</code>의 디폴트 상태이므로 추가로 입력해야 할 것이 없었으나, 평균이 1이고 표준편차가 0.5인 정규분포의 경우에는 <code>dnorm()</code>의 <code>mean</code>과 <code>sd</code> 값을 수정해야 한다. 이러한 경우에는 함수 <code>stat_function()</code>의 변수 <code>args</code>에 수정된 값을 리스트 형태로 입력해야 한다. 또한 제목에 수학 기호 등을 포함시킬 수 있는데, 수학 기호에 대한 R 표현식을 함수 <code>expression()</code>에 입력하여 함수 <code>labs()</code>의 <code>title</code>에 지정하면 된다.</p>
@@ -568,7 +568,7 @@ Figure 8.1: 표준정규분포 확률밀도함수 그래프
 <div class="figure"><span style="display:block;" id="fig:8-1-b"></span>
 <img src="_main_files/figure-html/8-1-b-1.png" alt="정규분포 확률밀도함수 그래프" width="576" />
 <p class="caption">
-Figure 8.2: 정규분포 확률밀도함수 그래프
+그림 8.2: 정규분포 확률밀도함수 그래프
 </p>
 </div>
 <p>함수 <code>pnorm()</code>은 정규분포의 누적분포함수의 값을 계산하는 함수이다. 따라서 <span class="math inline">\(X \sim N(m, s^{2})\)</span> 경우 <span class="math inline">\(P(X \leq q)\)</span> 계산은 <code>pnorm(q, mean = m, sd = s)</code>으로 할 수 있으며, <span class="math inline">\(P(X &gt; q)\)</span> 값을 계산하고자 한다면 <code>pnorm(q, mean = m, sd = s, lower.tail = FALSE)</code>를 실행시켜야 한다.</p>
@@ -594,7 +594,7 @@ F(x) = \int_{-\infty}^{x}f(t)dt
 <div class="figure"><span style="display:block;" id="fig:8-2-a"></span>
 <img src="_main_files/figure-html/8-2-a-1.png" alt="표준정규분포 누적분포함수 그래프" width="576" />
 <p class="caption">
-Figure 8.3: 표준정규분포 누적분포함수 그래프
+그림 8.3: 표준정규분포 누적분포함수 그래프
 </p>
 </div>
 <div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="chapter-distribution.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
@@ -604,7 +604,7 @@ Figure 8.3: 표준정규분포 누적분포함수 그래프
 <div class="figure"><span style="display:block;" id="fig:8-2-b"></span>
 <img src="_main_files/figure-html/8-2-b-1.png" alt="정규분포 누적분포함수 그래프" width="576" />
 <p class="caption">
-Figure 8.4: 정규분포 누적분포함수 그래프
+그림 8.4: 정규분포 누적분포함수 그래프
 </p>
 </div>
 <p>분위수함수는 누적분포함수의 역함수라고 할 수 있다. 즉, <code>qnorm(p)</code>는 <span class="math inline">\(p = P(X \leq q)\)</span> 되는 <code>q</code>를 찾아 주며, <code>qnorm(p, lower.tail=FALSE)</code>는 <span class="math inline">\(p = P(X &gt; q)\)</span> 가 되는 <code>q</code>를 찾아준다.</p>
@@ -626,7 +626,7 @@ Figure 8.4: 정규분포 누적분포함수 그래프
 <div class="figure"><span style="display:block;" id="fig:8-3"></span>
 <img src="_main_files/figure-html/8-3-1.png" alt="표준정규분포에서 발생된 1000개 난수의 히스토그램" width="576" />
 <p class="caption">
-Figure 8.5: 표준정규분포에서 발생된 1000개 난수의 히스토그램
+그림 8.5: 표준정규분포에서 발생된 1000개 난수의 히스토그램
 </p>
 </div>
 </div>
@@ -676,7 +676,7 @@ f(x)= \lambda~ e^{-\lambda ~x}
 <div class="figure"><span style="display:block;" id="fig:8-4"></span>
 <img src="_main_files/figure-html/8-4-1.png" alt="지수분포 확률밀도함수 그래프" width="576" />
 <p class="caption">
-Figure 8.6: 지수분포 확률밀도함수 그래프
+그림 8.6: 지수분포 확률밀도함수 그래프
 </p>
 </div>
 <p>지수분포를 이용해서 해결해야 하는 확률 문제들이 많이 있는데, 함수 <code>pexp()</code>를 이용하면 쉽게 해결할 수 있다. 예를 들어 다음의 문제를 풀어보자.</p>
@@ -732,7 +732,7 @@ f(x) = \frac{1}{\beta - \alpha}, ~~\alpha \leq x \leq \beta
 <div class="figure"><span style="display:block;" id="fig:8-5"></span>
 <img src="_main_files/figure-html/8-5-1.png" alt="균등분포에서 추출된 표본의 히스토그램" width="576" />
 <p class="caption">
-Figure 8.7: 균등분포에서 추출된 표본의 히스토그램
+그림 8.7: 균등분포에서 추출된 표본의 히스토그램
 </p>
 </div>
 </div>
@@ -774,7 +774,7 @@ Figure 8.7: 균등분포에서 추출된 표본의 히스토그램
 <div class="figure"><span style="display:block;" id="fig:8-6"></span>
 <img src="_main_files/figure-html/8-6-1.png" alt="정규분포와 t-분포의 확률밀도함수 그래프" width="576" />
 <p class="caption">
-Figure 8.8: 정규분포와 t-분포의 확률밀도함수 그래프
+그림 8.8: 정규분포와 t-분포의 확률밀도함수 그래프
 </p>
 </div>
 </div>
@@ -836,7 +836,7 @@ P(X=x)= \binom{n}{k} p^{x} (1-p)^{n-x}, ~~~x=0,1,\ldots,n
 <div class="figure"><span style="display:block;" id="fig:8-7"></span>
 <img src="_main_files/figure-html/8-7-1.png" alt="이항분포의 확률분포함수 그래프" width="576" />
 <p class="caption">
-Figure 8.9: 이항분포의 확률분포함수 그래프
+그림 8.9: 이항분포의 확률분포함수 그래프
 </p>
 </div>
 <p>이항분포와 관련된 확률 문제를 함수 <code>dbinom()</code>과 <code>pbinom()</code>을 이용하여 해결해 보자. 예를 들어 <span class="math inline">\(X \sim B(10, 0.5)\)</span> 의 경우에 다음 사건에 대한 확률을 계산해 보자.</p>
@@ -904,7 +904,7 @@ Figure 8.9: 이항분포의 확률분포함수 그래프
 <div class="figure"><span style="display:block;" id="fig:8-8"></span>
 <img src="_main_files/figure-html/8-8-1.png" alt="n의 크기에 따른 이항분포 밀도함수 그래프의 변화" width="864" />
 <p class="caption">
-Figure 8.10: n의 크기에 따른 이항분포 밀도함수 그래프의 변화
+그림 8.10: n의 크기에 따른 이항분포 밀도함수 그래프의 변화
 </p>
 </div>
 <p><span class="math inline">\(n\)</span> 이 커짐에 따라 이항분포의 확률분포함수의 형태가 정규분포의 확률밀도함수의 형태와 비슷해짐을 알 수 있다.</p>
@@ -953,7 +953,7 @@ P(X=x)=e^{- \lambda} \frac{\lambda^{x}}{x!}~, ~~~x=0,1,\ldots
 <div class="figure"><span style="display:block;" id="fig:8-9"></span>
 <img src="_main_files/figure-html/8-9-1.png" alt="포아송분포의 확률분포함수 그래프" width="576" />
 <p class="caption">
-Figure 8.11: 포아송분포의 확률분포함수 그래프
+그림 8.11: 포아송분포의 확률분포함수 그래프
 </p>
 </div>
 <p>포아송 분포와 관련된 확률 문제를 R 함수를 이용하여 풀어보자.
@@ -1074,7 +1074,7 @@ P(X=x)=\frac{\binom{m}{x} \binom{n}{k-x}}{\binom{m+n}{k}}~,~~~x=0,1,2,\ldots,k
 <div class="figure"><span style="display:block;" id="fig:8-10"></span>
 <img src="_main_files/figure-html/8-10-1.png" alt="물고기 개체 수 추정 결과" width="576" />
 <p class="caption">
-Figure 8.12: 물고기 개체 수 추정 결과
+그림 8.12: 물고기 개체 수 추정 결과
 </p>
 </div>
 <p>여러 개의 <span class="math inline">\(n\)</span> 값에 대해 계산된 확률값은 <code>geom_line()</code>으로 그렸으며,
@@ -1130,7 +1130,7 @@ P(A)=\lim_{n \rightarrow \infty} \frac{n(A)}{n}
 <div class="figure"><span style="display:block;" id="fig:8-11"></span>
 <img src="_main_files/figure-html/8-11-1.png" alt="상대도수와 확률" width="576" />
 <p class="caption">
-Figure 8.13: 상대도수와 확률
+그림 8.13: 상대도수와 확률
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 모의실험 예제 2 : 표본분포</strong></p>
@@ -1172,7 +1172,7 @@ Figure 8.13: 상대도수와 확률
 <div class="figure"><span style="display:block;" id="fig:8-12"></span>
 <img src="_main_files/figure-html/8-12-1.png" alt="표본평균의 표본분포 그래프" width="576" />
 <p class="caption">
-Figure 8.14: 표본평균의 표본분포 그래프
+그림 8.14: 표본평균의 표본분포 그래프
 </p>
 </div>
 <p><strong><span class="math inline">\(\bullet\)</span> 모의실험 예제 3 : 신뢰구간에서 신뢰계수의 의미</strong></p>
@@ -1225,7 +1225,7 @@ P(\bar{X}-1.96 \frac{S}{\sqrt{n}}\leq\mu\leq \bar{X}+1.96\frac{S}{\sqrt{n}})=0.9
 <div class="figure"><span style="display:block;" id="fig:8-13"></span>
 <img src="_main_files/figure-html/8-13-1.png" alt="신뢰계수의 의미" width="864" />
 <p class="caption">
-Figure 8.15: 신뢰계수의 의미
+그림 8.15: 신뢰계수의 의미
 </p>
 </div>
 

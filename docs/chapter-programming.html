@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 R에서의 프로그래밍 | R과 통계분석</title>
-  <meta name="description" content="Chapter 7 R에서의 프로그래밍 | R과 통계분석" />
+  <title>7 장 R에서의 프로그래밍 | R과 통계분석</title>
+  <meta name="description" content="7 장 R에서의 프로그래밍 | R과 통계분석" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 R에서의 프로그래밍 | R과 통계분석" />
+  <meta property="og:title" content="7 장 R에서의 프로그래밍 | R과 통계분석" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 R에서의 프로그래밍 | R과 통계분석" />
+  <meta name="twitter:title" content="7 장 R에서의 프로그래밍 | R과 통계분석" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -366,7 +366,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="chapter-programming" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> R에서의 프로그래밍<a href="chapter-programming.html#chapter-programming" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">7 장</span> R에서의 프로그래밍<a href="chapter-programming.html#chapter-programming" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>R 언어는 S 언어에 기반을 두고 있다.
 S 언어의 개발에 주도적인 역할을 했던 Richard Becker, John Chambers와 Allan Wilks는 <span class="citation">Becker and Wilks (1988)</span> 에서 S는 데이터 분석 및 그래픽스를 위한 언어이자 대화형 프로그래밍 환경이며,
 S 환경의 주된 목적은 훌륭한 데이터 분석을 가능하게 하는 것이라 하였다.
@@ -490,14 +490,14 @@ R에서 수행되는 거의 모든 작업은 함수를 통해서 이루어진다
 <span id="cb513-5"><a href="chapter-programming.html#cb513-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="fu">geom_point</span>(<span class="fu">aes</span>(x, y), ...)</span>
 <span id="cb513-6"><a href="chapter-programming.html#cb513-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> }</span></code></pre></div>
 <p>예제로 함수 <code>my_plot()</code>을 사용하여 데이터 프레임 <code>cars</code>의 두 변수 <code>speed</code>와 <code>dist</code>를 표준화 시킨 후 산점도를 작성해 보자. 기호는 빨간 원으로 하자.
-작성된 그래프는 Figure <a href="chapter-programming.html#fig:7-1">7.1</a> 에서 볼 수 있다.</p>
+작성된 그래프는 그림 <a href="chapter-programming.html#fig:7-1">7.1</a> 에서 볼 수 있다.</p>
 <div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="chapter-programming.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
 <span id="cb514-2"><a href="chapter-programming.html#cb514-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">with</span>(cars, <span class="fu">my_plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> dist, </span>
 <span id="cb514-3"><a href="chapter-programming.html#cb514-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                    <span class="at">shape =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:7-1"></span>
 <img src="_main_files/figure-html/7-1-1.png" alt="생략부호를 활용한 그래프" width="576" />
 <p class="caption">
-Figure 7.1: 생략부호를 활용한 그래프
+그림 7.1: 생략부호를 활용한 그래프
 </p>
 </div>
 <p>만일 함수 <code>my_plot()</code>에 <code>NA</code>가 있는 데이터를 입력한다면 어떻게 되겠는가?
@@ -531,7 +531,7 @@ Figure 7.1: 생략부호를 활용한 그래프
 <div class="figure"><span style="display:block;" id="fig:7-2"></span>
 <img src="_main_files/figure-html/7-2-1.png" alt="생략부호를 활용한 그래프" width="576" />
 <p class="caption">
-Figure 7.2: 생략부호를 활용한 그래프
+그림 7.2: 생략부호를 활용한 그래프
 </p>
 </div>
 </div>
