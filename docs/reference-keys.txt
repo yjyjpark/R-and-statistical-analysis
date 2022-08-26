@@ -1,4 +1,5 @@
 fig:RStudio-first
+tab:exam-data
 fig:exresult
 fig:R-project
 fig:ex-script
@@ -109,6 +110,7 @@ fig:9-9-1
 fig:9-9-2
 fig:9-10-a
 fig:9-10-b
+fig:9-10-c
 fig:9-11-a
 fig:9-11-b
 fig:9-12
@@ -140,7 +142,7 @@ fig:9-28
 fig:9-29
 fig:9-30-a
 fig:9-30-b
-fig:unnamed-chunk-640
+fig:unnamed-chunk-649
 fig:9-32
 fig:9-33-a
 fig:9-33-b
@@ -254,7 +256,7 @@ chapter-ggplot2
 ggplot2-시작하기
 시각적-요소와의-연결-mapping
 그룹별-그래프-작성-facet
-기하-객체-geometric-object
+section-geom
 통계적-변환-statistical-transformation
 위치-조정-position-adjustments
 좌표계-coordinate-system

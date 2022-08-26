@@ -347,25 +347,29 @@ pbinom(10, size = 100, prob = 1/6)
 pnorm(10.5, mean = 100*(1/6), sd = sqrt(100*(1/6)*(5/6)))
 ```
 
-이번에는 이항분포의 확률분포함수의 형태가 정규분포의 확률밀도함수의 형태로 수렴해 가는 과정을 그래프로 표현해 보자. $X \sim B(n, p)$ 에서 $p=0.2, 0.5, 0.8$ 경우에 $n=10,100$ 에 대한 확률분포함수의 그래프를 하나의 그래픽 창에 함께 나타나도록 배치해 보자.
+이번에는 이항분포의 확률분포함수의 형태가 정규분포의 확률밀도함수의 형태로 수렴해 가는 과정을 그래프로 표현해 보자. $X \sim B(n, p)$ 에서 $p = 0.2, 0.5, 0.8$ 경우에 $n = 10,100$ 에 대한 확률분포함수의 그래프를 하나의 그래픽 창에 함께 나타나도록 배치해 보자.
 
 `ggplot2`에서 여러 개의 그래프를 하나의 그래픽창에 배치하기 위해서는 패키지 `patchwork`를 사용하면 된다. 그래픽 객체를 먼저 생성하고, 이어서 `+`와 `/` 기호를 사용해서 적절하게 배치할 수 있다. 자세한 사용법은 [patchwork](https://patchwork.data-imaginist.com/index.html) 에서 찾아볼 수 있다.
 
-```{r 8-8, fig.cap="n의 크기에 따른 이항분포 밀도함수 그래프의 변화", fig.height=6, fig.width=9}
+```{r}
 n <- c(10, 100)
 p <- c(0.2, 0.5, 0.8)
-p_b <- vector(mode = "list", length = length(n)*length(p))
-k <- 1
-for(i in seq_along(n)){
-  for(j in seq_along(p)){
-    p_b[[k]] <- tibble(x = 0:n[i], y = dbinom(x, size = n[i], prob = p[j])) %>% 
-      ggplot(aes(x, y)) + 
-      geom_col(width = 0.3) +
-      labs(title = paste0("X ~ B(", n[i], ", ", p[j], ")"), x = NULL, y = NULL)
-    k <- k+1
-  }
-}
+np <- expand_grid(n, p)
+```
 
+```{r}
+p_b <- vector(mode = "list", length = nrow(np))
+for(k in 1:nrow(np)){
+    df <- tibble(n = np$n[k], p = np$p[k], 
+                 x = 0:n, y = dbinom(x, size = n, prob = p))
+    p_b[[k]] <- ggplot(df, aes(x, y)) +
+      geom_col(width = 0.3) +
+      labs(y = "Prob") +
+      ggtitle(paste0("X ~ B(", df$n, ",", df$p, ")"))
+  }
+```
+
+```{r 8-8, fig.cap="n의 크기에 따른 이항분포 밀도함수 그래프의 변화", fig.height=6, fig.width=9}
 library(patchwork)
 (p_b[[1]] + p_b[[2]] + p_b[[3]])/(p_b[[4]] + p_b[[5]] + p_b[[6]])
 ```

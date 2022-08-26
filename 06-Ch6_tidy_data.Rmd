@@ -62,14 +62,15 @@ df_1 %>%
 
 조금 더 복잡한 예를 살펴보자. 데이터 프레임 `tidyr::billboard`에는 2000년 Billboard Top 100에 오른 노래의 가수(`artist`)와 노래 제목(`track`), top 100 리스트에 들어간 날짜(`date.entered`), 그리고 리스트에 오른 이후의 매주 순위가 변수`wk1`부터 `wk76`까지 입력되어 있다. 해당 노래가 top 100 리스트에서 제외되면 `NA`가 입력되기 때문에, 변수 `wk1`부터 `wk76`에는 `NA`가 많이 입력되어 있다. 특히 `wk66`부터 `wk76`까지는 모든 자료가 `NA`로 입력되어서 변수 유형이 논리형으로 되어 있다.
 
-우리가 원하는 분석은 매주 연속해서 top 100에 올라있던 노래만을 대상으로 리스트에 머물러 있던 최장 기간과 그 기간 중 최고 순위를 알아내는 것이다.
+우리가 원하는 첫 번째 분석은 매주 연속해서 top 100에 올라있던 노래만을 대상으로 리스트에 머물러 있던 최장 기간과 그 기간 중 최고 순위를 알아내는 것이다.
 
 ```{r}
 billboard %>% 
   print(n = 5)
 ```
 
-이런 구조의 데이터는 매우 흔하게 볼 수 있는 것이며, tidy 데이터 구조로 오해하기도 한다. 그러나 변수 `wk1`부터 `wk76`은 모두 노래의 '순위'이기 때문에 하나의 열에 입력이 되어야 적절한 통계분석이 가능하게 된다.\
+이런 구조의 데이터는 매우 흔하게 볼 수 있는 것이며, tidy 데이터 구조로 오해하기도 한다. 
+그러나 변수 `wk1`부터 `wk76`은 모두 노래의 '순위'이기 때문에 하나의 열에 입력이 되어야 적절한 통계분석이 가능하게 된다.
 따라서 열 `wk1`부터 `wk76`까지에 입력된 자료는 `rank`라는 이름의 열로 모으고, 열의 이름은 `week`라는 이름의 열에 입력해 보자. 이 변환 작업은 `cols`에 `wk1:wk76` 또는 `starts_with("wk")`를, `names_to`에 `"week"`를, 그리고 `values_to`에 `"rank"`를 각각 지정하면 된다.
 
 ```{r}
@@ -111,6 +112,18 @@ top_100 %>%
   arrange(desc(period)) %>% 
   print(n=5)
 ```
+
+두 번째 분석으로써 연속해서 1위를 유지했던 노래 중 가장 오랫동안 정상을 유지했던 2곡을 알아보자. 
+
+```{r}
+top_100 %>% 
+    filter(rank == 1) %>%
+    group_by(artist, track) %>%
+    filter((max(week) - min(week) + 1) == n()) %>%
+    count(sort = TRUE) %>% 
+    print(n=2)
+```
+
 
 **2. 함수 `pivot_wider()`**
 
@@ -502,6 +515,9 @@ w
 ```{r}
 x <- c("New York, NY", "Ann Arbor, MI", "Chicago, IL")
 str_split(x, ",")
+```
+
+```{r}
 str_split(x, ",", simplify = TRUE)
 ```
 
@@ -518,7 +534,7 @@ str_split(y, " ", simplify = TRUE)
 str_split(y, "   ", simplify = TRUE)
 ```
 
-주어진 문자열을 개별 영문자로 분리하고자 한다면 인용 부호 사이에 빈칸을 없애고 입력하면 된다.
+주어진 문자열을 개별 문자로 분리하고자 한다면 인용 부호 사이에 빈칸을 없애고 입력하면 된다.
 
 ```{r}
 str_split(y, "", simplify = TRUE)
@@ -586,15 +602,23 @@ sum(str_detect(words, "e"))
 str_subset(words, "x")
 ```
 
-**$\bullet$ `str_extract()`와 `str_exract_all()`: 매치되는 패턴 추출**
+**$\bullet$ `str_extract()`와 `str_extract_all()`: 매치되는 패턴 추출**
 
 매치되는 패턴이 포함된 문자열 전체를 추출해내는 것도 의미가 있지만, 각 문자열에서 매치되는 패턴만을 추출하는 것도 상당히 의미가 있다. 함수 `str_extract()`는 각 문자열에서 첫 번째로 매치되는 패턴을 추출하여 벡터로 출력한다. 반면에 함수 `str_extract_all()`은 매치되는 모든 패턴을 추출하여 리스트로 출력하며, 만일 옵션 `simplify=TRUE`를 추가하면 결과를 문자형 행렬로 출력한다.
 
 ```{r}
-x <- c("ab", "acb", "acab")
-str_extract(x, "ab")
-str_extract_all(x, "ab")
+x <- c("ab", "acb", "acab", "abcab")
 ```
+
+```{r}
+str_extract(x, "ab")
+```
+
+```{r}
+str_extract_all(x, "ab")
+str_extract_all(x, "ab", simplify = TRUE)
+```
+
 
 ### 정규 표현식과 `stringr`의 함수
 
@@ -632,7 +656,6 @@ str_subset(x, "a.")
 ```{r}
 x <- c("abac", "adc", "cba")
 str_extract(x, "a.")
-str_extract_all(x, "a.")
 str_extract_all(x, "a.", simplify = TRUE)
 ```
 
@@ -828,7 +851,7 @@ str_extract(x, "bana(na)+")
 str_extract(x, "bana(na)*")
 ```
 
-반복 횟수를 정확하게 정하려면 중괄호 `{ }`를 사용하면 된다.
+정확한 반복 횟수를 지정하려면 중괄호 `{ }`를 사용하면 된다.
 
 - `{n}` : 정확히 n번 반복
 

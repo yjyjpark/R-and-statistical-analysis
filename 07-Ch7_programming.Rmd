@@ -456,9 +456,12 @@ else {
 만일 길이가 1을 초과라는 논리 벡터가 입력되면 오류가 발생한다. 
 길이가 4인 두 벡터를 비교하여 큰 값을 차례로 출력하고자 하는 경우 함수 `if()`로 작성하면 다음과 오류가 발생한다.
 
-```{r, error=TRUE}
+```{r}
 x <- c(10, 3, 6, 9)
 y <- c(1, 5, 4, 12)
+```
+
+```{r, error=TRUE}
 if(x > y) x else y
 ```
 
@@ -541,7 +544,10 @@ res <- vector("double", 5)
 for(i in seq_along(res)){
   res[i] <- mean(rnorm(10))
 }
-round(res, 3)
+```
+
+```{r}
+res |> round(3)
 ```
 
 for 루프는 세 가지 요소로 구성되어 있다. 
@@ -1011,6 +1017,7 @@ map_int(df1, 2)
 예를 들어 $N(-1,1)$ 과 $N(1,1)$ 에서 각각 발생시킨 5개의 난수를 함수 `summary()`에 입력하여 계산된 요약통계량 값을 리스트에 할당해 보자. 
 
 ```{r}
+set.seed(123)
 df2 <- list(x1 = rnorm(n = 5, mean = -1), x2 = rnorm(n = 5, mean = 1)) %>% 
   map(summary)
 df2

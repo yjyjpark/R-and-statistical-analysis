@@ -95,8 +95,8 @@ library(scales)
 df_2 <- 
   tibble(state.region) %>% 
   count(state.region) %>% 
-  mutate(pct = percent(n/sum(n)))
-df_2
+  mutate(pct = percent(n/sum(n))) %>% 
+  print()
 ```
 
 이제 파이그래프를 작성하기 바로 전 단계인 쌓아 올린 막대그래프를 작성해 보자. 그림 \@ref(fig:9-4)에서 볼 수 있듯이 쌓아 올려지는 조각의 순서는 데이터 프레임 `df_2`의 첫 번째 행 이 제일 위에 위치하고 두 번째 행이 그 밑으로 배치되는 위에서 아래 방향이 된다.
@@ -350,14 +350,15 @@ with(Arthritis, CrossTable(Treatment, Improved,
 
 패키지 `ggplot2`에서는 함수는 `geom_bar()`가 두 형태의 그래프를 작성할 수 있다. 또한 이변량 및 다변량 범주형 자료의 관계 탐색에 적합한 그래프로써 mosaic plot이 있는데, 이 그래프는 패키지 `vcd`의 `mosaic()`으로 작성할 수 있다.
 
-예제로 패키지 vcd의 데이터 프레임 `Arthritis`의 변수 `Treatment`와 `Improved`의 관계 탐색을 위한 그래프를 작성해 보자. 우선 함수 `table()`로 두 변수의 분할표를 작성해 보자.
+예제로 패키지 vcd의 데이터 프레임 `Arthritis`의 변수 `Treatment`와 `Improved`의 관계 탐색을 위한 그래프를 작성해 보자. 우선 함수 `count()`로 두 변수의 분할표를 작성해 보자.
 
 ```{r}
 data(Arthritis, package = "vcd")
 ```
 
 ```{r}
-my_table <- with(Arthritis, table(Treatment, Improved))
+Arthritis %>% 
+  count(Treatment, Improved)
 ```
 
 $\bullet$ 쌓아 올린 막대그래프
@@ -368,15 +369,17 @@ $\bullet$ 쌓아 올린 막대그래프
 
 ```{r 9-9-1, fig.cap="쌓아 올린 막대그래프"}
 library(tidyverse)
-ggplot(Arthritis, aes(x = Treatment, fill = Improved)) +
-  geom_bar()
+Arthritis %>% 
+  ggplot(aes(x = Treatment, fill = Improved)) +
+  geom_bar() +
+  ylab(NULL)
 ```
 
-두 변수의 분할표를 데이터로 사용하여 쌓아 올린 막대 그래프를 작성해야 하는 경우에는 분할표를 데이터 프레임으로 변환시키고, 설명변수인 `Treatment`를 `x`에, 빈도수인 `n`를 `y`에, 반응변수인 `Improved`를 `fill`에 매핑하고, 함수 `geom_col()` 또는 `geom_bar(stat = ”identity”)`를 사용하면 된다.
+두 변수의 분할표를 데이터로 사용하여 쌓아 올린 막대그래프를 작성해야 하는 경우에는 분할표를 데이터 프레임 형태로 생성시키고, 설명변수인 `Treatment`를 `x`에, 빈도수인 `n`를 `y`에, 반응변수인 `Improved`를 `fill`에 매핑하고, 함수 `geom_col()` 또는 `geom_bar(stat = ”identity”)`를 사용하면 된다.
 
 ```{r 9-9-2, fig.cap="쌓아 올린 막대그래프"}
-my_table %>% 
-  as_tibble() %>% 
+Arthritis %>% 
+  count(Treatment, Improved) %>% 
   ggplot(aes(x = Treatment, y = n, fill = Improved)) +
   geom_col() +
   ylab(NULL)
@@ -387,22 +390,36 @@ $\bullet$ 옆으로 붙여 놓은 막대그래프
 옆으로 붙여 놓은 막대 그래프를 작성하기 위해서는 함수 `geom_bar()`의 변수 `position`에 `“dodge”` 혹은 `“dodge2”`를 지정하면 된다. `“dodge2”`는 막대 폭을 조금 줄여서 막대 사이에 약간의 빈틈을 만들어 주는 차이가 있다.
 
 ```{r 9-10-a, fig.cap="옆으로 붙여 놓은 막대그래프"}
-ggplot(Arthritis, aes(x = Treatment, fill = Improved)) +
+Arthritis %>% 
+  ggplot(aes(x = Treatment, fill = Improved)) +
   geom_bar(position = "dodge") +
   ylab(NULL)
 ```
 
 ```{r 9-10-b, fig.cap="옆으로 붙여 놓은 막대그래프"}
-ggplot(Arthritis, aes(x = Treatment, fill = Improved)) +
+Arthritis %>% 
+  ggplot(aes(x = Treatment, fill = Improved)) +
   geom_bar(position = "dodge2") +
   ylab(NULL)
 ```
+
+두 변수의 분할표를 데이터로 사용하여 옆으로 붙여 놓은 막대그래프를 작성해 보자. 
+
+```{r 9-10-c, fig.cap="옆으로 붙여 놓은 막대그래프"}
+Arthritis %>% 
+  count(Treatment, Improved) %>% 
+  ggplot(aes(x = Treatment, y = n, fill = Improved)) +
+  geom_col(position = "dodge") +
+  ylab(NULL)
+```
+
 
 상대도수를 사용하여 옆으로 붙여 놓은 막대 그래프를 작성해 보자. 
 먼저 함수 `geom_bar()`와 함수 `facet_wrap()`을 추가로 사용한 방법이다.
 
 ```{r 9-11-a, fig.cap="상대도수에 의한 옆으로 붙여 놓은 막대 그래프"}
-ggplot(Arthritis, aes(x = Improved, y = after_stat(prop), group = 1)) +
+Arthritis %>% 
+  ggplot(aes(x = Improved, y = after_stat(prop), group = 1)) +
   geom_bar() +
   facet_wrap(vars(Treatment)) +
   ylab(NULL)
@@ -422,7 +439,8 @@ Arthritis %>%
 함수 `geom_bar()`로 두 변수의 막대그래프를 작성하는 경우, 시각적 요소 `x`와 `fill`에 각각 동일한 변수를 매핑하여도 `position`에 어떤 값을 지정하는가에 따라 다른 형태의 막대그래프가 작성된다. 디폴트는 `“stack”`으로 쌓아 올린 형태가 되고, `“dodge”`는 옆으로 붙여 놓은 형태가 됨을 알 수 있었다. 또 다른 가능한 다른 값으로 `“fill”`이 있는데, 이 경우에는 `x` 변수에 대한 `fill` 변수의 조건부 확률로 막대그래프가 각각 작성된다. 따라서 각 막대의 높이는 1이 된다.
 
 ```{r 9-12, fig.cap="조건부 확률을 표현한 쌓아 올린 막대그래프"}
-ggplot(Arthritis, aes(x = Treatment, fill = Improved)) +
+Arthritis %>% 
+  ggplot(aes(x = Treatment, fill = Improved)) +
   geom_bar(position = "fill") +
   ylab(NULL)
 ```
@@ -430,7 +448,10 @@ ggplot(Arthritis, aes(x = Treatment, fill = Improved)) +
 그림 \@ref(fig:9-12) 에서 각 조각의 면적은 행 변수인 `Treatment`를 조건으로 하는 열 변수 `Improved`의 조건부 확률에 의하여 결정됨을 다음의 분할표와 비교해 보면 알 수 있다. 설명변수와 반응변수 사이의 관계를 파악하는 데 더 적합하다고 할 수 있다.
 
 ```{r}
-prop.table(my_table, 1)
+Arthritis %>% 
+    group_by(Treatment, Improved) %>% 
+    tally() %>% 
+    mutate(prop = n/sum(n))
 ```
 
 $\bullet$ Mosaic plot
@@ -438,6 +459,10 @@ $\bullet$ Mosaic plot
 이변량 혹은 다변량 범주형 변수의 관계를 탐색할 때 유용하게 사용되는 그래프가 mosaic plot이다. 이 그래프는 쌓아 올린 막대그래프를 확장한 그래프라고 할 수 있으며, 패키지 `vcd`의 함수 `mosaic()`으로 작성할 수 있다.
 
 데이터 프레임 `Arthritis`의 변수 `Treatment`와 `Improved`의 분할표인 객체 `my_table`을 사용하여 작성해 보자.
+
+```{r}
+my_table <- with(Arthritis, table(Treatment, Improved))
+```
 
 ```{r 9-13-a, fig.cap="Mosaic plot"}
 library(vcd)
@@ -1349,9 +1374,9 @@ p1 + p2
 개별 $X$ 변수값에 대한 회귀함수의 추정은 가까운 자료만을 대상으로 가중 다항회귀모형을 적합함으로써 이루어지며, 함수 `loess()`로 추정된다
 
 이번에는 선형회귀직선과 국소회귀곡선을 산점도에 함께 나타내 보자. 
-두 종류의 선을 다른 색으로 표시하고 범례를 추가해야 하는데, 패키지 `ggplot2`에는 사용자가 직접 범례
-를 추가할 수 있는 방법이 없다. 
-대신 `color`와 같은 시각적 요소에 문자열을 매핑하는 방법이 유용하게 사용된다.
+두 종류의 선을 다른 색으로 표시하고 범례를 추가해야 하는데, 
+그래프에 범례(legend)를 추가하는 방법은 \@ref(section-geom)절에서 살펴보았다. 
+시각적 요소 `color`에 범례의 라벨로 사용할 문자열을 매핑해 보자.
 
 ```{r 9-45, fig.cap="선형회귀직선과 국소회귀곡선을 산점도에 함께 표시"}
 ggplot(Cars93, aes(x = Weight, y = MPG.highway)) +
@@ -1389,7 +1414,7 @@ ggplot(Cars93, aes(x = Weight, y = MPG.highway, color = Origin)) +
 **$\bullet$ 산점도의 점에 라벨 추가**
 
 산점도에서 특정 조건을 만족하는 점에 라벨을 붙이게 되면 자료의 특성을 파악하는 데 중요한 그래프가 될 수 있다. 
-산점도의 점에 라벨을 붙이는 작업은 함수 `geom_text()`로 할 수 있는데, 시각적 요소 `label`에 라벨의 내용이 되는 문자형 변수를 매핑하면 된다.
+산점도의 점에 라벨을 붙이는 작업은 \@ref(section-geom)절에서 살펴보았듯이 함수 `geom_text()`로 할 수 있는데, 시각적 요소 `label`에 라벨의 내용이 되는 문자형 변수를 매핑하면 된다.
 
 변수 `Weight`와 `MPG.highway`의 산점도에서 변수 `MPG.highway`가 40을 초과하는 점에 라벨을 붙여 보자.
 라벨의 내용은 변수 `Manufacturer`와 `Model`의 값을 결합한 것으로 하자.
@@ -1622,7 +1647,7 @@ mtcars_1 <- mtcars %>%
   select(mpg, wt, disp, cyl, am)
 ```
 
-```{r 9-58, fig.cap="숫자형 변수에 대한 함수 ggpairs()의 산점도행렬"}
+```{r 9-58, fig.cap="숫자형 변수에 대한 함수 `ggpairs()`의 산점도행렬"}
 library(GGally)
 ggpairs(mtcars_1)
 ```
@@ -1636,7 +1661,7 @@ mtcars_2 <- mtcars_1 %>%
 ```
 
 
-```{r 9-59, fig.cap="숫자형 변수와 요인이 있는 자료에 대한 함수 ggpairs()의 산점도행렬", fig.height=4.5, fig.width=8}
+```{r 9-59, fig.cap="숫자형 변수와 요인이 있는 자료에 대한 함수 `ggpairs()`의 산점도행렬", fig.height=4.5, fig.width=8}
 ggpairs(mtcars_2)
 ```
 
@@ -1671,7 +1696,7 @@ ggpairs(mtcars_2)
 또한 모든 패널의 그래프를 요인 `am`에 의한 두 그룹으로 구분해서 작성하는데,
 이것은 시각적 요소 `color`에 요인 `am`을 매핑하면 된다. 
 
-```{r 9-60, fig.cap="숫자형 변수와 요인이 있는 자료에 대한 함수 ggpairs()의 산점도행렬", fig.height=4.5, fig.width=8}
+```{r 9-60, fig.cap="숫자형 변수와 요인이 있는 자료에 대한 함수 `ggpairs()`의 산점도행렬", fig.height=4.5, fig.width=8}
 ggpairs(mtcars_2, aes(color = am),
           upper = list(continuous = "density"),
           lower = list(continuous = wrap("smooth", se = FALSE),

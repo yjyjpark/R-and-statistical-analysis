@@ -33,14 +33,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={R과 통계분석},
-  pdfauthor={박동련},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -74,10 +66,18 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={R과 통계분석},
+  pdfauthor={박동련},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{R과 통계분석}
 \author{박동련}
-\date{2022-07-06}
+\date{2022-08-26}
 
 \begin{document}
 \maketitle
@@ -90,7 +90,7 @@
 \chapter*{소개하기}\label{uxc18cuxac1cuxd558uxae30}}
 \addcontentsline{toc}{chapter}{소개하기}
 
-\includegraphics{Figure/cover.jpg}
+Placeholder
 
 \hypertarget{r-uxc2dcuxc791uxd558uxae30}{%
 \chapter{R 시작하기}\label{r-uxc2dcuxc791uxd558uxae30}}
@@ -306,8 +306,8 @@ Placeholder
 \hypertarget{uxadf8uxb8f9uxbcc4-uxadf8uxb798uxd504-uxc791uxc131-facet}{%
 \section{그룹별 그래프 작성: Facet}\label{uxadf8uxb8f9uxbcc4-uxadf8uxb798uxd504-uxc791uxc131-facet}}
 
-\hypertarget{uxae30uxd558-uxac1duxccb4-geometric-object}{%
-\section{기하 객체: Geometric object}\label{uxae30uxd558-uxac1duxccb4-geometric-object}}
+\hypertarget{section-geom}{%
+\section{기하 객체: Geometric object}\label{section-geom}}
 
 \hypertarget{uxd1b5uxacc4uxc801-uxbcc0uxd658-statistical-transformation}{%
 \section{통계적 변환: Statistical transformation}\label{uxd1b5uxacc4uxc801-uxbcc0uxd658-statistical-transformation}}
@@ -479,8 +479,8 @@ Placeholder
 \hypertarget{uxc904uxae30-uxc78e-uxadf8uxb9bc}{%
 \subsection{줄기-잎 그림}\label{uxc904uxae30-uxc78e-uxadf8uxb9bc}}
 
-\hypertarget{uxc0c1uxc790uxadf8uxb9bc}{%
-\subsection{상자그림}\label{uxc0c1uxc790uxadf8uxb9bc}}
+\hypertarget{section-boxplot}{%
+\subsection{상자그림}\label{section-boxplot}}
 
 \hypertarget{uxd788uxc2a4uxd1a0uxadf8uxb7a8}{%
 \subsection{히스토그램}\label{uxd788uxc2a4uxd1a0uxadf8uxb7a8}}
@@ -502,6 +502,9 @@ Placeholder
 
 \hypertarget{uxc5f0uxc18duxd615-uxbcc0uxc218uxc758-uxad00uxacc4-uxd0d0uxc0c9uxc744-uxc704uxd55c-uxadf8uxb798uxd504}{%
 \subsection{연속형 변수의 관계 탐색을 위한 그래프}\label{uxc5f0uxc18duxd615-uxbcc0uxc218uxc758-uxad00uxacc4-uxd0d0uxc0c9uxc744-uxc704uxd55c-uxadf8uxb798uxd504}}
+
+\hypertarget{uxc5f0uxc2b5uxbb38uxc81c-5}{%
+\section{연습문제}\label{uxc5f0uxc2b5uxbb38uxc81c-5}}
 
   \bibliography{book.bib}
 

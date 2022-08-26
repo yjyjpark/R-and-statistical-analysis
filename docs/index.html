@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -250,7 +252,7 @@ div.csl-indent {
 <li class="chapter" data-level="5.1" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#ggplot2-시작하기"><i class="fa fa-check"></i><b>5.1</b> <code>ggplot2</code> 시작하기</a></li>
 <li class="chapter" data-level="5.2" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#시각적-요소와의-연결-mapping"><i class="fa fa-check"></i><b>5.2</b> 시각적 요소와의 연결: Mapping</a></li>
 <li class="chapter" data-level="5.3" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#그룹별-그래프-작성-facet"><i class="fa fa-check"></i><b>5.3</b> 그룹별 그래프 작성: Facet</a></li>
-<li class="chapter" data-level="5.4" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#기하-객체-geometric-object"><i class="fa fa-check"></i><b>5.4</b> 기하 객체: Geometric object</a></li>
+<li class="chapter" data-level="5.4" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#section-geom"><i class="fa fa-check"></i><b>5.4</b> 기하 객체: Geometric object</a></li>
 <li class="chapter" data-level="5.5" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#통계적-변환-statistical-transformation"><i class="fa fa-check"></i><b>5.5</b> 통계적 변환: Statistical transformation</a></li>
 <li class="chapter" data-level="5.6" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#위치-조정-position-adjustments"><i class="fa fa-check"></i><b>5.6</b> 위치 조정: Position adjustments</a></li>
 <li class="chapter" data-level="5.7" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#좌표계-coordinate-system"><i class="fa fa-check"></i><b>5.7</b> 좌표계: Coordinate system</a></li>
@@ -368,11 +370,23 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">R과 통계분석</h1>
 <p class="author"><em>박동련</em></p>
-<p class="date"><em>2022-08-17</em></p>
+<p class="date"><em>2022-08-26</em></p>
 </div>
 <div id="소개하기" class="section level1 unnumbered hasAnchor">
 <h1>소개하기<a href="index.html#소개하기" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="Figure/cover.jpg" /></p>
+<p>R은 통계분석과 그래프 작성 및 통계적 프로그래밍에 적합한 매우 효과적인 분석 도구입니다.
+또한 R은 잠시도 정체되어 있지 않고 끊임없이 진화하고 있으며,
+놀라운 발전 속도를 항상 보여주고 있습니다.
+특히 패키지 <code>tidyverse</code>의 출현은 매우 주목할 사항입니다.
+그것은 R의 모습이 <code>tidyverse</code> 이전과 이후로 완전히 구분된다고 할 수 있기 때문입니다.
+데이터 다루기와 그래프 성능이 비교할 수 없을 만큼 향상되었고, 복잡한 분석 과정이 대폭 단순화되어 매우 효율적인 분석이 가능해졌습니다.
+이러한 발전으로 인하여 R은 이제 data science를 위한 최적의 프로그램으로 자리매김을 확고하게 했다고 할 수 있습니다.</p>
+<p>이 책은 R을 처음 접하는 초급 사용자에게 R의 특징을 소개하는 것뿐만이 아니라 이미 R을 사용하고 있는 중급 사용자에게 실질적인 도움이 될 수 있도록 구성되어 있습니다
+1장에서 <a href="chapter-ggplot2.html#chapter-ggplot2">5</a>장까지는 초급 사용자를 위해 R의 기본 개념에 대한 설명을 시작으로 해서,
+패키지 <code>readr</code> 등을 활용한 외부 데이터 불러오기, <code>dplyr</code>에 의한 데이터 다듬기 및 <code>ggplot2</code>의 기본 개념을 소개하고 있습니다.
+<a href="ch6.html#ch6">6</a>장부터 <a href="chapter-EDA.html#chapter-EDA">9</a>장까지는 중급 사용자를 위해 <code>tidyr</code>에 의한 데이터 변형, <code>dplyr</code>에 의한 자료 결합, <code>stringr</code>에 의한 문자 다루기 및 <code>purrr</code>에 의한 프로그래밍 기법에 대한 소개가 있으며, 데이터 시각화에 의한 자료탐색 과정에 대한 설명이 예제와 함께 잘 소개되어 있습니다.</p>
+<p>R은 data science 분야에서 사용되는 여러 프로그래밍 언어 중에서 가장 뛰어난 통계분석 기능이 있는 언어입니다.
+Data scientist가 되기를 원하시는 분들에게 조금이나마 도움이 되기를 바라는 마음에서 이 책을 출간합니다.</p>
 
 </div>
             </section>
