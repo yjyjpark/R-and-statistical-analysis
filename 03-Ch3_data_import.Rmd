@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 
 # 데이터 입력
 
@@ -24,7 +19,7 @@ editor_options:
 
 예를 들어 파일 `data2_1.txt`에 세 변수의 자료가 다음과 같이 있다고 하자. 이런 경우에는 함수 `read_table()`에 파일의 위치와 함께 파일의 이름만 입력하면 된다.
 
-![data2_1.txt](그림/data2_1.png "data2_1.txt"){#data2-1}
+![data2_1.txt](Figure/data2_1.png "data2_1.txt"){#data2-1}
 
 ```{r}
 library(tidyverse)
@@ -76,7 +71,7 @@ read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysi
 
 **4)**  데이터 파일에 결측값이 `NA`가 아닌 다른 기호로 입력된 경우
 
-데이터에 결측값이 있는 것은 당연한 것으로 봐야 한다. R에서는 결측값을 `NA`로 표시하기 때문에 데이터에 결측값이 있다면 해당되는 자리에 `NA`를 입력해야 한다. 그러나 경우에 따라서 결측값이 다른 숫자나 문자 혹은 기호로 데이터 파일에 입력될 수도 있는데, 예를 들어 SAS의 경우 결측값은 점(.)으로 표시한다. 이렇듯 다른 기호로 결측값이 입력된 경우 에는 옵션 `na`에 해당 기호를 지정해 주어야 한다. 만일 결측값이 점(.)으로만 입력되어 있 다면 `na = "."`으로 지정하면 되지만 `NA`와 점(.)이 모두 결측값을 나타내는 기호로 사용되었다면 `na = c(".", "NA")`로 두 기호를 모두 지정해야 한다. 예를 들어 `data2_4.txt`에 다음과 같이 `NA`와 점(.)이 모두 결측값을 나타내는 기호로 사용되어 있다고 하자. 이 파일을 옵션 `na`를 사용해서 불러 보자.
+데이터에 결측값이 있는 것은 당연한 것으로 봐야 한다. R에서는 결측값을 `NA`로 표시하기 때문에 데이터에 결측값이 있다면 해당되는 자리에 `NA`를 입력해야 한다. 그러나 경우에 따라서 결측값이 다른 숫자나 문자 혹은 기호로 데이터 파일에 입력될 수도 있는데, 예를 들어 SAS의 경우 결측값은 점(.)으로 표시한다. 이렇듯 다른 기호로 결측값이 입력된 경우 에는 옵션 `na`에 해당 기호를 지정해 주어야 한다. 만일 결측값이 점(.)으로만 입력되어 있다면 `na = "."`으로 지정하면 되지만 `NA`와 점(.)이 모두 결측값을 나타내는 기호로 사용되었다면 `na = c(".", "NA")`로 두 기호를 모두 지정해야 한다. 예를 들어 `data2_4.txt`에 다음과 같이 `NA`와 점(.)이 모두 결측값을 나타내는 기호로 사용되어 있다고 하자. 이 파일을 옵션 `na`를 사용해서 불러 보자.
 
 ![data2_4.txt](Figure/data2_4.png "data2_4.txt"){#data2-4}
 
@@ -257,28 +252,36 @@ RUN;
 
 -   예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기
 
-그림 \@ref(fig:wiki)은 [Wikipedia](https://en.wikipedia.org/wiki)에서 "World population"을 검색하면 열리는 웹 페이지에 있는 "10 most densely populated countries"라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2022년 2월 9일에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.
+그림 \@ref(fig:wiki)은 [Wikipedia](https://en.wikipedia.org/wiki)에서 "World population"을 검색하면 열리는 웹 페이지에 있는 "10 most densely populated countries"라는 제목의 HTML 테이블을 보여주고 있다. 검색은 `r Sys.Date()`에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.
 
 ```{r wiki, fig.cap='예제 1에서 사용된 HTML 테이블', echo=FALSE}
 knitr::include_graphics("Figure/wiki_22_02_09_1.png")
 
 ```
 
-원하는 웹 페이지의 URL을 함수 `read_html()`에 입력하여 얻은 결과에서 `table` 노드를 함수 `html_elements()`로 찾아보자. 함수 `html_elements()`는 결과를 리스트 형태로 출력한다. 모두 26개의 `table` 노드가 발견되었고, 그 중 처음 6개의 내용을 출력해 보자.
+원하는 웹 페이지의 URL을 함수 `read_html()`에 입력하여 얻은 결과에서 `table` 노드를 함수 `html_elements()`로 찾아보자. 함수 `html_elements()`는 결과를 리스트 형태로 출력한다. 
 
 ```{r, message=FALSE}
 library(rvest)
 URL <- "https://en.wikipedia.org/wiki/World_population"
 web <- read_html(URL)
 tbl <- html_elements(web, "table")
+```
+
+모두 `r length(tbl)`개의 `table` 노드가 발견되었고, 그 중 처음 6개의 내용을 출력해 보자.
+
+```{r}
 length(tbl)
+```
+
+```{r}
 head(tbl)
 ```
 
-함수 `html_elements()`의 결과로 생성된 리스트 객체인 tbl의 26개 구성요소 중 우리가 원하는 HTML 테이블에 해당되는 노드를 찾아서 함수 `html_table()`에 입력하면, 해당 테이블 데이터가 R로 입력된다. 문제는 몇 번째 노드가 우리가 원하는 테이블에 관한 것인지 알기가 어렵다는 점이다. 시행착오를 거치면, 원하는 테이블이 6번째 노드에 있다는 것을 알 수 있고, 따라서 `html_table(tbl[6])`을 실행하면 테이블의 데이터를 불러올 수 있다. 그러나 HTML 테이블이 많은 웹 페이지에서는 다른 체계적인 방법이 필요할 것이다.
+함수 `html_elements()`의 결과로 생성된 리스트 객체인 tbl의 `r length(tbl)`개 구성요소 중 우리가 원하는 HTML 테이블에 해당되는 노드를 찾아서 함수 `html_table()`에 입력하면, 해당 테이블 데이터가 R로 입력된다. 문제는 몇 번째 노드가 우리가 원하는 테이블에 관한 것인지 알기가 어렵다는 점이다. 시행착오를 거치면, 원하는 테이블이 5번째 노드에 있다는 것을 알 수 있고, 따라서 `html_table(tbl[5])`을 실행하면 테이블의 데이터를 불러올 수 있다. 그러나 HTML 테이블이 많은 웹 페이지에서는 다른 체계적인 방법이 필요할 것이다.
 
 ```{r}
-html_table(tbl[6])
+html_table(tbl[5])
 ```
 
 웹 페이지에서 HTML 테이블을 체계적으로 찾는 방법 중 하나는 해당 테이블 노드의 XPath를 알아내는 것이다. XPath는 웹 문서에서 원하는 태그나 속성 등을 쉽게 찾기 위해 개발된 것으로 윈도우의 파일 경로와 비슷한 개념이라고 하겠다.
@@ -301,6 +304,9 @@ knitr::include_graphics("Figure/wiki_22_02_09_2.png")
 X_path <- '//*[@id="mw-content-text"]/div[1]/table[5]'
 node_1 <- html_elements(web, xpath = X_path)
 tbl_1 <- html_table(node_1)
+```
+
+```{r}
 tbl_1
 ```
 
@@ -309,16 +315,24 @@ tbl_1
 ```{r}
 top_pop <- tbl_1[[1]]
 names(top_pop) <- c("rank", "country", "pop", "area", "density")
+```
+
+```{r}
 top_pop
 ```
+
 
 변수 `pop`, `area`, `density`이 숫자가 아닌 문자형 벡터로 입력되었음을 알 수 있다. 이것은 숫자에 콤마가 함께 입력되어 있기 때문인데, 이제 변수 `pop`을 숫자형으로 변환하여 평균을 구해 보자. 숫자형으로 변환하는 방법은 `pop`에 포함된 콤마를 함수 `gsub()`를 사용하여 제거하고, 이어서 함수 `as.numeric()`을 사용하여 유형을 숫자형으로 변환하면 된다.
 
 ```{r}
 pop <- top_pop$pop
 pop <- gsub(",", "", pop)
+```
+
+```{r}
 mean(as.numeric(pop))
 ```
+
 
 -   예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기
 
@@ -352,7 +366,7 @@ tbl_2
 
 ![](Figure/ch3_ex1.PNG){width="400"}
 
--   R로 불러와서 다음과 같이 tibble 형태로 출력해 보자.
+-   R로 불러와서 tibble `ex3_1`에 입력하고, 다음과 같이 출력해 보자.
 
 ```{r, echo=FALSE}
 URL <- "https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory"
@@ -362,36 +376,78 @@ tbl <- read_html(URL) %>%
   html_elements(xpath = x_path) %>%  
   html_table()                       
 
-ex1 <- tbl[[1]]                    
+ex3_1 <- tbl[[1]]                    
 ```
 
 ```{r}
-ex1
+ex3_1
 ```
 
--   자료가 없는 `ex_1`의 첫 번째 변수를 제거하고, 변수 `'Vaccinated[a]'`와 `'Percent[b]'`는 이름을 `Vaccinated`와 `Percent`로 변경하자. 또한 첫 번째 행과 자료가 잘못 입력된 마지막 행도 제거해 보자. 변경된 데이터 프레임의 처음 3개 행과 마지막 3개 행의 내용은 다음과 같다.
+-   자료가 없는 `ex3_1`의 첫 번째 변수를 제거하고, 세 번째 변수 `r names(ex3_1)[3]`와 네 번째 변수 `r names(ex3_1)[4]`는 이름을 `Vaccinated`와 `Percent`로 변경하자. 또한 첫 번째 행과 자료가 잘못 입력된 마지막 행도 제거해 보자. 변경된 데이터 프레임의 처음 3개 행과 마지막 3개 행의 내용은 다음과 같다.
 
 ```{r, echo=FALSE}
-ex1 <- ex1[-c(1, nrow(ex1)), -1]
-names(ex1) <- c("Location", "Vaccinated", "Percent")                       
+ex3_1 <- ex3_1[-c(1, nrow(ex3_1)), -1]
+names(ex3_1) <- c("Location", "Vaccinated", "Percent")                       
 ```
 
 ```{r}
-head(ex1, n = 3)
+head(ex3_1, n = 3)
 ```
 
 ```{r}
-tail(ex1, n = 3)
+tail(ex3_1, n = 3)
 ```
 
--   변수 `Percent`는 백신 접종률을 나타내는 변수이다. 백신 접종률이 95%를 초과하는 나라를 확인해서 다음과 같이 출력해 보자.
+-   변수 `Percent`는 백신 접종률을 나타내는 변수이다. 백신 접종률이 95%를 초과하는 나라를 선택해서 `ex3_2`에 입력하고, 다음과 같이 출력해 보자.
 
 ```{r, echo=FALSE}
-ex1$Vaccinated <- as.numeric(gsub(",", "", ex1$Vaccinated))
-ex1$Percent <- as.numeric(gsub("%", "", ex1$Percent))        
-ex1_1 <- ex1[ex1$Percent>95,]
+ex3_1$Vaccinated <- as.numeric(gsub(",", "", ex3_1$Vaccinated))
+ex3_1$Percent <- as.numeric(gsub("%", "", ex3_1$Percent))        
+ex3_2 <- ex3_1[ex3_1$Percent>95,]
 ```
 
 ```{r, echo=TRUE}
-ex1_1
+ex3_2
 ```
+
+
+**2.** 웹서버 `https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/`에 있는 파일 `ex3-1.csv`에는 1993년 미국에서 판매된 93대 자동차의 생산 회사(`Manufacturer`)와 차량 모델 (`Model`) 의 최소 가격 (`Min.Price`) 및 최대 가격 (`Max.Price`)이 입력되어 있다. 
+
+- 파일 `ex3-1.csv`를 불러와서 데이터 프레임에 입력하고 다음과 같이 출력해 보자. 
+
+```{r, echo=FALSE}
+car <- read_csv("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/ex3-2.csv")
+print(car, n = 3)
+```
+
+- 변수 `Manufacturer`와 `Model`을 하나의 변수 `model`로 통합하고 , 변수 `Min.Price`와 `Max.Price`의 평균으로 변수 `price`를 생성해 보자. 
+이어서 두 변수 `model` 과 `price`로 이루어진 데이터 프레임을 만들어 다음과 같이 출력해 보자
+
+```{r, echo=FALSE}
+model <- with(car, paste(Manufacturer, Model))
+
+min.price <- gsub(",", "", car$Min.Price) 
+min.price <- gsub("$", "", min.price, fixed = TRUE)
+
+max.price <- gsub(",", "", car$Max.Price)
+max.price <- gsub("$", "", max.price, fixed = TRUE)
+
+price <- (as.numeric(min.price) + as.numeric(max.price))/2
+car_1 <- tibble(model, price)
+print(car_1, n = 3)
+```
+
+- 변수 `price`의 값이 가장 큰 자동차와 가장 작은 지동차의 `model` 값을 각각 구하고
+두 자동차의 `price` 차이도 구해 보자
+
+```{r, include=FALSE}
+car_1[price == max(price),"model"]
+car_1[price == min(price),"model"]
+
+with(car_1, diff(range(price)))
+```
+
+
+
+
+
