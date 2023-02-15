@@ -35,6 +35,7 @@ fig:5-14-2
 fig:5-15-1
 fig:5-15-2
 fig:5-15-3
+fig:5-15-4
 fig:5-16
 fig:5-17
 fig:5-18-1
@@ -142,7 +143,7 @@ fig:9-28
 fig:9-29
 fig:9-30-a
 fig:9-30-b
-fig:unnamed-chunk-798
+fig:unnamed-chunk-799
 fig:9-32
 fig:9-33-a
 fig:9-33-b

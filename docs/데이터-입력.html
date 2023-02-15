@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2023-02-02" />
+<meta name="date" content="2023-02-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -662,7 +662,7 @@ RUN;</code></pre>
 <ul>
 <li>예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기</li>
 </ul>
-<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-02-02에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
+<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-02-15에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
 <div class="figure"><span style="display:block;" id="fig:wiki"></span>
 <img src="Figure/wiki_22_02_09_1.PNG" alt="예제 1에서 사용된 HTML 테이블" width="222" />
 <p class="caption">
@@ -760,7 +760,7 @@ RUN;</code></pre>
 <ul>
 <li>예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기</li>
 </ul>
-<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-02-02이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
+<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-02-15이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
 <div class="figure"><span style="display:block;" id="fig:KBO"></span>
 <img src="Figure/KBO.PNG" alt="예제 2에서 사용된 HTML 테이블" width="566" />
 <p class="caption">
@@ -802,16 +802,16 @@ RUN;</code></pre>
 <span id="cb317-2"><a href="데이터-입력.html#cb317-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 223 × 4</span></span>
 <span id="cb317-3"><a href="데이터-입력.html#cb317-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    ``    Location          `Vaccinated[a]` `Percent[b]`</span></span>
 <span id="cb317-4"><a href="데이터-입력.html#cb317-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;           &lt;chr&gt;       </span></span>
-<span id="cb317-5"><a href="데이터-입력.html#cb317-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,535,941,097   69.42%      </span></span>
-<span id="cb317-6"><a href="데이터-입력.html#cb317-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 &quot;&quot;    China[e]          1,310,207,000   91.89%      </span></span>
-<span id="cb317-7"><a href="데이터-입력.html#cb317-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 &quot;&quot;    India             1,027,325,954   72.49%      </span></span>
-<span id="cb317-8"><a href="데이터-입력.html#cb317-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 338,159,865     75.12%      </span></span>
-<span id="cb317-9"><a href="데이터-입력.html#cb317-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 &quot;&quot;    United States[g]  268,927,705     81.00%      </span></span>
+<span id="cb317-5"><a href="데이터-입력.html#cb317-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,536,920,348   69.43%      </span></span>
+<span id="cb317-6"><a href="데이터-입력.html#cb317-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 &quot;&quot;    China[e]          1,310,292,000   91.89%      </span></span>
+<span id="cb317-7"><a href="데이터-입력.html#cb317-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 &quot;&quot;    India             1,027,361,364   72.49%      </span></span>
+<span id="cb317-8"><a href="데이터-입력.html#cb317-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 338,175,450     75.13%      </span></span>
+<span id="cb317-9"><a href="데이터-입력.html#cb317-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 &quot;&quot;    United States[g]  269,208,743     81.08%      </span></span>
 <span id="cb317-10"><a href="데이터-입력.html#cb317-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 &quot;&quot;    Indonesia         203,657,535     73.92%      </span></span>
-<span id="cb317-11"><a href="데이터-입력.html#cb317-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 &quot;&quot;    Brazil            189,047,444     87.80%      </span></span>
+<span id="cb317-11"><a href="데이터-입력.html#cb317-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 &quot;&quot;    Brazil            189,146,039     87.85%      </span></span>
 <span id="cb317-12"><a href="데이터-입력.html#cb317-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 &quot;&quot;    Pakistan          162,206,190     68.78%      </span></span>
-<span id="cb317-13"><a href="데이터-입력.html#cb317-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 &quot;&quot;    Bangladesh        150,956,628     88.18%      </span></span>
-<span id="cb317-14"><a href="데이터-입력.html#cb317-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 &quot;&quot;    Japan             104,624,695     84.41%      </span></span>
+<span id="cb317-13"><a href="데이터-입력.html#cb317-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 &quot;&quot;    Bangladesh        151,054,434     88.24%      </span></span>
+<span id="cb317-14"><a href="데이터-입력.html#cb317-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 &quot;&quot;    Japan             104,644,332     84.42%      </span></span>
 <span id="cb317-15"><a href="데이터-입력.html#cb317-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 213 more rows</span></span></code></pre></div>
 <ul>
 <li>자료가 없는 <code>ex3_1</code>의 첫 번째 변수를 제거하고, 세 번째 변수 Vaccinated[a]와 네 번째 변수 Percent[b]는 이름을 <code>Vaccinated</code>와 <code>Percent</code>로 변경하자. 또한 첫 번째 행과 자료가 잘못 입력된 마지막 행도 제거해 보자. 변경된 데이터 프레임의 처음 3개 행과 마지막 3개 행의 내용은 다음과 같다.</li>
@@ -820,9 +820,9 @@ RUN;</code></pre>
 <span id="cb318-2"><a href="데이터-입력.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
 <span id="cb318-3"><a href="데이터-입력.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Location          Vaccinated    Percent</span></span>
 <span id="cb318-4"><a href="데이터-입력.html#cb318-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;             &lt;chr&gt;         &lt;chr&gt;  </span></span>
-<span id="cb318-5"><a href="데이터-입력.html#cb318-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 China[e]          1,310,207,000 91.89% </span></span>
-<span id="cb318-6"><a href="데이터-입력.html#cb318-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 India             1,027,325,954 72.49% </span></span>
-<span id="cb318-7"><a href="데이터-입력.html#cb318-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 European Union[f] 338,159,865   75.12%</span></span></code></pre></div>
+<span id="cb318-5"><a href="데이터-입력.html#cb318-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 China[e]          1,310,292,000 91.89% </span></span>
+<span id="cb318-6"><a href="데이터-입력.html#cb318-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 India             1,027,361,364 72.49% </span></span>
+<span id="cb318-7"><a href="데이터-입력.html#cb318-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 European Union[f] 338,175,450   75.13%</span></span></code></pre></div>
 <div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="데이터-입력.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(ex3_1, <span class="at">n =</span> <span class="dv">3</span>)</span>
 <span id="cb319-2"><a href="데이터-입력.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
 <span id="cb319-3"><a href="데이터-입력.html#cb319-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Location         Vaccinated Percent</span></span>
@@ -837,11 +837,11 @@ RUN;</code></pre>
 <span id="cb320-2"><a href="데이터-입력.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10 × 3</span></span>
 <span id="cb320-3"><a href="데이터-입력.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    Location             Vaccinated Percent</span></span>
 <span id="cb320-4"><a href="데이터-입력.html#cb320-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                     &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb320-5"><a href="데이터-입력.html#cb320-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Cuba                   10724247    95.6</span></span>
+<span id="cb320-5"><a href="데이터-입력.html#cb320-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Cuba                   10725767    95.7</span></span>
 <span id="cb320-6"><a href="데이터-입력.html#cb320-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 United Arab Emirates    9991089   100  </span></span>
-<span id="cb320-7"><a href="데이터-입력.html#cb320-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Portugal                9776863    95.2</span></span>
-<span id="cb320-8"><a href="데이터-입력.html#cb320-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Qatar                   2850786   106. </span></span>
-<span id="cb320-9"><a href="데이터-입력.html#cb320-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Macau                    678241    97.6</span></span>
+<span id="cb320-7"><a href="데이터-입력.html#cb320-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Portugal                9778625    95.2</span></span>
+<span id="cb320-8"><a href="데이터-입력.html#cb320-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Qatar                   2851272   106. </span></span>
+<span id="cb320-9"><a href="데이터-입력.html#cb320-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Macau                    678672    97.6</span></span>
 <span id="cb320-10"><a href="데이터-입력.html#cb320-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Brunei                   450404   100. </span></span>
 <span id="cb320-11"><a href="데이터-입력.html#cb320-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Gibraltar                 42175   129. </span></span>
 <span id="cb320-12"><a href="데이터-입력.html#cb320-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Tokelau                    2203   116. </span></span>

@@ -150,7 +150,7 @@ ggplot(data = mpg) +
 시각적 요소의 값을 사용자가 지정하기 위해서는 `color`, `shape`, `size` 등을 함수 `aes()`의 밖으로 빼내서 
 `geom` 함수의 입력 요소로 사용해야 한다. 각 시각적 요소에 지정되는 값은 다음의 규칙에 따른다.
 
-1. `color`: 색깔을 나타내는 문자열 지정
+1. `color`: 색 이름 문자열 지정. `r length(colors())`개의 색 이름은 함수 `colors()`를 실행하면 확인할 수 있다.
 
 2. `size`: 점 크기를 mm 단위로 지정
 
@@ -213,8 +213,8 @@ ggplot(data=mpg) +
 해당되는 것을 알 수 있다. 변수 `class`가 `‘2seater’`인 케이스를 제거한 후 패널을 2열로 배치하여 작성해 보자. 
 
 ```{r 5-12, fig.cap = '`ncol`로 패널 배치 조절', fig.height=5}
-mpg %>% 
-  filter(class != "2seater") %>% 
+mpg |>  
+  filter(class != "2seater") |>  
   ggplot() +
   geom_point(aes(x = displ, y = hwy)) +
   facet_wrap(vars(class), ncol = 2)
@@ -223,8 +223,8 @@ mpg %>%
 `dir`의 값 변경해서 패널의 그래프 배치 순서를 다르게 해 보자. 
 
 ```{r 5-13, fig.cap='`ncol`과 `dir`로 패널 배치 조절', fig.height=5}
-mpg %>% 
-  filter(class != "2seater") %>% 
+mpg |>  
+  filter(class != "2seater") |>  
   ggplot() +
   geom_point(aes(x = displ, y = hwy)) +
   facet_wrap(vars(class), ncol = 2, dir = "v")
@@ -246,8 +246,8 @@ mpg %>%
 할당하면 동일한 작업을 반복할 필요 없이 거기에 몇 가지 요소만을 따로 추가하면 수정된 그래프를 작성할 수 있다.
 
 ```{r}
-my_plot <- mpg %>%
-  filter(cyl != 5, drv != "r") %>%
+my_plot <- mpg |> 
+  filter(cyl != 5, drv != "r") |> 
   ggplot() +
   geom_point(aes(x = displ, y = hwy))
 ```
@@ -297,6 +297,16 @@ my_plot +
              scales = "free")
 ```
 
+두 변수에 의한 faceting을 함수 `facet_wrap()`으로 작성하면, 각 패널의 라벨에 범주 값 두 개가 표시되는데, 변수의 이름도 함께 표시하는 것이 변수 조합을 확인하는데 더 편할 것이다.
+각 패널의 strip에 표시되는 라벨에 변수 이름도 함께 표시하기 위해서는 옵션 `labeller`에 `label_both`를 지정하면 된다. 
+
+```{r 5-15-4, fig.cap='함수 `facet_wrap()`에 의한 두 변수의 faceting', fig.height=5}
+my_plot +
+  facet_wrap(vars(drv, cyl),
+             scales = "free", labeller = "label_both")
+```
+
+
 
 * 연속형 변수에 의한 faceting
 
@@ -315,12 +325,12 @@ my_plot +
 각 그룹에서 나머지 두 변수의 산점도를 작성해 보자.
 
 ```{r}
-air_1 <- airquality %>%
+air_1 <- airquality |> 
   mutate(Wind_d = cut_number(Wind, n = 4)) 
 ```
 
 ```{r 5-16, fig.cap='연속형 변수의 faceting', warning=FALSE}
-air_1 %>%
+air_1 |> 
   ggplot() + 
   geom_point(aes(x = Solar.R, y = Ozone)) +
   facet_wrap(vars(Wind_d))
@@ -333,11 +343,11 @@ Faceting은 기존의 그래프에 다른 변수의 정보를 추가하고자 �
 그림 \@ref(fig:5-16)을 작성한 상황에서 변수 `Wind_d`를 색깔과 점의 크기와 연결시켜 나머지 두 변수의 산점도를 작성해 보자.
 
 ```{r 5-17, fig.cap='매핑과 faceting의 비교', warning=FALSE, fig.width=5, fig.height=4}
-air_1 %>%
+air_1 |> 
   ggplot() +
-  geom_point(aes(x=Solar.R, y=Ozone, 
-                 color=Wind_d,
-                 size=Wind_d))
+  geom_point(aes(x = Solar.R, y = Ozone, 
+                 color = Wind_d,
+                 size = Wind_d))
 ```
 
 그림 \@ref(fig:5-17)은 너무 많은 점들이 서로 겹쳐 있어서 관계를 확인하는 데 약간의 어려움이 있으며, 따라서 좋지 않은 그래프라고 하겠다.
@@ -442,7 +452,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 ```
 
 
-* 글로벌 데이터과 로컬 데이터
+* 글로벌 데이터와 로컬 데이터
 
 매핑에서와 같이 데이터도 함수 `ggplot()`에서 지정하는 글로벌 데이터와 개별 `geom` 함수에서 지정하는 
 로컬 데이터로 구분된다. 
@@ -572,9 +582,9 @@ p2 + geom_text(data = slice_max(mpg, hwy, n = 3),
 ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   geom_smooth(aes(color = "lm"), 
-              method = "lm", se = FALSE, size = 1.2) +
+              method = "lm", se = FALSE, linewidth = 1.2) +
   geom_smooth(aes(color = "loess"), 
-              method = "loess", se = FALSE, size = 1.2) +
+              method = "loess", se = FALSE, linewidth = 1.2) +
   labs(x = "Engine displacement", y = "Highway MPG", color = NULL,
        title = "Scatter plot with regression lines") +
   theme(legend.position = "bottom")
@@ -665,9 +675,12 @@ ggplot(mpg) +
 각 범주에 속한 자료의 개수를 세는 작업은 함수 `count()`로 할 수 있다.
 
 ```{r}
-mpg_am <- mpg %>%
-  mutate(am = substr(trans, 1, nchar(trans)-4)) %>%
+mpg_am <- mpg |> 
+  mutate(am = substr(trans, 1, nchar(trans)-4)) |> 
   count(am)
+```
+
+```{r}
 mpg_am
 ```
 
@@ -733,8 +746,8 @@ ggplot(mpg,  aes(x = cty, y = hwy))+
 먼저 자료를 준비해 보자. 
 
 ```{r}
-mpg_1 <- mpg %>% 
-  mutate(am = substr(trans, 1, nchar(trans)-4)) %>%
+mpg_1 <- mpg |>  
+  mutate(am = substr(trans, 1, nchar(trans)-4)) |> 
   filter(cyl != 5)
 ```
 
@@ -1012,14 +1025,23 @@ ggplot(data = <Data>) +
  + 변수 `Ozone`과 `Solar.R`에는 많은 결측값이 있다. 두 변수 중 한 변수라도 결측값이 있는 날수를 월별로 나타내는 다음의 그래프를 작성해 보자.
  
 ```{r ggplot-ex-1-1, echo=FALSE, fig.align='center'}
-knitr::include_graphics("Figure/ggplot_ex_1_1.png")
+airquality |>  
+  filter(is.na(Ozone) | is.na(Solar.R)) |> 
+  ggplot(aes(x = Month)) +
+  geom_bar() +
+  labs(y = NULL)
 ```
  
  + 월별로 변수 `Ozone`과 `Solar.R`의 산점도에 회귀직선을 추가한 다음의 그래프를 작성해 보자. 
  결측값이 지나치게 많은 6월 자료는 대상에서 제외한다.
 
-```{r ggplot-ex-1-2, echo=FALSE, fig.align='center'}
-knitr::include_graphics("Figure/ggplot_ex_1_2.png")
+```{r ggplot-ex-1-2, echo=FALSE, fig.align='center', warning=FALSE}
+airquality |>  
+  filter(Month != 6) |>  
+  ggplot(aes(x = Solar.R, y = Ozone)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(vars(Month), scales = "free", labeller = "label_both")
 ```
  
 
@@ -1028,39 +1050,39 @@ knitr::include_graphics("Figure/ggplot_ex_1_2.png")
 -  11개 변수 중 문자형 변수만 선택해서 다음과 같이 출력해 보자. 
 
 ```{r, echo=FALSE}
-mpg %>% 
-  select(where(is.character)) %>% 
+mpg |>  
+  select(where(is.character)) |>  
   print(n = 3)
 ```
 
 - 문자형 변수 중 `r names(mpg)[1:2]`을 제외한 나머지 변수를 모두 요인으로 변경시켜서 다음과 같이 출력해 보자. 
 
 ```{r, echo=FALSE}
-mpg %>% 
-  select(where(is.character)) %>%
-  mutate(across(-(1:2), as.factor)) %>% 
+mpg |>  
+  select(where(is.character)) |> 
+  mutate(across(-(1:2), as.factor)) |>  
   print(n = 3)
 ```
 
 - 요인으로 변경된 변수 `trans`의 범주별 빈도를 다음과 같이 출력해 보자.  
 
 ```{r, echo=FALSE}
-mpg %>% 
-  mutate(across(where(is.character), as.factor)) %>% 
+mpg |>  
+  mutate(across(where(is.character), as.factor)) |>  
   count(trans)
 ```
 
 - 변수 `trans`의 범주 중 `manual(m5)`와 `manual(m6)`는 `Manual`로 통합하고, `auto(l3)`, `auto(l4)`, `auto(l5)`, `auto(l6)`는 `Auto-T1`으로, 나머지 범주는 `Auto-T2`로 통합해서 각 범주의 빈도를 다음과 같이 막대 그래프로 나타내 보자.  
 
 ```{r, ggplot-ex-2-1, echo=FALSE, fig.align='center'}
-mpg_am <- mpg %>% 
+mpg_am <- mpg |>  
   mutate(trans = case_when(
     substr(trans, 1, 1) == "m" ~ "Manual",
     substr(trans, 6, 6) == "l" ~ "Auto-T1",
     TRUE ~ "Auto-T2"
   ))
 
-mpg_am %>% 
+mpg_am |>  
   ggplot(aes(x = trans)) +
   geom_bar(fill = "steelblue") +
   labs(y = NULL, x = "Type of transmission") 
@@ -1071,9 +1093,9 @@ mpg_am %>%
 세 번째 그래프는 상대도수에 의한 막대 그래프이다.  
 
 ```{r, echo=FALSE}
-bar1 <- mpg_am %>% 
-  filter(cyl != 5) %>% 
-  mutate(cyl = as.factor(cyl)) %>% 
+bar1 <- mpg_am |>  
+  filter(cyl != 5) |>  
+  mutate(cyl = as.factor(cyl)) |>  
   ggplot(aes(x = trans, fill = cyl)) +
   labs(y = NULL, x = "Type of transmission")
 ```
@@ -1089,9 +1111,9 @@ bar1 +
 ```
 
 ```{r, ggplot-ex-2-4, echo=FALSE, fig.align='center'}
-mpg_am %>% 
-  filter(cyl != 5) %>% 
-  mutate(cyl = as.factor(cyl)) %>%
+mpg_am |>  
+  filter(cyl != 5) |>  
+  mutate(cyl = as.factor(cyl)) |> 
   ggplot(aes(x = cyl, y = after_stat(prop), group = 1)) +
   geom_bar(fill = "steelblue") +
   facet_wrap(vars(trans)) +
@@ -1102,9 +1124,9 @@ mpg_am %>%
 - 변수 `cyl`과 `hwy`의 관계를 알아보고자 한다. 다음의 그래프를 작성하고, 두 변수의 관계를 설명해 보자. 변수 `cyl`에서 `5`의 값을 갖는 자동차 자료는 제외한다.  
 
 ```{r, ggplot-ex-2-5, echo=FALSE, fig.align='center'}
-mpg %>% 
-  filter(cyl != 5) %>% 
-  mutate(cyl = as.factor(cyl)) %>%
+mpg |>  
+  filter(cyl != 5) |>  
+  mutate(cyl = as.factor(cyl)) |> 
   ggplot(aes(y = cyl, x = hwy)) +
   geom_boxplot() + 
   labs(x = "Highway MPG", y = "Number of Cylinders")  
@@ -1114,10 +1136,10 @@ mpg %>%
 - 변수 `cyl`, `drv`와 `hwy`의 관계를 알아보고자 한다. 다음의 두 가지 그래프를 작성하고, 세 변수의 관계를 설명해 보자. 변수 `cyl`에서 `5`의 값을 갖는 자동차 자료는 제외하며, 변수 `drv`에서 `4`는 `4WD`로 라벨을 변경하고, `f`와 `r`은 통합해서 `F or R`로 라벨을 변경한다. 
 
 ```{r, echo=FALSE}
-box1 <- mpg %>% 
-  filter(cyl != 5) %>% 
+box1 <- mpg |>  
+  filter(cyl != 5) |>  
   mutate(cyl = as.factor(cyl),
-         drv = if_else(drv == "4", "4WD", "F or R")) %>%
+         drv = if_else(drv == "4", "4WD", "F or R")) |> 
   ggplot(aes(x = cyl, y = hwy)) + 
   labs(y = "Highway MPG", x = "Number of Cylinders") 
 ```
@@ -1136,14 +1158,14 @@ box1 +
 - 변수 `hwy`와 `cty`의 차이가 가장 큰 자동차와 가장 작은 자동차의 `r names(mpg)[c(1:2,8:9)]`의 값을 다음과 같이 각각 출력해 보자. 두 그룹에 속한 자동차들 사이에 두드러진 차이가 무엇인지 설명해 보자.  
 
 ```{r, echo=FALSE}
-mpg %>% 
-  slice_max(hwy-cty) %>% 
+mpg |>  
+  slice_max(hwy-cty) |>  
   select(1:2, 8:9)
 ```
 
 ```{r, echo=FALSE}
-mpg %>% 
-  slice_min(hwy-cty) %>% 
+mpg |> 
+  slice_min(hwy-cty) |>  
   select(1:2, 8:9)
 ```
 
@@ -1151,8 +1173,8 @@ mpg %>%
 - 변수 `displ`과 `hwy`의 산점도를 작성하되, 변수 `hwy`와 `cty`의 차이가 가장 큰 자동차에 해당하는 점에는 빨간 색으로 변수 `r names(mpg)[1:2]`의 값을 라벨로 표시하고, 변수 `hwy`와 `cty`의 차이가 가장 작은 자동차에 해당하는 점에는 파란 색으로 변수 `r names(mpg)[1:2]`의 값을 라벨로 표시해 보자.
 라벨이 겹치는 경우에는 하나만 표시한다.  
 
-```{r, , ggplot-ex-2-8, echo=FALSE, fig.align='center', fig.width=7.5}
-mpg %>% 
+```{r, , ggplot-ex-2-8, echo=FALSE, fig.align='center', fig.width=8}
+mpg |>  
   ggplot(aes(x = displ, y = hwy)) +
   geom_jitter() +
   geom_text(data = slice_max(mpg, hwy - cty),
@@ -1168,18 +1190,18 @@ mpg %>%
 - 변수 `hwy`와 `cty`의 평균값을 새로운 변수 `avg_mpg`에 할당하고, 그 값이 가장 큰 자동차의 `r names(mpg)[c(1:2,8:9)]`의 값을 다음과 같이 출력해 보자. 
 
 ```{r, echo=FALSE}
-mpg_avg <- mpg %>% 
+mpg_avg <- mpg |>  
   mutate(avg_mpg = (cty + hwy)/2)
 
-mpg_avg %>% 
-  slice_max(avg_mpg) %>% 
+mpg_avg |>  
+  slice_max(avg_mpg) |>  
   select(1:2, 8:9)
 ```
 
 - 변수 `displ`과 `avg_mpg`의 산점도를 작성하되, `avg_mpg`이 값이 가장 큰 세 대의 자동차에 해당하는 점에는 변수 `r names(mpg)[1:2]`의 값을 라벨로 다음과 같이 표시해 보자.  
 
-```{r, , ggplot-ex-2-9, echo=FALSE, fig.align='center', fig.width=7.5}
-mpg_avg %>% 
+```{r, , ggplot-ex-2-9, echo=FALSE, fig.align='center', fig.width=8}
+mpg_avg |>  
   ggplot(aes(x = displ, y = avg_mpg)) +
   geom_jitter() +
   geom_text(data = slice_max(mpg_avg, avg_mpg, n = 3),
@@ -1192,14 +1214,14 @@ mpg_avg %>%
 
 - 변수 `displ`과 `avg_mpg`의 산점도에 비모수 회귀곡선과 선형회귀직선을 추가해 보자. 비모수 회귀곡선은 모든 자료를 사용해서 구하지만, 선형회귀직선은 앞 문제 산점도에 라벨이 표시된 3개의 점을 제외하고 추정한다. 범례도 함께 표시해서 다음과 같이 작성해 보자.  
 
-```{r, ggplot-ex-2-10, echo=FALSE, fig.align='center', fig.height=4.3}
-mpg_avg %>% 
+```{r, ggplot-ex-2-10, echo=FALSE, fig.align='center', fig.height=4.3, fig.width=8}
+mpg_avg |>  
   ggplot(aes(x = displ, y = avg_mpg)) +
   geom_point() +
   geom_smooth(aes(color = "Loess using all data"),
               method = "loess", se = FALSE) +
-  geom_smooth(data = mpg_avg %>% 
-                arrange(desc(avg_mpg)) %>% 
+  geom_smooth(data = mpg_avg |>  
+                arrange(desc(avg_mpg)) |>  
                 slice(-(1:3)),
               aes(color = "LM Excluding extreme data"),
               method = "lm", se = FALSE) +
@@ -1214,17 +1236,17 @@ mpg_avg %>%
 
 ```{r, echo=FALSE}
 data(Cars93, package = "MASS")
-Cars93 %>% 
-  as_tibble() %>% 
+Cars93 |>  
+  as_tibble() |>  
   print(n = 3, width = Inf)
 ```
 
 - 변수 중 요인만 선택해서 다음과 같이 출력해 보자.   
 
 ```{r, echo=FALSE}
-Cars93 %>% 
-  as_tibble() %>% 
-  select(where(is.factor)) %>% 
+Cars93 |>  
+  as_tibble() |>  
+  select(where(is.factor)) |>  
   print(n = 3, width = Inf)
 ```
 
@@ -1233,12 +1255,12 @@ Cars93 %>%
 현대 자동차의 경우에는 어떤 모델의 자동차가 판매되었는지 알아보자. 
 
 ```{r, echo = FALSE, include=FALSE}
-Cars93 %>% 
-  count(Manufacturer, sort = TRUE) %>% 
+Cars93 |>  
+  count(Manufacturer, sort = TRUE) |>  
   slice_head(n = 5)
 
 Cars93 %>% 
-  filter(Manufacturer == "Hyundai") %>% 
+  filter(Manufacturer == "Hyundai") |>  
   select(Model)
 ```
 
@@ -1246,27 +1268,29 @@ Cars93 %>%
 - 요인 중 변수 `r names(Cars93)[c(1,2,length(Cars93))]`는 제외하고 나머지 요인들의 수준의 개수를 확인해서 다음과 같이 출력해 보자.  
 
 ```{r, echo=FALSE}
-Cars93 %>% 
-  select(-c(1, 2, length(Cars93))) %>% 
+Cars93 |>  
+  select(-c(1, 2, length(Cars93))) |>  
   summarise(across(where(is.factor), nlevels))
 ```
 
 - 변수 `Cylinders`와 `Origin`의 범주별 빈도를 다음과 같이 각각 구해보자.  
 
 ```{r, echo=FALSE}
-Cars93 %>% count(Cylinders)
+Cars93 |>  
+  count(Cylinders)
 ```
 
 ```{r, echo=FALSE}
-Cars93 %>% count(Origin)
+Cars93 |>  
+  count(Origin)
 ```
 
 - 변수 `Cylinders`의 6개 범주 중 빈도가 낮은 3개 범주는 제외하고 막대 그래프를 작성하되, 각 범주의 빈도를 다음과 같이 그래프에 함께 나타내보자.  
 
 ```{r, ggplot-ex-3-1, echo=FALSE, fig.align='center'}
-Cars93 %>% 
-  filter(Cylinders %in% c(4, 6, 8)) %>% 
-  count(Cylinders) %>% 
+Cars93 |>  
+  filter(Cylinders %in% c(4, 6, 8)) |>  
+  count(Cylinders) |>  
   ggplot(aes(x = Cylinders, y = n)) +
   geom_bar(stat = "identity", fill = "steelblue") +
   geom_text(aes(label = n), 
@@ -1279,16 +1303,16 @@ Cars93 %>%
 또한 두 변수의 관계를 설명해 보자.  
 
 ```{r, ggplot-ex-3-2, echo=FALSE, fig.align='center'}
-Cars93 %>% 
-  filter(Cylinders %in% c(4, 6, 8)) %>% 
+Cars93 |>  
+  filter(Cylinders %in% c(4, 6, 8)) |>  
   ggplot(aes(x = Cylinders, fill = Origin)) +
   geom_bar(position = "fill") +
   ylab("Proportion")  
 ```
 
 ```{r, ggplot-ex-3-3, echo=FALSE, fig.align='center'}
-Cars93 %>% 
-  filter(Cylinders %in% c(4, 6, 8)) %>% 
+Cars93 |>  
+  filter(Cylinders %in% c(4, 6, 8)) |>  
   ggplot(aes(x = Cylinders, y = after_stat(prop), group = 1)) +
   geom_bar(fill = "midnightblue") +
   facet_wrap(vars(Origin)) + ylab("Proportion")  
@@ -1298,18 +1322,20 @@ Cars93 %>%
 - 모든 숫자형 변수의 평균을 계산해서 다음과 같이 출력해 보자.  
 
 ```{r, echo=FALSE}
-ex8 <- Cars93 %>% 
-  summarise(across(where(is.numeric), mean)) %>% 
+ex8 <- Cars93 |>  
+  summarise(across(where(is.numeric), mean)) |>  
   t()
+
 colnames(ex8) <- c("Mean")
+
 ex8
 ```
 
 - 결측값이 있는 변수만을 대상으로 자료에 포함된 결측값의 개수와 결측값을 제외한 평균값을 각각 계산해서 다음과 같이 출력해 보자.  
 
 ```{r, echo=FALSE}
-Cars93 %>% 
-  select(where(~ any(is.na(.x))) & where(is.numeric)) %>% 
+Cars93 |>  
+  select(where(~ any(is.na(.x))) & where(is.numeric)) |>  
   summarise(across(.fns = list(Mean = ~ mean(.x, na.rm = TRUE),
                         Num.NA = ~sum(is.na(.x)))
                    )
@@ -1321,8 +1347,8 @@ Cars93 %>%
 또한 두 변수의 관계를 설명해 보자.   
 
 ```{r, include=FALSE}
-Cars93 %>% 
-  filter(Cylinders %in% c(4, 6, 8)) %>% 
+Cars93 |>  
+  filter(Cylinders %in% c(4, 6, 8)) |>  
   ggplot(aes(x = Cylinders, y = Price)) + 
   geom_boxplot() 
 ```
@@ -1331,11 +1357,11 @@ Cars93 %>%
 두 변수의 차이와 변수 `Price`의 산점도를 작성해 보자. 산점도에 두 변수의 차이가 가장 큰 자동차의 `r names(Cars93)[1:2]` 값을 해당 점 주변에 다음과 같이 표시해 보자.  
 
 ```{r, ggplot-ex-3-4, fig.width=9, fig.height=4.5, echo=FALSE}
-Cars93 %>% 
-  mutate(Diff.Price = Max.Price - Min.Price) %>% 
+Cars93 |>  
+  mutate(Diff.Price = Max.Price - Min.Price) |>  
   ggplot(aes(x = Diff.Price, y = Price)) +
   geom_point() +
-  geom_text(data = mutate(Cars93, Diff.Price = Max.Price - Min.Price) %>% 
+  geom_text(data = mutate(Cars93, Diff.Price = Max.Price - Min.Price) |>  
                             slice_max(Diff.Price),
             aes(label = paste(Manufacturer, Model)),
             vjust = "top", hjust = "right", color = "red"
@@ -1348,7 +1374,7 @@ Cars93 %>%
 두 변수의 산점도를 작성하되, `Price`의 값이 지나치게 높은 두 자동차와 `MPG.city`의 값이 상당히 큰 세 자동차의 `r names(Cars93)[1:2]` 값을 산점도에 다음과 같이 함께 표시해 보자.  
 
 ```{r, ggplot-ex-3-5, fig.width=9, fig.height=4.5, echo=FALSE}
-Cars93 %>% 
+Cars93 |>  
   ggplot(aes(x = Price, y = MPG.city)) +
   geom_point() +
   geom_text(data = filter(Cars93, Price > 42 | MPG.city > 35),
@@ -1360,8 +1386,8 @@ Cars93 %>%
 - 변수 `Price`와 `MPG.city`의 산점도를 다시 작성하되, 12)번 문제에서 작성된 두 변수의 산점도에서 라벨이 부착된 5개 점을 제외한 나머지 자료를 대상으로 비모수 회귀곡선과 선형회귀직선을 각각 추정해서 다음과 같이 그래프에 범례와 함께 나타내보자.  
 
 ```{r, ggplot-ex-3-6, fig.width=9, fig.height=4.5, echo=FALSE}
-Cars93 %>% 
-  filter(Price <= 42,  MPG.city <= 35) %>% 
+Cars93 |>  
+  filter(Price <= 42,  MPG.city <= 35) |>  
   ggplot(aes(x = Price, y = MPG.city)) +
   geom_point(data = Cars93) +
   geom_smooth(aes(color = "loess"), se = FALSE) +
