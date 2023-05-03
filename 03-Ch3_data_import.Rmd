@@ -411,9 +411,9 @@ ex3_2
 ```
 
 
-**2.** 웹서버 `https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/`에 있는 파일 `ex3-1.csv`에는 1993년 미국에서 판매된 93대 자동차의 생산 회사(`Manufacturer`)와 차량 모델 (`Model`) 의 최소 가격 (`Min.Price`) 및 최대 가격 (`Max.Price`)이 입력되어 있다. 
+**2.** 웹서버 `https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/`에 있는 파일 `ex3-2.csv`에는 1993년 미국에서 판매된 93대 자동차의 생산 회사(`Manufacturer`)와 차량 모델 (`Model`) 의 최소 가격 (`Min.Price`) 및 최대 가격 (`Max.Price`)이 입력되어 있다. 
 
-- 파일 `ex3-1.csv`를 불러와서 데이터 프레임에 입력하고 다음과 같이 출력해 보자. 
+- 파일 `ex3-2.csv`를 불러와서 데이터 프레임에 입력하고 다음과 같이 출력해 보자. 
 
 ```{r, echo=FALSE}
 car <- read_csv("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/ex3-2.csv")
