@@ -79,7 +79,7 @@ RStudio도 일년에 몇 차례 업데이트 버전이 출시되는데, 이 책�
 클릭하면 그림 \@ref(fig:RStudio-first)과 같은 초기화면이 나타난다.
 
 ```{r RStudio-first, fig.cap = "RStudio의 초기화면", echo=FALSE}
-knitr::include_graphics("Figure/ch1_RStudio_first.png")
+knitr::include_graphics("Figure/ch1_RStudio_first.PNG")
 ```
 
 열린 세 개의 창 중 왼쪽에 있는 Console이라는 이름의 창을 보면 `>` 기호가
@@ -252,7 +252,7 @@ Project를 사용하기 위한 설정 방법은 다음과 같다. RStudio의 메
 RStudio 창의 오른쪽 위에 입력한 Project 이름이 있는 것을 볼 수 있다.
 
 ```{r R-project, echo=FALSE, fig.cap='R Project 생성'}
-knitr::include_graphics("Figure/R_project.png")
+knitr::include_graphics("Figure/R_project.PNG")
 ```
 
 Project의 사용법에 대한 자세한 내용은 [RStudio support
