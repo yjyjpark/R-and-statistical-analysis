@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2023-08-18" />
+<meta name="date" content="2023-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -666,7 +666,7 @@ RUN;</code></pre>
 <ul>
 <li>예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기</li>
 </ul>
-<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-08-18에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
+<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-08-19에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
 <div class="figure"><span style="display:block;" id="fig:wiki"></span>
 <img src="Figure/wiki_22_02_09_1.png" alt="예제 1에서 사용된 HTML 테이블" width="222" />
 <p class="caption">
@@ -772,7 +772,7 @@ RUN;</code></pre>
 <ul>
 <li>예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기</li>
 </ul>
-<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-08-18이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
+<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-08-19이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
 <div class="figure"><span style="display:block;" id="fig:KBO"></span>
 <img src="Figure/KBO.png" alt="예제 2에서 사용된 HTML 테이블" width="566" />
 <p class="caption">
@@ -790,16 +790,16 @@ RUN;</code></pre>
 <span id="cb321-3"><a href="데이터-입력.html#cb321-3" tabindex="-1"></a><span class="do">## # A tibble: 10 × 15</span></span>
 <span id="cb321-4"><a href="데이터-입력.html#cb321-4" tabindex="-1"></a><span class="do">##    순위  팀명    AVG     G    PA    AB     R     H  `2B`  `3B`    HR    TB   RBI</span></span>
 <span id="cb321-5"><a href="데이터-입력.html#cb321-5" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb321-6"><a href="데이터-입력.html#cb321-6" tabindex="-1"></a><span class="do">##  1 1     LG    0.284   101  4066  3469   558   986   174    19    62  1384   523</span></span>
-<span id="cb321-7"><a href="데이터-입력.html#cb321-7" tabindex="-1"></a><span class="do">##  2 2     KIA   0.268    96  3745  3292   468   883   148    14    65  1254   435</span></span>
-<span id="cb321-8"><a href="데이터-입력.html#cb321-8" tabindex="-1"></a><span class="do">##  3 3     KT    0.268   103  4055  3585   486   960   170    10    57  1321   449</span></span>
-<span id="cb321-9"><a href="데이터-입력.html#cb321-9" tabindex="-1"></a><span class="do">##  4 4     NC    0.266   100  3938  3431   467   913   156    23    64  1307   439</span></span>
-<span id="cb321-10"><a href="데이터-입력.html#cb321-10" tabindex="-1"></a><span class="do">##  5 5     삼성  0.264   103  4004  3547   446   937   154    14    62  1305   423</span></span>
-<span id="cb321-11"><a href="데이터-입력.html#cb321-11" tabindex="-1"></a><span class="do">##  6 6     롯데  0.263   101  3906  3410   461   898   154    15    50  1232   427</span></span>
-<span id="cb321-12"><a href="데이터-입력.html#cb321-12" tabindex="-1"></a><span class="do">##  7 7     SSG   0.258   100  3868  3396   447   877   164     9    87  1320   418</span></span>
-<span id="cb321-13"><a href="데이터-입력.html#cb321-13" tabindex="-1"></a><span class="do">##  8 8     키움  0.253   110  4359  3841   450   972   167    20    46  1317   430</span></span>
+<span id="cb321-6"><a href="데이터-입력.html#cb321-6" tabindex="-1"></a><span class="do">##  1 1     LG    0.285   102  4120  3517   566  1001   174    19    65  1408   529</span></span>
+<span id="cb321-7"><a href="데이터-입력.html#cb321-7" tabindex="-1"></a><span class="do">##  2 2     KIA   0.268    97  3782  3328   470   893   149    15    65  1267   437</span></span>
+<span id="cb321-8"><a href="데이터-입력.html#cb321-8" tabindex="-1"></a><span class="do">##  3 3     KT    0.268   104  4094  3620   492   969   172    10    60  1341   454</span></span>
+<span id="cb321-9"><a href="데이터-입력.html#cb321-9" tabindex="-1"></a><span class="do">##  4 4     삼성  0.266   104  4050  3588   458   956   162    14    64  1338   435</span></span>
+<span id="cb321-10"><a href="데이터-입력.html#cb321-10" tabindex="-1"></a><span class="do">##  5 5     NC    0.266   100  3938  3431   467   913   156    23    64  1307   439</span></span>
+<span id="cb321-11"><a href="데이터-입력.html#cb321-11" tabindex="-1"></a><span class="do">##  6 6     롯데  0.263   102  3944  3439   465   903   155    15    52  1244   431</span></span>
+<span id="cb321-12"><a href="데이터-입력.html#cb321-12" tabindex="-1"></a><span class="do">##  7 7     SSG   0.256   101  3917  3437   451   881   164     9    88  1327   422</span></span>
+<span id="cb321-13"><a href="데이터-입력.html#cb321-13" tabindex="-1"></a><span class="do">##  8 8     키움  0.253   111  4396  3874   455   981   167    20    47  1329   435</span></span>
 <span id="cb321-14"><a href="데이터-입력.html#cb321-14" tabindex="-1"></a><span class="do">##  9 9     두산  0.253   100  3846  3378   416   854   141    24    70  1253   382</span></span>
-<span id="cb321-15"><a href="데이터-입력.html#cb321-15" tabindex="-1"></a><span class="do">## 10 10    한화  0.241   100  3952  3429   423   827   149     7    72  1206   398</span></span>
+<span id="cb321-15"><a href="데이터-입력.html#cb321-15" tabindex="-1"></a><span class="do">## 10 10    한화  0.243   101  3995  3466   434   843   152     7    73  1228   409</span></span>
 <span id="cb321-16"><a href="데이터-입력.html#cb321-16" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: SAC &lt;int&gt;, SF &lt;int&gt;</span></span></code></pre></div>
 <p>일반적으로 웹 페이지에 있는 HTML 테이블을 R로 불러온 후에도 실제 분석 데이터로 사용하기 위해서는 많은 추가 작업이 필요하게 된다.</p>
 </div>
@@ -814,15 +814,15 @@ RUN;</code></pre>
 <span id="cb322-2"><a href="데이터-입력.html#cb322-2" tabindex="-1"></a><span class="do">## # A tibble: 223 × 4</span></span>
 <span id="cb322-3"><a href="데이터-입력.html#cb322-3" tabindex="-1"></a><span class="do">##    ``    Location          `Vaccinated[a]` `Percent[b]`</span></span>
 <span id="cb322-4"><a href="데이터-입력.html#cb322-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;           &lt;chr&gt;       </span></span>
-<span id="cb322-5"><a href="데이터-입력.html#cb322-5" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,620,815,191   70.48%      </span></span>
+<span id="cb322-5"><a href="데이터-입력.html#cb322-5" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,620,569,915   70.48%      </span></span>
 <span id="cb322-6"><a href="데이터-입력.html#cb322-6" tabindex="-1"></a><span class="do">##  2 &quot;&quot;    China[e]          1,310,292,000   91.89%      </span></span>
-<span id="cb322-7"><a href="데이터-입력.html#cb322-7" tabindex="-1"></a><span class="do">##  3 &quot;&quot;    India             1,027,415,677   72.50%      </span></span>
-<span id="cb322-8"><a href="데이터-입력.html#cb322-8" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 338,222,703     75.14%      </span></span>
+<span id="cb322-7"><a href="데이터-입력.html#cb322-7" tabindex="-1"></a><span class="do">##  3 &quot;&quot;    India             1,027,415,743   72.50%      </span></span>
+<span id="cb322-8"><a href="데이터-입력.html#cb322-8" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 337,971,978     75.08%      </span></span>
 <span id="cb322-9"><a href="데이터-입력.html#cb322-9" tabindex="-1"></a><span class="do">##  5 &quot;&quot;    United States[g]  270,227,181     81.39%      </span></span>
 <span id="cb322-10"><a href="데이터-입력.html#cb322-10" tabindex="-1"></a><span class="do">##  6 &quot;&quot;    Indonesia         203,845,350     73.99%      </span></span>
 <span id="cb322-11"><a href="데이터-입력.html#cb322-11" tabindex="-1"></a><span class="do">##  7 &quot;&quot;    Brazil            189,643,431     88.08%      </span></span>
 <span id="cb322-12"><a href="데이터-입력.html#cb322-12" tabindex="-1"></a><span class="do">##  8 &quot;&quot;    Pakistan          165,567,890     70.21%      </span></span>
-<span id="cb322-13"><a href="데이터-입력.html#cb322-13" tabindex="-1"></a><span class="do">##  9 &quot;&quot;    Bangladesh        151,482,176     88.49%      </span></span>
+<span id="cb322-13"><a href="데이터-입력.html#cb322-13" tabindex="-1"></a><span class="do">##  9 &quot;&quot;    Bangladesh        151,486,798     88.49%      </span></span>
 <span id="cb322-14"><a href="데이터-입력.html#cb322-14" tabindex="-1"></a><span class="do">## 10 &quot;&quot;    Japan             104,705,133     84.47%      </span></span>
 <span id="cb322-15"><a href="데이터-입력.html#cb322-15" tabindex="-1"></a><span class="do">## # ℹ 213 more rows</span></span></code></pre></div>
 <ul>
@@ -833,8 +833,8 @@ RUN;</code></pre>
 <span id="cb323-3"><a href="데이터-입력.html#cb323-3" tabindex="-1"></a><span class="do">##   Location          Vaccinated    Percent</span></span>
 <span id="cb323-4"><a href="데이터-입력.html#cb323-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;             &lt;chr&gt;         &lt;chr&gt;  </span></span>
 <span id="cb323-5"><a href="데이터-입력.html#cb323-5" tabindex="-1"></a><span class="do">## 1 China[e]          1,310,292,000 91.89% </span></span>
-<span id="cb323-6"><a href="데이터-입력.html#cb323-6" tabindex="-1"></a><span class="do">## 2 India             1,027,415,677 72.50% </span></span>
-<span id="cb323-7"><a href="데이터-입력.html#cb323-7" tabindex="-1"></a><span class="do">## 3 European Union[f] 338,222,703   75.14%</span></span></code></pre></div>
+<span id="cb323-6"><a href="데이터-입력.html#cb323-6" tabindex="-1"></a><span class="do">## 2 India             1,027,415,743 72.50% </span></span>
+<span id="cb323-7"><a href="데이터-입력.html#cb323-7" tabindex="-1"></a><span class="do">## 3 European Union[f] 337,971,978   75.08%</span></span></code></pre></div>
 <div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="데이터-입력.html#cb324-1" tabindex="-1"></a><span class="fu">tail</span>(ex3_1, <span class="at">n =</span> <span class="dv">3</span>)</span>
 <span id="cb324-2"><a href="데이터-입력.html#cb324-2" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
 <span id="cb324-3"><a href="데이터-입력.html#cb324-3" tabindex="-1"></a><span class="do">##   Location         Vaccinated Percent</span></span>
@@ -849,9 +849,9 @@ RUN;</code></pre>
 <span id="cb325-2"><a href="데이터-입력.html#cb325-2" tabindex="-1"></a><span class="do">## # A tibble: 11 × 3</span></span>
 <span id="cb325-3"><a href="데이터-입력.html#cb325-3" tabindex="-1"></a><span class="do">##    Location             Vaccinated Percent</span></span>
 <span id="cb325-4"><a href="데이터-입력.html#cb325-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                     &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb325-5"><a href="데이터-입력.html#cb325-5" tabindex="-1"></a><span class="do">##  1 Cuba                   10767069    96.0</span></span>
+<span id="cb325-5"><a href="데이터-입력.html#cb325-5" tabindex="-1"></a><span class="do">##  1 Cuba                   10767273    96.0</span></span>
 <span id="cb325-6"><a href="데이터-입력.html#cb325-6" tabindex="-1"></a><span class="do">##  2 United Arab Emirates    9991089   100  </span></span>
-<span id="cb325-7"><a href="데이터-입력.html#cb325-7" tabindex="-1"></a><span class="do">##  3 Portugal                9786029    95.3</span></span>
+<span id="cb325-7"><a href="데이터-입력.html#cb325-7" tabindex="-1"></a><span class="do">##  3 Portugal                9789941    95.3</span></span>
 <span id="cb325-8"><a href="데이터-입력.html#cb325-8" tabindex="-1"></a><span class="do">##  4 Qatar                   2852178   106. </span></span>
 <span id="cb325-9"><a href="데이터-입력.html#cb325-9" tabindex="-1"></a><span class="do">##  5 Macau                    679703    97.8</span></span>
 <span id="cb325-10"><a href="데이터-입력.html#cb325-10" tabindex="-1"></a><span class="do">##  6 Brunei                   451149   100. </span></span>

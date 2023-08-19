@@ -79,7 +79,7 @@ RStudio도 일년에 몇 차례 업데이트 버전이 출시되는데, 이 책�
 클릭하면 그림 \@ref(fig:RStudio-first)과 같은 초기화면이 나타난다.
 
 ```{r RStudio-first, fig.cap = "RStudio의 초기화면", echo=FALSE}
-knitr::include_graphics("Figure/ch1_RStudio_first.PNG")
+knitr::include_graphics("Figure/ch1_RStudio_first.png")
 ```
 
 열린 세 개의 창 중 왼쪽에 있는 Console이라는 이름의 창을 보면 `>` 기호가
@@ -247,7 +247,7 @@ Project를 사용하기 위한 설정 방법은 다음과 같다. RStudio의 메
 `File > New Project`를 선택해서 나타나는 대화 창에서 `New Directory`를
 선택한다. 이어서 나타난 창에서 `New Project`를 선택하고, 다음에 나타난
 창에서 project를 위한 폴더의 위치와 이름을 지정한다. 예를 들어 Project의
-이름을 `R programming`이라고 입력해 보자. 그리고 `Create Project`를
+이름을 `R program`이라고 입력해 보자. 그리고 `Create Project`를
 선택하면 RStudio 창이 그림 \@ref(fig:R-project)와 같이 다시 나타난다.
 RStudio 창의 오른쪽 위에 입력한 Project 이름이 있는 것을 볼 수 있다.
 
