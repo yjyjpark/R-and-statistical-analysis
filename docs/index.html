@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>R과 통계분석</title>
   <meta name="description" content="R과 통계분석" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="R과 통계분석" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2023-05-03" />
+<meta name="date" content="2023-08-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -370,7 +374,7 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">R과 통계분석</h1>
 <p class="author"><em>박동련</em></p>
-<p class="date"><em>2023-05-03</em></p>
+<p class="date"><em>2023-08-18</em></p>
 </div>
 <div id="소개하기" class="section level1 unnumbered hasAnchor">
 <h1>소개하기<a href="index.html#소개하기" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -390,37 +394,41 @@ div.csl-indent {
 <p>R은 data science 분야에서 사용되는 여러 프로그래밍 언어 중에서 가장 뛰어난 통계분석 기능이 있는 언어이다.
 Data scientist가 되기를 원하시는 분들에게 조금이나마 도움이 되기를 바라는 마음에서 이 책을 출간한다.</p>
 <p>이 책을 작성할 때의 R 세션 정보는 다음과 같다.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## R version 4.2.3 (2023-03-15 ucrt)</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Platform: x86_64-w64-mingw32/x64 (64-bit)</span></span>
-<span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Running under: Windows 10 x64 (build 22621)</span></span>
-<span id="cb1-5"><a href="index.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-6"><a href="index.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Matrix products: default</span></span>
-<span id="cb1-7"><a href="index.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-8"><a href="index.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## locale:</span></span>
-<span id="cb1-9"><a href="index.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] LC_COLLATE=Korean_Korea.utf8  LC_CTYPE=Korean_Korea.utf8   </span></span>
-<span id="cb1-10"><a href="index.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] LC_MONETARY=Korean_Korea.utf8 LC_NUMERIC=C                 </span></span>
-<span id="cb1-11"><a href="index.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] LC_TIME=Korean_Korea.utf8    </span></span>
-<span id="cb1-12"><a href="index.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-13"><a href="index.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="do">## attached base packages:</span></span>
-<span id="cb1-14"><a href="index.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
-<span id="cb1-15"><a href="index.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-16"><a href="index.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">## other attached packages:</span></span>
-<span id="cb1-17"><a href="index.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] lubridate_1.9.2 forcats_1.0.0   stringr_1.5.0   dplyr_1.1.1    </span></span>
-<span id="cb1-18"><a href="index.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] purrr_1.0.1     readr_2.1.4     tidyr_1.3.0     tibble_3.2.1   </span></span>
-<span id="cb1-19"><a href="index.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] ggplot2_3.4.1   tidyverse_2.0.0</span></span>
-<span id="cb1-20"><a href="index.html#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1-21"><a href="index.html#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">## loaded via a namespace (and not attached):</span></span>
-<span id="cb1-22"><a href="index.html#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] bslib_0.4.2      compiler_4.2.3   pillar_1.9.0     jquerylib_0.1.4 </span></span>
-<span id="cb1-23"><a href="index.html#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] tools_4.2.3      digest_0.6.31    timechange_0.2.0 jsonlite_1.8.4  </span></span>
-<span id="cb1-24"><a href="index.html#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] evaluate_0.20    lifecycle_1.0.3  gtable_0.3.3     pkgconfig_2.0.3 </span></span>
-<span id="cb1-25"><a href="index.html#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] rlang_1.1.0      cli_3.6.1        rstudioapi_0.14  yaml_2.3.7      </span></span>
-<span id="cb1-26"><a href="index.html#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [17] xfun_0.38        fastmap_1.1.1    withr_2.5.0      knitr_1.42      </span></span>
-<span id="cb1-27"><a href="index.html#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [21] hms_1.1.3        generics_0.1.3   sass_0.4.5       vctrs_0.6.1     </span></span>
-<span id="cb1-28"><a href="index.html#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [25] grid_4.2.3       tidyselect_1.2.0 glue_1.6.2       R6_2.5.1        </span></span>
-<span id="cb1-29"><a href="index.html#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [29] fansi_1.0.4      rmarkdown_2.21   bookdown_0.33    tzdb_0.3.0      </span></span>
-<span id="cb1-30"><a href="index.html#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [33] magrittr_2.0.3   scales_1.2.1     htmltools_0.5.5  colorspace_2.1-0</span></span>
-<span id="cb1-31"><a href="index.html#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [37] utf8_1.2.3       stringi_1.7.12   munsell_0.5.0    cachem_1.0.7</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="do">## R version 4.3.1 (2023-06-16 ucrt)</span></span>
+<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a><span class="do">## Platform: x86_64-w64-mingw32/x64 (64-bit)</span></span>
+<span id="cb1-4"><a href="index.html#cb1-4" tabindex="-1"></a><span class="do">## Running under: Windows 11 x64 (build 22621)</span></span>
+<span id="cb1-5"><a href="index.html#cb1-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-6"><a href="index.html#cb1-6" tabindex="-1"></a><span class="do">## Matrix products: default</span></span>
+<span id="cb1-7"><a href="index.html#cb1-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-8"><a href="index.html#cb1-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-9"><a href="index.html#cb1-9" tabindex="-1"></a><span class="do">## locale:</span></span>
+<span id="cb1-10"><a href="index.html#cb1-10" tabindex="-1"></a><span class="do">## [1] LC_COLLATE=Korean_Korea.utf8  LC_CTYPE=Korean_Korea.utf8   </span></span>
+<span id="cb1-11"><a href="index.html#cb1-11" tabindex="-1"></a><span class="do">## [3] LC_MONETARY=Korean_Korea.utf8 LC_NUMERIC=C                 </span></span>
+<span id="cb1-12"><a href="index.html#cb1-12" tabindex="-1"></a><span class="do">## [5] LC_TIME=Korean_Korea.utf8    </span></span>
+<span id="cb1-13"><a href="index.html#cb1-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-14"><a href="index.html#cb1-14" tabindex="-1"></a><span class="do">## time zone: Asia/Seoul</span></span>
+<span id="cb1-15"><a href="index.html#cb1-15" tabindex="-1"></a><span class="do">## tzcode source: internal</span></span>
+<span id="cb1-16"><a href="index.html#cb1-16" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-17"><a href="index.html#cb1-17" tabindex="-1"></a><span class="do">## attached base packages:</span></span>
+<span id="cb1-18"><a href="index.html#cb1-18" tabindex="-1"></a><span class="do">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span id="cb1-19"><a href="index.html#cb1-19" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-20"><a href="index.html#cb1-20" tabindex="-1"></a><span class="do">## other attached packages:</span></span>
+<span id="cb1-21"><a href="index.html#cb1-21" tabindex="-1"></a><span class="do">##  [1] lubridate_1.9.2 forcats_1.0.0   stringr_1.5.0   dplyr_1.1.2    </span></span>
+<span id="cb1-22"><a href="index.html#cb1-22" tabindex="-1"></a><span class="do">##  [5] purrr_1.0.1     readr_2.1.4     tidyr_1.3.0     tibble_3.2.1   </span></span>
+<span id="cb1-23"><a href="index.html#cb1-23" tabindex="-1"></a><span class="do">##  [9] ggplot2_3.4.3   tidyverse_2.0.0</span></span>
+<span id="cb1-24"><a href="index.html#cb1-24" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1-25"><a href="index.html#cb1-25" tabindex="-1"></a><span class="do">## loaded via a namespace (and not attached):</span></span>
+<span id="cb1-26"><a href="index.html#cb1-26" tabindex="-1"></a><span class="do">##  [1] gtable_0.3.3      jsonlite_1.8.7    compiler_4.3.1    tidyselect_1.2.0 </span></span>
+<span id="cb1-27"><a href="index.html#cb1-27" tabindex="-1"></a><span class="do">##  [5] jquerylib_0.1.4   scales_1.2.1      yaml_2.3.7        fastmap_1.1.1    </span></span>
+<span id="cb1-28"><a href="index.html#cb1-28" tabindex="-1"></a><span class="do">##  [9] R6_2.5.1          generics_0.1.3    knitr_1.43        bookdown_0.35    </span></span>
+<span id="cb1-29"><a href="index.html#cb1-29" tabindex="-1"></a><span class="do">## [13] munsell_0.5.0     bslib_0.5.1       pillar_1.9.0      tzdb_0.4.0       </span></span>
+<span id="cb1-30"><a href="index.html#cb1-30" tabindex="-1"></a><span class="do">## [17] rlang_1.1.1       utf8_1.2.3        stringi_1.7.12    cachem_1.0.8     </span></span>
+<span id="cb1-31"><a href="index.html#cb1-31" tabindex="-1"></a><span class="do">## [21] xfun_0.39         sass_0.4.7        timechange_0.2.0  cli_3.6.1        </span></span>
+<span id="cb1-32"><a href="index.html#cb1-32" tabindex="-1"></a><span class="do">## [25] withr_2.5.0       magrittr_2.0.3    digest_0.6.33     grid_4.3.1       </span></span>
+<span id="cb1-33"><a href="index.html#cb1-33" tabindex="-1"></a><span class="do">## [29] rstudioapi_0.15.0 hms_1.1.3         lifecycle_1.0.3   vctrs_0.6.3      </span></span>
+<span id="cb1-34"><a href="index.html#cb1-34" tabindex="-1"></a><span class="do">## [33] evaluate_0.21     glue_1.6.2        fansi_1.0.4       colorspace_2.1-0 </span></span>
+<span id="cb1-35"><a href="index.html#cb1-35" tabindex="-1"></a><span class="do">## [37] rmarkdown_2.24    tools_4.3.1       pkgconfig_2.0.3   htmltools_0.5.5</span></span></code></pre></div>
 
 </div>
             </section>

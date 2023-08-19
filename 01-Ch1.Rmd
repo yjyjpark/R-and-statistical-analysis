@@ -74,7 +74,7 @@ R은 크게 base 시스템과 패키지로 구분되며 R의 설치는 base 시�
 
 R을 설치한 후에는 [RStudio](https://www.rstudio.com/)에 방문하여 오픈
 소스 버전의 설치파일을 다운로드 받아 RStudio를 설치한다.
-RStudio도 일년에 몇 차례 업데이트 버전이 출시되는데, 이 책에서는 버전 2022.12.0을
+RStudio도 일년에 몇 차례 업데이트 버전이 출시되는데, 이 책에서는 버전 2023.06.1을
 사용하고 있다. RStudio를 설치하고 바탕화면에 생성된 아이콘을 더블
 클릭하면 그림 \@ref(fig:RStudio-first)과 같은 초기화면이 나타난다.
 
@@ -406,11 +406,11 @@ knitr::include_graphics("Figure/terminal_batch.png")
 R 외부에서 스크립트 파일을 일괄처리방식으로 실행시키기 위해서는 R 실행
 파일이 있는 폴더를 기존의 path에 추가해야 하고, 윈도우 명령 프롬프트
 창을 열어야 한다. 먼저 R 실행 파일이 있는 폴더인
-`C:\Program Files\R\R-4.1.2\bin\x64`를 Windows 10에서 기존 의 path에
+`C:\Program Files\R\R-4.1.2\bin\x64`를 Windows 11에서 기존 의 path에
 추가하는 방법은 다음과 같다.
 
 -   `Windows 시작 버튼 > 설정 > 설정 찾기`에서
-    `고급 시스템 설정 입력 > '고급 시스템 설정 보기`를 클릭
+    `고급 시스템 설정` 입력하고, 이어서 '고급 시스템 설정 보기`를 클릭
 
 -   `시스템 속성` 창이 열리면 `고급` 탭 하단에 있는 `환경 변수`를 클릭
 
@@ -523,13 +523,13 @@ R은 일 년에도 여러 번 업데이트 버전이 출시된다. 새로운 버
 
 새로운 버전의 R이 설치되면 이전 버전에서 설치했던 패키지를 다시 설치해야
 하는 경우가 있다. 함수 `updateR()`에서 패키지 이전 작업이 잘 수행되지
-않는 경우에는 다음과 같이 실행해 보자. 버전 4.1.3에서 버전 4.2로
+않는 경우에는 다음과 같이 실행해 보자. 버전 4.2.3에서 버전 4.3.1로
 업데이트한 후, 이전에 설치했던 모든 패키지를 다시 설치하는 작업
-내용이다. 사용자가 설치한 패키지의 저장 위치가 버전 4.2와 다르다는 점에
+내용이다. 사용자가 설치한 패키지의 저장 위치가 버전 4.3과 다르다는 점에
 유의하자.
 
 ```{r, eval=FALSE}
-old.lib <- "C:/Users/PARK/Documents/R/win-library/4.1"
+old.lib <- "C:/Users/Park/AppData/Local/R/win-library/4.2"
 install.packages(pkgs=as.data.frame(installed.packages(old.lib))$Package)
 ```
 
@@ -565,7 +565,7 @@ tidyverse_sitrep()
 ```{r, message=FALSE, echo=FALSE}
 library(tidyverse)
 my_tidy <- function(){
-  core <- c("dplyr", "ggplot2", "forcats", "readr", "tibble", "purrr", "stringr", "tidyr")
+  core <- c("dplyr", "ggplot2", "forcats", "readr", "tibble", "purrr", "stringr", "tidyr", "lubridate")
     cli::cat_rule("R & RStudio")
     if (rstudioapi::isAvailable()) {
         cli::cat_bullet("RStudio: ", rstudioapi::getVersion())
@@ -601,6 +601,8 @@ core tidyverse에 속하는 패키지의 대략적 기능은 다음과 같다.
 -   `ggplot2`: 자료의 시각화
 
 -   `purrr`: 함수형 프로그래밍
+
+-   `lubridate` : 날짜 다루기
 
 자료분석 내용을 과정별로 나누어 살펴보면, 먼저 분석 대상이 되는 외부
 자료를 R로 불러와야 한다. R로 불러온 자료는 대부분의 경우 바로 분석이
