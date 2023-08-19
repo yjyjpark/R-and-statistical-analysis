@@ -383,31 +383,39 @@ div.csl-indent {
 <h3><span class="header-section-number">3.1.1</span> 함수 <code>read_table()</code>로 데이터 파일 불러오기<a href="데이터-입력.html#함수-read_table로-데이터-파일-불러오기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>자료들이 하나 이상의 빈칸으로 구분된 경우에는 <code>read_table()</code>를 사용하여 파일을 불러올 수 있다.</p>
 <p><strong>1)</strong> 데이터 파일의 첫 줄에 변수 이름이 입력되어 있는 경우</p>
-<p>예를 들어 파일 <code>data2_1.txt</code>에 세 변수의 자료가 다음과 같이 있다고 하자. 이런 경우에는 함수 <code>read_table()</code>에 파일의 위치와 함께 파일의 이름만 입력하면 된다.</p>
+<p>예를 들어 파일 <code>data2_1.txt</code>에 세 변수의 자료가 다음과 같이 있다고 하자.</p>
 <div class="float" id="data2-1">
 <img src="Figure/data2_1.png" title="data2_1.txt" alt="data2_1.txt" />
 <div class="figcaption">data2_1.txt</div>
 </div>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="데이터-입력.html#cb291-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb291-2"><a href="데이터-입력.html#cb291-2" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_1.txt&quot;</span>)</span>
-<span id="cb291-3"><a href="데이터-입력.html#cb291-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb291-4"><a href="데이터-입력.html#cb291-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
-<span id="cb291-5"><a href="데이터-입력.html#cb291-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb291-6"><a href="데이터-입력.html#cb291-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
-<span id="cb291-7"><a href="데이터-입력.html#cb291-7" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
-<span id="cb291-8"><a href="데이터-입력.html#cb291-8" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
-<span id="cb291-9"><a href="데이터-입력.html#cb291-9" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
+<p>이런 경우에는 함수 <code>read_table()</code>에 파일의 위치와 함께 파일의 이름만 입력하면 된다.</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="데이터-입력.html#cb291-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="데이터-입력.html#cb292-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_1.txt&quot;</span>)</span>
+<span id="cb292-2"><a href="데이터-입력.html#cb292-2" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb292-3"><a href="데이터-입력.html#cb292-3" tabindex="-1"></a><span class="do">## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb292-4"><a href="데이터-입력.html#cb292-4" tabindex="-1"></a><span class="do">## cols(</span></span>
+<span id="cb292-5"><a href="데이터-입력.html#cb292-5" tabindex="-1"></a><span class="do">##   age = col_double(),</span></span>
+<span id="cb292-6"><a href="데이터-입력.html#cb292-6" tabindex="-1"></a><span class="do">##   gender = col_character(),</span></span>
+<span id="cb292-7"><a href="데이터-입력.html#cb292-7" tabindex="-1"></a><span class="do">##   income = col_double()</span></span>
+<span id="cb292-8"><a href="데이터-입력.html#cb292-8" tabindex="-1"></a><span class="do">## )</span></span>
+<span id="cb292-9"><a href="데이터-입력.html#cb292-9" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb292-10"><a href="데이터-입력.html#cb292-10" tabindex="-1"></a><span class="do">##     age gender income</span></span>
+<span id="cb292-11"><a href="데이터-입력.html#cb292-11" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb292-12"><a href="데이터-입력.html#cb292-12" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
+<span id="cb292-13"><a href="데이터-입력.html#cb292-13" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
+<span id="cb292-14"><a href="데이터-입력.html#cb292-14" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
+<span id="cb292-15"><a href="데이터-입력.html#cb292-15" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
 <p>패키지 <code>readr</code>에 속한 함수들은 각 변수의 유형을 스스로 파악한다. 각 변수마다 처음 1000개의 자료를 읽고 정해진 규칙에 의하여 문자형, 정수형, 숫자형, 논리형 등으로 유형을 결정한다. 스스로 자료의 유형을 파악한 경우에는 각 변수별로 파악된 결과를 출력한다.</p>
 <p>각 변수의 유형은 사용자가 직접 선언할 수도 있는데, 가장 간단한 방법은 입력 요소 <code>col_types</code>에 변수의 유형을 나타내는 문자를 변수가 입력된 순서대로 나열하여 지정하는 것이다. 자료의 유형을 나타내는 문자에는 <code>c</code>(문자형), <code>i</code>(정수형), <code>d</code>(실수형), <code>n</code>(숫자형), <code>l</code> (논리형), <code>f</code>(요인), <code>D</code>(날짜) 등이 있다. 예를 들어 파일 <code>data2_1.txt</code>의 경우에는 다음과 같이 자료의 유형을 선언하여 자료를 불러올 수 있다.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="데이터-입력.html#cb292-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_1.txt&quot;</span>, </span>
-<span id="cb292-2"><a href="데이터-입력.html#cb292-2" tabindex="-1"></a>           <span class="at">col_types =</span> <span class="st">&quot;dcd&quot;</span>)</span>
-<span id="cb292-3"><a href="데이터-입력.html#cb292-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb292-4"><a href="데이터-입력.html#cb292-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
-<span id="cb292-5"><a href="데이터-입력.html#cb292-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb292-6"><a href="데이터-입력.html#cb292-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
-<span id="cb292-7"><a href="데이터-입력.html#cb292-7" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
-<span id="cb292-8"><a href="데이터-입력.html#cb292-8" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
-<span id="cb292-9"><a href="데이터-입력.html#cb292-9" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="데이터-입력.html#cb293-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_1.txt&quot;</span>, </span>
+<span id="cb293-2"><a href="데이터-입력.html#cb293-2" tabindex="-1"></a>           <span class="at">col_types =</span> <span class="st">&quot;dcd&quot;</span>)</span>
+<span id="cb293-3"><a href="데이터-입력.html#cb293-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb293-4"><a href="데이터-입력.html#cb293-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
+<span id="cb293-5"><a href="데이터-입력.html#cb293-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb293-6"><a href="데이터-입력.html#cb293-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
+<span id="cb293-7"><a href="데이터-입력.html#cb293-7" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
+<span id="cb293-8"><a href="데이터-입력.html#cb293-8" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
+<span id="cb293-9"><a href="데이터-입력.html#cb293-9" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
 <p><strong>2)</strong> 데이터만 파일에 입력되어 있는 경우</p>
 <p>첫 줄에 변수 이름이 입력되어 있지 않은 데이터 파일도 많이 있다. 예를 들어 파일 <code>data2_2.txt</code>에 세 변수에 대한 데이터가 다음과 같이 있다고 하자.</p>
 <div class="float" id="data2-2">
@@ -415,41 +423,30 @@ div.csl-indent {
 <div class="figcaption">data2_2.txt</div>
 </div>
 <p>이런 경우에는 입력 요소 <code>col_names</code>에 <code>FALSE</code>를 지정하거나 변수 이름을 나타내는 문자형 벡터를 지정해야 한다. 아무것도 지정하지 않으면 데이터 파일의 첫 줄에 입력된 자료가 각 변수의 이름으로 사용되는 오류가 발생한다. <code>FALSE</code>를 지정한 경우에 변수 이름은 <code>X1</code>, <code>X2</code>, <code>X3</code> 등이 된다.</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="데이터-입력.html#cb293-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_2.txt&quot;</span>, </span>
-<span id="cb293-2"><a href="데이터-입력.html#cb293-2" tabindex="-1"></a>           <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb293-3"><a href="데이터-입력.html#cb293-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb293-4"><a href="데이터-입력.html#cb293-4" tabindex="-1"></a><span class="do">##      X1 X2       X3</span></span>
-<span id="cb293-5"><a href="데이터-입력.html#cb293-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span id="cb293-6"><a href="데이터-입력.html#cb293-6" tabindex="-1"></a><span class="do">## 1    24 M      2000</span></span>
-<span id="cb293-7"><a href="데이터-입력.html#cb293-7" tabindex="-1"></a><span class="do">## 2    35 F      3100</span></span>
-<span id="cb293-8"><a href="데이터-입력.html#cb293-8" tabindex="-1"></a><span class="do">## 3    28 F      3800</span></span>
-<span id="cb293-9"><a href="데이터-입력.html#cb293-9" tabindex="-1"></a><span class="do">## 4    21 F      2800</span></span></code></pre></div>
 <div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="데이터-입력.html#cb294-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_2.txt&quot;</span>, </span>
-<span id="cb294-2"><a href="데이터-입력.html#cb294-2" tabindex="-1"></a>           <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;income&quot;</span>))</span>
+<span id="cb294-2"><a href="데이터-입력.html#cb294-2" tabindex="-1"></a>           <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb294-3"><a href="데이터-입력.html#cb294-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb294-4"><a href="데이터-입력.html#cb294-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
-<span id="cb294-5"><a href="데이터-입력.html#cb294-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb294-6"><a href="데이터-입력.html#cb294-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
-<span id="cb294-7"><a href="데이터-입력.html#cb294-7" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
-<span id="cb294-8"><a href="데이터-입력.html#cb294-8" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
-<span id="cb294-9"><a href="데이터-입력.html#cb294-9" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
-<p><strong>3)</strong> 데이터 파일에 주석이 입력된 경우</p>
-<p>데이터 파일에 주석이 있는 경우, 해당 행을 무시하기 위해서는 주석이 시작됨을 나타내는 기호를 입력 요소 <code>comment</code>에 지정하면 된다. 만일 기호 <code>#</code>을 주석 기호로 사용했다면 <code>comment = "#"</code>을 입력하면 된다. 또한 만일 주석이 데이터 파일의 처음 몇 개 행에 입력되어 있다면, 입력 요소 <code>skip</code>을 사용하여 해당되는 처음 몇 개 행을 읽지 않고 그냥 넘기는 방법을 사용할 수도 있다. 예를 들어 파일 <code>data2_3.txt</code>의 처음 세 줄이 다음과 같이 <code>#</code> 기호로 시작되는 주석이 입력되어 있다고 하자. 이 파일을 두 가지 방법을 각각 사용하여 불러와 보자.</p>
-<div class="float" id="data2-3">
-<img src="Figure/data2_3.png" title="data2_3.txt" alt="data2_3.txt" />
-<div class="figcaption">data2_3.txt</div>
-</div>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="데이터-입력.html#cb295-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_3.txt&quot;</span>,</span>
-<span id="cb295-2"><a href="데이터-입력.html#cb295-2" tabindex="-1"></a>           <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>)</span>
+<span id="cb294-4"><a href="데이터-입력.html#cb294-4" tabindex="-1"></a><span class="do">##      X1 X2       X3</span></span>
+<span id="cb294-5"><a href="데이터-입력.html#cb294-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span id="cb294-6"><a href="데이터-입력.html#cb294-6" tabindex="-1"></a><span class="do">## 1    24 M      2000</span></span>
+<span id="cb294-7"><a href="데이터-입력.html#cb294-7" tabindex="-1"></a><span class="do">## 2    35 F      3100</span></span>
+<span id="cb294-8"><a href="데이터-입력.html#cb294-8" tabindex="-1"></a><span class="do">## 3    28 F      3800</span></span>
+<span id="cb294-9"><a href="데이터-입력.html#cb294-9" tabindex="-1"></a><span class="do">## 4    21 F      2800</span></span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="데이터-입력.html#cb295-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_2.txt&quot;</span>, </span>
+<span id="cb295-2"><a href="데이터-입력.html#cb295-2" tabindex="-1"></a>           <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;income&quot;</span>))</span>
 <span id="cb295-3"><a href="데이터-입력.html#cb295-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb295-4"><a href="데이터-입력.html#cb295-4" tabindex="-1"></a><span class="do">##      x1    x2    x3</span></span>
-<span id="cb295-5"><a href="데이터-입력.html#cb295-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb295-6"><a href="데이터-입력.html#cb295-6" tabindex="-1"></a><span class="do">## 1    24     1  2000</span></span>
-<span id="cb295-7"><a href="데이터-입력.html#cb295-7" tabindex="-1"></a><span class="do">## 2    35     0  3100</span></span>
-<span id="cb295-8"><a href="데이터-입력.html#cb295-8" tabindex="-1"></a><span class="do">## 3    28     0  3800</span></span>
-<span id="cb295-9"><a href="데이터-입력.html#cb295-9" tabindex="-1"></a><span class="do">## 4    21     0  2800</span></span></code></pre></div>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="데이터-입력.html#cb296-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_3.txt&quot;</span>, </span>
-<span id="cb296-2"><a href="데이터-입력.html#cb296-2" tabindex="-1"></a>           <span class="at">skip =</span> <span class="dv">3</span>)</span>
+<span id="cb295-4"><a href="데이터-입력.html#cb295-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
+<span id="cb295-5"><a href="데이터-입력.html#cb295-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb295-6"><a href="데이터-입력.html#cb295-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
+<span id="cb295-7"><a href="데이터-입력.html#cb295-7" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
+<span id="cb295-8"><a href="데이터-입력.html#cb295-8" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
+<span id="cb295-9"><a href="데이터-입력.html#cb295-9" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
+<p><strong>3)</strong> 데이터 파일에 주석이 입력된 경우</p>
+<p>데이터 파일에 주석이 있는 경우, 해당 행을 무시하기 위해서는 주석이 시작됨을 나타내는 기호를 입력 요소 <code>comment</code>에 지정하면 된다. 만일 기호 <code>#</code>을 주석 기호로 사용했다면 <code>comment = "#"</code>을 입력하면 된다. 또한 만일 주석이 데이터 파일의 처음 몇 개 행에 입력되어 있다면, 입력 요소 <code>skip</code>을 사용하여 해당되는 처음 몇 개 행을 읽지 않고 그냥 넘기는 방법을 사용할 수도 있다.</p>
+<p><img src="Figure/data2_3.png" title="data2_3.txt" id="data2-3" alt="data2_3.txt" />
+파일 <code>data2_3.txt</code>의 처음 세 줄이 <code>#</code> 기호로 시작되는 주석이 입력되어 있다. 이 파일을 두 가지 방법을 사용해서 불러와 보자.</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="데이터-입력.html#cb296-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_3.txt&quot;</span>,</span>
+<span id="cb296-2"><a href="데이터-입력.html#cb296-2" tabindex="-1"></a>           <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>)</span>
 <span id="cb296-3"><a href="데이터-입력.html#cb296-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
 <span id="cb296-4"><a href="데이터-입력.html#cb296-4" tabindex="-1"></a><span class="do">##      x1    x2    x3</span></span>
 <span id="cb296-5"><a href="데이터-입력.html#cb296-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
@@ -457,32 +454,41 @@ div.csl-indent {
 <span id="cb296-7"><a href="데이터-입력.html#cb296-7" tabindex="-1"></a><span class="do">## 2    35     0  3100</span></span>
 <span id="cb296-8"><a href="데이터-입력.html#cb296-8" tabindex="-1"></a><span class="do">## 3    28     0  3800</span></span>
 <span id="cb296-9"><a href="데이터-입력.html#cb296-9" tabindex="-1"></a><span class="do">## 4    21     0  2800</span></span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="데이터-입력.html#cb297-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_3.txt&quot;</span>, </span>
+<span id="cb297-2"><a href="데이터-입력.html#cb297-2" tabindex="-1"></a>           <span class="at">skip =</span> <span class="dv">3</span>)</span>
+<span id="cb297-3"><a href="데이터-입력.html#cb297-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb297-4"><a href="데이터-입력.html#cb297-4" tabindex="-1"></a><span class="do">##      x1    x2    x3</span></span>
+<span id="cb297-5"><a href="데이터-입력.html#cb297-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb297-6"><a href="데이터-입력.html#cb297-6" tabindex="-1"></a><span class="do">## 1    24     1  2000</span></span>
+<span id="cb297-7"><a href="데이터-입력.html#cb297-7" tabindex="-1"></a><span class="do">## 2    35     0  3100</span></span>
+<span id="cb297-8"><a href="데이터-입력.html#cb297-8" tabindex="-1"></a><span class="do">## 3    28     0  3800</span></span>
+<span id="cb297-9"><a href="데이터-입력.html#cb297-9" tabindex="-1"></a><span class="do">## 4    21     0  2800</span></span></code></pre></div>
 <p><strong>4)</strong> 데이터 파일에 결측값이 <code>NA</code>가 아닌 다른 기호로 입력된 경우</p>
-<p>데이터에 결측값이 있는 것은 당연한 것으로 봐야 한다. R에서는 결측값을 <code>NA</code>로 표시하기 때문에 데이터에 결측값이 있다면 해당되는 자리에 <code>NA</code>를 입력해야 한다. 그러나 경우에 따라서 결측값이 다른 숫자나 문자 혹은 기호로 데이터 파일에 입력될 수도 있는데, 예를 들어 SAS의 경우 결측값은 점(.)으로 표시한다. 이렇듯 다른 기호로 결측값이 입력된 경우 에는 옵션 <code>na</code>에 해당 기호를 지정해 주어야 한다. 만일 결측값이 점(.)으로만 입력되어 있다면 <code>na = "."</code>으로 지정하면 되지만 <code>NA</code>와 점(.)이 모두 결측값을 나타내는 기호로 사용되었다면 <code>na = c(".", "NA")</code>로 두 기호를 모두 지정해야 한다. 예를 들어 <code>data2_4.txt</code>에 다음과 같이 <code>NA</code>와 점(.)이 모두 결측값을 나타내는 기호로 사용되어 있다고 하자. 이 파일을 옵션 <code>na</code>를 사용해서 불러 보자.</p>
+<p>데이터에 결측값이 있는 것은 당연한 것으로 봐야 한다. R에서는 결측값을 <code>NA</code>로 표시하기 때문에 데이터에 결측값이 있다면 해당되는 자리에 <code>NA</code>를 입력해야 한다. 그러나 경우에 따라서 결측값이 다른 숫자나 문자 혹은 기호로 데이터 파일에 입력될 수도 있는데, 예를 들어 SAS의 경우 결측값은 점(.)으로 표시한다. 이렇듯 다른 기호로 결측값이 입력된 경우 에는 옵션 <code>na</code>에 해당 기호를 지정해 주어야 한다. 만일 결측값이 점(.)으로만 입력되어 있다면 <code>na = "."</code>으로 지정하면 되지만 <code>NA</code>와 점(.)이 모두 결측값을 나타내는 기호로 사용되었다면 <code>na = c(".", "NA")</code>로 두 기호를 모두 지정해야 한다.</p>
 <div class="float" id="data2-4">
 <img src="Figure/data2_4.png" title="data2_4.txt" alt="data2_4.txt" />
 <div class="figcaption">data2_4.txt</div>
 </div>
-<p><code>na = "."</code>로 점(.)만을 결측값으로 지정하면, <code>income</code> 변수의 네 번째 자료인 <code>NA</code>는 결측값이 아닌 문자형 자료로 인식된다. 따라서 변수 <code>income</code>의 유형이 숫자형이 아닌 문자형이 된 것이다.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="데이터-입력.html#cb297-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_4.txt&quot;</span>, </span>
-<span id="cb297-2"><a href="데이터-입력.html#cb297-2" tabindex="-1"></a>           <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb297-3"><a href="데이터-입력.html#cb297-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb297-4"><a href="데이터-입력.html#cb297-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
-<span id="cb297-5"><a href="데이터-입력.html#cb297-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; </span></span>
-<span id="cb297-6"><a href="데이터-입력.html#cb297-6" tabindex="-1"></a><span class="do">## 1    24 M      2000  </span></span>
-<span id="cb297-7"><a href="데이터-입력.html#cb297-7" tabindex="-1"></a><span class="do">## 2    NA F      3100  </span></span>
-<span id="cb297-8"><a href="데이터-입력.html#cb297-8" tabindex="-1"></a><span class="do">## 3    28 &lt;NA&gt;   3800  </span></span>
-<span id="cb297-9"><a href="데이터-입력.html#cb297-9" tabindex="-1"></a><span class="do">## 4    21 F      NA</span></span></code></pre></div>
-<p><code>na = c(".", "NA")</code>로 두 기호를 모두 결측값으로 지정해서 다시 불러 보자.</p>
+<p>파일 <code>data2_4.txt</code>에는 <code>NA</code>와 점(.)이 모두 결측값을 나타내는 기호로 사용되어 있다. 이 파일을 옵션 <code>na</code>를 사용해서 불러 보자. <code>na = "."</code>로 점(.)만을 결측값으로 지정하면, <code>income</code> 변수의 네 번째 자료인 <code>NA</code>는 결측값이 아닌 문자형 자료로 인식된다. 따라서 변수 <code>income</code>의 유형은 숫자형이 아닌 문자형이 된다.</p>
 <div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="데이터-입력.html#cb298-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_4.txt&quot;</span>, </span>
-<span id="cb298-2"><a href="데이터-입력.html#cb298-2" tabindex="-1"></a>           <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb298-2"><a href="데이터-입력.html#cb298-2" tabindex="-1"></a>           <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
 <span id="cb298-3"><a href="데이터-입력.html#cb298-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
 <span id="cb298-4"><a href="데이터-입력.html#cb298-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
-<span id="cb298-5"><a href="데이터-입력.html#cb298-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb298-6"><a href="데이터-입력.html#cb298-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
-<span id="cb298-7"><a href="데이터-입력.html#cb298-7" tabindex="-1"></a><span class="do">## 2    NA F        3100</span></span>
-<span id="cb298-8"><a href="데이터-입력.html#cb298-8" tabindex="-1"></a><span class="do">## 3    28 &lt;NA&gt;     3800</span></span>
-<span id="cb298-9"><a href="데이터-입력.html#cb298-9" tabindex="-1"></a><span class="do">## 4    21 F          NA</span></span></code></pre></div>
+<span id="cb298-5"><a href="데이터-입력.html#cb298-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; </span></span>
+<span id="cb298-6"><a href="데이터-입력.html#cb298-6" tabindex="-1"></a><span class="do">## 1    24 M      2000  </span></span>
+<span id="cb298-7"><a href="데이터-입력.html#cb298-7" tabindex="-1"></a><span class="do">## 2    NA F      3100  </span></span>
+<span id="cb298-8"><a href="데이터-입력.html#cb298-8" tabindex="-1"></a><span class="do">## 3    28 &lt;NA&gt;   3800  </span></span>
+<span id="cb298-9"><a href="데이터-입력.html#cb298-9" tabindex="-1"></a><span class="do">## 4    21 F      NA</span></span></code></pre></div>
+<p><code>na = c(".", "NA")</code>로 두 기호를 모두 결측값으로 지정해서 다시 불러 보자.</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="데이터-입력.html#cb299-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_4.txt&quot;</span>, </span>
+<span id="cb299-2"><a href="데이터-입력.html#cb299-2" tabindex="-1"></a>           <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb299-3"><a href="데이터-입력.html#cb299-3" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb299-4"><a href="데이터-입력.html#cb299-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
+<span id="cb299-5"><a href="데이터-입력.html#cb299-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb299-6"><a href="데이터-입력.html#cb299-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
+<span id="cb299-7"><a href="데이터-입력.html#cb299-7" tabindex="-1"></a><span class="do">## 2    NA F        3100</span></span>
+<span id="cb299-8"><a href="데이터-입력.html#cb299-8" tabindex="-1"></a><span class="do">## 3    28 &lt;NA&gt;     3800</span></span>
+<span id="cb299-9"><a href="데이터-입력.html#cb299-9" tabindex="-1"></a><span class="do">## 4    21 F          NA</span></span></code></pre></div>
 <ul>
 <li>함수 <code>file.choose()</code></li>
 </ul>
@@ -492,19 +498,20 @@ div.csl-indent {
 </div>
 <div id="함수-read_csv로-csv-데이터-파일-불러오기" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> 함수 <code>read_csv()</code>로 CSV 데이터 파일 불러오기<a href="데이터-입력.html#함수-read_csv로-csv-데이터-파일-불러오기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>CSV(Comma Separated Values) 파일이란 각 자료들이 콤마로 구분된 형식의 데이터 파일을 의미한다. Excel을 포함하는 많은 소프트웨어들이 CSV 형식의 데이터 파일을 읽어 올 수도 있고 작업결과를 CSV 형식으로 저장할 수도 있기 때문에 자주 사용되는 형식의 데이터 파일이라고 하겠다. 예들 들어 파일 <code>data3_1.txt</code>에 자료들이 다음과 같이 콤마로 구분되어 있고, 첫 줄에는 변수 이름이 입력되어 있다고 하자. 이 경우에는 <code>read_csv()</code>에 파일의 위치를 포함한 이름을 입력하면 파일을 불러올 수 있다.</p>
+<p>CSV(Comma Separated Values) 파일이란 각 자료들이 콤마로 구분된 형식의 데이터 파일을 의미한다. Excel을 포함하는 많은 소프트웨어들이 CSV 형식의 데이터 파일을 읽어 올 수도 있고 작업결과를 CSV 형식으로 저장할 수도 있기 때문에 자주 사용되는 형식의 데이터 파일이라고 하겠다.</p>
 <div class="float" id="data3-1">
 <img src="Figure/data3_1.png" title="data3_1.txt" alt="data3_1.txt" />
 <div class="figcaption">data3_1.txt</div>
 </div>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="데이터-입력.html#cb299-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_1.txt&quot;</span>)</span>
-<span id="cb299-2"><a href="데이터-입력.html#cb299-2" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb299-3"><a href="데이터-입력.html#cb299-3" tabindex="-1"></a><span class="do">##   `var 1` `var 2` `var 3`</span></span>
-<span id="cb299-4"><a href="데이터-입력.html#cb299-4" tabindex="-1"></a><span class="do">##     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;</span></span>
-<span id="cb299-5"><a href="데이터-입력.html#cb299-5" tabindex="-1"></a><span class="do">## 1      24 M          2000</span></span>
-<span id="cb299-6"><a href="데이터-입력.html#cb299-6" tabindex="-1"></a><span class="do">## 2      35 F          3100</span></span>
-<span id="cb299-7"><a href="데이터-입력.html#cb299-7" tabindex="-1"></a><span class="do">## 3      28 F          3800</span></span>
-<span id="cb299-8"><a href="데이터-입력.html#cb299-8" tabindex="-1"></a><span class="do">## 4      21 F          2800</span></span></code></pre></div>
+<p>파일 <code>data3_1.txt</code>에는 자료들이 콤마로 구분되어 있고, 첫 줄에는 변수 이름이 입력되어 있다고 하자. 이 경우에는 <code>read_csv()</code>에 파일의 위치를 포함한 이름을 입력하면 파일을 불러올 수 있다.</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="데이터-입력.html#cb300-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_1.txt&quot;</span>)</span>
+<span id="cb300-2"><a href="데이터-입력.html#cb300-2" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb300-3"><a href="데이터-입력.html#cb300-3" tabindex="-1"></a><span class="do">##   `var 1` `var 2` `var 3`</span></span>
+<span id="cb300-4"><a href="데이터-입력.html#cb300-4" tabindex="-1"></a><span class="do">##     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;</span></span>
+<span id="cb300-5"><a href="데이터-입력.html#cb300-5" tabindex="-1"></a><span class="do">## 1      24 M          2000</span></span>
+<span id="cb300-6"><a href="데이터-입력.html#cb300-6" tabindex="-1"></a><span class="do">## 2      35 F          3100</span></span>
+<span id="cb300-7"><a href="데이터-입력.html#cb300-7" tabindex="-1"></a><span class="do">## 3      28 F          3800</span></span>
+<span id="cb300-8"><a href="데이터-입력.html#cb300-8" tabindex="-1"></a><span class="do">## 4      21 F          2800</span></span></code></pre></div>
 <p>함수 <code>read_csv()</code>로 생성된 <code>tibble</code>의 변수 이름이 backtick(`) 기호로 감싸져 있는 것을 볼 수 있다.
 R에서 변수 이름은 반드시 문자로 시작해야 하며, 중간에 빈칸이 없어야 하는 등의 규칙이 있는데,
 이러한 규칙에 어긋난 문자열이라도 <code>tibble</code>에서는 backtick 기호로 감싸서 정상적인 변수 이름으로 사용하고 있음을 보여주고 있다. Backtick 기호는 키보드에서 tab 키 바로 위에 있는 것이며, 인용부호와는 다른 기호이다.</p>
@@ -514,31 +521,40 @@ R에서 변수 이름은 반드시 문자로 시작해야 하며, 중간에 빈�
 <div class="figcaption">data3_2.txt</div>
 </div>
 <p>이제 각 변수의 유형을 스스로 파악하게 해 보자.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="데이터-입력.html#cb300-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_2.txt&quot;</span>, </span>
-<span id="cb300-2"><a href="데이터-입력.html#cb300-2" tabindex="-1"></a>         <span class="at">col_names =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb300-3"><a href="데이터-입력.html#cb300-3" tabindex="-1"></a>         <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>, </span>
-<span id="cb300-4"><a href="데이터-입력.html#cb300-4" tabindex="-1"></a>         <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
-<span id="cb300-5"><a href="데이터-입력.html#cb300-5" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb300-6"><a href="데이터-입력.html#cb300-6" tabindex="-1"></a><span class="do">##      X1 X2       X3</span></span>
-<span id="cb300-7"><a href="데이터-입력.html#cb300-7" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt;</span></span>
-<span id="cb300-8"><a href="데이터-입력.html#cb300-8" tabindex="-1"></a><span class="do">## 1    24 NA     2000</span></span>
-<span id="cb300-9"><a href="데이터-입력.html#cb300-9" tabindex="-1"></a><span class="do">## 2    35 FALSE  3100</span></span>
-<span id="cb300-10"><a href="데이터-입력.html#cb300-10" tabindex="-1"></a><span class="do">## 3    NA FALSE  3800</span></span>
-<span id="cb300-11"><a href="데이터-입력.html#cb300-11" tabindex="-1"></a><span class="do">## 4    21 FALSE    NA</span></span></code></pre></div>
-<p>위 실행결과에서 자세하게 살펴볼 두 가지 중요한 사항이 있다. 첫 번째 사항은 CSV 파일에서는 자료를 입력하지 않고 빈칸으로 남겨두면 결측값으로 자동 처리된다는 것이다. 이것은 빈칸으로 남겨져 있는 변수 <code>X1</code>의 세 번째 자료가 <code>NA</code>로 처리된 것으로 알 수 있다. 각 자료가 콤마로 구분되어 있다는 것은 곧 각 자료의 입력 영역이 확보되어 있다는 것을 의미하기 때문에 빈칸으로 남겨진 영역을 결측값으로 자연스럽게 처리할 수 있는 것이다. 하지만 결측값을 빈칸으로 그냥 남겨두는 것은 좋은 작업 방식은 아니라고 할 수 있다.</p>
-<p>두 번째 사항은 변수 유형 파악에 오류가 발생할 수도 있으니 반드시 결과를 확인해야 한다는 것이다. 위 실행 결과에서 문자형 변수 <code>X2</code>의 유형이 논리형으로 파악됐는데, 이것은 변수 <code>X2</code>의 자료가 <code>NA</code>와 <code>F</code>로만 이루어져 있어서 <code>F</code>를 <code>FALSE</code>로 인식했기 때문이다. 이런 경우에는 변수 유형을 사용자가 직접 지정해야 한다.</p>
 <div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="데이터-입력.html#cb301-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_2.txt&quot;</span>, </span>
 <span id="cb301-2"><a href="데이터-입력.html#cb301-2" tabindex="-1"></a>         <span class="at">col_names =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb301-3"><a href="데이터-입력.html#cb301-3" tabindex="-1"></a>         <span class="at">col_types =</span> <span class="st">&quot;dcd&quot;</span>, </span>
-<span id="cb301-4"><a href="데이터-입력.html#cb301-4" tabindex="-1"></a>         <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>, </span>
-<span id="cb301-5"><a href="데이터-입력.html#cb301-5" tabindex="-1"></a>         <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
-<span id="cb301-6"><a href="데이터-입력.html#cb301-6" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb301-7"><a href="데이터-입력.html#cb301-7" tabindex="-1"></a><span class="do">##      X1 X2       X3</span></span>
-<span id="cb301-8"><a href="데이터-입력.html#cb301-8" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span id="cb301-9"><a href="데이터-입력.html#cb301-9" tabindex="-1"></a><span class="do">## 1    24 &lt;NA&gt;   2000</span></span>
-<span id="cb301-10"><a href="데이터-입력.html#cb301-10" tabindex="-1"></a><span class="do">## 2    35 F      3100</span></span>
-<span id="cb301-11"><a href="데이터-입력.html#cb301-11" tabindex="-1"></a><span class="do">## 3    NA F      3800</span></span>
-<span id="cb301-12"><a href="데이터-입력.html#cb301-12" tabindex="-1"></a><span class="do">## 4    21 F        NA</span></span></code></pre></div>
+<span id="cb301-3"><a href="데이터-입력.html#cb301-3" tabindex="-1"></a>         <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>, </span>
+<span id="cb301-4"><a href="데이터-입력.html#cb301-4" tabindex="-1"></a>         <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb301-5"><a href="데이터-입력.html#cb301-5" tabindex="-1"></a><span class="do">## Rows: 4 Columns: 3</span></span>
+<span id="cb301-6"><a href="데이터-입력.html#cb301-6" tabindex="-1"></a><span class="do">## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb301-7"><a href="데이터-입력.html#cb301-7" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
+<span id="cb301-8"><a href="데이터-입력.html#cb301-8" tabindex="-1"></a><span class="do">## dbl (2): X1, X3</span></span>
+<span id="cb301-9"><a href="데이터-입력.html#cb301-9" tabindex="-1"></a><span class="do">## lgl (1): X2</span></span>
+<span id="cb301-10"><a href="데이터-입력.html#cb301-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb301-11"><a href="데이터-입력.html#cb301-11" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb301-12"><a href="데이터-입력.html#cb301-12" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span id="cb301-13"><a href="데이터-입력.html#cb301-13" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb301-14"><a href="데이터-입력.html#cb301-14" tabindex="-1"></a><span class="do">##      X1 X2       X3</span></span>
+<span id="cb301-15"><a href="데이터-입력.html#cb301-15" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt;</span></span>
+<span id="cb301-16"><a href="데이터-입력.html#cb301-16" tabindex="-1"></a><span class="do">## 1    24 NA     2000</span></span>
+<span id="cb301-17"><a href="데이터-입력.html#cb301-17" tabindex="-1"></a><span class="do">## 2    35 FALSE  3100</span></span>
+<span id="cb301-18"><a href="데이터-입력.html#cb301-18" tabindex="-1"></a><span class="do">## 3    NA FALSE  3800</span></span>
+<span id="cb301-19"><a href="데이터-입력.html#cb301-19" tabindex="-1"></a><span class="do">## 4    21 FALSE    NA</span></span></code></pre></div>
+<p>위 실행결과에서 자세하게 살펴볼 두 가지 중요한 사항이 있다. 첫 번째 사항은 CSV 파일에서는 자료를 입력하지 않고 빈칸으로 남겨두면 결측값으로 자동 처리된다는 것이다. 이것은 빈칸으로 남겨져 있는 변수 <code>X1</code>의 세 번째 자료가 <code>NA</code>로 처리된 것으로 알 수 있다. 각 자료가 콤마로 구분되어 있다는 것은 곧 각 자료의 입력 영역이 확보되어 있다는 것을 의미하기 때문에 빈칸으로 남겨진 영역을 결측값으로 자연스럽게 처리할 수 있는 것이다.
+하지만 결측값을 빈칸으로 그냥 남겨두는 것은 좋은 작업 방식은 아니라고 할 수 있으며, 문제가 있을 수 있다는 경고 문구가 출력된다.</p>
+<p>두 번째 사항은 변수 유형 파악에 오류가 발생할 수도 있으니 반드시 결과를 확인해야 한다는 것이다. 위 실행 결과에서 문자형 변수 <code>X2</code>의 유형이 논리형으로 파악됐는데, 이것은 변수 <code>X2</code>의 자료가 <code>NA</code>와 <code>F</code>로만 이루어져 있어서 <code>F</code>를 <code>FALSE</code>로 인식했기 때문이다. 이런 경우에는 변수 유형을 사용자가 직접 지정해야 한다.</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="데이터-입력.html#cb302-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_2.txt&quot;</span>, </span>
+<span id="cb302-2"><a href="데이터-입력.html#cb302-2" tabindex="-1"></a>         <span class="at">col_names =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb302-3"><a href="데이터-입력.html#cb302-3" tabindex="-1"></a>         <span class="at">col_types =</span> <span class="st">&quot;dcd&quot;</span>, </span>
+<span id="cb302-4"><a href="데이터-입력.html#cb302-4" tabindex="-1"></a>         <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>, </span>
+<span id="cb302-5"><a href="데이터-입력.html#cb302-5" tabindex="-1"></a>         <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb302-6"><a href="데이터-입력.html#cb302-6" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb302-7"><a href="데이터-입력.html#cb302-7" tabindex="-1"></a><span class="do">##      X1 X2       X3</span></span>
+<span id="cb302-8"><a href="데이터-입력.html#cb302-8" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span id="cb302-9"><a href="데이터-입력.html#cb302-9" tabindex="-1"></a><span class="do">## 1    24 &lt;NA&gt;   2000</span></span>
+<span id="cb302-10"><a href="데이터-입력.html#cb302-10" tabindex="-1"></a><span class="do">## 2    35 F      3100</span></span>
+<span id="cb302-11"><a href="데이터-입력.html#cb302-11" tabindex="-1"></a><span class="do">## 3    NA F      3800</span></span>
+<span id="cb302-12"><a href="데이터-입력.html#cb302-12" tabindex="-1"></a><span class="do">## 4    21 F        NA</span></span></code></pre></div>
 </div>
 <div id="함수-read_fwf로-고정-포맷-구조를-갖는-데이터-파일-불러오기" class="section level3 hasAnchor" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> 함수 <code>read_fwf()</code>로 고정 포맷 구조를 갖는 데이터 파일 불러오기<a href="데이터-입력.html#함수-read_fwf로-고정-포맷-구조를-갖는-데이터-파일-불러오기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -549,28 +565,28 @@ R에서 변수 이름은 반드시 문자로 시작해야 하며, 중간에 빈�
 </div>
 <p>변수 <code>age</code>는 1-2열, <code>gender</code>는 3열, <code>income</code>은 4-7열에 각각 입력되어 있다. 이러한 경우 각 자료들이 빈칸이나 콤마 등으로 구분되어 있어야만 사용할 수 있는 함수 <code>read_table()</code> 또는 <code>read_csv()</code> 등은 그야말로 무용지물이 된다. 이러한 형식의 파일을 읽기 위해서는 각 자료의 고정된 위치를 지정할 수 있어야 하는데, 함수 <code>read_fwf()</code>에 바로 그러한 기능이 있다. 고정된 위치 지정은 입력 요소 <code>col_positions</code>에 함수 <code>fwf_widths</code>() 또는 <code>fwf_positions()</code>를 연결하는 것이다. 각 변수의 자료가 입력되는 영역의 폭으로 위치를 지정하는 것은 <code>fwf_widths(widths, col_names)</code>로 하면 되고, 각 변수의 시작 열과 끝 열을 지정해서 자료의 위치를 나타내기 위해서는 <code>fwf_positions(start, end, col_names)</code>로 하면 된다. 옵션 <code>col_names</code>를 생략하면 변수 이름은 <code>X1</code>, <code>X2</code>, <code>X3</code> 등으로 지정된다.</p>
 <p>이제 <code>data4.txt</code>를 읽어보자. <code>fwf_widths()</code>에 <code>widths=c(2,1,4)</code>를 지정하면 첫 번째 변수 <code>age</code>는 두 개의 열, 두 번째 변수 <code>gender</code>는 한 개의 열, 마지막 변수 <code>income</code>은 네 개의 열을 차지하고 있다는 것이다.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="데이터-입력.html#cb302-1" tabindex="-1"></a><span class="fu">read_fwf</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data4.txt&quot;</span>, </span>
-<span id="cb302-2"><a href="데이터-입력.html#cb302-2" tabindex="-1"></a>         <span class="at">col_positions =</span> <span class="fu">fwf_widths</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>), </span>
-<span id="cb302-3"><a href="데이터-입력.html#cb302-3" tabindex="-1"></a>                                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;income&quot;</span>)))</span>
-<span id="cb302-4"><a href="데이터-입력.html#cb302-4" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb302-5"><a href="데이터-입력.html#cb302-5" tabindex="-1"></a><span class="do">##     age gender income</span></span>
-<span id="cb302-6"><a href="데이터-입력.html#cb302-6" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb302-7"><a href="데이터-입력.html#cb302-7" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
-<span id="cb302-8"><a href="데이터-입력.html#cb302-8" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
-<span id="cb302-9"><a href="데이터-입력.html#cb302-9" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
-<span id="cb302-10"><a href="데이터-입력.html#cb302-10" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
-<p><code>fwf_positions()</code>에 <code>start=c(1,3,4)</code>와 <code>end=c(2,3,7)</code>을 지정하면 첫 번째 변수 <code>age</code>는 1~2열에, 두 번째 변수 <code>gender</code>는 3열에, 마지막 변수 <code>income</code>은 4~7열에 입력되어 있다는 것을 나타낸다.</p>
 <div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="데이터-입력.html#cb303-1" tabindex="-1"></a><span class="fu">read_fwf</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data4.txt&quot;</span>, </span>
-<span id="cb303-2"><a href="데이터-입력.html#cb303-2" tabindex="-1"></a>         <span class="at">col_positions =</span> <span class="fu">fwf_positions</span>(<span class="at">start =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
-<span id="cb303-3"><a href="데이터-입력.html#cb303-3" tabindex="-1"></a>                                       <span class="at">end =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>),</span>
-<span id="cb303-4"><a href="데이터-입력.html#cb303-4" tabindex="-1"></a>                                       <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;income&quot;</span>)))</span>
-<span id="cb303-5"><a href="데이터-입력.html#cb303-5" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb303-6"><a href="데이터-입력.html#cb303-6" tabindex="-1"></a><span class="do">##     age gender income</span></span>
-<span id="cb303-7"><a href="데이터-입력.html#cb303-7" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb303-8"><a href="데이터-입력.html#cb303-8" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
-<span id="cb303-9"><a href="데이터-입력.html#cb303-9" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
-<span id="cb303-10"><a href="데이터-입력.html#cb303-10" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
-<span id="cb303-11"><a href="데이터-입력.html#cb303-11" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
+<span id="cb303-2"><a href="데이터-입력.html#cb303-2" tabindex="-1"></a>         <span class="at">col_positions =</span> <span class="fu">fwf_widths</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>), </span>
+<span id="cb303-3"><a href="데이터-입력.html#cb303-3" tabindex="-1"></a>                                    <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;income&quot;</span>)))</span>
+<span id="cb303-4"><a href="데이터-입력.html#cb303-4" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb303-5"><a href="데이터-입력.html#cb303-5" tabindex="-1"></a><span class="do">##     age gender income</span></span>
+<span id="cb303-6"><a href="데이터-입력.html#cb303-6" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb303-7"><a href="데이터-입력.html#cb303-7" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
+<span id="cb303-8"><a href="데이터-입력.html#cb303-8" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
+<span id="cb303-9"><a href="데이터-입력.html#cb303-9" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
+<span id="cb303-10"><a href="데이터-입력.html#cb303-10" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
+<p><code>fwf_positions()</code>에 <code>start=c(1,3,4)</code>와 <code>end=c(2,3,7)</code>을 지정하면 첫 번째 변수 <code>age</code>는 1~2열에, 두 번째 변수 <code>gender</code>는 3열에, 마지막 변수 <code>income</code>은 4~7열에 입력되어 있다는 것을 나타낸다.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="데이터-입력.html#cb304-1" tabindex="-1"></a><span class="fu">read_fwf</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data4.txt&quot;</span>, </span>
+<span id="cb304-2"><a href="데이터-입력.html#cb304-2" tabindex="-1"></a>         <span class="at">col_positions =</span> <span class="fu">fwf_positions</span>(<span class="at">start =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb304-3"><a href="데이터-입력.html#cb304-3" tabindex="-1"></a>                                       <span class="at">end =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>),</span>
+<span id="cb304-4"><a href="데이터-입력.html#cb304-4" tabindex="-1"></a>                                       <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;income&quot;</span>)))</span>
+<span id="cb304-5"><a href="데이터-입력.html#cb304-5" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb304-6"><a href="데이터-입력.html#cb304-6" tabindex="-1"></a><span class="do">##     age gender income</span></span>
+<span id="cb304-7"><a href="데이터-입력.html#cb304-7" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb304-8"><a href="데이터-입력.html#cb304-8" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
+<span id="cb304-9"><a href="데이터-입력.html#cb304-9" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
+<span id="cb304-10"><a href="데이터-입력.html#cb304-10" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
+<span id="cb304-11"><a href="데이터-입력.html#cb304-11" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span></code></pre></div>
 <ul>
 <li>RStudio 메뉴에서 불러오기</li>
 </ul>
@@ -580,9 +596,9 @@ R에서 변수 이름은 반드시 문자로 시작해야 하며, 중간에 빈�
 </ul>
 <p>R에서 생성되고 수정된 데이터 프레임을 외부 텍스트 파일로 저장시켜 다른 소프트웨어에서도 사용할 수 있도록 하는 것도 중요한 작업이다. 데이터 프레임을 외부 텍스트 파일로 저장하는 작업은 자료들을 어떤 기호로 구분할 것인지에 따라 패키지 <code>readr</code>의 함수 <code>write_delim()</code>, <code>write_csv()</code> 또는 <code>write_tsv()</code> 등을 사용할 수 있다. 자료들을 빈칸으로 구분하려면 <code>write_delim()</code>, 콤마로 구분하려면 <code>write_csv()</code>, 탭으로 구분하려면 <code>write_tsv()</code>를 사용하면 된다. 데이터 프레임을 외부 텍스트 파일로 저장하는 작업은 <code>write.csv()</code>와 같은 base R 함수로도 할 수 있다. Base R의 함수들은 데이터 프레임의 행 이름을 텍스트 파일의 첫 번째 열에 배치하고, 모든 문자 및 변수 이름에 인용부호를 붙이는 것이 디폴트인 반면에 패키지 <code>readr</code>의 함수들은 데이터 프레임의 행 이름을 절대 저장하지 않으며 인용 부호는 필요한 경우에만 사용된다. 또한 패키지 <code>readr</code>의 함수들의 실행 속도가 2배 정도 빠른 것으로 되어 있다.</p>
 <p>Base 패키지인 <code>datasets</code>에 있는 데이터 프레임 <code>women</code>은 30대 미국 여성 15명의 몸무게와 키가 측정되어 있는 데이터 세트이다. 키는 인치 단위, 몸무게는 파운드 단위로 측정되었다. 데이터 프레임 <code>women</code>을 <code>Data</code> 폴더에 텍스트 파일로 저장하기 위해 다음 프로그램을 각각 실행해 보고 생성되는 텍스트 파일을 확인하기 바란다.</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="데이터-입력.html#cb304-1" tabindex="-1"></a><span class="fu">write_delim</span>(women, <span class="st">&quot;Data/women.txt&quot;</span>)</span>
-<span id="cb304-2"><a href="데이터-입력.html#cb304-2" tabindex="-1"></a><span class="fu">write_csv</span>(women, <span class="st">&quot;Data/women.csv&quot;</span>)</span>
-<span id="cb304-3"><a href="데이터-입력.html#cb304-3" tabindex="-1"></a><span class="fu">write_tsv</span>(women, <span class="st">&quot;Data/women.tsv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="데이터-입력.html#cb305-1" tabindex="-1"></a><span class="fu">write_delim</span>(women, <span class="st">&quot;Data/women.txt&quot;</span>)</span>
+<span id="cb305-2"><a href="데이터-입력.html#cb305-2" tabindex="-1"></a><span class="fu">write_csv</span>(women, <span class="st">&quot;Data/women.csv&quot;</span>)</span>
+<span id="cb305-3"><a href="데이터-입력.html#cb305-3" tabindex="-1"></a><span class="fu">write_tsv</span>(women, <span class="st">&quot;Data/women.tsv&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="excel-파일-불러오기" class="section level2 hasAnchor" number="3.2">
@@ -594,25 +610,25 @@ R에서 변수 이름은 반드시 문자로 시작해야 하며, 중간에 빈�
 <div class="figcaption">data5.xlsx</div>
 </div>
 <p>입력할 데이터가 있는 시트 번호를 지정하지 않으면, 디폴트로 첫 번째 시트의 데이터를 입력한다. 만일 다른 시트의 데이터를 입력하고자 한다면, 옵션 <code>sheet</code>에 시트 번호를 지정하면 된다.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="데이터-입력.html#cb305-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb305-2"><a href="데이터-입력.html#cb305-2" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;Data/data5.xlsx&quot;</span>)</span>
-<span id="cb305-3"><a href="데이터-입력.html#cb305-3" tabindex="-1"></a><span class="do">## # A tibble: 5 × 3</span></span>
-<span id="cb305-4"><a href="데이터-입력.html#cb305-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
-<span id="cb305-5"><a href="데이터-입력.html#cb305-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb305-6"><a href="데이터-입력.html#cb305-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
-<span id="cb305-7"><a href="데이터-입력.html#cb305-7" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
-<span id="cb305-8"><a href="데이터-입력.html#cb305-8" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
-<span id="cb305-9"><a href="데이터-입력.html#cb305-9" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span>
-<span id="cb305-10"><a href="데이터-입력.html#cb305-10" tabindex="-1"></a><span class="do">## 5    31 M        3500</span></span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="데이터-입력.html#cb306-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb306-2"><a href="데이터-입력.html#cb306-2" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;Data/data5.xlsx&quot;</span>)</span>
+<span id="cb306-3"><a href="데이터-입력.html#cb306-3" tabindex="-1"></a><span class="do">## # A tibble: 5 × 3</span></span>
+<span id="cb306-4"><a href="데이터-입력.html#cb306-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
+<span id="cb306-5"><a href="데이터-입력.html#cb306-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb306-6"><a href="데이터-입력.html#cb306-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
+<span id="cb306-7"><a href="데이터-입력.html#cb306-7" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
+<span id="cb306-8"><a href="데이터-입력.html#cb306-8" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
+<span id="cb306-9"><a href="데이터-입력.html#cb306-9" tabindex="-1"></a><span class="do">## 4    21 F        2800</span></span>
+<span id="cb306-10"><a href="데이터-입력.html#cb306-10" tabindex="-1"></a><span class="do">## 5    31 M        3500</span></span></code></pre></div>
 <p>시트의 전체 데이터 중 일부분만을 입력하고자 한다면, 옵션 <code>range</code>에 입력하고자 하는 데이터 범위 사각형의 왼쪽 위 모서리와 오른쪽 아래 모서리의 셀 번호를 지정하면 된다.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="데이터-입력.html#cb306-1" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;Data/data5.xlsx&quot;</span>, <span class="at">range =</span> <span class="st">&quot;A1:B5&quot;</span>)</span>
-<span id="cb306-2"><a href="데이터-입력.html#cb306-2" tabindex="-1"></a><span class="do">## # A tibble: 4 × 2</span></span>
-<span id="cb306-3"><a href="데이터-입력.html#cb306-3" tabindex="-1"></a><span class="do">##     age gender</span></span>
-<span id="cb306-4"><a href="데이터-입력.html#cb306-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; </span></span>
-<span id="cb306-5"><a href="데이터-입력.html#cb306-5" tabindex="-1"></a><span class="do">## 1    24 M     </span></span>
-<span id="cb306-6"><a href="데이터-입력.html#cb306-6" tabindex="-1"></a><span class="do">## 2    35 F     </span></span>
-<span id="cb306-7"><a href="데이터-입력.html#cb306-7" tabindex="-1"></a><span class="do">## 3    28 F     </span></span>
-<span id="cb306-8"><a href="데이터-입력.html#cb306-8" tabindex="-1"></a><span class="do">## 4    21 F</span></span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="데이터-입력.html#cb307-1" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;Data/data5.xlsx&quot;</span>, <span class="at">range =</span> <span class="st">&quot;A1:B5&quot;</span>)</span>
+<span id="cb307-2"><a href="데이터-입력.html#cb307-2" tabindex="-1"></a><span class="do">## # A tibble: 4 × 2</span></span>
+<span id="cb307-3"><a href="데이터-입력.html#cb307-3" tabindex="-1"></a><span class="do">##     age gender</span></span>
+<span id="cb307-4"><a href="데이터-입력.html#cb307-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; </span></span>
+<span id="cb307-5"><a href="데이터-입력.html#cb307-5" tabindex="-1"></a><span class="do">## 1    24 M     </span></span>
+<span id="cb307-6"><a href="데이터-입력.html#cb307-6" tabindex="-1"></a><span class="do">## 2    35 F     </span></span>
+<span id="cb307-7"><a href="데이터-입력.html#cb307-7" tabindex="-1"></a><span class="do">## 3    28 F     </span></span>
+<span id="cb307-8"><a href="데이터-입력.html#cb307-8" tabindex="-1"></a><span class="do">## 4    21 F</span></span></code></pre></div>
 <ul>
 <li>Excel 파일을 CSV 파일로 전환한 후 불러오기</li>
 </ul>
@@ -637,16 +653,16 @@ CARDS;
 31 M 3500
 RUN;</code></pre>
 <p>패키지 <code>haven</code>도 <code>tidyverse</code> 계열에 속하는 패키지이므로, 함수 <code>read_sas()</code>은 tibble을 생성한다.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="데이터-입력.html#cb308-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb308-2"><a href="데이터-입력.html#cb308-2" tabindex="-1"></a><span class="fu">read_sas</span>(<span class="st">&quot;Data/data6.sas7bdat&quot;</span>)</span>
-<span id="cb308-3"><a href="데이터-입력.html#cb308-3" tabindex="-1"></a><span class="do">## # A tibble: 5 × 3</span></span>
-<span id="cb308-4"><a href="데이터-입력.html#cb308-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
-<span id="cb308-5"><a href="데이터-입력.html#cb308-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb308-6"><a href="데이터-입력.html#cb308-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
-<span id="cb308-7"><a href="데이터-입력.html#cb308-7" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
-<span id="cb308-8"><a href="데이터-입력.html#cb308-8" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
-<span id="cb308-9"><a href="데이터-입력.html#cb308-9" tabindex="-1"></a><span class="do">## 4    21 F        3500</span></span>
-<span id="cb308-10"><a href="데이터-입력.html#cb308-10" tabindex="-1"></a><span class="do">## 5    31 M        3500</span></span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="데이터-입력.html#cb309-1" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb309-2"><a href="데이터-입력.html#cb309-2" tabindex="-1"></a><span class="fu">read_sas</span>(<span class="st">&quot;Data/data6.sas7bdat&quot;</span>)</span>
+<span id="cb309-3"><a href="데이터-입력.html#cb309-3" tabindex="-1"></a><span class="do">## # A tibble: 5 × 3</span></span>
+<span id="cb309-4"><a href="데이터-입력.html#cb309-4" tabindex="-1"></a><span class="do">##     age gender income</span></span>
+<span id="cb309-5"><a href="데이터-입력.html#cb309-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb309-6"><a href="데이터-입력.html#cb309-6" tabindex="-1"></a><span class="do">## 1    24 M        2000</span></span>
+<span id="cb309-7"><a href="데이터-입력.html#cb309-7" tabindex="-1"></a><span class="do">## 2    35 F        3100</span></span>
+<span id="cb309-8"><a href="데이터-입력.html#cb309-8" tabindex="-1"></a><span class="do">## 3    28 F        3800</span></span>
+<span id="cb309-9"><a href="데이터-입력.html#cb309-9" tabindex="-1"></a><span class="do">## 4    21 F        3500</span></span>
+<span id="cb309-10"><a href="데이터-입력.html#cb309-10" tabindex="-1"></a><span class="do">## 5    31 M        3500</span></span></code></pre></div>
 <ul>
 <li>SAS 전용 데이터 파일을 CSV 파일로 전환한 후 불러오기</li>
 </ul>
@@ -663,49 +679,32 @@ RUN;</code></pre>
 <h2><span class="header-section-number">3.4</span> HTML 테이블 불러오기<a href="데이터-입력.html#html-테이블-불러오기" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>웹 페이지를 보다 보면 중요한 정보가 있는 HTML 테이블을 자주 만나게 되는데, 이 테이블에 있는 데이터를 R로 바로 불러들일 수 있다면 분석 과정에 큰 도움이 될 것이다. 문제는 웹 페이지에 있는 HTML 테이블이라는 것이 사람들에게 시각적으로 보여지는 측면이 강조되는 대상이어서 거기에 있는 정보를 ‘긁어모아’ 컴퓨터에 입력하는 것이 조금 복잡한 작업이 될 수 있다는 점이다. 그러나 패키지 <code>rvest</code>를 이용하면 비교적 간편하게 HTML 테이블의 데이터를 긁어모아 R에 입력시킬 수 있다.</p>
 <p>패키지 <code>rvest</code>에서 HTML 테이블을 불러오는데 필요한 함수는 <code>read_html()</code>과 <code>html_elements()</code>, <code>html_table()</code>이다. 함수 <code>read_html()</code>은 원하는 HTML 테이블이 있는 웹 페이지를 읽어오는 데 사용된다. HTML 테이블의 내용은 <code>&lt;table&gt;</code> 태그 사이에 존재하기 때문에 <code>&lt;table&gt;</code> 노드(node)를 찾는 것이 다음 순서인데, 이 작업은 함수 <code>html_elements()</code>로 할 수 있다. 이어서 선택된 노드의 HTML 테이블 데이터를 R로 불러오는 작업은 함수 <code>html_table()</code>로 하게 된다.</p>
-<ul>
-<li>예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기</li>
-</ul>
+<p><span class="math inline">\(\bullet\)</span> 예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기</p>
 <p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-08-19에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
 <div class="figure"><span style="display:block;" id="fig:wiki"></span>
-<img src="Figure/wiki_22_02_09_1.png" alt="예제 1에서 사용된 HTML 테이블" width="222" />
+<img src="Figure/wiki_22_02_09_1.PNG" alt="예제 1에서 사용된 HTML 테이블" width="222" />
 <p class="caption">
 그림 3.1: 예제 1에서 사용된 HTML 테이블
 </p>
 </div>
 <p>원하는 웹 페이지의 URL을 함수 <code>read_html()</code>에 입력하여 얻은 결과에서 <code>table</code> 노드를 함수 <code>html_elements()</code>로 찾아보자. 함수 <code>html_elements()</code>는 결과를 리스트 형태로 출력한다.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="데이터-입력.html#cb310-1" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
-<span id="cb310-2"><a href="데이터-입력.html#cb310-2" tabindex="-1"></a>URL <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/World_population&quot;</span></span>
-<span id="cb310-3"><a href="데이터-입력.html#cb310-3" tabindex="-1"></a>web <span class="ot">&lt;-</span> <span class="fu">read_html</span>(URL)</span>
-<span id="cb310-4"><a href="데이터-입력.html#cb310-4" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">html_elements</span>(web, <span class="st">&quot;table&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="데이터-입력.html#cb311-1" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb311-2"><a href="데이터-입력.html#cb311-2" tabindex="-1"></a>URL <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/World_population&quot;</span></span>
+<span id="cb311-3"><a href="데이터-입력.html#cb311-3" tabindex="-1"></a>web <span class="ot">&lt;-</span> <span class="fu">read_html</span>(URL)</span>
+<span id="cb311-4"><a href="데이터-입력.html#cb311-4" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">html_elements</span>(web, <span class="st">&quot;table&quot;</span>)</span></code></pre></div>
 <p>모두 29개의 <code>table</code> 노드가 발견되었고, 그 중 처음 6개의 내용을 출력해 보자.</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="데이터-입력.html#cb311-1" tabindex="-1"></a><span class="fu">length</span>(tbl)</span>
-<span id="cb311-2"><a href="데이터-입력.html#cb311-2" tabindex="-1"></a><span class="do">## [1] 29</span></span></code></pre></div>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="데이터-입력.html#cb312-1" tabindex="-1"></a><span class="fu">head</span>(tbl)</span>
-<span id="cb312-2"><a href="데이터-입력.html#cb312-2" tabindex="-1"></a><span class="do">## {xml_nodeset (6)}</span></span>
-<span id="cb312-3"><a href="데이터-입력.html#cb312-3" tabindex="-1"></a><span class="do">## [1] &lt;table class=&quot;wikitable&quot; style=&quot;text-align:center; float:right; clear:rig ...</span></span>
-<span id="cb312-4"><a href="데이터-입력.html#cb312-4" tabindex="-1"></a><span class="do">## [2] &lt;table class=&quot;wikitable&quot;&gt;\n&lt;caption&gt;Current world population and latest p ...</span></span>
-<span id="cb312-5"><a href="데이터-입력.html#cb312-5" tabindex="-1"></a><span class="do">## [3] &lt;table class=&quot;box-Notice plainlinks metadata ambox ambox-notice&quot; role=&quot;pr ...</span></span>
-<span id="cb312-6"><a href="데이터-입력.html#cb312-6" tabindex="-1"></a><span class="do">## [4] &lt;table class=&quot;wikitable sortable&quot;&gt;\n&lt;caption&gt;Population by region (2020 e ...</span></span>
-<span id="cb312-7"><a href="데이터-입력.html#cb312-7" tabindex="-1"></a><span class="do">## [5] &lt;table class=&quot;wikitable sortable&quot;&gt;&lt;tbody&gt;\n&lt;tr&gt;\n&lt;th scope=&quot;col&quot;&gt;Rank\n&lt;/ ...</span></span>
-<span id="cb312-8"><a href="데이터-입력.html#cb312-8" tabindex="-1"></a><span class="do">## [6] &lt;table class=&quot;wikitable&quot; style=&quot;font-size:90%&quot;&gt;\n&lt;caption&gt;World populatio ...</span></span></code></pre></div>
-<p>함수 <code>html_elements()</code>의 결과로 생성된 리스트 객체인 tbl의 29개 구성요소 중 우리가 원하는 HTML 테이블에 해당되는 노드를 찾아서 함수 <code>html_table()</code>에 입력하면, 해당 테이블 데이터가 R로 입력된다. 문제는 몇 번째 노드가 우리가 원하는 테이블에 관한 것인지 알기가 어렵다는 점이다. 시행착오를 거치면, 원하는 테이블이 5번째 노드에 있다는 것을 알 수 있고, 따라서 <code>html_table(tbl[5])</code>을 실행하면 테이블의 데이터를 불러올 수 있다. 그러나 HTML 테이블이 많은 웹 페이지에서는 다른 체계적인 방법이 필요할 것이다.</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="데이터-입력.html#cb313-1" tabindex="-1"></a><span class="fu">html_table</span>(tbl[<span class="dv">5</span>])</span>
-<span id="cb313-2"><a href="데이터-입력.html#cb313-2" tabindex="-1"></a><span class="do">## [[1]]</span></span>
-<span id="cb313-3"><a href="데이터-입력.html#cb313-3" tabindex="-1"></a><span class="do">## # A tibble: 10 × 6</span></span>
-<span id="cb313-4"><a href="데이터-입력.html#cb313-4" tabindex="-1"></a><span class="do">##     Rank `Country / Dependency` Population    `Percentage  of the world` Date   </span></span>
-<span id="cb313-5"><a href="데이터-입력.html#cb313-5" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;                      &lt;chr&gt;  </span></span>
-<span id="cb313-6"><a href="데이터-입력.html#cb313-6" tabindex="-1"></a><span class="do">##  1     1 India                  1,425,775,850 17.7%                      14 Apr…</span></span>
-<span id="cb313-7"><a href="데이터-입력.html#cb313-7" tabindex="-1"></a><span class="do">##  2     2 China                  1,412,600,000 17.5%                      31 Dec…</span></span>
-<span id="cb313-8"><a href="데이터-입력.html#cb313-8" tabindex="-1"></a><span class="do">##  3     3 United States          335,265,084   4.16%                      18 Aug…</span></span>
-<span id="cb313-9"><a href="데이터-입력.html#cb313-9" tabindex="-1"></a><span class="do">##  4     4 Indonesia              275,773,800   3.42%                      1 Jul …</span></span>
-<span id="cb313-10"><a href="데이터-입력.html#cb313-10" tabindex="-1"></a><span class="do">##  5     5 Pakistan               229,488,994   2.85%                      1 Jul …</span></span>
-<span id="cb313-11"><a href="데이터-입력.html#cb313-11" tabindex="-1"></a><span class="do">##  6     6 Nigeria                216,746,934   2.69%                      1 Jul …</span></span>
-<span id="cb313-12"><a href="데이터-입력.html#cb313-12" tabindex="-1"></a><span class="do">##  7     7 Brazil                 216,537,781   2.69%                      18 Aug…</span></span>
-<span id="cb313-13"><a href="데이터-입력.html#cb313-13" tabindex="-1"></a><span class="do">##  8     8 Bangladesh             168,220,000   2.09%                      1 Jul …</span></span>
-<span id="cb313-14"><a href="데이터-입력.html#cb313-14" tabindex="-1"></a><span class="do">##  9     9 Russia                 147,190,000   1.83%                      1 Oct …</span></span>
-<span id="cb313-15"><a href="데이터-입력.html#cb313-15" tabindex="-1"></a><span class="do">## 10    10 Mexico                 128,271,248   1.59%                      31 Mar…</span></span>
-<span id="cb313-16"><a href="데이터-입력.html#cb313-16" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: `Source (official or from the United Nations)` &lt;chr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="데이터-입력.html#cb312-1" tabindex="-1"></a><span class="fu">length</span>(tbl)</span>
+<span id="cb312-2"><a href="데이터-입력.html#cb312-2" tabindex="-1"></a><span class="do">## [1] 29</span></span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="데이터-입력.html#cb313-1" tabindex="-1"></a><span class="fu">head</span>(tbl)</span>
+<span id="cb313-2"><a href="데이터-입력.html#cb313-2" tabindex="-1"></a><span class="do">## {xml_nodeset (6)}</span></span>
+<span id="cb313-3"><a href="데이터-입력.html#cb313-3" tabindex="-1"></a><span class="do">## [1] &lt;table class=&quot;wikitable&quot; style=&quot;text-align:center; float:right; clear:rig ...</span></span>
+<span id="cb313-4"><a href="데이터-입력.html#cb313-4" tabindex="-1"></a><span class="do">## [2] &lt;table class=&quot;wikitable&quot;&gt;\n&lt;caption&gt;Current world population and latest p ...</span></span>
+<span id="cb313-5"><a href="데이터-입력.html#cb313-5" tabindex="-1"></a><span class="do">## [3] &lt;table class=&quot;box-Notice plainlinks metadata ambox ambox-notice&quot; role=&quot;pr ...</span></span>
+<span id="cb313-6"><a href="데이터-입력.html#cb313-6" tabindex="-1"></a><span class="do">## [4] &lt;table class=&quot;wikitable sortable&quot;&gt;\n&lt;caption&gt;Population by region (2020 e ...</span></span>
+<span id="cb313-7"><a href="데이터-입력.html#cb313-7" tabindex="-1"></a><span class="do">## [5] &lt;table class=&quot;wikitable sortable&quot;&gt;&lt;tbody&gt;\n&lt;tr&gt;\n&lt;th scope=&quot;col&quot;&gt;Rank\n&lt;/ ...</span></span>
+<span id="cb313-8"><a href="데이터-입력.html#cb313-8" tabindex="-1"></a><span class="do">## [6] &lt;table class=&quot;wikitable&quot; style=&quot;font-size:90%&quot;&gt;\n&lt;caption&gt;World populatio ...</span></span></code></pre></div>
+<p>함수 <code>html_elements()</code>의 결과로 생성된 리스트 객체인 tbl의 29개 구성요소 중 우리가 원하는 HTML 테이블에 해당되는 노드를 찾아서 함수 <code>html_table()</code>에 입력하면, 해당 테이블 데이터가 R로 입력된다. 문제는 몇 번째 노드가 우리가 원하는 테이블에 관한 것인지 알기가 어렵다는 점이다. 시행착오를 거치면, 원하는 테이블이 2023년 8월에는 8번째 노드에 있다는 것을 알 수 있고, 따라서 <code>html_table(tbl[8])</code>을 실행하면 테이블의 데이터를 불러올 수 있다.
+그러나 HTML 테이블이 많은 웹 페이지에서는 다른 체계적인 방법이 필요할 것이다.</p>
 <p>웹 페이지에서 HTML 테이블을 체계적으로 찾는 방법 중 하나는 해당 테이블 노드의 XPath를 알아내는 것이다. XPath는 웹 문서에서 원하는 태그나 속성 등을 쉽게 찾기 위해 개발된 것으로 윈도우의 파일 경로와 비슷한 개념이라고 하겠다.</p>
 <p>크롬 웹 브라우저를 대상으로 웹 페이지에서 원하는 HTML 테이블의 XPath를 알아내는 방법은 다음과 같다.</p>
 <ol style="list-style-type: decimal">
@@ -721,60 +720,51 @@ RUN;</code></pre>
 그림 3.2: 예제 1의 HTML 테이블 XPath 복사
 </p>
 </div>
-<p>원하는 HTML 테이블의 XPath의 값은 <code>//*[@id="mw-content-text"]/div[1]/table[5]</code>이며, 이것을 함수 <code>html_elements()</code>안에 옵션 <code>xpath</code>에 지정하면 된다.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="데이터-입력.html#cb314-1" tabindex="-1"></a>X_path <span class="ot">&lt;-</span> <span class="st">&#39;//*[@id=&quot;mw-content-text&quot;]/div[1]/table[5]&#39;</span></span>
+<p>원하는 HTML 테이블의 XPath의 값은 2023년 8월에 확인한 것으로는 <code>//*[@id="mw-content-text"]/div[1]/table[7]</code>이며, 이것을 함수 <code>html_elements()</code>안에 옵션 <code>xpath</code>에 지정하면 된다.</p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="데이터-입력.html#cb314-1" tabindex="-1"></a>X_path <span class="ot">&lt;-</span> <span class="st">&#39;//*[@id=&quot;mw-content-text&quot;]/div[1]/table[7]&#39;</span></span>
 <span id="cb314-2"><a href="데이터-입력.html#cb314-2" tabindex="-1"></a>node_1 <span class="ot">&lt;-</span> <span class="fu">html_elements</span>(web, <span class="at">xpath =</span> X_path)</span>
 <span id="cb314-3"><a href="데이터-입력.html#cb314-3" tabindex="-1"></a>tbl_1 <span class="ot">&lt;-</span> <span class="fu">html_table</span>(node_1)</span></code></pre></div>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="데이터-입력.html#cb315-1" tabindex="-1"></a>tbl_1</span>
 <span id="cb315-2"><a href="데이터-입력.html#cb315-2" tabindex="-1"></a><span class="do">## [[1]]</span></span>
-<span id="cb315-3"><a href="데이터-입력.html#cb315-3" tabindex="-1"></a><span class="do">## # A tibble: 10 × 6</span></span>
-<span id="cb315-4"><a href="데이터-입력.html#cb315-4" tabindex="-1"></a><span class="do">##     Rank `Country / Dependency` Population    `Percentage  of the world` Date   </span></span>
-<span id="cb315-5"><a href="데이터-입력.html#cb315-5" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;                      &lt;chr&gt;  </span></span>
-<span id="cb315-6"><a href="데이터-입력.html#cb315-6" tabindex="-1"></a><span class="do">##  1     1 India                  1,425,775,850 17.7%                      14 Apr…</span></span>
-<span id="cb315-7"><a href="데이터-입력.html#cb315-7" tabindex="-1"></a><span class="do">##  2     2 China                  1,412,600,000 17.5%                      31 Dec…</span></span>
-<span id="cb315-8"><a href="데이터-입력.html#cb315-8" tabindex="-1"></a><span class="do">##  3     3 United States          335,265,084   4.16%                      18 Aug…</span></span>
-<span id="cb315-9"><a href="데이터-입력.html#cb315-9" tabindex="-1"></a><span class="do">##  4     4 Indonesia              275,773,800   3.42%                      1 Jul …</span></span>
-<span id="cb315-10"><a href="데이터-입력.html#cb315-10" tabindex="-1"></a><span class="do">##  5     5 Pakistan               229,488,994   2.85%                      1 Jul …</span></span>
-<span id="cb315-11"><a href="데이터-입력.html#cb315-11" tabindex="-1"></a><span class="do">##  6     6 Nigeria                216,746,934   2.69%                      1 Jul …</span></span>
-<span id="cb315-12"><a href="데이터-입력.html#cb315-12" tabindex="-1"></a><span class="do">##  7     7 Brazil                 216,537,781   2.69%                      18 Aug…</span></span>
-<span id="cb315-13"><a href="데이터-입력.html#cb315-13" tabindex="-1"></a><span class="do">##  8     8 Bangladesh             168,220,000   2.09%                      1 Jul …</span></span>
-<span id="cb315-14"><a href="데이터-입력.html#cb315-14" tabindex="-1"></a><span class="do">##  9     9 Russia                 147,190,000   1.83%                      1 Oct …</span></span>
-<span id="cb315-15"><a href="데이터-입력.html#cb315-15" tabindex="-1"></a><span class="do">## 10    10 Mexico                 128,271,248   1.59%                      31 Mar…</span></span>
-<span id="cb315-16"><a href="데이터-입력.html#cb315-16" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: `Source (official or from the United Nations)` &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb315-3"><a href="데이터-입력.html#cb315-3" tabindex="-1"></a><span class="do">## # A tibble: 10 × 5</span></span>
+<span id="cb315-4"><a href="데이터-입력.html#cb315-4" tabindex="-1"></a><span class="do">##     Rank Country                Population    `Area(km2)` `Density(pop/km2)`</span></span>
+<span id="cb315-5"><a href="데이터-입력.html#cb315-5" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;             </span></span>
+<span id="cb315-6"><a href="데이터-입력.html#cb315-6" tabindex="-1"></a><span class="do">##  1     1 Singapore              5,921,231     719         8,235             </span></span>
+<span id="cb315-7"><a href="데이터-입력.html#cb315-7" tabindex="-1"></a><span class="do">##  2     2 Bangladesh             165,650,475   148,460     1,116             </span></span>
+<span id="cb315-8"><a href="데이터-입력.html#cb315-8" tabindex="-1"></a><span class="do">##  3     3 Palestine[note 3][103] 5,223,000     6,025       867               </span></span>
+<span id="cb315-9"><a href="데이터-입력.html#cb315-9" tabindex="-1"></a><span class="do">##  4     4 Taiwan[note 4]         23,580,712    35,980      655               </span></span>
+<span id="cb315-10"><a href="데이터-입력.html#cb315-10" tabindex="-1"></a><span class="do">##  5     5 South Korea            51,844,834    99,720      520               </span></span>
+<span id="cb315-11"><a href="데이터-입력.html#cb315-11" tabindex="-1"></a><span class="do">##  6     6 Lebanon                5,296,814     10,400      509               </span></span>
+<span id="cb315-12"><a href="데이터-입력.html#cb315-12" tabindex="-1"></a><span class="do">##  7     7 Rwanda                 13,173,730    26,338      500               </span></span>
+<span id="cb315-13"><a href="데이터-입력.html#cb315-13" tabindex="-1"></a><span class="do">##  8     8 Burundi                12,696,478    27,830      456               </span></span>
+<span id="cb315-14"><a href="데이터-입력.html#cb315-14" tabindex="-1"></a><span class="do">##  9     9 India                  1,389,637,446 3,287,263   423               </span></span>
+<span id="cb315-15"><a href="데이터-입력.html#cb315-15" tabindex="-1"></a><span class="do">## 10    10 Netherlands            17,400,824    41,543      419</span></span></code></pre></div>
 <p>함수 <code>html_table()</code>로 생성된 객체 <code>tbl_1</code>은 하나의 데이터 프레임으로 구성된 리스트이다. 변수 이름을 수정하고 입력된 자료를 출력해 보자..</p>
 <div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="데이터-입력.html#cb316-1" tabindex="-1"></a>top_pop <span class="ot">&lt;-</span> tbl_1[[<span class="dv">1</span>]]</span>
-<span id="cb316-2"><a href="데이터-입력.html#cb316-2" tabindex="-1"></a><span class="fu">names</span>(top_pop) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;rank&quot;</span>, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;area&quot;</span>, <span class="st">&quot;density&quot;</span>)</span>
-<span id="cb316-3"><a href="데이터-입력.html#cb316-3" tabindex="-1"></a><span class="do">## Warning: The `value` argument of `names&lt;-` must have the same length as `x` as of tibble 3.0.0.</span></span>
-<span id="cb316-4"><a href="데이터-입력.html#cb316-4" tabindex="-1"></a><span class="do">## This warning is displayed once every 8 hours.</span></span>
-<span id="cb316-5"><a href="데이터-입력.html#cb316-5" tabindex="-1"></a><span class="do">## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</span></span>
-<span id="cb316-6"><a href="데이터-입력.html#cb316-6" tabindex="-1"></a><span class="do">## Warning: The `value` argument of `names&lt;-` can&#39;t be empty as of tibble 3.0.0.</span></span>
-<span id="cb316-7"><a href="데이터-입력.html#cb316-7" tabindex="-1"></a><span class="do">## This warning is displayed once every 8 hours.</span></span>
-<span id="cb316-8"><a href="데이터-입력.html#cb316-8" tabindex="-1"></a><span class="do">## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</span></span></code></pre></div>
+<span id="cb316-2"><a href="데이터-입력.html#cb316-2" tabindex="-1"></a><span class="fu">names</span>(top_pop) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;rank&quot;</span>, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;area&quot;</span>, <span class="st">&quot;density&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="데이터-입력.html#cb317-1" tabindex="-1"></a>top_pop</span>
-<span id="cb317-2"><a href="데이터-입력.html#cb317-2" tabindex="-1"></a><span class="do">## # A tibble: 10 × 6</span></span>
-<span id="cb317-3"><a href="데이터-입력.html#cb317-3" tabindex="-1"></a><span class="do">##     rank country       pop           area  density     ``                       </span></span>
-<span id="cb317-4"><a href="데이터-입력.html#cb317-4" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;                    </span></span>
-<span id="cb317-5"><a href="데이터-입력.html#cb317-5" tabindex="-1"></a><span class="do">##  1     1 India         1,425,775,850 17.7% 14 Apr 2023 &quot;UN projection[92]&quot;      </span></span>
-<span id="cb317-6"><a href="데이터-입력.html#cb317-6" tabindex="-1"></a><span class="do">##  2     2 China         1,412,600,000 17.5% 31 Dec 2021 &quot;National annual estimat…</span></span>
-<span id="cb317-7"><a href="데이터-입력.html#cb317-7" tabindex="-1"></a><span class="do">##  3     3 United States 335,265,084   4.16% 18 Aug 2023 &quot;National population clo…</span></span>
-<span id="cb317-8"><a href="데이터-입력.html#cb317-8" tabindex="-1"></a><span class="do">##  4     4 Indonesia     275,773,800   3.42% 1 Jul 2022  &quot;National annual estimat…</span></span>
-<span id="cb317-9"><a href="데이터-입력.html#cb317-9" tabindex="-1"></a><span class="do">##  5     5 Pakistan      229,488,994   2.85% 1 Jul 2022  &quot;UN projection[96]&quot;      </span></span>
-<span id="cb317-10"><a href="데이터-입력.html#cb317-10" tabindex="-1"></a><span class="do">##  6     6 Nigeria       216,746,934   2.69% 1 Jul 2022  &quot;UN projection[96]&quot;      </span></span>
-<span id="cb317-11"><a href="데이터-입력.html#cb317-11" tabindex="-1"></a><span class="do">##  7     7 Brazil        216,537,781   2.69% 18 Aug 2023 &quot;National population clo…</span></span>
-<span id="cb317-12"><a href="데이터-입력.html#cb317-12" tabindex="-1"></a><span class="do">##  8     8 Bangladesh    168,220,000   2.09% 1 Jul 2020  &quot;Annual Population Estim…</span></span>
-<span id="cb317-13"><a href="데이터-입력.html#cb317-13" tabindex="-1"></a><span class="do">##  9     9 Russia        147,190,000   1.83% 1 Oct 2021  &quot;2021 preliminary census…</span></span>
-<span id="cb317-14"><a href="데이터-입력.html#cb317-14" tabindex="-1"></a><span class="do">## 10    10 Mexico        128,271,248   1.59% 31 Mar 2022 &quot;&quot;</span></span></code></pre></div>
-<p>변수 <code>pop</code>, <code>area</code>, <code>density</code>이 숫자가 아닌 문자형 벡터로 입력되었음을 알 수 있다. 이것은 숫자에 콤마가 함께 입력되어 있기 때문인데, 이제 변수 <code>pop</code>을 숫자형으로 변환하여 평균을 구해 보자. 숫자형으로 변환하는 방법은 <code>pop</code>에 포함된 콤마를 함수 <code>gsub()</code>를 사용하여 제거하고, 이어서 함수 <code>as.numeric()</code>을 사용하여 유형을 숫자형으로 변환하면 된다.</p>
+<span id="cb317-2"><a href="데이터-입력.html#cb317-2" tabindex="-1"></a><span class="do">## # A tibble: 10 × 5</span></span>
+<span id="cb317-3"><a href="데이터-입력.html#cb317-3" tabindex="-1"></a><span class="do">##     rank country                pop           area      density</span></span>
+<span id="cb317-4"><a href="데이터-입력.html#cb317-4" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;  </span></span>
+<span id="cb317-5"><a href="데이터-입력.html#cb317-5" tabindex="-1"></a><span class="do">##  1     1 Singapore              5,921,231     719       8,235  </span></span>
+<span id="cb317-6"><a href="데이터-입력.html#cb317-6" tabindex="-1"></a><span class="do">##  2     2 Bangladesh             165,650,475   148,460   1,116  </span></span>
+<span id="cb317-7"><a href="데이터-입력.html#cb317-7" tabindex="-1"></a><span class="do">##  3     3 Palestine[note 3][103] 5,223,000     6,025     867    </span></span>
+<span id="cb317-8"><a href="데이터-입력.html#cb317-8" tabindex="-1"></a><span class="do">##  4     4 Taiwan[note 4]         23,580,712    35,980    655    </span></span>
+<span id="cb317-9"><a href="데이터-입력.html#cb317-9" tabindex="-1"></a><span class="do">##  5     5 South Korea            51,844,834    99,720    520    </span></span>
+<span id="cb317-10"><a href="데이터-입력.html#cb317-10" tabindex="-1"></a><span class="do">##  6     6 Lebanon                5,296,814     10,400    509    </span></span>
+<span id="cb317-11"><a href="데이터-입력.html#cb317-11" tabindex="-1"></a><span class="do">##  7     7 Rwanda                 13,173,730    26,338    500    </span></span>
+<span id="cb317-12"><a href="데이터-입력.html#cb317-12" tabindex="-1"></a><span class="do">##  8     8 Burundi                12,696,478    27,830    456    </span></span>
+<span id="cb317-13"><a href="데이터-입력.html#cb317-13" tabindex="-1"></a><span class="do">##  9     9 India                  1,389,637,446 3,287,263 423    </span></span>
+<span id="cb317-14"><a href="데이터-입력.html#cb317-14" tabindex="-1"></a><span class="do">## 10    10 Netherlands            17,400,824    41,543    419</span></span></code></pre></div>
+<p>변수 <code>pop</code>, <code>area</code>, <code>density</code>이 숫자가 아닌 문자형 벡터로 입력되었음을 알 수 있다. 이것은 숫자에 콤마가 함께 입력되어 있기 때문인데, 이제 변수 <code>pop</code>을 숫자형으로 변환하여 평균을 구해 보자. 숫자형으로 변환하는 방법은 <code>pop</code>에 포함된 콤마를 <a href="data-structure.html#data-structure">2</a>장에서 살펴본 함수 <code>gsub()</code>를 사용하여 제거하고, 이어서 함수 <code>as.numeric()</code>을 사용하여 유형을 숫자형으로 변환하면 된다.</p>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="데이터-입력.html#cb318-1" tabindex="-1"></a>pop <span class="ot">&lt;-</span> top_pop<span class="sc">$</span>pop</span>
 <span id="cb318-2"><a href="데이터-입력.html#cb318-2" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;&quot;</span>, pop)</span></code></pre></div>
 <div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="데이터-입력.html#cb319-1" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">as.numeric</span>(pop))</span>
-<span id="cb319-2"><a href="데이터-입력.html#cb319-2" tabindex="-1"></a><span class="do">## [1] 455586969</span></span></code></pre></div>
-<ul>
-<li>예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기</li>
-</ul>
+<span id="cb319-2"><a href="데이터-입력.html#cb319-2" tabindex="-1"></a><span class="do">## [1] 169042554</span></span></code></pre></div>
+<p><span class="math inline">\(\bullet\)</span> 예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기</p>
 <p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-08-19이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
 <div class="figure"><span style="display:block;" id="fig:KBO"></span>
-<img src="Figure/KBO.png" alt="예제 2에서 사용된 HTML 테이블" width="566" />
+<img src="Figure/KBO.PNG" alt="예제 2에서 사용된 HTML 테이블" width="566" />
 <p class="caption">
 그림 3.3: 예제 2에서 사용된 HTML 테이블
 </p>

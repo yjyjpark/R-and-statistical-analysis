@@ -17,12 +17,18 @@
 
 **1)**  데이터 파일의 첫 줄에 변수 이름이 입력되어 있는 경우
 
-예를 들어 파일 `data2_1.txt`에 세 변수의 자료가 다음과 같이 있다고 하자. 이런 경우에는 함수 `read_table()`에 파일의 위치와 함께 파일의 이름만 입력하면 된다.
+예를 들어 파일 `data2_1.txt`에 세 변수의 자료가 다음과 같이 있다고 하자. 
 
 ![data2_1.txt](Figure/data2_1.png "data2_1.txt"){#data2-1}
 
+이런 경우에는 함수 `read_table()`에 파일의 위치와 함께 파일의 이름만 입력하면 된다.
+
 ```{r}
 library(tidyverse)
+```
+
+
+```{r, message=TRUE}
 read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_1.txt")
 ```
 
@@ -55,9 +61,10 @@ read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysi
 
 **3)**  데이터 파일에 주석이 입력된 경우
 
-데이터 파일에 주석이 있는 경우, 해당 행을 무시하기 위해서는 주석이 시작됨을 나타내는 기호를 입력 요소 `comment`에 지정하면 된다. 만일 기호 `#`을 주석 기호로 사용했다면 `comment = "#"`을 입력하면 된다. 또한 만일 주석이 데이터 파일의 처음 몇 개 행에 입력되어 있다면, 입력 요소 `skip`을 사용하여 해당되는 처음 몇 개 행을 읽지 않고 그냥 넘기는 방법을 사용할 수도 있다. 예를 들어 파일 `data2_3.txt`의 처음 세 줄이 다음과 같이 `#` 기호로 시작되는 주석이 입력되어 있다고 하자. 이 파일을 두 가지 방법을 각각 사용하여 불러와 보자.
+데이터 파일에 주석이 있는 경우, 해당 행을 무시하기 위해서는 주석이 시작됨을 나타내는 기호를 입력 요소 `comment`에 지정하면 된다. 만일 기호 `#`을 주석 기호로 사용했다면 `comment = "#"`을 입력하면 된다. 또한 만일 주석이 데이터 파일의 처음 몇 개 행에 입력되어 있다면, 입력 요소 `skip`을 사용하여 해당되는 처음 몇 개 행을 읽지 않고 그냥 넘기는 방법을 사용할 수도 있다. 
 
 ![data2_3.txt](Figure/data2_3.png "data2_3.txt"){#data2-3}
+파일 `data2_3.txt`의 처음 세 줄이 `#` 기호로 시작되는 주석이 입력되어 있다. 이 파일을 두 가지 방법을 사용해서 불러와 보자.
 
 ```{r}
 read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_3.txt",
@@ -71,11 +78,11 @@ read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysi
 
 **4)**  데이터 파일에 결측값이 `NA`가 아닌 다른 기호로 입력된 경우
 
-데이터에 결측값이 있는 것은 당연한 것으로 봐야 한다. R에서는 결측값을 `NA`로 표시하기 때문에 데이터에 결측값이 있다면 해당되는 자리에 `NA`를 입력해야 한다. 그러나 경우에 따라서 결측값이 다른 숫자나 문자 혹은 기호로 데이터 파일에 입력될 수도 있는데, 예를 들어 SAS의 경우 결측값은 점(.)으로 표시한다. 이렇듯 다른 기호로 결측값이 입력된 경우 에는 옵션 `na`에 해당 기호를 지정해 주어야 한다. 만일 결측값이 점(.)으로만 입력되어 있다면 `na = "."`으로 지정하면 되지만 `NA`와 점(.)이 모두 결측값을 나타내는 기호로 사용되었다면 `na = c(".", "NA")`로 두 기호를 모두 지정해야 한다. 예를 들어 `data2_4.txt`에 다음과 같이 `NA`와 점(.)이 모두 결측값을 나타내는 기호로 사용되어 있다고 하자. 이 파일을 옵션 `na`를 사용해서 불러 보자.
+데이터에 결측값이 있는 것은 당연한 것으로 봐야 한다. R에서는 결측값을 `NA`로 표시하기 때문에 데이터에 결측값이 있다면 해당되는 자리에 `NA`를 입력해야 한다. 그러나 경우에 따라서 결측값이 다른 숫자나 문자 혹은 기호로 데이터 파일에 입력될 수도 있는데, 예를 들어 SAS의 경우 결측값은 점(.)으로 표시한다. 이렇듯 다른 기호로 결측값이 입력된 경우 에는 옵션 `na`에 해당 기호를 지정해 주어야 한다. 만일 결측값이 점(.)으로만 입력되어 있다면 `na = "."`으로 지정하면 되지만 `NA`와 점(.)이 모두 결측값을 나타내는 기호로 사용되었다면 `na = c(".", "NA")`로 두 기호를 모두 지정해야 한다. 
 
 ![data2_4.txt](Figure/data2_4.png "data2_4.txt"){#data2-4}
 
-`na = "."`로 점(.)만을 결측값으로 지정하면, `income` 변수의 네 번째 자료인 `NA`는 결측값이 아닌 문자형 자료로 인식된다. 따라서 변수 `income`의 유형이 숫자형이 아닌 문자형이 된 것이다.
+파일 `data2_4.txt`에는 `NA`와 점(.)이 모두 결측값을 나타내는 기호로 사용되어 있다. 이 파일을 옵션 `na`를 사용해서 불러 보자. `na = "."`로 점(.)만을 결측값으로 지정하면, `income` 변수의 네 번째 자료인 `NA`는 결측값이 아닌 문자형 자료로 인식된다. 따라서 변수 `income`의 유형은 숫자형이 아닌 문자형이 된다.
 
 ```{r}
 read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_4.txt", 
@@ -97,9 +104,11 @@ read_table("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysi
 
 ### 함수 `read_csv()`로 CSV 데이터 파일 불러오기
 
-CSV(Comma Separated Values) 파일이란 각 자료들이 콤마로 구분된 형식의 데이터 파일을 의미한다. Excel을 포함하는 많은 소프트웨어들이 CSV 형식의 데이터 파일을 읽어 올 수도 있고 작업결과를 CSV 형식으로 저장할 수도 있기 때문에 자주 사용되는 형식의 데이터 파일이라고 하겠다. 예들 들어 파일 `data3_1.txt`에 자료들이 다음과 같이 콤마로 구분되어 있고, 첫 줄에는 변수 이름이 입력되어 있다고 하자. 이 경우에는 `read_csv()`에 파일의 위치를 포함한 이름을 입력하면 파일을 불러올 수 있다.
+CSV(Comma Separated Values) 파일이란 각 자료들이 콤마로 구분된 형식의 데이터 파일을 의미한다. Excel을 포함하는 많은 소프트웨어들이 CSV 형식의 데이터 파일을 읽어 올 수도 있고 작업결과를 CSV 형식으로 저장할 수도 있기 때문에 자주 사용되는 형식의 데이터 파일이라고 하겠다. 
 
 ![data3_1.txt](Figure/data3_1.png "data3_1.txt"){#data3-1}
+
+파일 `data3_1.txt`에는 자료들이 콤마로 구분되어 있고, 첫 줄에는 변수 이름이 입력되어 있다고 하자. 이 경우에는 `read_csv()`에 파일의 위치를 포함한 이름을 입력하면 파일을 불러올 수 있다.
 
 ```{r}
 read_csv("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_1.txt")
@@ -115,14 +124,15 @@ R에서 변수 이름은 반드시 문자로 시작해야 하며, 중간에 빈�
 
 이제 각 변수의 유형을 스스로 파악하게 해 보자.
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, message=TRUE}
 read_csv("https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data3_2.txt", 
          col_names = FALSE, 
          comment = "#", 
          na = c(".", "NA"))
 ```
 
-위 실행결과에서 자세하게 살펴볼 두 가지 중요한 사항이 있다. 첫 번째 사항은 CSV 파일에서는 자료를 입력하지 않고 빈칸으로 남겨두면 결측값으로 자동 처리된다는 것이다. 이것은 빈칸으로 남겨져 있는 변수 `X1`의 세 번째 자료가 `NA`로 처리된 것으로 알 수 있다. 각 자료가 콤마로 구분되어 있다는 것은 곧 각 자료의 입력 영역이 확보되어 있다는 것을 의미하기 때문에 빈칸으로 남겨진 영역을 결측값으로 자연스럽게 처리할 수 있는 것이다. 하지만 결측값을 빈칸으로 그냥 남겨두는 것은 좋은 작업 방식은 아니라고 할 수 있다.
+위 실행결과에서 자세하게 살펴볼 두 가지 중요한 사항이 있다. 첫 번째 사항은 CSV 파일에서는 자료를 입력하지 않고 빈칸으로 남겨두면 결측값으로 자동 처리된다는 것이다. 이것은 빈칸으로 남겨져 있는 변수 `X1`의 세 번째 자료가 `NA`로 처리된 것으로 알 수 있다. 각 자료가 콤마로 구분되어 있다는 것은 곧 각 자료의 입력 영역이 확보되어 있다는 것을 의미하기 때문에 빈칸으로 남겨진 영역을 결측값으로 자연스럽게 처리할 수 있는 것이다. 
+하지만 결측값을 빈칸으로 그냥 남겨두는 것은 좋은 작업 방식은 아니라고 할 수 있으며, 문제가 있을 수 있다는 경고 문구가 출력된다. 
 
 두 번째 사항은 변수 유형 파악에 오류가 발생할 수도 있으니 반드시 결과를 확인해야 한다는 것이다. 위 실행 결과에서 문자형 변수 `X2`의 유형이 논리형으로 파악됐는데, 이것은 변수 `X2`의 자료가 `NA`와 `F`로만 이루어져 있어서 `F`를 `FALSE`로 인식했기 때문이다. 이런 경우에는 변수 유형을 사용자가 직접 지정해야 한다.
 
@@ -250,12 +260,12 @@ RUN;
 
 패키지 `rvest`에서 HTML 테이블을 불러오는데 필요한 함수는 `read_html()`과 `html_elements()`, `html_table()`이다. 함수 `read_html()`은 원하는 HTML 테이블이 있는 웹 페이지를 읽어오는 데 사용된다. HTML 테이블의 내용은 `<table>` 태그 사이에 존재하기 때문에 `<table>` 노드(node)를 찾는 것이 다음 순서인데, 이 작업은 함수 `html_elements()`로 할 수 있다. 이어서 선택된 노드의 HTML 테이블 데이터를 R로 불러오는 작업은 함수 `html_table()`로 하게 된다.
 
--   예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기
+$\bullet$  예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기
 
 그림 \@ref(fig:wiki)은 [Wikipedia](https://en.wikipedia.org/wiki)에서 "World population"을 검색하면 열리는 웹 페이지에 있는 "10 most densely populated countries"라는 제목의 HTML 테이블을 보여주고 있다. 검색은 `r Sys.Date()`에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.
 
 ```{r wiki, fig.cap='예제 1에서 사용된 HTML 테이블', echo=FALSE}
-knitr::include_graphics("Figure/wiki_22_02_09_1.png")
+knitr::include_graphics("Figure/wiki_22_02_09_1.PNG")
 
 ```
 
@@ -278,11 +288,8 @@ length(tbl)
 head(tbl)
 ```
 
-함수 `html_elements()`의 결과로 생성된 리스트 객체인 tbl의 `r length(tbl)`개 구성요소 중 우리가 원하는 HTML 테이블에 해당되는 노드를 찾아서 함수 `html_table()`에 입력하면, 해당 테이블 데이터가 R로 입력된다. 문제는 몇 번째 노드가 우리가 원하는 테이블에 관한 것인지 알기가 어렵다는 점이다. 시행착오를 거치면, 원하는 테이블이 5번째 노드에 있다는 것을 알 수 있고, 따라서 `html_table(tbl[5])`을 실행하면 테이블의 데이터를 불러올 수 있다. 그러나 HTML 테이블이 많은 웹 페이지에서는 다른 체계적인 방법이 필요할 것이다.
-
-```{r}
-html_table(tbl[5])
-```
+함수 `html_elements()`의 결과로 생성된 리스트 객체인 tbl의 `r length(tbl)`개 구성요소 중 우리가 원하는 HTML 테이블에 해당되는 노드를 찾아서 함수 `html_table()`에 입력하면, 해당 테이블 데이터가 R로 입력된다. 문제는 몇 번째 노드가 우리가 원하는 테이블에 관한 것인지 알기가 어렵다는 점이다. 시행착오를 거치면, 원하는 테이블이 2023년 8월에는 8번째 노드에 있다는 것을 알 수 있고, 따라서 `html_table(tbl[8])`을 실행하면 테이블의 데이터를 불러올 수 있다. 
+그러나 HTML 테이블이 많은 웹 페이지에서는 다른 체계적인 방법이 필요할 것이다.
 
 웹 페이지에서 HTML 테이블을 체계적으로 찾는 방법 중 하나는 해당 테이블 노드의 XPath를 알아내는 것이다. XPath는 웹 문서에서 원하는 태그나 속성 등을 쉽게 찾기 위해 개발된 것으로 윈도우의 파일 경로와 비슷한 개념이라고 하겠다.
 
@@ -298,10 +305,10 @@ html_table(tbl[5])
 knitr::include_graphics("Figure/wiki_22_02_09_2.png")
 ```
 
-원하는 HTML 테이블의 XPath의 값은 `//*[@id="mw-content-text"]/div[1]/table[5]`이며, 이것을 함수 `html_elements()`안에 옵션 `xpath`에 지정하면 된다.
+원하는 HTML 테이블의 XPath의 값은 2023년 8월에 확인한 것으로는 `//*[@id="mw-content-text"]/div[1]/table[7]`이며, 이것을 함수 `html_elements()`안에 옵션 `xpath`에 지정하면 된다.
 
 ```{r}
-X_path <- '//*[@id="mw-content-text"]/div[1]/table[5]'
+X_path <- '//*[@id="mw-content-text"]/div[1]/table[7]'
 node_1 <- html_elements(web, xpath = X_path)
 tbl_1 <- html_table(node_1)
 ```
@@ -322,7 +329,7 @@ top_pop
 ```
 
 
-변수 `pop`, `area`, `density`이 숫자가 아닌 문자형 벡터로 입력되었음을 알 수 있다. 이것은 숫자에 콤마가 함께 입력되어 있기 때문인데, 이제 변수 `pop`을 숫자형으로 변환하여 평균을 구해 보자. 숫자형으로 변환하는 방법은 `pop`에 포함된 콤마를 함수 `gsub()`를 사용하여 제거하고, 이어서 함수 `as.numeric()`을 사용하여 유형을 숫자형으로 변환하면 된다.
+변수 `pop`, `area`, `density`이 숫자가 아닌 문자형 벡터로 입력되었음을 알 수 있다. 이것은 숫자에 콤마가 함께 입력되어 있기 때문인데, 이제 변수 `pop`을 숫자형으로 변환하여 평균을 구해 보자. 숫자형으로 변환하는 방법은 `pop`에 포함된 콤마를 \@ref(data-structure)장에서 살펴본 함수 `gsub()`를 사용하여 제거하고, 이어서 함수 `as.numeric()`을 사용하여 유형을 숫자형으로 변환하면 된다.
 
 ```{r}
 pop <- top_pop$pop
@@ -334,12 +341,12 @@ mean(as.numeric(pop))
 ```
 
 
--   예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기
+$\bullet$ 예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기
 
 [KBO 홈페이지의 기록실](https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx)에 있는 자료를 불러와 보자. 자료를 불러온 시점은 `r Sys.Date()`이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 \@ref(fig:KBO)에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.
 
 ```{r KBO, fig.cap='예제 2에서 사용된 HTML 테이블', echo=FALSE}
-knitr::include_graphics("Figure/KBO.png")
+knitr::include_graphics("Figure/KBO.PNG")
 ```
 
 R 버전 4.2.0부터 한글 인코딩이 UTF-8 방식으로 되어 있다면, locale 조정 없이 바로 불러올 수 있다.   

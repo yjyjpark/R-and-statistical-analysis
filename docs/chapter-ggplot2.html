@@ -1616,8 +1616,7 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <li>결측값이 있는 변수만을 대상으로 자료에 포함된 결측값의 개수와 결측값을 제외한 평균값을 각각 계산해서 다음과 같이 출력해 보자.</li>
 </ul>
 <pre><code>## Warning: There was 1 warning in `summarise()`.
-## ℹ In argument: `across(.fns = list(Mean = ~mean(.x, na.rm = TRUE), Num.NA =
-##   ~sum(is.na(.x))))`.
+## ℹ In argument: `across(.fns = list(Mean = ~mean(.x, na.rm = TRUE), Num.NA = ~sum(is.na(.x))))`.
 ## Caused by warning:
 ## ! Using `across()` without supplying `.cols` was deprecated in dplyr 1.1.0.
 ## ℹ Please supply `.cols` instead.
