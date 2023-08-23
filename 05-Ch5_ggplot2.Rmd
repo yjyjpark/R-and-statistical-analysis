@@ -1482,8 +1482,8 @@ cars_99 |> count(manufacturer, sort = TRUE) |>
 ```
 
 -  두 연속형 변수 `displ`과 `hwy`의 관계에서 범주형 변수 `cyl`이 미치는 영향을 확인하기 위한 그래프를 작성해 보자. 변수 `hwy`에는 반올림 처리가 된 값을 입력했기 때문에 산점도에서 점이 겹쳐지는 문제를 해결해야 한다. 
-
-1)   `cars_93`에 대해서는 `cyl`의 그룹별 두 연속형 변수의 산점도를 각각 작성한다.
+`cars_93`에 대해서는 `cyl`의 그룹별 두 연속형 변수의 산점도를 그림 \@ref(fig:ch4-ex4-1)과 같이 작성한다.
+또한 `cars_99`에 대해서는 두 연속형 변수의 산점도 점 모양과 색을 `cyl`의 값에 다르게 해서 그림 \@ref(fig:ch4-ex4-2)과 같이 작성한다.
 
 ```{r ch4-ex4-1, fig.cap="`cars_93`의 세 변수 관계 그래프", echo=FALSE}
 cars_93 |> 
@@ -1491,8 +1491,6 @@ cars_93 |>
   geom_jitter() +
   facet_wrap(vars(cyl)) + theme_bw()
 ```
-
-2)   `cars_99`에 대해서는 두 연속형 변수의 산점도 점 모양과 색을 `cyl`의 값에 다르게 작성
 
 ```{r ch4-ex4-2, fig.cap="`cars_99`의 세 변수 관계 그래프", echo=FALSE}
 cars_99 |> 
@@ -1546,18 +1544,21 @@ tbl <- html_elements(web, xpath = Xpath) |>
 export <- tbl[[1]] |> 
   rename(rank = 1, item = 2, value = 3) |> 
   mutate(value = gsub(",", "", value) |> as.numeric()) |> 
-  mutate(prop = value / sum(value)) |> 
-  print(n = 9)
+  mutate(prop = value / sum(value))
+```
+
+```{r}
+export
 ```
 
 
 - 각 품목별 수출액을 다음과 같은 형태의 막대그래프로 표현해 보자. 단, 범주 `OTHERS`는 수출액 비율이 2% 미만인 품목, 즉 변수 `prop`의 값이 0.02 미만인 품목을 통합한 범주이다. 
 
-```{r ch4-ex5-1, fig.cap="대한민국 주요 수출품목 및 수출액 막대그래프", fig.width=7, fig.height=5}
+```{r ch4-ex5-1, fig.cap="대한민국 주요 수출품목 및 수출액 막대그래프", fig.width=7, fig.height=5, echo=FALSE}
 export |> 
   mutate(item = if_else(prop >= 0.02, item, "OTHERS")) |> 
   ggplot(aes(y = reorder(item, value), x = value)) +
-    geom_bar(stat = "identity") +
+    geom_bar(stat = "identity", aes(fill = item), show.legend = FALSE) +
   labs(y = NULL, x = NULL) + theme_bw()
 ```
 

@@ -10,13 +10,13 @@ R에 입력된 데이터 세트는 대부분의 경우 바로 통계분석이 �
 
 -   Pipe 기능
 
-Pipe 기능이란 한 명령문의 결과물을 바로 다음 명령문의 입력 요소로 직접 사용할 수 있도록 명령문들을 서로 연결하는 기능을 의미한다. 이것이 가능하다면, 분석 중간 단계로 생성되는 무수한 객체들을 따로 저장할 필요가 없기 때문에 프로그램 자체가 매우 깔끔하게 정리되며, 분석 흐름을 쉽게 이해할 수 있게 된다. Pipe 연산자 `%>%`는 `tidyverse`에 속한 패키지인 `magrittr`에서 정의된 것으로 `tidyverse`에 속한 다른 패키지에서도 사용이 가능하다. RStudio에서 pipe 연산자 `%>%`의 입력은 `Shift+Ctrl+M` 키를 함께 누르면 된다.
+Pipe 기능이란 한 명령문의 결과물을 바로 다음 명령문의 입력 요소로 직접 사용할 수 있도록 명령문들을 서로 연결하는 기능을 의미한다. 이것이 가능하다면, 분석 중간 단계로 생성되는 무수한 객체들을 따로 저장할 필요가 없기 때문에 프로그램 자체가 매우 깔끔하게 정리되며, 분석 흐름을 쉽게 이해할 수 있게 된다. Pipe 연산자 `|>`는 `tidyverse`에 속한 패키지인 `magrittr`에서 정의된 것으로 `tidyverse`에 속한 다른 패키지에서도 사용이 가능하다. RStudio에서 pipe 연산자 `|>`의 입력은 `Shift+Ctrl+M` 키를 함께 누르면 된다.
 
-기본적인 형태는 `lhs %>% rhs`인데, `lhs`는 데이터 객체이거나 데이터 객체를 생성하는 함수가 되고, `rhs`는 `lhs`를 입력 요소로 하는 함수가 된다. 예를 들어 `x %>% f()`는 객체 `x`를 함수 `f()`의 입력 요소로 하는 `f(x)`를 의미한다. 만일 `rhs`에 다른 요소가 있다면 `lhs`는 `rhs`의 첫 번째 입력 요소가 된다. 따라서 `x %>% f(y)`는 `f(x,y)`를 의미한다. 만일 `lhs`가 `rhs`의 첫 번째 요소가 아닌 경우에는 원하는 위치에 점(.)을 찍어야 한다. 예를 들어, `x %>% f(y,.)`은 `f(y,x)`를 의미한다.
+기본적인 형태는 `lhs |> rhs`인데, `lhs`는 데이터 객체이거나 데이터 객체를 생성하는 함수가 되고, `rhs`는 `lhs`를 입력 요소로 하는 함수가 된다. 예를 들어 `x |> f()`는 객체 `x`를 함수 `f()`의 입력 요소로 하는 `f(x)`를 의미한다. 만일 `rhs`에 다른 요소가 있다면 `lhs`는 `rhs`의 첫 번째 입력 요소가 된다. 따라서 `x |> f(y)`는 `f(x,y)`를 의미한다. 만일 `lhs`가 `rhs`의 첫 번째 요소가 아닌 경우에는 원하는 위치에 점(.)을 찍어야 한다. 예를 들어, `x |> f(y,.)`은 `f(y,x)`를 의미한다.
 
 Base R에도 R 버전 4.1.0부터 pipe 연산자 `|>`가 도입되었다.
 패키지 `tidyverse`를 불러오지 않아도 사용할 수 있다는 것이 장점으로 볼 수 있는 연산자이다. 
-사용법은 `lhs |> rhs`이며, `lhs`와 `rhs`의 의미는 `%>%`의 경우와 같다.
+사용법은 `lhs |> rhs`이며, `lhs`와 `rhs`의 의미는 `|>`의 경우와 같다.
 RStudio의 메뉴 `Tools > Global Options...`에서 `Use native pipe operator, |>`를 선택하면, `Shift+Ctrl+M` 키를 단축키로 사용할 수 있다.
 
 앞으로 이 책에서는 두 pipe 연산자를 혼용해서 사용하도록 하겠다. 
@@ -46,14 +46,14 @@ mtcars_t |>
 
 ```{r}
 mtcars_t |>  
-  filter(mpg >= 30, wt < 1.8)
+  filter(mpg >= 30 & wt < 1.8)
 ```
 
 변수 `mpg`의 값이 30 이하이고, 변수 `cyl`의 값이 6 또는 8이며, 변수 `am`의 값이 1인 자동차를 선택해 보자. 이 경우에, 변수 `cyl`의 값이 6 또는 8인 사건에 대하여 논리 연산자를 사용해서 `cyl == 6|cyl == 8`으로 조건을 설정하는 것보다는, `cyl %in% c(6,8)`로 쓰는 것이 훨씬 간단한 방법이 된다.
 
 ```{r}
 mtcars_t |>  
-  filter(mpg <= 30, cyl %in% c(6,8), am == 1)
+  filter(mpg <= 30 & cyl %in% c(6,8) & am == 1)
 ```
 
 변수 `mpg`의 값이 `mpg`의 중앙값과 $Q_{3}$ 사이에 있는 자동차를 선택해 보자. 여기서 $Q_{3}$는 0.75분위수를 의미하는 것으로서, $p$ 분위수란 전체 데이터 중 $(100 \times p)$% 데이터보다는 크고, 나머지 $(100 \times (1-p))$% 데이터보다는 작은 수를 의미한다. 분위수의 계산은 함수 `quantile()`로 하는데, 벡터 `x`의 0.75분위수의 계산은 `quantile(x, probs = 0.75)`로 할 수 있다.
@@ -61,7 +61,7 @@ mtcars_t |>
 ```{r}
 mtcars_t |>  
   filter(
-    mpg >= median(mpg), mpg <= quantile(mpg, probs = 0.75)
+    mpg >= median(mpg) & mpg <= quantile(mpg, probs = 0.75)
   )
 ```
 
@@ -85,15 +85,15 @@ mtcars_t |>
 데이터 프레임 `airquality`는 1973년 5월부터 9월까지 미국 뉴욕시의 공기의 질과 관련된 조사 결과를 담은 데이터 세트이다. `airs`라는 이름의 tibble로 전환하고, 처음 5개 케이스를 출력해 보자.
 
 ```{r}
-airs <- as_tibble(airquality) %>% 
+airs <- as_tibble(airquality) |> 
   print(n = 5)
 ```
 
 변수 `Ozone` 또는 `Solar.R`이 결측값인 행을 선택해 보자. 결측값의 확인은 함수 `is.na()`로 할 수 있다.
 
 ```{r}
-airs %>% 
-  filter(is.na(Ozone) | is.na(Solar.R)) %>% 
+airs |> 
+  filter(is.na(Ozone) | is.na(Solar.R)) |> 
   print(n = 5)
 ```
 
@@ -315,8 +315,8 @@ mtcars_t |>
 열(변수) 이름은 열 번호와 같은 취급을 받는다. 따라서 다음 방법도 같은 결과를 생성한다.
 
 ```{r}
-mtcars_t %>% 
-  select(row.name:cyl, wt) %>% 
+mtcars_t |> 
+  select(row.name:cyl, wt) |> 
   print(n = 3)
 ```
 
@@ -373,8 +373,8 @@ mpg |>
 예를 들어 숫자형 변수이거나 문자형 변수의 선택은 다음과 같다.
 
 ```{r}
-mpg %>% 
-  select(where(is.numeric) | where(is.character)) %>% 
+mpg |> 
+  select(where(is.numeric) | where(is.character)) |> 
   print(n = 3)
 ```
 
@@ -382,7 +382,7 @@ mpg %>%
 먼저 함수 `select()`를 연속해서 사용하는 방법이다. 
 
 ```{r}
-mpg %>%
+mpg |>
   select(where(is.numeric)) |>  
   select(where(~ mean(.x) <= 5)) |>  
   print(n = 3)
@@ -443,39 +443,39 @@ mpg |>
 예제로 데이터 프레임 `mtcars_t`에서 첫 번째 변수와 마지막 변수를 선택해 보자.
 
 ```{r}
-mtcars_t %>% 
-  select(1, last_col()) %>% 
+mtcars_t |> 
+  select(1, last_col()) |> 
   print(n = 3)
 ```
 
 이번에는 `mtcars_t`에서 이름이 `m`으로 시작하는 변수를 선택해 보자.
 
 ```{r}
-mtcars_t %>% 
-  select(starts_with("m")) %>% 
+mtcars_t |> 
+  select(starts_with("m")) |> 
   print(n = 3)
 ```
 
 이름이 `p`로 끝나는 변수도 선택해 보자.
 
 ```{r}
-mtcars_t %>% 
-  select(ends_with("p")) %>% 
+mtcars_t |> 
+  select(ends_with("p")) |> 
   print(n = 3)
 ```
 
 이름에 `A`가 있는 변수를 선택해 보자.
 
 ```{r}
-mtcars_t %>% 
-  select(contains("A")) %>% 
+mtcars_t |> 
+  select(contains("A")) |> 
   print(n = 3)
 ```
 
 대문자 `A`가 이름에 있는 변수 선택을 요구했지만, 결과는 모두 소문자 `a`가 이름에 있는 변수가 선택되었다. 이런 결과가 나온 이유는 옵션 `ignore.case = TRUE`가 디폴트로 설정되어서 대문자와 소문자를 구분하지 않기 때문이다. 이 옵션은 함수 `starts_with()`와 `ends_with()`에도 동일하게 `TRUE`가 디폴트이다. 만일 대문자를 구분해서 문자열 매칭 작업을 하면 다음과 같이 해당되는 변수가 없다는 결과가 나온다.
 
 ```{r}
-mtcars_t %>% 
+mtcars_t |> 
   select(contains("A", ignore.case = FALSE))
 ```
 
@@ -503,8 +503,8 @@ mtcars_t |>
 당연한 것이지만, 지금까지 살펴본 세 가지 변수 선택 방법은 서로 혼합해서 사용할 수 있다. 예를 들어 숫자형 변수 중에 이름에 `a`가 있는 변수는 다음과 같이 선택할 수 있다.
 
 ```{r}
-mtcars_t %>% 
-  select(where(is.numeric) & contains("c")) %>% 
+mtcars_t |> 
+  select(where(is.numeric) & contains("c")) |> 
   print(n = 3)
 ```
 
@@ -551,8 +551,8 @@ mtcars_t |>
 함수 `rename()`을 사용하면 이름이 변경되지 않은 변수도 모두 그대로 유지가 된다. 변수에 새로운 이름을 주는 방식은 함수 `select()`와 동일하게 `new_name = old_name`이다.
 
 ```{r}
-mtcars_t %>% 
-  rename(model = row.name) %>% 
+mtcars_t |> 
+  rename(model = row.name) |> 
   print(n = 3)
 ```
 
@@ -598,6 +598,18 @@ iris |>
   rename_with(~ tolower(gsub(".", "_", .x, fixed = TRUE))) |>               
   print(n = 3)
 ```
+
+함수 안에서도 pipe 연산자의 사용이 가능한데, 위 예제는 다음과 같이 작성할 수 있다. 
+
+```{r}
+iris |> 
+  as_tibble() |> 
+  rename_with(~ gsub(".", "_", .x, fixed = TRUE) |> 
+                tolower()
+              ) |> 
+  print(n = 3)
+```
+
 
 
 ### 열의 위치 변경: `relocate()`
@@ -660,7 +672,15 @@ iris_t |>
 
 ∙ 변수 `gp_kml`: `kml`이 10 이상이면 `"good"`, 10 미만이면 `"bad"`
 
-연속형 변수 `kml`을 기반으로 범주의 개수가 두 개인 범주형 변수 `gp_kml`를 생성하는 작업은 함수 `if_else()`를 사용하는 것이 효과적이다. 기본적인 사용법은 `if_else(condition, true, false)`이며 `condition`이 만족되면 `true`의 값을 갖고, 아니면 `false`의 값을 갖게 된다. 조건의 만족 여부에 따라 할당되는 두 가지 값의 유형은 같아야 한다.
+연속형 변수 `kml`을 기반으로 범주의 개수가 두 개인 범주형 변수 `gp_kml`를 생성하는 작업은 함수 `if_else()`를 사용하는 것이 효과적이다. 기본적인 사용법은 `if_else(condition, true, false)`이며 `condition`이 만족되면 `true`의 값을 갖고, 아니면 `false`의 값을 갖게 된다.
+예를 들어 벡터 `x`의 숫자가 0 미만인지 0 이상인지에 따라 다음의 문자형 벡터를 생성할 수 있다.
+
+```{r}
+x <- -1:1
+if_else(x < 0, "Negative", "Greater than 0")
+```
+
+이제 변수 `kml`을 만들고, 조건에 따라 변수 `gp_kml`도 생성해 보자. 
 
 ```{r}
 as_tibble(mtcars) |>  
@@ -683,19 +703,67 @@ as_tibble(mtcars) |>
 
 연속형 변수를 기반으로 범주의 개수가 3개 이상이 되는 범주형 변수를 생성하려는 경우에 함수 `if_else()`를 사용하는 것은 적절하지 않을 수 있다. 이러한 경우에는 함수 `case_when()`이 효과적인 대안이 된다. 기본적인 형태는 `LHS ~ RHS`로서, `LHS`는 조건이고, `RHS`에는 할당하려는 값이 된다. 
 
-다음 구조에서는 `condition_1`이 `TRUE`이면 `value_1`, `condition_1`은 `FALSE`이나 `condition_2`가 `TRUE`이면 `value_2`, 두 조건 모두 `FALSE`이면 `value_3`를 출력하게 된다.
-
 ```{r, eval=FALSE, prompt=FALSE}
 case_when(
   condition_1 ~ value_1,
   condition_2 ~ value_2,
-  TRUE ~ value_3
-)
+  condition_3 ~ value_3,
+  .default = 
+    )
 ```
 
-`LHS`에 제시되는 조건들은 순서대로 평가가 된다. 따라서 가장 좁은 범위의 조건이 가장 먼저 제시되어야 하고, 범위를 넓혀가는 조건이 잇따라 제시되어야 한다. 제시되는 조건의 개수에는 제한이 없다. 또한 `RHS`에 제시된 값들은 모두 같은 유형이어야 한다. 
+순서대로 `LHS`의 조건이 평가되며, 첫 번째 `TRUE`가 되는 조건의 `RHS`의 값이 부여된다. 
+모든 조건이 `FALSE` 이거나 `NA`인 경우에는 `.default`에 지정된 값이 부여되며, 제시되는 조건의 개수에는 제한이 없다. 
+예를 들어, 다음의 숫자형 벡터 `score`의 각 자료에 대하여 80 미만이면 `"C"`, 80에서 90 미만이면 `"B"`, 90 이상이면 `"A"`를 부여해 보자. 
 
-이제 다음의 변경된 조건으로 변수 `gp_kml`을 생성해 보자.
+```{r}
+score <- c(80, 88, 90, 100, 78, 65)
+```
+
+```{r}
+case_when(
+  score < 80 ~ "C",
+  score < 90 ~ "B",
+  score < Inf ~ "A"
+  )
+```
+
+조건의 순서가 바뀌는 경우에는 잘못된 결과가 나올 수 있는데, 다음은 어떤 문제가 있는 것인가?
+
+```{r}
+case_when(
+  score < 90 ~ "B",
+  score < 80 ~ "C",
+  score < Inf ~ "A"
+  )
+```
+
+자료에 `NA`가 있으면, 비교 결과도 `NA`가 나오게 된다. 
+이 경우 다른 값을 부여하고자 한다면, `.default`에 지정을 하면 된다.
+
+```{r}
+score2 <- c(80,88,90,100,78,65, NA)
+```
+
+```{r}
+case_when(
+    score2 < 80 ~ "C",
+    score2 < 90 ~ "B",
+    score2 < Inf ~ "A"
+    )
+```
+
+```{r}
+case_when(
+    score2 < 80 ~ "C",
+    score2 < 90 ~ "B",
+    score2 < Inf ~ "A",
+    .default = "F"
+    )
+```
+
+
+이제 `mtcars` 예제로 돌아가서, 다음의 변경된 조건으로 변수 `gp_kml`을 생성해 보자.
 
 ∙ 변수 `gp_kml`: `kml`이 11 이상이면 `"excellent"`, 11 미만 8 이상이면 `"good"`, 8 미만이면 `"bad"`
 
@@ -705,7 +773,7 @@ as_tibble(mtcars) |>
          gp_kml = case_when(
            kml < 8   ~ "bad",
            kml < 11  ~ "good",
-           TRUE      ~ "excellent"
+           .default = "excellent"
            ),
          .before = 1) |>  
   print(n=3)
@@ -720,7 +788,7 @@ as_tibble(mtcars) |>
          gp_kml = case_when(
            kml >= 11   ~ "excellent",
            kml >= 8    ~ "good",
-           TRUE        ~ "bad"
+           .default = "bad"
          ),
          .before = 1) |>  
   print(n=3)
@@ -736,19 +804,27 @@ mpg |>
   summarise(n = n(), n_hwy = n_distinct(hwy), avg_hwy = mean(hwy))
 ```
 
-dplyr 1.0.0 버전부터 길이가 2 이상이 되는 벡터를 결과로 출력하는 함수도 사용할 수 있게 됐다. 이 경우, 길이가 1인 요약통계량의 값이 함께 있다면 반복이 되어서 길이를 맞춘다.
+`dplyr 1.0.0` 버전부터 길이가 2 이상이 되는 벡터를 결과로 출력하는 함수도 사용할 수 있는데, 이 경우 길이가 1인 요약통계량의 값이 함께 있다면 반복이 되어서 길이를 맞춘다.
+이 기능이 편리함도 있지만 예상하지 못한 오류의 발생 가능성이 있어서, `dplyr 1.1.0` 버전부터는 경고 문구가 출력되며 함수 `reframe()` 대신 사용할 것으로 권유하고 있다. 
+
+```{r, warning=TRUE}
+mpg |> 
+  summarise(avg_hwy = mean(hwy), rng_hwy = range(hwy))
+```
+
+함수 `reframe()`을 사용해서 작업해 보자. 
 
 ```{r}
 mpg |> 
-  summarise(avg_hwy = mean(hwy), rng_hwy = range(hwy))
+  reframe(avg_hwy = mean(hwy), rng_hwy = range(hwy))
 ```
 
 길이가 서로 다른 벡터로는 데이터 프레임을 구성할 수 없다. 다만 예외적으로 길이가 1인 벡터에게만 반복을 허용하는 것이다. 따라서 평균값과 범위(최소, 최대), 그리고 사분위수(0.25분위수, 0.5분위수, 0.75분위수)를 함께 나타내려는 다음 시도는 잘못된 것이다.
 
 ```{r, error=TRUE}
 mpg |> 
-  summarise(avg_hwy = mean(hwy), rng_hwy = range(hwy), 
-            q_hwy = quantile(hwy, probs = c(0.25,0.5,0.75)))
+  reframe(avg_hwy = mean(hwy), rng_hwy = range(hwy), 
+          q_hwy = quantile(hwy, probs = c(0.25,0.5,0.75)))
 ```
 
 함수 `summarise()`는 사실 그 자체만으로는 그렇게 특별히 유용한 함수라고 하기 어렵다. 그러나 전체 데이터를 몇 개의 그룹으로 구분하는 함수 `group_by()`와 함께 사용하면 매우 강력한 분석 도구가 된다.
@@ -768,8 +844,8 @@ by_cyl <- mpg |>
 ```
 
 ```{r}
-by_cyl_drv <- mpg %>% 
-  group_by(cyl, drv) %>% 
+by_cyl_drv <- mpg |> 
+  group_by(cyl, drv) |> 
   print(n = 3)
 ```
 
@@ -780,22 +856,22 @@ by_cyl_drv <- mpg %>%
 각 그룹에 속한 자료의 개수는 함수 `tally()` 또는 `count()`를 사용하면 알 수 있다. 함수 `tally()`는 그룹 변수 지정 기능이 없어서 그룹 데이터 프레임을 입력하면 각 그룹별 자료의 개수를 출력하지만, 일반 데이터 프레임을 입력하면 전체 자료 개수를 출력한다.
 
 ```{r}
-by_cyl %>% tally()
+by_cyl |> tally()
 ```
 
 ```{r}
-mpg %>% tally()
+mpg |> tally()
 ```
 
 
 반면에 함수 `count()`는 그룹 변수를 지정해서, 각 그룹별 자료의 개수를 계산할 수 있다.
 
 ```{r}
-by_cyl %>% count()
+by_cyl |> count()
 ```
 
 ```{r}
-mpg %>% count(cyl)
+mpg |> count(cyl)
 ```
 
 
@@ -804,24 +880,24 @@ mpg %>% count(cyl)
 기존의 그룹 데이터 프레임에 그룹을 구성하는 변수를 추가해서 더 세분화된 그룹을 구성할 수 있다. 변수 `cyl`로 구성된 그룹 데이터 프레임에 `drv`로 생성되는 그룹을 추가하기 위해서는 옵션 `.add=TRUE`를 지정해야 한다.
 
 ```{r}
-by_cyl %>% 
-  group_by(drv, .add = TRUE) %>% 
+by_cyl |> 
+  group_by(drv, .add = TRUE) |> 
   tally()
 ```
 
 옵션 `.add=TRUE`를 추가하지 않으면 기존의 그룹 변수가 새로운 그룹 변수로 대체된다.
 
 ```{r}
-by_cyl %>% 
-  group_by(drv) %>% 
+by_cyl |> 
+  group_by(drv) |> 
   tally()
 ```
 
 함수 `group_by()`로 구성된 그룹은 함수 `ungroup()`으로 해체할 수 있다.
 
 ```{r}
-by_cyl %>% 
-  ungroup() %>% 
+by_cyl |> 
+  ungroup() |> 
   tally()
 ```
 
@@ -957,28 +1033,28 @@ mpg |>
 그룹별로 각각 행을 선택할 수 있게 된다. 데이터 프레임 `airquality`에서 변수 `Ozone`의 매달 첫날과 마지막날, 가장 큰 값과 가장 작은 값을 갖는 행을 다음과 같이 선택할 수 있다.
 
 ```{r}
-airs_M <- airquality %>% 
-  group_by(Month) %>% 
+airs_M <- airquality |> 
+  group_by(Month) |> 
   select(1, 5, 6)
 ```
 
 ```{r}
-airs_M %>% 
+airs_M |> 
   slice_head(n = 1)
 ```
 
 ```{r}
-airs_M %>% 
+airs_M |> 
   slice_tail(n = 1)
 ```
 
 ```{r}
-airs_M %>% 
+airs_M |> 
   slice_min(Ozone, n = 1)
 ```
 
 ```{r}
-airs_M %>% 
+airs_M |> 
   slice_max(Ozone, n = 1)
 ```
 
@@ -1099,6 +1175,7 @@ iris_t |>
 ```
 
 이번에는 센티미터 단위로 측정된 자료를 인치 단위로 변환해 보자.
+원자료가 인치 단위로 변환된 자료로 모두 대체가 되었다.  
 
 ```{r}
 iris_t |>  
@@ -1134,20 +1211,18 @@ iris_t |>
 
 
 데이터 프레임 `airquality`에서 적어도 하나의 결측값이 있는 행은 모두 제거해 보자. 
-모든 행을 대상으로 하는 것이므로 첫 번째 입력 요소인 `.cols`는 생략할 수 있다. 
-다만, 첫 번째 입력 요소가 없는 상태이기 때문에 두 번째 입력 요소에는 반드시 이름을 붙여야 한다.
 
 ```{r}
 as_tibble(airquality) |> 
-  filter(if_all(.fns = ~ !is.na(.x))) |>  
+  filter(if_all(everything(), ~ !is.na(.x))) |>  
   print(n = 3)
 ```
 
-결측값이 있는 행의 제거는 함수 `na.omit()`으로도 할 수 있다. 
+결측값이 있는 행의 제거는 함수 `drop_na()`으로도 할 수 있다. 
 
 ```{r}
-as_tibble(airquality) %>%
-  na.omit() %>% 
+as_tibble(airquality) |>
+  drop_na() |> 
   print(n = 3)
 ```
 
@@ -1185,13 +1260,13 @@ mpg |>
 
 ```{r}
 mpg |>  
-  count(manufacturer, model, sort = TRUE) %>% 
+  count(manufacturer, model, sort = TRUE) |> 
   print(n = 3)
 ```
 
 ```{r}
 mpg |> 
-  count(across(1:2), sort = TRUE) %>% 
+  count(across(1:2), sort = TRUE) |> 
   print(n = 3)
 ```
 
@@ -1205,8 +1280,8 @@ mpg |>
 
 ```{r}
 mpg |> 
-  group_by(across(1:2)) %>%
-  tally(sort = TRUE) %>% 
+  group_by(across(1:2)) |>
+  tally(sort = TRUE) |> 
   print(n = 3)
 ```
 
@@ -1268,15 +1343,15 @@ df2 |>
 
 ## 연습문제
 
-1.  데이터 프레임 `iris`는 세 가지 종류 붓꽃 `setosa` , `versicolor` , `virginica`의 꽃잎과 꽃받침의 길이와 폭을 측정한 자료이다.
+**1.**  데이터 프레임 `iris`는 세 가지 종류 붓꽃 `setosa` , `versicolor` , `virginica`의 꽃잎과 꽃받침의 길이와 폭을 측정한 자료이다.
 
 -   변수 `Species`가 `"setosa"`인 붓꽃 중에 변수 `Sepal.Length`의 값이 가장 큰 붓꽃을 선택해서 다음과 같은 형태로 출력해 보자.
 
 ```{r, echo=FALSE}
-ex1_1 <- iris %>% 
-  as_tibble() %>% 
-  filter(Species == "setosa") %>%      
-  slice_max(Sepal.Length, n = 1) %>%   
+ex1_1 <- iris |>  
+  as_tibble() |>  
+  filter(Species == "setosa") |>       
+  slice_max(Sepal.Length, n = 1) |>    
   select(Species, Sepal.Length)        
 ```
 
@@ -1287,10 +1362,10 @@ ex1_1
 -   `"versicolor"`와 `"virginica"` 중에 `Petal.Length`와 `Petal.Width`의 합이 가장 작은 붓꽃을 찾아서 다음과 같은 형태로 출력해 보자.
 
 ```{r, echo=FALSE}
-ex1_2 <- iris %>% 
-  as_tibble() %>% 
-  filter(Species != "setosa") %>%                  
-  slice_min(Petal.Length + Petal.Width, n = 1) %>% 
+ex1_2 <- iris |>  
+  as_tibble() |>  
+  filter(Species != "setosa") |>                   
+  slice_min(Petal.Length + Petal.Width, n = 1) |>  
   select(Species, Petal.Length, Petal.Width)       
 ```
 
@@ -1300,17 +1375,17 @@ ex1_2
 
 -   붓꽃 `setosa` 중에 변수 `Petal.Length`가 3 이하고, `Petal.Width`가 1 이하인 케이스가 몇 송이가 되는지 확인해 보자.
 
-2.  데이터 프레임 `mpg`에는 234대 자동차의 연비와 관련된 자료가 입력되어 있다.
+**2.**  데이터 프레임 `mpg`에는 234대 자동차의 연비와 관련된 자료가 입력되어 있다.
 
 ```{r}
-mpg %>% 
+mpg |>  
   print(n = 3)
 ```
 
 -   변수 `manufacturer`에는 몇 종류의 회사가 입력되어 있는지 확인해서, 다음의 형태로 출력해 보자.
 
 ```{r, echo=FALSE}
-ex2_1 <- mpg %>% 
+ex2_1 <- mpg |> 
   distinct(manufacturer)    
 ```
 
@@ -1321,9 +1396,9 @@ ex2_1
 -   변수 `manufacturer`의 값이 같은 자동차가 많이 있는데, 각 `manufacturer`별로 변수 `cty`의 값이 가장 큰 자동차를 선택해 보자. 선택된 자동차의 변수 `manufacturer`, `model`, `displ`과 `cty`를 다음의 형태로 출력해 보자.
 
 ```{r, echo=FALSE}
-ex2_2 <- mpg %>% 
-  arrange(manufacturer, desc(cty)) %>%             
-  distinct(manufacturer, .keep_all = TRUE) %>%     
+ex2_2 <- mpg |>  
+  arrange(manufacturer, desc(cty)) |>              
+  distinct(manufacturer, .keep_all = TRUE) |>      
   select(1,2,displ, cty)                           
 ```
 
@@ -1334,17 +1409,17 @@ ex2_2
 -   모든 문자형 변수의 이름을 대문자로 수정하고 순서를 앞으로 이동해서 `mpg_ch`에 할당해 보자. `mpg_ch`의 형태는 다음과 같다.
 
 ```{r, echo=FALSE}
-mpg_ch <- mpg %>% 
-  rename_with(toupper, where(is.character)) %>%   
+mpg_ch <- mpg |>  
+  rename_with(toupper, where(is.character)) |>    
   relocate(where(is.character))                 
 ```
 
 ```{r, echo=TRUE}
-mpg_ch %>% 
+mpg_ch |> 
   print(n = 3)
 ```
 
-3.  다음은 Wikipedia에서 covid-19 관련 자료가 있는 웹 페이지([https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory)](https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory)에 있는 HTML 테이블의 일부분이다.
+**3.**  다음은 Wikipedia에서 covid-19 관련 자료가 있는 웹 페이지([https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory)](https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory)에 있는 HTML 테이블의 일부분이다.
 
     ![](Figure/ch4_ex1.PNG){width="400"}
 
@@ -1356,8 +1431,8 @@ library(rvest)
 URL <- "https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory"
 X_path <- '//*[@id="covid-19-cases-deaths-and-rates-by-location"]/div[5]/table'
 
-tbl <- read_html(URL) %>%             
-  html_elements(xpath = X_path) %>%   
+tbl <- read_html(URL) |>              
+  html_elements(xpath = X_path) |>    
   html_table()                        
 
 ex3_1 <- tbl[[1]]                     
@@ -1370,28 +1445,28 @@ ex3_1
 -   자료가 없는 `ex3_1`의 첫 번째 변수를 제거하고, 변수 `'Deaths / million'`의 이름을 `Death_rate`로 변경하자. 또한 첫 번째 행과 잘못된 자료가 입력된 마지막 8개 행도 제거해서, `ex3_2`에 할당해 보자. 변경된 데이터 프레임의 처음 3개 행과 마지막 3개 행의 내용은 다음과 같다.
 
 ```{r, echo=FALSE}
-ex3_2 <- ex3_1 %>% 
-  select(-1) %>%                 
-  rename(Death_rate = 2) %>%     
+ex3_2 <- ex3_1 |>  
+  select(-1) |>                  
+  rename(Death_rate = 2) |>      
   slice(-c(1, (n()-7):n()))      
 ```
 
 ```{r, echo=TRUE}
-ex3_2 %>% 
+ex3_2 |> 
   slice_head(n = 3)
 ```
 
 ```{r, echo=TRUE}
-ex3_2 %>% 
+ex3_2 |>  
   slice_tail(n = 3)
 ```
 
 -   백만명당 사망자 수를 나타내는 변수 `Death_rate`의 값이 가장 작은 3개 나라를 선택해서 다음과 같이 출력해 보자.
 
 ```{r, echo=FALSE}
-ex3_3 <- ex3_2 %>% 
-  mutate(across(2:4, ~gsub(",","",.x))) %>% 
-  mutate(across(2:4, as.numeric)) %>% 
+ex3_3 <- ex3_2 |>  
+  mutate(across(2:4, ~gsub(",","",.x))) |>  
+  mutate(across(2:4, as.numeric)) |>  
   slice_min(Death_rate, n = 3)
 ```
 
@@ -1402,9 +1477,9 @@ ex3_3
 -   변수 `Cases`는 감염자 수를 나타내고, 변수 `Deaths`는 사망자 수를 나타내고 있다. 감염자 수에 대한 사망자 수의 비율, 즉 `Deaths`/`Cases`의 값이 가장 낮은 3개 나라를 선택해서 다음과 같이 출력해 보자.
 
 ```{r, echo=FALSE}
-ex3_4 <- ex3_2 %>% 
-  mutate(across(2:4, ~gsub(",","",.x))) %>% 
-  mutate(across(2:4, as.numeric)) %>% 
+ex3_4 <- ex3_2 |>  
+  mutate(across(2:4, ~gsub(",","",.x))) |>  
+  mutate(across(2:4, as.numeric)) |>  
   slice_min(Deaths/Cases, n = 3)        
 ```
 
@@ -1429,7 +1504,7 @@ ex4 <- list(df1 = df1, df2 = df2)
 ex4
 ```
 
--   리스트 `ex4`의 첫 번째 요소인 데이터 프레임에서 변수 `Sales`가 20을 초과하는 행을 선택해서 다음과 같이 출력해 보자. 단, 패키지 `dplyr`의 함수를 전혀 사용하지 않는다.
+-   리스트 `ex4`의 첫 번째 요소인 데이터 프레임에서 변수 `Sales`가 20을 초과하는 행을 선택해서 다음과 같이 출력하되, 패키지 `dplyr`의 함수를 전혀 사용하지 않고 해당 행을 선택하는 방법과 `dplyr` 함수에 의해 선택하는 방법으로 각각 실행해 보자. 
 
 ```{r, echo=FALSE}
 ex4_1 <- ex4$df1[ex4$df1$Sales > 20,]    
@@ -1439,11 +1514,11 @@ ex4_1 <- ex4$df1[ex4$df1$Sales > 20,]
 ex4_1
 ```
 
--   리스트 `ex4`의 두 번째 요소인 tibble에서 변수 `gender`가 `"F"`인 행들의 변수 `income`의 평균값을 패키지 `dplyr`의 함수를 사용해서 계산해 보자.
+-   리스트 `ex4`의 두 번째 요소인 tibble에서 변수 `gender`가 `"F"`인 행들의 변수 `income`의 평균값을 벡터로 출력하되, 패키지 `dplyr`의 함수를 사용해서 계산해 보자.
 
 ```{r, include=FALSE}
-ex4$df2 %>% 
-  filter(gender == "F") %>%   
-  pull(income) %>%            
+ex4$df2 |>  
+  filter(gender == "F") |>    
+  pull(income) |>             
   mean()                      
 ```
