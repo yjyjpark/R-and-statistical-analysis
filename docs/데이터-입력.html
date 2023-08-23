@@ -884,23 +884,36 @@ RUN;</code></pre>
 <img src="Figure/ch3_ex_3.png" width="300" alt="대한민국 주요 수출품목" />
 <div class="figcaption">대한민국 주요 수출품목</div>
 </div>
-<ol style="list-style-type: decimal">
-<li>HTML 테이블을 R로 불러와 다음과 같이 출력해 보자.</li>
-</ol>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="데이터-입력.html#cb328-1" tabindex="-1"></a>export <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">6</span>)</span>
+<ul>
+<li>HTML 테이블을 R로 불러와 <code>export</code>에 입력하고 출력해 보자.</li>
+</ul>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="데이터-입력.html#cb328-1" tabindex="-1"></a>export</span>
 <span id="cb328-2"><a href="데이터-입력.html#cb328-2" tabindex="-1"></a><span class="do">## # A tibble: 20 × 3</span></span>
-<span id="cb328-3"><a href="데이터-입력.html#cb328-3" tabindex="-1"></a><span class="do">##     `#` Country                   Value </span></span>
-<span id="cb328-4"><a href="데이터-입력.html#cb328-4" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;chr&gt;                     &lt;chr&gt; </span></span>
-<span id="cb328-5"><a href="데이터-입력.html#cb328-5" tabindex="-1"></a><span class="do">## 1     1 Refined petroleum         51,540</span></span>
-<span id="cb328-6"><a href="데이터-입력.html#cb328-6" tabindex="-1"></a><span class="do">## 2     2 Integrated circuits       49,126</span></span>
-<span id="cb328-7"><a href="데이터-입력.html#cb328-7" tabindex="-1"></a><span class="do">## 3     3 Cars                      42,484</span></span>
-<span id="cb328-8"><a href="데이터-입력.html#cb328-8" tabindex="-1"></a><span class="do">## 4     4 Passenger and Cargo Ships 29,010</span></span>
-<span id="cb328-9"><a href="데이터-입력.html#cb328-9" tabindex="-1"></a><span class="do">## 5     5 LCDs                      23,978</span></span>
-<span id="cb328-10"><a href="데이터-입력.html#cb328-10" tabindex="-1"></a><span class="do">## 6     6 Car parts                 20,496</span></span>
-<span id="cb328-11"><a href="데이터-입력.html#cb328-11" tabindex="-1"></a><span class="do">## # ℹ 14 more rows</span></span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
+<span id="cb328-3"><a href="데이터-입력.html#cb328-3" tabindex="-1"></a><span class="do">##      `#` Country                               Value </span></span>
+<span id="cb328-4"><a href="데이터-입력.html#cb328-4" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;chr&gt;                                 &lt;chr&gt; </span></span>
+<span id="cb328-5"><a href="데이터-입력.html#cb328-5" tabindex="-1"></a><span class="do">##  1     1 Refined petroleum                     51,540</span></span>
+<span id="cb328-6"><a href="데이터-입력.html#cb328-6" tabindex="-1"></a><span class="do">##  2     2 Integrated circuits                   49,126</span></span>
+<span id="cb328-7"><a href="데이터-입력.html#cb328-7" tabindex="-1"></a><span class="do">##  3     3 Cars                                  42,484</span></span>
+<span id="cb328-8"><a href="데이터-입력.html#cb328-8" tabindex="-1"></a><span class="do">##  4     4 Passenger and Cargo Ships             29,010</span></span>
+<span id="cb328-9"><a href="데이터-입력.html#cb328-9" tabindex="-1"></a><span class="do">##  5     5 LCDs                                  23,978</span></span>
+<span id="cb328-10"><a href="데이터-입력.html#cb328-10" tabindex="-1"></a><span class="do">##  6     6 Car parts                             20,496</span></span>
+<span id="cb328-11"><a href="데이터-입력.html#cb328-11" tabindex="-1"></a><span class="do">##  7     7 Broadcasting Equipment                15,443</span></span>
+<span id="cb328-12"><a href="데이터-입력.html#cb328-12" tabindex="-1"></a><span class="do">##  8     8 Broadcasting Accessories              10,532</span></span>
+<span id="cb328-13"><a href="데이터-입력.html#cb328-13" tabindex="-1"></a><span class="do">##  9     9 Telephones                            10,417</span></span>
+<span id="cb328-14"><a href="데이터-입력.html#cb328-14" tabindex="-1"></a><span class="do">## 10    10 Cyclic Hydrocarbons                   8,791 </span></span>
+<span id="cb328-15"><a href="데이터-입력.html#cb328-15" tabindex="-1"></a><span class="do">## 11    11 Special Purpose Ships                 8,117 </span></span>
+<span id="cb328-16"><a href="데이터-입력.html#cb328-16" tabindex="-1"></a><span class="do">## 12    12 Computers                             6,340 </span></span>
+<span id="cb328-17"><a href="데이터-입력.html#cb328-17" tabindex="-1"></a><span class="do">## 13    13 Hot-Rolled Iron                       6,288 </span></span>
+<span id="cb328-18"><a href="데이터-입력.html#cb328-18" tabindex="-1"></a><span class="do">## 14    14 Coated Flat-Rolled Iron               5,654 </span></span>
+<span id="cb328-19"><a href="데이터-입력.html#cb328-19" tabindex="-1"></a><span class="do">## 15    15 Semiconductor devices                 5,210 </span></span>
+<span id="cb328-20"><a href="데이터-입력.html#cb328-20" tabindex="-1"></a><span class="do">## 16    16 Large Construction Vehicles           5,091 </span></span>
+<span id="cb328-21"><a href="데이터-입력.html#cb328-21" tabindex="-1"></a><span class="do">## 17    17 Polycarboxylic acids                  4,833 </span></span>
+<span id="cb328-22"><a href="데이터-입력.html#cb328-22" tabindex="-1"></a><span class="do">## 18    18 Polyacetals                           4,743 </span></span>
+<span id="cb328-23"><a href="데이터-입력.html#cb328-23" tabindex="-1"></a><span class="do">## 19    19 Machinery Having Individual Functions 4,621 </span></span>
+<span id="cb328-24"><a href="데이터-입력.html#cb328-24" tabindex="-1"></a><span class="do">## 20    20 Tires                                 4,614</span></span></code></pre></div>
+<ul>
 <li>변수 이름을 다음과 같이 <code>rank</code>, <code>item</code>, <code>value</code>로 변경하자.</li>
-</ol>
+</ul>
 <div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="데이터-입력.html#cb329-1" tabindex="-1"></a>export <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
 <span id="cb329-2"><a href="데이터-입력.html#cb329-2" tabindex="-1"></a><span class="do">## # A tibble: 20 × 3</span></span>
 <span id="cb329-3"><a href="데이터-입력.html#cb329-3" tabindex="-1"></a><span class="do">##    rank item                value </span></span>
@@ -909,9 +922,9 @@ RUN;</code></pre>
 <span id="cb329-6"><a href="데이터-입력.html#cb329-6" tabindex="-1"></a><span class="do">## 2     2 Integrated circuits 49,126</span></span>
 <span id="cb329-7"><a href="데이터-입력.html#cb329-7" tabindex="-1"></a><span class="do">## 3     3 Cars                42,484</span></span>
 <span id="cb329-8"><a href="데이터-입력.html#cb329-8" tabindex="-1"></a><span class="do">## # ℹ 17 more rows</span></span></code></pre></div>
-<ol start="3" style="list-style-type: decimal">
+<ul>
 <li>변수 <code>value</code>는 각 품목의 수출액이다. 각 품목의 수출액이 20개 전체 품목의 총 수출액에서 차지하는 비율을 나타내는 변수 <code>prop</code>를 다음과 같이 생성해 보자.</li>
-</ol>
+</ul>
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="데이터-입력.html#cb330-1" tabindex="-1"></a>export <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">5</span>)</span>
 <span id="cb330-2"><a href="데이터-입력.html#cb330-2" tabindex="-1"></a><span class="do">## # A tibble: 20 × 4</span></span>
 <span id="cb330-3"><a href="데이터-입력.html#cb330-3" tabindex="-1"></a><span class="do">##    rank item                      value  prop</span></span>
@@ -922,9 +935,9 @@ RUN;</code></pre>
 <span id="cb330-8"><a href="데이터-입력.html#cb330-8" tabindex="-1"></a><span class="do">## 4     4 Passenger and Cargo Ships 29010  9.14</span></span>
 <span id="cb330-9"><a href="데이터-입력.html#cb330-9" tabindex="-1"></a><span class="do">## 5     5 LCDs                      23978  7.56</span></span>
 <span id="cb330-10"><a href="데이터-입력.html#cb330-10" tabindex="-1"></a><span class="do">## # ℹ 15 more rows</span></span></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
+<ul>
 <li>변수 <code>prop</code>의 값이 5 이상인 품목만을 선택해서 다음의 형태로 출력해 보자.</li>
-</ol>
+</ul>
 <div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="데이터-입력.html#cb331-1" tabindex="-1"></a>export_5</span>
 <span id="cb331-2"><a href="데이터-입력.html#cb331-2" tabindex="-1"></a><span class="do">## # A tibble: 6 × 3</span></span>
 <span id="cb331-3"><a href="데이터-입력.html#cb331-3" tabindex="-1"></a><span class="do">##   item                      value prop  </span></span>
@@ -935,78 +948,102 @@ RUN;</code></pre>
 <span id="cb331-8"><a href="데이터-입력.html#cb331-8" tabindex="-1"></a><span class="do">## 4 Passenger and Cargo Ships 29010 9.14% </span></span>
 <span id="cb331-9"><a href="데이터-입력.html#cb331-9" tabindex="-1"></a><span class="do">## 5 LCDs                      23978 7.56% </span></span>
 <span id="cb331-10"><a href="데이터-입력.html#cb331-10" tabindex="-1"></a><span class="do">## 6 Car parts                 20496 6.46%</span></span></code></pre></div>
-<ol start="5" style="list-style-type: decimal">
+<ul>
 <li>변수 <code>prop</code>의 값이 5 이상인 품목의 평균 수출액을 계산해 보자.</li>
-</ol>
-<p><strong>4.</strong> 파일 <code>airs.csv</code>에는 1973년 5월 뉴욕시에서 측정된 공기의 질과 관련된 자료가 입력되어 있다.</p>
-<ol style="list-style-type: decimal">
+</ul>
+<p><strong>4.</strong> 웹서버 <code>https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/</code>에 있는 파일 <code>airs.csv</code>에는 1973년 5월 뉴욕시에서 측정된 공기의 질과 관련된 자료가 입력되어 있다.</p>
+<ul>
 <li>R로 불러와서 다음과 같이 출력해 보자.</li>
-</ol>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="데이터-입력.html#cb332-1" tabindex="-1"></a><span class="fu">print</span>(airs, <span class="at">n =</span> <span class="dv">4</span>)</span>
+</ul>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="데이터-입력.html#cb332-1" tabindex="-1"></a>airs</span>
 <span id="cb332-2"><a href="데이터-입력.html#cb332-2" tabindex="-1"></a><span class="do">## # A tibble: 31 × 5</span></span>
-<span id="cb332-3"><a href="데이터-입력.html#cb332-3" tabindex="-1"></a><span class="do">##     Day Ozone Solar.R  Wind  Temp</span></span>
-<span id="cb332-4"><a href="데이터-입력.html#cb332-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb332-5"><a href="데이터-입력.html#cb332-5" tabindex="-1"></a><span class="do">## 1     1    41     190   7.4    67</span></span>
-<span id="cb332-6"><a href="데이터-입력.html#cb332-6" tabindex="-1"></a><span class="do">## 2     2    36     118   8      72</span></span>
-<span id="cb332-7"><a href="데이터-입력.html#cb332-7" tabindex="-1"></a><span class="do">## 3     3    12     149  12.6    74</span></span>
-<span id="cb332-8"><a href="데이터-입력.html#cb332-8" tabindex="-1"></a><span class="do">## 4     4    18     313  11.5    62</span></span>
-<span id="cb332-9"><a href="데이터-입력.html#cb332-9" tabindex="-1"></a><span class="do">## # ℹ 27 more rows</span></span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
+<span id="cb332-3"><a href="데이터-입력.html#cb332-3" tabindex="-1"></a><span class="do">##      Day Ozone Solar.R  Wind  Temp</span></span>
+<span id="cb332-4"><a href="데이터-입력.html#cb332-4" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb332-5"><a href="데이터-입력.html#cb332-5" tabindex="-1"></a><span class="do">##  1     1    41     190   7.4    67</span></span>
+<span id="cb332-6"><a href="데이터-입력.html#cb332-6" tabindex="-1"></a><span class="do">##  2     2    36     118   8      72</span></span>
+<span id="cb332-7"><a href="데이터-입력.html#cb332-7" tabindex="-1"></a><span class="do">##  3     3    12     149  12.6    74</span></span>
+<span id="cb332-8"><a href="데이터-입력.html#cb332-8" tabindex="-1"></a><span class="do">##  4     4    18     313  11.5    62</span></span>
+<span id="cb332-9"><a href="데이터-입력.html#cb332-9" tabindex="-1"></a><span class="do">##  5     5    NA      NA  14.3    56</span></span>
+<span id="cb332-10"><a href="데이터-입력.html#cb332-10" tabindex="-1"></a><span class="do">##  6     6    28      NA  14.9    66</span></span>
+<span id="cb332-11"><a href="데이터-입력.html#cb332-11" tabindex="-1"></a><span class="do">##  7     7    23     299   8.6    65</span></span>
+<span id="cb332-12"><a href="데이터-입력.html#cb332-12" tabindex="-1"></a><span class="do">##  8     8    19      99  13.8    59</span></span>
+<span id="cb332-13"><a href="데이터-입력.html#cb332-13" tabindex="-1"></a><span class="do">##  9     9     8      19  20.1    61</span></span>
+<span id="cb332-14"><a href="데이터-입력.html#cb332-14" tabindex="-1"></a><span class="do">## 10    10    NA     194   8.6    69</span></span>
+<span id="cb332-15"><a href="데이터-입력.html#cb332-15" tabindex="-1"></a><span class="do">## # ℹ 21 more rows</span></span></code></pre></div>
+<ul>
 <li>네 변수들의 평균을 다음의 형태로 출력해 보자. 평균값이 <code>NA</code>로 나온 변수가 있는 이유는 무엇인가?</li>
-</ol>
+</ul>
 <pre><code>##    Ozone  Solar.R     Wind     Temp 
 ##       NA       NA 11.62258 65.54839</code></pre>
-<ol start="3" style="list-style-type: decimal">
+<ul>
 <li>변수의 평균값이 <code>NA</code>가 되지 않도록 조치해서 다음의 형태로 다시 출력해 보자.</li>
-</ol>
+</ul>
 <pre><code>##     Ozone   Solar.R      Wind      Temp 
 ##  23.61538 181.29630  11.62258  65.54839</code></pre>
-<ol start="4" style="list-style-type: decimal">
+<ul>
 <li><p>변수 <code>Ozone</code>과 <code>Solor.R</code>의 결측값이 있는 행은 모두 제거하고, 그 결과를 <code>airs_1</code>에 할당하라.</p></li>
 <li><p><code>airs_1</code>의 변수 <code>Ozone</code>이 평균값 이상인 그룹과 평균값 미만인 그룹으로 구분해 주는 변수 <code>Oz.Gp</code>를 생성해서, 다음과 같이 <code>airs_1</code>에 추가하자.</p></li>
-</ol>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="데이터-입력.html#cb335-1" tabindex="-1"></a>airs_1 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">4</span>)</span>
+</ul>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="데이터-입력.html#cb335-1" tabindex="-1"></a>airs_1</span>
 <span id="cb335-2"><a href="데이터-입력.html#cb335-2" tabindex="-1"></a><span class="do">## # A tibble: 24 × 6</span></span>
-<span id="cb335-3"><a href="데이터-입력.html#cb335-3" tabindex="-1"></a><span class="do">##     Day Ozone Solar.R  Wind  Temp Oz.Gp</span></span>
-<span id="cb335-4"><a href="데이터-입력.html#cb335-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;</span></span>
-<span id="cb335-5"><a href="데이터-입력.html#cb335-5" tabindex="-1"></a><span class="do">## 1     1    41     190   7.4    67 High </span></span>
-<span id="cb335-6"><a href="데이터-입력.html#cb335-6" tabindex="-1"></a><span class="do">## 2     2    36     118   8      72 High </span></span>
-<span id="cb335-7"><a href="데이터-입력.html#cb335-7" tabindex="-1"></a><span class="do">## 3     3    12     149  12.6    74 Low  </span></span>
-<span id="cb335-8"><a href="데이터-입력.html#cb335-8" tabindex="-1"></a><span class="do">## 4     4    18     313  11.5    62 Low  </span></span>
-<span id="cb335-9"><a href="데이터-입력.html#cb335-9" tabindex="-1"></a><span class="do">## # ℹ 20 more rows</span></span></code></pre></div>
-<ol start="6" style="list-style-type: decimal">
+<span id="cb335-3"><a href="데이터-입력.html#cb335-3" tabindex="-1"></a><span class="do">##      Day Ozone Solar.R  Wind  Temp Oz.Gp</span></span>
+<span id="cb335-4"><a href="데이터-입력.html#cb335-4" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;</span></span>
+<span id="cb335-5"><a href="데이터-입력.html#cb335-5" tabindex="-1"></a><span class="do">##  1     1    41     190   7.4    67 High </span></span>
+<span id="cb335-6"><a href="데이터-입력.html#cb335-6" tabindex="-1"></a><span class="do">##  2     2    36     118   8      72 High </span></span>
+<span id="cb335-7"><a href="데이터-입력.html#cb335-7" tabindex="-1"></a><span class="do">##  3     3    12     149  12.6    74 Low  </span></span>
+<span id="cb335-8"><a href="데이터-입력.html#cb335-8" tabindex="-1"></a><span class="do">##  4     4    18     313  11.5    62 Low  </span></span>
+<span id="cb335-9"><a href="데이터-입력.html#cb335-9" tabindex="-1"></a><span class="do">##  5     7    23     299   8.6    65 Low  </span></span>
+<span id="cb335-10"><a href="데이터-입력.html#cb335-10" tabindex="-1"></a><span class="do">##  6     8    19      99  13.8    59 Low  </span></span>
+<span id="cb335-11"><a href="데이터-입력.html#cb335-11" tabindex="-1"></a><span class="do">##  7     9     8      19  20.1    61 Low  </span></span>
+<span id="cb335-12"><a href="데이터-입력.html#cb335-12" tabindex="-1"></a><span class="do">##  8    12    16     256   9.7    69 Low  </span></span>
+<span id="cb335-13"><a href="데이터-입력.html#cb335-13" tabindex="-1"></a><span class="do">##  9    13    11     290   9.2    66 Low  </span></span>
+<span id="cb335-14"><a href="데이터-입력.html#cb335-14" tabindex="-1"></a><span class="do">## 10    14    14     274  10.9    68 Low  </span></span>
+<span id="cb335-15"><a href="데이터-입력.html#cb335-15" tabindex="-1"></a><span class="do">## # ℹ 14 more rows</span></span></code></pre></div>
+<ul>
 <li><code>airs_1</code>의 변수 <code>Oz.Gp</code>의 값이 <code>High</code>인 그룹과 <code>Low</code>인 그룹에서 변수 <code>Solor.R</code>, <code>Wind</code>, <code>Temp</code>의 평균값에 어떤 차이가 있는지 확인하고, 그 효과를 설명해 보자.</li>
-</ol>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="데이터-입력.html#cb336-1" tabindex="-1"></a>airs_L <span class="ot">&lt;-</span> airs_1[airs_1<span class="sc">$</span>Oz.Gp <span class="sc">==</span> <span class="st">&quot;Low&quot;</span>,] </span>
-<span id="cb336-2"><a href="데이터-입력.html#cb336-2" tabindex="-1"></a>airs_H <span class="ot">&lt;-</span> airs_1[airs_1<span class="sc">$</span>Oz.Gp <span class="sc">==</span> <span class="st">&quot;High&quot;</span>,]</span></code></pre></div>
-<p><strong>5.</strong> 파일 <code>cars.csv</code>에는 234대 자동차의 제조회사, 모델, 엔진 기통 수, 변속기 종류, 연비가 입력되어 있다.</p>
-<ol style="list-style-type: decimal">
+</ul>
+<p><strong>5.</strong> 웹서버 <code>https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/</code>에 있는 파일 <code>cars.csv</code>에는 234대 자동차의 제조회사, 모델, 엔진 기통 수, 변속기 종류, 연비가 입력되어 있다.</p>
+<ul>
 <li>R로 불러와서 다음과 같이 출력해 보자.</li>
-</ol>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="데이터-입력.html#cb337-1" tabindex="-1"></a>cars <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb337-2"><a href="데이터-입력.html#cb337-2" tabindex="-1"></a><span class="do">## # A tibble: 234 × 5</span></span>
-<span id="cb337-3"><a href="데이터-입력.html#cb337-3" tabindex="-1"></a><span class="do">##   manufacturer model   cyl trans    mpg</span></span>
-<span id="cb337-4"><a href="데이터-입력.html#cb337-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;</span></span>
-<span id="cb337-5"><a href="데이터-입력.html#cb337-5" tabindex="-1"></a><span class="do">## 1 audi         a4        4 auto      29</span></span>
-<span id="cb337-6"><a href="데이터-입력.html#cb337-6" tabindex="-1"></a><span class="do">## 2 audi         a4        4 manual    29</span></span>
-<span id="cb337-7"><a href="데이터-입력.html#cb337-7" tabindex="-1"></a><span class="do">## 3 audi         a4        4 manual    31</span></span>
-<span id="cb337-8"><a href="데이터-입력.html#cb337-8" tabindex="-1"></a><span class="do">## # ℹ 231 more rows</span></span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
+</ul>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="데이터-입력.html#cb336-1" tabindex="-1"></a>cars</span>
+<span id="cb336-2"><a href="데이터-입력.html#cb336-2" tabindex="-1"></a><span class="do">## # A tibble: 234 × 5</span></span>
+<span id="cb336-3"><a href="데이터-입력.html#cb336-3" tabindex="-1"></a><span class="do">##    manufacturer model        cyl trans    mpg</span></span>
+<span id="cb336-4"><a href="데이터-입력.html#cb336-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span id="cb336-5"><a href="데이터-입력.html#cb336-5" tabindex="-1"></a><span class="do">##  1 audi         a4             4 auto      29</span></span>
+<span id="cb336-6"><a href="데이터-입력.html#cb336-6" tabindex="-1"></a><span class="do">##  2 audi         a4             4 manual    29</span></span>
+<span id="cb336-7"><a href="데이터-입력.html#cb336-7" tabindex="-1"></a><span class="do">##  3 audi         a4             4 manual    31</span></span>
+<span id="cb336-8"><a href="데이터-입력.html#cb336-8" tabindex="-1"></a><span class="do">##  4 audi         a4             4 auto      30</span></span>
+<span id="cb336-9"><a href="데이터-입력.html#cb336-9" tabindex="-1"></a><span class="do">##  5 audi         a4             6 auto      26</span></span>
+<span id="cb336-10"><a href="데이터-입력.html#cb336-10" tabindex="-1"></a><span class="do">##  6 audi         a4             6 manual    26</span></span>
+<span id="cb336-11"><a href="데이터-입력.html#cb336-11" tabindex="-1"></a><span class="do">##  7 audi         a4             6 auto      27</span></span>
+<span id="cb336-12"><a href="데이터-입력.html#cb336-12" tabindex="-1"></a><span class="do">##  8 audi         a4 quattro     4 manual    26</span></span>
+<span id="cb336-13"><a href="데이터-입력.html#cb336-13" tabindex="-1"></a><span class="do">##  9 audi         a4 quattro     4 auto      25</span></span>
+<span id="cb336-14"><a href="데이터-입력.html#cb336-14" tabindex="-1"></a><span class="do">## 10 audi         a4 quattro     4 manual    28</span></span>
+<span id="cb336-15"><a href="데이터-입력.html#cb336-15" tabindex="-1"></a><span class="do">## # ℹ 224 more rows</span></span></code></pre></div>
+<ul>
 <li>변수 <code>manufacturer</code>와 <code>model</code>을 변수 <code>maker</code>로 통합해 보자. 두 변수 값을 통합할 때 구분자는 <code>"-"</code>을 사용하라. 통합 결과는 다음과 같다.</li>
-</ol>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="데이터-입력.html#cb338-1" tabindex="-1"></a>cars <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb338-2"><a href="데이터-입력.html#cb338-2" tabindex="-1"></a><span class="do">## # A tibble: 234 × 4</span></span>
-<span id="cb338-3"><a href="데이터-입력.html#cb338-3" tabindex="-1"></a><span class="do">##   maker     cyl trans    mpg</span></span>
-<span id="cb338-4"><a href="데이터-입력.html#cb338-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;</span></span>
-<span id="cb338-5"><a href="데이터-입력.html#cb338-5" tabindex="-1"></a><span class="do">## 1 audi-a4     4 auto      29</span></span>
-<span id="cb338-6"><a href="데이터-입력.html#cb338-6" tabindex="-1"></a><span class="do">## 2 audi-a4     4 manual    29</span></span>
-<span id="cb338-7"><a href="데이터-입력.html#cb338-7" tabindex="-1"></a><span class="do">## 3 audi-a4     4 manual    31</span></span>
-<span id="cb338-8"><a href="데이터-입력.html#cb338-8" tabindex="-1"></a><span class="do">## # ℹ 231 more rows</span></span></code></pre></div>
-<ol start="3" style="list-style-type: decimal">
+</ul>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="데이터-입력.html#cb337-1" tabindex="-1"></a>cars </span>
+<span id="cb337-2"><a href="데이터-입력.html#cb337-2" tabindex="-1"></a><span class="do">## # A tibble: 234 × 4</span></span>
+<span id="cb337-3"><a href="데이터-입력.html#cb337-3" tabindex="-1"></a><span class="do">##    maker             cyl trans    mpg</span></span>
+<span id="cb337-4"><a href="데이터-입력.html#cb337-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span id="cb337-5"><a href="데이터-입력.html#cb337-5" tabindex="-1"></a><span class="do">##  1 audi-a4             4 auto      29</span></span>
+<span id="cb337-6"><a href="데이터-입력.html#cb337-6" tabindex="-1"></a><span class="do">##  2 audi-a4             4 manual    29</span></span>
+<span id="cb337-7"><a href="데이터-입력.html#cb337-7" tabindex="-1"></a><span class="do">##  3 audi-a4             4 manual    31</span></span>
+<span id="cb337-8"><a href="데이터-입력.html#cb337-8" tabindex="-1"></a><span class="do">##  4 audi-a4             4 auto      30</span></span>
+<span id="cb337-9"><a href="데이터-입력.html#cb337-9" tabindex="-1"></a><span class="do">##  5 audi-a4             6 auto      26</span></span>
+<span id="cb337-10"><a href="데이터-입력.html#cb337-10" tabindex="-1"></a><span class="do">##  6 audi-a4             6 manual    26</span></span>
+<span id="cb337-11"><a href="데이터-입력.html#cb337-11" tabindex="-1"></a><span class="do">##  7 audi-a4             6 auto      27</span></span>
+<span id="cb337-12"><a href="데이터-입력.html#cb337-12" tabindex="-1"></a><span class="do">##  8 audi-a4 quattro     4 manual    26</span></span>
+<span id="cb337-13"><a href="데이터-입력.html#cb337-13" tabindex="-1"></a><span class="do">##  9 audi-a4 quattro     4 auto      25</span></span>
+<span id="cb337-14"><a href="데이터-입력.html#cb337-14" tabindex="-1"></a><span class="do">## 10 audi-a4 quattro     4 manual    28</span></span>
+<span id="cb337-15"><a href="데이터-입력.html#cb337-15" tabindex="-1"></a><span class="do">## # ℹ 224 more rows</span></span></code></pre></div>
+<ul>
 <li><p>변수 <code>maker</code>의 값이 동일한 자동차가 많이 입력되어 있다. 변수 <code>maker</code>에는 몇 종류의 서로 다른 자동차 모델이 입력되어 있는지 확인해 보자.</p></li>
 <li><p>변수 <code>cyl</code>의 값이 4이고 <code>trans</code>의 값이 <code>"auto"</code>인 자동차의 대수와 변수 <code>cyl</code>의 값이 8이고 <code>trans</code>의 값이 <code>"auto"</code>인 자동차의 대수를 확인하자.</p></li>
 <li><p>변수 <code>cyl</code>의 값이 4이고 <code>trans</code>의 값이 <code>"auto"</code>인 자동차의 변수 <code>mpg</code>의 평균값과 변수 <code>cyl</code>의 값이 8이고 <code>trans</code>의 값이 <code>"auto"</code>인 자동차의 변수 <code>mpg</code>의 평균값을 계산하고 비교해 보자.</p></li>
-</ol>
+</ul>
 
 </div>
 </div>
