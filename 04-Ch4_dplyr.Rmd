@@ -1421,7 +1421,7 @@ mpg_ch |>
 
 **3.**  다음은 Wikipedia에서 covid-19 관련 자료가 있는 웹 페이지([https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory)](https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory)에 있는 HTML 테이블의 일부분이다.
 
-    ![](Figure/ch4_ex1.PNG){width="400"}
+![](Figure/ch4_ex1.PNG){width="400"}
 
 -   R로 불러와서 다음과 같이 tibble 형태로 출력해 보자.
 
