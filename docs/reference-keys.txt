@@ -80,6 +80,11 @@ fig:5-34-1
 fig:5-34-2
 fig:5-34-3
 fig:5-34-4
+fig:ch4-ex4-1
+fig:ch4-ex4-2
+fig:ch4-ex4-3
+fig:ch4-ex4-4
+fig:ch4-ex5-1
 fig:7-1
 fig:7-2
 fig:8-1-a
@@ -143,7 +148,7 @@ fig:9-28
 fig:9-29
 fig:9-30-a
 fig:9-30-b
-fig:unnamed-chunk-804
+fig:unnamed-chunk-843
 fig:9-32
 fig:9-33-a
 fig:9-33-b

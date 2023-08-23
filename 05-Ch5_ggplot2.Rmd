@@ -1020,7 +1020,7 @@ ggplot(data = <Data>) +
 
 ## 연습문제
 
-1. 데이터 프레임 `airquality` 는 New York city 의 오존 농도에 관한 데이터이다.
+**1.** 데이터 프레임 `airquality` 는 New York city 의 오존 농도에 관한 데이터이다.
 
  + 변수 `Ozone`과 `Solar.R`에는 많은 결측값이 있다. 두 변수 중 한 변수라도 결측값이 있는 날수를 월별로 나타내는 다음의 그래프를 작성해 보자.
  
@@ -1045,7 +1045,7 @@ airquality |>
 ```
  
 
-2. 패키지 `ggplot2`에 있는 데이터 프레임 `mpg`에는 1999년과 2008년에 많이 판매됐던 38 종류 자동차에 대한 11개 변수가 입력되어 있다. 
+**2.** 패키지 `ggplot2`에 있는 데이터 프레임 `mpg`에는 1999년과 2008년에 많이 판매됐던 38 종류 자동차에 대한 11개 변수가 입력되어 있다. 
 
 -  11개 변수 중 문자형 변수만 선택해서 다음과 같이 출력해 보자. 
 
@@ -1230,7 +1230,7 @@ mpg_avg |>
 ```
 
 
-3. 패키지 `MASS`에 있는 데이터 프레임 `Cars93`는 1993년 미국에서 판매된 93 종류의 자동차에 대한 데이터로 27개 변수로 구성되어 있다. 
+**3.** 패키지 `MASS`에 있는 데이터 프레임 `Cars93`는 1993년 미국에서 판매된 93 종류의 자동차에 대한 데이터로 27개 변수로 구성되어 있다. 
 
 - 모든 변수의 처음 3 케이스를 다음과 같이 출력해 보자.  
 
@@ -1396,9 +1396,170 @@ Cars93 |>
 ```
 
 
+**4.** 패키지 `ggplot2`의 데이터 프레임 `mpg`와 패키지 `MASS`의 데이터 프레임 `Cars93`는 자동차 연비와 관련된 자료가 입력되어 있다.
+
+- `Cars93`에서 변수 `Manufacturer`, `Man.trans.avail`, `MPG.highway`, `EngineSize`, `Cylinders`을 선택해서 데이터 프레임 `cars_93`에 입력하라. `mpg`에서는 변수 `manufacturer`, `trans`, `hwy`, `displ`, `cyl`을 선택하되, 변수 `year`가 `1999`인 케이스만 선택해서 데이터 프레임 `cars_99`에 입력하라.  두 데이터 프레임의 첫 세 케이스의 출력 결과는 다음과 같다.
+
+```{r, echo=FALSE}
+cars_93 <- as_tibble(Cars93) |> 
+  select(Manufacturer, Man.trans.avail, MPG.highway, EngineSize,  Cylinders)
+
+cars_99 <- mpg |> 
+  filter(year == 1999) |> 
+  select(manufacturer, trans, hwy, displ, cyl) 
+```
+
+```{r}
+cars_93 |> print(n = 3)
+```
+
+```{r}
+cars_99 |> print(n = 3)
+```
 
 
+- `cars_93`과 `cars_99`의 변수들은 이름은 다르지만, 동일한 내용의 변수들이 순서대로 나열되어 있다. `cars_93`의 변수 이름을 `cars_99`의 변수 이름과 같아지도록 변경해 보자. 변경된 결과는 다음과 같다.
 
+```{r, echo=FALSE}
+names(cars_93) <- names(cars_99)
+```
+
+```{r}
+cars_93 |> print(n = 3)
+```
+
+-  `cars_93`의 변수 `manufacturer`와 `trans`의 자료를 변경해 보자. 우선 `manufacturer`의 자료 값을 모두 소문자로 변경하고, `trans`는 자료 값이 `Yes`이면 `manual`로, 아니면 `auto`로 변경하며, 요인 속성은 유지하도록 한다.
+변경된 결과는 다음과 같다.
+
+```{r, echo=FALSE}
+cars_93 <- cars_93 |> 
+  mutate(trans = if_else(trans == "Yes", "manual", "auto") |> as.factor(),
+         manufacturer = tolower(manufacturer))
+```
+
+```{r}
+cars_93 |> print(n = 3)
+```
+
+-  `cars_93`에서 변수 `trans`와 `cyl`의 조합에 따른 빈도수를 구하고 다음과 같이 내림차순으로 출력해 보자.
+
+```{r, echo=FALSE}
+cars_93 |> count(trans, cyl, sort = TRUE)
+```
+
+-  앞 문제의 출력 결과를 보면 `trans`가 `manual`이고 `cyl`이 `3`, `5`, `8`, `rotary`인 경우에 해당하는 케이스는 제거하는 것이 좋을 것으로 보인다. `cars_93`에서 해당 케이스를 제거하라.
+
+```{r, echo=FALSE}
+cars_93 <- cars_93 |> 
+  filter(!(trans == "manual" & cyl %in% c(3,5,8,"rotary")))
+```
+
+-  `cars_99`의 변수들을 변경해 보자. 변수 `trans`는 자료 중 `auto(l3)`, `auto(l4)`, `auto(l5)`는 `auto`로 통합하고, `manual(m5)`와 `manual(m6)`는 `manual`로 통합한다. 또한 `hwy`와 `displ`을 제외한 다른 변수는 모두 요인으로 변경한다.
+변경된 결과는 다음과 같다.
+
+```{r, echo=FALSE}
+cars_99 <- cars_99 |> 
+  mutate(trans = substr(trans, 1, nchar(trans)-4)) |> 
+  mutate(across(!c(hwy, displ), as.factor))
+```
+
+```{r}
+cars_99 |> print(n = 3)
+```
+
+-   `cars_99`의 `manufacturer`에는 몇 종류의 자동차 회사가 입력되어 있는가?
+
+```{r, include=FALSE}
+cars_99 |> distinct(manufacturer) |> nrow()
+```
+
+-  `cars_99`의 `manufacturer`에 입력된 자동차 회사 중 상대도수가 0.1 이상인 회사를 찾아내서 다음과 같이 출력해 보자. 변수 `prop`에는 상대도수의 계산 결과가 입력되어 있다.
+
+```{r, echo=FALSE}
+cars_99 |> count(manufacturer, sort = TRUE) |> 
+  mutate(prop = n/sum(n) |> signif(1)) |> 
+  filter(prop >= 0.1)
+```
+
+-  두 연속형 변수 `displ`과 `hwy`의 관계에서 범주형 변수 `cyl`이 미치는 영향을 확인하기 위한 그래프를 작성해 보자. 변수 `hwy`에는 반올림 처리가 된 값을 입력했기 때문에 산점도에서 점이 겹쳐지는 문제를 해결해야 한다. 
+
+1)   `cars_93`에 대해서는 `cyl`의 그룹별 두 연속형 변수의 산점도를 각각 작성한다.
+
+```{r ch4-ex4-1, fig.cap="`cars_93`의 세 변수 관계 그래프", echo=FALSE}
+cars_93 |> 
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_jitter() +
+  facet_wrap(vars(cyl)) + theme_bw()
+```
+
+2)   `cars_99`에 대해서는 두 연속형 변수의 산점도 점 모양과 색을 `cyl`의 값에 다르게 작성
+
+```{r ch4-ex4-2, fig.cap="`cars_99`의 세 변수 관계 그래프", echo=FALSE}
+cars_99 |> 
+  ggplot(aes(x = displ, y = hwy, color = cyl, shape = cyl)) +
+  geom_jitter() + theme_bw()
+```
+
+
+- 두 데이터 프레임 `cars_93`와 `cars_99`에 있는 변수 `displ`과 `hwy`의 관계를 하나의 그래프에 나타내 보자. 변수 `displ`과 `hwy`에 대한 회귀직선을 추가한 산점도를 작성하되 각 자료가 속한 데이터 프레임에 따라 점과 직선의 색을 구분하여 다음과 같이 작성해 보자. 
+
+```{r ch4-ex4-3, fig.cap="`cars_93`와 `cars_99`의 `displ`과 `hwy`의 관계 그래프", echo=FALSE}
+cars_93 |> 
+  ggplot(aes(x = displ, y = hwy)) +
+  geom_jitter(aes(color = "cars_93")) +
+  geom_smooth(method = "lm", se = FALSE, 
+              aes(color = "cars_93"), linewidth = 1) +
+  geom_jitter(data = cars_99, aes(color = "cars_99")) +
+  geom_smooth(data = cars_99, method = "lm", se = FALSE, 
+              aes(color = "cars_99"), linewidth = 1) +
+  labs(color = NULL, x = "Engine Displacement", y = "Highway MPG") + theme_bw()
+```
+
+
+- 두 데이터 프레임 `cars_93`와 `cars_99`에 있는 변수 `trans`와 `hwy`의 관계를 나타내는 그래프를 작성해 보자. 변수 `trans`의 그룹별로 `cars_93`와 `cars_99`의 `hwy`에 대한 상자그림을 다음과 같이 작성해 보자.  
+
+```{r ch4-ex4-4, fig.cap="`cars_93`와 `cars_99`의 `trans`와 `hwy`의  관계 그래프", echo=FALSE}
+cars_93 |> 
+  ggplot(aes(y = hwy)) +
+  geom_boxplot(aes(x = "cars_93"), fill = "red") +
+  geom_boxplot(data = cars_99, aes(x = "cars_99"), fill = "blue") +
+  facet_wrap(vars(trans)) +
+  labs(x = NULL, y = "Highway MPG") + theme_bw()
+```
+
+
+**5.** 다음은 Wikipedia에서 우리나라의 2012년 20개 주요 수출품목 자료가 있는 웹 페이지(https://en.wikipedia.org/wiki/List_of_exports_of_South_Korea) 에 있는 HTML 테이블의 일부분이다.
+
+![대한민국 주요 수출품목](Figure/ch3_ex_3.png){width="300"}
+
+- HTML 테이블을 R로 불러와 다음과 같이 출력해 보자. 변수 `value`는 각 품목의 수출액이고, 변수 `prop`는 각 품목의 수출액이 20개 전체 품목의 총 수출액에서 차지하는 비율을 나타내고 있다. 단, 변환과정에서는 `dplyr`의 함수들을 사용한다. 
+
+```{r, echo=FALSE}
+library(rvest)
+url <- "https://en.wikipedia.org/wiki/List_of_exports_of_South_Korea"
+web <- read_html(url)
+Xpath <- '//*[@id="mw-content-text"]/div[1]/table' 
+
+tbl <- html_elements(web, xpath = Xpath) |> 
+  html_table()
+
+export <- tbl[[1]] |> 
+  rename(rank = 1, item = 2, value = 3) |> 
+  mutate(value = gsub(",", "", value) |> as.numeric()) |> 
+  mutate(prop = value / sum(value)) |> 
+  print(n = 9)
+```
+
+
+- 각 품목별 수출액을 다음과 같은 형태의 막대그래프로 표현해 보자. 단, 범주 `OTHERS`는 수출액 비율이 2% 미만인 품목, 즉 변수 `prop`의 값이 0.02 미만인 품목을 통합한 범주이다. 
+
+```{r ch4-ex5-1, fig.cap="대한민국 주요 수출품목 및 수출액 막대그래프", fig.width=7, fig.height=5}
+export |> 
+  mutate(item = if_else(prop >= 0.02, item, "OTHERS")) |> 
+  ggplot(aes(y = reorder(item, value), x = value)) +
+    geom_bar(stat = "identity") +
+  labs(y = NULL, x = NULL) + theme_bw()
+```
 
 
 

@@ -457,6 +457,191 @@ with(car_1, diff(range(price)))
 ```
 
 
+**3.** 다음은 Wikipedia에서 우리나라의 2012년 20개 주요 수출품목 자료가 있는 웹 페이지(https://en.wikipedia.org/wiki/List_of_exports_of_South_Korea) 에 있는 HTML 테이블의 일부분이다.
+
+![대한민국 주요 수출품목](Figure/ch3_ex_3.png){width="300"}
+
+1) HTML 테이블을 R로 불러와 다음과 같이 출력해 보자. 
+
+```{r, echo=FALSE}
+library(rvest)
+url <- "https://en.wikipedia.org/wiki/List_of_exports_of_South_Korea"
+web <- read_html(url)
+Xpath <- '//*[@id="mw-content-text"]/div[1]/table' 
+
+tbl <- html_elements(web, xpath = Xpath) |> 
+  html_table()
+export <- tbl[[1]]
+```
+
+```{r}
+export |> print(n = 6)
+```
+
+2) 변수 이름을 다음과 같이 `rank`, `item`, `value`로 변경하자. 
+
+```{r, echo=FALSE}
+names(export) <- c("rank", "item", "value")
+```
+
+```{r}
+export |> print(n = 3)
+```
+
+3) 변수 `value`는 각 품목의 수출액이다. 각 품목의 수출액이 20개 전체 품목의 총 수출액에서 차지하는 비율을 나타내는 변수 `prop`를 다음과 같이 생성해 보자. 
+
+```{r, echo=FALSE}
+export$value <- gsub(",","",export$value) |> as.numeric()
+export$prop <- with(export, round(value/sum(value)*100,2))
+```
+
+```{r}
+export |> print(n = 5)
+```
+
+4) 변수 `prop`의 값이 5 이상인 품목만을 선택해서 다음의 형태로 출력해 보자. 
+
+```{r, echo=FALSE}
+export_5 <- export[export$prop >= 5, -1]
+export_5$prop <- paste0(export_5$prop, '%')
+```
+
+```{r}
+export_5
+```
+
+5) 변수 `prop`의 값이 5 이상인 품목의 평균 수출액을 계산해 보자. 
+
+```{r, include=FALSE}
+export_5["value"][[1]] |> mean()
+```
+
+
+**4.** 파일 `airs.csv`에는 1973년 5월 뉴욕시에서 측정된 공기의 질과 관련된 자료가 입력되어 있다. 
+
+1) R로 불러와서 다음과 같이 출력해 보자. 
+
+```{r, echo=FALSE}
+airs <- read_csv("Data/airs.csv")
+```
+
+```{r}
+print(airs, n = 4)
+```
+
+2) 네 변수들의 평균을 다음의 형태로 출력해 보자. 평균값이 `NA`로 나온 변수가 있는 이유는 무엇인가?
+
+```{r, echo=FALSE}
+colMeans(airs[-1])
+```
+
+3) 변수의 평균값이 `NA`가 되지 않도록 조치해서 다음의 형태로 다시 출력해 보자.  
+
+```{r, echo=FALSE}
+colMeans(airs[-1], na.rm = TRUE)
+```
+
+4) 변수 `Ozone`과 `Solor.R`의 결측값이 있는 행은 모두 제거하고, 그 결과를 `airs_1`에 할당하라. 
+
+```{r, echo=FALSE}
+airs_1 <- airs[!(is.na(airs$Ozone)|is.na(airs$Solar.R)),]
+```
+
+5) `airs_1`의 변수 `Ozone`이 평균값 이상인 그룹과 평균값 미만인 그룹으로 구분해 주는 변수 `Oz.Gp`를 생성해서, 다음과 같이 `airs_1`에 추가하자.  
+
+```{r, echo=FALSE}
+airs_1$Oz.Gp <- with(airs_1, 
+                  cut(Ozone, breaks = c(-Inf, mean(Ozone), Inf),
+                      labels = c("Low", "High")))
+```
+
+```{r}
+airs_1 |> print(n = 4)
+```
+
+
+6) `airs_1`의 변수 `Oz.Gp`의 값이 `High`인 그룹과 `Low`인 그룹에서 변수 `Solor.R`, `Wind`, `Temp`의 평균값에 어떤 차이가 있는지 확인하고, 그 효과를 설명해 보자. 
+
+```{r}
+airs_L <- airs_1[airs_1$Oz.Gp == "Low",] 
+airs_H <- airs_1[airs_1$Oz.Gp == "High",]
+```
+
+```{r, include=FALSE}
+colMeans(airs_L[3:5])
+colMeans(airs_H[3:5])
+```
+
+
+**5.** 파일 `cars.csv`에는 234대 자동차의 제조회사, 모델, 엔진 기통 수, 변속기 종류, 연비가 입력되어 있다. 
+
+1) R로 불러와서 다음과 같이 출력해 보자. 
+
+```{r, echo=FALSE}
+cars <- read_csv("Data/cars.csv", 
+                 col_names = c("manufacturer", "model", "cyl", "trans", "mpg"))
+```
+
+```{r}
+cars |> print(n = 3)
+```
+
+
+2) 변수 `manufacturer`와 `model`을 변수 `maker`로 통합해 보자. 두 변수 값을 통합할 때 구분자는 `"-"`을 사용하라. 통합 결과는 다음과 같다. 
+
+```{r, echo=FALSE}
+cars$maker <- with(cars, paste(manufacturer, model, sep = "-"))
+cars <- cars[c(6, 3:5)]
+```
+
+```{r}
+cars |> print(n = 3)
+```
+
+
+3) 변수 `maker`의 값이 동일한 자동차가 많이 입력되어 있다. 변수 `maker`에는 몇 종류의 서로 다른 자동차 모델이 입력되어 있는지 확인해 보자. 
+
+4) 변수 `cyl`의 값이 4이고 `trans`의 값이 `"auto"`인 자동차의 대수와 변수 `cyl`의 값이 8이고 `trans`의 값이 `"auto"`인 자동차의 대수를 확인하자. 
+
+```{r, echo=FALSE}
+cond_1 <- with(cars, cyl == 4 & trans == "auto")
+cond_2 <- with(cars, cyl == 8 & trans == "auto")
+```
+
+```{r, include=FALSE}
+cars[cond_1,] |> nrow()
+cars[cond_2,] |> nrow()
+```
+
+5) 변수 `cyl`의 값이 4이고 `trans`의 값이 `"auto"`인 자동차의 변수 `mpg`의 평균값과 변수 `cyl`의 값이 8이고 `trans`의 값이 `"auto"`인 자동차의 변수 `mpg`의 평균값을 계산하고 비교해 보자. 
+
+```{r, include=FALSE}
+cars[cond_1, "mpg"][[1]] |> mean()
+cars[cond_2, "mpg"][[1]] |> mean()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

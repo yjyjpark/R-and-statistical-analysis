@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2023-08-19" />
+<meta name="date" content="2023-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -392,7 +392,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="데이터-입력.html#cb291-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="데이터-입력.html#cb292-1" tabindex="-1"></a><span class="fu">read_table</span>(<span class="st">&quot;https://raw.githubusercontent.com/yjyjpark/R-and-statistical-analysis/master/Data/data2_1.txt&quot;</span>)</span>
 <span id="cb292-2"><a href="데이터-입력.html#cb292-2" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb292-3"><a href="데이터-입력.html#cb292-3" tabindex="-1"></a><span class="do">## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb292-3"><a href="데이터-입력.html#cb292-3" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────────────────────────────────────────────</span></span>
 <span id="cb292-4"><a href="데이터-입력.html#cb292-4" tabindex="-1"></a><span class="do">## cols(</span></span>
 <span id="cb292-5"><a href="데이터-입력.html#cb292-5" tabindex="-1"></a><span class="do">##   age = col_double(),</span></span>
 <span id="cb292-6"><a href="데이터-입력.html#cb292-6" tabindex="-1"></a><span class="do">##   gender = col_character(),</span></span>
@@ -529,7 +529,7 @@ R에서 변수 이름은 반드시 문자로 시작해야 하며, 중간에 빈�
 <span id="cb301-3"><a href="데이터-입력.html#cb301-3" tabindex="-1"></a>         <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>, </span>
 <span id="cb301-4"><a href="데이터-입력.html#cb301-4" tabindex="-1"></a>         <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;NA&quot;</span>))</span>
 <span id="cb301-5"><a href="데이터-입력.html#cb301-5" tabindex="-1"></a><span class="do">## Rows: 4 Columns: 3</span></span>
-<span id="cb301-6"><a href="데이터-입력.html#cb301-6" tabindex="-1"></a><span class="do">## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb301-6"><a href="데이터-입력.html#cb301-6" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────────────────────────────────────────────</span></span>
 <span id="cb301-7"><a href="데이터-입력.html#cb301-7" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
 <span id="cb301-8"><a href="데이터-입력.html#cb301-8" tabindex="-1"></a><span class="do">## dbl (2): X1, X3</span></span>
 <span id="cb301-9"><a href="데이터-입력.html#cb301-9" tabindex="-1"></a><span class="do">## lgl (1): X2</span></span>
@@ -683,7 +683,7 @@ RUN;</code></pre>
 <p>웹 페이지를 보다 보면 중요한 정보가 있는 HTML 테이블을 자주 만나게 되는데, 이 테이블에 있는 데이터를 R로 바로 불러들일 수 있다면 분석 과정에 큰 도움이 될 것이다. 문제는 웹 페이지에 있는 HTML 테이블이라는 것이 사람들에게 시각적으로 보여지는 측면이 강조되는 대상이어서 거기에 있는 정보를 ‘긁어모아’ 컴퓨터에 입력하는 것이 조금 복잡한 작업이 될 수 있다는 점이다. 그러나 패키지 <code>rvest</code>를 이용하면 비교적 간편하게 HTML 테이블의 데이터를 긁어모아 R에 입력시킬 수 있다.</p>
 <p>패키지 <code>rvest</code>에서 HTML 테이블을 불러오는데 필요한 함수는 <code>read_html()</code>과 <code>html_elements()</code>, <code>html_table()</code>이다. 함수 <code>read_html()</code>은 원하는 HTML 테이블이 있는 웹 페이지를 읽어오는 데 사용된다. HTML 테이블의 내용은 <code>&lt;table&gt;</code> 태그 사이에 존재하기 때문에 <code>&lt;table&gt;</code> 노드(node)를 찾는 것이 다음 순서인데, 이 작업은 함수 <code>html_elements()</code>로 할 수 있다. 이어서 선택된 노드의 HTML 테이블 데이터를 R로 불러오는 작업은 함수 <code>html_table()</code>로 하게 된다.</p>
 <p><span class="math inline">\(\bullet\)</span> 예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기</p>
-<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-08-19에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
+<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-08-23에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
 <div class="figure"><span style="display:block;" id="fig:wiki"></span>
 <img src="Figure/wiki_22_02_09_1.PNG" alt="예제 1에서 사용된 HTML 테이블" width="222" />
 <p class="caption">
@@ -765,7 +765,7 @@ RUN;</code></pre>
 <div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="데이터-입력.html#cb319-1" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">as.numeric</span>(pop))</span>
 <span id="cb319-2"><a href="데이터-입력.html#cb319-2" tabindex="-1"></a><span class="do">## [1] 169042554</span></span></code></pre></div>
 <p><span class="math inline">\(\bullet\)</span> 예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기</p>
-<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-08-19이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
+<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-08-23이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
 <div class="figure"><span style="display:block;" id="fig:KBO"></span>
 <img src="Figure/KBO.PNG" alt="예제 2에서 사용된 HTML 테이블" width="566" />
 <p class="caption">
@@ -783,16 +783,16 @@ RUN;</code></pre>
 <span id="cb321-3"><a href="데이터-입력.html#cb321-3" tabindex="-1"></a><span class="do">## # A tibble: 10 × 15</span></span>
 <span id="cb321-4"><a href="데이터-입력.html#cb321-4" tabindex="-1"></a><span class="do">##    순위  팀명    AVG     G    PA    AB     R     H  `2B`  `3B`    HR    TB   RBI</span></span>
 <span id="cb321-5"><a href="데이터-입력.html#cb321-5" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb321-6"><a href="데이터-입력.html#cb321-6" tabindex="-1"></a><span class="do">##  1 1     LG    0.285   102  4120  3517   566  1001   174    19    65  1408   529</span></span>
-<span id="cb321-7"><a href="데이터-입력.html#cb321-7" tabindex="-1"></a><span class="do">##  2 2     KIA   0.268    97  3782  3328   470   893   149    15    65  1267   437</span></span>
-<span id="cb321-8"><a href="데이터-입력.html#cb321-8" tabindex="-1"></a><span class="do">##  3 3     KT    0.268   104  4094  3620   492   969   172    10    60  1341   454</span></span>
-<span id="cb321-9"><a href="데이터-입력.html#cb321-9" tabindex="-1"></a><span class="do">##  4 4     삼성  0.266   104  4050  3588   458   956   162    14    64  1338   435</span></span>
-<span id="cb321-10"><a href="데이터-입력.html#cb321-10" tabindex="-1"></a><span class="do">##  5 5     NC    0.266   100  3938  3431   467   913   156    23    64  1307   439</span></span>
-<span id="cb321-11"><a href="데이터-입력.html#cb321-11" tabindex="-1"></a><span class="do">##  6 6     롯데  0.263   102  3944  3439   465   903   155    15    52  1244   431</span></span>
-<span id="cb321-12"><a href="데이터-입력.html#cb321-12" tabindex="-1"></a><span class="do">##  7 7     SSG   0.256   101  3917  3437   451   881   164     9    88  1327   422</span></span>
-<span id="cb321-13"><a href="데이터-입력.html#cb321-13" tabindex="-1"></a><span class="do">##  8 8     키움  0.253   111  4396  3874   455   981   167    20    47  1329   435</span></span>
-<span id="cb321-14"><a href="데이터-입력.html#cb321-14" tabindex="-1"></a><span class="do">##  9 9     두산  0.253   100  3846  3378   416   854   141    24    70  1253   382</span></span>
-<span id="cb321-15"><a href="데이터-입력.html#cb321-15" tabindex="-1"></a><span class="do">## 10 10    한화  0.243   101  3995  3466   434   843   152     7    73  1228   409</span></span>
+<span id="cb321-6"><a href="데이터-입력.html#cb321-6" tabindex="-1"></a><span class="do">##  1 1     LG    0.285   104  4197  3588   578  1022   176    19    66  1434   539</span></span>
+<span id="cb321-7"><a href="데이터-입력.html#cb321-7" tabindex="-1"></a><span class="do">##  2 2     KIA   0.269   100  3897  3430   484   921   151    16    69  1311   451</span></span>
+<span id="cb321-8"><a href="데이터-입력.html#cb321-8" tabindex="-1"></a><span class="do">##  3 3     NC    0.268   102  4021  3505   480   938   161    24    67  1348   452</span></span>
+<span id="cb321-9"><a href="데이터-입력.html#cb321-9" tabindex="-1"></a><span class="do">##  4 4     KT    0.267   107  4211  3724   508   993   177    11    63  1381   467</span></span>
+<span id="cb321-10"><a href="데이터-입력.html#cb321-10" tabindex="-1"></a><span class="do">##  5 5     삼성  0.266   107  4165  3688   474   980   164    17    67  1379   450</span></span>
+<span id="cb321-11"><a href="데이터-입력.html#cb321-11" tabindex="-1"></a><span class="do">##  6 6     롯데  0.262   104  4019  3503   473   917   159    15    52  1262   439</span></span>
+<span id="cb321-12"><a href="데이터-입력.html#cb321-12" tabindex="-1"></a><span class="do">##  7 7     SSG   0.256   103  3993  3502   455   898   165     9    89  1348   425</span></span>
+<span id="cb321-13"><a href="데이터-입력.html#cb321-13" tabindex="-1"></a><span class="do">##  8 8     키움  0.254   114  4506  3971   468  1007   174    20    49  1368   448</span></span>
+<span id="cb321-14"><a href="데이터-입력.html#cb321-14" tabindex="-1"></a><span class="do">##  9 9     두산  0.253   103  3962  3479   431   880   145    24    71  1286   395</span></span>
+<span id="cb321-15"><a href="데이터-입력.html#cb321-15" tabindex="-1"></a><span class="do">## 10 10    한화  0.241   104  4104  3567   441   860   154     7    75  1253   414</span></span>
 <span id="cb321-16"><a href="데이터-입력.html#cb321-16" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: SAC &lt;int&gt;, SF &lt;int&gt;</span></span></code></pre></div>
 <p>일반적으로 웹 페이지에 있는 HTML 테이블을 R로 불러온 후에도 실제 분석 데이터로 사용하기 위해서는 많은 추가 작업이 필요하게 된다.</p>
 </div>
@@ -807,15 +807,15 @@ RUN;</code></pre>
 <span id="cb322-2"><a href="데이터-입력.html#cb322-2" tabindex="-1"></a><span class="do">## # A tibble: 223 × 4</span></span>
 <span id="cb322-3"><a href="데이터-입력.html#cb322-3" tabindex="-1"></a><span class="do">##    ``    Location          `Vaccinated[a]` `Percent[b]`</span></span>
 <span id="cb322-4"><a href="데이터-입력.html#cb322-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;           &lt;chr&gt;       </span></span>
-<span id="cb322-5"><a href="데이터-입력.html#cb322-5" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,620,569,915   70.48%      </span></span>
+<span id="cb322-5"><a href="데이터-입력.html#cb322-5" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,620,635,452   70.48%      </span></span>
 <span id="cb322-6"><a href="데이터-입력.html#cb322-6" tabindex="-1"></a><span class="do">##  2 &quot;&quot;    China[e]          1,310,292,000   91.89%      </span></span>
-<span id="cb322-7"><a href="데이터-입력.html#cb322-7" tabindex="-1"></a><span class="do">##  3 &quot;&quot;    India             1,027,415,743   72.50%      </span></span>
-<span id="cb322-8"><a href="데이터-입력.html#cb322-8" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 337,971,978     75.08%      </span></span>
+<span id="cb322-7"><a href="데이터-입력.html#cb322-7" tabindex="-1"></a><span class="do">##  3 &quot;&quot;    India             1,027,416,053   72.50%      </span></span>
+<span id="cb322-8"><a href="데이터-입력.html#cb322-8" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 337,972,446     75.08%      </span></span>
 <span id="cb322-9"><a href="데이터-입력.html#cb322-9" tabindex="-1"></a><span class="do">##  5 &quot;&quot;    United States[g]  270,227,181     81.39%      </span></span>
 <span id="cb322-10"><a href="데이터-입력.html#cb322-10" tabindex="-1"></a><span class="do">##  6 &quot;&quot;    Indonesia         203,845,350     73.99%      </span></span>
 <span id="cb322-11"><a href="데이터-입력.html#cb322-11" tabindex="-1"></a><span class="do">##  7 &quot;&quot;    Brazil            189,643,431     88.08%      </span></span>
 <span id="cb322-12"><a href="데이터-입력.html#cb322-12" tabindex="-1"></a><span class="do">##  8 &quot;&quot;    Pakistan          165,567,890     70.21%      </span></span>
-<span id="cb322-13"><a href="데이터-입력.html#cb322-13" tabindex="-1"></a><span class="do">##  9 &quot;&quot;    Bangladesh        151,486,798     88.49%      </span></span>
+<span id="cb322-13"><a href="데이터-입력.html#cb322-13" tabindex="-1"></a><span class="do">##  9 &quot;&quot;    Bangladesh        151,501,145     88.50%      </span></span>
 <span id="cb322-14"><a href="데이터-입력.html#cb322-14" tabindex="-1"></a><span class="do">## 10 &quot;&quot;    Japan             104,705,133     84.47%      </span></span>
 <span id="cb322-15"><a href="데이터-입력.html#cb322-15" tabindex="-1"></a><span class="do">## # ℹ 213 more rows</span></span></code></pre></div>
 <ul>
@@ -826,8 +826,8 @@ RUN;</code></pre>
 <span id="cb323-3"><a href="데이터-입력.html#cb323-3" tabindex="-1"></a><span class="do">##   Location          Vaccinated    Percent</span></span>
 <span id="cb323-4"><a href="데이터-입력.html#cb323-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;             &lt;chr&gt;         &lt;chr&gt;  </span></span>
 <span id="cb323-5"><a href="데이터-입력.html#cb323-5" tabindex="-1"></a><span class="do">## 1 China[e]          1,310,292,000 91.89% </span></span>
-<span id="cb323-6"><a href="데이터-입력.html#cb323-6" tabindex="-1"></a><span class="do">## 2 India             1,027,415,743 72.50% </span></span>
-<span id="cb323-7"><a href="데이터-입력.html#cb323-7" tabindex="-1"></a><span class="do">## 3 European Union[f] 337,971,978   75.08%</span></span></code></pre></div>
+<span id="cb323-6"><a href="데이터-입력.html#cb323-6" tabindex="-1"></a><span class="do">## 2 India             1,027,416,053 72.50% </span></span>
+<span id="cb323-7"><a href="데이터-입력.html#cb323-7" tabindex="-1"></a><span class="do">## 3 European Union[f] 337,972,446   75.08%</span></span></code></pre></div>
 <div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="데이터-입력.html#cb324-1" tabindex="-1"></a><span class="fu">tail</span>(ex3_1, <span class="at">n =</span> <span class="dv">3</span>)</span>
 <span id="cb324-2"><a href="데이터-입력.html#cb324-2" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
 <span id="cb324-3"><a href="데이터-입력.html#cb324-3" tabindex="-1"></a><span class="do">##   Location         Vaccinated Percent</span></span>
@@ -842,7 +842,7 @@ RUN;</code></pre>
 <span id="cb325-2"><a href="데이터-입력.html#cb325-2" tabindex="-1"></a><span class="do">## # A tibble: 11 × 3</span></span>
 <span id="cb325-3"><a href="데이터-입력.html#cb325-3" tabindex="-1"></a><span class="do">##    Location             Vaccinated Percent</span></span>
 <span id="cb325-4"><a href="데이터-입력.html#cb325-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                     &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb325-5"><a href="데이터-입력.html#cb325-5" tabindex="-1"></a><span class="do">##  1 Cuba                   10767273    96.0</span></span>
+<span id="cb325-5"><a href="데이터-입력.html#cb325-5" tabindex="-1"></a><span class="do">##  1 Cuba                   10767477    96.0</span></span>
 <span id="cb325-6"><a href="데이터-입력.html#cb325-6" tabindex="-1"></a><span class="do">##  2 United Arab Emirates    9991089   100  </span></span>
 <span id="cb325-7"><a href="데이터-입력.html#cb325-7" tabindex="-1"></a><span class="do">##  3 Portugal                9789941    95.3</span></span>
 <span id="cb325-8"><a href="데이터-입력.html#cb325-8" tabindex="-1"></a><span class="do">##  4 Qatar                   2852178   106. </span></span>
@@ -879,6 +879,134 @@ RUN;</code></pre>
 <li>변수 <code>price</code>의 값이 가장 큰 자동차와 가장 작은 지동차의 <code>model</code> 값을 각각 구하고
 두 자동차의 <code>price</code> 차이도 구해 보자</li>
 </ul>
+<p><strong>3.</strong> 다음은 Wikipedia에서 우리나라의 2012년 20개 주요 수출품목 자료가 있는 웹 페이지(<a href="https://en.wikipedia.org/wiki/List_of_exports_of_South_Korea" class="uri">https://en.wikipedia.org/wiki/List_of_exports_of_South_Korea</a>) 에 있는 HTML 테이블의 일부분이다.</p>
+<div class="float">
+<img src="Figure/ch3_ex_3.png" width="300" alt="대한민국 주요 수출품목" />
+<div class="figcaption">대한민국 주요 수출품목</div>
+</div>
+<ol style="list-style-type: decimal">
+<li>HTML 테이블을 R로 불러와 다음과 같이 출력해 보자.</li>
+</ol>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="데이터-입력.html#cb328-1" tabindex="-1"></a>export <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">6</span>)</span>
+<span id="cb328-2"><a href="데이터-입력.html#cb328-2" tabindex="-1"></a><span class="do">## # A tibble: 20 × 3</span></span>
+<span id="cb328-3"><a href="데이터-입력.html#cb328-3" tabindex="-1"></a><span class="do">##     `#` Country                   Value </span></span>
+<span id="cb328-4"><a href="데이터-입력.html#cb328-4" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;chr&gt;                     &lt;chr&gt; </span></span>
+<span id="cb328-5"><a href="데이터-입력.html#cb328-5" tabindex="-1"></a><span class="do">## 1     1 Refined petroleum         51,540</span></span>
+<span id="cb328-6"><a href="데이터-입력.html#cb328-6" tabindex="-1"></a><span class="do">## 2     2 Integrated circuits       49,126</span></span>
+<span id="cb328-7"><a href="데이터-입력.html#cb328-7" tabindex="-1"></a><span class="do">## 3     3 Cars                      42,484</span></span>
+<span id="cb328-8"><a href="데이터-입력.html#cb328-8" tabindex="-1"></a><span class="do">## 4     4 Passenger and Cargo Ships 29,010</span></span>
+<span id="cb328-9"><a href="데이터-입력.html#cb328-9" tabindex="-1"></a><span class="do">## 5     5 LCDs                      23,978</span></span>
+<span id="cb328-10"><a href="데이터-입력.html#cb328-10" tabindex="-1"></a><span class="do">## 6     6 Car parts                 20,496</span></span>
+<span id="cb328-11"><a href="데이터-입력.html#cb328-11" tabindex="-1"></a><span class="do">## # ℹ 14 more rows</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>변수 이름을 다음과 같이 <code>rank</code>, <code>item</code>, <code>value</code>로 변경하자.</li>
+</ol>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="데이터-입력.html#cb329-1" tabindex="-1"></a>export <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb329-2"><a href="데이터-입력.html#cb329-2" tabindex="-1"></a><span class="do">## # A tibble: 20 × 3</span></span>
+<span id="cb329-3"><a href="데이터-입력.html#cb329-3" tabindex="-1"></a><span class="do">##    rank item                value </span></span>
+<span id="cb329-4"><a href="데이터-입력.html#cb329-4" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;chr&gt;               &lt;chr&gt; </span></span>
+<span id="cb329-5"><a href="데이터-입력.html#cb329-5" tabindex="-1"></a><span class="do">## 1     1 Refined petroleum   51,540</span></span>
+<span id="cb329-6"><a href="데이터-입력.html#cb329-6" tabindex="-1"></a><span class="do">## 2     2 Integrated circuits 49,126</span></span>
+<span id="cb329-7"><a href="데이터-입력.html#cb329-7" tabindex="-1"></a><span class="do">## 3     3 Cars                42,484</span></span>
+<span id="cb329-8"><a href="데이터-입력.html#cb329-8" tabindex="-1"></a><span class="do">## # ℹ 17 more rows</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>변수 <code>value</code>는 각 품목의 수출액이다. 각 품목의 수출액이 20개 전체 품목의 총 수출액에서 차지하는 비율을 나타내는 변수 <code>prop</code>를 다음과 같이 생성해 보자.</li>
+</ol>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="데이터-입력.html#cb330-1" tabindex="-1"></a>export <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb330-2"><a href="데이터-입력.html#cb330-2" tabindex="-1"></a><span class="do">## # A tibble: 20 × 4</span></span>
+<span id="cb330-3"><a href="데이터-입력.html#cb330-3" tabindex="-1"></a><span class="do">##    rank item                      value  prop</span></span>
+<span id="cb330-4"><a href="데이터-입력.html#cb330-4" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb330-5"><a href="데이터-입력.html#cb330-5" tabindex="-1"></a><span class="do">## 1     1 Refined petroleum         51540 16.2 </span></span>
+<span id="cb330-6"><a href="데이터-입력.html#cb330-6" tabindex="-1"></a><span class="do">## 2     2 Integrated circuits       49126 15.5 </span></span>
+<span id="cb330-7"><a href="데이터-입력.html#cb330-7" tabindex="-1"></a><span class="do">## 3     3 Cars                      42484 13.4 </span></span>
+<span id="cb330-8"><a href="데이터-입력.html#cb330-8" tabindex="-1"></a><span class="do">## 4     4 Passenger and Cargo Ships 29010  9.14</span></span>
+<span id="cb330-9"><a href="데이터-입력.html#cb330-9" tabindex="-1"></a><span class="do">## 5     5 LCDs                      23978  7.56</span></span>
+<span id="cb330-10"><a href="데이터-입력.html#cb330-10" tabindex="-1"></a><span class="do">## # ℹ 15 more rows</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>변수 <code>prop</code>의 값이 5 이상인 품목만을 선택해서 다음의 형태로 출력해 보자.</li>
+</ol>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="데이터-입력.html#cb331-1" tabindex="-1"></a>export_5</span>
+<span id="cb331-2"><a href="데이터-입력.html#cb331-2" tabindex="-1"></a><span class="do">## # A tibble: 6 × 3</span></span>
+<span id="cb331-3"><a href="데이터-입력.html#cb331-3" tabindex="-1"></a><span class="do">##   item                      value prop  </span></span>
+<span id="cb331-4"><a href="데이터-입력.html#cb331-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt; </span></span>
+<span id="cb331-5"><a href="데이터-입력.html#cb331-5" tabindex="-1"></a><span class="do">## 1 Refined petroleum         51540 16.24%</span></span>
+<span id="cb331-6"><a href="데이터-입력.html#cb331-6" tabindex="-1"></a><span class="do">## 2 Integrated circuits       49126 15.48%</span></span>
+<span id="cb331-7"><a href="데이터-입력.html#cb331-7" tabindex="-1"></a><span class="do">## 3 Cars                      42484 13.39%</span></span>
+<span id="cb331-8"><a href="데이터-입력.html#cb331-8" tabindex="-1"></a><span class="do">## 4 Passenger and Cargo Ships 29010 9.14% </span></span>
+<span id="cb331-9"><a href="데이터-입력.html#cb331-9" tabindex="-1"></a><span class="do">## 5 LCDs                      23978 7.56% </span></span>
+<span id="cb331-10"><a href="데이터-입력.html#cb331-10" tabindex="-1"></a><span class="do">## 6 Car parts                 20496 6.46%</span></span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>변수 <code>prop</code>의 값이 5 이상인 품목의 평균 수출액을 계산해 보자.</li>
+</ol>
+<p><strong>4.</strong> 파일 <code>airs.csv</code>에는 1973년 5월 뉴욕시에서 측정된 공기의 질과 관련된 자료가 입력되어 있다.</p>
+<ol style="list-style-type: decimal">
+<li>R로 불러와서 다음과 같이 출력해 보자.</li>
+</ol>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="데이터-입력.html#cb332-1" tabindex="-1"></a><span class="fu">print</span>(airs, <span class="at">n =</span> <span class="dv">4</span>)</span>
+<span id="cb332-2"><a href="데이터-입력.html#cb332-2" tabindex="-1"></a><span class="do">## # A tibble: 31 × 5</span></span>
+<span id="cb332-3"><a href="데이터-입력.html#cb332-3" tabindex="-1"></a><span class="do">##     Day Ozone Solar.R  Wind  Temp</span></span>
+<span id="cb332-4"><a href="데이터-입력.html#cb332-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb332-5"><a href="데이터-입력.html#cb332-5" tabindex="-1"></a><span class="do">## 1     1    41     190   7.4    67</span></span>
+<span id="cb332-6"><a href="데이터-입력.html#cb332-6" tabindex="-1"></a><span class="do">## 2     2    36     118   8      72</span></span>
+<span id="cb332-7"><a href="데이터-입력.html#cb332-7" tabindex="-1"></a><span class="do">## 3     3    12     149  12.6    74</span></span>
+<span id="cb332-8"><a href="데이터-입력.html#cb332-8" tabindex="-1"></a><span class="do">## 4     4    18     313  11.5    62</span></span>
+<span id="cb332-9"><a href="데이터-입력.html#cb332-9" tabindex="-1"></a><span class="do">## # ℹ 27 more rows</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>네 변수들의 평균을 다음의 형태로 출력해 보자. 평균값이 <code>NA</code>로 나온 변수가 있는 이유는 무엇인가?</li>
+</ol>
+<pre><code>##    Ozone  Solar.R     Wind     Temp 
+##       NA       NA 11.62258 65.54839</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>변수의 평균값이 <code>NA</code>가 되지 않도록 조치해서 다음의 형태로 다시 출력해 보자.</li>
+</ol>
+<pre><code>##     Ozone   Solar.R      Wind      Temp 
+##  23.61538 181.29630  11.62258  65.54839</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>변수 <code>Ozone</code>과 <code>Solor.R</code>의 결측값이 있는 행은 모두 제거하고, 그 결과를 <code>airs_1</code>에 할당하라.</p></li>
+<li><p><code>airs_1</code>의 변수 <code>Ozone</code>이 평균값 이상인 그룹과 평균값 미만인 그룹으로 구분해 주는 변수 <code>Oz.Gp</code>를 생성해서, 다음과 같이 <code>airs_1</code>에 추가하자.</p></li>
+</ol>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="데이터-입력.html#cb335-1" tabindex="-1"></a>airs_1 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">4</span>)</span>
+<span id="cb335-2"><a href="데이터-입력.html#cb335-2" tabindex="-1"></a><span class="do">## # A tibble: 24 × 6</span></span>
+<span id="cb335-3"><a href="데이터-입력.html#cb335-3" tabindex="-1"></a><span class="do">##     Day Ozone Solar.R  Wind  Temp Oz.Gp</span></span>
+<span id="cb335-4"><a href="데이터-입력.html#cb335-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;</span></span>
+<span id="cb335-5"><a href="데이터-입력.html#cb335-5" tabindex="-1"></a><span class="do">## 1     1    41     190   7.4    67 High </span></span>
+<span id="cb335-6"><a href="데이터-입력.html#cb335-6" tabindex="-1"></a><span class="do">## 2     2    36     118   8      72 High </span></span>
+<span id="cb335-7"><a href="데이터-입력.html#cb335-7" tabindex="-1"></a><span class="do">## 3     3    12     149  12.6    74 Low  </span></span>
+<span id="cb335-8"><a href="데이터-입력.html#cb335-8" tabindex="-1"></a><span class="do">## 4     4    18     313  11.5    62 Low  </span></span>
+<span id="cb335-9"><a href="데이터-입력.html#cb335-9" tabindex="-1"></a><span class="do">## # ℹ 20 more rows</span></span></code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li><code>airs_1</code>의 변수 <code>Oz.Gp</code>의 값이 <code>High</code>인 그룹과 <code>Low</code>인 그룹에서 변수 <code>Solor.R</code>, <code>Wind</code>, <code>Temp</code>의 평균값에 어떤 차이가 있는지 확인하고, 그 효과를 설명해 보자.</li>
+</ol>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="데이터-입력.html#cb336-1" tabindex="-1"></a>airs_L <span class="ot">&lt;-</span> airs_1[airs_1<span class="sc">$</span>Oz.Gp <span class="sc">==</span> <span class="st">&quot;Low&quot;</span>,] </span>
+<span id="cb336-2"><a href="데이터-입력.html#cb336-2" tabindex="-1"></a>airs_H <span class="ot">&lt;-</span> airs_1[airs_1<span class="sc">$</span>Oz.Gp <span class="sc">==</span> <span class="st">&quot;High&quot;</span>,]</span></code></pre></div>
+<p><strong>5.</strong> 파일 <code>cars.csv</code>에는 234대 자동차의 제조회사, 모델, 엔진 기통 수, 변속기 종류, 연비가 입력되어 있다.</p>
+<ol style="list-style-type: decimal">
+<li>R로 불러와서 다음과 같이 출력해 보자.</li>
+</ol>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="데이터-입력.html#cb337-1" tabindex="-1"></a>cars <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb337-2"><a href="데이터-입력.html#cb337-2" tabindex="-1"></a><span class="do">## # A tibble: 234 × 5</span></span>
+<span id="cb337-3"><a href="데이터-입력.html#cb337-3" tabindex="-1"></a><span class="do">##   manufacturer model   cyl trans    mpg</span></span>
+<span id="cb337-4"><a href="데이터-입력.html#cb337-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span id="cb337-5"><a href="데이터-입력.html#cb337-5" tabindex="-1"></a><span class="do">## 1 audi         a4        4 auto      29</span></span>
+<span id="cb337-6"><a href="데이터-입력.html#cb337-6" tabindex="-1"></a><span class="do">## 2 audi         a4        4 manual    29</span></span>
+<span id="cb337-7"><a href="데이터-입력.html#cb337-7" tabindex="-1"></a><span class="do">## 3 audi         a4        4 manual    31</span></span>
+<span id="cb337-8"><a href="데이터-입력.html#cb337-8" tabindex="-1"></a><span class="do">## # ℹ 231 more rows</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>변수 <code>manufacturer</code>와 <code>model</code>을 변수 <code>maker</code>로 통합해 보자. 두 변수 값을 통합할 때 구분자는 <code>"-"</code>을 사용하라. 통합 결과는 다음과 같다.</li>
+</ol>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="데이터-입력.html#cb338-1" tabindex="-1"></a>cars <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb338-2"><a href="데이터-입력.html#cb338-2" tabindex="-1"></a><span class="do">## # A tibble: 234 × 4</span></span>
+<span id="cb338-3"><a href="데이터-입력.html#cb338-3" tabindex="-1"></a><span class="do">##   maker     cyl trans    mpg</span></span>
+<span id="cb338-4"><a href="데이터-입력.html#cb338-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span id="cb338-5"><a href="데이터-입력.html#cb338-5" tabindex="-1"></a><span class="do">## 1 audi-a4     4 auto      29</span></span>
+<span id="cb338-6"><a href="데이터-입력.html#cb338-6" tabindex="-1"></a><span class="do">## 2 audi-a4     4 manual    29</span></span>
+<span id="cb338-7"><a href="데이터-입력.html#cb338-7" tabindex="-1"></a><span class="do">## 3 audi-a4     4 manual    31</span></span>
+<span id="cb338-8"><a href="데이터-입력.html#cb338-8" tabindex="-1"></a><span class="do">## # ℹ 231 more rows</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li><p>변수 <code>maker</code>의 값이 동일한 자동차가 많이 입력되어 있다. 변수 <code>maker</code>에는 몇 종류의 서로 다른 자동차 모델이 입력되어 있는지 확인해 보자.</p></li>
+<li><p>변수 <code>cyl</code>의 값이 4이고 <code>trans</code>의 값이 <code>"auto"</code>인 자동차의 대수와 변수 <code>cyl</code>의 값이 8이고 <code>trans</code>의 값이 <code>"auto"</code>인 자동차의 대수를 확인하자.</p></li>
+<li><p>변수 <code>cyl</code>의 값이 4이고 <code>trans</code>의 값이 <code>"auto"</code>인 자동차의 변수 <code>mpg</code>의 평균값과 변수 <code>cyl</code>의 값이 8이고 <code>trans</code>의 값이 <code>"auto"</code>인 자동차의 변수 <code>mpg</code>의 평균값을 계산하고 비교해 보자.</p></li>
+</ol>
 
 </div>
 </div>
