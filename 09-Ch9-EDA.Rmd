@@ -1707,6 +1707,146 @@ ggpairs(mtcars_2, aes(color = am),
 ## 연습문제
 
 
+**1.** 패키지 `UsingR`의 데이터 프레임 `normtemp`는 화씨 98.6도를 "정상" 체온이라고 할 수 있는지를 확인하기 위해 성인 130명을 대상으로 체온과 심박수를 측정한 자료이다. 
+변수 `temperature`는 화씨로 측정된 체온이고, `gender`는 1(남자), 2(여자)를 값으로 갖고 있으며, `hr`은 안정 시 측정된 심박수이다.
+
+- 화씨로 측정된 변수 `temperature`의 값을 섭씨로 변환시키고, `gender`는 `male`과 `female`을 범주로 갖는 요인으로 변환시키자. 단, 섭씨 온도는 $($화씨 온도$-32) \times \frac{5}{9}$이다.
+
+- 주어진 자료에서 체온과 관련된 어떤 정보를 얻을 수 있는가? 
+필요한 그래프를 작성하고, 그 결과를 설명하라.
+
+**2.** 패키지 `MASS`의 데이터 프레임 `survey`는 학생 237명을 대상으로 조사한 자료이다. 
+
+```{r, echo=FALSE}
+data(survey, package = "MASS")
+```
+
+- 변수 중 요인만을 선택해서 변수 이름을 다음과 같이 벡터 형태로 출력해 보자. 
+
+```{r, echo=FALSE}
+survey_factor <- survey |> 
+  select(where(is.factor))
+
+names(survey_factor)
+```
+
+- 각 요인 변수의 범주 개수를 확인해서 다음과 같이 출력해 보자. 
+
+```{r, echo=FALSE}
+survey_factor |> 
+  as_tibble() |> 
+  summarise(across(everything(), nlevels))
+```
+
+- 변수 중 요인만을 선택해서 각 변수의 막대그래프를 다음과 같은 형태로 작성해 보자. 
+
+```{r, fig.align='center', echo=FALSE}
+survey_factor |> 
+  pivot_longer(everything(), names_to = "variable", values_to = "value") |> 
+  ggplot(aes(x = value)) +
+  geom_bar() +
+  facet_wrap(vars(variable), scales = "free") +
+  labs(x = NULL)
+```
+
+- 앞 문제에서 작성된 막대그래프에는 `NA`가 범주로 포함된 변수들이 있다.
+각 변수별로 결측값의 개수를 확인해서 다음과 같이 출력해 보자. 
+
+```{r, echo=FALSE}
+survey_factor |> 
+  map_df(~ sum(is.na(.x)))
+```
+
+
+- 변수 `Sex`와 `Smoke`에 결측값이 있는 케이스를 제거하고,
+변수 `Smoke`의 범주 중 `Heavy`, `Occas`, `Regul`는 `yes`로 통합하며, `Never`는 `no`로 변경시켜서 새로운 데이터 프레임 `survey_S`에 할당하자.
+변경된 데이터 프레임에서 변수 `Smoke`의 도수분포를 구해서 다음과 같이 출력해 보자. 
+
+```{r, echo=FALSE}
+survey_S <- as_tibble(survey) |> 
+  drop_na(Sex, Smoke) |> 
+  mutate(Smoke = fct_recode(Smoke, yes = "Heavy", yes = "Occas", yes = "Regul",
+                            no = "Never"))
+survey_S |> count(Smoke)
+```
+
+
+- 데이터 프레임 `survey_S`를 사용해서 변수 `Sex`와 `Smoke`의 다음과 같은 이변량 막대그래프를 작성하고, 의미를 해석해 보자. 
+
+```{r, fig.align='center', echo=FALSE}
+survey_S |> 
+  ggplot(aes(Smoke, fill = Sex)) +
+  geom_bar(position = "fill") 
+```
+
+- 데이터 프레임 `survey_S`를 사용해서 변수 `Smoke`와 `Pulse`의 관계를 살펴볼 수 있는 그래프를 작성하고, 의미를 해석해 보자. 
+
+```{r, include=FALSE}
+survey_S |> 
+  ggplot(aes(x = Smoke, y = Pulse)) +
+  geom_boxplot()
+```
+
+
+- 데이터 프레임 `survey` 중 숫자형 변수의 평균과 표준편차를 계산해서 다음의 형태로 출력해 보자. 
+
+```{r, echo=FALSE}
+survey_num <- 
+  survey |> 
+  select(where(is.numeric))
+
+my_desc <- function(x, ...){
+  m <- mean(x, ...)
+  sd <- sd(x, ...)
+  c(Mean = m, SD = sd)
+}
+
+survey_num |> 
+  map_df(my_desc, na.rm = TRUE) |> 
+  bind_cols(Variable = names(survey_num)) |> 
+  relocate(Variable, .before = 1 )
+```
+
+- 데이터 프레임 `survey` 중 숫자형 변수의 히스토그램과 확률밀도함수 그래프를 다음과 같이 서로 겹치게 보이도록 작성해 보자. 히스토그램의 경우 구간의 개수는 15로 지정한다. 
+
+```{r, echo=FALSE, warning=FALSE}
+survey_num |> 
+  pivot_longer(everything(), names_to = "variable", values_to = "value") |> 
+  ggplot(aes(x = value)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 15) +
+  geom_density(color = "red", linewidth = .8) +
+  facet_wrap(vars(variable), scales = "free") +
+  labs(x = NULL) 
+```
+
+
+**3.** 패키지 `MASS`의 데이터 프레임 `Cars93`는 1993년 미국에서 판매된 93대 자동차에 대한 자료이다. 
+
+- 변수 `Cylinders`의 값이 4, 6, 8인 자동차의 `Price`에 대한 상자그림을 다음과 같이 작성해 보자. 
+각 상자그림에서 이상값으로 표시된 관찰값 중 최대값에 대해서는 변수 `Make`의 값을 라벨로 그래프에 추가했다.  
+
+```{r, fig.align='center', echo=FALSE}
+data(Cars93, package = "MASS")
+
+b1 <- Cars93 |> 
+  filter(Cylinders %in% c(4,6,8)) |> 
+  ggplot(aes(y = Price, x = Cylinders)) +
+  geom_boxplot()
+b1_out <- ggplot_build(b1)$data[[1]]$outliers
+
+Cars93 |> 
+  filter(Cylinders %in% c(4,6,8)) |> 
+  ggplot(aes(y = Price, x = Cylinders)) +
+  geom_boxplot() +
+  geom_text(data = filter(Cars93, 
+                          Cylinders == 4, Price == max(b1_out[[1]])),
+            aes(label = Make), hjust = "left", vjust = "bottom", nudge_x = .02) +
+  geom_text(data = filter(Cars93, 
+                          Cylinders == 6, Price == b1_out[[2]]),
+            aes(label = Make), hjust = "left", vjust = "bottom", nudge_x = .02) 
+```
+
+- 변수 `Cylinders`의 값이 4, 6, 8인 자동차에 대하여 변수 `Price`와 `Horsepower`의 관계를 살펴볼 수 있는 그래프를 작성하고, 그 의미를 해석해 보자. 
 
 
 

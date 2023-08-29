@@ -1062,8 +1062,8 @@ map2_dfc(.x = mu, .y = sigma, rnorm, n = 5)
 - 변수 `Ozone`의 월별 평균값을 다음과 같이 나타내 보자.
 
 ```{r, echo=FALSE}
-airquality$Ozone %>% 
-  split(airquality$Month) %>% 
+airquality$Ozone |>  
+  split(airquality$Month) |>  
   map_dbl(mean, na.rm = TRUE)
 ```
 
@@ -1076,16 +1076,16 @@ my_fun_1 <- function(x, ...){
   return(res)
 }
 
-airquality$Ozone %>% 
-  split(airquality$Month) %>% 
+airquality$Ozone |>  
+  split(airquality$Month) |>  
   sapply(my_fun_1, na.rm = TRUE)
 ```
 
 - 변수 `Ozone`의 월별 평균, 표준편차와 측정된 날수를 다음의 형식으로 나타내 보자.
 
 ```{r, echo=FALSE} 
-airquality$Ozone %>% 
-  split(airquality$Month) %>% 
+airquality$Ozone |>  
+  split(airquality$Month) |>  
   map_dfr(my_fun_1, na.rm = TRUE, .id = "Month")
 ```
 
@@ -1106,6 +1106,112 @@ map2_dbl(.x = iris, .y = res_1,
 ```
 
 
+**3.** 패키지 `stringr`의 `fruit`은 80 종류 과일 이름으로 구성된 문자형 벡터이다. 
+
+- 문자열을 구성하고 있는 개별 모음("a", "e", "i", "o", "u") 및 모음 전체의 개수를 계산하는 함수를 정의해 보자. 예를 들어 작성된 함수가 `n_vowel()`이라 하면, "apple"를 `n_vowel()` 입력하면 다음의 결과가 출력되도록 하자.  
+
+```{r, echo=FALSE}
+n_vowel <- function(x){
+  vowel <- c("a", "e", "i", "o", "u")
+  res <- vector("integer", length(vowel))
+  for(i in seq_along(vowel)){
+    res[i] <- str_count(x, vowel[i])
+  }
+  res <- c(res, str_count(x, "[aeiou]"))
+  names(res) <- c(vowel, "total")
+  return(res)
+}
+```
+
+```{r, echo=TRUE}
+n_vowel("apple")
+```
+
+- 앞 문제에서 정의된 함수를 이용하여 `fruit`에 있는 모든 과일 이름을 구성하고 있는 개별 모음 및 모음 전체의 개수를 계산해서, 결과를 데이터 프레임 형태로 출력해 보자. 단, 데이터 프레임의 첫 번째 열에는 해당 과일 이름이 들어가고, 모음 전체의 개수가 많은 과일이 먼저 나타나도록 정렬해서 다음과 같이 출력해 보자. 
+
+```{r, echo=FALSE}
+fruit |>  
+  map_df(n_vowel) |>  
+  bind_cols(fruit=fruit) |> 
+  relocate(fruit, .before = 1) |> 
+  arrange(desc(total)) |>  
+  print(n = 4)
+```
 
 
+**4.** 패키지 `MASS`에 있는 데이터 프레임 `Cars93`는 1993년 미국에서 판매된 93대 자동차에 대한 27개 변수로 이루어진 자료이다. 
+각 변수의 요약 통계량 값을 계산하려는데, 숫자형 변수이면 평균을 계산하고, 요인이면 범주의 개수를 계산하려고 한다. 
+
+```{r, echo=FALSE}
+data(Cars93, package = "MASS")
+```
+
+
+- `Cars93`의 변수 중 숫자형 변수만을 선택한 데이터 프레임 `cars_1`을 생성하고, 요인만을 선택한 데이터 프레임 `cars_2`를 생성해 보자.  
+
+```{r, echo=FALSE}
+cars_1 <- Cars93 |>  select(where(is.numeric))
+cars_2 <- Cars93 |>  select(where(is.factor))
+```
+
+- `for` 루프를 사용하여 `cars_1`에 있는 모든 변수의 평균값을 계산해서 다음과 같이 출력해 보자.   
+
+```{r, echo=FALSE}
+m_res <- vector("double", length(cars_1))
+names(m_res) <- names(cars_1)
+for(i in seq_along(m_res)){
+    m_res[i] <- mean(cars_1[[i]], na.rm = TRUE)
+}
+m_res
+```
+
+- `for` 루프를 사용하여 `cars_2`에 있는 모든 변수의 범주의 개수를 함수 `nlevels()`로 계산해서 다음과 같이 출력해 보자. 
+
+```{r, echo=FALSE}
+n_res <- vector("integer", length(cars_2))
+names(n_res) <- names(cars_2)
+for(i in seq_along(n_res)){
+  n_res[i] <- nlevels(cars_2[[i]])
+}
+n_res
+```
+
+- `for` 루프로 실행한 작업을 함수 `map()`으로 다시 실행해서 동일한 결과를 얻어 보자.     
+
+```{r, include=FALSE}
+cars_1 |>  map_dbl(mean, na.rm = TRUE)
+cars_2 |>  map_dbl(nlevels)
+```
+
+
+**5.** 입력된 자료가 숫자형 벡터이면 히스토그램을 작성하고, 요인이면 막대그래프를 작성하는 사용자 정의함수를 작성해 보자.
+함수 이름은 `my_plot()`으로 하자.  
+
+```{r, echo=FALSE}
+my_plot <- function(x, ...){
+  df1 <- tibble(x=x)
+  if(is.numeric(x)){
+    ggplot(df1) +
+      geom_histogram(aes(x), ...) +
+      labs(x = NULL, y = NULL)
+  } else{
+    ggplot(df1) +
+      geom_bar(aes(x), ...) +
+      labs(x = NULL, y = NULL)
+  }
+}
+```
+
+- 패키지 `ggplot2`의 데이터 프레임 `mpg`에 있는 변수 `displ`을 함수 `my_plot()`에 입력해서 다음과 같은 히스토그램을 작성해 보자. 구간의 개수는 15개, 막대의 색은 "midnightblue"로 지정한다. 
+
+```{r, fig.align='center', echo=FALSE}
+with(mpg, my_plot(displ, fill = "midnightblue", bins = 15))
+```
+
+
+- 데이터 프레임 `mpg`에 있는 변수 `drv`를 함수 `my_plot()`에 입력해서 다음과 같은 막대그래프를 작성해 보자. 막대의 색은 "darkgreen"으로 지정한다. 
+
+```{r, fig.align='center', echo=FALSE}
+with(mpg, my_plot(drv, fill = "darkgreen"))
+```
 

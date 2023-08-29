@@ -148,7 +148,7 @@ fig:9-28
 fig:9-29
 fig:9-30-a
 fig:9-30-b
-fig:unnamed-chunk-853
+fig:unnamed-chunk-890
 fig:9-32
 fig:9-33-a
 fig:9-33-b
@@ -275,6 +275,7 @@ dplyr에-의한-데이터-결합
 stringr에-의한-문자-다루기
 stringr의-함수
 정규-표현식과-stringr의-함수
+연습문제-4
 chapter-programming
 사용자-정의-함수
 함수의-정의
@@ -294,7 +295,7 @@ while-루프
 행렬에-함수형-프로그래밍-적용하기
 데이터-프레임에-함수형-프로그래밍-적용하기
 purrr에-의한-프로그래밍
-연습문제-4
+연습문제-5
 chapter-distribution
 r에서의-확률분포-이름
 연속형-확률분포
@@ -325,4 +326,4 @@ section-prob-density
 이변량-연속형-자료-탐색
 연속형-변수의-분포를-비교하기-위한-그래프
 연속형-변수의-관계-탐색을-위한-그래프
-연습문제-5
+연습문제-6
