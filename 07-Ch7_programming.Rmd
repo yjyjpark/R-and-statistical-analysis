@@ -221,7 +221,7 @@ my_plot_2 <- function(x, y, na = FALSE, ...){
 }
 ```
 
-```{r 7-2, fig.cap='생략부호를 활용한 그래프'}
+```{r 7-2, fig.cap='생략부호를 활용한 그래프', warning=FALSE}
 with(airquality, my_plot_2(x = Solar.R, y = Ozone,
                            na = TRUE,
                            shape = 20, color = "red", size = 2))
@@ -285,6 +285,9 @@ my_desc <- function(x, ...){
 
 ```{r}
 with(cars, my_desc(x = dist))
+```
+
+```{r}
 with(airquality, my_desc(x = Ozone, na.rm = TRUE))
 ```
 
@@ -479,6 +482,9 @@ if(x > y) x else y
 ```{r}
 x <- c(10, 3, 6, 9)
 y <- c(1, 5, 4, 12)
+```
+
+```{r}
 ifelse(x > y, x, y)
 ```
 
@@ -813,8 +819,12 @@ data(Cars93, package = "MASS")
 
 ```{r}
 with(Cars93, tapply(MPG.city, Origin, mean))
+```
+
+```{r}
 with(Cars93, tapply(MPG.city, Origin, mean, simplify = FALSE))
 ```
+
 
 이번에는 함수 `split()`으로 그룹별 자료를 분리하여 리스트에 저장하고, 이어서 함수 `lapply()` 또는 `sapply()`를 적용해 보자.
 
@@ -825,15 +835,19 @@ str(x_g)
 
 ```{r}
 lapply(x_g, mean)
+```
+
+```{r}
 sapply(x_g, mean)
 ```
+
 
 그룹별 요약통계량을 구하는 작업은 패키지 `dplyr`의 함수 `group_by()`와 `summarise()`를 사용해도 구할 수 있다.
 
 ```{r}
 library(dplyr)
-Cars93 %>%
-  group_by(Origin) %>%
+Cars93 |>
+  group_by(Origin) |>
   summarise(m = mean(MPG.city), n = n())
 ```
 
@@ -872,20 +886,20 @@ apply(cabbages, 2, class)
 
 ```{r}
 library(dplyr)
-airs <- airquality %>%
+airs <- airquality |>
   select(-Month, -Day)
 ```
 
 ```{r}
-airs %>% 
+airs |> 
   sapply(mean, na.rm = TRUE)
 ```
 
 함수 `sapply()` 대신 패키지 `dplyr`의 함수 `across()`를 `summarise()`와 함께 사용해도 같은 결과를 얻을 수 있다.
 
 ```{r}
-airs %>%
-  summarise(across(.fns = mean, na.rm = TRUE))
+airs |>
+  summarise(across(everything(), ~ mean(.x, na.rm = TRUE)))
 ```
 
 데이터 프레임 `airquality`의 분석 목적은 변수 `Ozone`의 변동을 `Solar.R`과 `Wind`, 그리고 `Temp`로 설명하는 모형을 만드는 것이다. 
@@ -895,8 +909,8 @@ airs %>%
 결측값이 있는 데이터이기 때문에 결측값을 제외하고 상관계수를 계산하기 위하여 `use="pairwise"`를 추가해야 한다.
 
 ```{r}
-airs %>% 
-  split(airquality$Month) %>%
+airs |> 
+  split(airquality$Month) |>
   lapply(cor, use = "pairwise")
 ```
 
@@ -904,8 +918,8 @@ airs %>%
 아래에 입력된 사용자 정의 함수는 함수 이름이 없는 일명 anonymous 함수이다.   
 
 ```{r}
-airs %>% 
-  split(airquality$Month) %>%
+airs |> 
+  split(airquality$Month) |>
   sapply(function(df) 
     with(df, cor(Ozone, Solar.R, use = "pairwise")))
 ```
@@ -945,12 +959,12 @@ map_dbl(x, mean)
 함수 `mean()`에 결측값을 제외하는 옵션 `na.rm = TRUE`를 다음과 같이 추가할 수 있다.
 
 ```{r}
-airs <- airquality %>% 
+airs <- airquality |> 
   select(-c(Month, Day))
 ```
 
 ```{r}
-airs %>%
+airs |>
   map_dbl(mean, na.rm = TRUE)
 ```
 
@@ -958,7 +972,7 @@ airs %>%
 위에서 정의된 데이터 프레임 `airs`의 네 변수의 평균을 anonymous 함수로 계산해 보자.
 
 ```{r}
-airs %>%
+airs |>
   map_dbl(function(x) sum(x, na.rm = TRUE)/sum(!is.na(x)))
 ```
 
@@ -968,7 +982,7 @@ airs %>%
 따라서 위의 예는 다음과 같이 작성할 수 있다.
 
 ```{r}
-airs %>%
+airs |>
   map_dbl(~ sum(.x, na.rm = TRUE)/sum(!is.na(.x)))
 ```
 
@@ -979,8 +993,8 @@ airs %>%
 우선 `airquality`를 함수 `split()`을 사용하여 월별로 구분한 결과를 리스트에 할당하고 이어서 함수 `cor()`로 이루어진 사용자 정의 함수를 `map()`에 다음과 같이 입력하면 된다.
 
 ```{r}
-airquality %>% 
-  split(airquality$Month) %>% 
+airquality |> 
+  split(airquality$Month) |> 
   map_dbl(~ with(.x, 
                  cor(Ozone, Solar.R, use = "pairwise")))
 ```
@@ -991,15 +1005,15 @@ airquality %>%
 데이터 프레임의 한 열을 리스트로 구성하는 것은 매우 특이한 상황으로 보일 수 있으나, 자료 분석 과정을 상당히 간편하게 만들 수 있는 대단히 뛰어난 아이디어라고 하겠다.
 
 ```{r}
-airquality %>% 
+airquality |> 
   nest_by(Month)
 ```
 
 이제 `rowwise` 데이터 프레임의 특성을 활용하여 각 행별로 `data`에 있는 두 변수의 상관계수를 구해보자.
 
 ```{r}
-airquality %>% 
-  nest_by(Month) %>% 
+airquality |> 
+  nest_by(Month) |> 
   summarise(rho = with(data, cor(Ozone, Solar.R, use = "pairwise")))
 ```
 
@@ -1018,7 +1032,7 @@ map_int(df1, 2)
 
 ```{r}
 set.seed(123)
-df2 <- list(x1 = rnorm(n = 5, mean = -1), x2 = rnorm(n = 5, mean = 1)) %>% 
+df2 <- list(x1 = rnorm(n = 5, mean = -1), x2 = rnorm(n = 5, mean = 1)) |> 
   map(summary)
 df2
 ```
@@ -1027,7 +1041,7 @@ df2
 즉, 두 종류 자료에 대한 요약 통계량을 각각 계산하고, 그 중 평균값을 추출하는 작업이 된다. 
 
 ```{r}
-df2 %>% 
+df2 |> 
   map_dbl("Mean")
 ```
 

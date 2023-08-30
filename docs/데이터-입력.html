@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2023-08-29" />
+<meta name="date" content="2023-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -684,7 +684,7 @@ RUN;</code></pre>
 <p>웹 페이지를 보다 보면 중요한 정보가 있는 HTML 테이블을 자주 만나게 되는데, 이 테이블에 있는 데이터를 R로 바로 불러들일 수 있다면 분석 과정에 큰 도움이 될 것이다. 문제는 웹 페이지에 있는 HTML 테이블이라는 것이 사람들에게 시각적으로 보여지는 측면이 강조되는 대상이어서 거기에 있는 정보를 ‘긁어모아’ 컴퓨터에 입력하는 것이 조금 복잡한 작업이 될 수 있다는 점이다. 그러나 패키지 <code>rvest</code>를 이용하면 비교적 간편하게 HTML 테이블의 데이터를 긁어모아 R에 입력시킬 수 있다.</p>
 <p>패키지 <code>rvest</code>에서 HTML 테이블을 불러오는데 필요한 함수는 <code>read_html()</code>과 <code>html_elements()</code>, <code>html_table()</code>이다. 함수 <code>read_html()</code>은 원하는 HTML 테이블이 있는 웹 페이지를 읽어오는 데 사용된다. HTML 테이블의 내용은 <code>&lt;table&gt;</code> 태그 사이에 존재하기 때문에 <code>&lt;table&gt;</code> 노드(node)를 찾는 것이 다음 순서인데, 이 작업은 함수 <code>html_elements()</code>로 할 수 있다. 이어서 선택된 노드의 HTML 테이블 데이터를 R로 불러오는 작업은 함수 <code>html_table()</code>로 하게 된다.</p>
 <p><span class="math inline">\(\bullet\)</span> 예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기</p>
-<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-08-29에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
+<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-08-30에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
 <div class="figure"><span style="display:block;" id="fig:wiki"></span>
 <img src="Figure/wiki_22_02_09_1.PNG" alt="예제 1에서 사용된 HTML 테이블" width="222" />
 <p class="caption">
@@ -766,7 +766,7 @@ RUN;</code></pre>
 <div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="데이터-입력.html#cb319-1" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">as.numeric</span>(pop))</span>
 <span id="cb319-2"><a href="데이터-입력.html#cb319-2" tabindex="-1"></a><span class="do">## [1] 169042554</span></span></code></pre></div>
 <p><span class="math inline">\(\bullet\)</span> 예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기</p>
-<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-08-29이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
+<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-08-30이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
 <div class="figure"><span style="display:block;" id="fig:KBO"></span>
 <img src="Figure/KBO.PNG" alt="예제 2에서 사용된 HTML 테이블" width="566" />
 <p class="caption">
@@ -808,15 +808,15 @@ RUN;</code></pre>
 <span id="cb322-2"><a href="데이터-입력.html#cb322-2" tabindex="-1"></a><span class="do">## # A tibble: 223 × 4</span></span>
 <span id="cb322-3"><a href="데이터-입력.html#cb322-3" tabindex="-1"></a><span class="do">##    ``    Location          `Vaccinated[a]` `Percent[b]`</span></span>
 <span id="cb322-4"><a href="데이터-입력.html#cb322-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;           &lt;chr&gt;       </span></span>
-<span id="cb322-5"><a href="데이터-입력.html#cb322-5" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,621,392,704   70.49%      </span></span>
+<span id="cb322-5"><a href="데이터-입력.html#cb322-5" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,621,394,401   70.49%      </span></span>
 <span id="cb322-6"><a href="데이터-입력.html#cb322-6" tabindex="-1"></a><span class="do">##  2 &quot;&quot;    China[e]          1,310,292,000   91.89%      </span></span>
-<span id="cb322-7"><a href="데이터-입력.html#cb322-7" tabindex="-1"></a><span class="do">##  3 &quot;&quot;    India             1,027,416,599   72.50%      </span></span>
-<span id="cb322-8"><a href="데이터-입력.html#cb322-8" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 337,973,538     75.08%      </span></span>
+<span id="cb322-7"><a href="데이터-입력.html#cb322-7" tabindex="-1"></a><span class="do">##  3 &quot;&quot;    India             1,027,416,627   72.50%      </span></span>
+<span id="cb322-8"><a href="데이터-입력.html#cb322-8" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 337,973,731     75.08%      </span></span>
 <span id="cb322-9"><a href="데이터-입력.html#cb322-9" tabindex="-1"></a><span class="do">##  5 &quot;&quot;    United States[g]  270,227,181     81.39%      </span></span>
 <span id="cb322-10"><a href="데이터-입력.html#cb322-10" tabindex="-1"></a><span class="do">##  6 &quot;&quot;    Indonesia         203,845,350     73.99%      </span></span>
 <span id="cb322-11"><a href="데이터-입력.html#cb322-11" tabindex="-1"></a><span class="do">##  7 &quot;&quot;    Brazil            189,643,431     88.08%      </span></span>
 <span id="cb322-12"><a href="데이터-입력.html#cb322-12" tabindex="-1"></a><span class="do">##  8 &quot;&quot;    Pakistan          165,567,890     70.21%      </span></span>
-<span id="cb322-13"><a href="데이터-입력.html#cb322-13" tabindex="-1"></a><span class="do">##  9 &quot;&quot;    Bangladesh        151,501,709     88.50%      </span></span>
+<span id="cb322-13"><a href="데이터-입력.html#cb322-13" tabindex="-1"></a><span class="do">##  9 &quot;&quot;    Bangladesh        151,501,781     88.50%      </span></span>
 <span id="cb322-14"><a href="데이터-입력.html#cb322-14" tabindex="-1"></a><span class="do">## 10 &quot;&quot;    Japan             104,705,133     84.47%      </span></span>
 <span id="cb322-15"><a href="데이터-입력.html#cb322-15" tabindex="-1"></a><span class="do">## # ℹ 213 more rows</span></span></code></pre></div>
 <ul>
@@ -827,8 +827,8 @@ RUN;</code></pre>
 <span id="cb323-3"><a href="데이터-입력.html#cb323-3" tabindex="-1"></a><span class="do">##   Location          Vaccinated    Percent</span></span>
 <span id="cb323-4"><a href="데이터-입력.html#cb323-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;             &lt;chr&gt;         &lt;chr&gt;  </span></span>
 <span id="cb323-5"><a href="데이터-입력.html#cb323-5" tabindex="-1"></a><span class="do">## 1 China[e]          1,310,292,000 91.89% </span></span>
-<span id="cb323-6"><a href="데이터-입력.html#cb323-6" tabindex="-1"></a><span class="do">## 2 India             1,027,416,599 72.50% </span></span>
-<span id="cb323-7"><a href="데이터-입력.html#cb323-7" tabindex="-1"></a><span class="do">## 3 European Union[f] 337,973,538   75.08%</span></span></code></pre></div>
+<span id="cb323-6"><a href="데이터-입력.html#cb323-6" tabindex="-1"></a><span class="do">## 2 India             1,027,416,627 72.50% </span></span>
+<span id="cb323-7"><a href="데이터-입력.html#cb323-7" tabindex="-1"></a><span class="do">## 3 European Union[f] 337,973,731   75.08%</span></span></code></pre></div>
 <div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="데이터-입력.html#cb324-1" tabindex="-1"></a><span class="fu">tail</span>(ex3_1, <span class="at">n =</span> <span class="dv">3</span>)</span>
 <span id="cb324-2"><a href="데이터-입력.html#cb324-2" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
 <span id="cb324-3"><a href="데이터-입력.html#cb324-3" tabindex="-1"></a><span class="do">##   Location         Vaccinated Percent</span></span>
@@ -843,7 +843,7 @@ RUN;</code></pre>
 <span id="cb325-2"><a href="데이터-입력.html#cb325-2" tabindex="-1"></a><span class="do">## # A tibble: 11 × 3</span></span>
 <span id="cb325-3"><a href="데이터-입력.html#cb325-3" tabindex="-1"></a><span class="do">##    Location             Vaccinated Percent</span></span>
 <span id="cb325-4"><a href="데이터-입력.html#cb325-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                     &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb325-5"><a href="데이터-입력.html#cb325-5" tabindex="-1"></a><span class="do">##  1 Cuba                   10767930    96.0</span></span>
+<span id="cb325-5"><a href="데이터-입력.html#cb325-5" tabindex="-1"></a><span class="do">##  1 Cuba                   10767934    96.0</span></span>
 <span id="cb325-6"><a href="데이터-입력.html#cb325-6" tabindex="-1"></a><span class="do">##  2 United Arab Emirates    9991089   100  </span></span>
 <span id="cb325-7"><a href="데이터-입력.html#cb325-7" tabindex="-1"></a><span class="do">##  3 Portugal                9789941    95.3</span></span>
 <span id="cb325-8"><a href="데이터-입력.html#cb325-8" tabindex="-1"></a><span class="do">##  4 Qatar                   2852178   106. </span></span>
