@@ -18,12 +18,15 @@ fig:wiki2
 fig:KBO
 fig:barely
 fig:first-plot
-fig:color-mapping
+fig:5-6
+fig:color-mapping-1
+fig:color-mapping-2
+fig:color-mapping-3
 fig:5-4-a
 fig:5-4-b
 fig:5-5
+fig:5-5-a
 fig:5-8
-fig:5-6
 fig:shape
 fig:5-9
 fig:5-10
@@ -56,6 +59,7 @@ fig:5-geom-legend
 fig:5-23
 fig:5-24-1
 fig:5-24-2
+fig:5-24-3
 fig:5-25
 fig:5-26-1
 fig:5-26-2
@@ -148,7 +152,7 @@ fig:9-28
 fig:9-29
 fig:9-30-a
 fig:9-30-b
-fig:unnamed-chunk-897
+fig:unnamed-chunk-984
 fig:9-32
 fig:9-33-a
 fig:9-33-b
@@ -240,7 +244,7 @@ excel-파일-불러오기
 sas-데이터-파일-불러오기
 html-테이블-불러오기
 연습문제-1
-dplyr에-의한-데이터-다듬기
+chapter-dplyr
 행을-작업-대상으로-하는-함수
 조건에-의한-행-선택-filter
 위치에-의한-행-선택-slice-및-그와-관련된-함수
@@ -283,6 +287,7 @@ chapter-programming
 변수-지정
 결과의-출력
 유효-범위
+데이터-프레임-함수
 조건-연산
 함수-if에-의한-조건-연산
 함수-ifelse에-의한-조건-연산

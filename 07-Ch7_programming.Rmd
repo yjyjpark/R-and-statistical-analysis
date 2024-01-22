@@ -73,8 +73,12 @@ f2 <- function(x,y){
 
 ```{r}
 f1(5, 10)
+```
+
+```{r}
 f2(5, 10)
 ```
+
 
 ### 변수
 
@@ -99,13 +103,17 @@ CI_mean <- function(x, conf = 0.95){
 함수 `qnorm()`은 정규분포에서 분위수를 계산하는 함수이다. 
 `p`에 원하는 확률 값을 입력하면 그 값에 해당하는 분위수를 출력하며,
 평균과 표준편차는 변수 `mean`과 `sd`로 지정할 수 있는데, 디폴트는 `mean = 0`, `sd = 1`인 표준정규분포이다.
-함수에서 디폴트 값이 부여된 변수는 함수를 실행할 때 생략해도 된다.
+함수 `CI_mean()`에서 디폴트 값이 부여된 변수인 `conf`는 함수를 실행할 때 생략이 가능한데, 생략되면 디폴트 값인 0.95가 지정된다.
 
 ```{r}
 set.seed(1234579)
 x <- rnorm(n = 100)
+```
+
+```{r}
 CI_mean(x)
 ```
+
 
 함수 `rnorm()`은 정규분포에서 난수를 발생시키는 함수이다. 
 난수의 개수는 `n`에 지정을 하며, 
@@ -133,8 +141,12 @@ CI_mean(x, conf = 0.9)
 
 ```{r}
 y <- c(x, NA)
+```
+
+```{r}
 CI_mean(y)
 ```
+
 
 함수 `CI_mean()`에는 변수 `na.rm`이 선언되지 않은 변수이기 때문에 사용할 수 없음을 알 수 있다.
 
@@ -180,9 +192,8 @@ my_plot <- function(x, y, ...){
 작성된 그래프는 그림 \@ref(fig:7-1) 에서 볼 수 있다.
 
 ```{r 7-1, fig.cap='생략부호를 활용한 그래프'}
-library(tidyverse)
 with(cars, my_plot(x = speed, y = dist, 
-                   shape = 20, color = "red", size = 2))
+                   shape = 20, color = "red", size = 3))
 ```
 
 만일 함수 `my_plot()`에 `NA`가 있는 데이터를 입력한다면 어떻게 되겠는가? 
@@ -207,7 +218,7 @@ my_plot_1 <- function(x, y, ...){
 ```{r, error=TRUE}
 with(airquality, my_plot_1(x = Solar.R, y = Ozone, 
                            na.rm = TRUE,
-                           shape = 20, color = "red", size = 2))
+                           shape = 20, color = "red", size = 3))
 ```
 
 따라서 결측값에 대한 옵션을 다음과 같이 변수로 지정하는 것이 문제를 해결하는 한 가지 방법이 된다.
@@ -224,7 +235,7 @@ my_plot_2 <- function(x, y, na = FALSE, ...){
 ```{r 7-2, fig.cap='생략부호를 활용한 그래프', warning=FALSE}
 with(airquality, my_plot_2(x = Solar.R, y = Ozone,
                            na = TRUE,
-                           shape = 20, color = "red", size = 2))
+                           shape = 20, color = "red", size = 3))
 ```
 
 
@@ -373,6 +384,92 @@ my_test2(x = 5)
 ```
 
 함수 외부의 상황에 따라 계산 결과를 다르게 할 수 있음을 보여주는 예가 된다.
+
+
+### 데이터 프레임 함수
+
+지금까지 살펴본 함수는 입력 요소가 모두 벡터였다. 
+프로그램 과정에서 충분히 나름의 역할을 할 수 있는 방식인 것은 분명하지만, 파이프 연산 과정에 포함시켜 사용하기에는 다소 불편한 점이 있다고 하겠다. 
+그것은 \@ref(chapter-programming)장에서 살펴본 바와 같이 `dplyr` 기본 함수들의 공통적인 특징은 첫 번째 입력 변수가 데이터 프레임이기 때문이다. 
+
+지금부터는 데이터 프레임을 첫 번째 입력 요소로 하는 데이터 프레임 함수을 정의하는 방식에 대해 살펴보겠다.
+먼저 예제를 통해 벡터 함수를 정의하고, 그것을 단순하게 데이터 프레임 함수로 전환했을 때 발생할 수 있는 문제와 해결 방법을 살펴보자. 
+
+**$\bullet$** 예제: 벡터 함수 `my_mean()` 정의
+
+입력변수로 숫자형 변수 하나와 범주형 변수 하나를 받아서, 범주형 변수로 그룹을 구성하고 각 그룹별로 숫자형 변수의 평균값을 계산해서 출력하는 함수를 정의해 보자. 
+
+```{r}
+my_mean <- function(x, y, ...){
+  data.frame(x, y) |> 
+    group_by(y) |> 
+    summarise(m = mean(x, ...))
+}
+```
+
+함수 `my_mean()`에 `mpg`의 변수 `hwy`와 `drv`를 입력한 결과는 다음과 같다. 
+
+```{r}
+with(mpg, my_mean(hwy, drv))
+```
+
+`airquality`의 변수 `Ozone`과 `Month`을 입력한 결과는 다음과 같다. 
+
+```{r}
+with(airquality, my_mean(Ozone, Month, na.rm = TRUE))
+```
+
+
+**$\bullet$** 예제: 데이터 프레임 함수 `my_mean_df()` 정의의
+
+데이터 프레임을 `my_mean()`의 첫 번째 변수로 추가해 보자. 
+
+```{r}
+my_mean_df <- function(data, x, y, ...){
+  data |> 
+    group_by(y) |> 
+    summarise(m = mean(x, ...))
+}
+```
+
+함수 `my_mean_df()`는 `my_mean()`에 데이터 프레임을 첫 번째 변수로 단순히 추가해서 수정한 함수이다. 
+`my_mean_df()`에 `mpg`, `hwy`, `drv`를 입력해서 실행하면 다음과 같은 오류가 발생한다. 
+
+```{r, error=TRUE}
+mpg |> 
+  my_mean_df(hwy, drv)
+```
+
+오류의 내용은 변수 `y`가 입력된 데이터 프레임에 없다는 것이다. 
+이것은 `my_mean_df()`의 변수 `x`에 `hwy`를, `y`에 `drv`를 각각 지정했지만, 함수의 실행 과정에서는 여전히 변수 `x`와 `y`를 찾고 있다는 것을 의미한다.
+따라서 실행 과정에서 이름이 `x`와 `y`인 변수를 찾는 것이 아니라, 입력 변수 `x`와 `y`에 지정되는 변수를 사용하도록 조치할 필요가 있는 것이다. 
+
+이 문제는 `{{}}`를 함수 실행 과정에서 사용되는 입력 변수에 감싸는 것으로 해결된다.
+`{{x}}`와 `{{y}}`는 이름이 `x`와 `y`인 변수가 아니라, 함수 `my_mean_df()`의 입력 변수인 `x`와 `y`에 지정된 변수를 의미한다. 
+
+```{r}
+my_mean_df <- function(data, x, y, ...){
+  data |> 
+    group_by({{y}}) |> 
+    summarise(m = mean({{x}}, ...))
+}
+```
+
+수정된 `my_mean_df()`에 `mpg`, `hwy`, `drv`를 입력해서 실행해 보자. 
+
+```{r}
+mpg |> 
+  my_mean_df(hwy, drv)
+```
+
+`airquality`와 `Ozone`과 `Month`을 입력한 결과는 다음과 같다. 
+
+```{r}
+airquality |> 
+  my_mean_df(Ozone, Month, na.rm = TRUE)
+```
+
+
 
 ## 조건 연산
 
@@ -532,6 +629,74 @@ my_center(x, type = "mean")
 ```
 
 
+**$\bullet$** 예제 : 함수 정의 
+
+입력 변수의 유형은 벡터이며, 숫자형 변수를 입력하면 평균과 표준편차를, 요인을 입력하면 도수분포를 출력하고, 그 외 형태를 입력하면, "Input Error"이라는 문구를 출력하는 함수 `my_desc()`를 정의해 보자.  
+
+`if()`의 구조를 이용해서 입력되는 변수의 유형에 따른 작업을 지정하면 된다. 
+
+```{r}
+my_desc <- function(x, ...){
+  if(is.numeric(x)){
+    res <- data.frame(Mean = mean(x, ...), SD = sd(x, ...))
+  } else if(is.factor(x)){
+    res <- data.frame(x) |> count(value = x)
+  } else res <- c("Input Error")
+  return(res)
+}
+```
+
+패키지 `MASS`에 있는 `Cars93`의 변수 `MPG.highway`와 `Origin`을 각각 입력한 결과는 다음과 같다. 
+
+```{r}
+data(Cars93, package = "MASS")
+```
+
+```{r}
+with(Cars93, my_desc(MPG.highway))
+```
+
+```{r}
+with(Cars93, my_desc(Origin))
+```
+
+
+**$\bullet$** 예제 : 함수 `my_desc()` 수정
+
+데이터 프레임을 함수 `my_desc()`의 첫 번째 변수로 입력할 수 있도록 수정해 보자. 
+
+```{r}
+my_desc_df <- function(data, var, ...){
+  x <- data |> 
+    pull({{var}})
+  if(is.numeric(x)){
+    res <- data.frame(Mean = mean(x, ...), SD = sd(x, ...))
+  } else if(is.factor(x)){
+    res <- data.frame(x) |> count(value = x)
+  } else res <- c("Input Error")
+  return(res)
+}
+```
+  
+`my_desc_df()`의 두 번째 변수 `var`는 데이터 프레임의 변수 중 하나가 되는데, 이것을 `{{}}`로 감싸고 `x`에 할당함으로써, 이후 계산 과정에서는 변수 `x`가 있는 위치로 연결되는 것이다.
+
+```{r}
+Cars93 |> 
+  my_desc_df(MPG.highway)
+```
+
+```{r}
+Cars93 |> 
+  my_desc_df(Origin)
+```
+
+```{r}
+mpg |> 
+  my_desc_df(class)
+```
+
+
+
 ## 루프 연산
 
 프로그램의 특정 부분을 일정 횟수 반복시켜 작업하는 것을 루프 연산이라고 한다. 
@@ -540,7 +705,22 @@ R에서 루프 연산은 함수 `for()`와 `while()`로 할 수 있다.
 ### for 루프
 
 정규분포에서 10개의 임의표본을 추출하여 평균을 계산하는 과정을 다섯 번 반복한다고 하자. 
-이 경우 동일한 명령문을 다섯 번 작성해서 차례로 실행하는 것은 그리 좋은 방법은 아니다. 
+이 경우 동일한 명령문을 다음과 같이 다섯 번 작성해서 차례로 실행하는 것은 그리 좋은 방법은 아니다. 
+
+```{r}
+set.seed(123)
+r1 <- rnorm(10) |> mean()
+r2 <- rnorm(10) |> mean()
+r3 <- rnorm(10) |> mean()
+r4 <- rnorm(10) |> mean()
+r5 <- rnorm(10) |> mean()
+```
+
+```{r}
+c(r1, r2, r3, r4, r5) |> round(3)
+```
+
+
 거의 비슷한 연산을 반복해서 수행해야 한다면 for 루프를 사용하는 것이 바람직하다. 
 다음 예제로 함수 `for()`의 사용법을 살펴보자.
 
@@ -618,6 +798,29 @@ while(i <= 5){
 }
 ```
 
+for 루프보다 while 루프를 사용하는 것이 더 적절한 다음 예제를 살펴보자. 
+
+$N(1, 2^{2})$ 에서 $n=5$ 의 표본을 추출해서 표본평균을 계산하는 과정을 최대 20번 반복을 한다.
+만일 표본평균값이 음수가 되면 해당 반복횟수를 출력하고 루프를 종료하며,
+20회를 반복해서 계산한 표본평균값이 모두 양수이면 "All positive mean values"라는 문구를 출력한다.   
+
+이 문제에서 루프의 진행 조건은 표본평균값이 양수인 것과 반복횟수가 최대 반복횟수인 20회를 넘지 않는 것이 된다. 
+따라서 두 조건을 `while()`에 다음과 같이 명시를 하면 된다. 
+
+```{r}
+n_iter <- 1
+max_iter <- 20
+mean_val <- 1
+while(mean_val >= 0 & n_iter <= max_iter){
+  mean_val <- mean(rnorm(5, mean = 1, sd = 2))
+  if(mean_val < 0) cat("Negative mean value at", n_iter, "iteration")
+  n_iter <- n_iter + 1
+  if(n_iter == max_iter) cat("All positive mean values")
+}
+```
+
+
+
 
 ## 함수형 프로그래밍
 
@@ -671,10 +874,11 @@ sapply(x, mean)
 
 ```{r}
 res <- vector("character", length(iris))
+names(res) <- names(iris)
 for(i in seq_along(res)){
   res[i] <- class(iris[[i]])
 }
-names(res) <- names(iris)
+
 res
 ```
 
@@ -845,7 +1049,6 @@ sapply(x_g, mean)
 그룹별 요약통계량을 구하는 작업은 패키지 `dplyr`의 함수 `group_by()`와 `summarise()`를 사용해도 구할 수 있다.
 
 ```{r}
-library(dplyr)
 Cars93 |>
   group_by(Origin) |>
   summarise(m = mean(MPG.city), n = n())
@@ -885,7 +1088,6 @@ apply(cabbages, 2, class)
 측정 일자를 나타내는 변수 `Month`와 `Day`를 제외한 네 변수의 평균값을 함수 `sapply()`로 계산해 보자.
 
 ```{r}
-library(dplyr)
 airs <- airquality |>
   select(-Month, -Day)
 ```
@@ -904,22 +1106,54 @@ airs |>
 
 데이터 프레임 `airquality`의 분석 목적은 변수 `Ozone`의 변동을 `Solar.R`과 `Wind`, 그리고 `Temp`로 설명하는 모형을 만드는 것이다. 
 분석의 첫 단계로 네 변수 사이의 상관계수를 월별로 구분하여 계산해 보자. 
-함수 `split()`으로 데이터 프레임을 월별로 구분하여 리스트로 저장하고, 
-함수 `lapply()`를 사용하여 리스트의 각 요소인 월별로 구분된 데이터 프레임에 함수 `cor()`을 각각 적용시켜 상관계수를 계산하면 된다. 
-결측값이 있는 데이터이기 때문에 결측값을 제외하고 상관계수를 계산하기 위하여 `use="pairwise"`를 추가해야 한다.
+먼저 함수 `split()`으로 데이터 프레임 `airquality`를 월별로 구분하여 리스트로 저장하자.
 
 ```{r}
-airs |> 
-  split(airquality$Month) |>
+airs_list <- airs |> 
+  split(airquality$Month)
+```
+
+리스트 `airs_list`의 각 요소는 월별로 구분된 데이터 프레임이다. 
+
+```{r}
+str(airs_list)
+```
+
+이제 함수 `lapply()`를 사용하여 리스트의 각 요소인 월별로 구분된 데이터 프레임에 함수 `cor()`을 각각 적용시켜 상관계수를 계산하면 된다. 
+결측값이 있는 데이터이기 때문에 결측값을 제외하고 상관계수를 계산하기 위하여 `use = "pairwise"`를 추가해야 한다.
+
+```{r}
+airs_list |> 
   lapply(cor, use = "pairwise")
 ```
 
 만일 월별로 변수 `Ozone`과 `Solar.R`의 상관계수만을 계산하여 벡터로 출력하고자 한다면 `sapply()`에 사용자 정의 함수를 입력하면 된다.
-아래에 입력된 사용자 정의 함수는 함수 이름이 없는 일명 anonymous 함수이다.   
+필요한 함수는 다음과 같이 정의할 수 있다. 
 
 ```{r}
-airs |> 
-  split(airquality$Month) |>
+cor_air <- function(df){
+  with(df, cor(Ozone, Solar.R, use = "pairwise"))
+  }
+```
+
+두 변수의 5월 상관계수는 다음과 같이 계산된다.
+
+```{r}
+cor_air(airs_list[[1]])
+```
+
+함수 `sapply()`에 `cor_air()`를 적용하면 다음과 같은 결과를 얻게 된다.
+
+```{r}
+airs_list |> 
+  sapply(cor_air)
+```
+
+동일한 작업을 anonymous 함수, 즉 이름이 없는 함수를 사용해서 할 수 있다. 
+함수 `sapply()`에 입력된 내용은 함수 `cor_air()`와 실질적으로는 동일하지만, 이름이 없는, 즉 함수 객체로 저장되지 않은 anonymous 함수이다. 
+
+```{r}
+airs_list |> 
   sapply(function(df) 
     with(df, cor(Ozone, Solar.R, use = "pairwise")))
 ```
@@ -935,7 +1169,6 @@ airs |>
 예를 들어 아래에 주어진 리스트 `x`를 구성하는 세 벡터의 평균을 각각 구해 보자.
 
 ```{r}
-library(tidyverse)
 set.seed(124)
 x <- list(a1 = 1:5, a2 = rnorm(5), a3 = c(TRUE, FALSE, TRUE, TRUE))
 ```
@@ -946,7 +1179,7 @@ map(x, mean)
 
 함수 `map()`으로 리스트 `x`의 세 요소인 `x$a1`, `x$a2`, `x$a3`에 `mean()`을 각각 적용하여 생성된 결과가 리스트로 출력되었다. 
 만일 결과를 리스트가 아닌 벡터로 출력하고자 한다면, 출력되는 벡터의 유형에 따라 `map_lgl()`, `map_int()`, `map_dbl()`, `map_chr()` 중 하나를 선택하면 된다. 
-또한 결과를 데이터 프레임의 형태로 출력하고자 한다면, `map_dfr(`) 또는 `map_dfc()` 중 하나를 선택하면 된다. 
+
 예를 들어 위에 주어진 리스트 `x`를 구성하는 세 요소의 평균은 소수점이 있는 숫자이므로 함수 `map_dbl()`을 이용해야 숫자형 벡터로 출력된다.
 
 ```{r}
@@ -978,7 +1211,7 @@ airs |>
 
 사용자 정의함수를 입력해서 사용할 수 있다는 것은 함수 `lapply()`에서도 가능한 것이다. 
 차이점은 함수 `map()`에서는 조금 더 간편한 방식으로 함수를 정의할 수 있다는 것이다. 
-사용자 정의함수는 반드시 `function(x)`로 시작하는데, 이것을 물결표(`~`)로 대치할 수 있고, 한 변수만이 사용되는 함수에서는 `.x`를 변수 대신 사용할 수 있다. 
+Anonymous 함수는 반드시 `function(x)`로 시작하는데, 이것을 물결표(`~`)로 대치할 수 있고, 한 변수만이 사용되는 함수에서는 `.x`를 변수 대신 사용할 수 있다. 
 따라서 위의 예는 다음과 같이 작성할 수 있다.
 
 ```{r}
@@ -995,8 +1228,7 @@ airs |>
 ```{r}
 airquality |> 
   split(airquality$Month) |> 
-  map_dbl(~ with(.x, 
-                 cor(Ozone, Solar.R, use = "pairwise")))
+  map_dbl(~ with(.x, cor(Ozone, Solar.R, use = "pairwise")))
 ```
 
 이 문제는 함수 `map()`을 사용하지 않고 패키지 `dplyr`의 함수 `nest_by()`를 사용하여 `rowwise` 데이터 프레임을 구성하는 방법으로도 해결할 수 있다. 
@@ -1058,16 +1290,26 @@ df2 |>
 ```{r}
 mu <- c(x1 = -5, x2 = 5)
 sigma <- c(x1 = 2, x2 = 1)
+```
+
+```{r}
 set.seed(123)
 map2(.x = mu, .y = sigma, rnorm, n = 5)
 ```
 
-결과를 데이터 프레임으로 출력하고자 하는 경우에는 함수 `map()`의 경우에서처럼 `map2_dfc()`를 대신 사용하면 된다.
+결과는 리스트로 출력되는데, 만일 결과를 데이터 프레임으로 출력하고자 한다면 `map2()`의 결과를 함수 `list_cbind()`에 입력하면 된다. 
+함수 `list_cbind()`는 각 요소가 데이터 프레임인 리스트를 입력하면, 각 요소들을 열 단위로 통합한 데이터 프레임을 출력한다.
+따라서 `map2()`를 실행해서 출력된 리스크의 각 요소를 먼저 데이터 프레임으로 변환시키고, 이어서 `list_cbind()`에 입력해야 한다.  
 
 ```{r}
 set.seed(123)
-map2_dfc(.x = mu, .y = sigma, rnorm, n = 5)
+map2(.x = mu, .y = sigma, rnorm, n = 5) |> 
+  map(as.data.frame) |> 
+  list_cbind()
 ```
+
+함수 `map()`의 경우에도 동일한 방식을 적용하면 결과를 데이터 프레임으로 출력할 수 있다. 
+
 
 ## 연습문제
 
@@ -1228,4 +1470,56 @@ with(mpg, my_plot(displ, fill = "midnightblue", bins = 15))
 ```{r, fig.align='center', echo=FALSE}
 with(mpg, my_plot(drv, fill = "darkgreen"))
 ```
+
+
+**6.** 데이터 프레임을 입력 변수로 하는 함수를 작성하고자 한다. 
+
+- 입력된 데이터 프레임을 구성하고 있는 변수 중 숫자형 변수가 아닌 변수의 위치를 출력해 주는 함수를 작성해 보자. 작성된 함수의 이름을 `cat_position`이라고 한다면, 함수의 실행 예제로 데이터 프레임 `mpg`와 `iris`를 각각 입력한 결과는 다음과 같다. 즉, `mpg`의 첫 번째, 두 번째, 여섯 번째, 일곱 번째, 열 번째, 열한 번째 변수는 숫자형 변수가 아니라는 것이고, `iris`의 다섯 번째 변수는 숫자형이 아니라는 것이다. 
+
+```{r, echo=FALSE}
+cat_position <- function(data){
+  name_1 <- names(data)
+  name_2 <- data |> select(!where(is.numeric)) |> names()
+  id_cat <- seq_along(name_1)[name_1 %in% name_2]
+  return(id_cat)
+}
+```
+
+```{r}
+cat_position(mpg)
+```
+
+
+```{r}
+cat_position(iris)
+```
+
+
+- 입력된 데이터 프레임의 숫자형 변수에 대해 사용자가 지정한 요약 통계를 계산하는 함수를 작성해 보자. 작성된 함수의 이름을 `num_summary`라고 한다면, 함수의 실행 예제로 `iris`와 `mean`을 입력한 결과, `iris`를 `Species`에 대해 그룹화한 데이터 프레임과 `mean`을 입력한 결과, 그리고 `airquality`에서 처음 네 변수만 선택한 데이터 프레임과 `mean`을 입력한 결과는 각각 다음과 같다. 
+
+```{r, echo=FALSE}
+num_summary <- function(data, FUN, ...){
+  res_1 <- data |> 
+    select(where(is.numeric)) |> 
+    summarise(across(everything(), ~FUN(.x, ...)))
+  return(res_1)
+}
+```
+
+```{r}
+num_summary(iris, mean)
+```
+
+```{r}
+iris |> 
+  group_by(Species) |> 
+  num_summary(mean)
+```
+
+```{r}
+airquality |> 
+  select(1:4) |> 
+  num_summary(mean, na.rm = TRUE)
+```
+
 

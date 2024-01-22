@@ -319,7 +319,8 @@ tbl_1 <- html_table(node_1)
 tbl_1
 ```
 
-함수 `html_table()`로 생성된 객체 `tbl_1`은 하나의 데이터 프레임으로 구성된 리스트이다. 변수 이름을 수정하고 입력된 자료를 출력해 보자..
+함수 `html_table()`로 생성된 객체 `tbl_1`은 하나의 데이터 프레임으로 구성된 리스트이다. 
+변수 이름을 수정하고 입력된 자료를 출력해 보자.
 
 ```{r}
 top_pop <- tbl_1[[1]]
@@ -331,16 +332,24 @@ top_pop
 ```
 
 
-변수 `pop`, `area`, `density`이 숫자가 아닌 문자형 벡터로 입력되었음을 알 수 있다. 이것은 숫자에 콤마가 함께 입력되어 있기 때문인데, 이제 변수 `pop`을 숫자형으로 변환하여 평균을 구해 보자. 숫자형으로 변환하는 방법은 `pop`에 포함된 콤마를 \@ref(data-structure)장에서 살펴본 함수 `gsub()`를 사용하여 제거하고, 이어서 함수 `as.numeric()`을 사용하여 유형을 숫자형으로 변환하면 된다.
+변수 `pop`, `area`, `density`이 숫자가 아닌 문자형 벡터로 입력되었음을 알 수 있다. 이것은 숫자에 콤마가 함께 입력되어 있기 때문인데, 이제 변수 `pop`을 숫자형으로 변환하여 평균을 구해보자. 숫자형으로 변환하는 방법은 `pop`에 포함된 콤마를 \@ref(data-structure)장에서 살펴본 함수 `gsub()`를 사용하여 제거하고, 이어서 함수 `as.numeric()`을 사용하여 유형을 숫자형으로 변환하면 된다.
 
 ```{r}
-pop <- top_pop$pop
-pop <- gsub(",", "", pop)
+top_pop$pop <- gsub(",", "", top_pop$pop)
+top_pop$pop <- as.numeric(top_pop$pop)
 ```
 
 ```{r}
-mean(as.numeric(pop))
+top_pop |> print(n = 3)
 ```
+
+데이터 프레임 `top_pop`의 변수 `pop`이 숫자형으로 변환된 것을 확인할 수 있다. 
+이제 평균을 구해보자. 
+
+```{r}
+mean(top_pop$pop)
+```
+
 
 
 $\bullet$ 예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기

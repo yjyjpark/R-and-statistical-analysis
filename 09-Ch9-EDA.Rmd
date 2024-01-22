@@ -26,7 +26,7 @@ state.region[1:10]
 
 ```{r 9-1-a, fig.cap="요인 `state.region`의 막대그래프"}
 library(tidyverse)
-tibble(state.region) %>% 
+tibble(state.region) |> 
   ggplot() +
   geom_bar(aes(x = state.region)) +
   xlab("Region")
@@ -35,7 +35,7 @@ tibble(state.region) %>%
 옆으로 누운 형태의 막대그래프도 작성해 보자.
 
 ```{r 9-1-b, fig.cap="요인 `state.region`의 옆으로 누운 형태의 막대그래프"}
-tibble(state.region) %>% 
+tibble(state.region) |> 
   ggplot() +
   geom_bar(aes(y = state.region)) +
   ylab("Region")
@@ -46,7 +46,7 @@ tibble(state.region) %>%
 요인 `state.region`을 데이터 프레임으로 전환하고, 함수 `count()`로 계산한 각 범주에 대한 도수가 변수로 포함된 데이터 프레임 `df_1`을 생성하자.
 
 ```{r}
-df_1 <- tibble(state.region) %>% 
+df_1 <- tibble(state.region) |> 
   count(state.region)
 df_1
 ```
@@ -65,7 +65,7 @@ bar1 + bar2
 많은 경우에 막대그래프는 각 범주의 빈도를 이용하여 작성되지만, 경우에 따라서는 각 범주의 상대도수를 이용하여 작성해야 할 때도 있다. 이런 경우에는 함수 `geom_bar()`에서 생성된 변수 `after_stat(prop)`를 매핑하면서, 시각적 요소 `group`에 하나의 값을 지정해 주면 된다.
 
 ```{r 9-2, fig.cap="상대도수에 의한 막대그래프"}
-tibble(state.region) %>% 
+tibble(state.region) |> 
   ggplot() +
   geom_bar(aes(x = state.region, y = after_stat(prop), group = 1),
            fill = "skyblue") +
@@ -79,7 +79,7 @@ tibble(state.region) %>%
 파이그래프를 작성하기 위해서는 함수 `geom_bar()`에 시각적 요소 `fill`을 사용하여 쌓아올린 막대그래프를 작성하고, 함수 `coord_polar()`에서 `theta`에 `“y”`를 연결하여 상대도수에 비례한 각도를 계산해야 한다.
 
 ```{r 9-3, fig.cap="요인 `state.region`의 파이그래프"}
-tibble(state.region) %>% 
+tibble(state.region) |> 
   ggplot() +
   geom_bar(aes(x = "", fill = state.region), width = 1) +
   labs(x = NULL, y = NULL) +
@@ -93,9 +93,9 @@ tibble(state.region) %>%
 ```{r}
 library(scales)
 df_2 <- 
-  tibble(state.region) %>% 
-  count(state.region) %>% 
-  mutate(pct = percent(n/sum(n))) %>% 
+  tibble(state.region) |> 
+  count(state.region) |> 
+  mutate(pct = percent(n/sum(n))) |> 
   print()
 ```
 
@@ -104,7 +104,7 @@ df_2 <-
 그래프에 라벨 추가는 함수 `geom_text()`로 할 수 있다. 데이터 프레임 `df_2`의 변수 `pct`를 시각적 요소 `label`에 매핑하고, 라벨의 위치를 `position`에 지정하면 되는데, 쌓아 올려진 각 조각의 중간 부분이 적절할 것으로 보여서 함수 `position_stack()`에서 변수 `vjust`에 0.5를 지정했다.
 
 ```{r 9-4, fig.cap="쌓아올린 막대그래프에 백분율 라벨 추가하기"}
-df_2 %>% 
+df_2 |> 
   ggplot(aes(x = "", y = n, fill = state.region)) + 
   geom_col(width = 1) +
   geom_text(aes(label = pct), size = 5,
@@ -115,7 +115,7 @@ df_2 %>%
 쌓아올린 막대그래프에 함수 `coord_polar()`를 적용시켜 파이그래프를 작성해 보자.
 
 ```{r 9-5, fig.cap="각 조각에 벡분율을 라벨로 추가한 파이그래프"}
-df_2 %>% 
+df_2 |> 
   ggplot(aes(x = "", y = n, fill = state.region)) + 
   geom_col(width = 1) +
   geom_text(aes(label = pct), size = 5,
@@ -147,7 +147,7 @@ fan.plot(pie_val, labels = pie_lab)
 예제 데이터로는 앞 절에서 살펴본 `state.region`을 다시 사용해 보자. 점그래프 작성은 도수분포표 자료인 `df_1`을 함수 `geom_point()`에 적용시키면 된다. 함수 `theme()`은 그래프의 디폴트 형태를 변경하고자 할 때 사용되는 것으로, 이 경우에는 그래프에 수평선을 추가하기 위해 사용되었다.
 
 ```{r 9-8, fig.cap="요인 `state.region`의 점그래프"}
-df_1 %>% 
+df_1 |> 
   ggplot(aes(x = n, y = state.region)) +
   geom_point(size = 2) +
   theme(panel.grid.major.y = element_line(linetype = 3, colour = "gray40")) +
@@ -257,7 +257,7 @@ margin.table(my_table2)
 prop.table(margin.table(my_table2, 1))
 ```
 
-위 연산 방식은 함수 안에 다른 함수를 입력하는 방식인데, 이것보다 더 효율적인 방식은 pipe 연산자를 이용하는 것이다. Pipe 연산자는 `tidyverse` 생태계에서 사용되는 `magrittr`의 `%>%`가 있지만, base R에도 `|>`가 있다. 두 pipe 연산자의 기본적인 사용법은 `lhs %>% rhs`와 `lhs |> rhs`으로 동일하다. 차이점은 `lhs`가 `rhs`의 첫 번째 변수가 아닌 경우에 대한 위치 지정 기호이다. 예를 들어, `f(y, x)`를 표현할 때 `%>%` 연산자의 경우에는 `.`을 사용해서 `x %>% f(y, .)`라고 하지만, `|>`의 경우에는 `_`를 사용해서 `x |> f(y, _)`라고 한다.
+위 연산 방식은 함수 안에 다른 함수를 입력하는 방식인데, 이것보다 더 효율적인 방식은 pipe 연산자를 이용하는 것이다. Pipe 연산자는 `tidyverse` 생태계에서 사용되는 `magrittr`의 `|>`가 있지만, base R에도 `|>`가 있다. 두 pipe 연산자의 기본적인 사용법은 `lhs |> rhs`와 `lhs |> rhs`으로 동일하다. 차이점은 `lhs`가 `rhs`의 첫 번째 변수가 아닌 경우에 대한 위치 지정 기호이다. 예를 들어, `f(y, x)`를 표현할 때 `|>` 연산자의 경우에는 `.`을 사용해서 `x |> f(y, .)`라고 하지만, `|>`의 경우에는 `_`를 사용해서 `x |> f(y, _)`라고 한다.
 
 ```{r}
 my_table2 |>
@@ -357,7 +357,7 @@ data(Arthritis, package = "vcd")
 ```
 
 ```{r}
-Arthritis %>% 
+Arthritis |> 
   count(Treatment, Improved)
 ```
 
@@ -369,7 +369,7 @@ $\bullet$ 쌓아 올린 막대그래프
 
 ```{r 9-9-1, fig.cap="쌓아 올린 막대그래프"}
 library(tidyverse)
-Arthritis %>% 
+Arthritis |> 
   ggplot(aes(x = Treatment, fill = Improved)) +
   geom_bar() +
   ylab(NULL)
@@ -378,8 +378,8 @@ Arthritis %>%
 두 변수의 분할표를 데이터로 사용하여 쌓아 올린 막대그래프를 작성해야 하는 경우에는 분할표를 데이터 프레임 형태로 생성시키고, 설명변수인 `Treatment`를 `x`에, 빈도수인 `n`를 `y`에, 반응변수인 `Improved`를 `fill`에 매핑하고, 함수 `geom_col()` 또는 `geom_bar(stat = ”identity”)`를 사용하면 된다.
 
 ```{r 9-9-2, fig.cap="쌓아 올린 막대그래프"}
-Arthritis %>% 
-  count(Treatment, Improved) %>% 
+Arthritis |> 
+  count(Treatment, Improved) |> 
   ggplot(aes(x = Treatment, y = n, fill = Improved)) +
   geom_col() +
   ylab(NULL)
@@ -390,14 +390,14 @@ $\bullet$ 옆으로 붙여 놓은 막대그래프
 옆으로 붙여 놓은 막대 그래프를 작성하기 위해서는 함수 `geom_bar()`의 변수 `position`에 `“dodge”` 혹은 `“dodge2”`를 지정하면 된다. `“dodge2”`는 막대 폭을 조금 줄여서 막대 사이에 약간의 빈틈을 만들어 주는 차이가 있다.
 
 ```{r 9-10-a, fig.cap="옆으로 붙여 놓은 막대그래프"}
-Arthritis %>% 
+Arthritis |> 
   ggplot(aes(x = Treatment, fill = Improved)) +
   geom_bar(position = "dodge") +
   ylab(NULL)
 ```
 
 ```{r 9-10-b, fig.cap="옆으로 붙여 놓은 막대그래프"}
-Arthritis %>% 
+Arthritis |> 
   ggplot(aes(x = Treatment, fill = Improved)) +
   geom_bar(position = "dodge2") +
   ylab(NULL)
@@ -406,8 +406,8 @@ Arthritis %>%
 두 변수의 분할표를 데이터로 사용하여 옆으로 붙여 놓은 막대그래프를 작성해 보자. 
 
 ```{r 9-10-c, fig.cap="옆으로 붙여 놓은 막대그래프"}
-Arthritis %>% 
-  count(Treatment, Improved) %>% 
+Arthritis |> 
+  count(Treatment, Improved) |> 
   ggplot(aes(x = Treatment, y = n, fill = Improved)) +
   geom_col(position = "dodge") +
   ylab(NULL)
@@ -418,7 +418,7 @@ Arthritis %>%
 먼저 함수 `geom_bar()`와 함수 `facet_wrap()`을 추가로 사용한 방법이다.
 
 ```{r 9-11-a, fig.cap="상대도수에 의한 옆으로 붙여 놓은 막대 그래프"}
-Arthritis %>% 
+Arthritis |> 
   ggplot(aes(x = Improved, y = after_stat(prop), group = 1)) +
   geom_bar() +
   facet_wrap(vars(Treatment)) +
@@ -428,9 +428,9 @@ Arthritis %>%
 상대도수를 사용자가 직접 계산해서 함수 `geom_col()`을 사용한 방법이다. 
 
 ```{r 9-11-b, fig.cap="상대도수에 의한 옆으로 붙여 놓은 막대 그래프"}
-Arthritis %>% 
-  count(Treatment, Improved) %>% 
-  mutate(prop = n/sum(n)) %>% 
+Arthritis |> 
+  count(Treatment, Improved) |> 
+  mutate(prop = n/sum(n)) |> 
   ggplot(aes(x = Treatment, y = prop, fill = Improved)) +
   geom_col(position = "dodge2") + ylab(NULL)
 ```
@@ -439,7 +439,7 @@ Arthritis %>%
 함수 `geom_bar()`로 두 변수의 막대그래프를 작성하는 경우, 시각적 요소 `x`와 `fill`에 각각 동일한 변수를 매핑하여도 `position`에 어떤 값을 지정하는가에 따라 다른 형태의 막대그래프가 작성된다. 디폴트는 `“stack”`으로 쌓아 올린 형태가 되고, `“dodge”`는 옆으로 붙여 놓은 형태가 됨을 알 수 있었다. 또 다른 가능한 다른 값으로 `“fill”`이 있는데, 이 경우에는 `x` 변수에 대한 `fill` 변수의 조건부 확률로 막대그래프가 각각 작성된다. 따라서 각 막대의 높이는 1이 된다.
 
 ```{r 9-12, fig.cap="조건부 확률을 표현한 쌓아 올린 막대그래프"}
-Arthritis %>% 
+Arthritis |> 
   ggplot(aes(x = Treatment, fill = Improved)) +
   geom_bar(position = "fill") +
   ylab(NULL)
@@ -448,9 +448,9 @@ Arthritis %>%
 그림 \@ref(fig:9-12) 에서 각 조각의 면적은 행 변수인 `Treatment`를 조건으로 하는 열 변수 `Improved`의 조건부 확률에 의하여 결정됨을 다음의 분할표와 비교해 보면 알 수 있다. 설명변수와 반응변수 사이의 관계를 파악하는 데 더 적합하다고 할 수 있다.
 
 ```{r}
-Arthritis %>% 
-    group_by(Treatment, Improved) %>% 
-    tally() %>% 
+Arthritis |> 
+    group_by(Treatment, Improved) |> 
+    tally() |> 
     mutate(prop = n/sum(n))
 ```
 
@@ -561,7 +561,7 @@ bp <- ggplot(alltime.movies, aes(y = "", x = Gross)) +
 ```
 
 ```{r}
-ggplot_build(bp)[[1]][[1]] %>% 
+ggplot_build(bp)[[1]][[1]] |> 
   str()
 ```
 
@@ -575,16 +575,16 @@ bp_out
 이제 변수 `Gross`가 위의 값을 갖는 관찰값들이 어떤 케이스, 즉 어떤 영화의 총수입에 해당되는지를 알아보자. 우선 영화제목이 데이터 프레임 `alltime.movies`의 `rownames`로 입력되어 있는데, 이것을 데이터 프레임에 변수로 포함시켜 보자.
 
 ```{r}
-alltime <- alltime.movies %>%
-  rownames_to_column(var = "Movie.Title") %>%
-  as_tibble() %>% 
+alltime <- alltime.movies |>
+  rownames_to_column(var = "Movie.Title") |>
+  as_tibble() |> 
   print(n = 3)
 ```
 
 이제 데이터 프레임 `alltime`에서 변수 `Gross`의 값이 `bp_out`의 값과 같은 케이스를 패키지 `dplyr`의 함수 `filter()`에 연산자 `%in%`을 사용하여 선택해 보자.
 
 ```{r}
-alltime %>%
+alltime |>
   filter(Gross %in% bp_out)
 ```
 
@@ -704,7 +704,7 @@ d1 + d2 + d3
 ```{r 9-23-a, fig.cap="히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성"}
 ggplot(faithful, aes(x = waiting, y = after_stat(density))) +
   geom_histogram(fill = "red", binwidth = 5) +
-  geom_density(color = "blue", size = 1) +
+  geom_density(color = "blue", linewidth = 1) +
   xlim(30, 110) + ylab(NULL)
 ```
 
@@ -712,7 +712,7 @@ ggplot(faithful, aes(x = waiting, y = after_stat(density))) +
 
 ```{r 9-23-b, fig.cap="히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성"}
 ggplot(faithful, aes(x = waiting, y = after_stat(density))) +
-  geom_density(color = "blue", size = 1) +
+  geom_density(color = "blue", linewidth = 1) +
   geom_histogram(fill = "red", binwidth = 5, alpha = 0.6) +
   xlim(30, 110) + ylab(NULL)
 ```
@@ -779,7 +779,7 @@ $\bullet$ 자료의 중심에 대한 요약통계
 ```{r}
 my_stat <- list(m = ~ mean(.x, na.rm = TRUE),
                 med = ~ median(.x, na.rm = TRUE))
-airquality %>% 
+airquality |> 
   summarise(across(Ozone, my_stat))
 ```
 
@@ -787,7 +787,7 @@ airquality %>%
 
 ```{r}
 data(cfb, package = "UsingR")
-cfb %>% 
+cfb |> 
   summarise(across(INCOME, my_stat))
 ```
 
@@ -796,14 +796,14 @@ cfb %>%
 ```{r 9-27, fig.cap="변수 `INCOME`의 히스토그램"}
 ggplot(cfb, aes(x = INCOME, y = after_stat(density))) +
   geom_histogram(bins = 35, fill = "steelblue") +
-  geom_density(color = "red", size = 1)
+  geom_density(color = "red", linewidth = 1)
 ```
 
 심하게 치우친 분포에 대해서는 대부분 변수변환을 통해 좌우대칭에 가까운 분포로 형태를 바꿔주게 된다. 변수 `INCOME`의 분포는 우측으로 심하게 치우친 분포이므로 로그 혹은 제곱근 변환을 통해 좌우대칭 분포로 변환시킬 수 있는데, 여기에서는 로그변환을 실시해보자.
 
 ```{r}
-cfb %>% 
-  mutate(log_income = log(INCOME)) %>% 
+cfb |> 
+  mutate(log_income = log(INCOME)) |> 
   summarise(across(log_income, my_stat))
 ```
 
@@ -814,19 +814,19 @@ options("digits" = 7)
 ```
 
 ```{r}
-cfb %>% 
-  mutate(log_income = log(INCOME+1)) %>% 
+cfb |> 
+  mutate(log_income = log(INCOME+1)) |> 
   summarise(across(log_income, my_stat))
 ```
 
 로그변환된 변수 `INCOME`의 분포를 히스토그램으로 나타내 보자.
 
 ```{r 9-28, fig.cap="로그 변환된 변수 `INCOME`의 히스토그램"}
-cfb %>% 
-  mutate(log_income = log(INCOME+1)) %>% 
+cfb |> 
+  mutate(log_income = log(INCOME+1)) |> 
   ggplot(aes(x = log_income, y = after_stat(density))) +
   geom_histogram(fill = "steelblue", bins = 35) +
-  geom_density(color = "red", size = 1)
+  geom_density(color = "red", linewidth = 1)
 ```
 
 우측으로 심하게 치우친 모습을 보인 분포가 로그변환으로 좌우대칭의 모습을 보이는 분포로 바뀐 것을 알 수 있다. 그림 \@ref(fig:9-28)의 좌측 끝부분에 있는 극단값은 변수 `INCOME`의 값이 0인 4개의 케이스에 해당되는 것이다.
@@ -909,14 +909,14 @@ cbind(test1, test2) |> scale()
 library(patchwork)
 
 p1 <- data.frame(x = factor(c(rep("test 1", length(test1)), rep("test 2", length(test2)))),
-                 y = c(test1, test2)) %>%
+                 y = c(test1, test2)) |>
   ggplot(aes(x, y)) +
   geom_dotplot(binaxis = "y", binwidth = 1) +
   coord_flip() +
   labs(title = "Before Standardization", x = NULL, y = NULL)
 
 p2 <- data.frame(x = factor(c(rep("test 1", length(test1)), rep("test 2", length(test2)))),
-                 y = c(scale(test1), scale(test2))) %>%
+                 y = c(scale(test1), scale(test2))) |>
   ggplot(aes(x, y)) +
   geom_dotplot(binaxis = "y", binwidth = 0.05) +
   coord_flip() +
@@ -951,14 +951,14 @@ p1 + p2
 
 ```{r}
 library(tidyverse)
-mpg %>% count(cyl)
+mpg |> count(cyl)
 ```
 
 변수 `cyl`이 5가 되는 자료의 개수가 너무 적다는 것을 알 수 있다. 
 따라서 변수 `cyl`이 4, 6, 8인 그룹에 대해서만 변수 `hwy`의 분포를 비교해 보자.
 
 ```{r}
-mpg_1 <- mpg %>% 
+mpg_1 <- mpg |> 
   filter(cyl != 5)
 ```
 
@@ -995,10 +995,10 @@ ggplot(mpg_1, aes(x = hwy, fill = factor(cyl))) +
 ```{r fig.cap="변수 `cyl`에 따른 `hwy`의 도수분포다각형", fig.width=8}
 library(patchwork)
 p1 <- ggplot(mpg_1, aes(x = hwy, color = factor(cyl))) +
-  geom_freqpoly(binwidth=5, show.legend = FALSE, size = 1)
+  geom_freqpoly(binwidth=5, show.legend = FALSE, linewidth = 1)
 
 p2 <- ggplot(mpg_1, aes(x = hwy, y = after_stat(density), color = factor(cyl))) +
-  geom_freqpoly(binwidth=5, size = 1) +
+  geom_freqpoly(binwidth=5, linewidth = 1) +
   labs(color = "cyl")
 
 p1 +p2
@@ -1024,7 +1024,7 @@ x3 <- runif(100, min = -1, max = 1)
 ```
 
 ```{r 9-32, fig.cap="나란히 서 있는 상자그림", fig.width=8}
-tibble(x = c(rep(1:3, each = 100)), y = c(x1, x2, x3)) %>%
+tibble(x = c(rep(1:3, each = 100)), y = c(x1, x2, x3)) |>
   ggplot(aes(factor(x), y)) +
   geom_boxplot() +
   scale_x_discrete(labels = c("N(0,1)", "t(3)", "Unif(-1,1)")) +
@@ -1039,7 +1039,7 @@ tibble(x = c(rep(1:3, each = 100)), y = c(x1, x2, x3)) %>%
 변수 `cyl`이 5인 자료를 제외한 `mpg_1`을 사용하자.
 
 ```{r 9-33-a, fig.cap="수직방향의 나란히 서 있는 상자그림"}
-mpg_1 <- mpg %>% filter(cyl!=5)
+mpg_1 <- mpg |> filter(cyl!=5)
 ggplot(mpg_1, aes(x = factor(cyl), y = hwy)) + 
   geom_boxplot() +
   labs(x = "Number of Cylinders", y = "MPG")
@@ -1066,9 +1066,9 @@ pp_out
 함수 `filter()`를 사용해서 해당 자동차를 선택한 결과는 다음과 같다. 
 
 ```{r}
-mpg %>% 
-  filter((cyl == 4 & hwy %in% pp_out[[1]]) | (cyl == 8 & hwy %in% pp_out[[3]])) %>% 
-  arrange(desc(hwy)) %>% 
+mpg |> 
+  filter((cyl == 4 & hwy %in% pp_out[[1]]) | (cyl == 8 & hwy %in% pp_out[[3]])) |> 
+  arrange(desc(hwy)) |> 
   select(1:2, cyl, hwy)
 ```
 
@@ -1079,7 +1079,7 @@ mpg %>%
 먼저 데이터 프레임 `mpg`의 변수 `hwy`의 상자그림을 변수 `class`의 수준별로 작성해 보자.
 
 ```{r 9-34-a, fig.cap="상자그림의 배치 순서"}
-mpg %>% 
+mpg |> 
   ggplot(aes(x = class, y = hwy)) + geom_boxplot()
 ```
 
@@ -1089,7 +1089,7 @@ mpg %>%
 함수 `reorder()`를 사용하여 요인 `class`의 수준을 변수 `hwy`의 중앙값을 기준으로 다시 배치하는 방법은 `reorder(class, hwy, FUN = median)`이 된다.
 
 ```{r 9-34-b, fig.cap="상자그림의 배치 순서 조정"}
-mpg %>% 
+mpg |> 
   ggplot(aes(x = reorder(class, hwy, FUN = median), y = hwy)) + 
   geom_boxplot() +
   xlab("class")
@@ -1124,7 +1124,7 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 변수 `cyl`이 5인 자료를 제외한 `mpg_1`을 사용하자.
 
 ```{r}
-mpg_1 <- mpg %>% filter(cyl!=5)
+mpg_1 <- mpg |> filter(cyl!=5)
 ```
 
 ```{r 9-35-a, fig.cap="다중 점그래프"}
@@ -1178,7 +1178,7 @@ ggplot(mpg_1, aes(x = hwy, fill = factor(cyl))) +
 
 ```{r 9-37-b, fig.cap="겹쳐 그린 확률밀도함수 그래프"}
 ggplot(mpg_1, aes(x = hwy, color = factor(cyl))) + 
-  geom_density(size = 1) + 
+  geom_density(linewidth = 1) + 
   xlim(5,50) + labs(y = NULL, color = "cyl")
 ```
 
@@ -1217,9 +1217,9 @@ Error bar는 분포의 변동을 그래프로 나타내는 기법이다.
 신뢰구간 계산은 함수 `ggplot2::mean_cl_normal()`로 할 수 있는데, 이 함수는 정규분포 가정에서 모평균의 신뢰구간을 계산하는 `Hmisc::smean.cl.normal()`을 불러와서 작업한다. 
 
 ```{r}
-mpg %>% 
-  filter(cyl != 5) %>% 
-  group_by(cyl) %>% 
+mpg |> 
+  filter(cyl != 5) |> 
+  group_by(cyl) |> 
   summarise(mean_cl_normal(hwy))
 ```
 
@@ -1228,10 +1228,10 @@ mpg %>%
 Error bar는 함수 `geom_errorbar()`에는 변수 `y`, `ymin`, `ymax`를 같은 이름의 시각적 요소에 매핑하면 작성된다.
 
 ```{r 9-39-a, fig.cap="평균 막대 그래프와 error bar"}
-mpg %>%
-  filter(cyl != 5) %>%
-  group_by(cyl) %>%
-  summarise(mean_cl_normal(hwy)) %>% 
+mpg |>
+  filter(cyl != 5) |>
+  group_by(cyl) |>
+  summarise(mean_cl_normal(hwy)) |> 
   ggplot(aes(x = factor(cyl), y = y)) +
   geom_col(fill = "skyblue", width = 0.5) +
   geom_errorbar(aes(ymin = ymin, ymax = ymax), width = 0.2) +
@@ -1244,12 +1244,12 @@ error bar는 `fun.data`에 `"mean_cl_normal"`을, `geom`에 `"errorbar"`를 각�
 `fun.data`에 지정되는 함수는 반드시 `y`, `ymin`, `ymax`를 계산 결과로 출력하는 함수를 지정해야 한다. 
 
 ```{r 9-39-b, fig.cap="평균 막대 그래프와 error bar"}
-mpg %>% 
-  filter(cyl != 5) %>%
+mpg |> 
+  filter(cyl != 5) |>
   ggplot(aes(x = factor(cyl), y = hwy)) +
   stat_summary(fun = "mean", geom = "bar", fill = "steelblue", width = 0.5) +
   stat_summary(fun.data = "mean_cl_normal", geom = "errorbar", width = 0.2, 
-               color = "red", size = 1) +
+               color = "red", linewidth = 1) +
   labs(x = "cyl", y = NULL)
 ```
 
@@ -1482,7 +1482,7 @@ ggplot(Cars93, aes(x = Weight, y = MPG.highway)) +
 데이터 프레임 `ChickWeight`는 578마리의 병아리를 대상으로 측정한 몸무게(`weight`)와 몸무게 측정이 생후 며칠에 이루어졌는지(`Time`)를 조사한 자료이다. 두 변수의 산점도를 작성해 보자.
 
 ```{r 9-50, fig.cap="산점도의 점 겹치는 문제"}
-ChickWeight %>% 
+ChickWeight |> 
     ggplot(aes(x = Time, y = weight)) +
     geom_point()
 ```
@@ -1495,10 +1495,10 @@ ChickWeight %>%
 함수 `geom_boxplot()`으로 그룹별 상자그림을 작성할 때 그룹 변수는 반드시 요인 또는 문자형 변수가 되어야 한다. 따라서 숫자형 변수인 `Time`을 요인으로 전환하여 그룹변수로 매핑하였다. 
 
 ```{r 9-51, fig.cap="산점도 점 겹치는 문제 해결 방안: 점 흩트리기", fig.width=8}
-p1 <- ChickWeight %>% 
+p1 <- ChickWeight |> 
     ggplot(aes(x = Time, y = weight)) +
     geom_jitter(width = 0.2, height = 0)
-p2 <- ChickWeight %>% 
+p2 <- ChickWeight |> 
     ggplot(aes(x = as.factor(Time), y = weight)) +
     geom_boxplot() + xlab("Time")
 p1 + p2
@@ -1517,7 +1517,7 @@ ggplot(diamonds, aes(x = carat, y = price)) +
 변수 `carat`이 3을 초과하는 자료가 많지 않으므로, `carat < 3`인 자료만을 대상으로 산점도를 작성해 보자.
 
 ```{r}
-p2 <- filter(diamonds, carat < 3) %>% 
+p2 <- filter(diamonds, carat < 3) |> 
   ggplot(aes(x = carat, y = price))
 ```
 
@@ -1643,7 +1643,7 @@ ggplot(faithfuld, aes(x = eruptions, y = waiting)) +
 함수 `ggpairs()`에는 산점도행렬 작성에 사용될 변수만으로 이루어진 데이터 프레임을 입력하는 것이 좋다.
 
 ```{r}
-mtcars_1 <- mtcars %>%
+mtcars_1 <- mtcars |>
   select(mpg, wt, disp, cyl, am)
 ```
 
@@ -1656,7 +1656,7 @@ ggpairs(mtcars_1)
 변수 `am`과 `cyl`을 요인으로 전환시키고 다시 산점도행렬을 작성해 보자.
 
 ```{r}
-mtcars_2 <- mtcars_1 %>%
+mtcars_2 <- mtcars_1 |>
   mutate(am = factor(am), cyl = factor(cyl))
 ```
 
