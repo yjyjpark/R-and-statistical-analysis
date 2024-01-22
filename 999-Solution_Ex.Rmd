@@ -1,0 +1,267 @@
+# 연습문제 해답 {-}
+
+자유아카데미에서 출판한 "R과 통계분석" 3판에 있는 연습문제 중 일부 문제의 해답을 정리해서 보여드립니다.
+
+## 2장 {-}
+
+1. 
+```{r}
+x <- c(17, 16, 20, 24, 22, 15, 21, 18)
+x[length(x)]
+```
+
+3.
+```{r}
+grade <- c("1st", "1st", "2nd", "3rd", "2nd", "3rd", "1st")
+factor(grade)
+```
+
+```{r}
+factor(grade, order = TRUE, level = c("3rd", "2nd", "1st"))
+```
+
+
+5. 
+```{r}
+x1 <- c(12, 17, 19)
+x2 <- c(21, 22, 25)
+x3 <- c(32, 34, 35)
+d1 <- data.frame(var1 = x1, var2 = x2, var3 = x3)
+d1
+```
+
+```{r}
+d1["var2"]
+```
+
+
+7. 
+```{r}
+library(tidyverse)
+df1 <- tibble(
+  x = 1,
+  y = 1:9,
+  z = rep(1:3, each = 3),
+  w=sample(letters, 9)
+)
+
+df1
+```
+
+```{r}
+df1[["y"]]
+df1[[2]]
+df1$y
+```
+
+```{r}
+df1[1:5, 2]
+as.data.frame(df1)[1:5, 2]
+```
+
+9. 
+```{r}
+a1 <- paste0(letters, 1:length(letters))
+a1
+```
+
+```{r}
+a2 <- paste(a1, collapse = "-")
+a2
+```
+
+```{r}
+a3 <- gsub("-", "", a2)
+a3
+```
+
+11.
+```{r}
+y <- c(17, 16, 20, 24, 22, 15, 21, 18)
+```
+
+```{r}
+y[y == max(y)] <- 23                         
+y
+```
+
+```{r}
+sum(y >= 20)         
+```
+
+```{r}
+mean(y <= 18)
+```
+
+13.
+```{r}
+x <- c(1, 3, 2, 7, 12, 6, 1, 3, 6, 6, 7)
+Y <- c(6.1, 9.7, 10.3, 18.8, 28.3, 16.1, 5.7, 12.6, 16.1, 15.8, 18.8)
+X <- cbind(1,x)
+beta.hat <- solve(t(X) %*% X)%*%t(X)%*%Y
+rownames(beta.hat) <- c("beta_0", "beta_1")
+colnames(beta.hat) <- c("Estimate")
+```
+
+```{r}
+beta.hat
+```
+
+
+## 3장 {-}
+
+1.
+```{r}
+library(readr)
+URL <- "http://lib.stat.cmu.edu/datasets/fl2000.txt"
+fl2000 <- read_table(URL, comment = "#")
+
+print(fl2000, n = 3)
+```
+
+```{r}
+names(fl2000) <- gsub('"', '', names(fl2000))
+print(fl2000, n = 2)
+```
+
+```{r}
+fl2000$county <- gsub('\"', '', fl2000$county)
+fl2000$technology <- gsub('\"', '', fl2000$technology)
+
+print(fl2000, n = 2)
+```
+
+3.
+```{r}
+library(rvest)
+URL <- "https://en.wikipedia.org/wiki/South_Korea"
+Xpath <- '//*[@id="mw-content-text"]/div[1]/table[7]'  # 2024.1.22 시점
+```
+
+```{r}
+tbl_1 <- read_html(URL) |>      # ' |> ' : pipe 연산자. 4장에서 소개됨. 
+  html_nodes(xpath=Xpath) |> 
+  html_table()
+```
+
+```{r}
+top_company <- tbl_1[[1]] 
+names(top_company) <- c("Rank", "Name", "HQ", "Revenue", "Profit", "Assets")
+```
+
+```{r}
+print(top_company, n = 3)
+```
+
+
+## 4장 {-}
+
+```{r}
+library(tidyverse)
+```
+
+1. 
+```{r}
+air_sub1 <- as_tibble(airquality) |>
+  filter(Wind >= mean(Wind), Temp < mean(Temp)) |>
+  select(Ozone, Solar.R, Month)
+```
+
+```{r}
+air_sub2 <- as_tibble(airquality) |>
+  filter(Wind < mean(Wind), Temp >= mean(Temp)) |>
+  select(Ozone, Solar.R, Month)
+```
+
+```{r}
+air_sub1 |> 
+  summarize(n = n(), m_oz = mean(Ozone, na.rm = TRUE), 
+            m_solar = mean(Solar.R, na.rm = TRUE))
+```
+
+```{r}
+air_sub2 |> 
+  summarize(n = n(), m_oz = mean(Ozone, na.rm = TRUE), 
+            m_solar = mean(Solar.R, na.rm = TRUE))
+```
+
+```{r}
+air_sub1 |>
+  group_by(Month) |>
+  summarize(n = n(), m_oz = mean(Ozone, na.rm = TRUE), 
+            m_solar = mean(Solar.R, na.rm = TRUE))
+```
+
+```{r}
+air_sub2 |>
+  group_by(Month) |>
+  summarize(n = n(), m_oz = mean(Ozone, na.rm = TRUE), 
+            m_solar = mean(Solar.R, na.rm = TRUE))
+```
+
+3.
+```{r}
+n <- 10
+m <- 5
+air <- airquality |> 
+  slice_sample(n = n + m)
+air_1 <- slice_head(air, n = n); air_1
+air_2 <- slice_tail(air, n = m); air_2
+```
+
+```{r}
+# 6장에서 소개되는 함수 anti_join()을 사용하는 방법
+n <- 10
+m <- 5
+air_1 <- airquality |> 
+  slice_sample(n = n); air_1
+air_2 <- airquality |> 
+  anti_join(air_1) |> 
+  slice_sample(n = m); air_2
+```
+
+
+5.
+```{r}
+car <- as_tibble(MASS::Cars93) |> 
+  select(1:2, MPG.highway, Cylinders, Weight, Origin) |> 
+  print(n = 3)
+```
+
+```{r}
+car <- car |> 
+  mutate(make = paste(Manufacturer, Model), .before = 1) |> 
+  select(!c(Manufacturer, Model)) |> 
+  print(n = 3)
+```
+
+```{r}
+car |> count(Cylinders, sort = TRUE)
+```
+
+```{r}
+car <- car |> 
+  filter(Cylinders %in% c(4,6,8))
+```
+
+```{r}
+car |> 
+  slice_max(MPG.highway, n = 2) |> 
+  select(make, MPG.highway) 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

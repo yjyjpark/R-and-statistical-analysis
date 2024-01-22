@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>연습문제 해답 | R과 통계분석</title>
+  <meta name="description" content="연습문제 해답 | R과 통계분석" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="연습문제 해답 | R과 통계분석" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="연습문제 해답 | R과 통계분석" />
+  
+  
+  
+
+<meta name="author" content="박동련" />
+
+
+<meta name="date" content="2024-01-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter-EDA.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>소개하기</a></li>
+<li class="chapter" data-level="1" data-path="R-start.html"><a href="R-start.html"><i class="fa fa-check"></i><b>1</b> R 시작하기</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="R-start.html"><a href="R-start.html#r의-소개"><i class="fa fa-check"></i><b>1.1</b> R의 소개</a></li>
+<li class="chapter" data-level="1.2" data-path="R-start.html"><a href="R-start.html#r의-설치"><i class="fa fa-check"></i><b>1.2</b> R의 설치</a></li>
+<li class="chapter" data-level="1.3" data-path="R-start.html"><a href="R-start.html#rstudio의-설치-및-r의-실행"><i class="fa fa-check"></i><b>1.3</b> RStudio의 설치 및 R의 실행</a></li>
+<li class="chapter" data-level="1.4" data-path="R-start.html"><a href="R-start.html#작업공간"><i class="fa fa-check"></i><b>1.4</b> 작업공간</a></li>
+<li class="chapter" data-level="1.5" data-path="R-start.html"><a href="R-start.html#스크립트-파일의-활용"><i class="fa fa-check"></i><b>1.5</b> 스크립트 파일의 활용</a></li>
+<li class="chapter" data-level="1.6" data-path="R-start.html"><a href="R-start.html#section-batch"><i class="fa fa-check"></i><b>1.6</b> 일괄처리</a></li>
+<li class="chapter" data-level="1.7" data-path="R-start.html"><a href="R-start.html#section-package"><i class="fa fa-check"></i><b>1.7</b> R의 확장: 패키지</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="R-start.html"><a href="R-start.html#패키지의-종류"><i class="fa fa-check"></i><b>1.7.1</b> 패키지의 종류</a></li>
+<li class="chapter" data-level="1.7.2" data-path="R-start.html"><a href="R-start.html#패키지의-설치-및-사용"><i class="fa fa-check"></i><b>1.7.2</b> 패키지의 설치 및 사용</a></li>
+<li class="chapter" data-level="1.7.3" data-path="R-start.html"><a href="R-start.html#패키지-tidyverse의-소개"><i class="fa fa-check"></i><b>1.7.3</b> 패키지 <code>tidyverse</code>의 소개</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-structure.html"><a href="data-structure.html"><i class="fa fa-check"></i><b>2</b> R 데이터 구조</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-structure.html"><a href="data-structure.html#벡터"><i class="fa fa-check"></i><b>2.1</b> 벡터</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-structure.html"><a href="data-structure.html#벡터의-기본-특성"><i class="fa fa-check"></i><b>2.1.1</b> 벡터의 기본 특성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-structure.html"><a href="data-structure.html#다양한-형태를-갖는-벡터의-생성"><i class="fa fa-check"></i><b>2.1.2</b> 다양한 형태를 갖는 벡터의 생성</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-structure.html"><a href="data-structure.html#문자열을-위한-함수"><i class="fa fa-check"></i><b>2.1.3</b> 문자열을 위한 함수</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-structure.html"><a href="data-structure.html#벡터의-연산"><i class="fa fa-check"></i><b>2.1.4</b> 벡터의 연산</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data-structure.html"><a href="data-structure.html#vector-compare"><i class="fa fa-check"></i><b>2.1.5</b> 벡터의 비교</a></li>
+<li class="chapter" data-level="2.1.6" data-path="data-structure.html"><a href="data-structure.html#벡터의-인덱싱"><i class="fa fa-check"></i><b>2.1.6</b> 벡터의 인덱싱</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-structure.html"><a href="data-structure.html#요인"><i class="fa fa-check"></i><b>2.2</b> 요인</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data-structure.html"><a href="data-structure.html#요인의-기본-특성"><i class="fa fa-check"></i><b>2.2.1</b> 요인의 기본 특성</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-structure.html"><a href="data-structure.html#숫자형-벡터를-요인으로-변환"><i class="fa fa-check"></i><b>2.2.2</b> 숫자형 벡터를 요인으로 변환</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-structure.html"><a href="data-structure.html#날짜"><i class="fa fa-check"></i><b>2.3</b> 날짜</a></li>
+<li class="chapter" data-level="2.4" data-path="data-structure.html"><a href="data-structure.html#행렬-및-배열"><i class="fa fa-check"></i><b>2.4</b> 행렬 및 배열</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="data-structure.html"><a href="data-structure.html#행렬과-배열의-기본-특성"><i class="fa fa-check"></i><b>2.4.1</b> 행렬과 배열의 기본 특성</a></li>
+<li class="chapter" data-level="2.4.2" data-path="data-structure.html"><a href="data-structure.html#행렬의-연산"><i class="fa fa-check"></i><b>2.4.2</b> 행렬의 연산</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="data-structure.html"><a href="data-structure.html#section-dataframe"><i class="fa fa-check"></i><b>2.5</b> 데이터 프레임</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="data-structure.html"><a href="data-structure.html#데이터-프레임의-생성"><i class="fa fa-check"></i><b>2.5.1</b> 데이터 프레임의 생성</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-structure.html"><a href="data-structure.html#데이터-프레임의-인덱싱"><i class="fa fa-check"></i><b>2.5.2</b> 데이터 프레임의 인덱싱</a></li>
+<li class="chapter" data-level="2.5.3" data-path="data-structure.html"><a href="data-structure.html#함수-with"><i class="fa fa-check"></i><b>2.5.3</b> 함수 <code>with()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="data-structure.html"><a href="data-structure.html#tibble-개선된-형태의-데이터-프레임"><i class="fa fa-check"></i><b>2.6</b> tibble: 개선된 형태의 데이터 프레임</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="data-structure.html"><a href="data-structure.html#tibble-생성"><i class="fa fa-check"></i><b>2.6.1</b> tibble 생성</a></li>
+<li class="chapter" data-level="2.6.2" data-path="data-structure.html"><a href="data-structure.html#tibble과-전통적인-데이터-프레임의-차이"><i class="fa fa-check"></i><b>2.6.2</b> tibble과 전통적인 데이터 프레임의 차이</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="data-structure.html"><a href="data-structure.html#section-list"><i class="fa fa-check"></i><b>2.7</b> 리스트</a></li>
+<li class="chapter" data-level="2.8" data-path="data-structure.html"><a href="data-structure.html#연습문제"><i class="fa fa-check"></i><b>2.8</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="데이터-입력.html"><a href="데이터-입력.html"><i class="fa fa-check"></i><b>3</b> 데이터 입력</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="데이터-입력.html"><a href="데이터-입력.html#텍스트-파일-불러오기-패키지-readr-함수의-활용"><i class="fa fa-check"></i><b>3.1</b> 텍스트 파일 불러오기: 패키지 <code>readr</code> 함수의 활용</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="데이터-입력.html"><a href="데이터-입력.html#함수-read_table로-데이터-파일-불러오기"><i class="fa fa-check"></i><b>3.1.1</b> 함수 <code>read_table()</code>로 데이터 파일 불러오기</a></li>
+<li class="chapter" data-level="3.1.2" data-path="데이터-입력.html"><a href="데이터-입력.html#함수-read_csv로-csv-데이터-파일-불러오기"><i class="fa fa-check"></i><b>3.1.2</b> 함수 <code>read_csv()</code>로 CSV 데이터 파일 불러오기</a></li>
+<li class="chapter" data-level="3.1.3" data-path="데이터-입력.html"><a href="데이터-입력.html#함수-read_fwf로-고정-포맷-구조를-갖는-데이터-파일-불러오기"><i class="fa fa-check"></i><b>3.1.3</b> 함수 <code>read_fwf()</code>로 고정 포맷 구조를 갖는 데이터 파일 불러오기</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="데이터-입력.html"><a href="데이터-입력.html#excel-파일-불러오기"><i class="fa fa-check"></i><b>3.2</b> Excel 파일 불러오기</a></li>
+<li class="chapter" data-level="3.3" data-path="데이터-입력.html"><a href="데이터-입력.html#sas-데이터-파일-불러오기"><i class="fa fa-check"></i><b>3.3</b> SAS 데이터 파일 불러오기</a></li>
+<li class="chapter" data-level="3.4" data-path="데이터-입력.html"><a href="데이터-입력.html#html-테이블-불러오기"><i class="fa fa-check"></i><b>3.4</b> HTML 테이블 불러오기</a></li>
+<li class="chapter" data-level="3.5" data-path="데이터-입력.html"><a href="데이터-입력.html#연습문제-1"><i class="fa fa-check"></i><b>3.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html"><i class="fa fa-check"></i><b>4</b> <code>dplyr</code>에 의한 데이터 다듬기</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#행을-작업-대상으로-하는-함수"><i class="fa fa-check"></i><b>4.1</b> 행을 작업 대상으로 하는 함수</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#조건에-의한-행-선택-filter"><i class="fa fa-check"></i><b>4.1.1</b> 조건에 의한 행 선택: <code>filter()</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#위치에-의한-행-선택-slice-및-그와-관련된-함수"><i class="fa fa-check"></i><b>4.1.2</b> 위치에 의한 행 선택: <code>slice()</code> 및 그와 관련된 함수</a></li>
+<li class="chapter" data-level="4.1.3" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#행의-정렬-arrange"><i class="fa fa-check"></i><b>4.1.3</b> 행의 정렬: <code>arrange()</code></a></li>
+<li class="chapter" data-level="4.1.4" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#중복된-행의-제거-distinct"><i class="fa fa-check"></i><b>4.1.4</b> 중복된 행의 제거: <code>distinct()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#열을-작업-대상으로-하는-함수"><i class="fa fa-check"></i><b>4.2</b> 열을 작업 대상으로 하는 함수</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#열의-선택-select"><i class="fa fa-check"></i><b>4.2.1</b> 열의 선택: <code>select()</code></a></li>
+<li class="chapter" data-level="4.2.2" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#열-이름-변경-rename과-rename_with"><i class="fa fa-check"></i><b>4.2.2</b> 열 이름 변경: <code>rename()</code>과 <code>rename_with()</code></a></li>
+<li class="chapter" data-level="4.2.3" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#열의-위치-변경-relocate"><i class="fa fa-check"></i><b>4.2.3</b> 열의 위치 변경: <code>relocate()</code></a></li>
+<li class="chapter" data-level="4.2.4" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#새로운-열의-추가-mutate와-transmute"><i class="fa fa-check"></i><b>4.2.4</b> 새로운 열의 추가: <code>mutate()</code>와 <code>transmute()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#여러-행-자료의-요약-summarise"><i class="fa fa-check"></i><b>4.3</b> 여러 행 자료의 요약: <code>summarise()</code></a></li>
+<li class="chapter" data-level="4.4" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#그룹-데이터-프레임"><i class="fa fa-check"></i><b>4.4</b> 그룹 데이터 프레임</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#그룹-데이터-프레임의-생성-group_by"><i class="fa fa-check"></i><b>4.4.1</b> 그룹 데이터 프레임의 생성: <code>group_by()</code></a></li>
+<li class="chapter" data-level="4.4.2" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#그룹-데이터-프레임에서-기본-함수들의-작동-방식"><i class="fa fa-check"></i><b>4.4.2</b> 그룹 데이터 프레임에서 기본 함수들의 작동 방식</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#다수의-열을-대상으로-하는-작업-across"><i class="fa fa-check"></i><b>4.5</b> 다수의 열을 대상으로 하는 작업: <code>across()</code></a></li>
+<li class="chapter" data-level="4.6" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#행-단위-작업-rowwise"><i class="fa fa-check"></i><b>4.6</b> 행 단위 작업: <code>rowwise()</code></a></li>
+<li class="chapter" data-level="4.7" data-path="chapter-dplyr.html"><a href="chapter-dplyr.html#연습문제-2"><i class="fa fa-check"></i><b>4.7</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot2</code>에 의한 자료 시각화</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#ggplot2-시작하기"><i class="fa fa-check"></i><b>5.1</b> <code>ggplot2</code> 시작하기</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#시각적-요소와의-연결-mapping"><i class="fa fa-check"></i><b>5.2</b> 시각적 요소와의 연결: Mapping</a></li>
+<li class="chapter" data-level="5.3" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#그룹별-그래프-작성-facet"><i class="fa fa-check"></i><b>5.3</b> 그룹별 그래프 작성: Facet</a></li>
+<li class="chapter" data-level="5.4" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#section-geom"><i class="fa fa-check"></i><b>5.4</b> 기하 객체: Geometric object</a></li>
+<li class="chapter" data-level="5.5" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#통계적-변환-statistical-transformation"><i class="fa fa-check"></i><b>5.5</b> 통계적 변환: Statistical transformation</a></li>
+<li class="chapter" data-level="5.6" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#위치-조정-position-adjustments"><i class="fa fa-check"></i><b>5.6</b> 위치 조정: Position adjustments</a></li>
+<li class="chapter" data-level="5.7" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#좌표계-coordinate-system"><i class="fa fa-check"></i><b>5.7</b> 좌표계: Coordinate system</a></li>
+<li class="chapter" data-level="5.8" data-path="chapter-ggplot2.html"><a href="chapter-ggplot2.html#연습문제-3"><i class="fa fa-check"></i><b>5.8</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch6.html"><a href="ch6.html"><i class="fa fa-check"></i><b>6</b> Tidyverse를 활용한 데이터 다루기</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="ch6.html"><a href="ch6.html#tidyr로-tidy-데이터-만들기"><i class="fa fa-check"></i><b>6.1</b> <code>tidyr</code>로 tidy 데이터 만들기</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="ch6.html"><a href="ch6.html#데이터-피벗-pivot_longer와-pivot_wider"><i class="fa fa-check"></i><b>6.1.1</b> 데이터 피벗: <code>pivot_longer()</code>와 <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="6.1.2" data-path="ch6.html"><a href="ch6.html#문자형-열의-결합과-분리-separate와-unite"><i class="fa fa-check"></i><b>6.1.2</b> 문자형 열의 결합과 분리: <code>separate()</code>와 <code>unite()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="ch6.html"><a href="ch6.html#dplyr에-의한-데이터-결합"><i class="fa fa-check"></i><b>6.2</b> <code>dplyr</code>에 의한 데이터 결합</a></li>
+<li class="chapter" data-level="6.3" data-path="ch6.html"><a href="ch6.html#stringr에-의한-문자-다루기"><i class="fa fa-check"></i><b>6.3</b> <code>stringr</code>에 의한 문자 다루기</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ch6.html"><a href="ch6.html#stringr의-함수"><i class="fa fa-check"></i><b>6.3.1</b> <code>stringr</code>의 함수</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ch6.html"><a href="ch6.html#정규-표현식과-stringr의-함수"><i class="fa fa-check"></i><b>6.3.2</b> 정규 표현식과 <code>stringr</code>의 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="ch6.html"><a href="ch6.html#연습문제-4"><i class="fa fa-check"></i><b>6.4</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter-programming.html"><a href="chapter-programming.html"><i class="fa fa-check"></i><b>7</b> R에서의 프로그래밍</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter-programming.html"><a href="chapter-programming.html#사용자-정의-함수"><i class="fa fa-check"></i><b>7.1</b> 사용자 정의 함수</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="chapter-programming.html"><a href="chapter-programming.html#함수의-정의"><i class="fa fa-check"></i><b>7.1.1</b> 함수의 정의</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chapter-programming.html"><a href="chapter-programming.html#변수"><i class="fa fa-check"></i><b>7.1.2</b> 변수</a></li>
+<li class="chapter" data-level="7.1.3" data-path="chapter-programming.html"><a href="chapter-programming.html#변수-지정"><i class="fa fa-check"></i><b>7.1.3</b> 변수 지정</a></li>
+<li class="chapter" data-level="7.1.4" data-path="chapter-programming.html"><a href="chapter-programming.html#결과의-출력"><i class="fa fa-check"></i><b>7.1.4</b> 결과의 출력</a></li>
+<li class="chapter" data-level="7.1.5" data-path="chapter-programming.html"><a href="chapter-programming.html#유효-범위"><i class="fa fa-check"></i><b>7.1.5</b> 유효 범위</a></li>
+<li class="chapter" data-level="7.1.6" data-path="chapter-programming.html"><a href="chapter-programming.html#데이터-프레임-함수"><i class="fa fa-check"></i><b>7.1.6</b> 데이터 프레임 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chapter-programming.html"><a href="chapter-programming.html#조건-연산"><i class="fa fa-check"></i><b>7.2</b> 조건 연산</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="chapter-programming.html"><a href="chapter-programming.html#함수-if에-의한-조건-연산"><i class="fa fa-check"></i><b>7.2.1</b> 함수 <code>if()</code>에 의한 조건 연산</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chapter-programming.html"><a href="chapter-programming.html#함수-ifelse에-의한-조건-연산"><i class="fa fa-check"></i><b>7.2.2</b> 함수 <code>ifelse()</code>에 의한 조건 연산</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chapter-programming.html"><a href="chapter-programming.html#함수-switch에-의한-조건-연산"><i class="fa fa-check"></i><b>7.2.3</b> 함수 <code>switch()</code>에 의한 조건 연산</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chapter-programming.html"><a href="chapter-programming.html#루프-연산"><i class="fa fa-check"></i><b>7.3</b> 루프 연산</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="chapter-programming.html"><a href="chapter-programming.html#for-루프"><i class="fa fa-check"></i><b>7.3.1</b> for 루프</a></li>
+<li class="chapter" data-level="7.3.2" data-path="chapter-programming.html"><a href="chapter-programming.html#while-루프"><i class="fa fa-check"></i><b>7.3.2</b> while 루프</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="chapter-programming.html"><a href="chapter-programming.html#함수형-프로그래밍"><i class="fa fa-check"></i><b>7.4</b> 함수형 프로그래밍</a></li>
+<li class="chapter" data-level="7.5" data-path="chapter-programming.html"><a href="chapter-programming.html#함수형-프로그래밍으로-행렬과-데이터-프레임-다루기"><i class="fa fa-check"></i><b>7.5</b> 함수형 프로그래밍으로 행렬과 데이터 프레임 다루기</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="chapter-programming.html"><a href="chapter-programming.html#행렬에-함수형-프로그래밍-적용하기"><i class="fa fa-check"></i><b>7.5.1</b> 행렬에 함수형 프로그래밍 적용하기</a></li>
+<li class="chapter" data-level="7.5.2" data-path="chapter-programming.html"><a href="chapter-programming.html#데이터-프레임에-함수형-프로그래밍-적용하기"><i class="fa fa-check"></i><b>7.5.2</b> 데이터 프레임에 함수형 프로그래밍 적용하기</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="chapter-programming.html"><a href="chapter-programming.html#purrr에-의한-프로그래밍"><i class="fa fa-check"></i><b>7.6</b> <code>purrr</code>에 의한 프로그래밍</a></li>
+<li class="chapter" data-level="7.7" data-path="chapter-programming.html"><a href="chapter-programming.html#연습문제-5"><i class="fa fa-check"></i><b>7.7</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter-distribution.html"><a href="chapter-distribution.html"><i class="fa fa-check"></i><b>8</b> 확률분포</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter-distribution.html"><a href="chapter-distribution.html#r에서의-확률분포-이름"><i class="fa fa-check"></i><b>8.1</b> R에서의 확률분포 이름</a></li>
+<li class="chapter" data-level="8.2" data-path="chapter-distribution.html"><a href="chapter-distribution.html#연속형-확률분포"><i class="fa fa-check"></i><b>8.2</b> 연속형 확률분포</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chapter-distribution.html"><a href="chapter-distribution.html#정규분포"><i class="fa fa-check"></i><b>8.2.1</b> 정규분포</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chapter-distribution.html"><a href="chapter-distribution.html#지수분포"><i class="fa fa-check"></i><b>8.2.2</b> 지수분포</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chapter-distribution.html"><a href="chapter-distribution.html#균등분포"><i class="fa fa-check"></i><b>8.2.3</b> 균등분포</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chapter-distribution.html"><a href="chapter-distribution.html#t-분포"><i class="fa fa-check"></i><b>8.2.4</b> t-분포</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chapter-distribution.html"><a href="chapter-distribution.html#이산형-분포"><i class="fa fa-check"></i><b>8.3</b> 이산형 분포</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="chapter-distribution.html"><a href="chapter-distribution.html#베르누이-분포와-이항분포"><i class="fa fa-check"></i><b>8.3.1</b> 베르누이 분포와 이항분포</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chapter-distribution.html"><a href="chapter-distribution.html#포아송-분포"><i class="fa fa-check"></i><b>8.3.2</b> 포아송 분포</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chapter-distribution.html"><a href="chapter-distribution.html#초기하분포"><i class="fa fa-check"></i><b>8.3.3</b> 초기하분포</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="chapter-distribution.html"><a href="chapter-distribution.html#모의실험"><i class="fa fa-check"></i><b>8.4</b> 모의실험</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter-EDA.html"><a href="chapter-EDA.html"><i class="fa fa-check"></i><b>9</b> 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#일변량-범주형-자료-탐색"><i class="fa fa-check"></i><b>9.1</b> 일변량 범주형 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#막대그래프"><i class="fa fa-check"></i><b>9.1.1</b> 막대그래프</a></li>
+<li class="chapter" data-level="9.1.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#파이그래프"><i class="fa fa-check"></i><b>9.1.2</b> 파이그래프</a></li>
+<li class="chapter" data-level="9.1.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#cleveland의-점그래프"><i class="fa fa-check"></i><b>9.1.3</b> Cleveland의 점그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#이변량-및-다변량-범주형-자료-탐색"><i class="fa fa-check"></i><b>9.2</b> 이변량 및 다변량 범주형 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#분할표-작성"><i class="fa fa-check"></i><b>9.2.1</b> 분할표 작성</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#이변량-및-다변량-범주형-자료를-위한-그래프"><i class="fa fa-check"></i><b>9.2.2</b> 이변량 및 다변량 범주형 자료를 위한 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#일변량-연속형-자료-탐색"><i class="fa fa-check"></i><b>9.3</b> 일변량 연속형 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#줄기-잎-그림"><i class="fa fa-check"></i><b>9.3.1</b> 줄기-잎 그림</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#section-boxplot"><i class="fa fa-check"></i><b>9.3.2</b> 상자그림</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chapter-EDA.html"><a href="chapter-EDA.html#히스토그램"><i class="fa fa-check"></i><b>9.3.3</b> 히스토그램</a></li>
+<li class="chapter" data-level="9.3.4" data-path="chapter-EDA.html"><a href="chapter-EDA.html#section-prob-density"><i class="fa fa-check"></i><b>9.3.4</b> 확률밀도함수 그래프</a></li>
+<li class="chapter" data-level="9.3.5" data-path="chapter-EDA.html"><a href="chapter-EDA.html#기타-유용한-그래프"><i class="fa fa-check"></i><b>9.3.5</b> 기타 유용한 그래프</a></li>
+<li class="chapter" data-level="9.3.6" data-path="chapter-EDA.html"><a href="chapter-EDA.html#일변량-연속형-자료의-요약통계"><i class="fa fa-check"></i><b>9.3.6</b> 일변량 연속형 자료의 요약통계</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chapter-EDA.html"><a href="chapter-EDA.html#이변량-연속형-자료-탐색"><i class="fa fa-check"></i><b>9.4</b> 이변량 연속형 자료 탐색</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연속형-변수의-분포를-비교하기-위한-그래프"><i class="fa fa-check"></i><b>9.4.1</b> 연속형 변수의 분포를 비교하기 위한 그래프</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연속형-변수의-관계-탐색을-위한-그래프"><i class="fa fa-check"></i><b>9.4.2</b> 연속형 변수의 관계 탐색을 위한 그래프</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연습문제-6"><i class="fa fa-check"></i><b>9.5</b> 연습문제</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html"><i class="fa fa-check"></i>연습문제 해답</a>
+<ul>
+<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장"><i class="fa fa-check"></i>2장</a></li>
+<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-1"><i class="fa fa-check"></i>3장</a></li>
+<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-2"><i class="fa fa-check"></i>4장</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R과 통계분석</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="연습문제-해답" class="section level1 unnumbered hasAnchor">
+<h1>연습문제 해답<a href="연습문제-해답.html#연습문제-해답" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>자유아카데미에서 출판한 “R과 통계분석” 3판에 있는 연습문제 중 일부 문제의 해답을 정리해서 보여드립니다.</p>
+<div id="장" class="section level2 unnumbered hasAnchor">
+<h2>2장<a href="연습문제-해답.html#장" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1089"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1089-1"><a href="연습문제-해답.html#cb1089-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">20</span>, <span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">18</span>)</span>
+<span id="cb1089-2"><a href="연습문제-해답.html#cb1089-2" tabindex="-1"></a>x[<span class="fu">length</span>(x)]</span>
+<span id="cb1089-3"><a href="연습문제-해답.html#cb1089-3" tabindex="-1"></a><span class="do">## [1] 18</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1090"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1090-1"><a href="연습문제-해답.html#cb1090-1" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1st&quot;</span>, <span class="st">&quot;1st&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;3rd&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;3rd&quot;</span>, <span class="st">&quot;1st&quot;</span>)</span>
+<span id="cb1090-2"><a href="연습문제-해답.html#cb1090-2" tabindex="-1"></a><span class="fu">factor</span>(grade)</span>
+<span id="cb1090-3"><a href="연습문제-해답.html#cb1090-3" tabindex="-1"></a><span class="do">## [1] 1st 1st 2nd 3rd 2nd 3rd 1st</span></span>
+<span id="cb1090-4"><a href="연습문제-해답.html#cb1090-4" tabindex="-1"></a><span class="do">## Levels: 1st 2nd 3rd</span></span></code></pre></div>
+<div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1091-1"><a href="연습문제-해답.html#cb1091-1" tabindex="-1"></a><span class="fu">factor</span>(grade, <span class="at">order =</span> <span class="cn">TRUE</span>, <span class="at">level =</span> <span class="fu">c</span>(<span class="st">&quot;3rd&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;1st&quot;</span>))</span>
+<span id="cb1091-2"><a href="연습문제-해답.html#cb1091-2" tabindex="-1"></a><span class="do">## [1] 1st 1st 2nd 3rd 2nd 3rd 1st</span></span>
+<span id="cb1091-3"><a href="연습문제-해답.html#cb1091-3" tabindex="-1"></a><span class="do">## Levels: 3rd &lt; 2nd &lt; 1st</span></span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1092-1"><a href="연습문제-해답.html#cb1092-1" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">17</span>, <span class="dv">19</span>)</span>
+<span id="cb1092-2"><a href="연습문제-해답.html#cb1092-2" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">25</span>)</span>
+<span id="cb1092-3"><a href="연습문제-해답.html#cb1092-3" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">35</span>)</span>
+<span id="cb1092-4"><a href="연습문제-해답.html#cb1092-4" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var1 =</span> x1, <span class="at">var2 =</span> x2, <span class="at">var3 =</span> x3)</span>
+<span id="cb1092-5"><a href="연습문제-해답.html#cb1092-5" tabindex="-1"></a>d1</span>
+<span id="cb1092-6"><a href="연습문제-해답.html#cb1092-6" tabindex="-1"></a><span class="do">##   var1 var2 var3</span></span>
+<span id="cb1092-7"><a href="연습문제-해답.html#cb1092-7" tabindex="-1"></a><span class="do">## 1   12   21   32</span></span>
+<span id="cb1092-8"><a href="연습문제-해답.html#cb1092-8" tabindex="-1"></a><span class="do">## 2   17   22   34</span></span>
+<span id="cb1092-9"><a href="연습문제-해답.html#cb1092-9" tabindex="-1"></a><span class="do">## 3   19   25   35</span></span></code></pre></div>
+<div class="sourceCode" id="cb1093"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1093-1"><a href="연습문제-해답.html#cb1093-1" tabindex="-1"></a>d1[<span class="st">&quot;var2&quot;</span>]</span>
+<span id="cb1093-2"><a href="연습문제-해답.html#cb1093-2" tabindex="-1"></a><span class="do">##   var2</span></span>
+<span id="cb1093-3"><a href="연습문제-해답.html#cb1093-3" tabindex="-1"></a><span class="do">## 1   21</span></span>
+<span id="cb1093-4"><a href="연습문제-해답.html#cb1093-4" tabindex="-1"></a><span class="do">## 2   22</span></span>
+<span id="cb1093-5"><a href="연습문제-해답.html#cb1093-5" tabindex="-1"></a><span class="do">## 3   25</span></span></code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1094"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1094-1"><a href="연습문제-해답.html#cb1094-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1094-2"><a href="연습문제-해답.html#cb1094-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1094-3"><a href="연습문제-해답.html#cb1094-3" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span>,</span>
+<span id="cb1094-4"><a href="연습문제-해답.html#cb1094-4" tabindex="-1"></a>  <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,</span>
+<span id="cb1094-5"><a href="연습문제-해답.html#cb1094-5" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb1094-6"><a href="연습문제-해답.html#cb1094-6" tabindex="-1"></a>  <span class="at">w=</span><span class="fu">sample</span>(letters, <span class="dv">9</span>)</span>
+<span id="cb1094-7"><a href="연습문제-해답.html#cb1094-7" tabindex="-1"></a>)</span>
+<span id="cb1094-8"><a href="연습문제-해답.html#cb1094-8" tabindex="-1"></a></span>
+<span id="cb1094-9"><a href="연습문제-해답.html#cb1094-9" tabindex="-1"></a>df1</span>
+<span id="cb1094-10"><a href="연습문제-해답.html#cb1094-10" tabindex="-1"></a><span class="do">## # A tibble: 9 × 4</span></span>
+<span id="cb1094-11"><a href="연습문제-해답.html#cb1094-11" tabindex="-1"></a><span class="do">##       x     y     z w    </span></span>
+<span id="cb1094-12"><a href="연습문제-해답.html#cb1094-12" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</span></span>
+<span id="cb1094-13"><a href="연습문제-해답.html#cb1094-13" tabindex="-1"></a><span class="do">## 1     1     1     1 m    </span></span>
+<span id="cb1094-14"><a href="연습문제-해답.html#cb1094-14" tabindex="-1"></a><span class="do">## 2     1     2     1 y    </span></span>
+<span id="cb1094-15"><a href="연습문제-해답.html#cb1094-15" tabindex="-1"></a><span class="do">## 3     1     3     1 w    </span></span>
+<span id="cb1094-16"><a href="연습문제-해답.html#cb1094-16" tabindex="-1"></a><span class="do">## 4     1     4     2 n    </span></span>
+<span id="cb1094-17"><a href="연습문제-해답.html#cb1094-17" tabindex="-1"></a><span class="do">## 5     1     5     2 p    </span></span>
+<span id="cb1094-18"><a href="연습문제-해답.html#cb1094-18" tabindex="-1"></a><span class="do">## 6     1     6     2 h    </span></span>
+<span id="cb1094-19"><a href="연습문제-해답.html#cb1094-19" tabindex="-1"></a><span class="do">## 7     1     7     3 v    </span></span>
+<span id="cb1094-20"><a href="연습문제-해답.html#cb1094-20" tabindex="-1"></a><span class="do">## 8     1     8     3 a    </span></span>
+<span id="cb1094-21"><a href="연습문제-해답.html#cb1094-21" tabindex="-1"></a><span class="do">## 9     1     9     3 z</span></span></code></pre></div>
+<div class="sourceCode" id="cb1095"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1095-1"><a href="연습문제-해답.html#cb1095-1" tabindex="-1"></a>df1[[<span class="st">&quot;y&quot;</span>]]</span>
+<span id="cb1095-2"><a href="연습문제-해답.html#cb1095-2" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6 7 8 9</span></span>
+<span id="cb1095-3"><a href="연습문제-해답.html#cb1095-3" tabindex="-1"></a>df1[[<span class="dv">2</span>]]</span>
+<span id="cb1095-4"><a href="연습문제-해답.html#cb1095-4" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6 7 8 9</span></span>
+<span id="cb1095-5"><a href="연습문제-해답.html#cb1095-5" tabindex="-1"></a>df1<span class="sc">$</span>y</span>
+<span id="cb1095-6"><a href="연습문제-해답.html#cb1095-6" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6 7 8 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb1096"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1096-1"><a href="연습문제-해답.html#cb1096-1" tabindex="-1"></a>df1[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">2</span>]</span>
+<span id="cb1096-2"><a href="연습문제-해답.html#cb1096-2" tabindex="-1"></a><span class="do">## # A tibble: 5 × 1</span></span>
+<span id="cb1096-3"><a href="연습문제-해답.html#cb1096-3" tabindex="-1"></a><span class="do">##       y</span></span>
+<span id="cb1096-4"><a href="연습문제-해답.html#cb1096-4" tabindex="-1"></a><span class="do">##   &lt;int&gt;</span></span>
+<span id="cb1096-5"><a href="연습문제-해답.html#cb1096-5" tabindex="-1"></a><span class="do">## 1     1</span></span>
+<span id="cb1096-6"><a href="연습문제-해답.html#cb1096-6" tabindex="-1"></a><span class="do">## 2     2</span></span>
+<span id="cb1096-7"><a href="연습문제-해답.html#cb1096-7" tabindex="-1"></a><span class="do">## 3     3</span></span>
+<span id="cb1096-8"><a href="연습문제-해답.html#cb1096-8" tabindex="-1"></a><span class="do">## 4     4</span></span>
+<span id="cb1096-9"><a href="연습문제-해답.html#cb1096-9" tabindex="-1"></a><span class="do">## 5     5</span></span>
+<span id="cb1096-10"><a href="연습문제-해답.html#cb1096-10" tabindex="-1"></a><span class="fu">as.data.frame</span>(df1)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">2</span>]</span>
+<span id="cb1096-11"><a href="연습문제-해답.html#cb1096-11" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5</span></span></code></pre></div>
+<ol start="9" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1097"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1097-1"><a href="연습문제-해답.html#cb1097-1" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(letters, <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(letters))</span>
+<span id="cb1097-2"><a href="연습문제-해답.html#cb1097-2" tabindex="-1"></a>a1</span>
+<span id="cb1097-3"><a href="연습문제-해답.html#cb1097-3" tabindex="-1"></a><span class="do">##  [1] &quot;a1&quot;  &quot;b2&quot;  &quot;c3&quot;  &quot;d4&quot;  &quot;e5&quot;  &quot;f6&quot;  &quot;g7&quot;  &quot;h8&quot;  &quot;i9&quot;  &quot;j10&quot; &quot;k11&quot; &quot;l12&quot;</span></span>
+<span id="cb1097-4"><a href="연습문제-해답.html#cb1097-4" tabindex="-1"></a><span class="do">## [13] &quot;m13&quot; &quot;n14&quot; &quot;o15&quot; &quot;p16&quot; &quot;q17&quot; &quot;r18&quot; &quot;s19&quot; &quot;t20&quot; &quot;u21&quot; &quot;v22&quot; &quot;w23&quot; &quot;x24&quot;</span></span>
+<span id="cb1097-5"><a href="연습문제-해답.html#cb1097-5" tabindex="-1"></a><span class="do">## [25] &quot;y25&quot; &quot;z26&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1098"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1098-1"><a href="연습문제-해답.html#cb1098-1" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">paste</span>(a1, <span class="at">collapse =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb1098-2"><a href="연습문제-해답.html#cb1098-2" tabindex="-1"></a>a2</span>
+<span id="cb1098-3"><a href="연습문제-해답.html#cb1098-3" tabindex="-1"></a><span class="do">## [1] &quot;a1-b2-c3-d4-e5-f6-g7-h8-i9-j10-k11-l12-m13-n14-o15-p16-q17-r18-s19-t20-u21-v22-w23-x24-y25-z26&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1099"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1099-1"><a href="연습문제-해답.html#cb1099-1" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;-&quot;</span>, <span class="st">&quot;&quot;</span>, a2)</span>
+<span id="cb1099-2"><a href="연습문제-해답.html#cb1099-2" tabindex="-1"></a>a3</span>
+<span id="cb1099-3"><a href="연습문제-해답.html#cb1099-3" tabindex="-1"></a><span class="do">## [1] &quot;a1b2c3d4e5f6g7h8i9j10k11l12m13n14o15p16q17r18s19t20u21v22w23x24y25z26&quot;</span></span></code></pre></div>
+<ol start="11" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1100-1"><a href="연습문제-해답.html#cb1100-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">20</span>, <span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">18</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1101-1"><a href="연습문제-해답.html#cb1101-1" tabindex="-1"></a>y[y <span class="sc">==</span> <span class="fu">max</span>(y)] <span class="ot">&lt;-</span> <span class="dv">23</span>                         </span>
+<span id="cb1101-2"><a href="연습문제-해답.html#cb1101-2" tabindex="-1"></a>y</span>
+<span id="cb1101-3"><a href="연습문제-해답.html#cb1101-3" tabindex="-1"></a><span class="do">## [1] 17 16 20 23 22 15 21 18</span></span></code></pre></div>
+<div class="sourceCode" id="cb1102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1102-1"><a href="연습문제-해답.html#cb1102-1" tabindex="-1"></a><span class="fu">sum</span>(y <span class="sc">&gt;=</span> <span class="dv">20</span>)         </span>
+<span id="cb1102-2"><a href="연습문제-해답.html#cb1102-2" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb1103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1103-1"><a href="연습문제-해답.html#cb1103-1" tabindex="-1"></a><span class="fu">mean</span>(y <span class="sc">&lt;=</span> <span class="dv">18</span>)</span>
+<span id="cb1103-2"><a href="연습문제-해답.html#cb1103-2" tabindex="-1"></a><span class="do">## [1] 0.5</span></span></code></pre></div>
+<ol start="13" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1104-1"><a href="연습문제-해답.html#cb1104-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb1104-2"><a href="연습문제-해답.html#cb1104-2" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.1</span>, <span class="fl">9.7</span>, <span class="fl">10.3</span>, <span class="fl">18.8</span>, <span class="fl">28.3</span>, <span class="fl">16.1</span>, <span class="fl">5.7</span>, <span class="fl">12.6</span>, <span class="fl">16.1</span>, <span class="fl">15.8</span>, <span class="fl">18.8</span>)</span>
+<span id="cb1104-3"><a href="연습문제-해답.html#cb1104-3" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>,x)</span>
+<span id="cb1104-4"><a href="연습문제-해답.html#cb1104-4" tabindex="-1"></a>beta.hat <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> X)<span class="sc">%*%</span><span class="fu">t</span>(X)<span class="sc">%*%</span>Y</span>
+<span id="cb1104-5"><a href="연습문제-해답.html#cb1104-5" tabindex="-1"></a><span class="fu">rownames</span>(beta.hat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;beta_0&quot;</span>, <span class="st">&quot;beta_1&quot;</span>)</span>
+<span id="cb1104-6"><a href="연습문제-해답.html#cb1104-6" tabindex="-1"></a><span class="fu">colnames</span>(beta.hat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Estimate&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1105-1"><a href="연습문제-해답.html#cb1105-1" tabindex="-1"></a>beta.hat</span>
+<span id="cb1105-2"><a href="연습문제-해답.html#cb1105-2" tabindex="-1"></a><span class="do">##        Estimate</span></span>
+<span id="cb1105-3"><a href="연습문제-해답.html#cb1105-3" tabindex="-1"></a><span class="do">## beta_0 4.790317</span></span>
+<span id="cb1105-4"><a href="연습문제-해답.html#cb1105-4" tabindex="-1"></a><span class="do">## beta_1 1.955676</span></span></code></pre></div>
+</div>
+<div id="장-1" class="section level2 unnumbered hasAnchor">
+<h2>3장<a href="연습문제-해답.html#장-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1106-1"><a href="연습문제-해답.html#cb1106-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1106-2"><a href="연습문제-해답.html#cb1106-2" tabindex="-1"></a>URL <span class="ot">&lt;-</span> <span class="st">&quot;http://lib.stat.cmu.edu/datasets/fl2000.txt&quot;</span></span>
+<span id="cb1106-3"><a href="연습문제-해답.html#cb1106-3" tabindex="-1"></a>fl2000 <span class="ot">&lt;-</span> <span class="fu">read_table</span>(URL, <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>)</span>
+<span id="cb1106-4"><a href="연습문제-해답.html#cb1106-4" tabindex="-1"></a></span>
+<span id="cb1106-5"><a href="연습문제-해답.html#cb1106-5" tabindex="-1"></a><span class="fu">print</span>(fl2000, <span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb1106-6"><a href="연습문제-해답.html#cb1106-6" tabindex="-1"></a><span class="do">## # A tibble: 67 × 17</span></span>
+<span id="cb1106-7"><a href="연습문제-해답.html#cb1106-7" tabindex="-1"></a><span class="do">##   `&quot;county&quot;`    `&quot;technology&quot;` `&quot;columns&quot;` `&quot;under&quot;` `&quot;over&quot;` `&quot;Bush&quot;` `&quot;Gore&quot;`</span></span>
+<span id="cb1106-8"><a href="연습문제-해답.html#cb1106-8" tabindex="-1"></a><span class="do">##   &lt;chr&gt;         &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb1106-9"><a href="연습문제-해답.html#cb1106-9" tabindex="-1"></a><span class="do">## 1 &quot;\&quot;Alachua\&quot;&quot; &quot;\&quot;Optical\&quot;&quot;            1       217      105    34124    47365</span></span>
+<span id="cb1106-10"><a href="연습문제-해답.html#cb1106-10" tabindex="-1"></a><span class="do">## 2 &quot;\&quot;Baker\&quot;&quot;   &quot;\&quot;Optical\&quot;&quot;            1        79       46     5610     2392</span></span>
+<span id="cb1106-11"><a href="연습문제-해답.html#cb1106-11" tabindex="-1"></a><span class="do">## 3 &quot;\&quot;Bay\&quot;&quot;     &quot;\&quot;Optical\&quot;&quot;            1       541      141    38637    18850</span></span>
+<span id="cb1106-12"><a href="연습문제-해답.html#cb1106-12" tabindex="-1"></a><span class="do">## # ℹ 64 more rows</span></span>
+<span id="cb1106-13"><a href="연습문제-해답.html#cb1106-13" tabindex="-1"></a><span class="do">## # ℹ 10 more variables: `&quot;Browne&quot;` &lt;dbl&gt;, `&quot;Nader&quot;` &lt;dbl&gt;, `&quot;Harris&quot;` &lt;dbl&gt;,</span></span>
+<span id="cb1106-14"><a href="연습문제-해답.html#cb1106-14" tabindex="-1"></a><span class="do">## #   `&quot;Hagelin&quot;` &lt;dbl&gt;, `&quot;Buchanan&quot;` &lt;dbl&gt;, `&quot;McReynolds&quot;` &lt;dbl&gt;,</span></span>
+<span id="cb1106-15"><a href="연습문제-해답.html#cb1106-15" tabindex="-1"></a><span class="do">## #   `&quot;Phillips&quot;` &lt;dbl&gt;, `&quot;Moorehead&quot;` &lt;dbl&gt;, `&quot;Chote&quot;` &lt;dbl&gt;,</span></span>
+<span id="cb1106-16"><a href="연습문제-해답.html#cb1106-16" tabindex="-1"></a><span class="do">## #   `&quot;McCarthy&quot;` &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1107-1"><a href="연습문제-해답.html#cb1107-1" tabindex="-1"></a><span class="fu">names</span>(fl2000) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&#39;&quot;&#39;</span>, <span class="st">&#39;&#39;</span>, <span class="fu">names</span>(fl2000))</span>
+<span id="cb1107-2"><a href="연습문제-해답.html#cb1107-2" tabindex="-1"></a><span class="fu">print</span>(fl2000, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb1107-3"><a href="연습문제-해답.html#cb1107-3" tabindex="-1"></a><span class="do">## # A tibble: 67 × 17</span></span>
+<span id="cb1107-4"><a href="연습문제-해답.html#cb1107-4" tabindex="-1"></a><span class="do">##   county  technology columns under  over  Bush  Gore Browne Nader Harris Hagelin</span></span>
+<span id="cb1107-5"><a href="연습문제-해답.html#cb1107-5" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1107-6"><a href="연습문제-해답.html#cb1107-6" tabindex="-1"></a><span class="do">## 1 &quot;\&quot;Ala… &quot;\&quot;Optica…       1   217   105 34124 47365    658  3226      6      42</span></span>
+<span id="cb1107-7"><a href="연습문제-해답.html#cb1107-7" tabindex="-1"></a><span class="do">## 2 &quot;\&quot;Bak… &quot;\&quot;Optica…       1    79    46  5610  2392     17    53      0       3</span></span>
+<span id="cb1107-8"><a href="연습문제-해답.html#cb1107-8" tabindex="-1"></a><span class="do">## # ℹ 65 more rows</span></span>
+<span id="cb1107-9"><a href="연습문제-해답.html#cb1107-9" tabindex="-1"></a><span class="do">## # ℹ 6 more variables: Buchanan &lt;dbl&gt;, McReynolds &lt;dbl&gt;, Phillips &lt;dbl&gt;,</span></span>
+<span id="cb1107-10"><a href="연습문제-해답.html#cb1107-10" tabindex="-1"></a><span class="do">## #   Moorehead &lt;dbl&gt;, Chote &lt;dbl&gt;, McCarthy &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1108-1"><a href="연습문제-해답.html#cb1108-1" tabindex="-1"></a>fl2000<span class="sc">$</span>county <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;&#39;</span>, fl2000<span class="sc">$</span>county)</span>
+<span id="cb1108-2"><a href="연습문제-해답.html#cb1108-2" tabindex="-1"></a>fl2000<span class="sc">$</span>technology <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;&#39;</span>, fl2000<span class="sc">$</span>technology)</span>
+<span id="cb1108-3"><a href="연습문제-해답.html#cb1108-3" tabindex="-1"></a></span>
+<span id="cb1108-4"><a href="연습문제-해답.html#cb1108-4" tabindex="-1"></a><span class="fu">print</span>(fl2000, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb1108-5"><a href="연습문제-해답.html#cb1108-5" tabindex="-1"></a><span class="do">## # A tibble: 67 × 17</span></span>
+<span id="cb1108-6"><a href="연습문제-해답.html#cb1108-6" tabindex="-1"></a><span class="do">##   county  technology columns under  over  Bush  Gore Browne Nader Harris Hagelin</span></span>
+<span id="cb1108-7"><a href="연습문제-해답.html#cb1108-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1108-8"><a href="연습문제-해답.html#cb1108-8" tabindex="-1"></a><span class="do">## 1 Alachua Optical          1   217   105 34124 47365    658  3226      6      42</span></span>
+<span id="cb1108-9"><a href="연습문제-해답.html#cb1108-9" tabindex="-1"></a><span class="do">## 2 Baker   Optical          1    79    46  5610  2392     17    53      0       3</span></span>
+<span id="cb1108-10"><a href="연습문제-해답.html#cb1108-10" tabindex="-1"></a><span class="do">## # ℹ 65 more rows</span></span>
+<span id="cb1108-11"><a href="연습문제-해답.html#cb1108-11" tabindex="-1"></a><span class="do">## # ℹ 6 more variables: Buchanan &lt;dbl&gt;, McReynolds &lt;dbl&gt;, Phillips &lt;dbl&gt;,</span></span>
+<span id="cb1108-12"><a href="연습문제-해답.html#cb1108-12" tabindex="-1"></a><span class="do">## #   Moorehead &lt;dbl&gt;, Chote &lt;dbl&gt;, McCarthy &lt;dbl&gt;</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1109-1"><a href="연습문제-해답.html#cb1109-1" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb1109-2"><a href="연습문제-해답.html#cb1109-2" tabindex="-1"></a>URL <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/South_Korea&quot;</span></span>
+<span id="cb1109-3"><a href="연습문제-해답.html#cb1109-3" tabindex="-1"></a>Xpath <span class="ot">&lt;-</span> <span class="st">&#39;//*[@id=&quot;mw-content-text&quot;]/div[1]/table[7]&#39;</span>  <span class="co"># 2024.1.22 시점</span></span></code></pre></div>
+<div class="sourceCode" id="cb1110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1110-1"><a href="연습문제-해답.html#cb1110-1" tabindex="-1"></a>tbl_1 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(URL) <span class="sc">|&gt;</span>      <span class="co"># &#39; |&gt; &#39; : pipe 연산자. 4장에서 소개됨. </span></span>
+<span id="cb1110-2"><a href="연습문제-해답.html#cb1110-2" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">xpath=</span>Xpath) <span class="sc">|&gt;</span> </span>
+<span id="cb1110-3"><a href="연습문제-해답.html#cb1110-3" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1111-1"><a href="연습문제-해답.html#cb1111-1" tabindex="-1"></a>top_company <span class="ot">&lt;-</span> tbl_1[[<span class="dv">1</span>]] </span>
+<span id="cb1111-2"><a href="연습문제-해답.html#cb1111-2" tabindex="-1"></a><span class="fu">names</span>(top_company) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;Name&quot;</span>, <span class="st">&quot;HQ&quot;</span>, <span class="st">&quot;Revenue&quot;</span>, <span class="st">&quot;Profit&quot;</span>, <span class="st">&quot;Assets&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1112-1"><a href="연습문제-해답.html#cb1112-1" tabindex="-1"></a><span class="fu">print</span>(top_company, <span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb1112-2"><a href="연습문제-해답.html#cb1112-2" tabindex="-1"></a><span class="do">## # A tibble: 15 × 6</span></span>
+<span id="cb1112-3"><a href="연습문제-해답.html#cb1112-3" tabindex="-1"></a><span class="do">##    Rank Name                HQ    Revenue Profit Assets </span></span>
+<span id="cb1112-4"><a href="연습문제-해답.html#cb1112-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;               &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  </span></span>
+<span id="cb1112-5"><a href="연습문제-해답.html#cb1112-5" tabindex="-1"></a><span class="do">## 1     1 Samsung Electronics Suwon 173,957 19,316 217,104</span></span>
+<span id="cb1112-6"><a href="연습문제-해답.html#cb1112-6" tabindex="-1"></a><span class="do">## 2     2 Hyundai Motor       Seoul 80,701  4,659  148,092</span></span>
+<span id="cb1112-7"><a href="연습문제-해답.html#cb1112-7" tabindex="-1"></a><span class="do">## 3     3 SK Holdings         Seoul 72,579  659    85.332 </span></span>
+<span id="cb1112-8"><a href="연습문제-해답.html#cb1112-8" tabindex="-1"></a><span class="do">## # ℹ 12 more rows</span></span></code></pre></div>
+</div>
+<div id="장-2" class="section level2 unnumbered hasAnchor">
+<h2>4장<a href="연습문제-해답.html#장-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1113-1"><a href="연습문제-해답.html#cb1113-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1114-1"><a href="연습문제-해답.html#cb1114-1" tabindex="-1"></a>air_sub1 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(airquality) <span class="sc">|&gt;</span></span>
+<span id="cb1114-2"><a href="연습문제-해답.html#cb1114-2" tabindex="-1"></a>  <span class="fu">filter</span>(Wind <span class="sc">&gt;=</span> <span class="fu">mean</span>(Wind), Temp <span class="sc">&lt;</span> <span class="fu">mean</span>(Temp)) <span class="sc">|&gt;</span></span>
+<span id="cb1114-3"><a href="연습문제-해답.html#cb1114-3" tabindex="-1"></a>  <span class="fu">select</span>(Ozone, Solar.R, Month)</span></code></pre></div>
+<div class="sourceCode" id="cb1115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1115-1"><a href="연습문제-해답.html#cb1115-1" tabindex="-1"></a>air_sub2 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(airquality) <span class="sc">|&gt;</span></span>
+<span id="cb1115-2"><a href="연습문제-해답.html#cb1115-2" tabindex="-1"></a>  <span class="fu">filter</span>(Wind <span class="sc">&lt;</span> <span class="fu">mean</span>(Wind), Temp <span class="sc">&gt;=</span> <span class="fu">mean</span>(Temp)) <span class="sc">|&gt;</span></span>
+<span id="cb1115-3"><a href="연습문제-해답.html#cb1115-3" tabindex="-1"></a>  <span class="fu">select</span>(Ozone, Solar.R, Month)</span></code></pre></div>
+<div class="sourceCode" id="cb1116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1116-1"><a href="연습문제-해답.html#cb1116-1" tabindex="-1"></a>air_sub1 <span class="sc">|&gt;</span> </span>
+<span id="cb1116-2"><a href="연습문제-해답.html#cb1116-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1116-3"><a href="연습문제-해답.html#cb1116-3" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1116-4"><a href="연습문제-해답.html#cb1116-4" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
+<span id="cb1116-5"><a href="연습문제-해답.html#cb1116-5" tabindex="-1"></a><span class="do">##       n  m_oz m_solar</span></span>
+<span id="cb1116-6"><a href="연습문제-해답.html#cb1116-6" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1116-7"><a href="연습문제-해답.html#cb1116-7" tabindex="-1"></a><span class="do">## 1    42  17.6    166.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1117-1"><a href="연습문제-해답.html#cb1117-1" tabindex="-1"></a>air_sub2 <span class="sc">|&gt;</span> </span>
+<span id="cb1117-2"><a href="연습문제-해답.html#cb1117-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1117-3"><a href="연습문제-해답.html#cb1117-3" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1117-4"><a href="연습문제-해답.html#cb1117-4" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
+<span id="cb1117-5"><a href="연습문제-해답.html#cb1117-5" tabindex="-1"></a><span class="do">##       n  m_oz m_solar</span></span>
+<span id="cb1117-6"><a href="연습문제-해답.html#cb1117-6" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1117-7"><a href="연습문제-해답.html#cb1117-7" tabindex="-1"></a><span class="do">## 1    55  71.4    204.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1118-1"><a href="연습문제-해답.html#cb1118-1" tabindex="-1"></a>air_sub1 <span class="sc">|&gt;</span></span>
+<span id="cb1118-2"><a href="연습문제-해답.html#cb1118-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
+<span id="cb1118-3"><a href="연습문제-해답.html#cb1118-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1118-4"><a href="연습문제-해답.html#cb1118-4" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1118-5"><a href="연습문제-해답.html#cb1118-5" tabindex="-1"></a><span class="do">## # A tibble: 5 × 4</span></span>
+<span id="cb1118-6"><a href="연습문제-해답.html#cb1118-6" tabindex="-1"></a><span class="do">##   Month     n  m_oz m_solar</span></span>
+<span id="cb1118-7"><a href="연습문제-해답.html#cb1118-7" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1118-8"><a href="연습문제-해답.html#cb1118-8" tabindex="-1"></a><span class="do">## 1     5    17  19.1    181.</span></span>
+<span id="cb1118-9"><a href="연습문제-해답.html#cb1118-9" tabindex="-1"></a><span class="do">## 2     6     7  20.8    150.</span></span>
+<span id="cb1118-10"><a href="연습문제-해답.html#cb1118-10" tabindex="-1"></a><span class="do">## 3     7     1  10      264 </span></span>
+<span id="cb1118-11"><a href="연습문제-해답.html#cb1118-11" tabindex="-1"></a><span class="do">## 4     8     4  17.3    155.</span></span>
+<span id="cb1118-12"><a href="연습문제-해답.html#cb1118-12" tabindex="-1"></a><span class="do">## 5     9    13  15.6    152.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1119-1"><a href="연습문제-해답.html#cb1119-1" tabindex="-1"></a>air_sub2 <span class="sc">|&gt;</span></span>
+<span id="cb1119-2"><a href="연습문제-해답.html#cb1119-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
+<span id="cb1119-3"><a href="연습문제-해답.html#cb1119-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1119-4"><a href="연습문제-해답.html#cb1119-4" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1119-5"><a href="연습문제-해답.html#cb1119-5" tabindex="-1"></a><span class="do">## # A tibble: 5 × 4</span></span>
+<span id="cb1119-6"><a href="연습문제-해답.html#cb1119-6" tabindex="-1"></a><span class="do">##   Month     n  m_oz m_solar</span></span>
+<span id="cb1119-7"><a href="연습문제-해답.html#cb1119-7" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1119-8"><a href="연습문제-해답.html#cb1119-8" tabindex="-1"></a><span class="do">## 1     5     1 115      223 </span></span>
+<span id="cb1119-9"><a href="연습문제-해답.html#cb1119-9" tabindex="-1"></a><span class="do">## 2     6     9  26      195 </span></span>
+<span id="cb1119-10"><a href="연습문제-해답.html#cb1119-10" tabindex="-1"></a><span class="do">## 3     7    20  71.5    232 </span></span>
+<span id="cb1119-11"><a href="연습문제-해답.html#cb1119-11" tabindex="-1"></a><span class="do">## 4     8    18  77.4    182.</span></span>
+<span id="cb1119-12"><a href="연습문제-해답.html#cb1119-12" tabindex="-1"></a><span class="do">## 5     9     7  63.9    181.</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1120-1"><a href="연습문제-해답.html#cb1120-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1120-2"><a href="연습문제-해답.html#cb1120-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1120-3"><a href="연습문제-해답.html#cb1120-3" tabindex="-1"></a>air <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
+<span id="cb1120-4"><a href="연습문제-해답.html#cb1120-4" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> n <span class="sc">+</span> m)</span>
+<span id="cb1120-5"><a href="연습문제-해답.html#cb1120-5" tabindex="-1"></a>air_1 <span class="ot">&lt;-</span> <span class="fu">slice_head</span>(air, <span class="at">n =</span> n); air_1</span>
+<span id="cb1120-6"><a href="연습문제-해답.html#cb1120-6" tabindex="-1"></a><span class="do">##    Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb1120-7"><a href="연습문제-해답.html#cb1120-7" tabindex="-1"></a><span class="do">## 1     80     294  8.6   86     7  24</span></span>
+<span id="cb1120-8"><a href="연습문제-해답.html#cb1120-8" tabindex="-1"></a><span class="do">## 2     97     272  5.7   92     7   9</span></span>
+<span id="cb1120-9"><a href="연습문제-해답.html#cb1120-9" tabindex="-1"></a><span class="do">## 3     31     244 10.9   78     8  19</span></span>
+<span id="cb1120-10"><a href="연습문제-해답.html#cb1120-10" tabindex="-1"></a><span class="do">## 4     21     230 10.9   75     9   9</span></span>
+<span id="cb1120-11"><a href="연습문제-해답.html#cb1120-11" tabindex="-1"></a><span class="do">## 5     NA     101 10.9   84     7   4</span></span>
+<span id="cb1120-12"><a href="연습문제-해답.html#cb1120-12" tabindex="-1"></a><span class="do">## 6     16      77  7.4   82     8   3</span></span>
+<span id="cb1120-13"><a href="연습문제-해답.html#cb1120-13" tabindex="-1"></a><span class="do">## 7     79     187  5.1   87     7  19</span></span>
+<span id="cb1120-14"><a href="연습문제-해답.html#cb1120-14" tabindex="-1"></a><span class="do">## 8     18     224 13.8   67     9  17</span></span>
+<span id="cb1120-15"><a href="연습문제-해답.html#cb1120-15" tabindex="-1"></a><span class="do">## 9     64     175  4.6   83     7   5</span></span>
+<span id="cb1120-16"><a href="연습문제-해답.html#cb1120-16" tabindex="-1"></a><span class="do">## 10    NA     139  8.6   82     7  11</span></span>
+<span id="cb1120-17"><a href="연습문제-해답.html#cb1120-17" tabindex="-1"></a>air_2 <span class="ot">&lt;-</span> <span class="fu">slice_tail</span>(air, <span class="at">n =</span> m); air_2</span>
+<span id="cb1120-18"><a href="연습문제-해답.html#cb1120-18" tabindex="-1"></a><span class="do">##   Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb1120-19"><a href="연습문제-해답.html#cb1120-19" tabindex="-1"></a><span class="do">## 1    NA     242 16.1   67     6   3</span></span>
+<span id="cb1120-20"><a href="연습문제-해답.html#cb1120-20" tabindex="-1"></a><span class="do">## 2     7      49 10.3   69     9  24</span></span>
+<span id="cb1120-21"><a href="연습문제-해답.html#cb1120-21" tabindex="-1"></a><span class="do">## 3    24     238 10.3   68     9  19</span></span>
+<span id="cb1120-22"><a href="연습문제-해답.html#cb1120-22" tabindex="-1"></a><span class="do">## 4    82     213  7.4   88     7  28</span></span>
+<span id="cb1120-23"><a href="연습문제-해답.html#cb1120-23" tabindex="-1"></a><span class="do">## 5    89     229 10.3   90     8   8</span></span></code></pre></div>
+<div class="sourceCode" id="cb1121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1121-1"><a href="연습문제-해답.html#cb1121-1" tabindex="-1"></a><span class="co"># 6장에서 소개되는 함수 anti_join()을 사용하는 방법</span></span>
+<span id="cb1121-2"><a href="연습문제-해답.html#cb1121-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1121-3"><a href="연습문제-해답.html#cb1121-3" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1121-4"><a href="연습문제-해답.html#cb1121-4" tabindex="-1"></a>air_1 <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
+<span id="cb1121-5"><a href="연습문제-해답.html#cb1121-5" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> n); air_1</span>
+<span id="cb1121-6"><a href="연습문제-해답.html#cb1121-6" tabindex="-1"></a><span class="do">##    Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb1121-7"><a href="연습문제-해답.html#cb1121-7" tabindex="-1"></a><span class="do">## 1     NA     286  8.6   78     6   1</span></span>
+<span id="cb1121-8"><a href="연습문제-해답.html#cb1121-8" tabindex="-1"></a><span class="do">## 2     NA      47 10.3   73     6  27</span></span>
+<span id="cb1121-9"><a href="연습문제-해답.html#cb1121-9" tabindex="-1"></a><span class="do">## 3     30     193  6.9   70     9  26</span></span>
+<span id="cb1121-10"><a href="연습문제-해답.html#cb1121-10" tabindex="-1"></a><span class="do">## 4     66      NA  4.6   87     8   6</span></span>
+<span id="cb1121-11"><a href="연습문제-해답.html#cb1121-11" tabindex="-1"></a><span class="do">## 5      9      24 13.8   81     8   2</span></span>
+<span id="cb1121-12"><a href="연습문제-해답.html#cb1121-12" tabindex="-1"></a><span class="do">## 6    108     223  8.0   85     7  25</span></span>
+<span id="cb1121-13"><a href="연습문제-해답.html#cb1121-13" tabindex="-1"></a><span class="do">## 7    135     269  4.1   84     7   1</span></span>
+<span id="cb1121-14"><a href="연습문제-해답.html#cb1121-14" tabindex="-1"></a><span class="do">## 8     NA     273  6.9   87     6   8</span></span>
+<span id="cb1121-15"><a href="연습문제-해답.html#cb1121-15" tabindex="-1"></a><span class="do">## 9    118     225  2.3   94     8  29</span></span>
+<span id="cb1121-16"><a href="연습문제-해답.html#cb1121-16" tabindex="-1"></a><span class="do">## 10    18      65 13.2   58     5  15</span></span>
+<span id="cb1121-17"><a href="연습문제-해답.html#cb1121-17" tabindex="-1"></a>air_2 <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
+<span id="cb1121-18"><a href="연습문제-해답.html#cb1121-18" tabindex="-1"></a>  <span class="fu">anti_join</span>(air_1) <span class="sc">|&gt;</span> </span>
+<span id="cb1121-19"><a href="연습문제-해답.html#cb1121-19" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> m); air_2</span>
+<span id="cb1121-20"><a href="연습문제-해답.html#cb1121-20" tabindex="-1"></a><span class="do">##   Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb1121-21"><a href="연습문제-해답.html#cb1121-21" tabindex="-1"></a><span class="do">## 1    49     248  9.2   85     7   2</span></span>
+<span id="cb1121-22"><a href="연습문제-해답.html#cb1121-22" tabindex="-1"></a><span class="do">## 2    45     212  9.7   79     8  24</span></span>
+<span id="cb1121-23"><a href="연습문제-해답.html#cb1121-23" tabindex="-1"></a><span class="do">## 3    12     149 12.6   74     5   3</span></span>
+<span id="cb1121-24"><a href="연습문제-해답.html#cb1121-24" tabindex="-1"></a><span class="do">## 4    NA     145 13.2   77     9  27</span></span>
+<span id="cb1121-25"><a href="연습문제-해답.html#cb1121-25" tabindex="-1"></a><span class="do">## 5    37     284 20.7   72     6  17</span></span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb1122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1122-1"><a href="연습문제-해답.html#cb1122-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(MASS<span class="sc">::</span>Cars93) <span class="sc">|&gt;</span> </span>
+<span id="cb1122-2"><a href="연습문제-해답.html#cb1122-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, MPG.highway, Cylinders, Weight, Origin) <span class="sc">|&gt;</span> </span>
+<span id="cb1122-3"><a href="연습문제-해답.html#cb1122-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb1122-4"><a href="연습문제-해답.html#cb1122-4" tabindex="-1"></a><span class="do">## # A tibble: 93 × 6</span></span>
+<span id="cb1122-5"><a href="연습문제-해답.html#cb1122-5" tabindex="-1"></a><span class="do">##   Manufacturer Model   MPG.highway Cylinders Weight Origin </span></span>
+<span id="cb1122-6"><a href="연습문제-해답.html#cb1122-6" tabindex="-1"></a><span class="do">##   &lt;fct&gt;        &lt;fct&gt;         &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;fct&gt;  </span></span>
+<span id="cb1122-7"><a href="연습문제-해답.html#cb1122-7" tabindex="-1"></a><span class="do">## 1 Acura        Integra          31 4           2705 non-USA</span></span>
+<span id="cb1122-8"><a href="연습문제-해답.html#cb1122-8" tabindex="-1"></a><span class="do">## 2 Acura        Legend           25 6           3560 non-USA</span></span>
+<span id="cb1122-9"><a href="연습문제-해답.html#cb1122-9" tabindex="-1"></a><span class="do">## 3 Audi         90               26 6           3375 non-USA</span></span>
+<span id="cb1122-10"><a href="연습문제-해답.html#cb1122-10" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb1123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1123-1"><a href="연습문제-해답.html#cb1123-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> car <span class="sc">|&gt;</span> </span>
+<span id="cb1123-2"><a href="연습문제-해답.html#cb1123-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">make =</span> <span class="fu">paste</span>(Manufacturer, Model), <span class="at">.before =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1123-3"><a href="연습문제-해답.html#cb1123-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(Manufacturer, Model)) <span class="sc">|&gt;</span> </span>
+<span id="cb1123-4"><a href="연습문제-해답.html#cb1123-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb1123-5"><a href="연습문제-해답.html#cb1123-5" tabindex="-1"></a><span class="do">## # A tibble: 93 × 5</span></span>
+<span id="cb1123-6"><a href="연습문제-해답.html#cb1123-6" tabindex="-1"></a><span class="do">##   make          MPG.highway Cylinders Weight Origin </span></span>
+<span id="cb1123-7"><a href="연습문제-해답.html#cb1123-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;               &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;fct&gt;  </span></span>
+<span id="cb1123-8"><a href="연습문제-해답.html#cb1123-8" tabindex="-1"></a><span class="do">## 1 Acura Integra          31 4           2705 non-USA</span></span>
+<span id="cb1123-9"><a href="연습문제-해답.html#cb1123-9" tabindex="-1"></a><span class="do">## 2 Acura Legend           25 6           3560 non-USA</span></span>
+<span id="cb1123-10"><a href="연습문제-해답.html#cb1123-10" tabindex="-1"></a><span class="do">## 3 Audi 90                26 6           3375 non-USA</span></span>
+<span id="cb1123-11"><a href="연습문제-해답.html#cb1123-11" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb1124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1124-1"><a href="연습문제-해답.html#cb1124-1" tabindex="-1"></a>car <span class="sc">|&gt;</span> <span class="fu">count</span>(Cylinders, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1124-2"><a href="연습문제-해답.html#cb1124-2" tabindex="-1"></a><span class="do">## # A tibble: 6 × 2</span></span>
+<span id="cb1124-3"><a href="연습문제-해답.html#cb1124-3" tabindex="-1"></a><span class="do">##   Cylinders     n</span></span>
+<span id="cb1124-4"><a href="연습문제-해답.html#cb1124-4" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;</span></span>
+<span id="cb1124-5"><a href="연습문제-해답.html#cb1124-5" tabindex="-1"></a><span class="do">## 1 4            49</span></span>
+<span id="cb1124-6"><a href="연습문제-해답.html#cb1124-6" tabindex="-1"></a><span class="do">## 2 6            31</span></span>
+<span id="cb1124-7"><a href="연습문제-해답.html#cb1124-7" tabindex="-1"></a><span class="do">## 3 8             7</span></span>
+<span id="cb1124-8"><a href="연습문제-해답.html#cb1124-8" tabindex="-1"></a><span class="do">## 4 3             3</span></span>
+<span id="cb1124-9"><a href="연습문제-해답.html#cb1124-9" tabindex="-1"></a><span class="do">## 5 5             2</span></span>
+<span id="cb1124-10"><a href="연습문제-해답.html#cb1124-10" tabindex="-1"></a><span class="do">## 6 rotary        1</span></span></code></pre></div>
+<div class="sourceCode" id="cb1125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1125-1"><a href="연습문제-해답.html#cb1125-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> car <span class="sc">|&gt;</span> </span>
+<span id="cb1125-2"><a href="연습문제-해답.html#cb1125-2" tabindex="-1"></a>  <span class="fu">filter</span>(Cylinders <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1126-1"><a href="연습문제-해답.html#cb1126-1" tabindex="-1"></a>car <span class="sc">|&gt;</span> </span>
+<span id="cb1126-2"><a href="연습문제-해답.html#cb1126-2" tabindex="-1"></a>  <span class="fu">slice_max</span>(MPG.highway, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1126-3"><a href="연습문제-해답.html#cb1126-3" tabindex="-1"></a>  <span class="fu">select</span>(make, MPG.highway) </span>
+<span id="cb1126-4"><a href="연습문제-해답.html#cb1126-4" tabindex="-1"></a><span class="do">## # A tibble: 2 × 2</span></span>
+<span id="cb1126-5"><a href="연습문제-해답.html#cb1126-5" tabindex="-1"></a><span class="do">##   make           MPG.highway</span></span>
+<span id="cb1126-6"><a href="연습문제-해답.html#cb1126-6" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                &lt;int&gt;</span></span>
+<span id="cb1126-7"><a href="연습문제-해답.html#cb1126-7" tabindex="-1"></a><span class="do">## 1 Honda Civic             46</span></span>
+<span id="cb1126-8"><a href="연습문제-해답.html#cb1126-8" tabindex="-1"></a><span class="do">## 2 Pontiac LeMans          41</span></span></code></pre></div>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Becker, Chambers, R. A., and A. R. Wilks. 1988. <em>The New s Language: A Programming Environment for Data Analysis and Graphics</em>. Pacific Grove, California: Wadsworth &amp; Brooks/Cole Advanced Books &amp; Software.
+</div>
+<div class="csl-entry">
+Cleveland, William S. 1993. <em>Visualizing Data</em>. New Jersey: Hobart Press.
+</div>
+<div class="csl-entry">
+Jones, Mailardet, O., and A Robinson. 2009. <em>Introduction to Scientific Programming and Simulation Using r</em>. Chapman &amp; Hall/CRC.
+</div>
+<div class="csl-entry">
+Venables, W. N., and B. D. Ripley. 2000. <em>S Programming</em>. Springer-Verlag.
+</div>
+<div class="csl-entry">
+Wickham, Hadley. 2019. <em>Advanced r</em>. 2nd ed. CRC Press.
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-EDA.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

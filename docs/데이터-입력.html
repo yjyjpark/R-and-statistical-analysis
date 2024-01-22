@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2023-12-29" />
+<meta name="date" content="2024-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -355,7 +355,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연습문제-6"><i class="fa fa-check"></i><b>9.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="참고-문헌.html"><a href="참고-문헌.html"><i class="fa fa-check"></i>참고 문헌</a></li>
+<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html"><i class="fa fa-check"></i>연습문제 해답</a>
+<ul>
+<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장"><i class="fa fa-check"></i>2장</a></li>
+<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-1"><i class="fa fa-check"></i>3장</a></li>
+<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-2"><i class="fa fa-check"></i>4장</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -685,7 +690,7 @@ RUN;</code></pre>
 <p>웹 페이지를 보다 보면 중요한 정보가 있는 HTML 테이블을 자주 만나게 되는데, 이 테이블에 있는 데이터를 R로 바로 불러들일 수 있다면 분석 과정에 큰 도움이 될 것이다. 문제는 웹 페이지에 있는 HTML 테이블이라는 것이 사람들에게 시각적으로 보여지는 측면이 강조되는 대상이어서 거기에 있는 정보를 ‘긁어모아’ 컴퓨터에 입력하는 것이 조금 복잡한 작업이 될 수 있다는 점이다. 그러나 패키지 <code>rvest</code>를 이용하면 비교적 간편하게 HTML 테이블의 데이터를 긁어모아 R에 입력시킬 수 있다.</p>
 <p>패키지 <code>rvest</code>에서 HTML 테이블을 불러오는데 필요한 함수는 <code>read_html()</code>과 <code>html_elements()</code>, <code>html_table()</code>이다. 함수 <code>read_html()</code>은 원하는 HTML 테이블이 있는 웹 페이지를 읽어오는 데 사용된다. HTML 테이블의 내용은 <code>&lt;table&gt;</code> 태그 사이에 존재하기 때문에 <code>&lt;table&gt;</code> 노드(node)를 찾는 것이 다음 순서인데, 이 작업은 함수 <code>html_elements()</code>로 할 수 있다. 이어서 선택된 노드의 HTML 테이블 데이터를 R로 불러오는 작업은 함수 <code>html_table()</code>로 하게 된다.</p>
 <p><span class="math inline">\(\bullet\)</span> 예제 1: Wikipedia 웹 페이지에 있는 HTML 테이블 데이터 불러오기</p>
-<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2023-12-29에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
+<p>그림 <a href="데이터-입력.html#fig:wiki">3.1</a>은 <a href="https://en.wikipedia.org/wiki">Wikipedia</a>에서 “World population”을 검색하면 열리는 웹 페이지에 있는 “10 most densely populated countries”라는 제목의 HTML 테이블을 보여주고 있다. 검색은 2024-01-22에 실시된 것을 바탕으로 하고 있으며, 차후에 HTML 테이블의 배치가 변경되면 아래 예제 프로그램도 적절히 변경해야 할 것이다.</p>
 <div class="figure"><span style="display:block;" id="fig:wiki"></span>
 <img src="Figure/wiki_22_02_09_1.PNG" alt="예제 1에서 사용된 HTML 테이블" width="222" />
 <p class="caption">
@@ -697,18 +702,18 @@ RUN;</code></pre>
 <span id="cb313-2"><a href="데이터-입력.html#cb313-2" tabindex="-1"></a>URL <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/World_population&quot;</span></span>
 <span id="cb313-3"><a href="데이터-입력.html#cb313-3" tabindex="-1"></a>web <span class="ot">&lt;-</span> <span class="fu">read_html</span>(URL)</span>
 <span id="cb313-4"><a href="데이터-입력.html#cb313-4" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">html_elements</span>(web, <span class="st">&quot;table&quot;</span>)</span></code></pre></div>
-<p>모두 29개의 <code>table</code> 노드가 발견되었고, 그 중 처음 6개의 내용을 출력해 보자.</p>
+<p>모두 30개의 <code>table</code> 노드가 발견되었고, 그 중 처음 6개의 내용을 출력해 보자.</p>
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="데이터-입력.html#cb314-1" tabindex="-1"></a><span class="fu">length</span>(tbl)</span>
-<span id="cb314-2"><a href="데이터-입력.html#cb314-2" tabindex="-1"></a><span class="do">## [1] 29</span></span></code></pre></div>
+<span id="cb314-2"><a href="데이터-입력.html#cb314-2" tabindex="-1"></a><span class="do">## [1] 30</span></span></code></pre></div>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="데이터-입력.html#cb315-1" tabindex="-1"></a><span class="fu">head</span>(tbl)</span>
 <span id="cb315-2"><a href="데이터-입력.html#cb315-2" tabindex="-1"></a><span class="do">## {xml_nodeset (6)}</span></span>
 <span id="cb315-3"><a href="데이터-입력.html#cb315-3" tabindex="-1"></a><span class="do">## [1] &lt;table class=&quot;wikitable&quot; style=&quot;text-align:center; float:right; clear:rig ...</span></span>
 <span id="cb315-4"><a href="데이터-입력.html#cb315-4" tabindex="-1"></a><span class="do">## [2] &lt;table class=&quot;wikitable&quot;&gt;\n&lt;caption&gt;Current world population and latest p ...</span></span>
 <span id="cb315-5"><a href="데이터-입력.html#cb315-5" tabindex="-1"></a><span class="do">## [3] &lt;table class=&quot;box-Notice plainlinks metadata ambox ambox-notice&quot; role=&quot;pr ...</span></span>
 <span id="cb315-6"><a href="데이터-입력.html#cb315-6" tabindex="-1"></a><span class="do">## [4] &lt;table class=&quot;wikitable sortable&quot;&gt;\n&lt;caption&gt;Population by region (2020 e ...</span></span>
-<span id="cb315-7"><a href="데이터-입력.html#cb315-7" tabindex="-1"></a><span class="do">## [5] &lt;table class=&quot;wikitable sortable&quot;&gt;&lt;tbody&gt;\n&lt;tr&gt;\n&lt;th scope=&quot;col&quot;&gt;Rank\n&lt;/ ...</span></span>
+<span id="cb315-7"><a href="데이터-입력.html#cb315-7" tabindex="-1"></a><span class="do">## [5] &lt;table class=&quot;sortable wikitable sticky-header static-row-numbers col1lef ...</span></span>
 <span id="cb315-8"><a href="데이터-입력.html#cb315-8" tabindex="-1"></a><span class="do">## [6] &lt;table class=&quot;wikitable&quot; style=&quot;font-size:90%&quot;&gt;\n&lt;caption&gt;World populatio ...</span></span></code></pre></div>
-<p>함수 <code>html_elements()</code>의 결과로 생성된 리스트 객체인 tbl의 29개 구성요소 중 우리가 원하는 HTML 테이블에 해당되는 노드를 찾아서 함수 <code>html_table()</code>에 입력하면, 해당 테이블 데이터가 R로 입력된다. 문제는 몇 번째 노드가 우리가 원하는 테이블에 관한 것인지 알기가 어렵다는 점이다. 시행착오를 거치면, 원하는 테이블이 2023년 8월에는 8번째 노드에 있다는 것을 알 수 있었고, 따라서 <code>html_table(tbl[8])</code>을 실행하면 테이블의 데이터를 불러올 수 있다.
+<p>함수 <code>html_elements()</code>의 결과로 생성된 리스트 객체인 tbl의 30개 구성요소 중 우리가 원하는 HTML 테이블에 해당되는 노드를 찾아서 함수 <code>html_table()</code>에 입력하면, 해당 테이블 데이터가 R로 입력된다. 문제는 몇 번째 노드가 우리가 원하는 테이블에 관한 것인지 알기가 어렵다는 점이다. 시행착오를 거치면, 원하는 테이블이 2023년 8월에는 8번째 노드에 있다는 것을 알 수 있었고, 따라서 <code>html_table(tbl[8])</code>을 실행하면 테이블의 데이터를 불러올 수 있다.
 그러나 HTML 테이블이 많은 웹 페이지에서는 다른 체계적인 방법이 필요할 것이다.</p>
 <p>웹 페이지에서 HTML 테이블을 체계적으로 찾는 방법 중 하나는 해당 테이블 노드의 XPath를 알아내는 것이다. XPath는 웹 문서에서 원하는 태그나 속성 등을 쉽게 찾기 위해 개발된 것으로 윈도우의 파일 경로와 비슷한 개념이라고 하겠다.</p>
 <p>크롬 웹 브라우저를 대상으로 웹 페이지에서 원하는 HTML 테이블의 XPath를 알아내는 방법은 다음과 같다.</p>
@@ -778,7 +783,7 @@ RUN;</code></pre>
 <div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="데이터-입력.html#cb322-1" tabindex="-1"></a><span class="fu">mean</span>(top_pop<span class="sc">$</span>pop)</span>
 <span id="cb322-2"><a href="데이터-입력.html#cb322-2" tabindex="-1"></a><span class="do">## [1] 169042554</span></span></code></pre></div>
 <p><span class="math inline">\(\bullet\)</span> 예제 2: KBO 홈페이지 기록실에 있는 자료 불러오기</p>
-<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2023-12-29이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
+<p><a href="https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx">KBO 홈페이지의 기록실</a>에 있는 자료를 불러와 보자. 자료를 불러온 시점은 2024-01-22이며, 내용은 KBO 정규 시즌 중 타자들의 팀 기록이다. 불러오고자 하는 HTML 테이블은 그림 <a href="데이터-입력.html#fig:KBO">3.3</a>에서 볼 수 있다. 해당 웹 페이지에는 하나의 HTML 테이블만이 있기 때문에 굳이 XPath를 복사해야 할 필요는 없다. 한글이 포함된 HTML 테이블을 불러와 보자.</p>
 <div class="figure"><span style="display:block;" id="fig:KBO"></span>
 <img src="Figure/KBO.PNG" alt="예제 2에서 사용된 HTML 테이블" width="566" />
 <p class="caption">
@@ -820,10 +825,10 @@ RUN;</code></pre>
 <span id="cb325-2"><a href="데이터-입력.html#cb325-2" tabindex="-1"></a><span class="do">## # A tibble: 223 × 4</span></span>
 <span id="cb325-3"><a href="데이터-입력.html#cb325-3" tabindex="-1"></a><span class="do">##    ``    Location          `Vaccinated[a]` `Percent[b]`</span></span>
 <span id="cb325-4"><a href="데이터-입력.html#cb325-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;           &lt;chr&gt;       </span></span>
-<span id="cb325-5"><a href="데이터-입력.html#cb325-5" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,630,592,367   70.60%      </span></span>
+<span id="cb325-5"><a href="데이터-입력.html#cb325-5" tabindex="-1"></a><span class="do">##  1 &quot;&quot;    World[c][d]       5,630,596,874   70.60%      </span></span>
 <span id="cb325-6"><a href="데이터-입력.html#cb325-6" tabindex="-1"></a><span class="do">##  2 &quot;&quot;    China[e]          1,310,292,000   91.89%      </span></span>
 <span id="cb325-7"><a href="데이터-입력.html#cb325-7" tabindex="-1"></a><span class="do">##  3 &quot;&quot;    India             1,027,420,529   72.50%      </span></span>
-<span id="cb325-8"><a href="데이터-입력.html#cb325-8" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 338,057,765     75.10%      </span></span>
+<span id="cb325-8"><a href="데이터-입력.html#cb325-8" tabindex="-1"></a><span class="do">##  4 &quot;&quot;    European Union[f] 338,058,131     75.10%      </span></span>
 <span id="cb325-9"><a href="데이터-입력.html#cb325-9" tabindex="-1"></a><span class="do">##  5 &quot;&quot;    United States[g]  270,227,181     81.39%      </span></span>
 <span id="cb325-10"><a href="데이터-입력.html#cb325-10" tabindex="-1"></a><span class="do">##  6 &quot;&quot;    Indonesia         203,878,473     74.00%      </span></span>
 <span id="cb325-11"><a href="데이터-입력.html#cb325-11" tabindex="-1"></a><span class="do">##  7 &quot;&quot;    Brazil            189,643,431     88.08%      </span></span>
@@ -840,7 +845,7 @@ RUN;</code></pre>
 <span id="cb326-4"><a href="데이터-입력.html#cb326-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;             &lt;chr&gt;         &lt;chr&gt;  </span></span>
 <span id="cb326-5"><a href="데이터-입력.html#cb326-5" tabindex="-1"></a><span class="do">## 1 China[e]          1,310,292,000 91.89% </span></span>
 <span id="cb326-6"><a href="데이터-입력.html#cb326-6" tabindex="-1"></a><span class="do">## 2 India             1,027,420,529 72.50% </span></span>
-<span id="cb326-7"><a href="데이터-입력.html#cb326-7" tabindex="-1"></a><span class="do">## 3 European Union[f] 338,057,765   75.10%</span></span></code></pre></div>
+<span id="cb326-7"><a href="데이터-입력.html#cb326-7" tabindex="-1"></a><span class="do">## 3 European Union[f] 338,058,131   75.10%</span></span></code></pre></div>
 <div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="데이터-입력.html#cb327-1" tabindex="-1"></a><span class="fu">tail</span>(ex3_1, <span class="at">n =</span> <span class="dv">3</span>)</span>
 <span id="cb327-2"><a href="데이터-입력.html#cb327-2" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
 <span id="cb327-3"><a href="데이터-입력.html#cb327-3" tabindex="-1"></a><span class="do">##   Location         Vaccinated Percent</span></span>
