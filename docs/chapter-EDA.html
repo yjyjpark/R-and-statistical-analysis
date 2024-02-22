@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9 장 자료 탐색 | R과 통계분석</title>
   <meta name="description" content="9 장 자료 탐색 | R과 통계분석" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9 장 자료 탐색 | R과 통계분석" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2024-01-22" />
+<meta name="date" content="2024-02-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="chapter-distribution.html"/>
-<link rel="next" href="연습문제-해답.html"/>
+<link rel="next" href="부록.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -54,6 +54,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -355,11 +357,18 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연습문제-6"><i class="fa fa-check"></i><b>9.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html"><i class="fa fa-check"></i>연습문제 해답</a>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html"><i class="fa fa-check"></i>부록</a>
 <ul>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장"><i class="fa fa-check"></i>2장</a></li>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-1"><i class="fa fa-check"></i>3장</a></li>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-2"><i class="fa fa-check"></i>4장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#r과-통계분석-연습문제-해답"><i class="fa fa-check"></i>‘R과 통계분석’ 연습문제 해답</a>
+<ul>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장"><i class="fa fa-check"></i>2장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-1"><i class="fa fa-check"></i>3장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-2"><i class="fa fa-check"></i>4장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-3"><i class="fa fa-check"></i>5장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-4"><i class="fa fa-check"></i>6장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-5"><i class="fa fa-check"></i>7장</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#참고문헌"><i class="fa fa-check"></i>참고문헌</a></li>
 </ul></li>
 </ul>
 
@@ -1261,8 +1270,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="chapter-EDA.html#cb998-1" tabindex="-1"></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(<span class="at">x =</span> waiting, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
 <span id="cb998-2"><a href="chapter-EDA.html#cb998-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">binwidth =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb998-3"><a href="chapter-EDA.html#cb998-3" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb998-4"><a href="chapter-EDA.html#cb998-4" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">30</span>, <span class="dv">110</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span>
-<span id="cb998-5"><a href="chapter-EDA.html#cb998-5" tabindex="-1"></a><span class="do">## Warning: Removed 2 rows containing missing values (`geom_bar()`).</span></span></code></pre></div>
+<span id="cb998-4"><a href="chapter-EDA.html#cb998-4" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">30</span>, <span class="dv">110</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:9-23-a"></span>
 <img src="_main_files/figure-html/9-23-a-1.png" alt="히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성" width="576" />
 <p class="caption">
@@ -1273,8 +1281,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb999"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb999-1"><a href="chapter-EDA.html#cb999-1" tabindex="-1"></a><span class="fu">ggplot</span>(faithful, <span class="fu">aes</span>(<span class="at">x =</span> waiting, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
 <span id="cb999-2"><a href="chapter-EDA.html#cb999-2" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb999-3"><a href="chapter-EDA.html#cb999-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb999-4"><a href="chapter-EDA.html#cb999-4" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">30</span>, <span class="dv">110</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span>
-<span id="cb999-5"><a href="chapter-EDA.html#cb999-5" tabindex="-1"></a><span class="do">## Warning: Removed 2 rows containing missing values (`geom_bar()`).</span></span></code></pre></div>
+<span id="cb999-4"><a href="chapter-EDA.html#cb999-4" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">30</span>, <span class="dv">110</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:9-23-b"></span>
 <img src="_main_files/figure-html/9-23-b-1.png" alt="히스토그램과 확률밀도함수 그래프를 겹쳐지게 작성" width="576" />
 <p class="caption">
@@ -1908,8 +1915,7 @@ error bar는 <code>fun.data</code>에 <code>"mean_cl_normal"</code>을, <code>ge
 <span id="cb1051-3"><a href="chapter-EDA.html#cb1051-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
 <span id="cb1051-4"><a href="chapter-EDA.html#cb1051-4" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Cars93, <span class="fu">aes</span>(<span class="at">x =</span> Weight, <span class="at">y =</span> MPG.highway, <span class="at">size =</span> EngineSize)) <span class="sc">+</span></span>
 <span id="cb1051-5"><a href="chapter-EDA.html#cb1051-5" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb1051-6"><a href="chapter-EDA.html#cb1051-6" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span>
-<span id="cb1051-7"><a href="chapter-EDA.html#cb1051-7" tabindex="-1"></a><span class="do">## Warning: Using size for a discrete variable is not advised.</span></span></code></pre></div>
+<span id="cb1051-6"><a href="chapter-EDA.html#cb1051-6" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:9-42"></span>
 <img src="_main_files/figure-html/9-42-1.png" alt="`size`에 요인요인과 숫자형 변수를 각각 매핑한 산점도" width="768" />
 <p class="caption">
@@ -2192,8 +2198,7 @@ X축과 Y축을 30개의 구간으로 나누어 전체 공간을 900개의 직�
 이때 옵션 <code>contour</code>은 반드시 <code>FALSE</code>로 지정해야 한다.</p>
 <div class="sourceCode" id="cb1077"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1077-1"><a href="chapter-EDA.html#cb1077-1" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">stat_density_2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">after_stat</span>(density)),<span class="at">geom =</span> <span class="st">&quot;raster&quot;</span>, </span>
 <span id="cb1077-2"><a href="chapter-EDA.html#cb1077-2" tabindex="-1"></a>                     <span class="at">contour =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb1077-3"><a href="chapter-EDA.html#cb1077-3" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb1077-4"><a href="chapter-EDA.html#cb1077-4" tabindex="-1"></a><span class="do">## Warning: Removed 396 rows containing missing values (`geom_raster()`).</span></span></code></pre></div>
+<span id="cb1077-3"><a href="chapter-EDA.html#cb1077-3" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:9-56-b"></span>
 <img src="_main_files/figure-html/9-56-b-1.png" alt="색을 이용한 결합확률밀도 그래프" width="576" />
 <p class="caption">
@@ -2359,7 +2364,7 @@ X축과 Y축을 30개의 구간으로 나누어 전체 공간을 900개의 직�
         </div>
       </div>
 <a href="chapter-distribution.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="연습문제-해답.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="부록.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

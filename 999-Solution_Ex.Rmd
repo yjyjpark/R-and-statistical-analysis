@@ -1,8 +1,10 @@
-# 연습문제 해답 {-}
+# 부록 {-}
 
-자유아카데미에서 출판한 "R과 통계분석" 3판에 있는 연습문제 중 일부 문제의 해답을 정리해서 보여드립니다.
+## 'R과 통계분석' 연습문제 해답 {-}
 
-## 2장 {-}
+"R과 통계분석" 3판에 있는 연습문제 중 일부 문제의 해답을 정리해서 보여드립니다.
+
+### 2장 {-}
 
 1. 
 ```{r}
@@ -108,7 +110,7 @@ beta.hat
 ```
 
 
-## 3장 {-}
+### 3장 {-}
 
 1.
 ```{r}
@@ -154,7 +156,7 @@ print(top_company, n = 3)
 ```
 
 
-## 4장 {-}
+### 4장 {-}
 
 ```{r}
 library(tidyverse)
@@ -250,18 +252,199 @@ car |>
   select(make, MPG.highway) 
 ```
 
+### 5장 {-}
+
+1.
+```{r}
+data(barley, package = "lattice")
+```
+
+```{r}
+barley |>
+  ggplot(aes(x = yield, y = variety, color = year)) +
+  geom_point() +
+  facet_wrap(facets = vars(site))
+```
 
 
+```{r}
+barley |>
+  ggplot(aes(x = yield, y = variety, color = site, shape = year)) +
+  geom_point()
+```
+
+```{r}
+barley |>
+  group_by(variety) |>
+  summarise(mean_yield = mean(yield)) |>
+  arrange(desc(mean_yield))
+```
+
+3.
+```{r}
+airs <- as_tibble(airquality)
+```
+
+```{r}
+airs |>
+  mutate(Missing = is.na(Ozone)) |>
+  ggplot(aes(x = Month, fill = Missing)) +
+  geom_bar(position = "fill") +
+  labs(y = "Proportion of missing data") 
+```
+
+```{r}
+airs |>
+  group_by(Month) |>
+  summarise(m.Oz = mean(Ozone, na.rm = TRUE)) |>
+  ggplot(aes(x = Month, y = m.Oz)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(y = "Mean Ozone")
+```
+
+```{r}
+airs |>
+  mutate(gp_Wind = if_else(Wind >= mean(Wind), 
+                         "High Wind","Low Wind"),
+         gp_Temp = if_else(Temp >= mean(Temp), 
+                         "High Temp","Low Temp")) |>
+  ggplot(aes(x = Solar.R, y = Ozone)) +
+  geom_point() +
+  facet_grid(rows = vars(gp_Wind), cols = vars(gp_Temp)) 
+```
 
 
+5.
+```{r}
+mpg_1 <- mpg |>
+  filter(cyl == 4) |>
+  mutate(year = factor(year)) |>
+  select(model, year, displ, cty, hwy) |>
+  arrange(year, desc(displ), cty) |>
+  print(n = 5)
+```
+
+```{r}
+p2 <- mpg_1 |> 
+  mutate(gp_displ = if_else(displ >= 2.0, "Large","Small")) |>
+  ggplot()
+```
+
+```{r}
+p2 + 
+  geom_jitter(aes(x = cty, y = hwy, color = gp_displ), size = 2) +
+  facet_wrap(vars(year), ncol = 1) +
+  labs(color = "Displacement \nGroup")
+```
+
+```{r}
+p2 + 
+  geom_boxplot(aes(x = gp_displ, y = hwy)) +
+  facet_wrap(vars(year)) 
+```
 
 
+### 6장 {-}
+
+1. 
+```{r}
+top_100 <- billboard |>  
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    names_prefix = "wk",
+    names_transform = list(week = as.integer),
+    values_to = "rank",
+    values_drop_na = TRUE
+    ) |> 
+  print(n = 10)
+```
+
+다른 방법
+```{r}
+top_100 <- billboard |> 
+  pivot_longer(cols = starts_with("wk"),
+               names_to = "week",
+               values_to = "rank"
+               ) |> 
+  mutate(week = parse_number(week)) |> 
+  drop_na(rank) |> 
+  print(n = 10)
+```
+
+```{r}
+top_100 |>  
+  filter(rank == 1) |> 
+  group_by(artist, track) |> 
+  filter((max(week) - min(week) + 1) == n()) |> 
+  count(sort = TRUE) |> 
+  print(n=2)
+```
 
 
+3.
+```{r}
+part_df <- tibble(num = c(155, 501, 244, 796),
+                  tool = c("screwdrive", "pliers", "wrench", "hammer"))
+order_df <- tibble(num = c(155, 796, 155, 244, 244, 796, 244),
+                   name = c("Park", "Fox", "Smith", "White", "Crus", "White", "Lee"))
+```
 
 
+```{r}
+part_df |> left_join(order_df, by = join_by(num))
+```
+
+```{r}
+part_df |> inner_join(order_df, by = join_by(num))
+```
 
 
+5. 
+```{r}
+str_c(letters, LETTERS, collapse = "")
+```
 
 
+### 7장 {-}
 
+1.
+```{r}
+res <- vector("double", 12)
+res[1] <- 0; res[2] <- 1
+for(i in 1:10){
+  res[i+2] <- res[i]+res[i+1]
+}
+res
+```
+
+
+3.
+```{r}
+airs_M <- airquality |> 
+  select(-c(Month, Day)) |>
+  split(airquality$Month)
+```
+
+```{r}
+map(airs_M, ~map_dbl(.x, mean, na.rm = TRUE))
+```
+
+```{r}
+map(airs_M, ~map_dbl(.x, ~sum(is.na(.x))))
+```
+
+```{r}
+airquality |>
+  group_by(Month) |>
+  summarise(across(1:4, list(Mean = ~mean(.x, na.rm = TRUE))))
+```
+
+```{r}
+airquality |>
+  group_by(Month) |> 
+  summarise(across(1:4, list(miss = ~sum(is.na(.x)))))
+```
+
+
+## 참고문헌 {-}

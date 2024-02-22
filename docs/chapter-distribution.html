@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 장 확률분포 | R과 통계분석</title>
   <meta name="description" content="8 장 확률분포 | R과 통계분석" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 장 확률분포 | R과 통계분석" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2024-01-22" />
+<meta name="date" content="2024-02-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -355,11 +357,18 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연습문제-6"><i class="fa fa-check"></i><b>9.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html"><i class="fa fa-check"></i>연습문제 해답</a>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html"><i class="fa fa-check"></i>부록</a>
 <ul>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장"><i class="fa fa-check"></i>2장</a></li>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-1"><i class="fa fa-check"></i>3장</a></li>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-2"><i class="fa fa-check"></i>4장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#r과-통계분석-연습문제-해답"><i class="fa fa-check"></i>‘R과 통계분석’ 연습문제 해답</a>
+<ul>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장"><i class="fa fa-check"></i>2장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-1"><i class="fa fa-check"></i>3장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-2"><i class="fa fa-check"></i>4장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-3"><i class="fa fa-check"></i>5장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-4"><i class="fa fa-check"></i>6장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-5"><i class="fa fa-check"></i>7장</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#참고문헌"><i class="fa fa-check"></i>참고문헌</a></li>
 </ul></li>
 </ul>
 
@@ -635,11 +644,7 @@ F(x) = \int_{-\infty}^{x}f(t)dt
 <span id="cb892-2"><a href="chapter-distribution.html#cb892-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>))) <span class="sc">+</span></span>
 <span id="cb892-3"><a href="chapter-distribution.html#cb892-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
 <span id="cb892-4"><a href="chapter-distribution.html#cb892-4" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb892-5"><a href="chapter-distribution.html#cb892-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span>
-<span id="cb892-6"><a href="chapter-distribution.html#cb892-6" tabindex="-1"></a><span class="do">## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
-<span id="cb892-7"><a href="chapter-distribution.html#cb892-7" tabindex="-1"></a><span class="do">## ℹ Please use `linewidth` instead.</span></span>
-<span id="cb892-8"><a href="chapter-distribution.html#cb892-8" tabindex="-1"></a><span class="do">## This warning is displayed once every 8 hours.</span></span>
-<span id="cb892-9"><a href="chapter-distribution.html#cb892-9" tabindex="-1"></a><span class="do">## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</span></span></code></pre></div>
+<span id="cb892-5"><a href="chapter-distribution.html#cb892-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:8-3"></span>
 <img src="_main_files/figure-html/8-3-1.png" alt="표준정규분포에서 발생된 1000개 난수의 히스토그램" width="576" />
 <p class="caption">

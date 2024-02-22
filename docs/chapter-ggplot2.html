@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 장 ggplot2에 의한 자료 시각화 | R과 통계분석</title>
   <meta name="description" content="5 장 ggplot2에 의한 자료 시각화 | R과 통계분석" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 장 ggplot2에 의한 자료 시각화 | R과 통계분석" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2024-01-22" />
+<meta name="date" content="2024-02-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -355,11 +357,18 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="chapter-EDA.html"><a href="chapter-EDA.html#연습문제-6"><i class="fa fa-check"></i><b>9.5</b> 연습문제</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html"><i class="fa fa-check"></i>연습문제 해답</a>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html"><i class="fa fa-check"></i>부록</a>
 <ul>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장"><i class="fa fa-check"></i>2장</a></li>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-1"><i class="fa fa-check"></i>3장</a></li>
-<li class="chapter" data-level="" data-path="연습문제-해답.html"><a href="연습문제-해답.html#장-2"><i class="fa fa-check"></i>4장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#r과-통계분석-연습문제-해답"><i class="fa fa-check"></i>‘R과 통계분석’ 연습문제 해답</a>
+<ul>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장"><i class="fa fa-check"></i>2장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-1"><i class="fa fa-check"></i>3장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-2"><i class="fa fa-check"></i>4장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-3"><i class="fa fa-check"></i>5장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-4"><i class="fa fa-check"></i>6장</a></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#장-5"><i class="fa fa-check"></i>7장</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="부록.html"><a href="부록.html#참고문헌"><i class="fa fa-check"></i>참고문헌</a></li>
 </ul></li>
 </ul>
 
@@ -1324,9 +1333,7 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 <span id="cb577-2"><a href="chapter-ggplot2.html#cb577-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb577-3"><a href="chapter-ggplot2.html#cb577-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
 <div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="chapter-ggplot2.html#cb578-1" tabindex="-1"></a>p <span class="sc">+</span> </span>
-<span id="cb578-2"><a href="chapter-ggplot2.html#cb578-2" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>))</span>
-<span id="cb578-3"><a href="chapter-ggplot2.html#cb578-3" tabindex="-1"></a><span class="do">## Warning: Removed 105 rows containing non-finite values (`stat_smooth()`).</span></span>
-<span id="cb578-4"><a href="chapter-ggplot2.html#cb578-4" tabindex="-1"></a><span class="do">## Warning: Removed 105 rows containing missing values (`geom_point()`).</span></span></code></pre></div>
+<span id="cb578-2"><a href="chapter-ggplot2.html#cb578-2" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-30-1"></span>
 <img src="_main_files/figure-html/5-30-1-1.png" alt="'scale'로 X축 범위 축소" width="576" />
 <p class="caption">
