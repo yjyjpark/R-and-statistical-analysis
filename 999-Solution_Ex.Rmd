@@ -112,27 +112,6 @@ beta.hat
 
 ### 3장 {-}
 
-1.
-```{r}
-library(readr)
-URL <- "http://lib.stat.cmu.edu/datasets/fl2000.txt"
-fl2000 <- read_table(URL, comment = "#")
-
-print(fl2000, n = 3)
-```
-
-```{r}
-names(fl2000) <- gsub('"', '', names(fl2000))
-print(fl2000, n = 2)
-```
-
-```{r}
-fl2000$county <- gsub('\"', '', fl2000$county)
-fl2000$technology <- gsub('\"', '', fl2000$technology)
-
-print(fl2000, n = 2)
-```
-
 3.
 ```{r}
 library(rvest)

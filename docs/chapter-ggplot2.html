@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 장 ggplot2에 의한 자료 시각화 | R과 통계분석</title>
   <meta name="description" content="5 장 ggplot2에 의한 자료 시각화 | R과 통계분석" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 장 ggplot2에 의한 자료 시각화 | R과 통계분석" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2024-02-22" />
+<meta name="date" content="2024-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,7 +60,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -132,6 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -412,23 +413,23 @@ Morris 지역에서만 다른 결과가 나왔다는 것이 상당히 의심스�
 <h2><span class="header-section-number">5.1</span> <code>ggplot2</code> 시작하기<a href="chapter-ggplot2.html#ggplot2-시작하기" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>패키지 <code>ggplot2</code>에 있는 데이터 프레임 <code>mpg</code>의 변수 <code>displ</code>과 <code>hwy</code>의 관계를 산점도로 나타내보자.
 변수 <code>displ</code>은 리터 단위의 배기량이고, <code>hwy</code>는 고속도로 연비이다.</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="chapter-ggplot2.html#cb509-1" tabindex="-1"></a>mpg</span>
-<span id="cb509-2"><a href="chapter-ggplot2.html#cb509-2" tabindex="-1"></a><span class="do">## # A tibble: 234 × 11</span></span>
-<span id="cb509-3"><a href="chapter-ggplot2.html#cb509-3" tabindex="-1"></a><span class="do">##    manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class</span></span>
-<span id="cb509-4"><a href="chapter-ggplot2.html#cb509-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb509-5"><a href="chapter-ggplot2.html#cb509-5" tabindex="-1"></a><span class="do">##  1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…</span></span>
-<span id="cb509-6"><a href="chapter-ggplot2.html#cb509-6" tabindex="-1"></a><span class="do">##  2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…</span></span>
-<span id="cb509-7"><a href="chapter-ggplot2.html#cb509-7" tabindex="-1"></a><span class="do">##  3 audi         a4           2    2008     4 manu… f        20    31 p     comp…</span></span>
-<span id="cb509-8"><a href="chapter-ggplot2.html#cb509-8" tabindex="-1"></a><span class="do">##  4 audi         a4           2    2008     4 auto… f        21    30 p     comp…</span></span>
-<span id="cb509-9"><a href="chapter-ggplot2.html#cb509-9" tabindex="-1"></a><span class="do">##  5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…</span></span>
-<span id="cb509-10"><a href="chapter-ggplot2.html#cb509-10" tabindex="-1"></a><span class="do">##  6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…</span></span>
-<span id="cb509-11"><a href="chapter-ggplot2.html#cb509-11" tabindex="-1"></a><span class="do">##  7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…</span></span>
-<span id="cb509-12"><a href="chapter-ggplot2.html#cb509-12" tabindex="-1"></a><span class="do">##  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…</span></span>
-<span id="cb509-13"><a href="chapter-ggplot2.html#cb509-13" tabindex="-1"></a><span class="do">##  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…</span></span>
-<span id="cb509-14"><a href="chapter-ggplot2.html#cb509-14" tabindex="-1"></a><span class="do">## 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…</span></span>
-<span id="cb509-15"><a href="chapter-ggplot2.html#cb509-15" tabindex="-1"></a><span class="do">## # ℹ 224 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="chapter-ggplot2.html#cb510-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb510-2"><a href="chapter-ggplot2.html#cb510-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="chapter-ggplot2.html#cb557-1" tabindex="-1"></a>mpg</span>
+<span id="cb557-2"><a href="chapter-ggplot2.html#cb557-2" tabindex="-1"></a><span class="do">## # A tibble: 234 × 11</span></span>
+<span id="cb557-3"><a href="chapter-ggplot2.html#cb557-3" tabindex="-1"></a><span class="do">##    manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class</span></span>
+<span id="cb557-4"><a href="chapter-ggplot2.html#cb557-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb557-5"><a href="chapter-ggplot2.html#cb557-5" tabindex="-1"></a><span class="do">##  1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…</span></span>
+<span id="cb557-6"><a href="chapter-ggplot2.html#cb557-6" tabindex="-1"></a><span class="do">##  2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…</span></span>
+<span id="cb557-7"><a href="chapter-ggplot2.html#cb557-7" tabindex="-1"></a><span class="do">##  3 audi         a4           2    2008     4 manu… f        20    31 p     comp…</span></span>
+<span id="cb557-8"><a href="chapter-ggplot2.html#cb557-8" tabindex="-1"></a><span class="do">##  4 audi         a4           2    2008     4 auto… f        21    30 p     comp…</span></span>
+<span id="cb557-9"><a href="chapter-ggplot2.html#cb557-9" tabindex="-1"></a><span class="do">##  5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…</span></span>
+<span id="cb557-10"><a href="chapter-ggplot2.html#cb557-10" tabindex="-1"></a><span class="do">##  6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…</span></span>
+<span id="cb557-11"><a href="chapter-ggplot2.html#cb557-11" tabindex="-1"></a><span class="do">##  7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…</span></span>
+<span id="cb557-12"><a href="chapter-ggplot2.html#cb557-12" tabindex="-1"></a><span class="do">##  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…</span></span>
+<span id="cb557-13"><a href="chapter-ggplot2.html#cb557-13" tabindex="-1"></a><span class="do">##  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…</span></span>
+<span id="cb557-14"><a href="chapter-ggplot2.html#cb557-14" tabindex="-1"></a><span class="do">## 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…</span></span>
+<span id="cb557-15"><a href="chapter-ggplot2.html#cb557-15" tabindex="-1"></a><span class="do">## # ℹ 224 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="chapter-ggplot2.html#cb558-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb558-2"><a href="chapter-ggplot2.html#cb558-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:first-plot"></span>
 <img src="_main_files/figure-html/first-plot-1.png" alt="ggplot2의 산점도" width="576" />
 <p class="caption">
@@ -473,9 +474,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 점의 크기, 모양 또는 색깔과 같은 시각적 요소들을 변수와 연결하여 표현을 한다면, 기존의 그래프에 다른 변수의 정보를 추가할 수 있다.</p>
 <p>시각적 요소들을 사용자가 일정한 값으로 지정하는 것은 세팅(setting)이라고 하는데, 함수 <code>aes()</code> 밖에서 지정하게 된다.
 예를 들어, 변수 <code>displ</code>과 <code>hwy</code>의 산점도를 작성하되 점을 모두 빨간색으로 나타낸다고 하면, 점의 위치는 매핑으로 결정하게 되고, 점의 색은 세팅으로 결정하는 것이다.</p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="chapter-ggplot2.html#cb512-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb512-2"><a href="chapter-ggplot2.html#cb512-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy), </span>
-<span id="cb512-3"><a href="chapter-ggplot2.html#cb512-3" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="chapter-ggplot2.html#cb560-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb560-2"><a href="chapter-ggplot2.html#cb560-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy), </span>
+<span id="cb560-3"><a href="chapter-ggplot2.html#cb560-3" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-6"></span>
 <img src="_main_files/figure-html/5-6-1.png" alt="시각적 요소 `color`의 사용자 지정" width="576" />
 <p class="caption">
@@ -485,8 +486,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p><span class="math inline">\(\bullet\)</span> 시각적 요소 <code>color</code>의 매핑</p>
 <p><code>mpg</code>에 있는 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 시각적 요소 <code>color</code>의 매핑으로 다른 변수의 정보를 추가해 보자.
 우선 <code>color</code>에 문자형 변수인 <code>drv</code>를 매핑해 보자.</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="chapter-ggplot2.html#cb513-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb513-2"><a href="chapter-ggplot2.html#cb513-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv))</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="chapter-ggplot2.html#cb561-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb561-2"><a href="chapter-ggplot2.html#cb561-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:color-mapping-1"></span>
 <img src="_main_files/figure-html/color-mapping-1-1.png" alt="시각적 요소 `color`에 문자형 변수 매핑" width="576" />
 <p class="caption">
@@ -496,8 +497,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p>변수 <code>drv</code>의 값에 따라 다른 색이 사용되었고, 따라서 각 점이 어떤 <code>drv</code>에 속하는지 바로 알 수 있게 되었다.
 사용된 색깔에 대한 범례는 자동으로 추가된다.</p>
 <p>이번에는 <code>color</code>에 숫자형 변수인 <code>cyl</code>을 매핑해 보자.</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="chapter-ggplot2.html#cb514-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb514-2"><a href="chapter-ggplot2.html#cb514-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> cyl))</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="chapter-ggplot2.html#cb562-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb562-2"><a href="chapter-ggplot2.html#cb562-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> cyl))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:color-mapping-2"></span>
 <img src="_main_files/figure-html/color-mapping-2-1.png" alt="시각적 요소 `color`에 숫자형 변수 매핑" width="576" />
 <p class="caption">
@@ -508,8 +509,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p>시각적 요소에 범주의 개수가 너무 많은 변수를 매핑하게 되면, 대부분 좋지 않은 그래프를 작성하게 된다.
 <code>color</code>에 변수 <code>class</code>를 매핑해 보자.
 변수 <code>class</code>는 7개 범주를 갖고 있는 문자형 변수이다.</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="chapter-ggplot2.html#cb515-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb515-2"><a href="chapter-ggplot2.html#cb515-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class))</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="chapter-ggplot2.html#cb563-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb563-2"><a href="chapter-ggplot2.html#cb563-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:color-mapping-3"></span>
 <img src="_main_files/figure-html/color-mapping-3-1.png" alt="시각적 요소 `color`의 매핑" width="576" />
 <p class="caption">
@@ -520,8 +521,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p><span class="math inline">\(\bullet\)</span> 시각적 요소 <code>shape</code>의 매핑</p>
 <p>시각적 요소 <code>shape</code>는 점의 모양에 대한 것이며, 문자형이나 요인이 매핑 가능한 변수 유형이 된다.
 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 점의 모양을 변수 <code>drv</code>와 연결하여 표현해 보자.</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="chapter-ggplot2.html#cb516-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb516-2"><a href="chapter-ggplot2.html#cb516-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> drv))</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="chapter-ggplot2.html#cb564-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb564-2"><a href="chapter-ggplot2.html#cb564-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> drv))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-4-a"></span>
 <img src="_main_files/figure-html/5-4-a-1.png" alt="시각적 요소 `shape`의 매핑" width="576" />
 <p class="caption">
@@ -530,8 +531,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </div>
 <p>그림 <a href="chapter-ggplot2.html#fig:5-4-a">5.7</a>에는 세 가지 모양의 점이 사용되었으나, 모양 차이가 쉽게 느껴지지 않고 있다.
 이런 경우에는 다른 시각적 요소를 <code>drv</code>에 함께 매핑하여 작성한 그림 <a href="chapter-ggplot2.html#fig:5-4-b">5.8</a>가 좋은 대안이 될 수 있다.</p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="chapter-ggplot2.html#cb517-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb517-2"><a href="chapter-ggplot2.html#cb517-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> drv, <span class="at">color =</span> drv))</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="chapter-ggplot2.html#cb565-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb565-2"><a href="chapter-ggplot2.html#cb565-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> drv, <span class="at">color =</span> drv))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-4-b"></span>
 <img src="_main_files/figure-html/5-4-b-1.png" alt="시각적 요소 `shape`의 매핑" width="576" />
 <p class="caption">
@@ -539,21 +540,21 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </p>
 </div>
 <p><code>shape</code>에 숫자형 변수를 매핑하면 다음과 같이 오류가 발생하게 된다.</p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="chapter-ggplot2.html#cb518-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb518-2"><a href="chapter-ggplot2.html#cb518-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> cyl))</span>
-<span id="cb518-3"><a href="chapter-ggplot2.html#cb518-3" tabindex="-1"></a><span class="do">## Error in `geom_point()`:</span></span>
-<span id="cb518-4"><a href="chapter-ggplot2.html#cb518-4" tabindex="-1"></a><span class="do">## ! Problem while computing aesthetics.</span></span>
-<span id="cb518-5"><a href="chapter-ggplot2.html#cb518-5" tabindex="-1"></a><span class="do">## ℹ Error occurred in the 1st layer.</span></span>
-<span id="cb518-6"><a href="chapter-ggplot2.html#cb518-6" tabindex="-1"></a><span class="do">## Caused by error in `scale_f()`:</span></span>
-<span id="cb518-7"><a href="chapter-ggplot2.html#cb518-7" tabindex="-1"></a><span class="do">## ! A continuous variable cannot be mapped to the shape aesthetic</span></span>
-<span id="cb518-8"><a href="chapter-ggplot2.html#cb518-8" tabindex="-1"></a><span class="do">## ℹ choose a different aesthetic or use `scale_shape_binned()`</span></span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="chapter-ggplot2.html#cb566-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb566-2"><a href="chapter-ggplot2.html#cb566-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> cyl))</span>
+<span id="cb566-3"><a href="chapter-ggplot2.html#cb566-3" tabindex="-1"></a><span class="do">## Error in `geom_point()`:</span></span>
+<span id="cb566-4"><a href="chapter-ggplot2.html#cb566-4" tabindex="-1"></a><span class="do">## ! Problem while computing aesthetics.</span></span>
+<span id="cb566-5"><a href="chapter-ggplot2.html#cb566-5" tabindex="-1"></a><span class="do">## ℹ Error occurred in the 1st layer.</span></span>
+<span id="cb566-6"><a href="chapter-ggplot2.html#cb566-6" tabindex="-1"></a><span class="do">## Caused by error in `scale_f()`:</span></span>
+<span id="cb566-7"><a href="chapter-ggplot2.html#cb566-7" tabindex="-1"></a><span class="do">## ! A continuous variable cannot be mapped to the shape aesthetic.</span></span>
+<span id="cb566-8"><a href="chapter-ggplot2.html#cb566-8" tabindex="-1"></a><span class="do">## ℹ Choose a different aesthetic or use `scale_shape_binned()`.</span></span></code></pre></div>
 <p><span class="math inline">\(\bullet\)</span> 시각적 요소 <code>size</code>의 매핑</p>
 <p>시각적 요소 <code>size</code>는 점의 크기에 대한 것이며, 매핑은 연속형 변수를 사용하는 것이 좋다.
 변수 <code>displ</code>과 <code>hwy</code>의 산점도에 점의 크기를 변수 <code>cyl</code>과 연결해 보자.
 변수 <code>cyl</code>의 값에 따라 점의 크기가 조절이 되는 것을 알 수 있지만,
 범주의 개수가 너무 많아서 점의 크기를 구분하는 것이 거의 불가능한 그래프가 작성되었다.</p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="chapter-ggplot2.html#cb519-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb519-2"><a href="chapter-ggplot2.html#cb519-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">size =</span> cyl))</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="chapter-ggplot2.html#cb567-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb567-2"><a href="chapter-ggplot2.html#cb567-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">size =</span> cyl))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-5"></span>
 <img src="_main_files/figure-html/5-5-1.png" alt="시각적 요소 `size`의 매핑" width="576" />
 <p class="caption">
@@ -562,9 +563,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </div>
 <p>범주형 변수도 <code>shape</code>에 매핑하는 것은 가능하지만, 정보를 왜곡시킬 수 있기 때문에 사용하지 않는 것이 좋을 것이다.
 예를 들어 문자형 변수 <code>drv</code>를 <code>shape</code>에 매핑해 보자.</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="chapter-ggplot2.html#cb520-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb520-2"><a href="chapter-ggplot2.html#cb520-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">size =</span> drv))</span>
-<span id="cb520-3"><a href="chapter-ggplot2.html#cb520-3" tabindex="-1"></a><span class="do">## Warning: Using size for a discrete variable is not advised.</span></span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="chapter-ggplot2.html#cb568-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb568-2"><a href="chapter-ggplot2.html#cb568-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">size =</span> drv))</span>
+<span id="cb568-3"><a href="chapter-ggplot2.html#cb568-3" tabindex="-1"></a><span class="do">## Warning: Using size for a discrete variable is not advised.</span></span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-5-a"></span>
 <img src="_main_files/figure-html/5-5-a-1.png" alt="시각적 요소 `size`의 매핑" width="576" />
 <p class="caption">
@@ -576,8 +577,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 이 있으며, 오히려 그래프의 의미가 모호해질 수 있다는 점에 유의해야 할 것이다.
 그림 <a href="chapter-ggplot2.html#fig:5-8">5.11</a>은 세 가지 시각적 요소를 모두 다른 변수와 연결하여 작성한 것이다.
 좋지 않은 그래프의 작성 예가 된다.</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="chapter-ggplot2.html#cb521-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb521-2"><a href="chapter-ggplot2.html#cb521-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class, <span class="at">shape =</span> drv, <span class="at">size =</span> cyl))</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="chapter-ggplot2.html#cb569-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb569-2"><a href="chapter-ggplot2.html#cb569-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class, <span class="at">shape =</span> drv, <span class="at">size =</span> cyl))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-8"></span>
 <img src="_main_files/figure-html/5-8-1.png" alt="여러 시각적 요소를 동시에 매핑을 실시한 그래프" width="672" />
 <p class="caption">
@@ -605,10 +606,10 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p>여러 시각적 요소의 값을 사용자가 동시에 지정하여 사용해야 하는 경우도 많이 있다.
 그림 <a href="chapter-ggplot2.html#fig:5-9">5.13</a>는 점의 크기와 모양, 색깔을 모두 사용자가 지정한 그래프이다.
 입력 요소 <code>stroke</code>는 <code>shape</code>가 21~25의 값으로 표현되는 점들의 테두리 선 두께를 조절하는 요소이다.</p>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="chapter-ggplot2.html#cb522-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb522-2"><a href="chapter-ggplot2.html#cb522-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy), </span>
-<span id="cb522-3"><a href="chapter-ggplot2.html#cb522-3" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>, </span>
-<span id="cb522-4"><a href="chapter-ggplot2.html#cb522-4" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">stroke =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="chapter-ggplot2.html#cb570-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb570-2"><a href="chapter-ggplot2.html#cb570-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy), </span>
+<span id="cb570-3"><a href="chapter-ggplot2.html#cb570-3" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>, </span>
+<span id="cb570-4"><a href="chapter-ggplot2.html#cb570-4" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">stroke =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-9"></span>
 <img src="_main_files/figure-html/5-9-1.png" alt="여러 시각적 요소를 동시에 지정한 그래프" width="576" />
 <p class="caption">
@@ -622,8 +623,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 매핑은 변수와 연결되는 것이므로 특정 하나의 값과는 매핑이 성립되지 않는다.
 따라서 <code>"blue"</code> 하나의 값만을 갖는 새로운 변수를 스스로 만들고, 그 변수와 <code>color</code>를 매핑하게 된다.
 사용된 점 색깔은 하나의 값만이 있는 변수에 <code>color</code>를 매핑할 경우 디폴트로 사용되는 색깔이다.</p>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="chapter-ggplot2.html#cb523-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb523-2"><a href="chapter-ggplot2.html#cb523-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="chapter-ggplot2.html#cb571-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb571-2"><a href="chapter-ggplot2.html#cb571-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-10"></span>
 <img src="_main_files/figure-html/5-10-1.png" alt="함수 `aes()` 안에서 `color`를 사용자가 지정한 경우의 그래프" width="576" />
 <p class="caption">
@@ -645,9 +646,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 디폴트 <code>"fixed"</code>는 모든 패널의 XY축 범위를 동일하게 설정하고, <code>"free_x"</code>는 X축의 범위를 각 패널에 따라 다르게 설정하며, <code>"free_y"</code>는 Y축의 범위를 다르게 설정하고, <code>"free"</code>는 XY축의 범위를 다르게 설정하는 것이다.
 <code>dir</code>은 그래프의 배치 순서를 지정하는 것인데 디폴트 <code>"h"</code>는 행 방향으로 배치하고, <code>"v"</code>는 열 방향으로 배치하게 된다.</p>
 <p>예를 들어 데이터 프레임 <code>mpg</code>의 변수 <code>displ</code>과 <code>hwy</code>의 산점도를 변수 <code>class</code>의 범주별로 구분하여 작성해 보자.</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="chapter-ggplot2.html#cb524-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
-<span id="cb524-2"><a href="chapter-ggplot2.html#cb524-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb524-3"><a href="chapter-ggplot2.html#cb524-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(class))</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="chapter-ggplot2.html#cb572-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb572-2"><a href="chapter-ggplot2.html#cb572-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb572-3"><a href="chapter-ggplot2.html#cb572-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(class))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-11"></span>
 <img src="_main_files/figure-html/5-11-1.png" alt="함수 `facet_wrap()`으로 작성된 그래프" width="576" />
 <p class="caption">
@@ -658,11 +659,11 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 해당되는 것을 알 수 있다. 변수 <code>class</code>가 <code>‘2seater’</code>인 케이스를 제거한 후 패널을 2열로 배치하여 작성해 보자.</p>
 <p><code>mpg</code>는 pipe 연산자를 통해 <code>filter()</code>를 거쳐 <code>ggplot()</code>의 첫 번째 변수로 입력되었는데, 데이터 프레임이 첫 번째 변수로 입력이 되면 <code>data =</code>은 생략이 가능하다. 또한 <code>geom_point()</code>에 함수 <code>aes()</code>를 첫 번째 변수로 입력하게 되면, <code>mapping =</code>도 생략이 가능하다.
 이것은 함수에서 변수를 지정하는 방식에 대한 것으로, 자세한 설명은 <a href="chapter-programming.html#chapter-programming">7</a>장에서 살펴볼 수 있다.</p>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="chapter-ggplot2.html#cb525-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span>  </span>
-<span id="cb525-2"><a href="chapter-ggplot2.html#cb525-2" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">!=</span> <span class="st">&quot;2seater&quot;</span>) <span class="sc">|&gt;</span>  </span>
-<span id="cb525-3"><a href="chapter-ggplot2.html#cb525-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb525-4"><a href="chapter-ggplot2.html#cb525-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb525-5"><a href="chapter-ggplot2.html#cb525-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(class), <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="chapter-ggplot2.html#cb573-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span>  </span>
+<span id="cb573-2"><a href="chapter-ggplot2.html#cb573-2" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">!=</span> <span class="st">&quot;2seater&quot;</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb573-3"><a href="chapter-ggplot2.html#cb573-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb573-4"><a href="chapter-ggplot2.html#cb573-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb573-5"><a href="chapter-ggplot2.html#cb573-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(class), <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-12"></span>
 <img src="_main_files/figure-html/5-12-1.png" alt="`ncol`로 패널 배치 조절" width="576" />
 <p class="caption">
@@ -670,11 +671,11 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </p>
 </div>
 <p><code>dir</code>의 값 변경해서 패널의 그래프 배치 순서를 다르게 해 보자.</p>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="chapter-ggplot2.html#cb526-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span>  </span>
-<span id="cb526-2"><a href="chapter-ggplot2.html#cb526-2" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">!=</span> <span class="st">&quot;2seater&quot;</span>) <span class="sc">|&gt;</span>  </span>
-<span id="cb526-3"><a href="chapter-ggplot2.html#cb526-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb526-4"><a href="chapter-ggplot2.html#cb526-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb526-5"><a href="chapter-ggplot2.html#cb526-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(class), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">dir =</span> <span class="st">&quot;v&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="chapter-ggplot2.html#cb574-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span>  </span>
+<span id="cb574-2"><a href="chapter-ggplot2.html#cb574-2" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">!=</span> <span class="st">&quot;2seater&quot;</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb574-3"><a href="chapter-ggplot2.html#cb574-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb574-4"><a href="chapter-ggplot2.html#cb574-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb574-5"><a href="chapter-ggplot2.html#cb574-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(class), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">dir =</span> <span class="st">&quot;v&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-13"></span>
 <img src="_main_files/figure-html/5-13-1.png" alt="`ncol`과 `dir`로 패널 배치 조절" width="576" />
 <p class="caption">
@@ -691,22 +692,22 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 이것을 객체에 할당할 수도 있다.
 할당된 ggplot2 객체는 이후에 저장 및 출력 목적으로 사용할 수 있다. 하지만 그래프를 객체에 할당하는 주된 이유는 동일한 내용의 프로그램을 반복해서 입력하지 않기 위함인데, 기본적인 형태의 그래프를 작성하고 그것을 객체에
 할당하면 동일한 작업을 반복할 필요 없이 거기에 몇 가지 요소만을 따로 추가하면 수정된 그래프를 작성할 수 있다.</p>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="chapter-ggplot2.html#cb527-1" tabindex="-1"></a>my_plot <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span> </span>
-<span id="cb527-2"><a href="chapter-ggplot2.html#cb527-2" tabindex="-1"></a>  <span class="fu">filter</span>(cyl <span class="sc">!=</span> <span class="dv">5</span>, drv <span class="sc">!=</span> <span class="st">&quot;r&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb527-3"><a href="chapter-ggplot2.html#cb527-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb527-4"><a href="chapter-ggplot2.html#cb527-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="chapter-ggplot2.html#cb575-1" tabindex="-1"></a>my_plot <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span> </span>
+<span id="cb575-2"><a href="chapter-ggplot2.html#cb575-2" tabindex="-1"></a>  <span class="fu">filter</span>(cyl <span class="sc">!=</span> <span class="dv">5</span>, drv <span class="sc">!=</span> <span class="st">&quot;r&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb575-3"><a href="chapter-ggplot2.html#cb575-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb575-4"><a href="chapter-ggplot2.html#cb575-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
 <p>객체 <code>my_plot</code>에는 변수 <code>drv</code>가 <code>"r"</code>인 데이터와 <code>cyl</code>이 5인 데이터가 제외한 상태에서 두 변수 <code>displ</code>과 <code>hwy</code>의
 산점도가 작성되어 있다. 여기에 함수 <code>facet_grid()</code>를 추가하면 우리가 원하는 그래프를 작성할 수 있다. 우선 한 변수만을 사용하여 데이터를 구분하고 그래프를 작성해 보자.</p>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="chapter-ggplot2.html#cb528-1" tabindex="-1"></a>my_plot <span class="sc">+</span> </span>
-<span id="cb528-2"><a href="chapter-ggplot2.html#cb528-2" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(drv))</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="chapter-ggplot2.html#cb576-1" tabindex="-1"></a>my_plot <span class="sc">+</span> </span>
+<span id="cb576-2"><a href="chapter-ggplot2.html#cb576-2" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(drv))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-14-1"></span>
 <img src="_main_files/figure-html/5-14-1-1.png" alt="함수 `facet_grid()`에 의한 한 변수의 faceting" width="576" />
 <p class="caption">
 그림 5.18: 함수 <code>facet_grid()</code>에 의한 한 변수의 faceting
 </p>
 </div>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="chapter-ggplot2.html#cb529-1" tabindex="-1"></a>my_plot <span class="sc">+</span> </span>
-<span id="cb529-2"><a href="chapter-ggplot2.html#cb529-2" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">cols =</span> <span class="fu">vars</span>(cyl))</span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="chapter-ggplot2.html#cb577-1" tabindex="-1"></a>my_plot <span class="sc">+</span> </span>
+<span id="cb577-2"><a href="chapter-ggplot2.html#cb577-2" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">cols =</span> <span class="fu">vars</span>(cyl))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-14-2"></span>
 <img src="_main_files/figure-html/5-14-2-1.png" alt="함수 `facet_grid()`에 의한 한 변수의 faceting" width="576" />
 <p class="caption">
@@ -714,9 +715,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </p>
 </div>
 <p>이제는 두 개 변수를 동시에 사용하여 데이터를 구분하고 그래프를 작성해 보자.</p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="chapter-ggplot2.html#cb530-1" tabindex="-1"></a>my_plot <span class="sc">+</span> </span>
-<span id="cb530-2"><a href="chapter-ggplot2.html#cb530-2" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(drv), </span>
-<span id="cb530-3"><a href="chapter-ggplot2.html#cb530-3" tabindex="-1"></a>             <span class="at">cols =</span> <span class="fu">vars</span>(cyl))</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="chapter-ggplot2.html#cb578-1" tabindex="-1"></a>my_plot <span class="sc">+</span> </span>
+<span id="cb578-2"><a href="chapter-ggplot2.html#cb578-2" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(drv), </span>
+<span id="cb578-3"><a href="chapter-ggplot2.html#cb578-3" tabindex="-1"></a>             <span class="at">cols =</span> <span class="fu">vars</span>(cyl))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-15-1"></span>
 <img src="_main_files/figure-html/5-15-1-1.png" alt="함수 `facet_grid()`에 의한 두 변수의 faceting" width="576" />
 <p class="caption">
@@ -727,10 +728,10 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 그림 <a href="chapter-ggplot2.html#fig:5-15-1">5.20</a>이다. 변수 <code>drv</code>가 행을 구성하고 있고, 변수 <code>cyl</code>이 열을 구성하고 있다.
 예를 들어 왼쪽 위 패널은 변수 <code>drv</code>가 <code>“4”</code>이고, 변수 <code>cyl</code>이 <code>4</code>인 자동차들의 <code>displ</code>과 <code>hwy</code>의 산점도이다.</p>
 <p>옵션 <code>scales</code>의 값을 변경해서 패널의 XY축 범위를 다르게 설정해 보자.</p>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="chapter-ggplot2.html#cb531-1" tabindex="-1"></a>my_plot <span class="sc">+</span> </span>
-<span id="cb531-2"><a href="chapter-ggplot2.html#cb531-2" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(drv), </span>
-<span id="cb531-3"><a href="chapter-ggplot2.html#cb531-3" tabindex="-1"></a>             <span class="at">cols =</span> <span class="fu">vars</span>(cyl),</span>
-<span id="cb531-4"><a href="chapter-ggplot2.html#cb531-4" tabindex="-1"></a>             <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="chapter-ggplot2.html#cb579-1" tabindex="-1"></a>my_plot <span class="sc">+</span> </span>
+<span id="cb579-2"><a href="chapter-ggplot2.html#cb579-2" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(drv), </span>
+<span id="cb579-3"><a href="chapter-ggplot2.html#cb579-3" tabindex="-1"></a>             <span class="at">cols =</span> <span class="fu">vars</span>(cyl),</span>
+<span id="cb579-4"><a href="chapter-ggplot2.html#cb579-4" tabindex="-1"></a>             <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-15-2"></span>
 <img src="_main_files/figure-html/5-15-2-1.png" alt="함수 `facet_grid()`에 의한 두 변수의 faceting" width="576" />
 <p class="caption">
@@ -738,9 +739,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </p>
 </div>
 <p>두 변수에 의한 faceting은 함수 <code>facet_wrap()</code>으로도 작성할 수 있다.</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="chapter-ggplot2.html#cb532-1" tabindex="-1"></a>my_plot <span class="sc">+</span></span>
-<span id="cb532-2"><a href="chapter-ggplot2.html#cb532-2" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(drv, cyl),</span>
-<span id="cb532-3"><a href="chapter-ggplot2.html#cb532-3" tabindex="-1"></a>             <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="chapter-ggplot2.html#cb580-1" tabindex="-1"></a>my_plot <span class="sc">+</span></span>
+<span id="cb580-2"><a href="chapter-ggplot2.html#cb580-2" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(drv, cyl),</span>
+<span id="cb580-3"><a href="chapter-ggplot2.html#cb580-3" tabindex="-1"></a>             <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-15-3"></span>
 <img src="_main_files/figure-html/5-15-3-1.png" alt="함수 `facet_wrap()`에 의한 두 변수의 faceting" width="576" />
 <p class="caption">
@@ -749,9 +750,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </div>
 <p>두 변수에 의한 faceting을 함수 <code>facet_wrap()</code>으로 작성하면, 각 패널의 라벨에 범주 값 두 개가 표시되는데, 변수의 이름도 함께 표시하는 것이 변수 조합을 확인하는데 더 편할 것이다.
 각 패널의 strip에 표시되는 라벨에 변수 이름도 함께 표시하기 위해서는 옵션 <code>labeller</code>에 <code>label_both</code>를 지정하면 된다.</p>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="chapter-ggplot2.html#cb533-1" tabindex="-1"></a>my_plot <span class="sc">+</span></span>
-<span id="cb533-2"><a href="chapter-ggplot2.html#cb533-2" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(drv, cyl),</span>
-<span id="cb533-3"><a href="chapter-ggplot2.html#cb533-3" tabindex="-1"></a>             <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">labeller =</span> <span class="st">&quot;label_both&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="chapter-ggplot2.html#cb581-1" tabindex="-1"></a>my_plot <span class="sc">+</span></span>
+<span id="cb581-2"><a href="chapter-ggplot2.html#cb581-2" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(drv, cyl),</span>
+<span id="cb581-3"><a href="chapter-ggplot2.html#cb581-3" tabindex="-1"></a>             <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">labeller =</span> <span class="st">&quot;label_both&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-15-4"></span>
 <img src="_main_files/figure-html/5-15-4-1.png" alt="함수 `facet_wrap()`에 의한 두 변수의 faceting" width="576" />
 <p class="caption">
@@ -769,30 +770,30 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 이와 같이 세 연속형 변수의 관계를 알아보는데 적합한 그래프 중 하나는 설명변수 중 하나를 범주형으로 변환하여 faceting하는 것이다.
 변수 <code>Wind</code>를 4개의 구간으로 구분하되 각 구간에 속한 데이터의 개수가 비슷해지도록 구분하고,
 각 그룹에서 나머지 두 변수의 산점도를 작성해 보자.</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="chapter-ggplot2.html#cb534-1" tabindex="-1"></a>air_1 <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
-<span id="cb534-2"><a href="chapter-ggplot2.html#cb534-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Wind_d =</span> <span class="fu">cut_number</span>(Wind, <span class="at">n =</span> <span class="dv">4</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="chapter-ggplot2.html#cb582-1" tabindex="-1"></a>air_1 <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
+<span id="cb582-2"><a href="chapter-ggplot2.html#cb582-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Wind_d =</span> <span class="fu">cut_number</span>(Wind, <span class="at">n =</span> <span class="dv">4</span>)) </span></code></pre></div>
 <p><code>air_1</code>에 추가된 변수 <code>Wind_d</code>는 구간이 범주 이름으로 입력된 요인이라는 것을 알 수 있다.</p>
-<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="chapter-ggplot2.html#cb535-1" tabindex="-1"></a>air_1 <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
-<span id="cb535-2"><a href="chapter-ggplot2.html#cb535-2" tabindex="-1"></a><span class="do">## # A tibble: 153 × 7</span></span>
-<span id="cb535-3"><a href="chapter-ggplot2.html#cb535-3" tabindex="-1"></a><span class="do">##    Ozone Solar.R  Wind  Temp Month   Day Wind_d     </span></span>
-<span id="cb535-4"><a href="chapter-ggplot2.html#cb535-4" tabindex="-1"></a><span class="do">##    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;      </span></span>
-<span id="cb535-5"><a href="chapter-ggplot2.html#cb535-5" tabindex="-1"></a><span class="do">##  1    41     190   7.4    67     5     1 [1.7,7.4]  </span></span>
-<span id="cb535-6"><a href="chapter-ggplot2.html#cb535-6" tabindex="-1"></a><span class="do">##  2    36     118   8      72     5     2 (7.4,9.7]  </span></span>
-<span id="cb535-7"><a href="chapter-ggplot2.html#cb535-7" tabindex="-1"></a><span class="do">##  3    12     149  12.6    74     5     3 (11.5,20.7]</span></span>
-<span id="cb535-8"><a href="chapter-ggplot2.html#cb535-8" tabindex="-1"></a><span class="do">##  4    18     313  11.5    62     5     4 (9.7,11.5] </span></span>
-<span id="cb535-9"><a href="chapter-ggplot2.html#cb535-9" tabindex="-1"></a><span class="do">##  5    NA      NA  14.3    56     5     5 (11.5,20.7]</span></span>
-<span id="cb535-10"><a href="chapter-ggplot2.html#cb535-10" tabindex="-1"></a><span class="do">##  6    28      NA  14.9    66     5     6 (11.5,20.7]</span></span>
-<span id="cb535-11"><a href="chapter-ggplot2.html#cb535-11" tabindex="-1"></a><span class="do">##  7    23     299   8.6    65     5     7 (7.4,9.7]  </span></span>
-<span id="cb535-12"><a href="chapter-ggplot2.html#cb535-12" tabindex="-1"></a><span class="do">##  8    19      99  13.8    59     5     8 (11.5,20.7]</span></span>
-<span id="cb535-13"><a href="chapter-ggplot2.html#cb535-13" tabindex="-1"></a><span class="do">##  9     8      19  20.1    61     5     9 (11.5,20.7]</span></span>
-<span id="cb535-14"><a href="chapter-ggplot2.html#cb535-14" tabindex="-1"></a><span class="do">## 10    NA     194   8.6    69     5    10 (7.4,9.7]  </span></span>
-<span id="cb535-15"><a href="chapter-ggplot2.html#cb535-15" tabindex="-1"></a><span class="do">## # ℹ 143 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="chapter-ggplot2.html#cb583-1" tabindex="-1"></a>air_1 <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb583-2"><a href="chapter-ggplot2.html#cb583-2" tabindex="-1"></a><span class="do">## # A tibble: 153 × 7</span></span>
+<span id="cb583-3"><a href="chapter-ggplot2.html#cb583-3" tabindex="-1"></a><span class="do">##    Ozone Solar.R  Wind  Temp Month   Day Wind_d     </span></span>
+<span id="cb583-4"><a href="chapter-ggplot2.html#cb583-4" tabindex="-1"></a><span class="do">##    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;      </span></span>
+<span id="cb583-5"><a href="chapter-ggplot2.html#cb583-5" tabindex="-1"></a><span class="do">##  1    41     190   7.4    67     5     1 [1.7,7.4]  </span></span>
+<span id="cb583-6"><a href="chapter-ggplot2.html#cb583-6" tabindex="-1"></a><span class="do">##  2    36     118   8      72     5     2 (7.4,9.7]  </span></span>
+<span id="cb583-7"><a href="chapter-ggplot2.html#cb583-7" tabindex="-1"></a><span class="do">##  3    12     149  12.6    74     5     3 (11.5,20.7]</span></span>
+<span id="cb583-8"><a href="chapter-ggplot2.html#cb583-8" tabindex="-1"></a><span class="do">##  4    18     313  11.5    62     5     4 (9.7,11.5] </span></span>
+<span id="cb583-9"><a href="chapter-ggplot2.html#cb583-9" tabindex="-1"></a><span class="do">##  5    NA      NA  14.3    56     5     5 (11.5,20.7]</span></span>
+<span id="cb583-10"><a href="chapter-ggplot2.html#cb583-10" tabindex="-1"></a><span class="do">##  6    28      NA  14.9    66     5     6 (11.5,20.7]</span></span>
+<span id="cb583-11"><a href="chapter-ggplot2.html#cb583-11" tabindex="-1"></a><span class="do">##  7    23     299   8.6    65     5     7 (7.4,9.7]  </span></span>
+<span id="cb583-12"><a href="chapter-ggplot2.html#cb583-12" tabindex="-1"></a><span class="do">##  8    19      99  13.8    59     5     8 (11.5,20.7]</span></span>
+<span id="cb583-13"><a href="chapter-ggplot2.html#cb583-13" tabindex="-1"></a><span class="do">##  9     8      19  20.1    61     5     9 (11.5,20.7]</span></span>
+<span id="cb583-14"><a href="chapter-ggplot2.html#cb583-14" tabindex="-1"></a><span class="do">## 10    NA     194   8.6    69     5    10 (7.4,9.7]  </span></span>
+<span id="cb583-15"><a href="chapter-ggplot2.html#cb583-15" tabindex="-1"></a><span class="do">## # ℹ 143 more rows</span></span></code></pre></div>
 <p>그림 <a href="chapter-ggplot2.html#fig:5-16">5.24</a>에서 변수 <code>Wind</code>가 큰 값을 가질수록 두 변수의 관계가 점점 미약해지고 있음을 알 수 있다.
 세 연속형 변수의 관계를 탐색하는 방법 중 하나가 된다.</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="chapter-ggplot2.html#cb536-1" tabindex="-1"></a>air_1 <span class="sc">|&gt;</span> </span>
-<span id="cb536-2"><a href="chapter-ggplot2.html#cb536-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb536-3"><a href="chapter-ggplot2.html#cb536-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Solar.R, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
-<span id="cb536-4"><a href="chapter-ggplot2.html#cb536-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(Wind_d))</span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="chapter-ggplot2.html#cb584-1" tabindex="-1"></a>air_1 <span class="sc">|&gt;</span> </span>
+<span id="cb584-2"><a href="chapter-ggplot2.html#cb584-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb584-3"><a href="chapter-ggplot2.html#cb584-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Solar.R, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
+<span id="cb584-4"><a href="chapter-ggplot2.html#cb584-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(Wind_d))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-16"></span>
 <img src="_main_files/figure-html/5-16-1.png" alt="연속형 변수의 faceting" width="576" />
 <p class="caption">
@@ -803,11 +804,11 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 이러한 기능은 색깔 또는 점의 크기 등을 변수와 연결하는 매핑도 갖고 있는 기능이다.
 두 기법은 서로 약간 다른 장단점이 있는데, faceting은 점들이 많이 겹쳐지는 경우에 더 명확하게 다른 변수의 정보를 확인할 수 있지만, 각 패널마다 작성된 그래프에 미세한 차이가 있는 경우에는 확인이 어려울 수 있다는 문제가 있다.</p>
 <p>그림 <a href="chapter-ggplot2.html#fig:5-16">5.24</a>을 작성한 상황에서 변수 <code>Wind_d</code>를 색깔과 점의 크기와 연결시켜 나머지 두 변수의 산점도를 작성해 보자.</p>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="chapter-ggplot2.html#cb537-1" tabindex="-1"></a>air_1 <span class="sc">|&gt;</span> </span>
-<span id="cb537-2"><a href="chapter-ggplot2.html#cb537-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb537-3"><a href="chapter-ggplot2.html#cb537-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Solar.R, <span class="at">y =</span> Ozone, </span>
-<span id="cb537-4"><a href="chapter-ggplot2.html#cb537-4" tabindex="-1"></a>                 <span class="at">color =</span> Wind_d,</span>
-<span id="cb537-5"><a href="chapter-ggplot2.html#cb537-5" tabindex="-1"></a>                 <span class="at">size =</span> Wind_d))</span></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="chapter-ggplot2.html#cb585-1" tabindex="-1"></a>air_1 <span class="sc">|&gt;</span> </span>
+<span id="cb585-2"><a href="chapter-ggplot2.html#cb585-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb585-3"><a href="chapter-ggplot2.html#cb585-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Solar.R, <span class="at">y =</span> Ozone, </span>
+<span id="cb585-4"><a href="chapter-ggplot2.html#cb585-4" tabindex="-1"></a>                 <span class="at">color =</span> Wind_d,</span>
+<span id="cb585-5"><a href="chapter-ggplot2.html#cb585-5" tabindex="-1"></a>                 <span class="at">size =</span> Wind_d))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-17"></span>
 <img src="_main_files/figure-html/5-17-1.png" alt="매핑과 faceting의 비교" width="480" />
 <p class="caption">
@@ -828,16 +829,16 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 다음 <code>geom</code> 함수의 레이어가 그 위에 차례로 겹쳐짐으로써 최종적으로 원하는 그래프를 얻게 된다.</p>
 <p>그림 <a href="chapter-ggplot2.html#fig:5-18-1">5.26</a>과 그림 <a href="chapter-ggplot2.html#fig:5-18-2">5.27</a>는 데이터 프레임 <code>mpg</code>의 변수 <code>displ</code>과 <code>hwy</code>를 대상으로 <code>geom_point()</code>와 <code>geom_smooth()</code>를 각각 적용한 결과를 보여주고 있다.
 동일한 자료를 사용하더라도 다른 <code>geom</code> 함수를 사용하면 다른 그래프가 작성되는 것을 알 수 있다.</p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="chapter-ggplot2.html#cb538-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
-<span id="cb538-2"><a href="chapter-ggplot2.html#cb538-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="chapter-ggplot2.html#cb586-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb586-2"><a href="chapter-ggplot2.html#cb586-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-18-1"></span>
 <img src="_main_files/figure-html/5-18-1-1.png" alt="함수 `geom_point()`에 의한 그래프" width="576" />
 <p class="caption">
 그림 5.26: 함수 <code>geom_point()</code>에 의한 그래프
 </p>
 </div>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="chapter-ggplot2.html#cb539-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
-<span id="cb539-2"><a href="chapter-ggplot2.html#cb539-2" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="chapter-ggplot2.html#cb587-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb587-2"><a href="chapter-ggplot2.html#cb587-2" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-18-2"></span>
 <img src="_main_files/figure-html/5-18-2-1.png" alt="함수 `geom_smooth()`에 의한 그래프" width="576" />
 <p class="caption">
@@ -856,13 +857,13 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 매끄러운(smooth) 곡선(line)을 의미하는 것이며, 함수 <code>geom_smooth()</code>가 그래프로 표현하는 기능을 갖고 있다.
 따라서 원하는 작업을 수행하기 위해서는 함수 <code>geom_point()</code>와 함수 <code>geom_smooth()</code>를 함께 사용해야 하는데,
 이 경우에 두 <code>geom</code> 함수에 적용되는 매핑이 동일하기 때문에 같은 내용을 다음과 같이 중복해서 입력하게 된다.</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="chapter-ggplot2.html#cb540-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
-<span id="cb540-2"><a href="chapter-ggplot2.html#cb540-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb540-3"><a href="chapter-ggplot2.html#cb540-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))   <span class="co"># 중복된 입력</span></span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="chapter-ggplot2.html#cb588-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb588-2"><a href="chapter-ggplot2.html#cb588-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb588-3"><a href="chapter-ggplot2.html#cb588-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))   <span class="co"># 중복된 입력</span></span></code></pre></div>
 <p>이러한 중복 입력의 문제는 함수 <code>ggplot()</code>에 있는 매핑 기능을 다음과 같이 사용하면 해결된다.</p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="chapter-ggplot2.html#cb541-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span>  <span class="co"># 글로벌 매핑</span></span>
-<span id="cb541-2"><a href="chapter-ggplot2.html#cb541-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb541-3"><a href="chapter-ggplot2.html#cb541-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="chapter-ggplot2.html#cb589-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span>  <span class="co"># 글로벌 매핑</span></span>
+<span id="cb589-2"><a href="chapter-ggplot2.html#cb589-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb589-3"><a href="chapter-ggplot2.html#cb589-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-19"></span>
 <img src="_main_files/figure-html/5-19-1.png" alt="글로벌 매핑을 적용해서 작성한 그래프" width="576" />
 <p class="caption">
@@ -880,18 +881,18 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 이와 같이 두 개 이상의 <code>geom</code> 함수를 사용해야 하는 경우, 글로벌 매핑과 로컬 매핑을 명확하게 구분해서
 지정해야 한다. 여기에서 사용되는 매핑은 변수 <code>displ</code>과 <code>hwy</code>를 <code>x</code>와 <code>y</code>에 연결하는 것과 변수 <code>drv</code>에 <code>color</code>를 연결하는 세 가지가 있다.
 세 가지를 모두 글로벌 매핑으로 지정한 그래프가 그림 <a href="chapter-ggplot2.html#fig:5-20-1">5.29</a>에 있고, <code>color</code>를 함수 <code>geom_point()</code>에서 로컬 매핑으로 지정한 그래프가 그림 <a href="chapter-ggplot2.html#fig:5-20-2">5.30</a>에 있다.</p>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="chapter-ggplot2.html#cb542-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
-<span id="cb542-2"><a href="chapter-ggplot2.html#cb542-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb542-3"><a href="chapter-ggplot2.html#cb542-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="chapter-ggplot2.html#cb590-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
+<span id="cb590-2"><a href="chapter-ggplot2.html#cb590-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb590-3"><a href="chapter-ggplot2.html#cb590-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-20-1"></span>
 <img src="_main_files/figure-html/5-20-1-1.png" alt="글로벌 매핑만 작용한 그래프" width="576" />
 <p class="caption">
 그림 5.29: 글로벌 매핑만 작용한 그래프
 </p>
 </div>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="chapter-ggplot2.html#cb543-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb543-2"><a href="chapter-ggplot2.html#cb543-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> drv)) <span class="sc">+</span></span>
-<span id="cb543-3"><a href="chapter-ggplot2.html#cb543-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="chapter-ggplot2.html#cb591-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb591-2"><a href="chapter-ggplot2.html#cb591-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> drv)) <span class="sc">+</span></span>
+<span id="cb591-3"><a href="chapter-ggplot2.html#cb591-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-20-2"></span>
 <img src="_main_files/figure-html/5-20-2-1.png" alt="color는 로컬 매핑을 적용한 그래프" width="576" />
 <p class="caption">
@@ -906,9 +907,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 값에 따라 점의 색을 다르게 하여 산점도를 추가해 보자. 또한 산점도의 점 크기도 조금
 크게 하자. 여기에서 사용될 선의 종류도 시각적 요소로써 변수와의 연결은 입력 요소
 <code>linetype</code>으로 지정한다.</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="chapter-ggplot2.html#cb544-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb544-2"><a href="chapter-ggplot2.html#cb544-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> drv), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb544-3"><a href="chapter-ggplot2.html#cb544-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> drv), <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="chapter-ggplot2.html#cb592-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb592-2"><a href="chapter-ggplot2.html#cb592-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> drv), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb592-3"><a href="chapter-ggplot2.html#cb592-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> drv), <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-21"></span>
 <img src="_main_files/figure-html/5-21-1.png" alt="두 `geom` 함수에서 `color`와 `linetype`을 각각 로컬 매핑한 그래프" width="576" />
 <p class="caption">
@@ -924,10 +925,10 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p>각 <code>geom</code> 함수에서 로컬 데이터를 지정할 때 주의할 점이 하나 있는데,
 그것은 로컬 데이터를 지정하는 요소 <code>data =</code>가 모든 <code>geom</code>함수에서는 두 번째 요소라는 것이다.
 따라서 다음과 같이 <code>geom</code> 함수 내에서 첫 번째에 위치하게 된다면 반드시 <code>data =</code>이라는 이름과 함께 로컬 데이터를 지정해야 한다.</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="chapter-ggplot2.html#cb545-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb545-2"><a href="chapter-ggplot2.html#cb545-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> drv), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb545-3"><a href="chapter-ggplot2.html#cb545-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">data =</span> <span class="fu">filter</span>(mpg, drv <span class="sc">==</span> <span class="st">&quot;4&quot;</span>),</span>
-<span id="cb545-4"><a href="chapter-ggplot2.html#cb545-4" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="chapter-ggplot2.html#cb593-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb593-2"><a href="chapter-ggplot2.html#cb593-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> drv), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb593-3"><a href="chapter-ggplot2.html#cb593-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">data =</span> <span class="fu">filter</span>(mpg, drv <span class="sc">==</span> <span class="st">&quot;4&quot;</span>),</span>
+<span id="cb593-4"><a href="chapter-ggplot2.html#cb593-4" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-22"></span>
 <img src="_main_files/figure-html/5-22-1.png" alt="로컬 데이터를 사용하여 작성한 레이어" width="576" />
 <p class="caption">
@@ -937,9 +938,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p>함수 <code>geom_text()</code>는 그래프에 문자 라벨을 추가할 때 사용되는 <code>geom</code> 함수인데, 로컬 데이터를 사용해야 하는 중요한 경우가 된다.
 예를 들어, 두 연속형 변수의 산점도에 다른 점들과 조금 다른 특성을 보이는 점이 있다면, 해당 자료의 부가 정보를 표시할 수 있는 라벨을 점 주변에 추가하는 것이 좋을 것이다.</p>
 <p>데이터 프레임 <code>mpg</code>의 변수 <code>displ</code>과 <code>cty</code>의 산점도를 작성해 보자.</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="chapter-ggplot2.html#cb546-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span></span>
-<span id="cb546-2"><a href="chapter-ggplot2.html#cb546-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb546-3"><a href="chapter-ggplot2.html#cb546-3" tabindex="-1"></a>p1</span></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="chapter-ggplot2.html#cb594-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span></span>
+<span id="cb594-2"><a href="chapter-ggplot2.html#cb594-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb594-3"><a href="chapter-ggplot2.html#cb594-3" tabindex="-1"></a>p1</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-1"></span>
 <img src="_main_files/figure-html/5-geom-text-1-1.png" alt="변수 `displ`과 `cty`의 산점도" width="576" />
 <p class="caption">
@@ -947,19 +948,19 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </p>
 </div>
 <p>변수 <code>displ</code>이 증가하면 <code>cty</code>가 감소하는 관계를 보여주는 산점도가 작성되었는데, 변수 <code>cty</code>의 값이 유독 큰 두 점을 볼 수 있다. 두 점이 어떤 자동차에 해당되는 자료인지 확인해 보자.</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="chapter-ggplot2.html#cb547-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span>  </span>
-<span id="cb547-2"><a href="chapter-ggplot2.html#cb547-2" tabindex="-1"></a>  <span class="fu">slice_max</span>(cty, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span>  </span>
-<span id="cb547-3"><a href="chapter-ggplot2.html#cb547-3" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, cty)</span>
-<span id="cb547-4"><a href="chapter-ggplot2.html#cb547-4" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
-<span id="cb547-5"><a href="chapter-ggplot2.html#cb547-5" tabindex="-1"></a><span class="do">##   manufacturer model        cty</span></span>
-<span id="cb547-6"><a href="chapter-ggplot2.html#cb547-6" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;</span></span>
-<span id="cb547-7"><a href="chapter-ggplot2.html#cb547-7" tabindex="-1"></a><span class="do">## 1 volkswagen   new beetle    35</span></span>
-<span id="cb547-8"><a href="chapter-ggplot2.html#cb547-8" tabindex="-1"></a><span class="do">## 2 volkswagen   jetta         33</span></span></code></pre></div>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="chapter-ggplot2.html#cb595-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span>  </span>
+<span id="cb595-2"><a href="chapter-ggplot2.html#cb595-2" tabindex="-1"></a>  <span class="fu">slice_max</span>(cty, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb595-3"><a href="chapter-ggplot2.html#cb595-3" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, cty)</span>
+<span id="cb595-4"><a href="chapter-ggplot2.html#cb595-4" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
+<span id="cb595-5"><a href="chapter-ggplot2.html#cb595-5" tabindex="-1"></a><span class="do">##   manufacturer model        cty</span></span>
+<span id="cb595-6"><a href="chapter-ggplot2.html#cb595-6" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;</span></span>
+<span id="cb595-7"><a href="chapter-ggplot2.html#cb595-7" tabindex="-1"></a><span class="do">## 1 volkswagen   new beetle    35</span></span>
+<span id="cb595-8"><a href="chapter-ggplot2.html#cb595-8" tabindex="-1"></a><span class="do">## 2 volkswagen   jetta         33</span></span></code></pre></div>
 <p>그림 <a href="chapter-ggplot2.html#fig:5-geom-text-1">5.33</a>의 산점도에 변수 <code>cty</code>의 값이 큰 두 점 주변에 라벨을 추가해 보자.
 함수 <code>geom_text()</code>에서 라벨의 위치는 시각적 요소 <code>x</code>와 <code>y</code>에, 라벨 내용은 <code>label</code>에 매핑을 한다.
 변수 <code>manufacturer</code>와 <code>model</code>의 값을 서로 붙여 라벨로 표시해 보자.</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="chapter-ggplot2.html#cb548-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, cty, <span class="at">n =</span> <span class="dv">2</span>), </span>
-<span id="cb548-2"><a href="chapter-ggplot2.html#cb548-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)))</span></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="chapter-ggplot2.html#cb596-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, cty, <span class="at">n =</span> <span class="dv">2</span>), </span>
+<span id="cb596-2"><a href="chapter-ggplot2.html#cb596-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-2"></span>
 <img src="_main_files/figure-html/5-geom-text-2-1.png" alt="변수 `displ`과 `cty`의 산점도에 라벨 추가" width="576" />
 <p class="caption">
@@ -968,9 +969,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </div>
 <p>라벨 내용이 점과 겹쳐졌고, 왼쪽 부분이 잘려서 보이지 않게 되었다.
 이런 경우에는 라벨의 위치를 조정할 필요가 있는데, 라벨의 위치 조정은 <code>vjust</code>, <code>hjust</code>와 <code>nudge_x</code>, <code>nudge_y</code>로 할 수 있다.</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="chapter-ggplot2.html#cb549-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, cty, <span class="at">n =</span> <span class="dv">2</span>), </span>
-<span id="cb549-2"><a href="chapter-ggplot2.html#cb549-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)),</span>
-<span id="cb549-3"><a href="chapter-ggplot2.html#cb549-3" tabindex="-1"></a>               <span class="at">nudge_x =</span> <span class="fl">0.3</span>, <span class="at">nudge_y =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="chapter-ggplot2.html#cb597-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, cty, <span class="at">n =</span> <span class="dv">2</span>), </span>
+<span id="cb597-2"><a href="chapter-ggplot2.html#cb597-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)),</span>
+<span id="cb597-3"><a href="chapter-ggplot2.html#cb597-3" tabindex="-1"></a>               <span class="at">nudge_x =</span> <span class="fl">0.3</span>, <span class="at">nudge_y =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-3"></span>
 <img src="_main_files/figure-html/5-geom-text-3-1.png" alt="변수 `displ`과 `cty`의 산점도에 추가된 라벨의 위치 조정" width="576" />
 <p class="caption">
@@ -980,9 +981,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p><code>nudge_x</code>에 양의 값을 지정하면 우측으로 이동하고, 음의 값을 지정하면 죄측으로 이동한다.
 또한 <code>nudge_y</code>에는 양의 값을 지정하면 위로 이동하고, 음의 값을 지정하면 아래로 이동한다.
 지정하는 값은 XY축의 scale에 맞추어 사용자가 결정해야 한다.</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="chapter-ggplot2.html#cb550-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, cty, <span class="at">n =</span> <span class="dv">2</span>), </span>
-<span id="cb550-2"><a href="chapter-ggplot2.html#cb550-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)),</span>
-<span id="cb550-3"><a href="chapter-ggplot2.html#cb550-3" tabindex="-1"></a>               <span class="at">hjust =</span> <span class="st">&quot;left&quot;</span>, <span class="at">vjust =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="chapter-ggplot2.html#cb598-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, cty, <span class="at">n =</span> <span class="dv">2</span>), </span>
+<span id="cb598-2"><a href="chapter-ggplot2.html#cb598-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)),</span>
+<span id="cb598-3"><a href="chapter-ggplot2.html#cb598-3" tabindex="-1"></a>               <span class="at">hjust =</span> <span class="st">&quot;left&quot;</span>, <span class="at">vjust =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-4"></span>
 <img src="_main_files/figure-html/5-geom-text-4-1.png" alt="변수 `displ`과 `cty`의 산점도에 추가된 라벨의 위치 조정" width="576" />
 <p class="caption">
@@ -995,9 +996,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p>라벨을 추가하려는 점의 위치가 너무 가까우면 라벨이 서로 겹쳐져서 내용을 알 수 없게 될 수 있다.
 이런 경우에는 서로 겹치는 라벨 중 자료의 순서에 따라 먼저 작성되는 것만 표시하는 것이 좋은 방법이 될 수 있다.</p>
 <p>데이터 프레임 <code>mpg</code>에서 변수 <code>displ</code>과 <code>hwy</code>의 산점도를 작성해 보자.</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="chapter-ggplot2.html#cb551-1" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span> </span>
-<span id="cb551-2"><a href="chapter-ggplot2.html#cb551-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb551-3"><a href="chapter-ggplot2.html#cb551-3" tabindex="-1"></a>p2</span></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="chapter-ggplot2.html#cb599-1" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span> </span>
+<span id="cb599-2"><a href="chapter-ggplot2.html#cb599-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb599-3"><a href="chapter-ggplot2.html#cb599-3" tabindex="-1"></a>p2</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-5"></span>
 <img src="_main_files/figure-html/5-geom-text-5-1.png" alt="변수 `displ`과 `hwy`의 산점도" width="576" />
 <p class="caption">
@@ -1005,20 +1006,20 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </p>
 </div>
 <p>변수 <code>hwy</code>의 값이 40이 넘는 자동차의 <code>manufacturer</code>와 <code>model</code>의 값을 출력해 보자.</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="chapter-ggplot2.html#cb552-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span>  </span>
-<span id="cb552-2"><a href="chapter-ggplot2.html#cb552-2" tabindex="-1"></a>  <span class="fu">filter</span>(hwy <span class="sc">&gt;</span> <span class="dv">40</span>) <span class="sc">|&gt;</span>  </span>
-<span id="cb552-3"><a href="chapter-ggplot2.html#cb552-3" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, hwy)</span>
-<span id="cb552-4"><a href="chapter-ggplot2.html#cb552-4" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
-<span id="cb552-5"><a href="chapter-ggplot2.html#cb552-5" tabindex="-1"></a><span class="do">##   manufacturer model        hwy</span></span>
-<span id="cb552-6"><a href="chapter-ggplot2.html#cb552-6" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;</span></span>
-<span id="cb552-7"><a href="chapter-ggplot2.html#cb552-7" tabindex="-1"></a><span class="do">## 1 volkswagen   jetta         44</span></span>
-<span id="cb552-8"><a href="chapter-ggplot2.html#cb552-8" tabindex="-1"></a><span class="do">## 2 volkswagen   new beetle    44</span></span>
-<span id="cb552-9"><a href="chapter-ggplot2.html#cb552-9" tabindex="-1"></a><span class="do">## 3 volkswagen   new beetle    41</span></span></code></pre></div>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="chapter-ggplot2.html#cb600-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span>  </span>
+<span id="cb600-2"><a href="chapter-ggplot2.html#cb600-2" tabindex="-1"></a>  <span class="fu">filter</span>(hwy <span class="sc">&gt;</span> <span class="dv">40</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb600-3"><a href="chapter-ggplot2.html#cb600-3" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, hwy)</span>
+<span id="cb600-4"><a href="chapter-ggplot2.html#cb600-4" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
+<span id="cb600-5"><a href="chapter-ggplot2.html#cb600-5" tabindex="-1"></a><span class="do">##   manufacturer model        hwy</span></span>
+<span id="cb600-6"><a href="chapter-ggplot2.html#cb600-6" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;</span></span>
+<span id="cb600-7"><a href="chapter-ggplot2.html#cb600-7" tabindex="-1"></a><span class="do">## 1 volkswagen   jetta         44</span></span>
+<span id="cb600-8"><a href="chapter-ggplot2.html#cb600-8" tabindex="-1"></a><span class="do">## 2 volkswagen   new beetle    44</span></span>
+<span id="cb600-9"><a href="chapter-ggplot2.html#cb600-9" tabindex="-1"></a><span class="do">## 3 volkswagen   new beetle    41</span></span></code></pre></div>
 <p>변수 <code>hwy</code>의 값이 40이 넘는 자료가 그림 <a href="chapter-ggplot2.html#fig:5-geom-text-5">5.37</a>에는 2개로 표시되었지만, 사실은 3개의 자료가 있는 것을 알 수 있다.
 이제 이 자료에 라벨을 추가하면, 당연히 두 개의 라벨이 겹쳐서 나타나게 된다.</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="chapter-ggplot2.html#cb553-1" tabindex="-1"></a>p2 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, hwy, <span class="at">n =</span> <span class="dv">3</span>),</span>
-<span id="cb553-2"><a href="chapter-ggplot2.html#cb553-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)),</span>
-<span id="cb553-3"><a href="chapter-ggplot2.html#cb553-3" tabindex="-1"></a>               <span class="at">hjust =</span> <span class="st">&quot;left&quot;</span>, <span class="at">vjust =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="chapter-ggplot2.html#cb601-1" tabindex="-1"></a>p2 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, hwy, <span class="at">n =</span> <span class="dv">3</span>),</span>
+<span id="cb601-2"><a href="chapter-ggplot2.html#cb601-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)),</span>
+<span id="cb601-3"><a href="chapter-ggplot2.html#cb601-3" tabindex="-1"></a>               <span class="at">hjust =</span> <span class="st">&quot;left&quot;</span>, <span class="at">vjust =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-6"></span>
 <img src="_main_files/figure-html/5-geom-text-6-1.png" alt="변수 `displ`과 `hwy`의 산점도에 라벨 추가" width="576" />
 <p class="caption">
@@ -1026,10 +1027,10 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </p>
 </div>
 <p>이런 경우에는 함수 <code>geom_text()</code>에 옵션 <code>check_overlap</code>에 <code>TRUE</code>를 지정하면, 겹치는 라벨 중 자료의 순서에 따라 먼저 작성되는 것만 표시하게 된다.</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="chapter-ggplot2.html#cb554-1" tabindex="-1"></a>p2 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, hwy, <span class="at">n =</span> <span class="dv">3</span>),</span>
-<span id="cb554-2"><a href="chapter-ggplot2.html#cb554-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)),</span>
-<span id="cb554-3"><a href="chapter-ggplot2.html#cb554-3" tabindex="-1"></a>               <span class="at">hjust =</span> <span class="st">&quot;left&quot;</span>, <span class="at">vjust =</span> <span class="st">&quot;top&quot;</span>,</span>
-<span id="cb554-4"><a href="chapter-ggplot2.html#cb554-4" tabindex="-1"></a>               <span class="at">check_overlap =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="chapter-ggplot2.html#cb602-1" tabindex="-1"></a>p2 <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">slice_max</span>(mpg, hwy, <span class="at">n =</span> <span class="dv">3</span>),</span>
+<span id="cb602-2"><a href="chapter-ggplot2.html#cb602-2" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(manufacturer, model)),</span>
+<span id="cb602-3"><a href="chapter-ggplot2.html#cb602-3" tabindex="-1"></a>               <span class="at">hjust =</span> <span class="st">&quot;left&quot;</span>, <span class="at">vjust =</span> <span class="st">&quot;top&quot;</span>,</span>
+<span id="cb602-4"><a href="chapter-ggplot2.html#cb602-4" tabindex="-1"></a>               <span class="at">check_overlap =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-geom-text-7"></span>
 <img src="_main_files/figure-html/5-geom-text-7-1.png" alt="변수 `displ`과 `hwy`의 산점도에 겹치지 않는 라벨만 추가" width="576" />
 <p class="caption">
@@ -1046,15 +1047,15 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 디폴트는 <code>"loess"</code>로써 비모수 회귀곡선이 작성된다.</p>
 <p>두 가지 선을 색으로 구분하고 범례를 추가하려면, 함수 <code>aes()</code>에서 <code>color</code>에 범례에 표시하고자 하는 문자열을 매핑하면 된다.
 <code>labs()</code>에서 <code>color = NULL</code>을 지정해서 범례의 제목을 제거했고, 함수 <code>theme()</code>에 <code>legend.position = "bottom"</code>을 입력해서 범례의 위치를 이동시켰다.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="chapter-ggplot2.html#cb555-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb555-2"><a href="chapter-ggplot2.html#cb555-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb555-3"><a href="chapter-ggplot2.html#cb555-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;lm&quot;</span>), </span>
-<span id="cb555-4"><a href="chapter-ggplot2.html#cb555-4" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb555-5"><a href="chapter-ggplot2.html#cb555-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;loess&quot;</span>), </span>
-<span id="cb555-6"><a href="chapter-ggplot2.html#cb555-6" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb555-7"><a href="chapter-ggplot2.html#cb555-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Engine displacement&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>, <span class="at">color =</span> <span class="cn">NULL</span>,</span>
-<span id="cb555-8"><a href="chapter-ggplot2.html#cb555-8" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Scatter plot with regression lines&quot;</span>) <span class="sc">+</span></span>
-<span id="cb555-9"><a href="chapter-ggplot2.html#cb555-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="chapter-ggplot2.html#cb603-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb603-2"><a href="chapter-ggplot2.html#cb603-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb603-3"><a href="chapter-ggplot2.html#cb603-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;lm&quot;</span>), </span>
+<span id="cb603-4"><a href="chapter-ggplot2.html#cb603-4" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb603-5"><a href="chapter-ggplot2.html#cb603-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">&quot;loess&quot;</span>), </span>
+<span id="cb603-6"><a href="chapter-ggplot2.html#cb603-6" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb603-7"><a href="chapter-ggplot2.html#cb603-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Engine displacement&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>, <span class="at">color =</span> <span class="cn">NULL</span>,</span>
+<span id="cb603-8"><a href="chapter-ggplot2.html#cb603-8" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Scatter plot with regression lines&quot;</span>) <span class="sc">+</span></span>
+<span id="cb603-9"><a href="chapter-ggplot2.html#cb603-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-geom-legend"></span>
 <img src="_main_files/figure-html/5-geom-legend-1.png" alt="그래프에 범례 추가" width="576" />
 <p class="caption">
@@ -1087,10 +1088,10 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 이때 사용되는 디폴트 <code>stat</code>은 <code>"count"</code>이다. 따라서 <code>geom_bar()</code> 또는 <code>stat_count()</code>로 동일한
 막대 그래프를 작성할 수 있다. 데이터 프레임 <code>mpg</code>의 변수 <code>trans</code>는 자동차의 변속기 종류를 나타내고 있다.
 변수 <code>trans</code>의 막대 그래프를 <code>geom_bar()</code>와 <code>stat_count()</code>로 각각 작성해 보자.</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="chapter-ggplot2.html#cb556-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> trans)) <span class="sc">+</span></span>
-<span id="cb556-2"><a href="chapter-ggplot2.html#cb556-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="chapter-ggplot2.html#cb557-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> trans)) <span class="sc">+</span></span>
-<span id="cb557-2"><a href="chapter-ggplot2.html#cb557-2" tabindex="-1"></a>  <span class="fu">stat_count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="chapter-ggplot2.html#cb604-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> trans)) <span class="sc">+</span></span>
+<span id="cb604-2"><a href="chapter-ggplot2.html#cb604-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="chapter-ggplot2.html#cb605-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> trans)) <span class="sc">+</span></span>
+<span id="cb605-2"><a href="chapter-ggplot2.html#cb605-2" tabindex="-1"></a>  <span class="fu">stat_count</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-23"></span>
 <img src="_main_files/figure-html/5-23-1.png" alt="변수 `trans`의 막대 그래프" width="576" />
 <p class="caption">
@@ -1110,8 +1111,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p>데이터 프레임 <code>mpg</code>의 변수 <code>trans</code>에 대한 막대 그래프를 상대도수를 이용하여 작성해 보자.
 이 경우 변수 <code>after_stat(prop)</code>를 시각적 요소 <code>y</code>로 매핑하는 것이 필요한데, 문제는 <code>y</code>에 대한 매핑만으로는
 원하는 형태의 그래프를 얻을 수 없다는 것이다.</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="chapter-ggplot2.html#cb558-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
-<span id="cb558-2"><a href="chapter-ggplot2.html#cb558-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> trans, <span class="at">y =</span> <span class="fu">after_stat</span>(prop)))</span></code></pre></div>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="chapter-ggplot2.html#cb606-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb606-2"><a href="chapter-ggplot2.html#cb606-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> trans, <span class="at">y =</span> <span class="fu">after_stat</span>(prop)))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-24-1"></span>
 <img src="_main_files/figure-html/5-24-1-1.png" alt="디폴트 `group`에 의해 잘못 작성된 막대 그래프" width="576" />
 <p class="caption">
@@ -1125,8 +1126,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 자료들을 그룹으로 묶어주는 기능은 시각적 요소 <code>group</code>에 있는데, 모든 범주를 같은 그룹으로 묶어주는 것이므로
 <code>group</code>에 하나의 값을 함수 <code>aes()</code> 안에서 지정해주면 된다.
 프로그램에서는 <code>group = 1</code>으로 지정했지만, 어떤 값을 지정해도 상관없다.</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="chapter-ggplot2.html#cb559-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
-<span id="cb559-2"><a href="chapter-ggplot2.html#cb559-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> trans, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="chapter-ggplot2.html#cb607-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb607-2"><a href="chapter-ggplot2.html#cb607-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> trans, <span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-24-2"></span>
 <img src="_main_files/figure-html/5-24-2-1.png" alt="`group`에 하나의 값을 지정하여 제대로 작성된 막대 그래프" width="576" />
 <p class="caption">
@@ -1135,8 +1136,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </div>
 <p>변수 <code>trans</code>와 같이 범주의 이름이 비교적 긴 경우에 막대그래프를 <a href="chapter-ggplot2.html#fig:5-24-2">5.43</a>와 같이 수직 방향으로 작성하면, 범주의 이름이 겹치는 현상이 발생하게 된다.
 이런 경우에는 <a href="chapter-ggplot2.html#fig:5-24-3">5.44</a>과 같이 수평 방향으로 작성하는 것이 더 바람직하다고 하겠다.</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="chapter-ggplot2.html#cb560-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
-<span id="cb560-2"><a href="chapter-ggplot2.html#cb560-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> trans, <span class="at">x =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="chapter-ggplot2.html#cb608-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb608-2"><a href="chapter-ggplot2.html#cb608-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> trans, <span class="at">x =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-24-3"></span>
 <img src="_main_files/figure-html/5-24-3-1.png" alt="수평 방향으로 작성된 막대 그래프" width="576" />
 <p class="caption">
@@ -1148,20 +1149,20 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 예를 들어 데이터 프레임 <code>mpg</code>의 변수 <code>trans</code>의 범주에서 <code>auto(av)</code>에서 <code>auto(s6)</code>까지를 <code>auto</code>로 통합하고
 <code>manual(m5)</code>와 <code>manual(m6)</code>를 <code>manual</code>로 통합한 후, 두 범주에 속한 자료의 개수를 확인해 보자.
 각 범주에 속한 자료의 개수를 세는 작업은 함수 <code>count()</code>로 할 수 있다.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="chapter-ggplot2.html#cb561-1" tabindex="-1"></a>mpg_am <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span> </span>
-<span id="cb561-2"><a href="chapter-ggplot2.html#cb561-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am =</span> <span class="fu">substr</span>(trans, <span class="dv">1</span>, <span class="fu">nchar</span>(trans)<span class="sc">-</span><span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb561-3"><a href="chapter-ggplot2.html#cb561-3" tabindex="-1"></a>  <span class="fu">count</span>(am)</span></code></pre></div>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="chapter-ggplot2.html#cb562-1" tabindex="-1"></a>mpg_am</span>
-<span id="cb562-2"><a href="chapter-ggplot2.html#cb562-2" tabindex="-1"></a><span class="do">## # A tibble: 2 × 2</span></span>
-<span id="cb562-3"><a href="chapter-ggplot2.html#cb562-3" tabindex="-1"></a><span class="do">##   am         n</span></span>
-<span id="cb562-4"><a href="chapter-ggplot2.html#cb562-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;  &lt;int&gt;</span></span>
-<span id="cb562-5"><a href="chapter-ggplot2.html#cb562-5" tabindex="-1"></a><span class="do">## 1 auto     157</span></span>
-<span id="cb562-6"><a href="chapter-ggplot2.html#cb562-6" tabindex="-1"></a><span class="do">## 2 manual    77</span></span></code></pre></div>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="chapter-ggplot2.html#cb609-1" tabindex="-1"></a>mpg_am <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span> </span>
+<span id="cb609-2"><a href="chapter-ggplot2.html#cb609-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am =</span> <span class="fu">substr</span>(trans, <span class="dv">1</span>, <span class="fu">nchar</span>(trans)<span class="sc">-</span><span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb609-3"><a href="chapter-ggplot2.html#cb609-3" tabindex="-1"></a>  <span class="fu">count</span>(am)</span></code></pre></div>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="chapter-ggplot2.html#cb610-1" tabindex="-1"></a>mpg_am</span>
+<span id="cb610-2"><a href="chapter-ggplot2.html#cb610-2" tabindex="-1"></a><span class="do">## # A tibble: 2 × 2</span></span>
+<span id="cb610-3"><a href="chapter-ggplot2.html#cb610-3" tabindex="-1"></a><span class="do">##   am         n</span></span>
+<span id="cb610-4"><a href="chapter-ggplot2.html#cb610-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;  &lt;int&gt;</span></span>
+<span id="cb610-5"><a href="chapter-ggplot2.html#cb610-5" tabindex="-1"></a><span class="do">## 1 auto     157</span></span>
+<span id="cb610-6"><a href="chapter-ggplot2.html#cb610-6" tabindex="-1"></a><span class="do">## 2 manual    77</span></span></code></pre></div>
 <p>데이터 프레임 <code>mpg_am</code>은 변수 <code>trans</code>의 범주를 <code>auto</code>와 <code>manual</code>로 통합한 변수 <code>am</code>의 도수분포표가 입력되어 있다.
 이러한 도수분포표가 함수 <code>geom_bar()</code>에 자료로 입력된 경우 입력된 자료 그대로를 막대 그래프의 높이로 사용해야 한다.
 따라서 이 경우에는 <code>stat</code>이 <code>"count"</code>가 아닌 <code>"identity"</code>로 지정을 해야 한다.</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="chapter-ggplot2.html#cb563-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_am) <span class="sc">+</span></span>
-<span id="cb563-2"><a href="chapter-ggplot2.html#cb563-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> am, <span class="at">y =</span> n), <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="chapter-ggplot2.html#cb611-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_am) <span class="sc">+</span></span>
+<span id="cb611-2"><a href="chapter-ggplot2.html#cb611-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> am, <span class="at">y =</span> n), <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-25"></span>
 <img src="_main_files/figure-html/5-25-1.png" alt="함수 `geom_bar()`에 `stat=&quot;identity&quot;`를 지정해야 하는 경우" width="576" />
 <p class="caption">
@@ -1184,8 +1185,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 이변량 막대 그래프는 두 범주형 변수의 분포를 함께 나타내는 막대 그래프로서, 쌓아 올리는 형태 혹은 옆으로 붙여 놓은 형태를 취하게 된다.</p>
 <p><strong><span class="math inline">\(\bullet\)</span></strong> 산점도에서 점이 겹치는 문제</p>
 <p>데이터 프레임 <code>mpg</code>의 변수 <code>cty</code>와 <code>hwy</code>의 산점도를 작성해 보자.</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="chapter-ggplot2.html#cb564-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb564-2"><a href="chapter-ggplot2.html#cb564-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="chapter-ggplot2.html#cb612-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb612-2"><a href="chapter-ggplot2.html#cb612-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-26-1"></span>
 <img src="_main_files/figure-html/5-26-1-1.png" alt="점들이 서로 겹쳐진 산점도" width="576" />
 <p class="caption">
@@ -1201,8 +1202,8 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 변수 <code>cty</code>와 <code>hwy</code>의 산점도 경우에는 각 자료에 약간의 난수(random noise)를 더해주어 점의 위치를 수정해 주는 방법을 사용하면 문제를 해결할 수 있다.
 이와 같이 산점도의 점에 약간의 난수를 더해 점의 위치를 조정하기 위해서는 함수 <code>geom_point()</code>에
 <code>position="jitter"</code>를 추가하면 되는데, 그 결과는 그림 <a href="chapter-ggplot2.html#fig:5-26-2">5.47</a>와 같다.</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="chapter-ggplot2.html#cb565-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb565-2"><a href="chapter-ggplot2.html#cb565-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="chapter-ggplot2.html#cb613-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb613-2"><a href="chapter-ggplot2.html#cb613-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-26-2"></span>
 <img src="_main_files/figure-html/5-26-2-1.png" alt="옵션 `position='jitter'`의 효과" width="576" />
 <p class="caption">
@@ -1211,16 +1212,16 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </div>
 <p>함수 <code>geom_jitter()</code>는 함수 <code>geom_point(position="jitter")</code>와 같은 기능을 갖고 있으며,
 점의 위치를 조정하기 위해 사용되는 난수의 크기를 조절하는 옵션 <code>width</code>와 <code>height</code>를 간편하게 이용할 수 있다는 장점이 있다.</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="chapter-ggplot2.html#cb566-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg,  <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy))<span class="sc">+</span></span>
-<span id="cb566-2"><a href="chapter-ggplot2.html#cb566-2" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">height =</span> <span class="fl">0.05</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="chapter-ggplot2.html#cb614-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg,  <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy))<span class="sc">+</span></span>
+<span id="cb614-2"><a href="chapter-ggplot2.html#cb614-2" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">height =</span> <span class="fl">0.05</span>) </span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-27-1"></span>
 <img src="_main_files/figure-html/5-27-1-1.png" alt="함수 `geom_jitter()`에 옵션 `width`와 `height`를 사용한 그래프" width="576" />
 <p class="caption">
 그림 5.48: 함수 <code>geom_jitter()</code>에 옵션 <code>width</code>와 <code>height</code>를 사용한 그래프
 </p>
 </div>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="chapter-ggplot2.html#cb567-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg,  <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy))<span class="sc">+</span></span>
-<span id="cb567-2"><a href="chapter-ggplot2.html#cb567-2" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">height =</span> <span class="fl">0.4</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="chapter-ggplot2.html#cb615-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg,  <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy))<span class="sc">+</span></span>
+<span id="cb615-2"><a href="chapter-ggplot2.html#cb615-2" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">height =</span> <span class="fl">0.4</span>) </span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-27-2"></span>
 <img src="_main_files/figure-html/5-27-2-1.png" alt="함수 `geom_jitter()`에 옵션 `width`와 `height`를 사용한 그래프" width="576" />
 <p class="caption">
@@ -1231,14 +1232,14 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p>이변량 막대그래프는 두 범주형 변수의 관계를 탐색할 때 많이 사용되는 그래프이다.
 데이터 프레임 <code>mpg</code>에서 변수 <code>trans</code>의 범주를 <code>auto</code>와 <code>manual</code>로 통합한 변수 <code>am</code>과 <code>cyl</code>의 이변량 막대 그래프를 작성해 보자. 이 때 변수 <code>cyl</code>이 5인 케이스는 제거한다.</p>
 <p>먼저 자료를 준비해 보자.</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="chapter-ggplot2.html#cb568-1" tabindex="-1"></a>mpg_1 <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span>  </span>
-<span id="cb568-2"><a href="chapter-ggplot2.html#cb568-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am =</span> <span class="fu">substr</span>(trans, <span class="dv">1</span>, <span class="fu">nchar</span>(trans) <span class="sc">-</span> <span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb568-3"><a href="chapter-ggplot2.html#cb568-3" tabindex="-1"></a>  <span class="fu">filter</span>(cyl <span class="sc">!=</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="chapter-ggplot2.html#cb616-1" tabindex="-1"></a>mpg_1 <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span>  </span>
+<span id="cb616-2"><a href="chapter-ggplot2.html#cb616-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am =</span> <span class="fu">substr</span>(trans, <span class="dv">1</span>, <span class="fu">nchar</span>(trans) <span class="sc">-</span> <span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb616-3"><a href="chapter-ggplot2.html#cb616-3" tabindex="-1"></a>  <span class="fu">filter</span>(cyl <span class="sc">!=</span> <span class="dv">5</span>)</span></code></pre></div>
 <p>이변량 막대 그래프의 작성은 함수 <code>geom_bar()</code>로 할 수 있는데, 시각적 요소 <code>x</code>와 <code>fill</code>에 변수를 하나씩 대응시킨다.</p>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="chapter-ggplot2.html#cb569-1" tabindex="-1"></a>p_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg_1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(cyl), <span class="at">fill =</span> am)) <span class="sc">+</span> </span>
-<span id="cb569-2"><a href="chapter-ggplot2.html#cb569-2" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Number of Cylinders&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="chapter-ggplot2.html#cb617-1" tabindex="-1"></a>p_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg_1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(cyl), <span class="at">fill =</span> am)) <span class="sc">+</span> </span>
+<span id="cb617-2"><a href="chapter-ggplot2.html#cb617-2" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Number of Cylinders&quot;</span>) </span></code></pre></div>
 <p>디폴트 형태는 시각적 요소 <code>fill</code>과 연결된 변수의 도수가 위로 쌓아 올려지는 <code>position = "stack"</code>이다.</p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="chapter-ggplot2.html#cb570-1" tabindex="-1"></a>p_1 <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="chapter-ggplot2.html#cb618-1" tabindex="-1"></a>p_1 <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-28-1"></span>
 <img src="_main_files/figure-html/5-28-1-1.png" alt="쌓아 올린 이변량 막대 그래프" width="576" />
 <p class="caption">
@@ -1246,14 +1247,14 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </p>
 </div>
 <p>옆으로 붙여 놓은 막대 그래프는 옵션 <code>position</code>에 <code>"dodge"</code> 또는 <code>"dodge2"</code>를 지정하면 작성된다.</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="chapter-ggplot2.html#cb571-1" tabindex="-1"></a>p_1 <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="chapter-ggplot2.html#cb619-1" tabindex="-1"></a>p_1 <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-28-2"></span>
 <img src="_main_files/figure-html/5-28-2-1.png" alt="옆으로 붙여 놓은 이변량 막대 그래프" width="576" />
 <p class="caption">
 그림 5.51: 옆으로 붙여 놓은 이변량 막대 그래프
 </p>
 </div>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="chapter-ggplot2.html#cb572-1" tabindex="-1"></a>p_1 <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="chapter-ggplot2.html#cb620-1" tabindex="-1"></a>p_1 <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge2&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-28-3"></span>
 <img src="_main_files/figure-html/5-28-3-1.png" alt="옆으로 붙여 놓은 이변량 막대 그래프" width="576" />
 <p class="caption">
@@ -1262,7 +1263,7 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </div>
 <p>옵션 <code>position</code>에 <code>"fill"</code>을 지정하면, 시각적 요소 <code>x</code>에 매핑된 변수를 조건으로 하는 조건부 확률에 의한
 쌓아 올린 막대 그래프가 작성된다. 따라서 모든 막대의 높이는 1이 된다.</p>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="chapter-ggplot2.html#cb573-1" tabindex="-1"></a>p_1 <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="chapter-ggplot2.html#cb621-1" tabindex="-1"></a>p_1 <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-28-4"></span>
 <img src="_main_files/figure-html/5-28-4-1.png" alt="조건부 확률에 의한 쌓아 올린 이변량 막대 그래프" width="576" />
 <p class="caption">
@@ -1275,9 +1276,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 <p>예를 들어 데이터 프레임 <code>mpg</code>에서 변수 <code>trans</code>의 범주를 <code>auto</code>와 <code>manual</code>로 통합한 변수 <code>am</code>을 생성하고,
 변수 <code>cyl</code>이 5인 케이스를 제거한 데이터 프레임 <code>mpg_1</code>을 대상으로, 변수 <code>cyl</code>에 따른 변수 <code>hwy</code>의 상자그림을 작성해 보자.
 그룹을 구성하는 변수는 요인이거나 문자형 변수가 되어야 하는데, 변수 <code>cyl</code>은 정수형 변수이기 때문에 함수 <code>as.factor()</code>로 유형을 요인으로 변경하고 <code>x</code>에 매핑을 하였다.</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="chapter-ggplot2.html#cb574-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_1,  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(cyl), <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb574-2"><a href="chapter-ggplot2.html#cb574-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb574-3"><a href="chapter-ggplot2.html#cb574-3" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Number of Cylinders&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="chapter-ggplot2.html#cb622-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_1,  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(cyl), <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb622-2"><a href="chapter-ggplot2.html#cb622-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb622-3"><a href="chapter-ggplot2.html#cb622-3" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Number of Cylinders&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-29-1"></span>
 <img src="_main_files/figure-html/5-29-1-1.png" alt="그룹 변수가 하나인 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
@@ -1289,9 +1290,9 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 예를 들어 두 변수 <code>cyl</code>과 <code>am</code>을 그룹 변수로 지정하여 <code>hwy</code>의 상자그림을 작성해보자.
 변수 <code>cyl</code>을 <code>x</code>에, 변수 <code>am</code>을 <code>fill</code>에 각각 매핑을 해서 작성하면, 변수 <code>cyl</code>에 따라 작성된 변수 <code>hwy</code>의 상자그림을 다시 변수 <code>am</code>에 따라 분할한 것처럼 보인다.
 이러한 배치는 옵션 <code>position</code>에 <code>"dodge"</code>가 디폴트로 적용되어 작성된 결과이다.</p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="chapter-ggplot2.html#cb575-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_1,  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(cyl), <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb575-2"><a href="chapter-ggplot2.html#cb575-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> am)) <span class="sc">+</span></span>
-<span id="cb575-3"><a href="chapter-ggplot2.html#cb575-3" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Number of Cylinders&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="chapter-ggplot2.html#cb623-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_1,  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(cyl), <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb623-2"><a href="chapter-ggplot2.html#cb623-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> am)) <span class="sc">+</span></span>
+<span id="cb623-3"><a href="chapter-ggplot2.html#cb623-3" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Number of Cylinders&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-29-2"></span>
 <img src="_main_files/figure-html/5-29-2-1.png" alt="그룹 변수가 두 개인 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
@@ -1299,10 +1300,10 @@ Grammar of graphics라고 불리는 이 법칙은 모든 그래프 작성에서 
 </p>
 </div>
 <p>다른 방법으로 faceting을 사용한 그래프를 작성할 수 있다.</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="chapter-ggplot2.html#cb576-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(cyl), <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb576-2"><a href="chapter-ggplot2.html#cb576-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb576-3"><a href="chapter-ggplot2.html#cb576-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(am)) <span class="sc">+</span></span>
-<span id="cb576-4"><a href="chapter-ggplot2.html#cb576-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Number of Cylinders&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="chapter-ggplot2.html#cb624-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_1, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(cyl), <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb624-2"><a href="chapter-ggplot2.html#cb624-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb624-3"><a href="chapter-ggplot2.html#cb624-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(am)) <span class="sc">+</span></span>
+<span id="cb624-4"><a href="chapter-ggplot2.html#cb624-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Number of Cylinders&quot;</span>) </span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-29-3"></span>
 <img src="_main_files/figure-html/5-29-3-1.png" alt="그룹 변수가 두 개인 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
@@ -1329,11 +1330,11 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 <code>*2*</code>는 적용되는 <code>scale</code>을 지칭하는 것으로 <code>discrete</code>, <code>continuous</code> 등이 가능하다.
 따라서 연속형 변수 <code>displ</code>과 연결된 시각적 요소 <code>x</code>의 범위를 (3,6)으로 수정하기 위해서는
 함수 <code>scale_x_continuous(limits = c(3, 6))</code>을 추가해야 한다.</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="chapter-ggplot2.html#cb577-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg,  <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb577-2"><a href="chapter-ggplot2.html#cb577-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb577-3"><a href="chapter-ggplot2.html#cb577-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="chapter-ggplot2.html#cb578-1" tabindex="-1"></a>p <span class="sc">+</span> </span>
-<span id="cb578-2"><a href="chapter-ggplot2.html#cb578-2" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="chapter-ggplot2.html#cb625-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg,  <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb625-2"><a href="chapter-ggplot2.html#cb625-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb625-3"><a href="chapter-ggplot2.html#cb625-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="chapter-ggplot2.html#cb626-1" tabindex="-1"></a>p <span class="sc">+</span> </span>
+<span id="cb626-2"><a href="chapter-ggplot2.html#cb626-2" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-30-1"></span>
 <img src="_main_files/figure-html/5-30-1-1.png" alt="'scale'로 X축 범위 축소" width="576" />
 <p class="caption">
@@ -1345,9 +1346,9 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 <p>Scale 함수를 사용하여 XY축 범위를 축소한 경우, 조심해야 할 점은 범위를 벗어난 자료들이 모두 <code>NA</code>로 바뀐다는 것이다.
 따라서 그림 <a href="chapter-ggplot2.html#fig:5-30-1">5.57</a>는 범위를 벗어난 105개 자료가 삭제된 상태에서 작성된 그래프이다.
 이에 반하여 XY축 범위를 함수 <code>coord_cartesian()</code>으로 축소하면, 전체 그래프 중 축소된 범위에 해당되는 부분만 확대해서 보여주는 것으로써 범위를 벗어난 자료를 삭제하지는 않는다.</p>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="chapter-ggplot2.html#cb579-1" tabindex="-1"></a>p <span class="sc">+</span> </span>
-<span id="cb579-2"><a href="chapter-ggplot2.html#cb579-2" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>)) <span class="sc">+</span></span>
-<span id="cb579-3"><a href="chapter-ggplot2.html#cb579-3" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Engine Displacement&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="chapter-ggplot2.html#cb627-1" tabindex="-1"></a>p <span class="sc">+</span> </span>
+<span id="cb627-2"><a href="chapter-ggplot2.html#cb627-2" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb627-3"><a href="chapter-ggplot2.html#cb627-3" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Engine Displacement&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-30-2"></span>
 <img src="_main_files/figure-html/5-30-2-1.png" alt="함수 `coord_cartesian()`으로 X축 범위 축소" width="576" />
 <p class="caption">
@@ -1368,16 +1369,16 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 따라서 수평 방향의 상자그림을 작성하기 위해 굳이 함수 <code>coord_flip()</code>을 사용할 필요는 없어졌다.</p>
 <p>데이터 프레임 <code>mpg</code>에서 변수 <code>class</code>의 그룹별로 <code>hwy</code>의 상자그림을 작성해 보자.
 우선 조건 변수 <code>class</code>를 <code>x</code> 변수로 사용하는 경우이다.</p>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="chapter-ggplot2.html#cb580-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb580-2"><a href="chapter-ggplot2.html#cb580-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb580-3"><a href="chapter-ggplot2.html#cb580-3" tabindex="-1"></a>p1</span></code></pre></div>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="chapter-ggplot2.html#cb628-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb628-2"><a href="chapter-ggplot2.html#cb628-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb628-3"><a href="chapter-ggplot2.html#cb628-3" tabindex="-1"></a>p1</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-31-1"></span>
 <img src="_main_files/figure-html/5-31-1-1.png" alt="수직방향의 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
 그림 5.59: 수직방향의 나란히 서 있는 상자그림
 </p>
 </div>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="chapter-ggplot2.html#cb581-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="chapter-ggplot2.html#cb629-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-31-2"></span>
 <img src="_main_files/figure-html/5-31-2-1.png" alt="수평방향의 나란히 서 있는 상자그림" width="576" />
 <p class="caption">
@@ -1385,18 +1386,18 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 </p>
 </div>
 <p>그림 <a href="chapter-ggplot2.html#fig:5-31-2">5.60</a>는 다음과 같이 조건 변수 <code>class</code>를 <code>y</code> 변수로 사용해서 작성할 수 있다.</p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="chapter-ggplot2.html#cb582-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy, <span class="at">y =</span> class)) <span class="sc">+</span></span>
-<span id="cb582-2"><a href="chapter-ggplot2.html#cb582-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="chapter-ggplot2.html#cb630-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy, <span class="at">y =</span> class)) <span class="sc">+</span></span>
+<span id="cb630-2"><a href="chapter-ggplot2.html#cb630-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p>또한 그림 <a href="chapter-ggplot2.html#fig:5-31-1">5.59</a>는 <code>class</code>를 <code>y</code> 변수로 지정하고 함수 <code>coord_flip()</code>을 다음과 같이 사용해서 작성할 수 있다.</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="chapter-ggplot2.html#cb583-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy, <span class="at">y =</span> class)) <span class="sc">+</span></span>
-<span id="cb583-2"><a href="chapter-ggplot2.html#cb583-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb583-3"><a href="chapter-ggplot2.html#cb583-3" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="chapter-ggplot2.html#cb631-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy, <span class="at">y =</span> class)) <span class="sc">+</span></span>
+<span id="cb631-2"><a href="chapter-ggplot2.html#cb631-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb631-3"><a href="chapter-ggplot2.html#cb631-3" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
 <p>한 변수의 상자그림을 작성하는 경우에도 함수 <code>geom_boxplot()</code>에는 시각적 요소 <code>x</code>와 <code>y</code> 모두가 필요하다.
 수직 방향으로 작성하는 경우에는 시각적 요소 <code>y</code>에 상자그림 작성 대상이 되는 연속형 변수를 연결하고,
 <code>x</code>에는 임의의 문자열을 매핑하면 된다.</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="chapter-ggplot2.html#cb584-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb584-2"><a href="chapter-ggplot2.html#cb584-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb584-3"><a href="chapter-ggplot2.html#cb584-3" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="chapter-ggplot2.html#cb632-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb632-2"><a href="chapter-ggplot2.html#cb632-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb632-3"><a href="chapter-ggplot2.html#cb632-3" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-32-1"></span>
 <img src="_main_files/figure-html/5-32-1-1.png" alt="수직방향 상자그림" width="576" />
 <p class="caption">
@@ -1404,9 +1405,9 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 </p>
 </div>
 <p>수평방향 상자그림은 <code>x</code>에는 연속형 변수, <code>y</code>에는 임의의 문자열을 매핑하면 된다.</p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="chapter-ggplot2.html#cb585-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb585-2"><a href="chapter-ggplot2.html#cb585-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb585-3"><a href="chapter-ggplot2.html#cb585-3" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="chapter-ggplot2.html#cb633-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb633-2"><a href="chapter-ggplot2.html#cb633-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb633-3"><a href="chapter-ggplot2.html#cb633-3" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-32-2"></span>
 <img src="_main_files/figure-html/5-32-2-1.png" alt="수평방향 상자그림" width="576" />
 <p class="caption">
@@ -1422,10 +1423,10 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 디폴트는 <code>theta = "x"</code>이다.</p>
 <p>극좌표의 활용 예제로 Coxcomb 또는 Wind rose라고 불리는 그래프를 작성해 보자.
 우선 데이터 프레임 <code>mpg</code>의 변수 <code>class</code>의 막대 그래프를 작성하되, 막대 사이의 간격을 없애고 범례를 제거해 보자.</p>
-<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="chapter-ggplot2.html#cb586-1" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
-<span id="cb586-2"><a href="chapter-ggplot2.html#cb586-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb586-3"><a href="chapter-ggplot2.html#cb586-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span>
-<span id="cb586-4"><a href="chapter-ggplot2.html#cb586-4" tabindex="-1"></a>b1</span></code></pre></div>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="chapter-ggplot2.html#cb634-1" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb634-2"><a href="chapter-ggplot2.html#cb634-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb634-3"><a href="chapter-ggplot2.html#cb634-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span>
+<span id="cb634-4"><a href="chapter-ggplot2.html#cb634-4" tabindex="-1"></a>b1</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-33-1"></span>
 <img src="_main_files/figure-html/5-33-1-1.png" alt="Coxcomb 그래프 작성을 위한 막대 그래프" width="576" />
 <p class="caption">
@@ -1436,7 +1437,7 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 <code>width = 1</code>은 막대 사이의 간격을 제거하기 위한 것이다. 변수 <code>width</code>는 막대 폭을 지정하는
 것으로 구간의 90%를 차지하는 0.9가 디폴트 값이다.
 이제 작성된 막대 그래프에 극좌표를 적용시켜 보자.</p>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="chapter-ggplot2.html#cb587-1" tabindex="-1"></a>b1 <span class="sc">+</span> <span class="fu">coord_polar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="chapter-ggplot2.html#cb635-1" tabindex="-1"></a>b1 <span class="sc">+</span> <span class="fu">coord_polar</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-33-2"></span>
 <img src="_main_files/figure-html/5-33-2-1.png" alt="극좌표를 이용하여 막대 그래프를 Coxcomb 그래프로 변환" width="576" />
 <p class="caption">
@@ -1449,10 +1450,10 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 형태로 작성해야 한다. 한 변수에 대한 막대 그래프를 쌓아 올리기 위해서는 시각적 요소
 <code>x</code>에 임의의 문자열을 매핑하고 범주형 변수를 시각적 요소 <code>fill</code>에 매핑해야 한다.
 또한 X축 전체 구간을 막대로 가득 채우기 위해 <code>width = 1</code>을 추가해야 한다.</p>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="chapter-ggplot2.html#cb588-1" tabindex="-1"></a>b2 <span class="ot">&lt;-</span>  <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
-<span id="cb588-2"><a href="chapter-ggplot2.html#cb588-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb588-3"><a href="chapter-ggplot2.html#cb588-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span>
-<span id="cb588-4"><a href="chapter-ggplot2.html#cb588-4" tabindex="-1"></a>b2</span></code></pre></div>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="chapter-ggplot2.html#cb636-1" tabindex="-1"></a>b2 <span class="ot">&lt;-</span>  <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb636-2"><a href="chapter-ggplot2.html#cb636-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb636-3"><a href="chapter-ggplot2.html#cb636-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span>
+<span id="cb636-4"><a href="chapter-ggplot2.html#cb636-4" tabindex="-1"></a>b2</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-34-1"></span>
 <img src="_main_files/figure-html/5-34-1-1.png" alt="파이 그래프 작성을 위한 막대 그래프" width="576" />
 <p class="caption">
@@ -1461,7 +1462,7 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 </div>
 <p>작성된 막대 그래프에 극좌표를 적용하면서 각도 <code>theta</code>에 디폴트인 <code>"x"</code>가 지정되면 전체 구간에 해당되는 360°가
 모든 그룹에 적용되어 Bullseye 그래프가 작성된다.</p>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="chapter-ggplot2.html#cb589-1" tabindex="-1"></a>b2 <span class="sc">+</span> <span class="fu">coord_polar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="chapter-ggplot2.html#cb637-1" tabindex="-1"></a>b2 <span class="sc">+</span> <span class="fu">coord_polar</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-34-2"></span>
 <img src="_main_files/figure-html/5-34-2-1.png" alt="극좌표를 이용하여 막대 그래프를 Bullseye 그래프로 변환" width="576" />
 <p class="caption">
@@ -1469,7 +1470,7 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 </p>
 </div>
 <p>반면에 <code>theta</code>에 <code>"y"</code>를 지정하면 각 그룹의 상대도수에 비례하여 각도가 정해져서 파이 그래프가 작성된다.</p>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="chapter-ggplot2.html#cb590-1" tabindex="-1"></a>b2 <span class="sc">+</span> <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="chapter-ggplot2.html#cb638-1" tabindex="-1"></a>b2 <span class="sc">+</span> <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-34-3"></span>
 <img src="_main_files/figure-html/5-34-3-1.png" alt="극좌표를 이용하여 막대 그래프를 파이 그래프로 변환" width="576" />
 <p class="caption">
@@ -1477,9 +1478,9 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 </p>
 </div>
 <p>XY축을 제거하면 조금 더 깔끔한 파이 그래프를 작성할 수 있다.</p>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="chapter-ggplot2.html#cb591-1" tabindex="-1"></a>b2 <span class="sc">+</span> </span>
-<span id="cb591-2"><a href="chapter-ggplot2.html#cb591-2" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb591-3"><a href="chapter-ggplot2.html#cb591-3" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="chapter-ggplot2.html#cb639-1" tabindex="-1"></a>b2 <span class="sc">+</span> </span>
+<span id="cb639-2"><a href="chapter-ggplot2.html#cb639-2" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb639-3"><a href="chapter-ggplot2.html#cb639-3" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:5-34-4"></span>
 <img src="_main_files/figure-html/5-34-4-1.png" alt="극좌표를 이용하여 막대 그래프를 파이 그래프로 변환" width="576" />
 <p class="caption">
@@ -1510,14 +1511,14 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 <div id="연습문제-3" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> 연습문제<a href="chapter-ggplot2.html#연습문제-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>1.</strong> <code>mtcars</code>는 1974년에 발간된 ’Motor Trend US’라는 잡지에 있는 32대 자동차에 대한 자료가 입력되어 있는 데이터 프레임이다.</p>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="chapter-ggplot2.html#cb593-1" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
-<span id="cb593-2"><a href="chapter-ggplot2.html#cb593-2" tabindex="-1"></a><span class="do">##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span></span>
-<span id="cb593-3"><a href="chapter-ggplot2.html#cb593-3" tabindex="-1"></a><span class="do">## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span></span>
-<span id="cb593-4"><a href="chapter-ggplot2.html#cb593-4" tabindex="-1"></a><span class="do">## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span></span>
-<span id="cb593-5"><a href="chapter-ggplot2.html#cb593-5" tabindex="-1"></a><span class="do">## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span></span>
-<span id="cb593-6"><a href="chapter-ggplot2.html#cb593-6" tabindex="-1"></a><span class="do">## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span></span>
-<span id="cb593-7"><a href="chapter-ggplot2.html#cb593-7" tabindex="-1"></a><span class="do">## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span></span>
-<span id="cb593-8"><a href="chapter-ggplot2.html#cb593-8" tabindex="-1"></a><span class="do">## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="chapter-ggplot2.html#cb641-1" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb641-2"><a href="chapter-ggplot2.html#cb641-2" tabindex="-1"></a><span class="do">##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span></span>
+<span id="cb641-3"><a href="chapter-ggplot2.html#cb641-3" tabindex="-1"></a><span class="do">## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span></span>
+<span id="cb641-4"><a href="chapter-ggplot2.html#cb641-4" tabindex="-1"></a><span class="do">## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span></span>
+<span id="cb641-5"><a href="chapter-ggplot2.html#cb641-5" tabindex="-1"></a><span class="do">## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span></span>
+<span id="cb641-6"><a href="chapter-ggplot2.html#cb641-6" tabindex="-1"></a><span class="do">## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span></span>
+<span id="cb641-7"><a href="chapter-ggplot2.html#cb641-7" tabindex="-1"></a><span class="do">## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span></span>
+<span id="cb641-8"><a href="chapter-ggplot2.html#cb641-8" tabindex="-1"></a><span class="do">## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span></span></code></pre></div>
 <ul>
 <li>변수 <code>qsec</code>은 정지 상태에서 출발하여 0.25마일에 도달할 때까지 걸린 시간을 나타내는 변수이고, <code>mpg</code>는 연비를 나타내는 변수이다. 두 변수의 산점도를 다음과 같이 작성하라.</li>
 </ul>
@@ -1758,45 +1759,45 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 <ul>
 <li><code>Cars93</code>에서 변수 <code>Manufacturer</code>, <code>Man.trans.avail</code>, <code>MPG.highway</code>, <code>EngineSize</code>, <code>Cylinders</code>을 선택해서 데이터 프레임 <code>cars_93</code>에 입력하라. <code>mpg</code>에서는 변수 <code>manufacturer</code>, <code>trans</code>, <code>hwy</code>, <code>displ</code>, <code>cyl</code>을 선택하되, 변수 <code>year</code>가 <code>1999</code>인 케이스만 선택해서 데이터 프레임 <code>cars_99</code>에 입력하라. 두 데이터 프레임의 첫 세 케이스의 출력 결과는 다음과 같다.</li>
 </ul>
-<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="chapter-ggplot2.html#cb607-1" tabindex="-1"></a>cars_93 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb607-2"><a href="chapter-ggplot2.html#cb607-2" tabindex="-1"></a><span class="do">## # A tibble: 93 × 5</span></span>
-<span id="cb607-3"><a href="chapter-ggplot2.html#cb607-3" tabindex="-1"></a><span class="do">##   Manufacturer Man.trans.avail MPG.highway EngineSize Cylinders</span></span>
-<span id="cb607-4"><a href="chapter-ggplot2.html#cb607-4" tabindex="-1"></a><span class="do">##   &lt;fct&gt;        &lt;fct&gt;                 &lt;int&gt;      &lt;dbl&gt; &lt;fct&gt;    </span></span>
-<span id="cb607-5"><a href="chapter-ggplot2.html#cb607-5" tabindex="-1"></a><span class="do">## 1 Acura        Yes                      31        1.8 4        </span></span>
-<span id="cb607-6"><a href="chapter-ggplot2.html#cb607-6" tabindex="-1"></a><span class="do">## 2 Acura        Yes                      25        3.2 6        </span></span>
-<span id="cb607-7"><a href="chapter-ggplot2.html#cb607-7" tabindex="-1"></a><span class="do">## 3 Audi         Yes                      26        2.8 6        </span></span>
-<span id="cb607-8"><a href="chapter-ggplot2.html#cb607-8" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="chapter-ggplot2.html#cb608-1" tabindex="-1"></a>cars_99 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb608-2"><a href="chapter-ggplot2.html#cb608-2" tabindex="-1"></a><span class="do">## # A tibble: 117 × 5</span></span>
-<span id="cb608-3"><a href="chapter-ggplot2.html#cb608-3" tabindex="-1"></a><span class="do">##   manufacturer trans        hwy displ   cyl</span></span>
-<span id="cb608-4"><a href="chapter-ggplot2.html#cb608-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;int&gt;</span></span>
-<span id="cb608-5"><a href="chapter-ggplot2.html#cb608-5" tabindex="-1"></a><span class="do">## 1 audi         auto(l5)      29   1.8     4</span></span>
-<span id="cb608-6"><a href="chapter-ggplot2.html#cb608-6" tabindex="-1"></a><span class="do">## 2 audi         manual(m5)    29   1.8     4</span></span>
-<span id="cb608-7"><a href="chapter-ggplot2.html#cb608-7" tabindex="-1"></a><span class="do">## 3 audi         auto(l5)      26   2.8     6</span></span>
-<span id="cb608-8"><a href="chapter-ggplot2.html#cb608-8" tabindex="-1"></a><span class="do">## # ℹ 114 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="chapter-ggplot2.html#cb655-1" tabindex="-1"></a>cars_93 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb655-2"><a href="chapter-ggplot2.html#cb655-2" tabindex="-1"></a><span class="do">## # A tibble: 93 × 5</span></span>
+<span id="cb655-3"><a href="chapter-ggplot2.html#cb655-3" tabindex="-1"></a><span class="do">##   Manufacturer Man.trans.avail MPG.highway EngineSize Cylinders</span></span>
+<span id="cb655-4"><a href="chapter-ggplot2.html#cb655-4" tabindex="-1"></a><span class="do">##   &lt;fct&gt;        &lt;fct&gt;                 &lt;int&gt;      &lt;dbl&gt; &lt;fct&gt;    </span></span>
+<span id="cb655-5"><a href="chapter-ggplot2.html#cb655-5" tabindex="-1"></a><span class="do">## 1 Acura        Yes                      31        1.8 4        </span></span>
+<span id="cb655-6"><a href="chapter-ggplot2.html#cb655-6" tabindex="-1"></a><span class="do">## 2 Acura        Yes                      25        3.2 6        </span></span>
+<span id="cb655-7"><a href="chapter-ggplot2.html#cb655-7" tabindex="-1"></a><span class="do">## 3 Audi         Yes                      26        2.8 6        </span></span>
+<span id="cb655-8"><a href="chapter-ggplot2.html#cb655-8" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="chapter-ggplot2.html#cb656-1" tabindex="-1"></a>cars_99 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb656-2"><a href="chapter-ggplot2.html#cb656-2" tabindex="-1"></a><span class="do">## # A tibble: 117 × 5</span></span>
+<span id="cb656-3"><a href="chapter-ggplot2.html#cb656-3" tabindex="-1"></a><span class="do">##   manufacturer trans        hwy displ   cyl</span></span>
+<span id="cb656-4"><a href="chapter-ggplot2.html#cb656-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb656-5"><a href="chapter-ggplot2.html#cb656-5" tabindex="-1"></a><span class="do">## 1 audi         auto(l5)      29   1.8     4</span></span>
+<span id="cb656-6"><a href="chapter-ggplot2.html#cb656-6" tabindex="-1"></a><span class="do">## 2 audi         manual(m5)    29   1.8     4</span></span>
+<span id="cb656-7"><a href="chapter-ggplot2.html#cb656-7" tabindex="-1"></a><span class="do">## 3 audi         auto(l5)      26   2.8     6</span></span>
+<span id="cb656-8"><a href="chapter-ggplot2.html#cb656-8" tabindex="-1"></a><span class="do">## # ℹ 114 more rows</span></span></code></pre></div>
 <ul>
 <li><code>cars_93</code>과 <code>cars_99</code>의 변수들은 이름은 다르지만, 동일한 내용의 변수들이 순서대로 나열되어 있다. <code>cars_93</code>의 변수 이름을 <code>cars_99</code>의 변수 이름과 같아지도록 변경해 보자. 변경된 결과는 다음과 같다.</li>
 </ul>
-<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="chapter-ggplot2.html#cb609-1" tabindex="-1"></a>cars_93 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb609-2"><a href="chapter-ggplot2.html#cb609-2" tabindex="-1"></a><span class="do">## # A tibble: 93 × 5</span></span>
-<span id="cb609-3"><a href="chapter-ggplot2.html#cb609-3" tabindex="-1"></a><span class="do">##   manufacturer trans   hwy displ cyl  </span></span>
-<span id="cb609-4"><a href="chapter-ggplot2.html#cb609-4" tabindex="-1"></a><span class="do">##   &lt;fct&gt;        &lt;fct&gt; &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;</span></span>
-<span id="cb609-5"><a href="chapter-ggplot2.html#cb609-5" tabindex="-1"></a><span class="do">## 1 Acura        Yes      31   1.8 4    </span></span>
-<span id="cb609-6"><a href="chapter-ggplot2.html#cb609-6" tabindex="-1"></a><span class="do">## 2 Acura        Yes      25   3.2 6    </span></span>
-<span id="cb609-7"><a href="chapter-ggplot2.html#cb609-7" tabindex="-1"></a><span class="do">## 3 Audi         Yes      26   2.8 6    </span></span>
-<span id="cb609-8"><a href="chapter-ggplot2.html#cb609-8" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="chapter-ggplot2.html#cb657-1" tabindex="-1"></a>cars_93 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb657-2"><a href="chapter-ggplot2.html#cb657-2" tabindex="-1"></a><span class="do">## # A tibble: 93 × 5</span></span>
+<span id="cb657-3"><a href="chapter-ggplot2.html#cb657-3" tabindex="-1"></a><span class="do">##   manufacturer trans   hwy displ cyl  </span></span>
+<span id="cb657-4"><a href="chapter-ggplot2.html#cb657-4" tabindex="-1"></a><span class="do">##   &lt;fct&gt;        &lt;fct&gt; &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;</span></span>
+<span id="cb657-5"><a href="chapter-ggplot2.html#cb657-5" tabindex="-1"></a><span class="do">## 1 Acura        Yes      31   1.8 4    </span></span>
+<span id="cb657-6"><a href="chapter-ggplot2.html#cb657-6" tabindex="-1"></a><span class="do">## 2 Acura        Yes      25   3.2 6    </span></span>
+<span id="cb657-7"><a href="chapter-ggplot2.html#cb657-7" tabindex="-1"></a><span class="do">## 3 Audi         Yes      26   2.8 6    </span></span>
+<span id="cb657-8"><a href="chapter-ggplot2.html#cb657-8" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
 <ul>
 <li><code>cars_93</code>의 변수 <code>manufacturer</code>와 <code>trans</code>의 자료를 변경해 보자. 우선 <code>manufacturer</code>의 자료 값을 모두 소문자로 변경하고, <code>trans</code>는 자료 값이 <code>Yes</code>이면 <code>manual</code>로, 아니면 <code>auto</code>로 변경하며, 요인 속성은 유지하도록 한다.
 변경된 결과는 다음과 같다.</li>
 </ul>
-<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="chapter-ggplot2.html#cb610-1" tabindex="-1"></a>cars_93 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb610-2"><a href="chapter-ggplot2.html#cb610-2" tabindex="-1"></a><span class="do">## # A tibble: 93 × 5</span></span>
-<span id="cb610-3"><a href="chapter-ggplot2.html#cb610-3" tabindex="-1"></a><span class="do">##   manufacturer trans    hwy displ cyl  </span></span>
-<span id="cb610-4"><a href="chapter-ggplot2.html#cb610-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;</span></span>
-<span id="cb610-5"><a href="chapter-ggplot2.html#cb610-5" tabindex="-1"></a><span class="do">## 1 acura        manual    31   1.8 4    </span></span>
-<span id="cb610-6"><a href="chapter-ggplot2.html#cb610-6" tabindex="-1"></a><span class="do">## 2 acura        manual    25   3.2 6    </span></span>
-<span id="cb610-7"><a href="chapter-ggplot2.html#cb610-7" tabindex="-1"></a><span class="do">## 3 audi         manual    26   2.8 6    </span></span>
-<span id="cb610-8"><a href="chapter-ggplot2.html#cb610-8" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="chapter-ggplot2.html#cb658-1" tabindex="-1"></a>cars_93 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb658-2"><a href="chapter-ggplot2.html#cb658-2" tabindex="-1"></a><span class="do">## # A tibble: 93 × 5</span></span>
+<span id="cb658-3"><a href="chapter-ggplot2.html#cb658-3" tabindex="-1"></a><span class="do">##   manufacturer trans    hwy displ cyl  </span></span>
+<span id="cb658-4"><a href="chapter-ggplot2.html#cb658-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;</span></span>
+<span id="cb658-5"><a href="chapter-ggplot2.html#cb658-5" tabindex="-1"></a><span class="do">## 1 acura        manual    31   1.8 4    </span></span>
+<span id="cb658-6"><a href="chapter-ggplot2.html#cb658-6" tabindex="-1"></a><span class="do">## 2 acura        manual    25   3.2 6    </span></span>
+<span id="cb658-7"><a href="chapter-ggplot2.html#cb658-7" tabindex="-1"></a><span class="do">## 3 audi         manual    26   2.8 6    </span></span>
+<span id="cb658-8"><a href="chapter-ggplot2.html#cb658-8" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
 <ul>
 <li><code>cars_93</code>에서 변수 <code>trans</code>와 <code>cyl</code>의 조합에 따른 빈도수를 구하고 다음과 같이 내림차순으로 출력해 보자.</li>
 </ul>
@@ -1817,14 +1818,14 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 <li><p><code>cars_99</code>의 변수들을 변경해 보자. 변수 <code>trans</code>는 자료 중 <code>auto(l3)</code>, <code>auto(l4)</code>, <code>auto(l5)</code>는 <code>auto</code>로 통합하고, <code>manual(m5)</code>와 <code>manual(m6)</code>는 <code>manual</code>로 통합한다. 또한 <code>hwy</code>와 <code>displ</code>을 제외한 다른 변수는 모두 요인으로 변경한다.
 변경된 결과는 다음과 같다.</p></li>
 </ul>
-<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="chapter-ggplot2.html#cb612-1" tabindex="-1"></a>cars_99 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb612-2"><a href="chapter-ggplot2.html#cb612-2" tabindex="-1"></a><span class="do">## # A tibble: 117 × 5</span></span>
-<span id="cb612-3"><a href="chapter-ggplot2.html#cb612-3" tabindex="-1"></a><span class="do">##   manufacturer trans    hwy displ cyl  </span></span>
-<span id="cb612-4"><a href="chapter-ggplot2.html#cb612-4" tabindex="-1"></a><span class="do">##   &lt;fct&gt;        &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;</span></span>
-<span id="cb612-5"><a href="chapter-ggplot2.html#cb612-5" tabindex="-1"></a><span class="do">## 1 audi         auto      29   1.8 4    </span></span>
-<span id="cb612-6"><a href="chapter-ggplot2.html#cb612-6" tabindex="-1"></a><span class="do">## 2 audi         manual    29   1.8 4    </span></span>
-<span id="cb612-7"><a href="chapter-ggplot2.html#cb612-7" tabindex="-1"></a><span class="do">## 3 audi         auto      26   2.8 6    </span></span>
-<span id="cb612-8"><a href="chapter-ggplot2.html#cb612-8" tabindex="-1"></a><span class="do">## # ℹ 114 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="chapter-ggplot2.html#cb660-1" tabindex="-1"></a>cars_99 <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb660-2"><a href="chapter-ggplot2.html#cb660-2" tabindex="-1"></a><span class="do">## # A tibble: 117 × 5</span></span>
+<span id="cb660-3"><a href="chapter-ggplot2.html#cb660-3" tabindex="-1"></a><span class="do">##   manufacturer trans    hwy displ cyl  </span></span>
+<span id="cb660-4"><a href="chapter-ggplot2.html#cb660-4" tabindex="-1"></a><span class="do">##   &lt;fct&gt;        &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;</span></span>
+<span id="cb660-5"><a href="chapter-ggplot2.html#cb660-5" tabindex="-1"></a><span class="do">## 1 audi         auto      29   1.8 4    </span></span>
+<span id="cb660-6"><a href="chapter-ggplot2.html#cb660-6" tabindex="-1"></a><span class="do">## 2 audi         manual    29   1.8 4    </span></span>
+<span id="cb660-7"><a href="chapter-ggplot2.html#cb660-7" tabindex="-1"></a><span class="do">## 3 audi         auto      26   2.8 6    </span></span>
+<span id="cb660-8"><a href="chapter-ggplot2.html#cb660-8" tabindex="-1"></a><span class="do">## # ℹ 114 more rows</span></span></code></pre></div>
 <ul>
 <li><p><code>cars_99</code>의 <code>manufacturer</code>에는 몇 종류의 자동차 회사가 입력되어 있는가?</p></li>
 <li><p><code>cars_99</code>의 <code>manufacturer</code>에 입력된 자동차 회사 중 상대도수가 0.1 이상인 회사를 찾아내서 다음과 같이 출력해 보자. 변수 <code>prop</code>에는 상대도수의 계산 결과가 입력되어 있다.</p></li>
@@ -1879,30 +1880,30 @@ Scale 함수는 <code>scale_*1*_*2*()</code>의 형태를 취하고 있는데,
 <ul>
 <li>HTML 테이블을 R로 불러와 다음과 같이 출력해 보자. 변수 <code>value</code>는 각 품목의 수출액이고, 변수 <code>prop</code>는 각 품목의 수출액이 20개 전체 품목의 총 수출액에서 차지하는 비율을 나타내고 있다. 단, 변환과정에서는 <code>dplyr</code>의 함수들을 사용한다.</li>
 </ul>
-<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="chapter-ggplot2.html#cb614-1" tabindex="-1"></a>export</span>
-<span id="cb614-2"><a href="chapter-ggplot2.html#cb614-2" tabindex="-1"></a><span class="do">## # A tibble: 20 × 4</span></span>
-<span id="cb614-3"><a href="chapter-ggplot2.html#cb614-3" tabindex="-1"></a><span class="do">##     rank item                                  value   prop</span></span>
-<span id="cb614-4"><a href="chapter-ggplot2.html#cb614-4" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;chr&gt;                                 &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span id="cb614-5"><a href="chapter-ggplot2.html#cb614-5" tabindex="-1"></a><span class="do">##  1     1 Refined petroleum                     51540 0.162 </span></span>
-<span id="cb614-6"><a href="chapter-ggplot2.html#cb614-6" tabindex="-1"></a><span class="do">##  2     2 Integrated circuits                   49126 0.155 </span></span>
-<span id="cb614-7"><a href="chapter-ggplot2.html#cb614-7" tabindex="-1"></a><span class="do">##  3     3 Cars                                  42484 0.134 </span></span>
-<span id="cb614-8"><a href="chapter-ggplot2.html#cb614-8" tabindex="-1"></a><span class="do">##  4     4 Passenger and Cargo Ships             29010 0.0914</span></span>
-<span id="cb614-9"><a href="chapter-ggplot2.html#cb614-9" tabindex="-1"></a><span class="do">##  5     5 LCDs                                  23978 0.0756</span></span>
-<span id="cb614-10"><a href="chapter-ggplot2.html#cb614-10" tabindex="-1"></a><span class="do">##  6     6 Car parts                             20496 0.0646</span></span>
-<span id="cb614-11"><a href="chapter-ggplot2.html#cb614-11" tabindex="-1"></a><span class="do">##  7     7 Broadcasting Equipment                15443 0.0487</span></span>
-<span id="cb614-12"><a href="chapter-ggplot2.html#cb614-12" tabindex="-1"></a><span class="do">##  8     8 Broadcasting Accessories              10532 0.0332</span></span>
-<span id="cb614-13"><a href="chapter-ggplot2.html#cb614-13" tabindex="-1"></a><span class="do">##  9     9 Telephones                            10417 0.0328</span></span>
-<span id="cb614-14"><a href="chapter-ggplot2.html#cb614-14" tabindex="-1"></a><span class="do">## 10    10 Cyclic Hydrocarbons                    8791 0.0277</span></span>
-<span id="cb614-15"><a href="chapter-ggplot2.html#cb614-15" tabindex="-1"></a><span class="do">## 11    11 Special Purpose Ships                  8117 0.0256</span></span>
-<span id="cb614-16"><a href="chapter-ggplot2.html#cb614-16" tabindex="-1"></a><span class="do">## 12    12 Computers                              6340 0.0200</span></span>
-<span id="cb614-17"><a href="chapter-ggplot2.html#cb614-17" tabindex="-1"></a><span class="do">## 13    13 Hot-Rolled Iron                        6288 0.0198</span></span>
-<span id="cb614-18"><a href="chapter-ggplot2.html#cb614-18" tabindex="-1"></a><span class="do">## 14    14 Coated Flat-Rolled Iron                5654 0.0178</span></span>
-<span id="cb614-19"><a href="chapter-ggplot2.html#cb614-19" tabindex="-1"></a><span class="do">## 15    15 Semiconductor devices                  5210 0.0164</span></span>
-<span id="cb614-20"><a href="chapter-ggplot2.html#cb614-20" tabindex="-1"></a><span class="do">## 16    16 Large Construction Vehicles            5091 0.0160</span></span>
-<span id="cb614-21"><a href="chapter-ggplot2.html#cb614-21" tabindex="-1"></a><span class="do">## 17    17 Polycarboxylic acids                   4833 0.0152</span></span>
-<span id="cb614-22"><a href="chapter-ggplot2.html#cb614-22" tabindex="-1"></a><span class="do">## 18    18 Polyacetals                            4743 0.0149</span></span>
-<span id="cb614-23"><a href="chapter-ggplot2.html#cb614-23" tabindex="-1"></a><span class="do">## 19    19 Machinery Having Individual Functions  4621 0.0146</span></span>
-<span id="cb614-24"><a href="chapter-ggplot2.html#cb614-24" tabindex="-1"></a><span class="do">## 20    20 Tires                                  4614 0.0145</span></span></code></pre></div>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="chapter-ggplot2.html#cb662-1" tabindex="-1"></a>export</span>
+<span id="cb662-2"><a href="chapter-ggplot2.html#cb662-2" tabindex="-1"></a><span class="do">## # A tibble: 20 × 4</span></span>
+<span id="cb662-3"><a href="chapter-ggplot2.html#cb662-3" tabindex="-1"></a><span class="do">##     rank item                                  value   prop</span></span>
+<span id="cb662-4"><a href="chapter-ggplot2.html#cb662-4" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;chr&gt;                                 &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb662-5"><a href="chapter-ggplot2.html#cb662-5" tabindex="-1"></a><span class="do">##  1     1 Refined petroleum                     51540 0.162 </span></span>
+<span id="cb662-6"><a href="chapter-ggplot2.html#cb662-6" tabindex="-1"></a><span class="do">##  2     2 Integrated circuits                   49126 0.155 </span></span>
+<span id="cb662-7"><a href="chapter-ggplot2.html#cb662-7" tabindex="-1"></a><span class="do">##  3     3 Cars                                  42484 0.134 </span></span>
+<span id="cb662-8"><a href="chapter-ggplot2.html#cb662-8" tabindex="-1"></a><span class="do">##  4     4 Passenger and Cargo Ships             29010 0.0914</span></span>
+<span id="cb662-9"><a href="chapter-ggplot2.html#cb662-9" tabindex="-1"></a><span class="do">##  5     5 LCDs                                  23978 0.0756</span></span>
+<span id="cb662-10"><a href="chapter-ggplot2.html#cb662-10" tabindex="-1"></a><span class="do">##  6     6 Car parts                             20496 0.0646</span></span>
+<span id="cb662-11"><a href="chapter-ggplot2.html#cb662-11" tabindex="-1"></a><span class="do">##  7     7 Broadcasting Equipment                15443 0.0487</span></span>
+<span id="cb662-12"><a href="chapter-ggplot2.html#cb662-12" tabindex="-1"></a><span class="do">##  8     8 Broadcasting Accessories              10532 0.0332</span></span>
+<span id="cb662-13"><a href="chapter-ggplot2.html#cb662-13" tabindex="-1"></a><span class="do">##  9     9 Telephones                            10417 0.0328</span></span>
+<span id="cb662-14"><a href="chapter-ggplot2.html#cb662-14" tabindex="-1"></a><span class="do">## 10    10 Cyclic Hydrocarbons                    8791 0.0277</span></span>
+<span id="cb662-15"><a href="chapter-ggplot2.html#cb662-15" tabindex="-1"></a><span class="do">## 11    11 Special Purpose Ships                  8117 0.0256</span></span>
+<span id="cb662-16"><a href="chapter-ggplot2.html#cb662-16" tabindex="-1"></a><span class="do">## 12    12 Computers                              6340 0.0200</span></span>
+<span id="cb662-17"><a href="chapter-ggplot2.html#cb662-17" tabindex="-1"></a><span class="do">## 13    13 Hot-Rolled Iron                        6288 0.0198</span></span>
+<span id="cb662-18"><a href="chapter-ggplot2.html#cb662-18" tabindex="-1"></a><span class="do">## 14    14 Coated Flat-Rolled Iron                5654 0.0178</span></span>
+<span id="cb662-19"><a href="chapter-ggplot2.html#cb662-19" tabindex="-1"></a><span class="do">## 15    15 Semiconductor devices                  5210 0.0164</span></span>
+<span id="cb662-20"><a href="chapter-ggplot2.html#cb662-20" tabindex="-1"></a><span class="do">## 16    16 Large Construction Vehicles            5091 0.0160</span></span>
+<span id="cb662-21"><a href="chapter-ggplot2.html#cb662-21" tabindex="-1"></a><span class="do">## 17    17 Polycarboxylic acids                   4833 0.0152</span></span>
+<span id="cb662-22"><a href="chapter-ggplot2.html#cb662-22" tabindex="-1"></a><span class="do">## 18    18 Polyacetals                            4743 0.0149</span></span>
+<span id="cb662-23"><a href="chapter-ggplot2.html#cb662-23" tabindex="-1"></a><span class="do">## 19    19 Machinery Having Individual Functions  4621 0.0146</span></span>
+<span id="cb662-24"><a href="chapter-ggplot2.html#cb662-24" tabindex="-1"></a><span class="do">## 20    20 Tires                                  4614 0.0145</span></span></code></pre></div>
 <ul>
 <li>각 품목별 수출액을 다음과 같은 형태의 막대그래프로 표현해 보자. 단, 범주 <code>OTHERS</code>는 수출액 비율이 2% 미만인 품목, 즉 변수 <code>prop</code>의 값이 0.02 미만인 품목을 통합한 범주이다.</li>
 </ul>

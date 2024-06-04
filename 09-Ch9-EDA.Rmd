@@ -1849,8 +1849,37 @@ Cars93 |>
 - 변수 `Cylinders`의 값이 4, 6, 8인 자동차에 대하여 변수 `Price`와 `Horsepower`의 관계를 살펴볼 수 있는 그래프를 작성하고, 그 의미를 해석해 보자. 
 
 
+**4.** 패키지 `ggplot2`에 있는 데이터 프레임 `diamonds`는 `r dim(diamonds)[1]`개 다이아몬드의 가격 및 몇 가지 제원이 입력된 자료이다. 다이어몬드 가격 `price`와 무게 `carat`, 그리고 선명도 `clarity`의 관계를 살펴보고자 한다. 
+
+- 변수 `clarity`의 범주별 절대도수와 상대도수를 계산해서 분포를 확인해 보자. 
+
+```{r, include=FALSE}
+diamonds |> 
+  count(clarity) |> 
+  mutate(prop = round(n/sum(n),2))
+```
 
 
+- 자료의 개수가 너무 많아서 전체 자료보다 일부분을 선택해서 분석하는 것이 더 간편할 것으로 보인다. 변수 `carat`의 값이 1 미만인 자료 중 40% 자료를 임의추출해서 `diamonds_small`에 할당하라. 
+
+```{r, echo=FALSE}
+set.seed(12345678)
+diamonds_small <- diamonds |> 
+  filter(carat < 1) |>
+  slice_sample(prop = 0.4)
+```
+
+- 데이터 프레임 `diamonds_small`의 변수 `clarity`의 막대그래프를 작성해 보자. 각 범주의 순서는 절대도수의 크기에 따라 순서대로 배치하고, 상대도수가 5% 미만인 범주와 5% 이상인 범주에 대한 막대는 색으로 구분해서 다음과 같이 작성해 보자. `diamonds_small`은 임의추출된 자료이기 때문에 결과에는 약간의 차이가 있을 수 있다.      
+
+```{r, echo=FALSE, fig.align='center'}
+diamonds_small |> 
+  count(clarity) |> 
+  mutate(prop = n/sum(n), rare = prop <= 0.05) |> 
+  ggplot(aes(x = fct_reorder(clarity, n), 
+             y = n, fill = rare)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  labs(x = "Clarity of diamond", y = "Frequency")
+```
 
 
 

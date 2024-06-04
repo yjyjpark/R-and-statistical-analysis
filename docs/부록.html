@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>부록 | R과 통계분석</title>
   <meta name="description" content="부록 | R과 통계분석" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="부록 | R과 통계분석" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="박동련" />
 
 
-<meta name="date" content="2024-02-22" />
+<meta name="date" content="2024-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,7 +60,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -132,6 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -397,412 +398,371 @@ div.csl-indent {
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1089"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1089-1"><a href="부록.html#cb1089-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">20</span>, <span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">18</span>)</span>
-<span id="cb1089-2"><a href="부록.html#cb1089-2" tabindex="-1"></a>x[<span class="fu">length</span>(x)]</span>
-<span id="cb1089-3"><a href="부록.html#cb1089-3" tabindex="-1"></a><span class="do">## [1] 18</span></span></code></pre></div>
+<div class="sourceCode" id="cb1209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1209-1"><a href="부록.html#cb1209-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">20</span>, <span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">18</span>)</span>
+<span id="cb1209-2"><a href="부록.html#cb1209-2" tabindex="-1"></a>x[<span class="fu">length</span>(x)]</span>
+<span id="cb1209-3"><a href="부록.html#cb1209-3" tabindex="-1"></a><span class="do">## [1] 18</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1090"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1090-1"><a href="부록.html#cb1090-1" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1st&quot;</span>, <span class="st">&quot;1st&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;3rd&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;3rd&quot;</span>, <span class="st">&quot;1st&quot;</span>)</span>
-<span id="cb1090-2"><a href="부록.html#cb1090-2" tabindex="-1"></a><span class="fu">factor</span>(grade)</span>
-<span id="cb1090-3"><a href="부록.html#cb1090-3" tabindex="-1"></a><span class="do">## [1] 1st 1st 2nd 3rd 2nd 3rd 1st</span></span>
-<span id="cb1090-4"><a href="부록.html#cb1090-4" tabindex="-1"></a><span class="do">## Levels: 1st 2nd 3rd</span></span></code></pre></div>
-<div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1091-1"><a href="부록.html#cb1091-1" tabindex="-1"></a><span class="fu">factor</span>(grade, <span class="at">order =</span> <span class="cn">TRUE</span>, <span class="at">level =</span> <span class="fu">c</span>(<span class="st">&quot;3rd&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;1st&quot;</span>))</span>
-<span id="cb1091-2"><a href="부록.html#cb1091-2" tabindex="-1"></a><span class="do">## [1] 1st 1st 2nd 3rd 2nd 3rd 1st</span></span>
-<span id="cb1091-3"><a href="부록.html#cb1091-3" tabindex="-1"></a><span class="do">## Levels: 3rd &lt; 2nd &lt; 1st</span></span></code></pre></div>
+<div class="sourceCode" id="cb1210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1210-1"><a href="부록.html#cb1210-1" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1st&quot;</span>, <span class="st">&quot;1st&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;3rd&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;3rd&quot;</span>, <span class="st">&quot;1st&quot;</span>)</span>
+<span id="cb1210-2"><a href="부록.html#cb1210-2" tabindex="-1"></a><span class="fu">factor</span>(grade)</span>
+<span id="cb1210-3"><a href="부록.html#cb1210-3" tabindex="-1"></a><span class="do">## [1] 1st 1st 2nd 3rd 2nd 3rd 1st</span></span>
+<span id="cb1210-4"><a href="부록.html#cb1210-4" tabindex="-1"></a><span class="do">## Levels: 1st 2nd 3rd</span></span></code></pre></div>
+<div class="sourceCode" id="cb1211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1211-1"><a href="부록.html#cb1211-1" tabindex="-1"></a><span class="fu">factor</span>(grade, <span class="at">order =</span> <span class="cn">TRUE</span>, <span class="at">level =</span> <span class="fu">c</span>(<span class="st">&quot;3rd&quot;</span>, <span class="st">&quot;2nd&quot;</span>, <span class="st">&quot;1st&quot;</span>))</span>
+<span id="cb1211-2"><a href="부록.html#cb1211-2" tabindex="-1"></a><span class="do">## [1] 1st 1st 2nd 3rd 2nd 3rd 1st</span></span>
+<span id="cb1211-3"><a href="부록.html#cb1211-3" tabindex="-1"></a><span class="do">## Levels: 3rd &lt; 2nd &lt; 1st</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1092-1"><a href="부록.html#cb1092-1" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">17</span>, <span class="dv">19</span>)</span>
-<span id="cb1092-2"><a href="부록.html#cb1092-2" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">25</span>)</span>
-<span id="cb1092-3"><a href="부록.html#cb1092-3" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">35</span>)</span>
-<span id="cb1092-4"><a href="부록.html#cb1092-4" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var1 =</span> x1, <span class="at">var2 =</span> x2, <span class="at">var3 =</span> x3)</span>
-<span id="cb1092-5"><a href="부록.html#cb1092-5" tabindex="-1"></a>d1</span>
-<span id="cb1092-6"><a href="부록.html#cb1092-6" tabindex="-1"></a><span class="do">##   var1 var2 var3</span></span>
-<span id="cb1092-7"><a href="부록.html#cb1092-7" tabindex="-1"></a><span class="do">## 1   12   21   32</span></span>
-<span id="cb1092-8"><a href="부록.html#cb1092-8" tabindex="-1"></a><span class="do">## 2   17   22   34</span></span>
-<span id="cb1092-9"><a href="부록.html#cb1092-9" tabindex="-1"></a><span class="do">## 3   19   25   35</span></span></code></pre></div>
-<div class="sourceCode" id="cb1093"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1093-1"><a href="부록.html#cb1093-1" tabindex="-1"></a>d1[<span class="st">&quot;var2&quot;</span>]</span>
-<span id="cb1093-2"><a href="부록.html#cb1093-2" tabindex="-1"></a><span class="do">##   var2</span></span>
-<span id="cb1093-3"><a href="부록.html#cb1093-3" tabindex="-1"></a><span class="do">## 1   21</span></span>
-<span id="cb1093-4"><a href="부록.html#cb1093-4" tabindex="-1"></a><span class="do">## 2   22</span></span>
-<span id="cb1093-5"><a href="부록.html#cb1093-5" tabindex="-1"></a><span class="do">## 3   25</span></span></code></pre></div>
+<div class="sourceCode" id="cb1212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1212-1"><a href="부록.html#cb1212-1" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">17</span>, <span class="dv">19</span>)</span>
+<span id="cb1212-2"><a href="부록.html#cb1212-2" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">25</span>)</span>
+<span id="cb1212-3"><a href="부록.html#cb1212-3" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">35</span>)</span>
+<span id="cb1212-4"><a href="부록.html#cb1212-4" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var1 =</span> x1, <span class="at">var2 =</span> x2, <span class="at">var3 =</span> x3)</span>
+<span id="cb1212-5"><a href="부록.html#cb1212-5" tabindex="-1"></a>d1</span>
+<span id="cb1212-6"><a href="부록.html#cb1212-6" tabindex="-1"></a><span class="do">##   var1 var2 var3</span></span>
+<span id="cb1212-7"><a href="부록.html#cb1212-7" tabindex="-1"></a><span class="do">## 1   12   21   32</span></span>
+<span id="cb1212-8"><a href="부록.html#cb1212-8" tabindex="-1"></a><span class="do">## 2   17   22   34</span></span>
+<span id="cb1212-9"><a href="부록.html#cb1212-9" tabindex="-1"></a><span class="do">## 3   19   25   35</span></span></code></pre></div>
+<div class="sourceCode" id="cb1213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1213-1"><a href="부록.html#cb1213-1" tabindex="-1"></a>d1[<span class="st">&quot;var2&quot;</span>]</span>
+<span id="cb1213-2"><a href="부록.html#cb1213-2" tabindex="-1"></a><span class="do">##   var2</span></span>
+<span id="cb1213-3"><a href="부록.html#cb1213-3" tabindex="-1"></a><span class="do">## 1   21</span></span>
+<span id="cb1213-4"><a href="부록.html#cb1213-4" tabindex="-1"></a><span class="do">## 2   22</span></span>
+<span id="cb1213-5"><a href="부록.html#cb1213-5" tabindex="-1"></a><span class="do">## 3   25</span></span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1094"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1094-1"><a href="부록.html#cb1094-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1094-2"><a href="부록.html#cb1094-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb1094-3"><a href="부록.html#cb1094-3" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span>,</span>
-<span id="cb1094-4"><a href="부록.html#cb1094-4" tabindex="-1"></a>  <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,</span>
-<span id="cb1094-5"><a href="부록.html#cb1094-5" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">3</span>),</span>
-<span id="cb1094-6"><a href="부록.html#cb1094-6" tabindex="-1"></a>  <span class="at">w=</span><span class="fu">sample</span>(letters, <span class="dv">9</span>)</span>
-<span id="cb1094-7"><a href="부록.html#cb1094-7" tabindex="-1"></a>)</span>
-<span id="cb1094-8"><a href="부록.html#cb1094-8" tabindex="-1"></a></span>
-<span id="cb1094-9"><a href="부록.html#cb1094-9" tabindex="-1"></a>df1</span>
-<span id="cb1094-10"><a href="부록.html#cb1094-10" tabindex="-1"></a><span class="do">## # A tibble: 9 × 4</span></span>
-<span id="cb1094-11"><a href="부록.html#cb1094-11" tabindex="-1"></a><span class="do">##       x     y     z w    </span></span>
-<span id="cb1094-12"><a href="부록.html#cb1094-12" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</span></span>
-<span id="cb1094-13"><a href="부록.html#cb1094-13" tabindex="-1"></a><span class="do">## 1     1     1     1 m    </span></span>
-<span id="cb1094-14"><a href="부록.html#cb1094-14" tabindex="-1"></a><span class="do">## 2     1     2     1 y    </span></span>
-<span id="cb1094-15"><a href="부록.html#cb1094-15" tabindex="-1"></a><span class="do">## 3     1     3     1 w    </span></span>
-<span id="cb1094-16"><a href="부록.html#cb1094-16" tabindex="-1"></a><span class="do">## 4     1     4     2 n    </span></span>
-<span id="cb1094-17"><a href="부록.html#cb1094-17" tabindex="-1"></a><span class="do">## 5     1     5     2 p    </span></span>
-<span id="cb1094-18"><a href="부록.html#cb1094-18" tabindex="-1"></a><span class="do">## 6     1     6     2 h    </span></span>
-<span id="cb1094-19"><a href="부록.html#cb1094-19" tabindex="-1"></a><span class="do">## 7     1     7     3 v    </span></span>
-<span id="cb1094-20"><a href="부록.html#cb1094-20" tabindex="-1"></a><span class="do">## 8     1     8     3 a    </span></span>
-<span id="cb1094-21"><a href="부록.html#cb1094-21" tabindex="-1"></a><span class="do">## 9     1     9     3 z</span></span></code></pre></div>
-<div class="sourceCode" id="cb1095"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1095-1"><a href="부록.html#cb1095-1" tabindex="-1"></a>df1[[<span class="st">&quot;y&quot;</span>]]</span>
-<span id="cb1095-2"><a href="부록.html#cb1095-2" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6 7 8 9</span></span>
-<span id="cb1095-3"><a href="부록.html#cb1095-3" tabindex="-1"></a>df1[[<span class="dv">2</span>]]</span>
-<span id="cb1095-4"><a href="부록.html#cb1095-4" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6 7 8 9</span></span>
-<span id="cb1095-5"><a href="부록.html#cb1095-5" tabindex="-1"></a>df1<span class="sc">$</span>y</span>
-<span id="cb1095-6"><a href="부록.html#cb1095-6" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6 7 8 9</span></span></code></pre></div>
-<div class="sourceCode" id="cb1096"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1096-1"><a href="부록.html#cb1096-1" tabindex="-1"></a>df1[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">2</span>]</span>
-<span id="cb1096-2"><a href="부록.html#cb1096-2" tabindex="-1"></a><span class="do">## # A tibble: 5 × 1</span></span>
-<span id="cb1096-3"><a href="부록.html#cb1096-3" tabindex="-1"></a><span class="do">##       y</span></span>
-<span id="cb1096-4"><a href="부록.html#cb1096-4" tabindex="-1"></a><span class="do">##   &lt;int&gt;</span></span>
-<span id="cb1096-5"><a href="부록.html#cb1096-5" tabindex="-1"></a><span class="do">## 1     1</span></span>
-<span id="cb1096-6"><a href="부록.html#cb1096-6" tabindex="-1"></a><span class="do">## 2     2</span></span>
-<span id="cb1096-7"><a href="부록.html#cb1096-7" tabindex="-1"></a><span class="do">## 3     3</span></span>
-<span id="cb1096-8"><a href="부록.html#cb1096-8" tabindex="-1"></a><span class="do">## 4     4</span></span>
-<span id="cb1096-9"><a href="부록.html#cb1096-9" tabindex="-1"></a><span class="do">## 5     5</span></span>
-<span id="cb1096-10"><a href="부록.html#cb1096-10" tabindex="-1"></a><span class="fu">as.data.frame</span>(df1)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">2</span>]</span>
-<span id="cb1096-11"><a href="부록.html#cb1096-11" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb1214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1214-1"><a href="부록.html#cb1214-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1214-2"><a href="부록.html#cb1214-2" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1214-3"><a href="부록.html#cb1214-3" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span>,</span>
+<span id="cb1214-4"><a href="부록.html#cb1214-4" tabindex="-1"></a>  <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,</span>
+<span id="cb1214-5"><a href="부록.html#cb1214-5" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb1214-6"><a href="부록.html#cb1214-6" tabindex="-1"></a>  <span class="at">w=</span><span class="fu">sample</span>(letters, <span class="dv">9</span>)</span>
+<span id="cb1214-7"><a href="부록.html#cb1214-7" tabindex="-1"></a>)</span>
+<span id="cb1214-8"><a href="부록.html#cb1214-8" tabindex="-1"></a></span>
+<span id="cb1214-9"><a href="부록.html#cb1214-9" tabindex="-1"></a>df1</span>
+<span id="cb1214-10"><a href="부록.html#cb1214-10" tabindex="-1"></a><span class="do">## # A tibble: 9 × 4</span></span>
+<span id="cb1214-11"><a href="부록.html#cb1214-11" tabindex="-1"></a><span class="do">##       x     y     z w    </span></span>
+<span id="cb1214-12"><a href="부록.html#cb1214-12" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</span></span>
+<span id="cb1214-13"><a href="부록.html#cb1214-13" tabindex="-1"></a><span class="do">## 1     1     1     1 x    </span></span>
+<span id="cb1214-14"><a href="부록.html#cb1214-14" tabindex="-1"></a><span class="do">## 2     1     2     1 h    </span></span>
+<span id="cb1214-15"><a href="부록.html#cb1214-15" tabindex="-1"></a><span class="do">## 3     1     3     1 p    </span></span>
+<span id="cb1214-16"><a href="부록.html#cb1214-16" tabindex="-1"></a><span class="do">## 4     1     4     2 n    </span></span>
+<span id="cb1214-17"><a href="부록.html#cb1214-17" tabindex="-1"></a><span class="do">## 5     1     5     2 d    </span></span>
+<span id="cb1214-18"><a href="부록.html#cb1214-18" tabindex="-1"></a><span class="do">## 6     1     6     2 m    </span></span>
+<span id="cb1214-19"><a href="부록.html#cb1214-19" tabindex="-1"></a><span class="do">## 7     1     7     3 j    </span></span>
+<span id="cb1214-20"><a href="부록.html#cb1214-20" tabindex="-1"></a><span class="do">## 8     1     8     3 q    </span></span>
+<span id="cb1214-21"><a href="부록.html#cb1214-21" tabindex="-1"></a><span class="do">## 9     1     9     3 c</span></span></code></pre></div>
+<div class="sourceCode" id="cb1215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1215-1"><a href="부록.html#cb1215-1" tabindex="-1"></a>df1[[<span class="st">&quot;y&quot;</span>]]</span>
+<span id="cb1215-2"><a href="부록.html#cb1215-2" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6 7 8 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb1216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1216-1"><a href="부록.html#cb1216-1" tabindex="-1"></a>df1[[<span class="dv">2</span>]]</span>
+<span id="cb1216-2"><a href="부록.html#cb1216-2" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6 7 8 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb1217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1217-1"><a href="부록.html#cb1217-1" tabindex="-1"></a>df1<span class="sc">$</span>y</span>
+<span id="cb1217-2"><a href="부록.html#cb1217-2" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5 6 7 8 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb1218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1218-1"><a href="부록.html#cb1218-1" tabindex="-1"></a>df1[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">2</span>]</span>
+<span id="cb1218-2"><a href="부록.html#cb1218-2" tabindex="-1"></a><span class="do">## # A tibble: 5 × 1</span></span>
+<span id="cb1218-3"><a href="부록.html#cb1218-3" tabindex="-1"></a><span class="do">##       y</span></span>
+<span id="cb1218-4"><a href="부록.html#cb1218-4" tabindex="-1"></a><span class="do">##   &lt;int&gt;</span></span>
+<span id="cb1218-5"><a href="부록.html#cb1218-5" tabindex="-1"></a><span class="do">## 1     1</span></span>
+<span id="cb1218-6"><a href="부록.html#cb1218-6" tabindex="-1"></a><span class="do">## 2     2</span></span>
+<span id="cb1218-7"><a href="부록.html#cb1218-7" tabindex="-1"></a><span class="do">## 3     3</span></span>
+<span id="cb1218-8"><a href="부록.html#cb1218-8" tabindex="-1"></a><span class="do">## 4     4</span></span>
+<span id="cb1218-9"><a href="부록.html#cb1218-9" tabindex="-1"></a><span class="do">## 5     5</span></span></code></pre></div>
+<div class="sourceCode" id="cb1219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1219-1"><a href="부록.html#cb1219-1" tabindex="-1"></a><span class="fu">as.data.frame</span>(df1)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">2</span>]</span>
+<span id="cb1219-2"><a href="부록.html#cb1219-2" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5</span></span></code></pre></div>
 <ol start="9" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1097"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1097-1"><a href="부록.html#cb1097-1" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(letters, <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(letters))</span>
-<span id="cb1097-2"><a href="부록.html#cb1097-2" tabindex="-1"></a>a1</span>
-<span id="cb1097-3"><a href="부록.html#cb1097-3" tabindex="-1"></a><span class="do">##  [1] &quot;a1&quot;  &quot;b2&quot;  &quot;c3&quot;  &quot;d4&quot;  &quot;e5&quot;  &quot;f6&quot;  &quot;g7&quot;  &quot;h8&quot;  &quot;i9&quot;  &quot;j10&quot; &quot;k11&quot; &quot;l12&quot;</span></span>
-<span id="cb1097-4"><a href="부록.html#cb1097-4" tabindex="-1"></a><span class="do">## [13] &quot;m13&quot; &quot;n14&quot; &quot;o15&quot; &quot;p16&quot; &quot;q17&quot; &quot;r18&quot; &quot;s19&quot; &quot;t20&quot; &quot;u21&quot; &quot;v22&quot; &quot;w23&quot; &quot;x24&quot;</span></span>
-<span id="cb1097-5"><a href="부록.html#cb1097-5" tabindex="-1"></a><span class="do">## [25] &quot;y25&quot; &quot;z26&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb1098"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1098-1"><a href="부록.html#cb1098-1" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">paste</span>(a1, <span class="at">collapse =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb1098-2"><a href="부록.html#cb1098-2" tabindex="-1"></a>a2</span>
-<span id="cb1098-3"><a href="부록.html#cb1098-3" tabindex="-1"></a><span class="do">## [1] &quot;a1-b2-c3-d4-e5-f6-g7-h8-i9-j10-k11-l12-m13-n14-o15-p16-q17-r18-s19-t20-u21-v22-w23-x24-y25-z26&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb1099"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1099-1"><a href="부록.html#cb1099-1" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;-&quot;</span>, <span class="st">&quot;&quot;</span>, a2)</span>
-<span id="cb1099-2"><a href="부록.html#cb1099-2" tabindex="-1"></a>a3</span>
-<span id="cb1099-3"><a href="부록.html#cb1099-3" tabindex="-1"></a><span class="do">## [1] &quot;a1b2c3d4e5f6g7h8i9j10k11l12m13n14o15p16q17r18s19t20u21v22w23x24y25z26&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1220-1"><a href="부록.html#cb1220-1" tabindex="-1"></a>a1 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(letters, <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(letters))</span>
+<span id="cb1220-2"><a href="부록.html#cb1220-2" tabindex="-1"></a>a1</span>
+<span id="cb1220-3"><a href="부록.html#cb1220-3" tabindex="-1"></a><span class="do">##  [1] &quot;a1&quot;  &quot;b2&quot;  &quot;c3&quot;  &quot;d4&quot;  &quot;e5&quot;  &quot;f6&quot;  &quot;g7&quot;  &quot;h8&quot;  &quot;i9&quot;  &quot;j10&quot; &quot;k11&quot; &quot;l12&quot;</span></span>
+<span id="cb1220-4"><a href="부록.html#cb1220-4" tabindex="-1"></a><span class="do">## [13] &quot;m13&quot; &quot;n14&quot; &quot;o15&quot; &quot;p16&quot; &quot;q17&quot; &quot;r18&quot; &quot;s19&quot; &quot;t20&quot; &quot;u21&quot; &quot;v22&quot; &quot;w23&quot; &quot;x24&quot;</span></span>
+<span id="cb1220-5"><a href="부록.html#cb1220-5" tabindex="-1"></a><span class="do">## [25] &quot;y25&quot; &quot;z26&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1221-1"><a href="부록.html#cb1221-1" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="fu">paste</span>(a1, <span class="at">collapse =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb1221-2"><a href="부록.html#cb1221-2" tabindex="-1"></a>a2</span>
+<span id="cb1221-3"><a href="부록.html#cb1221-3" tabindex="-1"></a><span class="do">## [1] &quot;a1-b2-c3-d4-e5-f6-g7-h8-i9-j10-k11-l12-m13-n14-o15-p16-q17-r18-s19-t20-u21-v22-w23-x24-y25-z26&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1222-1"><a href="부록.html#cb1222-1" tabindex="-1"></a>a3 <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;-&quot;</span>, <span class="st">&quot;&quot;</span>, a2)</span>
+<span id="cb1222-2"><a href="부록.html#cb1222-2" tabindex="-1"></a>a3</span>
+<span id="cb1222-3"><a href="부록.html#cb1222-3" tabindex="-1"></a><span class="do">## [1] &quot;a1b2c3d4e5f6g7h8i9j10k11l12m13n14o15p16q17r18s19t20u21v22w23x24y25z26&quot;</span></span></code></pre></div>
 <ol start="11" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1100-1"><a href="부록.html#cb1100-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">20</span>, <span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">18</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1101-1"><a href="부록.html#cb1101-1" tabindex="-1"></a>y[y <span class="sc">==</span> <span class="fu">max</span>(y)] <span class="ot">&lt;-</span> <span class="dv">23</span>                         </span>
-<span id="cb1101-2"><a href="부록.html#cb1101-2" tabindex="-1"></a>y</span>
-<span id="cb1101-3"><a href="부록.html#cb1101-3" tabindex="-1"></a><span class="do">## [1] 17 16 20 23 22 15 21 18</span></span></code></pre></div>
-<div class="sourceCode" id="cb1102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1102-1"><a href="부록.html#cb1102-1" tabindex="-1"></a><span class="fu">sum</span>(y <span class="sc">&gt;=</span> <span class="dv">20</span>)         </span>
-<span id="cb1102-2"><a href="부록.html#cb1102-2" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
-<div class="sourceCode" id="cb1103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1103-1"><a href="부록.html#cb1103-1" tabindex="-1"></a><span class="fu">mean</span>(y <span class="sc">&lt;=</span> <span class="dv">18</span>)</span>
-<span id="cb1103-2"><a href="부록.html#cb1103-2" tabindex="-1"></a><span class="do">## [1] 0.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb1223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1223-1"><a href="부록.html#cb1223-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">20</span>, <span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">18</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1224-1"><a href="부록.html#cb1224-1" tabindex="-1"></a>y[y <span class="sc">==</span> <span class="fu">max</span>(y)] <span class="ot">&lt;-</span> <span class="dv">23</span>                         </span>
+<span id="cb1224-2"><a href="부록.html#cb1224-2" tabindex="-1"></a>y</span>
+<span id="cb1224-3"><a href="부록.html#cb1224-3" tabindex="-1"></a><span class="do">## [1] 17 16 20 23 22 15 21 18</span></span></code></pre></div>
+<div class="sourceCode" id="cb1225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1225-1"><a href="부록.html#cb1225-1" tabindex="-1"></a><span class="fu">sum</span>(y <span class="sc">&gt;=</span> <span class="dv">20</span>)         </span>
+<span id="cb1225-2"><a href="부록.html#cb1225-2" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb1226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1226-1"><a href="부록.html#cb1226-1" tabindex="-1"></a><span class="fu">mean</span>(y <span class="sc">&lt;=</span> <span class="dv">18</span>)</span>
+<span id="cb1226-2"><a href="부록.html#cb1226-2" tabindex="-1"></a><span class="do">## [1] 0.5</span></span></code></pre></div>
 <ol start="13" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1104-1"><a href="부록.html#cb1104-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
-<span id="cb1104-2"><a href="부록.html#cb1104-2" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.1</span>, <span class="fl">9.7</span>, <span class="fl">10.3</span>, <span class="fl">18.8</span>, <span class="fl">28.3</span>, <span class="fl">16.1</span>, <span class="fl">5.7</span>, <span class="fl">12.6</span>, <span class="fl">16.1</span>, <span class="fl">15.8</span>, <span class="fl">18.8</span>)</span>
-<span id="cb1104-3"><a href="부록.html#cb1104-3" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>,x)</span>
-<span id="cb1104-4"><a href="부록.html#cb1104-4" tabindex="-1"></a>beta.hat <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> X)<span class="sc">%*%</span><span class="fu">t</span>(X)<span class="sc">%*%</span>Y</span>
-<span id="cb1104-5"><a href="부록.html#cb1104-5" tabindex="-1"></a><span class="fu">rownames</span>(beta.hat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;beta_0&quot;</span>, <span class="st">&quot;beta_1&quot;</span>)</span>
-<span id="cb1104-6"><a href="부록.html#cb1104-6" tabindex="-1"></a><span class="fu">colnames</span>(beta.hat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Estimate&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1105-1"><a href="부록.html#cb1105-1" tabindex="-1"></a>beta.hat</span>
-<span id="cb1105-2"><a href="부록.html#cb1105-2" tabindex="-1"></a><span class="do">##        Estimate</span></span>
-<span id="cb1105-3"><a href="부록.html#cb1105-3" tabindex="-1"></a><span class="do">## beta_0 4.790317</span></span>
-<span id="cb1105-4"><a href="부록.html#cb1105-4" tabindex="-1"></a><span class="do">## beta_1 1.955676</span></span></code></pre></div>
+<div class="sourceCode" id="cb1227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1227-1"><a href="부록.html#cb1227-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb1227-2"><a href="부록.html#cb1227-2" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">6.1</span>, <span class="fl">9.7</span>, <span class="fl">10.3</span>, <span class="fl">18.8</span>, <span class="fl">28.3</span>, <span class="fl">16.1</span>, <span class="fl">5.7</span>, <span class="fl">12.6</span>, <span class="fl">16.1</span>, <span class="fl">15.8</span>, <span class="fl">18.8</span>)</span>
+<span id="cb1227-3"><a href="부록.html#cb1227-3" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>,x)</span>
+<span id="cb1227-4"><a href="부록.html#cb1227-4" tabindex="-1"></a>beta.hat <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> X)<span class="sc">%*%</span><span class="fu">t</span>(X)<span class="sc">%*%</span>Y</span>
+<span id="cb1227-5"><a href="부록.html#cb1227-5" tabindex="-1"></a><span class="fu">rownames</span>(beta.hat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;beta_0&quot;</span>, <span class="st">&quot;beta_1&quot;</span>)</span>
+<span id="cb1227-6"><a href="부록.html#cb1227-6" tabindex="-1"></a><span class="fu">colnames</span>(beta.hat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Estimate&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1228-1"><a href="부록.html#cb1228-1" tabindex="-1"></a>beta.hat</span>
+<span id="cb1228-2"><a href="부록.html#cb1228-2" tabindex="-1"></a><span class="do">##        Estimate</span></span>
+<span id="cb1228-3"><a href="부록.html#cb1228-3" tabindex="-1"></a><span class="do">## beta_0 4.790317</span></span>
+<span id="cb1228-4"><a href="부록.html#cb1228-4" tabindex="-1"></a><span class="do">## beta_1 1.955676</span></span></code></pre></div>
 </div>
 <div id="장-1" class="section level3 unnumbered hasAnchor">
 <h3>3장<a href="부록.html#장-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb1106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1106-1"><a href="부록.html#cb1106-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1106-2"><a href="부록.html#cb1106-2" tabindex="-1"></a>URL <span class="ot">&lt;-</span> <span class="st">&quot;http://lib.stat.cmu.edu/datasets/fl2000.txt&quot;</span></span>
-<span id="cb1106-3"><a href="부록.html#cb1106-3" tabindex="-1"></a>fl2000 <span class="ot">&lt;-</span> <span class="fu">read_table</span>(URL, <span class="at">comment =</span> <span class="st">&quot;#&quot;</span>)</span>
-<span id="cb1106-4"><a href="부록.html#cb1106-4" tabindex="-1"></a></span>
-<span id="cb1106-5"><a href="부록.html#cb1106-5" tabindex="-1"></a><span class="fu">print</span>(fl2000, <span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb1106-6"><a href="부록.html#cb1106-6" tabindex="-1"></a><span class="do">## # A tibble: 67 × 17</span></span>
-<span id="cb1106-7"><a href="부록.html#cb1106-7" tabindex="-1"></a><span class="do">##   `&quot;county&quot;`    `&quot;technology&quot;` `&quot;columns&quot;` `&quot;under&quot;` `&quot;over&quot;` `&quot;Bush&quot;` `&quot;Gore&quot;`</span></span>
-<span id="cb1106-8"><a href="부록.html#cb1106-8" tabindex="-1"></a><span class="do">##   &lt;chr&gt;         &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb1106-9"><a href="부록.html#cb1106-9" tabindex="-1"></a><span class="do">## 1 &quot;\&quot;Alachua\&quot;&quot; &quot;\&quot;Optical\&quot;&quot;            1       217      105    34124    47365</span></span>
-<span id="cb1106-10"><a href="부록.html#cb1106-10" tabindex="-1"></a><span class="do">## 2 &quot;\&quot;Baker\&quot;&quot;   &quot;\&quot;Optical\&quot;&quot;            1        79       46     5610     2392</span></span>
-<span id="cb1106-11"><a href="부록.html#cb1106-11" tabindex="-1"></a><span class="do">## 3 &quot;\&quot;Bay\&quot;&quot;     &quot;\&quot;Optical\&quot;&quot;            1       541      141    38637    18850</span></span>
-<span id="cb1106-12"><a href="부록.html#cb1106-12" tabindex="-1"></a><span class="do">## # ℹ 64 more rows</span></span>
-<span id="cb1106-13"><a href="부록.html#cb1106-13" tabindex="-1"></a><span class="do">## # ℹ 10 more variables: `&quot;Browne&quot;` &lt;dbl&gt;, `&quot;Nader&quot;` &lt;dbl&gt;, `&quot;Harris&quot;` &lt;dbl&gt;,</span></span>
-<span id="cb1106-14"><a href="부록.html#cb1106-14" tabindex="-1"></a><span class="do">## #   `&quot;Hagelin&quot;` &lt;dbl&gt;, `&quot;Buchanan&quot;` &lt;dbl&gt;, `&quot;McReynolds&quot;` &lt;dbl&gt;,</span></span>
-<span id="cb1106-15"><a href="부록.html#cb1106-15" tabindex="-1"></a><span class="do">## #   `&quot;Phillips&quot;` &lt;dbl&gt;, `&quot;Moorehead&quot;` &lt;dbl&gt;, `&quot;Chote&quot;` &lt;dbl&gt;,</span></span>
-<span id="cb1106-16"><a href="부록.html#cb1106-16" tabindex="-1"></a><span class="do">## #   `&quot;McCarthy&quot;` &lt;dbl&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb1107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1107-1"><a href="부록.html#cb1107-1" tabindex="-1"></a><span class="fu">names</span>(fl2000) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&#39;&quot;&#39;</span>, <span class="st">&#39;&#39;</span>, <span class="fu">names</span>(fl2000))</span>
-<span id="cb1107-2"><a href="부록.html#cb1107-2" tabindex="-1"></a><span class="fu">print</span>(fl2000, <span class="at">n =</span> <span class="dv">2</span>)</span>
-<span id="cb1107-3"><a href="부록.html#cb1107-3" tabindex="-1"></a><span class="do">## # A tibble: 67 × 17</span></span>
-<span id="cb1107-4"><a href="부록.html#cb1107-4" tabindex="-1"></a><span class="do">##   county  technology columns under  over  Bush  Gore Browne Nader Harris Hagelin</span></span>
-<span id="cb1107-5"><a href="부록.html#cb1107-5" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb1107-6"><a href="부록.html#cb1107-6" tabindex="-1"></a><span class="do">## 1 &quot;\&quot;Ala… &quot;\&quot;Optica…       1   217   105 34124 47365    658  3226      6      42</span></span>
-<span id="cb1107-7"><a href="부록.html#cb1107-7" tabindex="-1"></a><span class="do">## 2 &quot;\&quot;Bak… &quot;\&quot;Optica…       1    79    46  5610  2392     17    53      0       3</span></span>
-<span id="cb1107-8"><a href="부록.html#cb1107-8" tabindex="-1"></a><span class="do">## # ℹ 65 more rows</span></span>
-<span id="cb1107-9"><a href="부록.html#cb1107-9" tabindex="-1"></a><span class="do">## # ℹ 6 more variables: Buchanan &lt;dbl&gt;, McReynolds &lt;dbl&gt;, Phillips &lt;dbl&gt;,</span></span>
-<span id="cb1107-10"><a href="부록.html#cb1107-10" tabindex="-1"></a><span class="do">## #   Moorehead &lt;dbl&gt;, Chote &lt;dbl&gt;, McCarthy &lt;dbl&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb1108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1108-1"><a href="부록.html#cb1108-1" tabindex="-1"></a>fl2000<span class="sc">$</span>county <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;&#39;</span>, fl2000<span class="sc">$</span>county)</span>
-<span id="cb1108-2"><a href="부록.html#cb1108-2" tabindex="-1"></a>fl2000<span class="sc">$</span>technology <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&#39;</span><span class="sc">\&quot;</span><span class="st">&#39;</span>, <span class="st">&#39;&#39;</span>, fl2000<span class="sc">$</span>technology)</span>
-<span id="cb1108-3"><a href="부록.html#cb1108-3" tabindex="-1"></a></span>
-<span id="cb1108-4"><a href="부록.html#cb1108-4" tabindex="-1"></a><span class="fu">print</span>(fl2000, <span class="at">n =</span> <span class="dv">2</span>)</span>
-<span id="cb1108-5"><a href="부록.html#cb1108-5" tabindex="-1"></a><span class="do">## # A tibble: 67 × 17</span></span>
-<span id="cb1108-6"><a href="부록.html#cb1108-6" tabindex="-1"></a><span class="do">##   county  technology columns under  over  Bush  Gore Browne Nader Harris Hagelin</span></span>
-<span id="cb1108-7"><a href="부록.html#cb1108-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb1108-8"><a href="부록.html#cb1108-8" tabindex="-1"></a><span class="do">## 1 Alachua Optical          1   217   105 34124 47365    658  3226      6      42</span></span>
-<span id="cb1108-9"><a href="부록.html#cb1108-9" tabindex="-1"></a><span class="do">## 2 Baker   Optical          1    79    46  5610  2392     17    53      0       3</span></span>
-<span id="cb1108-10"><a href="부록.html#cb1108-10" tabindex="-1"></a><span class="do">## # ℹ 65 more rows</span></span>
-<span id="cb1108-11"><a href="부록.html#cb1108-11" tabindex="-1"></a><span class="do">## # ℹ 6 more variables: Buchanan &lt;dbl&gt;, McReynolds &lt;dbl&gt;, Phillips &lt;dbl&gt;,</span></span>
-<span id="cb1108-12"><a href="부록.html#cb1108-12" tabindex="-1"></a><span class="do">## #   Moorehead &lt;dbl&gt;, Chote &lt;dbl&gt;, McCarthy &lt;dbl&gt;</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1109-1"><a href="부록.html#cb1109-1" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
-<span id="cb1109-2"><a href="부록.html#cb1109-2" tabindex="-1"></a>URL <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/South_Korea&quot;</span></span>
-<span id="cb1109-3"><a href="부록.html#cb1109-3" tabindex="-1"></a>Xpath <span class="ot">&lt;-</span> <span class="st">&#39;//*[@id=&quot;mw-content-text&quot;]/div[1]/table[7]&#39;</span>  <span class="co"># 2024.1.22 시점</span></span></code></pre></div>
-<div class="sourceCode" id="cb1110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1110-1"><a href="부록.html#cb1110-1" tabindex="-1"></a>tbl_1 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(URL) <span class="sc">|&gt;</span>      <span class="co"># &#39; |&gt; &#39; : pipe 연산자. 4장에서 소개됨. </span></span>
-<span id="cb1110-2"><a href="부록.html#cb1110-2" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">xpath=</span>Xpath) <span class="sc">|&gt;</span> </span>
-<span id="cb1110-3"><a href="부록.html#cb1110-3" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb1111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1111-1"><a href="부록.html#cb1111-1" tabindex="-1"></a>top_company <span class="ot">&lt;-</span> tbl_1[[<span class="dv">1</span>]] </span>
-<span id="cb1111-2"><a href="부록.html#cb1111-2" tabindex="-1"></a><span class="fu">names</span>(top_company) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;Name&quot;</span>, <span class="st">&quot;HQ&quot;</span>, <span class="st">&quot;Revenue&quot;</span>, <span class="st">&quot;Profit&quot;</span>, <span class="st">&quot;Assets&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1112-1"><a href="부록.html#cb1112-1" tabindex="-1"></a><span class="fu">print</span>(top_company, <span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb1112-2"><a href="부록.html#cb1112-2" tabindex="-1"></a><span class="do">## # A tibble: 15 × 6</span></span>
-<span id="cb1112-3"><a href="부록.html#cb1112-3" tabindex="-1"></a><span class="do">##    Rank Name                HQ    Revenue Profit Assets </span></span>
-<span id="cb1112-4"><a href="부록.html#cb1112-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;               &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  </span></span>
-<span id="cb1112-5"><a href="부록.html#cb1112-5" tabindex="-1"></a><span class="do">## 1     1 Samsung Electronics Suwon 173,957 19,316 217,104</span></span>
-<span id="cb1112-6"><a href="부록.html#cb1112-6" tabindex="-1"></a><span class="do">## 2     2 Hyundai Motor       Seoul 80,701  4,659  148,092</span></span>
-<span id="cb1112-7"><a href="부록.html#cb1112-7" tabindex="-1"></a><span class="do">## 3     3 SK Holdings         Seoul 72,579  659    85.332 </span></span>
-<span id="cb1112-8"><a href="부록.html#cb1112-8" tabindex="-1"></a><span class="do">## # ℹ 12 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb1229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1229-1"><a href="부록.html#cb1229-1" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb1229-2"><a href="부록.html#cb1229-2" tabindex="-1"></a>URL <span class="ot">&lt;-</span> <span class="st">&quot;https://en.wikipedia.org/wiki/South_Korea&quot;</span></span>
+<span id="cb1229-3"><a href="부록.html#cb1229-3" tabindex="-1"></a>Xpath <span class="ot">&lt;-</span> <span class="st">&#39;//*[@id=&quot;mw-content-text&quot;]/div[1]/table[7]&#39;</span>  <span class="co"># 2024.1.22 시점</span></span></code></pre></div>
+<div class="sourceCode" id="cb1230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1230-1"><a href="부록.html#cb1230-1" tabindex="-1"></a>tbl_1 <span class="ot">&lt;-</span> <span class="fu">read_html</span>(URL) <span class="sc">|&gt;</span>      <span class="co"># &#39; |&gt; &#39; : pipe 연산자. 4장에서 소개됨. </span></span>
+<span id="cb1230-2"><a href="부록.html#cb1230-2" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">xpath=</span>Xpath) <span class="sc">|&gt;</span> </span>
+<span id="cb1230-3"><a href="부록.html#cb1230-3" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1231-1"><a href="부록.html#cb1231-1" tabindex="-1"></a>top_company <span class="ot">&lt;-</span> tbl_1[[<span class="dv">1</span>]] </span>
+<span id="cb1231-2"><a href="부록.html#cb1231-2" tabindex="-1"></a><span class="fu">names</span>(top_company) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Rank&quot;</span>, <span class="st">&quot;Name&quot;</span>, <span class="st">&quot;HQ&quot;</span>, <span class="st">&quot;Revenue&quot;</span>, <span class="st">&quot;Profit&quot;</span>, <span class="st">&quot;Assets&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1232-1"><a href="부록.html#cb1232-1" tabindex="-1"></a><span class="fu">print</span>(top_company, <span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb1232-2"><a href="부록.html#cb1232-2" tabindex="-1"></a><span class="do">## # A tibble: 15 × 6</span></span>
+<span id="cb1232-3"><a href="부록.html#cb1232-3" tabindex="-1"></a><span class="do">##    Rank Name                HQ    Revenue Profit Assets </span></span>
+<span id="cb1232-4"><a href="부록.html#cb1232-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;               &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  </span></span>
+<span id="cb1232-5"><a href="부록.html#cb1232-5" tabindex="-1"></a><span class="do">## 1     1 Samsung Electronics Suwon 173,957 19,316 217,104</span></span>
+<span id="cb1232-6"><a href="부록.html#cb1232-6" tabindex="-1"></a><span class="do">## 2     2 Hyundai Motor       Seoul 80,701  4,659  148,092</span></span>
+<span id="cb1232-7"><a href="부록.html#cb1232-7" tabindex="-1"></a><span class="do">## 3     3 SK Holdings         Seoul 72,579  659    85.332 </span></span>
+<span id="cb1232-8"><a href="부록.html#cb1232-8" tabindex="-1"></a><span class="do">## # ℹ 12 more rows</span></span></code></pre></div>
 </div>
 <div id="장-2" class="section level3 unnumbered hasAnchor">
 <h3>4장<a href="부록.html#장-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1113-1"><a href="부록.html#cb1113-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb1233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1233-1"><a href="부록.html#cb1233-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1114-1"><a href="부록.html#cb1114-1" tabindex="-1"></a>air_sub1 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(airquality) <span class="sc">|&gt;</span></span>
-<span id="cb1114-2"><a href="부록.html#cb1114-2" tabindex="-1"></a>  <span class="fu">filter</span>(Wind <span class="sc">&gt;=</span> <span class="fu">mean</span>(Wind), Temp <span class="sc">&lt;</span> <span class="fu">mean</span>(Temp)) <span class="sc">|&gt;</span></span>
-<span id="cb1114-3"><a href="부록.html#cb1114-3" tabindex="-1"></a>  <span class="fu">select</span>(Ozone, Solar.R, Month)</span></code></pre></div>
-<div class="sourceCode" id="cb1115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1115-1"><a href="부록.html#cb1115-1" tabindex="-1"></a>air_sub2 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(airquality) <span class="sc">|&gt;</span></span>
-<span id="cb1115-2"><a href="부록.html#cb1115-2" tabindex="-1"></a>  <span class="fu">filter</span>(Wind <span class="sc">&lt;</span> <span class="fu">mean</span>(Wind), Temp <span class="sc">&gt;=</span> <span class="fu">mean</span>(Temp)) <span class="sc">|&gt;</span></span>
-<span id="cb1115-3"><a href="부록.html#cb1115-3" tabindex="-1"></a>  <span class="fu">select</span>(Ozone, Solar.R, Month)</span></code></pre></div>
-<div class="sourceCode" id="cb1116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1116-1"><a href="부록.html#cb1116-1" tabindex="-1"></a>air_sub1 <span class="sc">|&gt;</span> </span>
-<span id="cb1116-2"><a href="부록.html#cb1116-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb1116-3"><a href="부록.html#cb1116-3" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb1116-4"><a href="부록.html#cb1116-4" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
-<span id="cb1116-5"><a href="부록.html#cb1116-5" tabindex="-1"></a><span class="do">##       n  m_oz m_solar</span></span>
-<span id="cb1116-6"><a href="부록.html#cb1116-6" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb1116-7"><a href="부록.html#cb1116-7" tabindex="-1"></a><span class="do">## 1    42  17.6    166.</span></span></code></pre></div>
-<div class="sourceCode" id="cb1117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1117-1"><a href="부록.html#cb1117-1" tabindex="-1"></a>air_sub2 <span class="sc">|&gt;</span> </span>
-<span id="cb1117-2"><a href="부록.html#cb1117-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb1117-3"><a href="부록.html#cb1117-3" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb1117-4"><a href="부록.html#cb1117-4" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
-<span id="cb1117-5"><a href="부록.html#cb1117-5" tabindex="-1"></a><span class="do">##       n  m_oz m_solar</span></span>
-<span id="cb1117-6"><a href="부록.html#cb1117-6" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb1117-7"><a href="부록.html#cb1117-7" tabindex="-1"></a><span class="do">## 1    55  71.4    204.</span></span></code></pre></div>
-<div class="sourceCode" id="cb1118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1118-1"><a href="부록.html#cb1118-1" tabindex="-1"></a>air_sub1 <span class="sc">|&gt;</span></span>
-<span id="cb1118-2"><a href="부록.html#cb1118-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
-<span id="cb1118-3"><a href="부록.html#cb1118-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb1118-4"><a href="부록.html#cb1118-4" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb1118-5"><a href="부록.html#cb1118-5" tabindex="-1"></a><span class="do">## # A tibble: 5 × 4</span></span>
-<span id="cb1118-6"><a href="부록.html#cb1118-6" tabindex="-1"></a><span class="do">##   Month     n  m_oz m_solar</span></span>
-<span id="cb1118-7"><a href="부록.html#cb1118-7" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb1118-8"><a href="부록.html#cb1118-8" tabindex="-1"></a><span class="do">## 1     5    17  19.1    181.</span></span>
-<span id="cb1118-9"><a href="부록.html#cb1118-9" tabindex="-1"></a><span class="do">## 2     6     7  20.8    150.</span></span>
-<span id="cb1118-10"><a href="부록.html#cb1118-10" tabindex="-1"></a><span class="do">## 3     7     1  10      264 </span></span>
-<span id="cb1118-11"><a href="부록.html#cb1118-11" tabindex="-1"></a><span class="do">## 4     8     4  17.3    155.</span></span>
-<span id="cb1118-12"><a href="부록.html#cb1118-12" tabindex="-1"></a><span class="do">## 5     9    13  15.6    152.</span></span></code></pre></div>
-<div class="sourceCode" id="cb1119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1119-1"><a href="부록.html#cb1119-1" tabindex="-1"></a>air_sub2 <span class="sc">|&gt;</span></span>
-<span id="cb1119-2"><a href="부록.html#cb1119-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
-<span id="cb1119-3"><a href="부록.html#cb1119-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb1119-4"><a href="부록.html#cb1119-4" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb1119-5"><a href="부록.html#cb1119-5" tabindex="-1"></a><span class="do">## # A tibble: 5 × 4</span></span>
-<span id="cb1119-6"><a href="부록.html#cb1119-6" tabindex="-1"></a><span class="do">##   Month     n  m_oz m_solar</span></span>
-<span id="cb1119-7"><a href="부록.html#cb1119-7" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb1119-8"><a href="부록.html#cb1119-8" tabindex="-1"></a><span class="do">## 1     5     1 115      223 </span></span>
-<span id="cb1119-9"><a href="부록.html#cb1119-9" tabindex="-1"></a><span class="do">## 2     6     9  26      195 </span></span>
-<span id="cb1119-10"><a href="부록.html#cb1119-10" tabindex="-1"></a><span class="do">## 3     7    20  71.5    232 </span></span>
-<span id="cb1119-11"><a href="부록.html#cb1119-11" tabindex="-1"></a><span class="do">## 4     8    18  77.4    182.</span></span>
-<span id="cb1119-12"><a href="부록.html#cb1119-12" tabindex="-1"></a><span class="do">## 5     9     7  63.9    181.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1234-1"><a href="부록.html#cb1234-1" tabindex="-1"></a>air_sub1 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(airquality) <span class="sc">|&gt;</span></span>
+<span id="cb1234-2"><a href="부록.html#cb1234-2" tabindex="-1"></a>  <span class="fu">filter</span>(Wind <span class="sc">&gt;=</span> <span class="fu">mean</span>(Wind), Temp <span class="sc">&lt;</span> <span class="fu">mean</span>(Temp)) <span class="sc">|&gt;</span></span>
+<span id="cb1234-3"><a href="부록.html#cb1234-3" tabindex="-1"></a>  <span class="fu">select</span>(Ozone, Solar.R, Month)</span></code></pre></div>
+<div class="sourceCode" id="cb1235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1235-1"><a href="부록.html#cb1235-1" tabindex="-1"></a>air_sub2 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(airquality) <span class="sc">|&gt;</span></span>
+<span id="cb1235-2"><a href="부록.html#cb1235-2" tabindex="-1"></a>  <span class="fu">filter</span>(Wind <span class="sc">&lt;</span> <span class="fu">mean</span>(Wind), Temp <span class="sc">&gt;=</span> <span class="fu">mean</span>(Temp)) <span class="sc">|&gt;</span></span>
+<span id="cb1235-3"><a href="부록.html#cb1235-3" tabindex="-1"></a>  <span class="fu">select</span>(Ozone, Solar.R, Month)</span></code></pre></div>
+<div class="sourceCode" id="cb1236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1236-1"><a href="부록.html#cb1236-1" tabindex="-1"></a>air_sub1 <span class="sc">|&gt;</span> </span>
+<span id="cb1236-2"><a href="부록.html#cb1236-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1236-3"><a href="부록.html#cb1236-3" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1236-4"><a href="부록.html#cb1236-4" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
+<span id="cb1236-5"><a href="부록.html#cb1236-5" tabindex="-1"></a><span class="do">##       n  m_oz m_solar</span></span>
+<span id="cb1236-6"><a href="부록.html#cb1236-6" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1236-7"><a href="부록.html#cb1236-7" tabindex="-1"></a><span class="do">## 1    42  17.6    166.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1237-1"><a href="부록.html#cb1237-1" tabindex="-1"></a>air_sub2 <span class="sc">|&gt;</span> </span>
+<span id="cb1237-2"><a href="부록.html#cb1237-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1237-3"><a href="부록.html#cb1237-3" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1237-4"><a href="부록.html#cb1237-4" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
+<span id="cb1237-5"><a href="부록.html#cb1237-5" tabindex="-1"></a><span class="do">##       n  m_oz m_solar</span></span>
+<span id="cb1237-6"><a href="부록.html#cb1237-6" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1237-7"><a href="부록.html#cb1237-7" tabindex="-1"></a><span class="do">## 1    55  71.4    204.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1238-1"><a href="부록.html#cb1238-1" tabindex="-1"></a>air_sub1 <span class="sc">|&gt;</span></span>
+<span id="cb1238-2"><a href="부록.html#cb1238-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
+<span id="cb1238-3"><a href="부록.html#cb1238-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1238-4"><a href="부록.html#cb1238-4" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1238-5"><a href="부록.html#cb1238-5" tabindex="-1"></a><span class="do">## # A tibble: 5 × 4</span></span>
+<span id="cb1238-6"><a href="부록.html#cb1238-6" tabindex="-1"></a><span class="do">##   Month     n  m_oz m_solar</span></span>
+<span id="cb1238-7"><a href="부록.html#cb1238-7" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1238-8"><a href="부록.html#cb1238-8" tabindex="-1"></a><span class="do">## 1     5    17  19.1    181.</span></span>
+<span id="cb1238-9"><a href="부록.html#cb1238-9" tabindex="-1"></a><span class="do">## 2     6     7  20.8    150.</span></span>
+<span id="cb1238-10"><a href="부록.html#cb1238-10" tabindex="-1"></a><span class="do">## 3     7     1  10      264 </span></span>
+<span id="cb1238-11"><a href="부록.html#cb1238-11" tabindex="-1"></a><span class="do">## 4     8     4  17.3    155.</span></span>
+<span id="cb1238-12"><a href="부록.html#cb1238-12" tabindex="-1"></a><span class="do">## 5     9    13  15.6    152.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1239-1"><a href="부록.html#cb1239-1" tabindex="-1"></a>air_sub2 <span class="sc">|&gt;</span></span>
+<span id="cb1239-2"><a href="부록.html#cb1239-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
+<span id="cb1239-3"><a href="부록.html#cb1239-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">m_oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb1239-4"><a href="부록.html#cb1239-4" tabindex="-1"></a>            <span class="at">m_solar =</span> <span class="fu">mean</span>(Solar.R, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1239-5"><a href="부록.html#cb1239-5" tabindex="-1"></a><span class="do">## # A tibble: 5 × 4</span></span>
+<span id="cb1239-6"><a href="부록.html#cb1239-6" tabindex="-1"></a><span class="do">##   Month     n  m_oz m_solar</span></span>
+<span id="cb1239-7"><a href="부록.html#cb1239-7" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb1239-8"><a href="부록.html#cb1239-8" tabindex="-1"></a><span class="do">## 1     5     1 115      223 </span></span>
+<span id="cb1239-9"><a href="부록.html#cb1239-9" tabindex="-1"></a><span class="do">## 2     6     9  26      195 </span></span>
+<span id="cb1239-10"><a href="부록.html#cb1239-10" tabindex="-1"></a><span class="do">## 3     7    20  71.5    232 </span></span>
+<span id="cb1239-11"><a href="부록.html#cb1239-11" tabindex="-1"></a><span class="do">## 4     8    18  77.4    182.</span></span>
+<span id="cb1239-12"><a href="부록.html#cb1239-12" tabindex="-1"></a><span class="do">## 5     9     7  63.9    181.</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1120-1"><a href="부록.html#cb1120-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb1120-2"><a href="부록.html#cb1120-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb1120-3"><a href="부록.html#cb1120-3" tabindex="-1"></a>air <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
-<span id="cb1120-4"><a href="부록.html#cb1120-4" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> n <span class="sc">+</span> m)</span>
-<span id="cb1120-5"><a href="부록.html#cb1120-5" tabindex="-1"></a>air_1 <span class="ot">&lt;-</span> <span class="fu">slice_head</span>(air, <span class="at">n =</span> n); air_1</span>
-<span id="cb1120-6"><a href="부록.html#cb1120-6" tabindex="-1"></a><span class="do">##    Ozone Solar.R Wind Temp Month Day</span></span>
-<span id="cb1120-7"><a href="부록.html#cb1120-7" tabindex="-1"></a><span class="do">## 1     80     294  8.6   86     7  24</span></span>
-<span id="cb1120-8"><a href="부록.html#cb1120-8" tabindex="-1"></a><span class="do">## 2     97     272  5.7   92     7   9</span></span>
-<span id="cb1120-9"><a href="부록.html#cb1120-9" tabindex="-1"></a><span class="do">## 3     31     244 10.9   78     8  19</span></span>
-<span id="cb1120-10"><a href="부록.html#cb1120-10" tabindex="-1"></a><span class="do">## 4     21     230 10.9   75     9   9</span></span>
-<span id="cb1120-11"><a href="부록.html#cb1120-11" tabindex="-1"></a><span class="do">## 5     NA     101 10.9   84     7   4</span></span>
-<span id="cb1120-12"><a href="부록.html#cb1120-12" tabindex="-1"></a><span class="do">## 6     16      77  7.4   82     8   3</span></span>
-<span id="cb1120-13"><a href="부록.html#cb1120-13" tabindex="-1"></a><span class="do">## 7     79     187  5.1   87     7  19</span></span>
-<span id="cb1120-14"><a href="부록.html#cb1120-14" tabindex="-1"></a><span class="do">## 8     18     224 13.8   67     9  17</span></span>
-<span id="cb1120-15"><a href="부록.html#cb1120-15" tabindex="-1"></a><span class="do">## 9     64     175  4.6   83     7   5</span></span>
-<span id="cb1120-16"><a href="부록.html#cb1120-16" tabindex="-1"></a><span class="do">## 10    NA     139  8.6   82     7  11</span></span>
-<span id="cb1120-17"><a href="부록.html#cb1120-17" tabindex="-1"></a>air_2 <span class="ot">&lt;-</span> <span class="fu">slice_tail</span>(air, <span class="at">n =</span> m); air_2</span>
-<span id="cb1120-18"><a href="부록.html#cb1120-18" tabindex="-1"></a><span class="do">##   Ozone Solar.R Wind Temp Month Day</span></span>
-<span id="cb1120-19"><a href="부록.html#cb1120-19" tabindex="-1"></a><span class="do">## 1    NA     242 16.1   67     6   3</span></span>
-<span id="cb1120-20"><a href="부록.html#cb1120-20" tabindex="-1"></a><span class="do">## 2     7      49 10.3   69     9  24</span></span>
-<span id="cb1120-21"><a href="부록.html#cb1120-21" tabindex="-1"></a><span class="do">## 3    24     238 10.3   68     9  19</span></span>
-<span id="cb1120-22"><a href="부록.html#cb1120-22" tabindex="-1"></a><span class="do">## 4    82     213  7.4   88     7  28</span></span>
-<span id="cb1120-23"><a href="부록.html#cb1120-23" tabindex="-1"></a><span class="do">## 5    89     229 10.3   90     8   8</span></span></code></pre></div>
-<div class="sourceCode" id="cb1121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1121-1"><a href="부록.html#cb1121-1" tabindex="-1"></a><span class="co"># 6장에서 소개되는 함수 anti_join()을 사용하는 방법</span></span>
-<span id="cb1121-2"><a href="부록.html#cb1121-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb1121-3"><a href="부록.html#cb1121-3" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb1121-4"><a href="부록.html#cb1121-4" tabindex="-1"></a>air_1 <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
-<span id="cb1121-5"><a href="부록.html#cb1121-5" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> n); air_1</span>
-<span id="cb1121-6"><a href="부록.html#cb1121-6" tabindex="-1"></a><span class="do">##    Ozone Solar.R Wind Temp Month Day</span></span>
-<span id="cb1121-7"><a href="부록.html#cb1121-7" tabindex="-1"></a><span class="do">## 1     NA     286  8.6   78     6   1</span></span>
-<span id="cb1121-8"><a href="부록.html#cb1121-8" tabindex="-1"></a><span class="do">## 2     NA      47 10.3   73     6  27</span></span>
-<span id="cb1121-9"><a href="부록.html#cb1121-9" tabindex="-1"></a><span class="do">## 3     30     193  6.9   70     9  26</span></span>
-<span id="cb1121-10"><a href="부록.html#cb1121-10" tabindex="-1"></a><span class="do">## 4     66      NA  4.6   87     8   6</span></span>
-<span id="cb1121-11"><a href="부록.html#cb1121-11" tabindex="-1"></a><span class="do">## 5      9      24 13.8   81     8   2</span></span>
-<span id="cb1121-12"><a href="부록.html#cb1121-12" tabindex="-1"></a><span class="do">## 6    108     223  8.0   85     7  25</span></span>
-<span id="cb1121-13"><a href="부록.html#cb1121-13" tabindex="-1"></a><span class="do">## 7    135     269  4.1   84     7   1</span></span>
-<span id="cb1121-14"><a href="부록.html#cb1121-14" tabindex="-1"></a><span class="do">## 8     NA     273  6.9   87     6   8</span></span>
-<span id="cb1121-15"><a href="부록.html#cb1121-15" tabindex="-1"></a><span class="do">## 9    118     225  2.3   94     8  29</span></span>
-<span id="cb1121-16"><a href="부록.html#cb1121-16" tabindex="-1"></a><span class="do">## 10    18      65 13.2   58     5  15</span></span>
-<span id="cb1121-17"><a href="부록.html#cb1121-17" tabindex="-1"></a>air_2 <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
-<span id="cb1121-18"><a href="부록.html#cb1121-18" tabindex="-1"></a>  <span class="fu">anti_join</span>(air_1) <span class="sc">|&gt;</span> </span>
-<span id="cb1121-19"><a href="부록.html#cb1121-19" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> m); air_2</span>
-<span id="cb1121-20"><a href="부록.html#cb1121-20" tabindex="-1"></a><span class="do">##   Ozone Solar.R Wind Temp Month Day</span></span>
-<span id="cb1121-21"><a href="부록.html#cb1121-21" tabindex="-1"></a><span class="do">## 1    49     248  9.2   85     7   2</span></span>
-<span id="cb1121-22"><a href="부록.html#cb1121-22" tabindex="-1"></a><span class="do">## 2    45     212  9.7   79     8  24</span></span>
-<span id="cb1121-23"><a href="부록.html#cb1121-23" tabindex="-1"></a><span class="do">## 3    12     149 12.6   74     5   3</span></span>
-<span id="cb1121-24"><a href="부록.html#cb1121-24" tabindex="-1"></a><span class="do">## 4    NA     145 13.2   77     9  27</span></span>
-<span id="cb1121-25"><a href="부록.html#cb1121-25" tabindex="-1"></a><span class="do">## 5    37     284 20.7   72     6  17</span></span></code></pre></div>
+<div class="sourceCode" id="cb1240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1240-1"><a href="부록.html#cb1240-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1240-2"><a href="부록.html#cb1240-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1240-3"><a href="부록.html#cb1240-3" tabindex="-1"></a>air <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
+<span id="cb1240-4"><a href="부록.html#cb1240-4" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> n <span class="sc">+</span> m)</span>
+<span id="cb1240-5"><a href="부록.html#cb1240-5" tabindex="-1"></a>air_1 <span class="ot">&lt;-</span> <span class="fu">slice_head</span>(air, <span class="at">n =</span> n); air_1</span>
+<span id="cb1240-6"><a href="부록.html#cb1240-6" tabindex="-1"></a><span class="do">##    Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb1240-7"><a href="부록.html#cb1240-7" tabindex="-1"></a><span class="do">## 1     NA     127  8.0   78     6  26</span></span>
+<span id="cb1240-8"><a href="부록.html#cb1240-8" tabindex="-1"></a><span class="do">## 2      9      24 10.9   71     9  14</span></span>
+<span id="cb1240-9"><a href="부록.html#cb1240-9" tabindex="-1"></a><span class="do">## 3     30     193  6.9   70     9  26</span></span>
+<span id="cb1240-10"><a href="부록.html#cb1240-10" tabindex="-1"></a><span class="do">## 4     NA      98 11.5   80     6  28</span></span>
+<span id="cb1240-11"><a href="부록.html#cb1240-11" tabindex="-1"></a><span class="do">## 5     NA     150  6.3   77     6  21</span></span>
+<span id="cb1240-12"><a href="부록.html#cb1240-12" tabindex="-1"></a><span class="do">## 6     NA     242 16.1   67     6   3</span></span>
+<span id="cb1240-13"><a href="부록.html#cb1240-13" tabindex="-1"></a><span class="do">## 7      9      24 13.8   81     8   2</span></span>
+<span id="cb1240-14"><a href="부록.html#cb1240-14" tabindex="-1"></a><span class="do">## 8     35     274 10.3   82     7  17</span></span>
+<span id="cb1240-15"><a href="부록.html#cb1240-15" tabindex="-1"></a><span class="do">## 9     NA     250  6.3   76     6  24</span></span>
+<span id="cb1240-16"><a href="부록.html#cb1240-16" tabindex="-1"></a><span class="do">## 10    28      NA 14.9   66     5   6</span></span></code></pre></div>
+<div class="sourceCode" id="cb1241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1241-1"><a href="부록.html#cb1241-1" tabindex="-1"></a>air_2 <span class="ot">&lt;-</span> <span class="fu">slice_tail</span>(air, <span class="at">n =</span> m); air_2</span>
+<span id="cb1241-2"><a href="부록.html#cb1241-2" tabindex="-1"></a><span class="do">##   Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb1241-3"><a href="부록.html#cb1241-3" tabindex="-1"></a><span class="do">## 1    NA     135  8.0   75     6  25</span></span>
+<span id="cb1241-4"><a href="부록.html#cb1241-4" tabindex="-1"></a><span class="do">## 2    52      82 12.0   86     7  27</span></span>
+<span id="cb1241-5"><a href="부록.html#cb1241-5" tabindex="-1"></a><span class="do">## 3    NA      91  4.6   76     6  23</span></span>
+<span id="cb1241-6"><a href="부록.html#cb1241-6" tabindex="-1"></a><span class="do">## 4    31     244 10.9   78     8  19</span></span>
+<span id="cb1241-7"><a href="부록.html#cb1241-7" tabindex="-1"></a><span class="do">## 5    NA     137 11.5   86     8  11</span></span></code></pre></div>
+<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1242-1"><a href="부록.html#cb1242-1" tabindex="-1"></a><span class="co"># 6장에서 소개되는 함수 anti_join()을 사용하는 방법</span></span>
+<span id="cb1242-2"><a href="부록.html#cb1242-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1242-3"><a href="부록.html#cb1242-3" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1242-4"><a href="부록.html#cb1242-4" tabindex="-1"></a>air_1 <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
+<span id="cb1242-5"><a href="부록.html#cb1242-5" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> n); air_1</span>
+<span id="cb1242-6"><a href="부록.html#cb1242-6" tabindex="-1"></a><span class="do">##    Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb1242-7"><a href="부록.html#cb1242-7" tabindex="-1"></a><span class="do">## 1     23     220 10.3   78     9   8</span></span>
+<span id="cb1242-8"><a href="부록.html#cb1242-8" tabindex="-1"></a><span class="do">## 2     77     276  5.1   88     7   7</span></span>
+<span id="cb1242-9"><a href="부록.html#cb1242-9" tabindex="-1"></a><span class="do">## 3     49     248  9.2   85     7   2</span></span>
+<span id="cb1242-10"><a href="부록.html#cb1242-10" tabindex="-1"></a><span class="do">## 4     NA     135  8.0   75     6  25</span></span>
+<span id="cb1242-11"><a href="부록.html#cb1242-11" tabindex="-1"></a><span class="do">## 5     NA     266 14.9   58     5  26</span></span>
+<span id="cb1242-12"><a href="부록.html#cb1242-12" tabindex="-1"></a><span class="do">## 6      8      19 20.1   61     5   9</span></span>
+<span id="cb1242-13"><a href="부록.html#cb1242-13" tabindex="-1"></a><span class="do">## 7     36     139 10.3   81     9  23</span></span>
+<span id="cb1242-14"><a href="부록.html#cb1242-14" tabindex="-1"></a><span class="do">## 8     37     279  7.4   76     5  31</span></span>
+<span id="cb1242-15"><a href="부록.html#cb1242-15" tabindex="-1"></a><span class="do">## 9    135     269  4.1   84     7   1</span></span>
+<span id="cb1242-16"><a href="부록.html#cb1242-16" tabindex="-1"></a><span class="do">## 10    65     157  9.7   80     8  14</span></span></code></pre></div>
+<div class="sourceCode" id="cb1243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1243-1"><a href="부록.html#cb1243-1" tabindex="-1"></a>air_2 <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
+<span id="cb1243-2"><a href="부록.html#cb1243-2" tabindex="-1"></a>  <span class="fu">anti_join</span>(air_1) <span class="sc">|&gt;</span> </span>
+<span id="cb1243-3"><a href="부록.html#cb1243-3" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> m); air_2</span>
+<span id="cb1243-4"><a href="부록.html#cb1243-4" tabindex="-1"></a><span class="do">##   Ozone Solar.R Wind Temp Month Day</span></span>
+<span id="cb1243-5"><a href="부록.html#cb1243-5" tabindex="-1"></a><span class="do">## 1    NA     194  8.6   69     5  10</span></span>
+<span id="cb1243-6"><a href="부록.html#cb1243-6" tabindex="-1"></a><span class="do">## 2   108     223  8.0   85     7  25</span></span>
+<span id="cb1243-7"><a href="부록.html#cb1243-7" tabindex="-1"></a><span class="do">## 3   115     223  5.7   79     5  30</span></span>
+<span id="cb1243-8"><a href="부록.html#cb1243-8" tabindex="-1"></a><span class="do">## 4    44     236 14.9   81     9  11</span></span>
+<span id="cb1243-9"><a href="부록.html#cb1243-9" tabindex="-1"></a><span class="do">## 5    78     197  5.1   92     9   2</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1122-1"><a href="부록.html#cb1122-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(MASS<span class="sc">::</span>Cars93) <span class="sc">|&gt;</span> </span>
-<span id="cb1122-2"><a href="부록.html#cb1122-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, MPG.highway, Cylinders, Weight, Origin) <span class="sc">|&gt;</span> </span>
-<span id="cb1122-3"><a href="부록.html#cb1122-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb1122-4"><a href="부록.html#cb1122-4" tabindex="-1"></a><span class="do">## # A tibble: 93 × 6</span></span>
-<span id="cb1122-5"><a href="부록.html#cb1122-5" tabindex="-1"></a><span class="do">##   Manufacturer Model   MPG.highway Cylinders Weight Origin </span></span>
-<span id="cb1122-6"><a href="부록.html#cb1122-6" tabindex="-1"></a><span class="do">##   &lt;fct&gt;        &lt;fct&gt;         &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;fct&gt;  </span></span>
-<span id="cb1122-7"><a href="부록.html#cb1122-7" tabindex="-1"></a><span class="do">## 1 Acura        Integra          31 4           2705 non-USA</span></span>
-<span id="cb1122-8"><a href="부록.html#cb1122-8" tabindex="-1"></a><span class="do">## 2 Acura        Legend           25 6           3560 non-USA</span></span>
-<span id="cb1122-9"><a href="부록.html#cb1122-9" tabindex="-1"></a><span class="do">## 3 Audi         90               26 6           3375 non-USA</span></span>
-<span id="cb1122-10"><a href="부록.html#cb1122-10" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb1123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1123-1"><a href="부록.html#cb1123-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> car <span class="sc">|&gt;</span> </span>
-<span id="cb1123-2"><a href="부록.html#cb1123-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">make =</span> <span class="fu">paste</span>(Manufacturer, Model), <span class="at">.before =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1123-3"><a href="부록.html#cb1123-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(Manufacturer, Model)) <span class="sc">|&gt;</span> </span>
-<span id="cb1123-4"><a href="부록.html#cb1123-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
-<span id="cb1123-5"><a href="부록.html#cb1123-5" tabindex="-1"></a><span class="do">## # A tibble: 93 × 5</span></span>
-<span id="cb1123-6"><a href="부록.html#cb1123-6" tabindex="-1"></a><span class="do">##   make          MPG.highway Cylinders Weight Origin </span></span>
-<span id="cb1123-7"><a href="부록.html#cb1123-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;               &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;fct&gt;  </span></span>
-<span id="cb1123-8"><a href="부록.html#cb1123-8" tabindex="-1"></a><span class="do">## 1 Acura Integra          31 4           2705 non-USA</span></span>
-<span id="cb1123-9"><a href="부록.html#cb1123-9" tabindex="-1"></a><span class="do">## 2 Acura Legend           25 6           3560 non-USA</span></span>
-<span id="cb1123-10"><a href="부록.html#cb1123-10" tabindex="-1"></a><span class="do">## 3 Audi 90                26 6           3375 non-USA</span></span>
-<span id="cb1123-11"><a href="부록.html#cb1123-11" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb1124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1124-1"><a href="부록.html#cb1124-1" tabindex="-1"></a>car <span class="sc">|&gt;</span> <span class="fu">count</span>(Cylinders, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1124-2"><a href="부록.html#cb1124-2" tabindex="-1"></a><span class="do">## # A tibble: 6 × 2</span></span>
-<span id="cb1124-3"><a href="부록.html#cb1124-3" tabindex="-1"></a><span class="do">##   Cylinders     n</span></span>
-<span id="cb1124-4"><a href="부록.html#cb1124-4" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;</span></span>
-<span id="cb1124-5"><a href="부록.html#cb1124-5" tabindex="-1"></a><span class="do">## 1 4            49</span></span>
-<span id="cb1124-6"><a href="부록.html#cb1124-6" tabindex="-1"></a><span class="do">## 2 6            31</span></span>
-<span id="cb1124-7"><a href="부록.html#cb1124-7" tabindex="-1"></a><span class="do">## 3 8             7</span></span>
-<span id="cb1124-8"><a href="부록.html#cb1124-8" tabindex="-1"></a><span class="do">## 4 3             3</span></span>
-<span id="cb1124-9"><a href="부록.html#cb1124-9" tabindex="-1"></a><span class="do">## 5 5             2</span></span>
-<span id="cb1124-10"><a href="부록.html#cb1124-10" tabindex="-1"></a><span class="do">## 6 rotary        1</span></span></code></pre></div>
-<div class="sourceCode" id="cb1125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1125-1"><a href="부록.html#cb1125-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> car <span class="sc">|&gt;</span> </span>
-<span id="cb1125-2"><a href="부록.html#cb1125-2" tabindex="-1"></a>  <span class="fu">filter</span>(Cylinders <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb1126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1126-1"><a href="부록.html#cb1126-1" tabindex="-1"></a>car <span class="sc">|&gt;</span> </span>
-<span id="cb1126-2"><a href="부록.html#cb1126-2" tabindex="-1"></a>  <span class="fu">slice_max</span>(MPG.highway, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1126-3"><a href="부록.html#cb1126-3" tabindex="-1"></a>  <span class="fu">select</span>(make, MPG.highway) </span>
-<span id="cb1126-4"><a href="부록.html#cb1126-4" tabindex="-1"></a><span class="do">## # A tibble: 2 × 2</span></span>
-<span id="cb1126-5"><a href="부록.html#cb1126-5" tabindex="-1"></a><span class="do">##   make           MPG.highway</span></span>
-<span id="cb1126-6"><a href="부록.html#cb1126-6" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                &lt;int&gt;</span></span>
-<span id="cb1126-7"><a href="부록.html#cb1126-7" tabindex="-1"></a><span class="do">## 1 Honda Civic             46</span></span>
-<span id="cb1126-8"><a href="부록.html#cb1126-8" tabindex="-1"></a><span class="do">## 2 Pontiac LeMans          41</span></span></code></pre></div>
+<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1244-1"><a href="부록.html#cb1244-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(MASS<span class="sc">::</span>Cars93) <span class="sc">|&gt;</span> </span>
+<span id="cb1244-2"><a href="부록.html#cb1244-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, MPG.highway, Cylinders, Weight, Origin) <span class="sc">|&gt;</span> </span>
+<span id="cb1244-3"><a href="부록.html#cb1244-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb1244-4"><a href="부록.html#cb1244-4" tabindex="-1"></a><span class="do">## # A tibble: 93 × 6</span></span>
+<span id="cb1244-5"><a href="부록.html#cb1244-5" tabindex="-1"></a><span class="do">##   Manufacturer Model   MPG.highway Cylinders Weight Origin </span></span>
+<span id="cb1244-6"><a href="부록.html#cb1244-6" tabindex="-1"></a><span class="do">##   &lt;fct&gt;        &lt;fct&gt;         &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;fct&gt;  </span></span>
+<span id="cb1244-7"><a href="부록.html#cb1244-7" tabindex="-1"></a><span class="do">## 1 Acura        Integra          31 4           2705 non-USA</span></span>
+<span id="cb1244-8"><a href="부록.html#cb1244-8" tabindex="-1"></a><span class="do">## 2 Acura        Legend           25 6           3560 non-USA</span></span>
+<span id="cb1244-9"><a href="부록.html#cb1244-9" tabindex="-1"></a><span class="do">## 3 Audi         90               26 6           3375 non-USA</span></span>
+<span id="cb1244-10"><a href="부록.html#cb1244-10" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb1245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1245-1"><a href="부록.html#cb1245-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> car <span class="sc">|&gt;</span> </span>
+<span id="cb1245-2"><a href="부록.html#cb1245-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">make =</span> <span class="fu">paste</span>(Manufacturer, Model), <span class="at">.before =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1245-3"><a href="부록.html#cb1245-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(Manufacturer, Model)) <span class="sc">|&gt;</span> </span>
+<span id="cb1245-4"><a href="부록.html#cb1245-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb1245-5"><a href="부록.html#cb1245-5" tabindex="-1"></a><span class="do">## # A tibble: 93 × 5</span></span>
+<span id="cb1245-6"><a href="부록.html#cb1245-6" tabindex="-1"></a><span class="do">##   make          MPG.highway Cylinders Weight Origin </span></span>
+<span id="cb1245-7"><a href="부록.html#cb1245-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;               &lt;int&gt; &lt;fct&gt;      &lt;int&gt; &lt;fct&gt;  </span></span>
+<span id="cb1245-8"><a href="부록.html#cb1245-8" tabindex="-1"></a><span class="do">## 1 Acura Integra          31 4           2705 non-USA</span></span>
+<span id="cb1245-9"><a href="부록.html#cb1245-9" tabindex="-1"></a><span class="do">## 2 Acura Legend           25 6           3560 non-USA</span></span>
+<span id="cb1245-10"><a href="부록.html#cb1245-10" tabindex="-1"></a><span class="do">## 3 Audi 90                26 6           3375 non-USA</span></span>
+<span id="cb1245-11"><a href="부록.html#cb1245-11" tabindex="-1"></a><span class="do">## # ℹ 90 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb1246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1246-1"><a href="부록.html#cb1246-1" tabindex="-1"></a>car <span class="sc">|&gt;</span> <span class="fu">count</span>(Cylinders, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1246-2"><a href="부록.html#cb1246-2" tabindex="-1"></a><span class="do">## # A tibble: 6 × 2</span></span>
+<span id="cb1246-3"><a href="부록.html#cb1246-3" tabindex="-1"></a><span class="do">##   Cylinders     n</span></span>
+<span id="cb1246-4"><a href="부록.html#cb1246-4" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;</span></span>
+<span id="cb1246-5"><a href="부록.html#cb1246-5" tabindex="-1"></a><span class="do">## 1 4            49</span></span>
+<span id="cb1246-6"><a href="부록.html#cb1246-6" tabindex="-1"></a><span class="do">## 2 6            31</span></span>
+<span id="cb1246-7"><a href="부록.html#cb1246-7" tabindex="-1"></a><span class="do">## 3 8             7</span></span>
+<span id="cb1246-8"><a href="부록.html#cb1246-8" tabindex="-1"></a><span class="do">## 4 3             3</span></span>
+<span id="cb1246-9"><a href="부록.html#cb1246-9" tabindex="-1"></a><span class="do">## 5 5             2</span></span>
+<span id="cb1246-10"><a href="부록.html#cb1246-10" tabindex="-1"></a><span class="do">## 6 rotary        1</span></span></code></pre></div>
+<div class="sourceCode" id="cb1247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1247-1"><a href="부록.html#cb1247-1" tabindex="-1"></a>car <span class="ot">&lt;-</span> car <span class="sc">|&gt;</span> </span>
+<span id="cb1247-2"><a href="부록.html#cb1247-2" tabindex="-1"></a>  <span class="fu">filter</span>(Cylinders <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1248-1"><a href="부록.html#cb1248-1" tabindex="-1"></a>car <span class="sc">|&gt;</span> </span>
+<span id="cb1248-2"><a href="부록.html#cb1248-2" tabindex="-1"></a>  <span class="fu">slice_max</span>(MPG.highway, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1248-3"><a href="부록.html#cb1248-3" tabindex="-1"></a>  <span class="fu">select</span>(make, MPG.highway) </span>
+<span id="cb1248-4"><a href="부록.html#cb1248-4" tabindex="-1"></a><span class="do">## # A tibble: 2 × 2</span></span>
+<span id="cb1248-5"><a href="부록.html#cb1248-5" tabindex="-1"></a><span class="do">##   make           MPG.highway</span></span>
+<span id="cb1248-6"><a href="부록.html#cb1248-6" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                &lt;int&gt;</span></span>
+<span id="cb1248-7"><a href="부록.html#cb1248-7" tabindex="-1"></a><span class="do">## 1 Honda Civic             46</span></span>
+<span id="cb1248-8"><a href="부록.html#cb1248-8" tabindex="-1"></a><span class="do">## 2 Pontiac LeMans          41</span></span></code></pre></div>
 </div>
 <div id="장-3" class="section level3 unnumbered hasAnchor">
 <h3>5장<a href="부록.html#장-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1127-1"><a href="부록.html#cb1127-1" tabindex="-1"></a><span class="fu">data</span>(barley, <span class="at">package =</span> <span class="st">&quot;lattice&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1128-1"><a href="부록.html#cb1128-1" tabindex="-1"></a>barley <span class="sc">|&gt;</span></span>
-<span id="cb1128-2"><a href="부록.html#cb1128-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yield, <span class="at">y =</span> variety, <span class="at">color =</span> year)) <span class="sc">+</span></span>
-<span id="cb1128-3"><a href="부록.html#cb1128-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1128-4"><a href="부록.html#cb1128-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="at">facets =</span> <span class="fu">vars</span>(site))</span></code></pre></div>
+<div class="sourceCode" id="cb1249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1249-1"><a href="부록.html#cb1249-1" tabindex="-1"></a><span class="fu">data</span>(barley, <span class="at">package =</span> <span class="st">&quot;lattice&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1250-1"><a href="부록.html#cb1250-1" tabindex="-1"></a>barley <span class="sc">|&gt;</span></span>
+<span id="cb1250-2"><a href="부록.html#cb1250-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yield, <span class="at">y =</span> variety, <span class="at">color =</span> year)) <span class="sc">+</span></span>
+<span id="cb1250-3"><a href="부록.html#cb1250-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1250-4"><a href="부록.html#cb1250-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="at">facets =</span> <span class="fu">vars</span>(site))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-1050-1.png" width="576" /></p>
-<div class="sourceCode" id="cb1129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1129-1"><a href="부록.html#cb1129-1" tabindex="-1"></a>barley <span class="sc">|&gt;</span></span>
-<span id="cb1129-2"><a href="부록.html#cb1129-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yield, <span class="at">y =</span> variety, <span class="at">color =</span> site, <span class="at">shape =</span> year)) <span class="sc">+</span></span>
-<span id="cb1129-3"><a href="부록.html#cb1129-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1251-1"><a href="부록.html#cb1251-1" tabindex="-1"></a>barley <span class="sc">|&gt;</span></span>
+<span id="cb1251-2"><a href="부록.html#cb1251-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> yield, <span class="at">y =</span> variety, <span class="at">color =</span> site, <span class="at">shape =</span> year)) <span class="sc">+</span></span>
+<span id="cb1251-3"><a href="부록.html#cb1251-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-1051-1.png" width="576" /></p>
-<div class="sourceCode" id="cb1130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1130-1"><a href="부록.html#cb1130-1" tabindex="-1"></a>barley <span class="sc">|&gt;</span></span>
-<span id="cb1130-2"><a href="부록.html#cb1130-2" tabindex="-1"></a>  <span class="fu">group_by</span>(variety) <span class="sc">|&gt;</span></span>
-<span id="cb1130-3"><a href="부록.html#cb1130-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_yield =</span> <span class="fu">mean</span>(yield)) <span class="sc">|&gt;</span></span>
-<span id="cb1130-4"><a href="부록.html#cb1130-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_yield))</span>
-<span id="cb1130-5"><a href="부록.html#cb1130-5" tabindex="-1"></a><span class="do">## # A tibble: 10 × 2</span></span>
-<span id="cb1130-6"><a href="부록.html#cb1130-6" tabindex="-1"></a><span class="do">##    variety          mean_yield</span></span>
-<span id="cb1130-7"><a href="부록.html#cb1130-7" tabindex="-1"></a><span class="do">##    &lt;fct&gt;                 &lt;dbl&gt;</span></span>
-<span id="cb1130-8"><a href="부록.html#cb1130-8" tabindex="-1"></a><span class="do">##  1 Trebi                  39.4</span></span>
-<span id="cb1130-9"><a href="부록.html#cb1130-9" tabindex="-1"></a><span class="do">##  2 Wisconsin No. 38       39.4</span></span>
-<span id="cb1130-10"><a href="부록.html#cb1130-10" tabindex="-1"></a><span class="do">##  3 No. 457                35.8</span></span>
-<span id="cb1130-11"><a href="부록.html#cb1130-11" tabindex="-1"></a><span class="do">##  4 No. 462                35.4</span></span>
-<span id="cb1130-12"><a href="부록.html#cb1130-12" tabindex="-1"></a><span class="do">##  5 Peatland               34.2</span></span>
-<span id="cb1130-13"><a href="부록.html#cb1130-13" tabindex="-1"></a><span class="do">##  6 Glabron                33.3</span></span>
-<span id="cb1130-14"><a href="부록.html#cb1130-14" tabindex="-1"></a><span class="do">##  7 Velvet                 33.1</span></span>
-<span id="cb1130-15"><a href="부록.html#cb1130-15" tabindex="-1"></a><span class="do">##  8 No. 475                31.8</span></span>
-<span id="cb1130-16"><a href="부록.html#cb1130-16" tabindex="-1"></a><span class="do">##  9 Manchuria              31.5</span></span>
-<span id="cb1130-17"><a href="부록.html#cb1130-17" tabindex="-1"></a><span class="do">## 10 Svansota               30.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb1252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1252-1"><a href="부록.html#cb1252-1" tabindex="-1"></a>barley <span class="sc">|&gt;</span></span>
+<span id="cb1252-2"><a href="부록.html#cb1252-2" tabindex="-1"></a>  <span class="fu">group_by</span>(variety) <span class="sc">|&gt;</span></span>
+<span id="cb1252-3"><a href="부록.html#cb1252-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_yield =</span> <span class="fu">mean</span>(yield)) <span class="sc">|&gt;</span></span>
+<span id="cb1252-4"><a href="부록.html#cb1252-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_yield))</span>
+<span id="cb1252-5"><a href="부록.html#cb1252-5" tabindex="-1"></a><span class="do">## # A tibble: 10 × 2</span></span>
+<span id="cb1252-6"><a href="부록.html#cb1252-6" tabindex="-1"></a><span class="do">##    variety          mean_yield</span></span>
+<span id="cb1252-7"><a href="부록.html#cb1252-7" tabindex="-1"></a><span class="do">##    &lt;fct&gt;                 &lt;dbl&gt;</span></span>
+<span id="cb1252-8"><a href="부록.html#cb1252-8" tabindex="-1"></a><span class="do">##  1 Trebi                  39.4</span></span>
+<span id="cb1252-9"><a href="부록.html#cb1252-9" tabindex="-1"></a><span class="do">##  2 Wisconsin No. 38       39.4</span></span>
+<span id="cb1252-10"><a href="부록.html#cb1252-10" tabindex="-1"></a><span class="do">##  3 No. 457                35.8</span></span>
+<span id="cb1252-11"><a href="부록.html#cb1252-11" tabindex="-1"></a><span class="do">##  4 No. 462                35.4</span></span>
+<span id="cb1252-12"><a href="부록.html#cb1252-12" tabindex="-1"></a><span class="do">##  5 Peatland               34.2</span></span>
+<span id="cb1252-13"><a href="부록.html#cb1252-13" tabindex="-1"></a><span class="do">##  6 Glabron                33.3</span></span>
+<span id="cb1252-14"><a href="부록.html#cb1252-14" tabindex="-1"></a><span class="do">##  7 Velvet                 33.1</span></span>
+<span id="cb1252-15"><a href="부록.html#cb1252-15" tabindex="-1"></a><span class="do">##  8 No. 475                31.8</span></span>
+<span id="cb1252-16"><a href="부록.html#cb1252-16" tabindex="-1"></a><span class="do">##  9 Manchuria              31.5</span></span>
+<span id="cb1252-17"><a href="부록.html#cb1252-17" tabindex="-1"></a><span class="do">## 10 Svansota               30.4</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1131-1"><a href="부록.html#cb1131-1" tabindex="-1"></a>airs <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(airquality)</span></code></pre></div>
-<div class="sourceCode" id="cb1132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1132-1"><a href="부록.html#cb1132-1" tabindex="-1"></a>airs <span class="sc">|&gt;</span></span>
-<span id="cb1132-2"><a href="부록.html#cb1132-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Missing =</span> <span class="fu">is.na</span>(Ozone)) <span class="sc">|&gt;</span></span>
-<span id="cb1132-3"><a href="부록.html#cb1132-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Month, <span class="at">fill =</span> Missing)) <span class="sc">+</span></span>
-<span id="cb1132-4"><a href="부록.html#cb1132-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1132-5"><a href="부록.html#cb1132-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Proportion of missing data&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb1253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1253-1"><a href="부록.html#cb1253-1" tabindex="-1"></a>airs <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb1254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1254-1"><a href="부록.html#cb1254-1" tabindex="-1"></a>airs <span class="sc">|&gt;</span></span>
+<span id="cb1254-2"><a href="부록.html#cb1254-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Missing =</span> <span class="fu">is.na</span>(Ozone)) <span class="sc">|&gt;</span></span>
+<span id="cb1254-3"><a href="부록.html#cb1254-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Month, <span class="at">fill =</span> Missing)) <span class="sc">+</span></span>
+<span id="cb1254-4"><a href="부록.html#cb1254-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1254-5"><a href="부록.html#cb1254-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Proportion of missing data&quot;</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-1054-1.png" width="576" /></p>
-<div class="sourceCode" id="cb1133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1133-1"><a href="부록.html#cb1133-1" tabindex="-1"></a>airs <span class="sc">|&gt;</span></span>
-<span id="cb1133-2"><a href="부록.html#cb1133-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
-<span id="cb1133-3"><a href="부록.html#cb1133-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m.Oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1133-4"><a href="부록.html#cb1133-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Month, <span class="at">y =</span> m.Oz)) <span class="sc">+</span></span>
-<span id="cb1133-5"><a href="부록.html#cb1133-5" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1133-6"><a href="부록.html#cb1133-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mean Ozone&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1255-1"><a href="부록.html#cb1255-1" tabindex="-1"></a>airs <span class="sc">|&gt;</span></span>
+<span id="cb1255-2"><a href="부록.html#cb1255-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
+<span id="cb1255-3"><a href="부록.html#cb1255-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m.Oz =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1255-4"><a href="부록.html#cb1255-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Month, <span class="at">y =</span> m.Oz)) <span class="sc">+</span></span>
+<span id="cb1255-5"><a href="부록.html#cb1255-5" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1255-6"><a href="부록.html#cb1255-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mean Ozone&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-1055-1.png" width="576" /></p>
-<div class="sourceCode" id="cb1134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1134-1"><a href="부록.html#cb1134-1" tabindex="-1"></a>airs <span class="sc">|&gt;</span></span>
-<span id="cb1134-2"><a href="부록.html#cb1134-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gp_Wind =</span> <span class="fu">if_else</span>(Wind <span class="sc">&gt;=</span> <span class="fu">mean</span>(Wind), </span>
-<span id="cb1134-3"><a href="부록.html#cb1134-3" tabindex="-1"></a>                         <span class="st">&quot;High Wind&quot;</span>,<span class="st">&quot;Low Wind&quot;</span>),</span>
-<span id="cb1134-4"><a href="부록.html#cb1134-4" tabindex="-1"></a>         <span class="at">gp_Temp =</span> <span class="fu">if_else</span>(Temp <span class="sc">&gt;=</span> <span class="fu">mean</span>(Temp), </span>
-<span id="cb1134-5"><a href="부록.html#cb1134-5" tabindex="-1"></a>                         <span class="st">&quot;High Temp&quot;</span>,<span class="st">&quot;Low Temp&quot;</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1134-6"><a href="부록.html#cb1134-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Solar.R, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
-<span id="cb1134-7"><a href="부록.html#cb1134-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1134-8"><a href="부록.html#cb1134-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(gp_Wind), <span class="at">cols =</span> <span class="fu">vars</span>(gp_Temp)) </span></code></pre></div>
+<div class="sourceCode" id="cb1256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1256-1"><a href="부록.html#cb1256-1" tabindex="-1"></a>airs <span class="sc">|&gt;</span></span>
+<span id="cb1256-2"><a href="부록.html#cb1256-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gp_Wind =</span> <span class="fu">if_else</span>(Wind <span class="sc">&gt;=</span> <span class="fu">mean</span>(Wind), </span>
+<span id="cb1256-3"><a href="부록.html#cb1256-3" tabindex="-1"></a>                         <span class="st">&quot;High Wind&quot;</span>,<span class="st">&quot;Low Wind&quot;</span>),</span>
+<span id="cb1256-4"><a href="부록.html#cb1256-4" tabindex="-1"></a>         <span class="at">gp_Temp =</span> <span class="fu">if_else</span>(Temp <span class="sc">&gt;=</span> <span class="fu">mean</span>(Temp), </span>
+<span id="cb1256-5"><a href="부록.html#cb1256-5" tabindex="-1"></a>                         <span class="st">&quot;High Temp&quot;</span>,<span class="st">&quot;Low Temp&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1256-6"><a href="부록.html#cb1256-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Solar.R, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
+<span id="cb1256-7"><a href="부록.html#cb1256-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1256-8"><a href="부록.html#cb1256-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(gp_Wind), <span class="at">cols =</span> <span class="fu">vars</span>(gp_Temp)) </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-1056-1.png" width="576" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1135-1"><a href="부록.html#cb1135-1" tabindex="-1"></a>mpg_1 <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span></span>
-<span id="cb1135-2"><a href="부록.html#cb1135-2" tabindex="-1"></a>  <span class="fu">filter</span>(cyl <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1135-3"><a href="부록.html#cb1135-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">factor</span>(year)) <span class="sc">|&gt;</span></span>
-<span id="cb1135-4"><a href="부록.html#cb1135-4" tabindex="-1"></a>  <span class="fu">select</span>(model, year, displ, cty, hwy) <span class="sc">|&gt;</span></span>
-<span id="cb1135-5"><a href="부록.html#cb1135-5" tabindex="-1"></a>  <span class="fu">arrange</span>(year, <span class="fu">desc</span>(displ), cty) <span class="sc">|&gt;</span></span>
-<span id="cb1135-6"><a href="부록.html#cb1135-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">5</span>)</span>
-<span id="cb1135-7"><a href="부록.html#cb1135-7" tabindex="-1"></a><span class="do">## # A tibble: 81 × 5</span></span>
-<span id="cb1135-8"><a href="부록.html#cb1135-8" tabindex="-1"></a><span class="do">##   model             year  displ   cty   hwy</span></span>
-<span id="cb1135-9"><a href="부록.html#cb1135-9" tabindex="-1"></a><span class="do">##   &lt;chr&gt;             &lt;fct&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb1135-10"><a href="부록.html#cb1135-10" tabindex="-1"></a><span class="do">## 1 4runner 4wd       1999    2.7    15    20</span></span>
-<span id="cb1135-11"><a href="부록.html#cb1135-11" tabindex="-1"></a><span class="do">## 2 toyota tacoma 4wd 1999    2.7    15    20</span></span>
-<span id="cb1135-12"><a href="부록.html#cb1135-12" tabindex="-1"></a><span class="do">## 3 4runner 4wd       1999    2.7    16    20</span></span>
-<span id="cb1135-13"><a href="부록.html#cb1135-13" tabindex="-1"></a><span class="do">## 4 toyota tacoma 4wd 1999    2.7    16    20</span></span>
-<span id="cb1135-14"><a href="부록.html#cb1135-14" tabindex="-1"></a><span class="do">## 5 forester awd      1999    2.5    18    25</span></span>
-<span id="cb1135-15"><a href="부록.html#cb1135-15" tabindex="-1"></a><span class="do">## # ℹ 76 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb1136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1136-1"><a href="부록.html#cb1136-1" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> mpg_1 <span class="sc">|&gt;</span> </span>
-<span id="cb1136-2"><a href="부록.html#cb1136-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gp_displ =</span> <span class="fu">if_else</span>(displ <span class="sc">&gt;=</span> <span class="fl">2.0</span>, <span class="st">&quot;Large&quot;</span>,<span class="st">&quot;Small&quot;</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1136-3"><a href="부록.html#cb1136-3" tabindex="-1"></a>  <span class="fu">ggplot</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb1137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1137-1"><a href="부록.html#cb1137-1" tabindex="-1"></a>p2 <span class="sc">+</span> </span>
-<span id="cb1137-2"><a href="부록.html#cb1137-2" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy, <span class="at">color =</span> gp_displ), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb1137-3"><a href="부록.html#cb1137-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year), <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb1137-4"><a href="부록.html#cb1137-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;Displacement </span><span class="sc">\n</span><span class="st">Group&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1257-1"><a href="부록.html#cb1257-1" tabindex="-1"></a>mpg_1 <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span></span>
+<span id="cb1257-2"><a href="부록.html#cb1257-2" tabindex="-1"></a>  <span class="fu">filter</span>(cyl <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1257-3"><a href="부록.html#cb1257-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">factor</span>(year)) <span class="sc">|&gt;</span></span>
+<span id="cb1257-4"><a href="부록.html#cb1257-4" tabindex="-1"></a>  <span class="fu">select</span>(model, year, displ, cty, hwy) <span class="sc">|&gt;</span></span>
+<span id="cb1257-5"><a href="부록.html#cb1257-5" tabindex="-1"></a>  <span class="fu">arrange</span>(year, <span class="fu">desc</span>(displ), cty) <span class="sc">|&gt;</span></span>
+<span id="cb1257-6"><a href="부록.html#cb1257-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb1257-7"><a href="부록.html#cb1257-7" tabindex="-1"></a><span class="do">## # A tibble: 81 × 5</span></span>
+<span id="cb1257-8"><a href="부록.html#cb1257-8" tabindex="-1"></a><span class="do">##   model             year  displ   cty   hwy</span></span>
+<span id="cb1257-9"><a href="부록.html#cb1257-9" tabindex="-1"></a><span class="do">##   &lt;chr&gt;             &lt;fct&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb1257-10"><a href="부록.html#cb1257-10" tabindex="-1"></a><span class="do">## 1 4runner 4wd       1999    2.7    15    20</span></span>
+<span id="cb1257-11"><a href="부록.html#cb1257-11" tabindex="-1"></a><span class="do">## 2 toyota tacoma 4wd 1999    2.7    15    20</span></span>
+<span id="cb1257-12"><a href="부록.html#cb1257-12" tabindex="-1"></a><span class="do">## 3 4runner 4wd       1999    2.7    16    20</span></span>
+<span id="cb1257-13"><a href="부록.html#cb1257-13" tabindex="-1"></a><span class="do">## 4 toyota tacoma 4wd 1999    2.7    16    20</span></span>
+<span id="cb1257-14"><a href="부록.html#cb1257-14" tabindex="-1"></a><span class="do">## 5 forester awd      1999    2.5    18    25</span></span>
+<span id="cb1257-15"><a href="부록.html#cb1257-15" tabindex="-1"></a><span class="do">## # ℹ 76 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb1258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1258-1"><a href="부록.html#cb1258-1" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> mpg_1 <span class="sc">|&gt;</span> </span>
+<span id="cb1258-2"><a href="부록.html#cb1258-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gp_displ =</span> <span class="fu">if_else</span>(displ <span class="sc">&gt;=</span> <span class="fl">2.0</span>, <span class="st">&quot;Large&quot;</span>,<span class="st">&quot;Small&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1258-3"><a href="부록.html#cb1258-3" tabindex="-1"></a>  <span class="fu">ggplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1259-1"><a href="부록.html#cb1259-1" tabindex="-1"></a>p2 <span class="sc">+</span> </span>
+<span id="cb1259-2"><a href="부록.html#cb1259-2" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy, <span class="at">color =</span> gp_displ), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb1259-3"><a href="부록.html#cb1259-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year), <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb1259-4"><a href="부록.html#cb1259-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;Displacement </span><span class="sc">\n</span><span class="st">Group&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-1059-1.png" width="576" /></p>
-<div class="sourceCode" id="cb1138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1138-1"><a href="부록.html#cb1138-1" tabindex="-1"></a>p2 <span class="sc">+</span> </span>
-<span id="cb1138-2"><a href="부록.html#cb1138-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gp_displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
-<span id="cb1138-3"><a href="부록.html#cb1138-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year)) </span></code></pre></div>
+<div class="sourceCode" id="cb1260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1260-1"><a href="부록.html#cb1260-1" tabindex="-1"></a>p2 <span class="sc">+</span> </span>
+<span id="cb1260-2"><a href="부록.html#cb1260-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gp_displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb1260-3"><a href="부록.html#cb1260-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year)) </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-1060-1.png" width="576" /></p>
 </div>
 <div id="장-4" class="section level3 unnumbered hasAnchor">
@@ -810,188 +770,188 @@ div.csl-indent {
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1139-1"><a href="부록.html#cb1139-1" tabindex="-1"></a>top_100 <span class="ot">&lt;-</span> billboard <span class="sc">|&gt;</span>  </span>
-<span id="cb1139-2"><a href="부록.html#cb1139-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb1139-3"><a href="부록.html#cb1139-3" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;wk&quot;</span>),</span>
-<span id="cb1139-4"><a href="부록.html#cb1139-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;week&quot;</span>,</span>
-<span id="cb1139-5"><a href="부록.html#cb1139-5" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;wk&quot;</span>,</span>
-<span id="cb1139-6"><a href="부록.html#cb1139-6" tabindex="-1"></a>    <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">week =</span> as.integer),</span>
-<span id="cb1139-7"><a href="부록.html#cb1139-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span>,</span>
-<span id="cb1139-8"><a href="부록.html#cb1139-8" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
-<span id="cb1139-9"><a href="부록.html#cb1139-9" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb1139-10"><a href="부록.html#cb1139-10" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
-<span id="cb1139-11"><a href="부록.html#cb1139-11" tabindex="-1"></a><span class="do">## # A tibble: 5,307 × 5</span></span>
-<span id="cb1139-12"><a href="부록.html#cb1139-12" tabindex="-1"></a><span class="do">##    artist  track                   date.entered  week  rank</span></span>
-<span id="cb1139-13"><a href="부록.html#cb1139-13" tabindex="-1"></a><span class="do">##    &lt;chr&gt;   &lt;chr&gt;                   &lt;date&gt;       &lt;int&gt; &lt;dbl&gt;</span></span>
-<span id="cb1139-14"><a href="부록.html#cb1139-14" tabindex="-1"></a><span class="do">##  1 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       1    87</span></span>
-<span id="cb1139-15"><a href="부록.html#cb1139-15" tabindex="-1"></a><span class="do">##  2 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       2    82</span></span>
-<span id="cb1139-16"><a href="부록.html#cb1139-16" tabindex="-1"></a><span class="do">##  3 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       3    72</span></span>
-<span id="cb1139-17"><a href="부록.html#cb1139-17" tabindex="-1"></a><span class="do">##  4 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       4    77</span></span>
-<span id="cb1139-18"><a href="부록.html#cb1139-18" tabindex="-1"></a><span class="do">##  5 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       5    87</span></span>
-<span id="cb1139-19"><a href="부록.html#cb1139-19" tabindex="-1"></a><span class="do">##  6 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       6    94</span></span>
-<span id="cb1139-20"><a href="부록.html#cb1139-20" tabindex="-1"></a><span class="do">##  7 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       7    99</span></span>
-<span id="cb1139-21"><a href="부록.html#cb1139-21" tabindex="-1"></a><span class="do">##  8 2Ge+her The Hardest Part Of ... 2000-09-02       1    91</span></span>
-<span id="cb1139-22"><a href="부록.html#cb1139-22" tabindex="-1"></a><span class="do">##  9 2Ge+her The Hardest Part Of ... 2000-09-02       2    87</span></span>
-<span id="cb1139-23"><a href="부록.html#cb1139-23" tabindex="-1"></a><span class="do">## 10 2Ge+her The Hardest Part Of ... 2000-09-02       3    92</span></span>
-<span id="cb1139-24"><a href="부록.html#cb1139-24" tabindex="-1"></a><span class="do">## # ℹ 5,297 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb1261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1261-1"><a href="부록.html#cb1261-1" tabindex="-1"></a>top_100 <span class="ot">&lt;-</span> billboard <span class="sc">|&gt;</span>  </span>
+<span id="cb1261-2"><a href="부록.html#cb1261-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb1261-3"><a href="부록.html#cb1261-3" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;wk&quot;</span>),</span>
+<span id="cb1261-4"><a href="부록.html#cb1261-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;week&quot;</span>,</span>
+<span id="cb1261-5"><a href="부록.html#cb1261-5" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">&quot;wk&quot;</span>,</span>
+<span id="cb1261-6"><a href="부록.html#cb1261-6" tabindex="-1"></a>    <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">week =</span> as.integer),</span>
+<span id="cb1261-7"><a href="부록.html#cb1261-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span>,</span>
+<span id="cb1261-8"><a href="부록.html#cb1261-8" tabindex="-1"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
+<span id="cb1261-9"><a href="부록.html#cb1261-9" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb1261-10"><a href="부록.html#cb1261-10" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb1261-11"><a href="부록.html#cb1261-11" tabindex="-1"></a><span class="do">## # A tibble: 5,307 × 5</span></span>
+<span id="cb1261-12"><a href="부록.html#cb1261-12" tabindex="-1"></a><span class="do">##    artist  track                   date.entered  week  rank</span></span>
+<span id="cb1261-13"><a href="부록.html#cb1261-13" tabindex="-1"></a><span class="do">##    &lt;chr&gt;   &lt;chr&gt;                   &lt;date&gt;       &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb1261-14"><a href="부록.html#cb1261-14" tabindex="-1"></a><span class="do">##  1 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       1    87</span></span>
+<span id="cb1261-15"><a href="부록.html#cb1261-15" tabindex="-1"></a><span class="do">##  2 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       2    82</span></span>
+<span id="cb1261-16"><a href="부록.html#cb1261-16" tabindex="-1"></a><span class="do">##  3 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       3    72</span></span>
+<span id="cb1261-17"><a href="부록.html#cb1261-17" tabindex="-1"></a><span class="do">##  4 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       4    77</span></span>
+<span id="cb1261-18"><a href="부록.html#cb1261-18" tabindex="-1"></a><span class="do">##  5 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       5    87</span></span>
+<span id="cb1261-19"><a href="부록.html#cb1261-19" tabindex="-1"></a><span class="do">##  6 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       6    94</span></span>
+<span id="cb1261-20"><a href="부록.html#cb1261-20" tabindex="-1"></a><span class="do">##  7 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       7    99</span></span>
+<span id="cb1261-21"><a href="부록.html#cb1261-21" tabindex="-1"></a><span class="do">##  8 2Ge+her The Hardest Part Of ... 2000-09-02       1    91</span></span>
+<span id="cb1261-22"><a href="부록.html#cb1261-22" tabindex="-1"></a><span class="do">##  9 2Ge+her The Hardest Part Of ... 2000-09-02       2    87</span></span>
+<span id="cb1261-23"><a href="부록.html#cb1261-23" tabindex="-1"></a><span class="do">## 10 2Ge+her The Hardest Part Of ... 2000-09-02       3    92</span></span>
+<span id="cb1261-24"><a href="부록.html#cb1261-24" tabindex="-1"></a><span class="do">## # ℹ 5,297 more rows</span></span></code></pre></div>
 <p>다른 방법</p>
-<div class="sourceCode" id="cb1140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1140-1"><a href="부록.html#cb1140-1" tabindex="-1"></a>top_100 <span class="ot">&lt;-</span> billboard <span class="sc">|&gt;</span> </span>
-<span id="cb1140-2"><a href="부록.html#cb1140-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;wk&quot;</span>),</span>
-<span id="cb1140-3"><a href="부록.html#cb1140-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;week&quot;</span>,</span>
-<span id="cb1140-4"><a href="부록.html#cb1140-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span></span>
-<span id="cb1140-5"><a href="부록.html#cb1140-5" tabindex="-1"></a>               ) <span class="sc">|&gt;</span> </span>
-<span id="cb1140-6"><a href="부록.html#cb1140-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">parse_number</span>(week)) <span class="sc">|&gt;</span> </span>
-<span id="cb1140-7"><a href="부록.html#cb1140-7" tabindex="-1"></a>  <span class="fu">drop_na</span>(rank) <span class="sc">|&gt;</span> </span>
-<span id="cb1140-8"><a href="부록.html#cb1140-8" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
-<span id="cb1140-9"><a href="부록.html#cb1140-9" tabindex="-1"></a><span class="do">## # A tibble: 5,307 × 5</span></span>
-<span id="cb1140-10"><a href="부록.html#cb1140-10" tabindex="-1"></a><span class="do">##    artist  track                   date.entered  week  rank</span></span>
-<span id="cb1140-11"><a href="부록.html#cb1140-11" tabindex="-1"></a><span class="do">##    &lt;chr&gt;   &lt;chr&gt;                   &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb1140-12"><a href="부록.html#cb1140-12" tabindex="-1"></a><span class="do">##  1 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       1    87</span></span>
-<span id="cb1140-13"><a href="부록.html#cb1140-13" tabindex="-1"></a><span class="do">##  2 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       2    82</span></span>
-<span id="cb1140-14"><a href="부록.html#cb1140-14" tabindex="-1"></a><span class="do">##  3 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       3    72</span></span>
-<span id="cb1140-15"><a href="부록.html#cb1140-15" tabindex="-1"></a><span class="do">##  4 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       4    77</span></span>
-<span id="cb1140-16"><a href="부록.html#cb1140-16" tabindex="-1"></a><span class="do">##  5 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       5    87</span></span>
-<span id="cb1140-17"><a href="부록.html#cb1140-17" tabindex="-1"></a><span class="do">##  6 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       6    94</span></span>
-<span id="cb1140-18"><a href="부록.html#cb1140-18" tabindex="-1"></a><span class="do">##  7 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       7    99</span></span>
-<span id="cb1140-19"><a href="부록.html#cb1140-19" tabindex="-1"></a><span class="do">##  8 2Ge+her The Hardest Part Of ... 2000-09-02       1    91</span></span>
-<span id="cb1140-20"><a href="부록.html#cb1140-20" tabindex="-1"></a><span class="do">##  9 2Ge+her The Hardest Part Of ... 2000-09-02       2    87</span></span>
-<span id="cb1140-21"><a href="부록.html#cb1140-21" tabindex="-1"></a><span class="do">## 10 2Ge+her The Hardest Part Of ... 2000-09-02       3    92</span></span>
-<span id="cb1140-22"><a href="부록.html#cb1140-22" tabindex="-1"></a><span class="do">## # ℹ 5,297 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb1141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1141-1"><a href="부록.html#cb1141-1" tabindex="-1"></a>top_100 <span class="sc">|&gt;</span>  </span>
-<span id="cb1141-2"><a href="부록.html#cb1141-2" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1141-3"><a href="부록.html#cb1141-3" tabindex="-1"></a>  <span class="fu">group_by</span>(artist, track) <span class="sc">|&gt;</span> </span>
-<span id="cb1141-4"><a href="부록.html#cb1141-4" tabindex="-1"></a>  <span class="fu">filter</span>((<span class="fu">max</span>(week) <span class="sc">-</span> <span class="fu">min</span>(week) <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">==</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb1141-5"><a href="부록.html#cb1141-5" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1141-6"><a href="부록.html#cb1141-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="dv">2</span>)</span>
-<span id="cb1141-7"><a href="부록.html#cb1141-7" tabindex="-1"></a><span class="do">## # A tibble: 16 × 3</span></span>
-<span id="cb1141-8"><a href="부록.html#cb1141-8" tabindex="-1"></a><span class="do">## # Groups:   artist, track [16]</span></span>
-<span id="cb1141-9"><a href="부록.html#cb1141-9" tabindex="-1"></a><span class="do">##   artist          track                       n</span></span>
-<span id="cb1141-10"><a href="부록.html#cb1141-10" tabindex="-1"></a><span class="do">##   &lt;chr&gt;           &lt;chr&gt;                   &lt;int&gt;</span></span>
-<span id="cb1141-11"><a href="부록.html#cb1141-11" tabindex="-1"></a><span class="do">## 1 Destiny&#39;s Child Independent Women Pa...    11</span></span>
-<span id="cb1141-12"><a href="부록.html#cb1141-12" tabindex="-1"></a><span class="do">## 2 Santana         Maria, Maria               10</span></span>
-<span id="cb1141-13"><a href="부록.html#cb1141-13" tabindex="-1"></a><span class="do">## # ℹ 14 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb1262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1262-1"><a href="부록.html#cb1262-1" tabindex="-1"></a>top_100 <span class="ot">&lt;-</span> billboard <span class="sc">|&gt;</span> </span>
+<span id="cb1262-2"><a href="부록.html#cb1262-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;wk&quot;</span>),</span>
+<span id="cb1262-3"><a href="부록.html#cb1262-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;week&quot;</span>,</span>
+<span id="cb1262-4"><a href="부록.html#cb1262-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;rank&quot;</span></span>
+<span id="cb1262-5"><a href="부록.html#cb1262-5" tabindex="-1"></a>               ) <span class="sc">|&gt;</span> </span>
+<span id="cb1262-6"><a href="부록.html#cb1262-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">parse_number</span>(week)) <span class="sc">|&gt;</span> </span>
+<span id="cb1262-7"><a href="부록.html#cb1262-7" tabindex="-1"></a>  <span class="fu">drop_na</span>(rank) <span class="sc">|&gt;</span> </span>
+<span id="cb1262-8"><a href="부록.html#cb1262-8" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb1262-9"><a href="부록.html#cb1262-9" tabindex="-1"></a><span class="do">## # A tibble: 5,307 × 5</span></span>
+<span id="cb1262-10"><a href="부록.html#cb1262-10" tabindex="-1"></a><span class="do">##    artist  track                   date.entered  week  rank</span></span>
+<span id="cb1262-11"><a href="부록.html#cb1262-11" tabindex="-1"></a><span class="do">##    &lt;chr&gt;   &lt;chr&gt;                   &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb1262-12"><a href="부록.html#cb1262-12" tabindex="-1"></a><span class="do">##  1 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       1    87</span></span>
+<span id="cb1262-13"><a href="부록.html#cb1262-13" tabindex="-1"></a><span class="do">##  2 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       2    82</span></span>
+<span id="cb1262-14"><a href="부록.html#cb1262-14" tabindex="-1"></a><span class="do">##  3 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       3    72</span></span>
+<span id="cb1262-15"><a href="부록.html#cb1262-15" tabindex="-1"></a><span class="do">##  4 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       4    77</span></span>
+<span id="cb1262-16"><a href="부록.html#cb1262-16" tabindex="-1"></a><span class="do">##  5 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       5    87</span></span>
+<span id="cb1262-17"><a href="부록.html#cb1262-17" tabindex="-1"></a><span class="do">##  6 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       6    94</span></span>
+<span id="cb1262-18"><a href="부록.html#cb1262-18" tabindex="-1"></a><span class="do">##  7 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26       7    99</span></span>
+<span id="cb1262-19"><a href="부록.html#cb1262-19" tabindex="-1"></a><span class="do">##  8 2Ge+her The Hardest Part Of ... 2000-09-02       1    91</span></span>
+<span id="cb1262-20"><a href="부록.html#cb1262-20" tabindex="-1"></a><span class="do">##  9 2Ge+her The Hardest Part Of ... 2000-09-02       2    87</span></span>
+<span id="cb1262-21"><a href="부록.html#cb1262-21" tabindex="-1"></a><span class="do">## 10 2Ge+her The Hardest Part Of ... 2000-09-02       3    92</span></span>
+<span id="cb1262-22"><a href="부록.html#cb1262-22" tabindex="-1"></a><span class="do">## # ℹ 5,297 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb1263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1263-1"><a href="부록.html#cb1263-1" tabindex="-1"></a>top_100 <span class="sc">|&gt;</span>  </span>
+<span id="cb1263-2"><a href="부록.html#cb1263-2" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1263-3"><a href="부록.html#cb1263-3" tabindex="-1"></a>  <span class="fu">group_by</span>(artist, track) <span class="sc">|&gt;</span> </span>
+<span id="cb1263-4"><a href="부록.html#cb1263-4" tabindex="-1"></a>  <span class="fu">filter</span>((<span class="fu">max</span>(week) <span class="sc">-</span> <span class="fu">min</span>(week) <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">==</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb1263-5"><a href="부록.html#cb1263-5" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1263-6"><a href="부록.html#cb1263-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="dv">2</span>)</span>
+<span id="cb1263-7"><a href="부록.html#cb1263-7" tabindex="-1"></a><span class="do">## # A tibble: 16 × 3</span></span>
+<span id="cb1263-8"><a href="부록.html#cb1263-8" tabindex="-1"></a><span class="do">## # Groups:   artist, track [16]</span></span>
+<span id="cb1263-9"><a href="부록.html#cb1263-9" tabindex="-1"></a><span class="do">##   artist          track                       n</span></span>
+<span id="cb1263-10"><a href="부록.html#cb1263-10" tabindex="-1"></a><span class="do">##   &lt;chr&gt;           &lt;chr&gt;                   &lt;int&gt;</span></span>
+<span id="cb1263-11"><a href="부록.html#cb1263-11" tabindex="-1"></a><span class="do">## 1 Destiny&#39;s Child Independent Women Pa...    11</span></span>
+<span id="cb1263-12"><a href="부록.html#cb1263-12" tabindex="-1"></a><span class="do">## 2 Santana         Maria, Maria               10</span></span>
+<span id="cb1263-13"><a href="부록.html#cb1263-13" tabindex="-1"></a><span class="do">## # ℹ 14 more rows</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1142-1"><a href="부록.html#cb1142-1" tabindex="-1"></a>part_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">num =</span> <span class="fu">c</span>(<span class="dv">155</span>, <span class="dv">501</span>, <span class="dv">244</span>, <span class="dv">796</span>),</span>
-<span id="cb1142-2"><a href="부록.html#cb1142-2" tabindex="-1"></a>                  <span class="at">tool =</span> <span class="fu">c</span>(<span class="st">&quot;screwdrive&quot;</span>, <span class="st">&quot;pliers&quot;</span>, <span class="st">&quot;wrench&quot;</span>, <span class="st">&quot;hammer&quot;</span>))</span>
-<span id="cb1142-3"><a href="부록.html#cb1142-3" tabindex="-1"></a>order_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">num =</span> <span class="fu">c</span>(<span class="dv">155</span>, <span class="dv">796</span>, <span class="dv">155</span>, <span class="dv">244</span>, <span class="dv">244</span>, <span class="dv">796</span>, <span class="dv">244</span>),</span>
-<span id="cb1142-4"><a href="부록.html#cb1142-4" tabindex="-1"></a>                   <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Park&quot;</span>, <span class="st">&quot;Fox&quot;</span>, <span class="st">&quot;Smith&quot;</span>, <span class="st">&quot;White&quot;</span>, <span class="st">&quot;Crus&quot;</span>, <span class="st">&quot;White&quot;</span>, <span class="st">&quot;Lee&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb1143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1143-1"><a href="부록.html#cb1143-1" tabindex="-1"></a>part_df <span class="sc">|&gt;</span> <span class="fu">left_join</span>(order_df, <span class="at">by =</span> <span class="fu">join_by</span>(num))</span>
-<span id="cb1143-2"><a href="부록.html#cb1143-2" tabindex="-1"></a><span class="do">## # A tibble: 8 × 3</span></span>
-<span id="cb1143-3"><a href="부록.html#cb1143-3" tabindex="-1"></a><span class="do">##     num tool       name </span></span>
-<span id="cb1143-4"><a href="부록.html#cb1143-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;</span></span>
-<span id="cb1143-5"><a href="부록.html#cb1143-5" tabindex="-1"></a><span class="do">## 1   155 screwdrive Park </span></span>
-<span id="cb1143-6"><a href="부록.html#cb1143-6" tabindex="-1"></a><span class="do">## 2   155 screwdrive Smith</span></span>
-<span id="cb1143-7"><a href="부록.html#cb1143-7" tabindex="-1"></a><span class="do">## 3   501 pliers     &lt;NA&gt; </span></span>
-<span id="cb1143-8"><a href="부록.html#cb1143-8" tabindex="-1"></a><span class="do">## 4   244 wrench     White</span></span>
-<span id="cb1143-9"><a href="부록.html#cb1143-9" tabindex="-1"></a><span class="do">## 5   244 wrench     Crus </span></span>
-<span id="cb1143-10"><a href="부록.html#cb1143-10" tabindex="-1"></a><span class="do">## 6   244 wrench     Lee  </span></span>
-<span id="cb1143-11"><a href="부록.html#cb1143-11" tabindex="-1"></a><span class="do">## 7   796 hammer     Fox  </span></span>
-<span id="cb1143-12"><a href="부록.html#cb1143-12" tabindex="-1"></a><span class="do">## 8   796 hammer     White</span></span></code></pre></div>
-<div class="sourceCode" id="cb1144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1144-1"><a href="부록.html#cb1144-1" tabindex="-1"></a>part_df <span class="sc">|&gt;</span> <span class="fu">inner_join</span>(order_df, <span class="at">by =</span> <span class="fu">join_by</span>(num))</span>
-<span id="cb1144-2"><a href="부록.html#cb1144-2" tabindex="-1"></a><span class="do">## # A tibble: 7 × 3</span></span>
-<span id="cb1144-3"><a href="부록.html#cb1144-3" tabindex="-1"></a><span class="do">##     num tool       name </span></span>
-<span id="cb1144-4"><a href="부록.html#cb1144-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;</span></span>
-<span id="cb1144-5"><a href="부록.html#cb1144-5" tabindex="-1"></a><span class="do">## 1   155 screwdrive Park </span></span>
-<span id="cb1144-6"><a href="부록.html#cb1144-6" tabindex="-1"></a><span class="do">## 2   155 screwdrive Smith</span></span>
-<span id="cb1144-7"><a href="부록.html#cb1144-7" tabindex="-1"></a><span class="do">## 3   244 wrench     White</span></span>
-<span id="cb1144-8"><a href="부록.html#cb1144-8" tabindex="-1"></a><span class="do">## 4   244 wrench     Crus </span></span>
-<span id="cb1144-9"><a href="부록.html#cb1144-9" tabindex="-1"></a><span class="do">## 5   244 wrench     Lee  </span></span>
-<span id="cb1144-10"><a href="부록.html#cb1144-10" tabindex="-1"></a><span class="do">## 6   796 hammer     Fox  </span></span>
-<span id="cb1144-11"><a href="부록.html#cb1144-11" tabindex="-1"></a><span class="do">## 7   796 hammer     White</span></span></code></pre></div>
+<div class="sourceCode" id="cb1264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1264-1"><a href="부록.html#cb1264-1" tabindex="-1"></a>part_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">num =</span> <span class="fu">c</span>(<span class="dv">155</span>, <span class="dv">501</span>, <span class="dv">244</span>, <span class="dv">796</span>),</span>
+<span id="cb1264-2"><a href="부록.html#cb1264-2" tabindex="-1"></a>                  <span class="at">tool =</span> <span class="fu">c</span>(<span class="st">&quot;screwdrive&quot;</span>, <span class="st">&quot;pliers&quot;</span>, <span class="st">&quot;wrench&quot;</span>, <span class="st">&quot;hammer&quot;</span>))</span>
+<span id="cb1264-3"><a href="부록.html#cb1264-3" tabindex="-1"></a>order_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">num =</span> <span class="fu">c</span>(<span class="dv">155</span>, <span class="dv">796</span>, <span class="dv">155</span>, <span class="dv">244</span>, <span class="dv">244</span>, <span class="dv">796</span>, <span class="dv">244</span>),</span>
+<span id="cb1264-4"><a href="부록.html#cb1264-4" tabindex="-1"></a>                   <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Park&quot;</span>, <span class="st">&quot;Fox&quot;</span>, <span class="st">&quot;Smith&quot;</span>, <span class="st">&quot;White&quot;</span>, <span class="st">&quot;Crus&quot;</span>, <span class="st">&quot;White&quot;</span>, <span class="st">&quot;Lee&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1265-1"><a href="부록.html#cb1265-1" tabindex="-1"></a>part_df <span class="sc">|&gt;</span> <span class="fu">left_join</span>(order_df, <span class="at">by =</span> <span class="fu">join_by</span>(num))</span>
+<span id="cb1265-2"><a href="부록.html#cb1265-2" tabindex="-1"></a><span class="do">## # A tibble: 8 × 3</span></span>
+<span id="cb1265-3"><a href="부록.html#cb1265-3" tabindex="-1"></a><span class="do">##     num tool       name </span></span>
+<span id="cb1265-4"><a href="부록.html#cb1265-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;</span></span>
+<span id="cb1265-5"><a href="부록.html#cb1265-5" tabindex="-1"></a><span class="do">## 1   155 screwdrive Park </span></span>
+<span id="cb1265-6"><a href="부록.html#cb1265-6" tabindex="-1"></a><span class="do">## 2   155 screwdrive Smith</span></span>
+<span id="cb1265-7"><a href="부록.html#cb1265-7" tabindex="-1"></a><span class="do">## 3   501 pliers     &lt;NA&gt; </span></span>
+<span id="cb1265-8"><a href="부록.html#cb1265-8" tabindex="-1"></a><span class="do">## 4   244 wrench     White</span></span>
+<span id="cb1265-9"><a href="부록.html#cb1265-9" tabindex="-1"></a><span class="do">## 5   244 wrench     Crus </span></span>
+<span id="cb1265-10"><a href="부록.html#cb1265-10" tabindex="-1"></a><span class="do">## 6   244 wrench     Lee  </span></span>
+<span id="cb1265-11"><a href="부록.html#cb1265-11" tabindex="-1"></a><span class="do">## 7   796 hammer     Fox  </span></span>
+<span id="cb1265-12"><a href="부록.html#cb1265-12" tabindex="-1"></a><span class="do">## 8   796 hammer     White</span></span></code></pre></div>
+<div class="sourceCode" id="cb1266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1266-1"><a href="부록.html#cb1266-1" tabindex="-1"></a>part_df <span class="sc">|&gt;</span> <span class="fu">inner_join</span>(order_df, <span class="at">by =</span> <span class="fu">join_by</span>(num))</span>
+<span id="cb1266-2"><a href="부록.html#cb1266-2" tabindex="-1"></a><span class="do">## # A tibble: 7 × 3</span></span>
+<span id="cb1266-3"><a href="부록.html#cb1266-3" tabindex="-1"></a><span class="do">##     num tool       name </span></span>
+<span id="cb1266-4"><a href="부록.html#cb1266-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;</span></span>
+<span id="cb1266-5"><a href="부록.html#cb1266-5" tabindex="-1"></a><span class="do">## 1   155 screwdrive Park </span></span>
+<span id="cb1266-6"><a href="부록.html#cb1266-6" tabindex="-1"></a><span class="do">## 2   155 screwdrive Smith</span></span>
+<span id="cb1266-7"><a href="부록.html#cb1266-7" tabindex="-1"></a><span class="do">## 3   244 wrench     White</span></span>
+<span id="cb1266-8"><a href="부록.html#cb1266-8" tabindex="-1"></a><span class="do">## 4   244 wrench     Crus </span></span>
+<span id="cb1266-9"><a href="부록.html#cb1266-9" tabindex="-1"></a><span class="do">## 5   244 wrench     Lee  </span></span>
+<span id="cb1266-10"><a href="부록.html#cb1266-10" tabindex="-1"></a><span class="do">## 6   796 hammer     Fox  </span></span>
+<span id="cb1266-11"><a href="부록.html#cb1266-11" tabindex="-1"></a><span class="do">## 7   796 hammer     White</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1145-1"><a href="부록.html#cb1145-1" tabindex="-1"></a><span class="fu">str_c</span>(letters, LETTERS, <span class="at">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb1145-2"><a href="부록.html#cb1145-2" tabindex="-1"></a><span class="do">## [1] &quot;aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1267-1"><a href="부록.html#cb1267-1" tabindex="-1"></a><span class="fu">str_c</span>(letters, LETTERS, <span class="at">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb1267-2"><a href="부록.html#cb1267-2" tabindex="-1"></a><span class="do">## [1] &quot;aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ&quot;</span></span></code></pre></div>
 </div>
 <div id="장-5" class="section level3 unnumbered hasAnchor">
 <h3>7장<a href="부록.html#장-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1146-1"><a href="부록.html#cb1146-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="dv">12</span>)</span>
-<span id="cb1146-2"><a href="부록.html#cb1146-2" tabindex="-1"></a>res[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span>; res[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1146-3"><a href="부록.html#cb1146-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb1146-4"><a href="부록.html#cb1146-4" tabindex="-1"></a>  res[i<span class="sc">+</span><span class="dv">2</span>] <span class="ot">&lt;-</span> res[i]<span class="sc">+</span>res[i<span class="sc">+</span><span class="dv">1</span>]</span>
-<span id="cb1146-5"><a href="부록.html#cb1146-5" tabindex="-1"></a>}</span>
-<span id="cb1146-6"><a href="부록.html#cb1146-6" tabindex="-1"></a>res</span>
-<span id="cb1146-7"><a href="부록.html#cb1146-7" tabindex="-1"></a><span class="do">##  [1]  0  1  1  2  3  5  8 13 21 34 55 89</span></span></code></pre></div>
+<div class="sourceCode" id="cb1268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1268-1"><a href="부록.html#cb1268-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="dv">12</span>)</span>
+<span id="cb1268-2"><a href="부록.html#cb1268-2" tabindex="-1"></a>res[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span>; res[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1268-3"><a href="부록.html#cb1268-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb1268-4"><a href="부록.html#cb1268-4" tabindex="-1"></a>  res[i<span class="sc">+</span><span class="dv">2</span>] <span class="ot">&lt;-</span> res[i]<span class="sc">+</span>res[i<span class="sc">+</span><span class="dv">1</span>]</span>
+<span id="cb1268-5"><a href="부록.html#cb1268-5" tabindex="-1"></a>}</span>
+<span id="cb1268-6"><a href="부록.html#cb1268-6" tabindex="-1"></a>res</span>
+<span id="cb1268-7"><a href="부록.html#cb1268-7" tabindex="-1"></a><span class="do">##  [1]  0  1  1  2  3  5  8 13 21 34 55 89</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb1147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1147-1"><a href="부록.html#cb1147-1" tabindex="-1"></a>airs_M <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
-<span id="cb1147-2"><a href="부록.html#cb1147-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Month, Day)) <span class="sc">|&gt;</span></span>
-<span id="cb1147-3"><a href="부록.html#cb1147-3" tabindex="-1"></a>  <span class="fu">split</span>(airquality<span class="sc">$</span>Month)</span></code></pre></div>
-<div class="sourceCode" id="cb1148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1148-1"><a href="부록.html#cb1148-1" tabindex="-1"></a><span class="fu">map</span>(airs_M, <span class="sc">~</span><span class="fu">map_dbl</span>(.x, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb1148-2"><a href="부록.html#cb1148-2" tabindex="-1"></a><span class="do">## $`5`</span></span>
-<span id="cb1148-3"><a href="부록.html#cb1148-3" tabindex="-1"></a><span class="do">##     Ozone   Solar.R      Wind      Temp </span></span>
-<span id="cb1148-4"><a href="부록.html#cb1148-4" tabindex="-1"></a><span class="do">##  23.61538 181.29630  11.62258  65.54839 </span></span>
-<span id="cb1148-5"><a href="부록.html#cb1148-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1148-6"><a href="부록.html#cb1148-6" tabindex="-1"></a><span class="do">## $`6`</span></span>
-<span id="cb1148-7"><a href="부록.html#cb1148-7" tabindex="-1"></a><span class="do">##     Ozone   Solar.R      Wind      Temp </span></span>
-<span id="cb1148-8"><a href="부록.html#cb1148-8" tabindex="-1"></a><span class="do">##  29.44444 190.16667  10.26667  79.10000 </span></span>
-<span id="cb1148-9"><a href="부록.html#cb1148-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1148-10"><a href="부록.html#cb1148-10" tabindex="-1"></a><span class="do">## $`7`</span></span>
-<span id="cb1148-11"><a href="부록.html#cb1148-11" tabindex="-1"></a><span class="do">##      Ozone    Solar.R       Wind       Temp </span></span>
-<span id="cb1148-12"><a href="부록.html#cb1148-12" tabindex="-1"></a><span class="do">##  59.115385 216.483871   8.941935  83.903226 </span></span>
-<span id="cb1148-13"><a href="부록.html#cb1148-13" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1148-14"><a href="부록.html#cb1148-14" tabindex="-1"></a><span class="do">## $`8`</span></span>
-<span id="cb1148-15"><a href="부록.html#cb1148-15" tabindex="-1"></a><span class="do">##      Ozone    Solar.R       Wind       Temp </span></span>
-<span id="cb1148-16"><a href="부록.html#cb1148-16" tabindex="-1"></a><span class="do">##  59.961538 171.857143   8.793548  83.967742 </span></span>
-<span id="cb1148-17"><a href="부록.html#cb1148-17" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1148-18"><a href="부록.html#cb1148-18" tabindex="-1"></a><span class="do">## $`9`</span></span>
-<span id="cb1148-19"><a href="부록.html#cb1148-19" tabindex="-1"></a><span class="do">##     Ozone   Solar.R      Wind      Temp </span></span>
-<span id="cb1148-20"><a href="부록.html#cb1148-20" tabindex="-1"></a><span class="do">##  31.44828 167.43333  10.18000  76.90000</span></span></code></pre></div>
-<div class="sourceCode" id="cb1149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1149-1"><a href="부록.html#cb1149-1" tabindex="-1"></a><span class="fu">map</span>(airs_M, <span class="sc">~</span><span class="fu">map_dbl</span>(.x, <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.x))))</span>
-<span id="cb1149-2"><a href="부록.html#cb1149-2" tabindex="-1"></a><span class="do">## $`5`</span></span>
-<span id="cb1149-3"><a href="부록.html#cb1149-3" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
-<span id="cb1149-4"><a href="부록.html#cb1149-4" tabindex="-1"></a><span class="do">##       5       4       0       0 </span></span>
-<span id="cb1149-5"><a href="부록.html#cb1149-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1149-6"><a href="부록.html#cb1149-6" tabindex="-1"></a><span class="do">## $`6`</span></span>
-<span id="cb1149-7"><a href="부록.html#cb1149-7" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
-<span id="cb1149-8"><a href="부록.html#cb1149-8" tabindex="-1"></a><span class="do">##      21       0       0       0 </span></span>
-<span id="cb1149-9"><a href="부록.html#cb1149-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1149-10"><a href="부록.html#cb1149-10" tabindex="-1"></a><span class="do">## $`7`</span></span>
-<span id="cb1149-11"><a href="부록.html#cb1149-11" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
-<span id="cb1149-12"><a href="부록.html#cb1149-12" tabindex="-1"></a><span class="do">##       5       0       0       0 </span></span>
-<span id="cb1149-13"><a href="부록.html#cb1149-13" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1149-14"><a href="부록.html#cb1149-14" tabindex="-1"></a><span class="do">## $`8`</span></span>
-<span id="cb1149-15"><a href="부록.html#cb1149-15" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
-<span id="cb1149-16"><a href="부록.html#cb1149-16" tabindex="-1"></a><span class="do">##       5       3       0       0 </span></span>
-<span id="cb1149-17"><a href="부록.html#cb1149-17" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb1149-18"><a href="부록.html#cb1149-18" tabindex="-1"></a><span class="do">## $`9`</span></span>
-<span id="cb1149-19"><a href="부록.html#cb1149-19" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
-<span id="cb1149-20"><a href="부록.html#cb1149-20" tabindex="-1"></a><span class="do">##       1       0       0       0</span></span></code></pre></div>
-<div class="sourceCode" id="cb1150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1150-1"><a href="부록.html#cb1150-1" tabindex="-1"></a>airquality <span class="sc">|&gt;</span></span>
-<span id="cb1150-2"><a href="부록.html#cb1150-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
-<span id="cb1150-3"><a href="부록.html#cb1150-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">list</span>(<span class="at">Mean =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))))</span>
-<span id="cb1150-4"><a href="부록.html#cb1150-4" tabindex="-1"></a><span class="do">## # A tibble: 5 × 5</span></span>
-<span id="cb1150-5"><a href="부록.html#cb1150-5" tabindex="-1"></a><span class="do">##   Month Ozone_Mean Solar.R_Mean Wind_Mean Temp_Mean</span></span>
-<span id="cb1150-6"><a href="부록.html#cb1150-6" tabindex="-1"></a><span class="do">##   &lt;int&gt;      &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb1150-7"><a href="부록.html#cb1150-7" tabindex="-1"></a><span class="do">## 1     5       23.6         181.     11.6       65.5</span></span>
-<span id="cb1150-8"><a href="부록.html#cb1150-8" tabindex="-1"></a><span class="do">## 2     6       29.4         190.     10.3       79.1</span></span>
-<span id="cb1150-9"><a href="부록.html#cb1150-9" tabindex="-1"></a><span class="do">## 3     7       59.1         216.      8.94      83.9</span></span>
-<span id="cb1150-10"><a href="부록.html#cb1150-10" tabindex="-1"></a><span class="do">## 4     8       60.0         172.      8.79      84.0</span></span>
-<span id="cb1150-11"><a href="부록.html#cb1150-11" tabindex="-1"></a><span class="do">## 5     9       31.4         167.     10.2       76.9</span></span></code></pre></div>
-<div class="sourceCode" id="cb1151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1151-1"><a href="부록.html#cb1151-1" tabindex="-1"></a>airquality <span class="sc">|&gt;</span></span>
-<span id="cb1151-2"><a href="부록.html#cb1151-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span> </span>
-<span id="cb1151-3"><a href="부록.html#cb1151-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">list</span>(<span class="at">miss =</span> <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.x)))))</span>
-<span id="cb1151-4"><a href="부록.html#cb1151-4" tabindex="-1"></a><span class="do">## # A tibble: 5 × 5</span></span>
-<span id="cb1151-5"><a href="부록.html#cb1151-5" tabindex="-1"></a><span class="do">##   Month Ozone_miss Solar.R_miss Wind_miss Temp_miss</span></span>
-<span id="cb1151-6"><a href="부록.html#cb1151-6" tabindex="-1"></a><span class="do">##   &lt;int&gt;      &lt;int&gt;        &lt;int&gt;     &lt;int&gt;     &lt;int&gt;</span></span>
-<span id="cb1151-7"><a href="부록.html#cb1151-7" tabindex="-1"></a><span class="do">## 1     5          5            4         0         0</span></span>
-<span id="cb1151-8"><a href="부록.html#cb1151-8" tabindex="-1"></a><span class="do">## 2     6         21            0         0         0</span></span>
-<span id="cb1151-9"><a href="부록.html#cb1151-9" tabindex="-1"></a><span class="do">## 3     7          5            0         0         0</span></span>
-<span id="cb1151-10"><a href="부록.html#cb1151-10" tabindex="-1"></a><span class="do">## 4     8          5            3         0         0</span></span>
-<span id="cb1151-11"><a href="부록.html#cb1151-11" tabindex="-1"></a><span class="do">## 5     9          1            0         0         0</span></span></code></pre></div>
+<div class="sourceCode" id="cb1269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1269-1"><a href="부록.html#cb1269-1" tabindex="-1"></a>airs_M <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
+<span id="cb1269-2"><a href="부록.html#cb1269-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Month, Day)) <span class="sc">|&gt;</span></span>
+<span id="cb1269-3"><a href="부록.html#cb1269-3" tabindex="-1"></a>  <span class="fu">split</span>(airquality<span class="sc">$</span>Month)</span></code></pre></div>
+<div class="sourceCode" id="cb1270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1270-1"><a href="부록.html#cb1270-1" tabindex="-1"></a><span class="fu">map</span>(airs_M, <span class="sc">~</span><span class="fu">map_dbl</span>(.x, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1270-2"><a href="부록.html#cb1270-2" tabindex="-1"></a><span class="do">## $`5`</span></span>
+<span id="cb1270-3"><a href="부록.html#cb1270-3" tabindex="-1"></a><span class="do">##     Ozone   Solar.R      Wind      Temp </span></span>
+<span id="cb1270-4"><a href="부록.html#cb1270-4" tabindex="-1"></a><span class="do">##  23.61538 181.29630  11.62258  65.54839 </span></span>
+<span id="cb1270-5"><a href="부록.html#cb1270-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1270-6"><a href="부록.html#cb1270-6" tabindex="-1"></a><span class="do">## $`6`</span></span>
+<span id="cb1270-7"><a href="부록.html#cb1270-7" tabindex="-1"></a><span class="do">##     Ozone   Solar.R      Wind      Temp </span></span>
+<span id="cb1270-8"><a href="부록.html#cb1270-8" tabindex="-1"></a><span class="do">##  29.44444 190.16667  10.26667  79.10000 </span></span>
+<span id="cb1270-9"><a href="부록.html#cb1270-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1270-10"><a href="부록.html#cb1270-10" tabindex="-1"></a><span class="do">## $`7`</span></span>
+<span id="cb1270-11"><a href="부록.html#cb1270-11" tabindex="-1"></a><span class="do">##      Ozone    Solar.R       Wind       Temp </span></span>
+<span id="cb1270-12"><a href="부록.html#cb1270-12" tabindex="-1"></a><span class="do">##  59.115385 216.483871   8.941935  83.903226 </span></span>
+<span id="cb1270-13"><a href="부록.html#cb1270-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1270-14"><a href="부록.html#cb1270-14" tabindex="-1"></a><span class="do">## $`8`</span></span>
+<span id="cb1270-15"><a href="부록.html#cb1270-15" tabindex="-1"></a><span class="do">##      Ozone    Solar.R       Wind       Temp </span></span>
+<span id="cb1270-16"><a href="부록.html#cb1270-16" tabindex="-1"></a><span class="do">##  59.961538 171.857143   8.793548  83.967742 </span></span>
+<span id="cb1270-17"><a href="부록.html#cb1270-17" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1270-18"><a href="부록.html#cb1270-18" tabindex="-1"></a><span class="do">## $`9`</span></span>
+<span id="cb1270-19"><a href="부록.html#cb1270-19" tabindex="-1"></a><span class="do">##     Ozone   Solar.R      Wind      Temp </span></span>
+<span id="cb1270-20"><a href="부록.html#cb1270-20" tabindex="-1"></a><span class="do">##  31.44828 167.43333  10.18000  76.90000</span></span></code></pre></div>
+<div class="sourceCode" id="cb1271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1271-1"><a href="부록.html#cb1271-1" tabindex="-1"></a><span class="fu">map</span>(airs_M, <span class="sc">~</span><span class="fu">map_dbl</span>(.x, <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.x))))</span>
+<span id="cb1271-2"><a href="부록.html#cb1271-2" tabindex="-1"></a><span class="do">## $`5`</span></span>
+<span id="cb1271-3"><a href="부록.html#cb1271-3" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
+<span id="cb1271-4"><a href="부록.html#cb1271-4" tabindex="-1"></a><span class="do">##       5       4       0       0 </span></span>
+<span id="cb1271-5"><a href="부록.html#cb1271-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1271-6"><a href="부록.html#cb1271-6" tabindex="-1"></a><span class="do">## $`6`</span></span>
+<span id="cb1271-7"><a href="부록.html#cb1271-7" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
+<span id="cb1271-8"><a href="부록.html#cb1271-8" tabindex="-1"></a><span class="do">##      21       0       0       0 </span></span>
+<span id="cb1271-9"><a href="부록.html#cb1271-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1271-10"><a href="부록.html#cb1271-10" tabindex="-1"></a><span class="do">## $`7`</span></span>
+<span id="cb1271-11"><a href="부록.html#cb1271-11" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
+<span id="cb1271-12"><a href="부록.html#cb1271-12" tabindex="-1"></a><span class="do">##       5       0       0       0 </span></span>
+<span id="cb1271-13"><a href="부록.html#cb1271-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1271-14"><a href="부록.html#cb1271-14" tabindex="-1"></a><span class="do">## $`8`</span></span>
+<span id="cb1271-15"><a href="부록.html#cb1271-15" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
+<span id="cb1271-16"><a href="부록.html#cb1271-16" tabindex="-1"></a><span class="do">##       5       3       0       0 </span></span>
+<span id="cb1271-17"><a href="부록.html#cb1271-17" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb1271-18"><a href="부록.html#cb1271-18" tabindex="-1"></a><span class="do">## $`9`</span></span>
+<span id="cb1271-19"><a href="부록.html#cb1271-19" tabindex="-1"></a><span class="do">##   Ozone Solar.R    Wind    Temp </span></span>
+<span id="cb1271-20"><a href="부록.html#cb1271-20" tabindex="-1"></a><span class="do">##       1       0       0       0</span></span></code></pre></div>
+<div class="sourceCode" id="cb1272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1272-1"><a href="부록.html#cb1272-1" tabindex="-1"></a>airquality <span class="sc">|&gt;</span></span>
+<span id="cb1272-2"><a href="부록.html#cb1272-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
+<span id="cb1272-3"><a href="부록.html#cb1272-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">list</span>(<span class="at">Mean =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))))</span>
+<span id="cb1272-4"><a href="부록.html#cb1272-4" tabindex="-1"></a><span class="do">## # A tibble: 5 × 5</span></span>
+<span id="cb1272-5"><a href="부록.html#cb1272-5" tabindex="-1"></a><span class="do">##   Month Ozone_Mean Solar.R_Mean Wind_Mean Temp_Mean</span></span>
+<span id="cb1272-6"><a href="부록.html#cb1272-6" tabindex="-1"></a><span class="do">##   &lt;int&gt;      &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb1272-7"><a href="부록.html#cb1272-7" tabindex="-1"></a><span class="do">## 1     5       23.6         181.     11.6       65.5</span></span>
+<span id="cb1272-8"><a href="부록.html#cb1272-8" tabindex="-1"></a><span class="do">## 2     6       29.4         190.     10.3       79.1</span></span>
+<span id="cb1272-9"><a href="부록.html#cb1272-9" tabindex="-1"></a><span class="do">## 3     7       59.1         216.      8.94      83.9</span></span>
+<span id="cb1272-10"><a href="부록.html#cb1272-10" tabindex="-1"></a><span class="do">## 4     8       60.0         172.      8.79      84.0</span></span>
+<span id="cb1272-11"><a href="부록.html#cb1272-11" tabindex="-1"></a><span class="do">## 5     9       31.4         167.     10.2       76.9</span></span></code></pre></div>
+<div class="sourceCode" id="cb1273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1273-1"><a href="부록.html#cb1273-1" tabindex="-1"></a>airquality <span class="sc">|&gt;</span></span>
+<span id="cb1273-2"><a href="부록.html#cb1273-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span> </span>
+<span id="cb1273-3"><a href="부록.html#cb1273-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">list</span>(<span class="at">miss =</span> <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.x)))))</span>
+<span id="cb1273-4"><a href="부록.html#cb1273-4" tabindex="-1"></a><span class="do">## # A tibble: 5 × 5</span></span>
+<span id="cb1273-5"><a href="부록.html#cb1273-5" tabindex="-1"></a><span class="do">##   Month Ozone_miss Solar.R_miss Wind_miss Temp_miss</span></span>
+<span id="cb1273-6"><a href="부록.html#cb1273-6" tabindex="-1"></a><span class="do">##   &lt;int&gt;      &lt;int&gt;        &lt;int&gt;     &lt;int&gt;     &lt;int&gt;</span></span>
+<span id="cb1273-7"><a href="부록.html#cb1273-7" tabindex="-1"></a><span class="do">## 1     5          5            4         0         0</span></span>
+<span id="cb1273-8"><a href="부록.html#cb1273-8" tabindex="-1"></a><span class="do">## 2     6         21            0         0         0</span></span>
+<span id="cb1273-9"><a href="부록.html#cb1273-9" tabindex="-1"></a><span class="do">## 3     7          5            0         0         0</span></span>
+<span id="cb1273-10"><a href="부록.html#cb1273-10" tabindex="-1"></a><span class="do">## 4     8          5            3         0         0</span></span>
+<span id="cb1273-11"><a href="부록.html#cb1273-11" tabindex="-1"></a><span class="do">## 5     9          1            0         0         0</span></span></code></pre></div>
 </div>
 </div>
 <div id="참고문헌" class="section level2 unnumbered hasAnchor">
 <h2>참고문헌<a href="부록.html#참고문헌" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div class="csl-entry">
 Becker, Chambers, R. A., and A. R. Wilks. 1988. <em>The New s Language: A Programming Environment for Data Analysis and Graphics</em>. Pacific Grove, California: Wadsworth &amp; Brooks/Cole Advanced Books &amp; Software.
 </div>
